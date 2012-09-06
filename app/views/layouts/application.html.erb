@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CSM</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="#">CSM</a>
+            <div class="nav">
+                <ul class="nav">
+                    <li>
+                        <a href="#"><i class="icon-home icon-white"></i> Home</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-wrench icon-white"></i> Control Panel</a>
+                    </li>
+                </ul>
+            </div><!-- /.nav -->
+            <div class="nav pull-right">
+                <% if user_signed_in? %>
+                    <ul class="nav">
+                        <li>
+                          <a href="#"><%= current_user.first_name %></a>
+                        </li>
+                        <li>
+                          <%= link_to '<i class="icon-off icon-white"></i> Sign out'.html_safe, destroy_user_session_path, :method => :delete %>
+                        </li>
+                    </ul>
+                <% else %>
+                    <li>
+                      <%= link_to '<i class="icon-user icon-white"></i> Sign in'.html_safe, new_user_session_path %>
+                    </li>
+                <% end %>
+            </div>
+        </div><!-- /.container -->
+    </div><!-- /.navbar-inner -->
+</div><!-- /.navbar -->
+
+<div class="container">
+  <div class="row-fluid">
+    <div class="span12">
+      <%= yield %>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
