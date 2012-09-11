@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable, :openid_authenticatable
 
-
+  self.table_name = "csm_users"
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first_name, :last_name, :role, :username, :identity_url, :email, :password, :password_confirmation
 
