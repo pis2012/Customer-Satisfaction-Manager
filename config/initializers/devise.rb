@@ -221,4 +221,16 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
+
+  # Outside of the configuration block
+  require 'openid/store/filesystem'
+
+# Inside the configuration block
+
+# For Google Apps
+  #config.omniauth :google_apps, :store => OpenID::Store::Filesystem.new('/tmp'), :domain => 'kefsensei.com'
+
+# For standard Google
+  config.omniauth :open_id, :store => OpenID::Store::Filesystem.new('/tmp'), :name => 'google', :identifier => 'https://www.google.com/accounts/o8/id', :require => 'omniauth-openid'
+
 end

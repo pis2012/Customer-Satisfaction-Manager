@@ -1,41 +1,31 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :trackable, :encryptable, :confirmable,
-  #:lockable, :recoverable, :timeoutable, :rememberable, and :omniauthable
+  #:lockable, :timeoutable, :rememberable, :openid_authenticatable,
 
-  devise :database_authenticatable, :registerable, :openid_authenticatable
+  devise :database_authenticatable, :registerable, :recoverable, :omniauthable
 
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :first_name, :last_name, :role, :username, :identity_url, :email, :password, :password_confirmation
+  attr_accessible :first_name, :last_name, :role, :username, :email, :password, :password_confirmation
 
-  def self.openid_required_fields
-    ["http://axschema.org/namePerson/first", "http://axschema.org/namePerson/last", "http://axschema.org/contact/email"]
+  def self.find_for_open_id(access_token, signed_in_resource=nil)
+    data = access_token['info']
+
+    if user = User.where(:email => data['email']).first
+      return user
+    else
+      User.create!(:email => data['email'],:first_name => data['first_name'],:last_name => data['last_name'], :password => Devise.friendly_token[0,20])
+    end
   end
 
-  def self.build_from_identity_url(identity_url)
-    User.new(:identity_url => identity_url)
-  end
-
-  def openid_fields=(fields)
-    fields.each do |key, value|
-      # Some AX providers can return multiple values per key
-      if value.is_a? Array
-        value = value.first
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session['devise.googleapps_data'] && session['devise.googleapps_data']['user_info']
+        user.email = data['email']
+        user.first_name = data['first_name']
+        user.last_name = data['last_name']
       end
-
-      case key.to_s
-        when "first", "http://axschema.org/namePerson/first"
-          self.first_name = value
-        when "last", "http://axschema.org/namePerson/last"
-          self.last_name = value
-        when "email", "http://axschema.org/contact/email"
-          self.email = value
-        else
-          logger.error "Unknown OpenID field: #{key}"
-      end
-
-
     end
   end
 

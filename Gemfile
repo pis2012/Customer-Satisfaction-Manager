@@ -9,11 +9,17 @@ gem 'mysql2'
 
 gem 'devise'
 
-gem "devise_openid_authenticatable"
+#gem "devise_openid_authenticatable"
 
 gem 'thin'
 
 gem "twitter-bootstrap-rails", :group => :assets
+
+# for Google Apps
+gem 'omniauth-google-apps'
+
+# for standard Google
+gem 'omniauth-openid'
 
 # Gems used only for assets and not required
 # in production environments by default.

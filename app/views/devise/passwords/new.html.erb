@@ -1,12 +1,45 @@
-<h2>Forgot your password?</h2>
+<div class="container">
+  <div class="row-fluid">
+    <div class="span2">
+      <!--Sidebar content-->
+    </div>
+    <div class="span10">
+      <div class="container">
+        <div class="row-fluid">
+          <div class="span5">
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.submit "Send me reset password instructions" %></div>
-<% end %>
-
-<%= render "links" %>
+          </div>
+          <div class="span5" style="background-color: #f0f8ff; border-radius: 5px; ">
+            <div class="tabbable " style="vertical-align: bottom;">
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab1" data-toggle="tab">Forgot your password?</a></li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active" id="tab1">
+                    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :class => "form-horizontal", :method => :post }) do |f| %>
+                      <div class="control-group">
+                        <label class="control-label" for="inputUsername">Username</label>
+                        <div class="controls">
+                          <div class="input-prepend">
+                                                    <span class="add-on">
+                                                        <i class="icon-user"></i>
+                                                    </span>
+                            <%= f.text_field :username, :placeholder => "Username"  %>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="control-group">
+                        <div class="controls">
+                          <%= f.submit "Continue", :class => "btn btn-primary" %>
+                        </div>
+                      </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
