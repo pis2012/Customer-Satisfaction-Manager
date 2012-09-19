@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ind: 1
+  name: MyString
+
+two:
+  ind: 1
+  name: MyString
