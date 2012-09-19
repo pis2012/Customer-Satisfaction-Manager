@@ -26,7 +26,7 @@
                 <% if user_signed_in? %>
                     <ul class="nav">
                         <li>
-                          <a href="#"><%= current_user.first_name %></a>
+                          <a href="#"><%= current_user.username %></a>
                         </li>
                         <li>
                           <%= link_to '<i class="icon-off icon-white"></i> Sign out'.html_safe, destroy_user_session_path, :method => :delete %>

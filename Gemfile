@@ -9,6 +9,8 @@ gem 'mysql2'
 
 gem 'devise'
 
+gem 'foreigner'
+
 #gem "devise_openid_authenticatable"
 
 gem 'thin'

@@ -12,11 +12,13 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: CSM_development
+  database: customer_satisfaction_manager
   pool: 5
   username: root
   password: 's3cr3t'
   socket: /var/run/mysqld/mysqld.sock
+  host: localhost
+  port: 3306
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

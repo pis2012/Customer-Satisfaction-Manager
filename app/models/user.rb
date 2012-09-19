@@ -1,13 +1,16 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :trackable, :encryptable, :confirmable,
-  #:lockable, :timeoutable, :rememberable, :openid_authenticatable,
+  #:lockable, :timeoutable, :openid_authenticatable,
 
-  devise :database_authenticatable, :registerable, :recoverable, :omniauthable
+  devise :database_authenticatable, :registerable, :recoverable, :omniauthable, :rememberable
 
+  belongs_to :role
+  belongs_to :client
+  belongs_to :project
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :first_name, :last_name, :role, :username, :email, :password, :password_confirmation
+  attr_accessible :id, :full_name, :username, :email, :password, :password_confirmation, :remember_me, :role_id, :client_id, :project_id
 
   def self.find_for_open_id(access_token, signed_in_resource=nil)
     data = access_token['info']
@@ -15,16 +18,15 @@ class User < ActiveRecord::Base
     if user = User.where(:email => data['email']).first
       return user
     else
-      User.create!(:email => data['email'],:first_name => data['first_name'],:last_name => data['last_name'], :password => Devise.friendly_token[0,20])
+      role = Role.find_by_name 'Mooveit'
+      User.create!(:email => data['email'],:full_name => data['name'],:username => data['first_name'],:role_id => role.id)
     end
   end
 
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session['devise.googleapps_data'] && session['devise.googleapps_data']['user_info']
-        user.email = data['email']
-        user.first_name = data['first_name']
-        user.last_name = data['last_name']
+        user = User.find_all_by_email data['email']
       end
     end
   end
