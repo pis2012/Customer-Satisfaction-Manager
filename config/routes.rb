@@ -1,5 +1,9 @@
 CSM::Application.routes.draw do
 
+  resources :comentarios
+
+  resources :feedbacks
+
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   resources :clients
   resources :projects

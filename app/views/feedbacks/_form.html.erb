@@ -1,0 +1,49 @@
+<%= form_for(@feedback) do |f| %>
+  <% if @feedback.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
+
+      <ul>
+      <% @feedback.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="container seccion">
+  <div class="span8" style="border-bottom: solid 2px;background: #f8ffed;">
+    <h2 style="margin-left: 15px;">Nuevo Feedback</h2>
+  </div>
+  <div class="row-fluid">
+
+    <div class="span8" style="background: #ff0000;">
+      <h5 style="position: relative;float: left;margin-right: 10px;">Tipo de Feedback:</h5>   <%= f.select(:tipoFeedback , options_for_select([['Email',Feedback::Email],['Skype',Feedback::Skype],['Simple',Feedback::Simple],['Simple',Feedback::Simple],['Formulario',Feedback::Formulario] ,['Reconocimieto',Feedback::Reconocimieto]],1))%>
+    </div>
+
+    <div class="span8" style="background: #ff0000;">
+      <h5 style="position: relative;float: left;margin-right: 10px;">Visibilidad:</h5>  <%= f.check_box :VisibilidadEmpleado%>Empleados Moove-IT  <%= f.check_box :VisibilidadCliente=%>Clientes
+  </div>
+
+    <div class="span8" style="background: #ff0000;">
+      <%= f.label :Asunto %><br />
+      <%= f.text_field :Asunto %>
+    </div>
+
+  </div>
+
+  <div class="field">
+    <%= f.label :Fecha %><br />
+    <%= f.date_select :Fecha %>
+  </div>
+  <div class="field">
+    <%= f.label :Contenido %><br />
+    <%= f.text_area :Contenido %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  Visibilidad: MyString
+  Asunto: MyString
+  Fecha: MyString
+  Contenido: MyString
+  tipoFeedback: MyString
+
+two:
+  Visibilidad: MyString
+  Asunto: MyString
+  Fecha: MyString
+  Contenido: MyString
+  tipoFeedback: MyString

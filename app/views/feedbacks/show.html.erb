@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Visibilidad:</b>
+  <%= @feedback.Visibilidad %>
+</p>
+
+<p>
+  <b>Asunto:</b>
+  <%= @feedback.Asunto %>
+</p>
+
+<p>
+  <b>Fecha:</b>
+  <%= @feedback.Fecha %>
+</p>
+
+<p>
+  <b>Contenido:</b>
+  <%= @feedback.Contenido %>
+</p>
+
+<p>
+  <b>Tipofeedback:</b>
+  <%= @feedback.tipoFeedback %>
+</p>
+
+
+<%= link_to 'Edit', edit_feedback_path(@feedback) %> |
+<%= link_to 'Back', feedbacks_path %>
