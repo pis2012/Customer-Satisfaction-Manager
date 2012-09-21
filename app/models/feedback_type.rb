@@ -1,6 +1,4 @@
-class Role < ActiveRecord::Base
-
-  has_many :users
+class FeedbackType < ActiveRecord::Base
 
   attr_accessible :id, :name
 

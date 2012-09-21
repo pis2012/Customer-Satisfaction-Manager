@@ -1,0 +1,32 @@
+<h1>Home#index</h1>
+<p>Find me in app/views/home/index.html.erb</p>
+<p>Esta vista la generará Regueira-Peres</p>
+
+
+<% if user_signed_in? %>
+
+    <% if current_user.role_id == 2 %>
+
+    <p>
+    Vista de todas las caritas.
+    Aquellas que pertenecen a los proyectos del cliente del usuario logueado se ven más grandes  y se les puede clickear
+    </p>
+
+
+    <% else %>
+
+    <p>
+      Vista de todas las caritas de los proyectos. Se les puede clickear a todas.
+    </p>
+
+    <% end %>
+
+<% else %>
+
+    <p>
+      Usuario no logueado
+      Vista de todas las caritas y una vista previa de artículo.
+      Caritas no clickeables.
+    </p>
+
+<% end %>

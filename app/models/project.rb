@@ -1,6 +1,15 @@
 class Project < ActiveRecord::Base
-  belongs_to :client
-  has_many :users
+  default_scope :order => 'name'
 
-  attr_accessible :client_id, :description, :end_date, :id, :name, :status
+  belongs_to :client
+  has_many :profiles
+  has_many :milestones
+  has_many :moods
+  has_many :feedbacks
+
+  attr_accessible :client, :milestones, :moods, :feedbacks,
+                  :description, :end_date, :id, :name, :finalized
+
+  validates :name, :description, :end_date, :finalized,  :presence  => true
+
 end

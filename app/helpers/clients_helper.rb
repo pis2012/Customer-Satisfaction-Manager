@@ -1,4 +1,4 @@
 module ClientsHelper
    cli = Client.new
-  cli.id
+   cli.id
 end
