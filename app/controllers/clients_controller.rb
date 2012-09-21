@@ -56,9 +56,6 @@ class ClientsController < ApplicationController
     @project = Project.find(project_id)
     @milestones = Milestone.find_all_by_project_id(@project.id)
     @feedbacks = Feedback.find_all_by_project_id(@project.id)
-
-
-
   end
 
 

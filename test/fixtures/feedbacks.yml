@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  subject: MyString
+  visibility: 1
+  content: MyString
+  project_id: 1
+  author_id: 1
+  type: 1
+  feeling: 1
+
+two:
+  subject: MyString
+  visibility: 1
+  content: MyString
+  project_id: 1
+  author_id: 1
+  type: 1
+  feeling: 1
