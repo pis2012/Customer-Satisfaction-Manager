@@ -16,6 +16,6 @@ rol_mooveit = Role.create(name:'Mooveit')
 
 client1 = Client.create(name:'MicroHard')
 
-User.create(username: 'admin', full_name:'Martin Cabrera', email:'cabrera@1234.com', role_id:rol_admin.id)
-User.create(username: 'client', full_name:'Bill Gates', email:'gates@1234.com', role_id:rol_client.id, client_id:client1.id)
-User.create(username: 'mooveit', full_name: 'Jorge Corrales', email:'corrales@1234.com', role_id:rol_mooveit.id)
+User.create(username: 'admin',password:'admin',password_confirmation:'admin', full_name:'Martin Cabrera', email:'cabrera@1234.com', role_id:rol_admin.id)
+User.create(username: 'client',password:'client',password_confirmation:'client', full_name:'Bill Gates', email:'gates@1234.com', role_id:rol_client.id, client_id:client1.id)
+User.create(username: 'mooveit',password:'mooveit',password_confirmation:'mooveit', full_name: 'Jorge Corrales', email:'corrales@1234.com', role_id:rol_mooveit.id)
