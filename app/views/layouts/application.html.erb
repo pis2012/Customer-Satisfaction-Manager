@@ -15,18 +15,26 @@
             <div class="nav">
                 <ul class="nav">
                     <li>
-                        <a href="#"><i class="icon-home icon-white"></i> Home</a>
+                        <a href="/"><i class="icon-home icon-white"></i> Home</a>
                     </li>
+                  <% if user_signed_in? %>
+                  <% if current_user.role_id == 1 %>
                     <li>
-                        <a href="#"><i class="icon-wrench icon-white"></i> Control Panel</a>
+                        <a href="admin#index"><i class="icon-wrench icon-white"></i> Admin</a>
                     </li>
+                  <% else %>
+                      <li>
+                        <a href="#"><i class="icon-wrench icon-white"></i> My Projects</a>
+                      </li>
+                      <% end %>
+                  <% end %>
                 </ul>
             </div><!-- /.nav -->
             <div class="nav pull-right">
                 <% if user_signed_in? %>
                     <ul class="nav">
                         <li>
-                          <a href="#"><%= current_user.username %></a>
+                          <a href="#"><%= current_user.full_name %></a>
                         </li>
                         <li>
                           <%= link_to '<i class="icon-off icon-white"></i> Sign out'.html_safe, destroy_user_session_path, :method => :delete %>
