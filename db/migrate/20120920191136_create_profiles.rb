@@ -1,9 +1,13 @@
 class CreateProfiles < ActiveRecord::Migration
   def change
     create_table :profiles do |t|
-      t.integer :user_id
+
+      t.references :user
+      t.references :project
+
       t.date :last_login_date
-      t.integer :project_id
+      t.string :image_url
+      t.string :skype_usr
 
       t.timestamps
     end

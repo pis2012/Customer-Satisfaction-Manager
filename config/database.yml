@@ -15,7 +15,7 @@ development:
   database: customer_satisfaction_manager
   pool: 5
   username: root
-  password: 's3cr3t'
+  password: '096nC9uM'
   socket: /var/run/mysqld/mysqld.sock
   host: localhost
   port: 3306
