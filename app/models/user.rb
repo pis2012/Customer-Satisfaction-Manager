@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   belongs_to :role
   belongs_to :client
   belongs_to :project
+  has_one :profile
+  has_many :feedbacks
+
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :id, :full_name, :username, :email, :password, :password_confirmation, :remember_me, :role_id, :client_id, :project_id

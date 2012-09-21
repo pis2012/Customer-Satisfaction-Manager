@@ -11,12 +11,48 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120915220034) do
+ActiveRecord::Schema.define(:version => 20120921023433) do
 
   create_table "clients", :force => true do |t|
     t.string   "name",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "feedbacks", :force => true do |t|
+    t.string   "subject"
+    t.integer  "visibility"
+    t.string   "content"
+    t.integer  "project_id"
+    t.integer  "author_id"
+    t.integer  "type"
+    t.integer  "feeling"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "milestones", :force => true do |t|
+    t.string   "name"
+    t.date     "target_date"
+    t.integer  "project_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "moods", :force => true do |t|
+    t.date     "date_created"
+    t.integer  "status"
+    t.integer  "project_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "profiles", :force => true do |t|
+    t.integer  "user_id"
+    t.date     "last_login_date"
+    t.integer  "project_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "projects", :force => true do |t|

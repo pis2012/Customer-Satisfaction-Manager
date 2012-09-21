@@ -1,5 +1,7 @@
 CSM::Application.routes.draw do
 
+  resources :feedbacks
+
   get "admin/index"
 
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
