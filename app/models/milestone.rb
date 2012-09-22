@@ -4,6 +4,6 @@ class Milestone < ActiveRecord::Base
 
   attr_accessible :project, :name, :project_id, :target_date
 
-  #validates :name, :target_date, :presence  => true
+  validates :name, :target_date, :presence  => true
 
 end
