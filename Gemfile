@@ -15,6 +15,12 @@ gem 'foreigner'
 
 gem 'thin'
 
+gem 'simplecov'
+
+group :test, :development do
+  gem "rspec-rails", "~> 2.0"
+end
+
 gem "twitter-bootstrap-rails", :group => :assets
 
 # for Google Apps
