@@ -18,7 +18,7 @@
 
   <div class="span12 margin4">
     <%= f.label :Tipo_de_feedback ,:class => "Etiqueta" %>
-    <%= f.select(:feedback_type_id,FeedbackType.all.map {|f| [f.name, f.id]},:prompt => true) %>
+    <%= f.select(:feedback_type_id,FeedbackType.all.map {|fe| [fe.name, fe.id]},:prompt => true) %>
   </div>
 
   <div class="span12 margin4">
@@ -45,8 +45,16 @@
     <%= f.check_box :VisibilidadEmpleado %> Empleados Moove-IT   <%= f.check_box :VisibilidadCliente %> Cliente
   </div>
 
+  <div class="span12 margin3" >
+    <h7 style="float: left;margin-right: 5%;"> ¿Cómo crees que este feedback afecta al estado de ánimo del proyecto? </h7>
+    -1<input type="radio" name="animo" value="-1" style="margin-right: 3%;margin-left: 2px;">
+    0<input type="radio" name="animo" value="0" style="margin-right: 3%;margin-left: 2px;">
+    1<input type="radio" name="animo" value="1" style="margin-right: 3%;margin-left: 2px;">
+
+  </div>
+
   <div class="span12 margin4">
-    <%= f.submit %>  or <%= link_to 'Cancelar', feedbacks_path %>
+    <%=  f.submit :Crear%>  or <%= link_to 'Cancelar', feedbacks_path %>
   </div>
 
 </div>
