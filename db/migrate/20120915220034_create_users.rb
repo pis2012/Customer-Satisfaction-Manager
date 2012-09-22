@@ -4,17 +4,13 @@ class CreateUsers < ActiveRecord::Migration
 
       t.references :role
       t.references :client
-      t.references :project #esto se va a quitar. El usuario tiene un profile, y el profile tiene un proyecto
 
-
-      t.string   :username, :null => false
-      t.string   :full_name, :null => false
-      t.string   :email, :null => false
-      t.integer  :project_id
-      t.integer  :client_id
+      t.string   :username
+      t.string   :full_name
+      t.string   :email
 
       ## OpenID
-      t.string   :encrypted_password, :null => false, :default => ""
+      t.string   :encrypted_password, :default => ""
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
       t.datetime :remember_created_at

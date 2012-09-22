@@ -1,10 +1,12 @@
 class Mood < ActiveRecord::Base
-  # Enumerado para status
-  CONTENTO = 1
-  ENOJADO = 2
-  NORMAL = 3
-
-  attr_accessible :date_created, :project_id, :status
 
   belongs_to :project
+
+  attr_accessible :project,
+                  :created_at, :project_id, :status
+
+  validates :status, :presence  => true
+  validates :status, :numericality => {:greater_than_or_equal_to => 1}
+  validates :status, :numericality => {:less_than_or_equal_to => 10}
+
 end

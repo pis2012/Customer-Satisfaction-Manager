@@ -1,21 +1,16 @@
 class Feedback < ActiveRecord::Base
 
-  # Enumerado para visibility
-  PRIVADO = 1
-  CONFIDENCIAL = 2
-  PUBLICO = 3
-
-  # Enumerado para type
-  SKYPE = 4
-  EMAIL = 5
-  SIMPLE = 6
-  RECONOCIMIENTO = 7
+  belongs_to :project
+  belongs_to :user           # autor del feedback
+  belongs_to :feedback_type
 
   # feeling : -1 .. 1
-  attr_accessible :author_id, :content, :feeling, :project_id, :subject, :type, :visibility
+  attr_accessible :subject, :content, :feeling, :visibility
 
-  belongs_to :project
-  belongs_to :user
+  #:presence => true tells the validator to check that each of the named fields is
+  #present and its contents are not empty
 
+  #validates :subject, :client_visibility, :mooveit_visibility, :content, :feeling, :presence => true
+  #validates :feeling, :numericality => {:greater_than_or_equal_to => -1, :less_than_or_equal_to => 1}
 
 end

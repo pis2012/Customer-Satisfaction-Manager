@@ -6,6 +6,9 @@ CSM::Application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   resources :clients
+
+  match "user_project" => "clients#show_project"
+
   resources :projects
 
   # The priority is based upon order of creation:
@@ -65,6 +68,6 @@ CSM::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 
-  root :to => 'home#index'
+  root :to => 'home#index', :as => 'home'
 
 end
