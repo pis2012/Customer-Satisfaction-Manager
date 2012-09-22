@@ -2,11 +2,11 @@
 
 <table>
   <tr>
-    <th>Visibilidad</th>
     <th>Asunto</th>
-    <th>Fecha</th>
     <th>Contenido</th>
-    <th>Tipofeedback</th>
+    <th>Feedback type</th>
+    <th>Project</th>
+    <th>Comentario</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,11 +14,11 @@
 
 <% @feedbacks.each do |feedback| %>
   <tr>
-    <td><%= feedback.Visibilidad %></td>
-    <td><%= feedback.Asunto %></td>
-    <td><%= feedback.Fecha %></td>
-    <td><%= feedback.Contenido %></td>
-    <td><%= feedback.tipoFeedback %></td>
+    <td><%= feedback.asunto %></td>
+    <td><%= feedback.contenido %></td>
+    <td><%= feedback.feedback_type_id %></td>
+    <td><%= feedback.project_id %></td>
+    <td><%= feedback.comentario_id %></td>
     <td><%= link_to 'Show', feedback %></td>
     <td><%= link_to 'Edit', edit_feedback_path(feedback) %></td>
     <td><%= link_to 'Destroy', feedback, method: :delete, data: { confirm: 'Are you sure?' } %></td>

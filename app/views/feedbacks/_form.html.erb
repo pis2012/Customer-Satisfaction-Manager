@@ -11,39 +11,43 @@
     </div>
   <% end %>
 
-
-<div class="container seccion">
-  <div class="span8" style="border-bottom: solid 2px;background: #f8ffed;">
-    <h2 style="margin-left: 15px;">Nuevo Feedback</h2>
-  </div>
-  <div class="row-fluid">
-
-    <div class="span8" style="background: #ff0000;">
-      <h5 style="position: relative;float: left;margin-right: 10px;">Tipo de Feedback:</h5>   <%= f.select(:tipoFeedback , options_for_select([['Email',Feedback::Email],['Skype',Feedback::Skype],['Simple',Feedback::Simple],['Simple',Feedback::Simple],['Formulario',Feedback::Formulario] ,['Reconocimieto',Feedback::Reconocimieto]],1))%>
-    </div>
-
-    <div class="span8" style="background: #ff0000;">
-      <h5 style="position: relative;float: left;margin-right: 10px;">Visibilidad:</h5>  <%= f.check_box :VisibilidadEmpleado%>Empleados Moove-IT  <%= f.check_box :VisibilidadCliente=%>Clientes
+<div class="row seccion wide">
+  <div class="span12" style="border-bottom: solid; background: #ffffbc;border-bottom-width: 0.8px;border-bottom-color: #c8d0e2;">
+    <h2 style="margin-left: 10px;">Nuevo Feedback</h2>
   </div>
 
-    <div class="span8" style="background: #ff0000;">
-      <%= f.label :Asunto %><br />
-      <%= f.text_field :Asunto %>
-    </div>
+  <div class="span12 margin4">
+    <%= f.label :Tipo_de_feedback ,:class => "Etiqueta" %>
+    <%= f.select(:feedback_type_id,FeedbackType.all.map {|f| [f.name, f.id]},:prompt => true) %>
+  </div>
+
+  <div class="span12 margin4">
+    <%= f.label :asunto ,:class => "Etiqueta" %>
+    <%= f.text_field :asunto , :class => "TextField" %>
+  </div>
+
+
+
+
+  <div class="span12 margin3" >
+    <%= f.label :contenido %>
+    <%= f.text_area :contenido, :class => "estilotextarea" %>
+
+  </div>
+  <div class="span11" style="border-bottom: solid;border-bottom-width: 0.5px;">
 
   </div>
 
-  <div class="field">
-    <%= f.label :Fecha %><br />
-    <%= f.date_select :Fecha %>
-  </div>
-  <div class="field">
-    <%= f.label :Contenido %><br />
-    <%= f.text_area :Contenido %>
+
+
+  <div class="span12 margin3" >
+    <%= f.label :visibilidad ,:class => "Etiqueta" %>
+    <%= f.check_box :VisibilidadEmpleado %> Empleados Moove-IT   <%= f.check_box :VisibilidadCliente %> Cliente
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="span12 margin4">
+    <%= f.submit %>  or <%= link_to 'Cancelar', feedbacks_path %>
   </div>
-<% end %>
+
 </div>
+<% end %>

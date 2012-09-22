@@ -1,24 +1,12 @@
-
-
-
-
-
-
-
 class Feedback < ActiveRecord::Base
-  #constants
-  Email = 1
-  Skype = 2
-  Simple = 3
-  Formulario = 4
-  Reconocimieto = 5
-
-
-
+  belongs_to :feedback_type
+  accepts_nested_attributes_for :feedback_type
   belongs_to :project
   has_many :comentarios
 
-  attr_accessible :Asunto, :Contenido, :Fecha, :created_at, :VisibilidadEmpleado,:VisibilidadCliente, :tipoFeedback
 
+  attr_accessible :asunto,  :contenido ,:created_at, :VisibilidadCliente,:VisibilidadEmpleado,:feedback_type_id , :project_id,:comentario_id
+
+  validate :asunto,  :contenido , :feedback_type_id, :presence  => true
 
 end
