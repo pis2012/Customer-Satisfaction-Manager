@@ -6,6 +6,9 @@ CSM::Application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   resources :clients
+
+  match "user_project" => "clients#show_project"
+
   resources :projects
 
   # The priority is based upon order of creation:

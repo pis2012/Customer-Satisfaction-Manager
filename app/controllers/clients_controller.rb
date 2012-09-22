@@ -52,10 +52,13 @@ class ClientsController < ApplicationController
   end
 
   def show_project
-    project_id = Profile.find_by_user_id(current_user.id).project_id
-    @project = Project.find(project_id)
-    @milestones = Milestone.find_all_by_project_id(@project.id)
-    @feedbacks = Feedback.find_all_by_project_id(@project.id)
+    @profile = current_user.profile
+    if (@profile != nil)
+      @project = @profile.project
+      @milestones = @project.milestones
+      @feedbacks = @project.feedbacks
+    end
+
   end
 
 
