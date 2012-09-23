@@ -1,9 +1,12 @@
-<h1>show_project</h1>
-<p>Vista de verProyecto</p>
+<% provide(:title, 'My Projects') %>
+
+
+<h1>My Projects</h1>
+
 
 <% if !@profile %>
 
-    <p> No existe un proyecto en el perfil del usuario </p>
+    <h3> No existe un proyecto en el perfil del usuario </h3>
 
 <% else %>
 
