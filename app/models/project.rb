@@ -12,4 +12,6 @@ class Project < ActiveRecord::Base
 
   validates :name, :description, :end_date, :presence  => true
 
+  validates :finalized, :inclusion => {:in => [true, false]}
+
 end
