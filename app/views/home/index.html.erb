@@ -1,32 +1,212 @@
-<h1>Home#index</h1>
+<!--<h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
-<p>Esta vista la generará Regueira-Peres</p>
+<p>Esta vista la generará Regueira-Peres</p>  -->
+
+<!-- <p>
+ Usuario no logueado
+ Vista de todas las caritas y una vista previa de artículo.
+ Caritas no clickeables.
+</p> -->
+
+<script>
+    function Big(me)
+    {
+        //var image = me.getElementsByTagName("img")[0];
+        me.style.width  = '130px';
+        me.style.height = '139px';
+        //image.src = image.src.replace('small','big');
+    }
+    function Small(me)
+    {
+        //var image = me.getElementsByTagName("img")[0];
+        me.style.width  = '110px';
+        me.style.height = '118px';
+        //image.src = image.src.replace('big','small');
+    }
+</script>
 
 
 <% if user_signed_in? %>
-
     <% if current_user.role_id == 2 %>
 
-    <p>
-    Vista de todas las caritas.
-    Aquellas que pertenecen a los proyectos del cliente del usuario logueado se ven más grandes  y se les puede clickear
-    </p>
+        <!--<p>
+        Vista de todas las caritas.
+        Aquellas que pertenecen a los proyectos del cliente del usuario logueado se ven más grandes  y se les puede clickear
+        </p>-->
+
+        <div class="container">
+          <div class="row-fluid">
+            <div class="span1">
+            </div>
+            <div class="span10">
+              <div style="text-align: center;">
+                <h2 style="font-family: Lemon; text-align: left;">MOOD OF OUR CUSTOMERS</h2>
+                <% count = 0 %>
+                <% div_width = "width: 160px;" %>
+                <% div_ml = "margin-left:  40px;" %>
+                <% div_mr = "margin-right: 40px;" %>
+
+                <% @projects = Project.all %>
+                <% @projects.each do |project| %>
+                    <% mood = project.moods.last! %>
+
+
+                    <% if project.client_id == current_user.client_id  %>
+                        <% div_width = "width: 160px;" %>
+                        <% div_ml = "margin-left:  15px;" %>
+                        <% div_mr = "margin-right: 15px;" %>
+                    <% else %>
+                        <% div_width = "width: 110px;" %>
+                        <% div_ml = "margin-left:  40px;" %>
+                        <% div_mr = "margin-right: 40px;" %>
+                    <% end %>
+
+                    <% if count % 2 == 0 %>
+
+                        <div style="<%=div_width%> height: 160px; display: inline-block; vertical-align: top; <%=div_ml%> <%=div_mr%>  margin-top: 40px; margin-bottom: 40px;">
+                          <div style="position:relative; <%=div_width%> margin-bottom: 0px;" >
+                            <%= image_tag "status/1.png" %>
+                            <p style="text-align: right;"><%= project.name %></p>
+                          </div>
+                        </div>
+
+                    <% else %>
+
+                        <div style="<%=div_width%> height: 118px; display: inline-block; vertical-align: bottom; <%=div_ml%> <%=div_mr%> margin-top: 40px; margin-bottom: 40px;">
+                          <div style="position:relative; <%=div_width%> margin-bottom: 0px;" >
+                            <%= image_tag "status/1.png" %>
+                            <p style="text-align: right;"><%= project.name %></p>
+                          </div>
+                        </div>
+
+                    <% end %>
+
+
+
+
+                    <% if count == 4 %>
+                        <% count = 0 %>
+                    <% else %>
+                        <% count += 1 %>
+                    <% end %>
+
+                    <!-- < %= project.name  %> -->
+                    <!--< %= mood.id  %>-->
+                <% end %>
+              </div>
+            </div>
+            <div class="span1">
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
 
 
     <% else %>
 
-    <p>
-      Vista de todas las caritas de los proyectos. Se les puede clickear a todas.
-    </p>
+        <div class="container">
+          <div class="row-fluid">
+            <div class="span1">
+            </div>
+            <div class="span10">
+              <div style="text-align: center;">
+                <h2 style="font-family: Lemon; text-align: left;">MOOD OF OUR CUSTOMERS</h2>
+                <% count = 0 %>
+                <% @projects = Project.all %>
+                <% @projects.each do |project| %>
+                    <% mood = project.moods.last! %>
+
+                    <% if count % 2 == 0 %>
+
+                        <div style="width: 110px; height: 160px; display: inline-block; vertical-align: top; margin: 40px;">
+                          <div onmouseover="Big(this)" onmouseout="Small(this)" style="position:relative; width:110px; margin-bottom: 0px;" >
+                            <%= image_tag "status/1.png" %>
+                            <p style="text-align: right;"><%= project.name %></p>
+                          </div>
+                        </div>
+
+                    <% else %>
+
+                        <div style="width: 110px; height: 118px; display: inline-block; vertical-align: bottom; margin: 40px;">
+                          <div onmouseover="Big(this)" onmouseout="Small(this)" style="position:relative; width:110px; margin-bottom: 0px;" >
+                            <%= image_tag "status/1.png" %>
+                            <p style="text-align: right;"><%= project.name %></p>
+                          </div>
+                        </div>
+
+                    <% end %>
+
+                    <% if count == 4 %>
+                        <% count = 0 %>
+                    <% else %>
+                        <% count += 1 %>
+                    <% end %>
+
+                    <!-- < %= project.name  %> -->
+                    <!--< %= mood.id  %>-->
+                <% end %>
+              </div>
+            </div>
+            <div class="span1">
+            </div>
+          </div>
+        </div>
 
     <% end %>
 
 <% else %>
 
-    <p>
-      Usuario no logueado
-      Vista de todas las caritas y una vista previa de artículo.
-      Caritas no clickeables.
-    </p>
+    <div class="container">
+      <div class="row-fluid">
+        <div class="span2">
+        </div>
+        <div class="span8">
+          <div style="text-align: center;">
+            <div style="display: inline-block; vertical-align: middle; width: 170px; margin: 50px;">
+              <%= image_tag "status/9.png" %>
+            </div>
+            <div style="display: inline-block; vertical-align: middle; text-align: left; width: 60%;">
+              <h3 style="font-family: Lemon;">CUSTOMER SATISFACTION MANAGER</h3>
+              </br>
+              <p style="font-size: 16px;">
+                Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum
+                liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id.
+              </p>
+            </div>
+          </div>
+
+          <div style="text-align: center;">
+            <hr/>
+            <h3 style="font-family: Lemon; text-align: left;">MOOD OF OUR CUSTOMERS</h3>
+
+            <% @projects = Project.all %>
+            <% @projects.each do |project| %>
+                <% mood = project.moods.last! %>
+
+                <div style="width: 110px; height: 118px; display: inline-block; vertical-align: top; margin: 15px;">
+                  <div onmouseover="Big(this)" onmouseout="Small(this)" style="position:relative; width:110px; margin-bottom: 0px;" >
+                    <%= image_tag "status/1.png" %>
+                    <p style="text-align: right;"><%= project.name %></p>
+                  </div>
+                </div>
+
+                <!-- < %= project.name  %> -->
+                <!--< %= mood.id  %>-->
+            <% end %>
+          </div>
+        </div>
+        <div class="span2">
+        </div>
+      </div>
+    </div>
 
 <% end %>
