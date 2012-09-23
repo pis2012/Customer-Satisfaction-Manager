@@ -80,4 +80,15 @@ class ProjectsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def show_project_complete
+    @profile = current_user.profile
+    if (@profile != nil)
+      @project = @profile.project
+      @milestones = @project.milestones
+      @feedbacks = @project.feedbacks
+    end
+  end
+
+
 end

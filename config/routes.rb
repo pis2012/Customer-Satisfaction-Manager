@@ -7,7 +7,7 @@ CSM::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   resources :clients
 
-  match "user_project" => "clients#show_project"
+  match "/my_projects" => "projects#show_project_complete", :as => "my_projects"
 
   resources :projects
 

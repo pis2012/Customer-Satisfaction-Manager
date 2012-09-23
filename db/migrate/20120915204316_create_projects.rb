@@ -7,7 +7,7 @@ class CreateProjects < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.datetime :end_date
-      t.boolean :finalized
+      t.bool :finalized
       t.timestamps
     end
     add_index :projects, :client_id
