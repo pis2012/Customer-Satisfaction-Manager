@@ -1,3 +1,95 @@
 // Place all the styles related to the admin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+#page {
+  background-color: #FFFFFF;
+  border: 1px solid #D7D7D7;
+  border-radius: 6px 6px 6px 6px;
+  box-shadow: 0 0 3px #CCCCCC;
+  min-height: 500px;
+  padding: 0 0 30px;
+  position: relative;
+}
+
+
+.page_header {
+  margin-bottom: 25px;
+  padding: 0;
+  background: none repeat scroll 0 0 #F0F5F8;
+  border-bottom: 1px solid #DADEE5;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin: 0;
+  padding: 15px 30px;
+}
+
+div.page_header h1, div.page_divider h2 {
+  color: #000000;
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+li {
+  font-size: 12px;
+}
+ul {
+  list-style: none outside none;
+}
+
+#global_nav li.dashboard a.selected {
+  background-position: 8px -104px;
+}
+
+
+
+
+#global_nav a {
+  display: block;
+  font-size: 13px;
+  line-height: 28px;
+  overflow: hidden;
+  padding: 0 6px 0 40px;
+  text-decoration: none;
+}
+
+
+
+#global_nav a:hover, #global_nav a:visited:hover {
+  background-color: #EFEDE7;
+  color: #333333;
+}
+
+#global_nav li.active{
+  background-color: #E5E3DE;
+  color: #000000;
+  font-weight: bold;
+}
+
+
+
+
