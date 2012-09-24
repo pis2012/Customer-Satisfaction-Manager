@@ -80,4 +80,10 @@ class FeedbacksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def new_feedback
+
+  end
+
+
 end

@@ -1,3 +1,23 @@
 // Place all the styles related to the Feedbacks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+
+.feedbacks_panel {
+  margin-bottom: 25px;
+  padding: 0;
+  border-bottom: 1px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin: 0;
+  padding: 15px 30px;
+}
+
+div.feedbacks_panel h1 {
+  color: #000000;
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0;
+}

@@ -52,6 +52,7 @@ GEM
       multi_json (~> 1.0)
     foreigner (1.2.1)
       activerecord (>= 3.0.0)
+    googlecharts (1.6.8)
     hashie (1.2.0)
     hike (1.2.1)
     i18n (0.6.1)
@@ -172,6 +173,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   foreigner
+  googlecharts
   jquery-rails
   mysql2
   omniauth-google-apps

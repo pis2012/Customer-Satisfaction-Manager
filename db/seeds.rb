@@ -26,10 +26,11 @@ type_reconocimiento = FeedbackType.create(name:'Reconocimiento')
 type_comentario = FeedbackType.create(name:'Comentario')
 
 client1 = Client.create(name:'MicroHard')
+client2 = Client.create(name:'Sony')
 
 end_date = DateTime.new(2013,1,1)
 
-p1 = Project.create(client: client1,
+p1 = Project.create(client: client2,
                     name: "Panaderia El 10",
                     description: "Software para administracion de una panaderia",
                     end_date: end_date,
@@ -42,7 +43,7 @@ Mood.create(project: p1,
 Mood.create(project: p1,
             status: 9)
 
-p2 = Project.create(client: client1,
+p2 = Project.create(client: client2,
                     name:'Proyecto2',
                     description:'Descripcion de proyecto 2',
                     end_date:'2013-01-01 00:00:00',
@@ -51,7 +52,7 @@ p2 = Project.create(client: client1,
 Mood.create(project: p2,
             status: 10)
 
-p3 = Project.create(client: client1,
+p3 = Project.create(client: client2,
                     name:'Proyecto3',
                     description:'Descripcion de proyecto 3',
                     end_date:'2013-01-01 00:00:00',
@@ -224,6 +225,10 @@ profile1 = Profile.create(user:admin_usr, project:p1,
 client_usr = User.create(role: rol_client, client: client1,
                          username: 'client_usr',password:'client',password_confirmation:'client',
                          full_name:'Bill Gates', email:'gates@1234.com')
+
+client_usr = User.create(role: rol_client, client: client2,
+                         username: 'sony',password:'sony',password_confirmation:'sony',
+                         full_name:'Sony', email:'sony@1234.com')
 
 profile2 = Profile.create(user:client_usr, project:p1,
                           last_login_date:'2012-01-01 00:00:00',skype_usr:'gates.skype')

@@ -17,6 +17,8 @@ gem 'thin'
 
 gem 'simplecov'
 
+gem 'googlecharts',  :require => "gchart"
+
 group :test, :development do
   gem "rspec-rails", "~> 2.0"
 end
