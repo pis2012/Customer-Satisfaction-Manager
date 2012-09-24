@@ -8,6 +8,7 @@ CSM::Application.routes.draw do
   resources :clients
 
   match "/my_projects" , to: "projects#show_project_complete"
+  match "/change_profile_project", to: "projects#change_profile_project"
 
   resources :projects
 

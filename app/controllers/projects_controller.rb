@@ -85,9 +85,19 @@ class ProjectsController < ApplicationController
     @profile = current_user.profile
     if (@profile != nil)
       @project = @profile.project
-      @milestones = @project.milestones
-      @feedbacks = @project.feedbacks
     end
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @project }
+    end
+  end
+
+  def change_profile_project
+    project_id = params[:id]
+
+
+
   end
 
 

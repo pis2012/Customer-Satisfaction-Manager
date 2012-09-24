@@ -1,6 +1,5 @@
-<% provide(:title, 'My Projects') %>
 
-
+<!--
 <h1>My Projects</h1>
 
 
@@ -24,7 +23,8 @@
 
     </p>
 
-    <% @milestones.each do |mile| %>
+    <% milestones = @project.milestones %>
+    <% milestones.each do |mile| %>
 
         <p> Nombre: <%= mile.name %>  </p>
         <p> Fecha destino: <%= mile.target_date %>  </p>
@@ -32,7 +32,7 @@
 
     <% end %>
 
-    <% if @milestones.empty? %>
+    <% if milestones.empty? %>
         <p> No existen milestones en este proyecto </p>
     <% end %>
 
@@ -42,7 +42,8 @@
 
     </p>
 
-    <% @feedbacks.each do |feed| %>
+    <% feedbacks = @project.feedbacks %>
+    <% feedbacks.each do |feed| %>
 
     <p> Tema: <%= feed.subject %>  </p>
     <p> Contenido: <%= feed.content %>  </p>
@@ -50,10 +51,98 @@
 
     <% end %>
 
-    <% if @feedbacks.empty? %>
+    <% if feedbacks.empty? %>
         <p> No existen feedbacks en este proyecto </p>
     <% end %>
 
 
 
 <% end %>
+-->
+
+<script>
+    $('a[data-toggle="tab"]').on('shown', function (e) {
+        e.target // activated tab
+        e.relatedTarget // previous tab
+    })
+
+</script>
+
+
+<div class="container" xmlns="http://www.w3.org/1999/html">
+  <div class="row">
+    <div class="nav nav-tabs">
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <i class="icon-book"></i>
+          <%= @project.name %>
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu inverse">
+          <% Project.where(:client_id => @project.client_id).order(:name).each do |proj| %>
+              <% if proj.id != @project.id %>
+                  <li>
+                    <%= link_to proj.name, {:controller => "projects", :action => "change_profile_project", :id => proj.id} %>
+                  </li>
+              <% end %>
+          <% end %>
+        </ul>
+      </li>
+    </div>
+
+    <div class="span3">
+      <br>
+      <div id="global_nav">
+        <ul id="myTab" >
+          <li class="summary active">
+            <a href="#feedbacks" data-toggle="tab"><i class="icon-home icon-white icon-align-left"> Feedbacks</i></a>
+          </li>
+          <li class="projects">
+            <a class="selected" href="#data" data-toggle="tab"><i class="icon-home icon-white"> Data</i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="span8">
+      <div id="page">
+        <div id="myTabContent" class="tab-content">
+          <div class="tab-pane fade active in" id="summary">
+            <!-- page header -->
+            <div class="page_header_wrapper">
+              <div class="page_header">
+                <h1>Feedbacks</h1>
+              </div>
+            </div>
+            <!--// page header -->
+            <!-- page contents -->
+            <div class="page_content">
+              <!-- main column -->
+              <!--// main column -->
+              <!--// page contents -->
+            </div>
+          </div>
+          <div class="tab-pane fade" id="projects">
+            <!-- page header -->
+            <div id="page_header_wrapper">
+              <div class="page_header">
+                <h1>Data</h1>
+              </div>
+            </div>
+            <!--// page header -->
+            <!-- page contents -->
+            <div id="page_content">
+              <!-- main column -->
+              <!--// main column -->
+
+              <!--// page contents -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+</div>
