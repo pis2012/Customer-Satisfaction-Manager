@@ -8,13 +8,15 @@
  Caritas no clickeables.
 </p> -->
 
-<script>
+<script xmlns="http://www.w3.org/1999/html">
     function Big(me)
     {
         //var image = me.getElementsByTagName("img")[0];
         me.style.width  = '130px';
         me.style.height = '139px';
         //image.src = image.src.replace('small','big');
+        var p = me.getElementsByTagName("p")[0];
+        p.style.visibility = 'visible';
     }
     function Small(me)
     {
@@ -22,6 +24,8 @@
         me.style.width  = '110px';
         me.style.height = '118px';
         //image.src = image.src.replace('big','small');
+        var p = me.getElementsByTagName("p")[0];
+        p.style.visibility = 'hidden';
     }
 </script>
 
@@ -42,47 +46,33 @@
               <div style="text-align: center;">
                 <h2 style="font-family: Lemon; text-align: left;">MOOD OF OUR CUSTOMERS</h2>
                 <% count = 0 %>
-                <% div_width = "width: 160px;" %>
-                <% div_ml = "margin-left:  40px;" %>
-                <% div_mr = "margin-right: 40px;" %>
+                <% aux = "height: 160px; vertical-align: top;" %>
 
-                <% @projects = Project.all %>
+                <% @projects = Project.all.shuffle %>
                 <% @projects.each do |project| %>
                     <% mood = project.moods.last! %>
 
+                    <% if count % 2 == 0 %>
+                        <% aux = "height: 160px; vertical-align: top;" %>
+                    <% else %>
+                        <% aux = "height: 118px; vertical-align: bottom;" %>
+                    <% end %>
 
                     <% if project.client_id == current_user.client_id  %>
-                        <% div_width = "width: 160px;" %>
-                        <% div_ml = "margin-left:  15px;" %>
-                        <% div_mr = "margin-right: 15px;" %>
-                    <% else %>
-                        <% div_width = "width: 110px;" %>
-                        <% div_ml = "margin-left:  40px;" %>
-                        <% div_mr = "margin-right: 40px;" %>
-                    <% end %>
-
-                    <% if count % 2 == 0 %>
-
-                        <div style="<%=div_width%> height: 160px; display: inline-block; vertical-align: top; <%=div_ml%> <%=div_mr%>  margin-top: 40px; margin-bottom: 40px;">
-                          <div style="position:relative; <%=div_width%> margin-bottom: 0px;" >
-                            <%= image_tag "status/1.png" %>
-                            <p style="text-align: right;"><%= project.name %></p>
+                        <div style="width: 160px; <%=aux%> display: inline-block;  margin: 40px 15px 40px 15px; ">
+                          <div style="position:relative; width: 160px; margin-bottom: 0px;" >
+                            <%= link_to image_tag("status/1.png"), '/user_project' %>
+                            <p style="visibility:visible; text-align: right;"><%= project.name %></p>
                           </div>
                         </div>
-
                     <% else %>
-
-                        <div style="<%=div_width%> height: 118px; display: inline-block; vertical-align: bottom; <%=div_ml%> <%=div_mr%> margin-top: 40px; margin-bottom: 40px;">
-                          <div style="position:relative; <%=div_width%> margin-bottom: 0px;" >
-                            <%= image_tag "status/1.png" %>
-                            <p style="text-align: right;"><%= project.name %></p>
+                        <div style="width: 110px; <%=aux%> display: inline-block; margin: 40px;">
+                          <div onmouseover="Big(this)" onmouseout="Small(this)" style="position:relative; width: 110px; margin-bottom: 0px;" >
+                            <%=image_tag "status/1.png" %>
+                            <p style="visibility:hidden; text-align: right;"><%= project.name %></p>
                           </div>
                         </div>
-
                     <% end %>
-
-
-
 
                     <% if count == 4 %>
                         <% count = 0 %>
@@ -94,21 +84,14 @@
                     <!--< %= mood.id  %>-->
                 <% end %>
               </div>
+              </br>
+              </br>
+              </br>
             </div>
             <div class="span1">
             </div>
           </div>
         </div>
-
-
-
-
-
-
-
-
-
-
 
 
     <% else %>
@@ -121,7 +104,7 @@
               <div style="text-align: center;">
                 <h2 style="font-family: Lemon; text-align: left;">MOOD OF OUR CUSTOMERS</h2>
                 <% count = 0 %>
-                <% @projects = Project.all %>
+                <% @projects = Project.all.shuffle %>
                 <% @projects.each do |project| %>
                     <% mood = project.moods.last! %>
 
@@ -129,8 +112,8 @@
 
                         <div style="width: 110px; height: 160px; display: inline-block; vertical-align: top; margin: 40px;">
                           <div onmouseover="Big(this)" onmouseout="Small(this)" style="position:relative; width:110px; margin-bottom: 0px;" >
-                            <%= image_tag "status/1.png" %>
-                            <p style="text-align: right;"><%= project.name %></p>
+                            <%= link_to image_tag("status/1.png"), project %>
+                            <p style="visibility:hidden; text-align: right;"><%= project.name %></p>
                           </div>
                         </div>
 
@@ -138,8 +121,8 @@
 
                         <div style="width: 110px; height: 118px; display: inline-block; vertical-align: bottom; margin: 40px;">
                           <div onmouseover="Big(this)" onmouseout="Small(this)" style="position:relative; width:110px; margin-bottom: 0px;" >
-                            <%= image_tag "status/1.png" %>
-                            <p style="text-align: right;"><%= project.name %></p>
+                            <%= link_to image_tag("status/1.png"), project %>
+                            <p style="visibility:hidden; text-align: right;"><%= project.name %></p>
                           </div>
                         </div>
 
@@ -155,6 +138,9 @@
                     <!--< %= mood.id  %>-->
                 <% end %>
               </div>
+              </br>
+              </br>
+              </br>
             </div>
             <div class="span1">
             </div>
@@ -188,14 +174,14 @@
             <hr/>
             <h3 style="font-family: Lemon; text-align: left;">MOOD OF OUR CUSTOMERS</h3>
 
-            <% @projects = Project.all %>
+            <% @projects = Project.all.shuffle %>
             <% @projects.each do |project| %>
                 <% mood = project.moods.last! %>
 
-                <div style="width: 110px; height: 118px; display: inline-block; vertical-align: top; margin: 15px;">
+                <div style="width: 110px; height: 118px; display: inline-block; vertical-align: top; margin: 18px 15px 20px 15px;">
                   <div onmouseover="Big(this)" onmouseout="Small(this)" style="position:relative; width:110px; margin-bottom: 0px;" >
                     <%= image_tag "status/1.png" %>
-                    <p style="text-align: right;"><%= project.name %></p>
+                    <p style="visibility:hidden; text-align: right;"><%= project.name %></p>
                   </div>
                 </div>
 
@@ -203,6 +189,9 @@
                 <!--< %= mood.id  %>-->
             <% end %>
           </div>
+          </br>
+          </br>
+          </br>
         </div>
         <div class="span2">
         </div>
