@@ -18,14 +18,14 @@
                         <a href="/"><i class="icon-home icon-white"></i> Home</a>
                     </li>
                   <% if user_signed_in? %>
-                  <% if current_user.role_id == 1 %>
-                    <li>
-                        <a href="admin#index"><i class="icon-wrench icon-white"></i> Admin</a>
-                    </li>
-                  <% else %>
-                      <li>
-                        <a href="clients#show_project"><i class="icon-wrench icon-white"></i> My Projects</a>
-                      </li>
+                      <% if current_user.role_id == 1 %>
+                        <li>
+                            <a href="admin#index"><i class="icon-wrench icon-white"></i> Admin</a>
+                        </li>
+                      <% else %>
+                          <li>
+                            <%= link_to '<i class="icon-wrench icon-white"></i> My Projects'.html_safe, my_projects_path %>
+                          </li>
                       <% end %>
                   <% end %>
                 </ul>
@@ -62,13 +62,8 @@
     </div><!-- /.navbar-inner -->
 </div><!-- /.navbar -->
 
-<div class="container">
-  <div class="row-fluid">
-    <div class="span12">
       <%= yield %>
-    </div>
-  </div>
-</div>
+
 
 
 </body>

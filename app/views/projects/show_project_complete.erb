@@ -1,0 +1,172 @@
+
+<script>
+    $('a[data-toggle="tab"]').on('shown', function (e) {
+        e.target // activated tab
+        e.relatedTarget // previous tab
+    })
+
+</script>
+
+
+
+
+<div class="container" xmlns="http://www.w3.org/1999/html">
+  <div class="row-fluid">
+
+    <div id="breadcrumbs-wrapper">
+      <div class="container">
+        <ul class="nav nav-pills" style="margin-bottom: 0px;">
+          <li class="dropdown">
+            <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">
+              <b class="caret"></b>
+              <i class="icon-book"></i>
+              <%= @project.name %>
+            </a>
+            <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
+              <% Project.where(:client_id => @project.client_id).order(:name).each do |proj| %>
+                  <% if proj.id != @project.id %>
+                      <li>
+                        <%= link_to proj.name, {:controller => "projects", :action => "change_profile_project", :id => proj.id} %>
+                      </li>
+                  <% end %>
+              <% end %>
+            </ul>
+          </li>
+        </ul> <!-- /tabs -->
+      </div>
+    </div>
+
+
+
+    <div class="span3">
+      <br>
+      <div id="global_nav">
+
+        <div class="estado_animo">
+          <p style="font-style: inherit; font-size: medium; margin: 0px 0px 5px 30px ;">Current Mood:</p>
+
+          <% mood_lvl = @project.moods.last.status
+             mood_lvl = mood_lvl-1 if mood_lvl % 2 == 0
+             mood = mood_lvl.to_s
+          %>
+
+          <div style="width: 140px; height: 140px; vertical-align: top; display: inline-block;  margin: 5px 5px 30px 50px; ">
+              <%=image_tag "status/#{mood}.png" %>
+          </div>
+
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#">1</a>
+            </li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+          </ul>
+
+
+        </div>
+
+        <ul id="myTab" >
+          <li class="summary active">
+            <a href="#feedbacks" data-toggle="tab"> Feedbacks</a>
+          </li>
+          <li class="projects">
+            <a href="#data" data-toggle="tab"> Data</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="span8">
+      <div id="page">
+        <div id="myTabContent" class="tab-content">
+          <div class="tab-pane fade active in" id="feedbacks">
+            <!-- page header -->
+            <div class="page_header_wrapper">
+              <div class="page_header">
+                <h1>Feedbacks</h1>
+                <div class="nav pull-right" style="margin: -30px 8px;">
+                <%= link_to '<i class="icon-plus icon-white"></i> New Feedback'.html_safe, {:controller => "feedbacks", :action => "new_feedback"} %>
+                </div>
+              </div>
+            </div>
+            <!--// page header2 -->
+            <div class="page_header2">
+                <strong><h4>Show events since: </h4></strong>
+            </div>
+            <hr>
+
+            <!-- page contents -->
+            <div class="page_content">
+              <!-- main column -->
+              <!--// main column -->
+              <!--// page contents -->
+              <div class="feedbacks_panel">
+                <h1> Hola </h1>
+
+
+
+
+              </div>
+
+
+              <div style="position: relative; ">
+                <ul class="pager">
+                    <li class="disabled"><a href="#">Previous</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+          <div class="tab-pane fade" id="data">
+            <!-- page header -->
+            <div id="page_header_wrapper">
+              <div class="page_header">
+                <h1>Data</h1>
+                <div class="nav pull-right" style="margin: -30px 8px;">
+                  <%= link_to '<i class="icon-plus icon-white"></i> New Milestone'.html_safe, {:controller => "milestones", :action => "new_milestone"} %>
+                </div>
+              </div>
+            </div>
+            <!--// page header -->
+
+            <div class="project_description">
+              <h4><strong> Description</strong></h4>
+              <p style="font-family: Lemon;"> <%= @project.description %>  </p>
+
+                <!-- page contents -->
+                <div id="page_content">
+                  <!-- main column -->
+                  <!--// main column -->
+                  <hr>
+
+                  <h4><strong>Changes in mood</strong></h4>
+                  <div style="position: relative;">
+                    <%= image_tag @grafica %>
+
+                  </div>
+
+                  <hr>
+
+                  <h4><strong>Milestones</strong></h4>
+
+                  <% @project.milestones.each do |mile| %>
+                      <p style="font-family: Lemon;"> <%= "#{mile.target_date.to_s} ----- #{mile.name}" %></p>
+                  <% end %>
+
+                </div>
+              </div>
+
+              <!--// page contents -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+</div>

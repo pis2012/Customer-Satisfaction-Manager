@@ -10,6 +10,9 @@ class Project < ActiveRecord::Base
   attr_accessible :client, :milestones, :moods, :feedbacks,
                   :description, :end_date, :id, :name, :finalized
 
-  validates :name, :description, :end_date, :finalized,  :presence  => true
+  validates :name, :description, :end_date, :presence  => true
+  validates_inclusion_of :finalized, :in => [true, false]
+
+  #validates :finalized, :inclusion => {:in => [true, false]}
 
 end
