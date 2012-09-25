@@ -56,20 +56,21 @@
         <div class="estado_animo">
           <p style="font-style: inherit; font-size: medium; margin: 0px 0px 5px 30px ;">Current Mood:</p>
 
-          <% mood_lvl = @project.moods.last.status
+          <% mood_lvl = @project.moods.order(:created_at).last.status
              mood_lvl = mood_lvl-1 if mood_lvl % 2 == 0
              mood = mood_lvl.to_s   %>
 
-          <div style="width: 140px; height: 140px; vertical-align: top; display: inline-block;  margin: 5px 5px 30px 50px; ">
+          <div style="width: 140px; height: 140px; vertical-align: top; display: inline-block;  margin: 10px 5px 5px 50px; ">
               <%=image_tag "status/normal/#{mood}.png" %>
           </div>
 
-          <ul class="nav nav-pills" style="width: 250px; height: 30px; margin: 0px 10px 30px 10px;">
-            <li><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/normal/1.png" %></a></li>
-            <li><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/normal/3.png" %></a></li>
-            <li><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/normal/5.png" %></a></li>
-            <li><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/normal/7.png" %></a></li>
-            <li class="active"><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/normal/9.png" %></a></li>
+          <ul class="nav nav-pills" style="width: 300px; height: 30px; margin: 0px 10px 30px 0
+                  px;">
+            <li><a href="#" style="width: 20px; height: 20px;"><%=image_tag "status/normal/1.png" %></a></li>
+            <li><a href="#" style="width: 20px; height: 20px;"><%=image_tag "status/normal/3.png" %></a></li>
+            <li><a href="#" style="width: 20px; height: 20px;"><%=image_tag "status/normal/5.png" %></a></li>
+            <li><a href="#" style="width: 20px; height: 20px;"><%=image_tag "status/normal/7.png" %></a></li>
+            <li class="active"><a href="#" style="width:    20px; height: 20px;"><%=image_tag "status/normal/9.png" %></a></li>
           </ul>
 
           <p style="font-style: inherit; font-size: medium; margin: 0px 0px 5px 30px ;">You can change your mood whenever you want. </p>
@@ -108,17 +109,19 @@
             </div>
 
             <!--// page header2 -->
-            <div class="page_header2">
-                <strong><h3>Show events since: </h3></strong>
+            <div class="page_header2" style="margin: 0% 0% -2%;">
 
-              <div class="input-append date" id="datepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                <input size="16" type="text" value="12-02-2012" readonly>
-                <span class="add-on"><i class="icon-th"></i></span>
+              <h4>Show events since:</h4>
+              <div class="nav pull-right" style="margin: -5% 40%;">
+                  <div class="input-append date" id="datepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+                    <input size="12" type="text" value="12-02-2012" readonly>
+                    <span class="add-on"><i class="icon-th"></i></span>
+                  </div>
+                  <p style="margin: -14% 105%">
+                    <button class="btn btn-primary" type="button">Filtrar</button>
+                  </p>
+
               </div>
-
-
-
-
             </div>
             <hr>
 

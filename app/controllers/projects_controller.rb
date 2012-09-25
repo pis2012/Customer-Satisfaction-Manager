@@ -82,10 +82,7 @@
   end
 
   def show_project_complete
-    @profile = current_user.profile
-    if (@profile != nil)
-      @project = @profile.project
-    end
+    @project = current_user.profile.project
 
     # Para el grafico de los estados de animo
     data = Array.new
@@ -105,9 +102,10 @@
   end
 
   def change_profile_project
-    project_id = params[:id]
+    proj = Project.find(params[:id])
+    current_user.profile.update_attributes(:project => proj)
 
-
+    redirect_to my_projects_url
 
   end
 

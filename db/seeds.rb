@@ -73,14 +73,6 @@ mood5.created_at = date5
 mood5.save
 
 
-
-#Mood.create(project: p1,
-    #        status: 5)
-#Mood.create(project: p1,
- #           status: 7)
-#Mood.create(project: p1,
- #           status: 9)
-
 p2 = Project.create(client: client2,
                     name:'Proyecto2',
                     description:'Descripcion de proyecto 2',
@@ -88,7 +80,19 @@ p2 = Project.create(client: client2,
                     finalized:false)
 
 Mood.create(project: p2,
-            status: 10)
+            status: 5)
+
+mood1 = Mood.new
+mood1.project = p2
+mood1.status = 1
+mood1.created_at = date1
+mood1.save
+
+mood1 = Mood.new
+mood1.project = p2
+mood1.status = 9
+mood1.created_at = date2
+mood1.save
 
 p3 = Project.create(client: client2,
                     name:'Proyecto3',
@@ -97,7 +101,19 @@ p3 = Project.create(client: client2,
                     finalized:false)
 
 Mood.create(project: p3,
-            status: 10)
+            status: 1)
+
+mood1 = Mood.new
+mood1.project = p3
+mood1.status = 7
+mood1.created_at = date2
+mood1.save
+
+mood1 = Mood.new
+mood1.project = p3
+mood1.status = 9
+mood1.created_at = date3
+mood1.save
 
 p4 = Project.create(client: client1,
                     name:'Proyecto4',
@@ -285,5 +301,14 @@ Milestone.create(:target_date => '2011-03-01 00:00:00', :project => p1, :name =>
 Milestone.create(:target_date => '2011-04-01 00:00:00', :project => p1, :name => "Prueba4")
 
 
+Milestone.create(:target_date => '2012-04-06 00:00:00', :project => p2, :name => "Proyecto 2, mileston 1")
+Milestone.create(:target_date => '2012-05-07 00:00:00', :project => p2, :name => "Proyecto 2, mileston 2")
+Milestone.create(:target_date => '2012-06-08 00:00:00', :project => p2, :name => "Proyecto 2, mileston 3")
+Milestone.create(:target_date => '2012-07-09 00:00:00', :project => p2, :name => "Proyecto 2, mileston 4")
 
+
+Milestone.create(:target_date => '2012-05-22 00:00:00', :project => p3, :name => "Proyecto 3, mileston 1")
+Milestone.create(:target_date => '2012-06-12 00:00:00', :project => p3, :name => "Proyecto 3, mileston 2")
+Milestone.create(:target_date => '2012-08-06 00:00:00', :project => p3, :name => "Proyecto 3, mileston 3")
+Milestone.create(:target_date => '2012-08-09 00:00:00', :project => p3, :name => "Proyecto 3, mileston 4")
 
