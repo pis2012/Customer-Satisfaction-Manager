@@ -11,10 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120921074901) do
+ActiveRecord::Schema.define(:version => 20120922010723) do
 
   create_table "clients", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "comentarios", :force => true do |t|
+    t.string   "Fecha"
+    t.string   "Contenido"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -25,15 +32,14 @@ ActiveRecord::Schema.define(:version => 20120921074901) do
 
   create_table "feedbacks", :force => true do |t|
     t.integer  "project_id"
-    t.integer  "user_id"
     t.integer  "feedback_type_id"
-    t.string   "subject"
-    t.boolean  "client_visibility"
-    t.boolean  "mooveit_visibility"
-    t.text     "content"
-    t.integer  "feeling"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.integer  "comentario_id"
+    t.string   "asunto"
+    t.text     "contenido"
+    t.date     "created_at",          :null => false
+    t.boolean  "VisibilidadCliente"
+    t.boolean  "VisibilidadEmpleado"
+    t.datetime "updated_at",          :null => false
   end
 
   create_table "milestones", :force => true do |t|

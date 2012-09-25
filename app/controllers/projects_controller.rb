@@ -88,9 +88,12 @@
     end
 
     # Para el grafico de los estados de animo
+    data = Array.new
+    @project.moods.order(:created_at).each do |mood|
+      data = data + [mood.status]
+    end
 
-    @grafica = Gchart.bar(:size => '200x300', :title => "example title", :bg => 'efefef', :legend => ['label 1', 'label 2'], :data => [10, 30])
-
+    @grafica = Gchart.line(:size => '450x250', :data => data, :legend => ["MOOD", "TIME"])
 
     respond_to do |format|
       format.html # show.html.erb
