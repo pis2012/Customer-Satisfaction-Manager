@@ -82,9 +82,5 @@ class FeedbacksController < ApplicationController
     end
   end
 
-  def new_feedback
-
-  end
-
 
 end

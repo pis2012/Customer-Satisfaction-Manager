@@ -9,7 +9,7 @@ CSM::Application.routes.draw do
 
   match "/my_projects" , to: "projects#show_project_complete"
   match "/my_projects/change_profile_project", to: "projects#change_profile_project"
-  match "/my_projects/new_feedback", to: "feedbacks#new_feedback"
+  match "/my_projects/new_feedback", to: "feedbacks#new"
   match "/my_projects/new_milestone", to: "milestones#new_milestone"
 
   resources :projects
