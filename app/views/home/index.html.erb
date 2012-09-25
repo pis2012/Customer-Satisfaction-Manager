@@ -61,15 +61,15 @@
 
                     <% if project.client_id == current_user.client_id  %>
                         <div style="width: 160px; <%=aux%> display: inline-block;  margin: 40px 15px 40px 15px; ">
-                          <div style="position:relative; width: 160px; margin-bottom: 0px;" >
-                            <%= link_to image_tag(mood.get_mood_img mood.status), '/user_project' %>
+                          <div onclick="location.href='/user_project';" style="position:relative; width: 160px; margin-bottom: 0px;" >
+                            <%=image_tag ('status/big/' + mood.get_mood_img(mood.status)) %>
                             <p style="visibility:visible; text-align: right;"><%= project.name %></p>
                           </div>
                         </div>
                     <% else %>
                         <div style="width: 110px; <%=aux%> display: inline-block; margin: 40px;">
                           <div onmouseover="Big(this)" onmouseout="Small(this)" style="position:relative; width: 110px; margin-bottom: 0px;" >
-                            <%=image_tag mood.get_mood_img mood.status %>
+                            <%=image_tag 'status/normal/' + mood.get_mood_img(mood.status) %>
                             <p style="visibility:hidden; text-align: right;"><%= project.name %></p>
                           </div>
                         </div>
@@ -112,8 +112,8 @@
                     <% if count % 2 == 0 %>
 
                         <div style="width: 110px; height: 160px; display: inline-block; vertical-align: top; margin: 40px;">
-                          <div onmouseover="Big(this)" onmouseout="Small(this)" style="position:relative; width:110px; margin-bottom: 0px;" >
-                            <%= link_to image_tag(mood.get_mood_img mood.status), project %>
+                          <div onclick="location.href='<%= project_path(project.id) %>'" onmouseover="Big(this)" onmouseout="Small(this)" style="position:relative; width:110px; margin-bottom: 0px;" >
+                            <%= image_tag('status/normal/' + mood.get_mood_img(mood.status)) %>
                             <p style="visibility:hidden; text-align: right;"><%= project.name %></p>
                           </div>
                         </div>
@@ -121,8 +121,8 @@
                     <% else %>
 
                         <div style="width: 110px; height: 118px; display: inline-block; vertical-align: bottom; margin: 40px;">
-                          <div onmouseover="Big(this)" onmouseout="Small(this)" style="position:relative; width:110px; margin-bottom: 0px;" >
-                            <%= link_to image_tag(mood.get_mood_img mood.status), project %>
+                          <div onclick="location.href='<%= project_path(project.id) %>'" onmouseover="Big(this)" onmouseout="Small(this)" style="position:relative; width:110px; margin-bottom: 0px;" >
+                            <%= image_tag('status/normal/' + mood.get_mood_img(mood.status)) %>
                             <p style="visibility:hidden; text-align: right;"><%= project.name %></p>
                           </div>
                         </div>
@@ -159,7 +159,7 @@
         <div class="span8">
           <div style="text-align: center;">
             <div style="display: inline-block; vertical-align: middle; width: 170px; margin: 50px;">
-              <%= image_tag "status/9.png" %>
+              <%= image_tag "status/big/9.png" %>
             </div>
             <div style="display: inline-block; vertical-align: middle; text-align: left; width: 60%;">
               <h3 style="font-family: Lemon;">CUSTOMER SATISFACTION MANAGER</h3>
@@ -180,8 +180,8 @@
                 <% mood = project.moods.last! %>
 
                 <div  style="width: 110px; height: 118px; display: inline-block; vertical-align: top; margin: 18px 15px 20px 15px;">
-                  <div onmouseover="Big(this)" onmouseout="Small(this)" style="position:relative; width:110px; margin-bottom: 0px;" >
-                    <%= link_to image_tag(mood.get_mood_img mood.status), project %>
+                  <div onmouseover="Big(this)" onmouseout="Small(this)" style=" position:relative; width:110px; margin-bottom: 0px;" >
+                    <%= image_tag 'status/normal/' + mood.get_mood_img(mood.status) %>
                     <p style="visibility:hidden; text-align: right;"><%= project.name %></p>
                   </div>
                 </div>
