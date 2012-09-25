@@ -15,6 +15,14 @@
 
     $('#datepicker').datepicker();
 
+    function updatePanel(url) {
+        $.get(url, function(res){
+            //var f = $('#feedbacks');
+            //f.innerHTML = res;
+            document.getElementById('feedbacks').innerHTML = res;
+        });
+    }
+
 </script>
 
 
@@ -98,7 +106,9 @@
               <div class="page_header">
                 <h1>Feedbacks</h1>
                 <div class="nav pull-right" style="margin: -30px 8px;">
-                <%= link_to '<i class="icon-plus icon-white"></i> New Feedback'.html_safe, {:controller => "feedbacks", :action => "new" },:remote => true %>
+                  <button class="btn btn-link .add" type="button" onclick="updatePanel('<%= new_feedback_path %>')">
+                    <i class="icon-plus icon-white"></i> New Feedback
+                  </button>
                 </div>
               </div>
             </div>
