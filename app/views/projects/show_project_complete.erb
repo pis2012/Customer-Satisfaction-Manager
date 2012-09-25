@@ -5,7 +5,19 @@
         e.relatedTarget // previous tab
     })
 
+    $("#load-more").bind("ajax:complete", function(et, e){
+        $("#products-list").html(e.responseText); // insert content
+    });
+
+    $("#load-more").bind("ajax:loading", function(et, e){
+        $(this).html("Loading..."); // swap link text
+    });
+
+    $('#datepicker').datepicker();
+
 </script>
+
+
 
 
 
@@ -49,15 +61,15 @@
              mood = mood_lvl.to_s   %>
 
           <div style="width: 140px; height: 140px; vertical-align: top; display: inline-block;  margin: 5px 5px 30px 50px; ">
-              <%=image_tag "status/#{mood}.png" %>
+              <%=image_tag "status/normal/#{mood}.png" %>
           </div>
 
           <ul class="nav nav-pills" style="width: 250px; height: 30px; margin: 0px 10px 30px 10px;">
-            <li><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/1-small.png" %></a></li>
-            <li><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/3-small.png" %></a></li>
-            <li><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/5-small.png" %></a></li>
-            <li><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/7-small.png" %></a></li>
-            <li class="active"><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/9-small.png" %></a></li>
+            <li><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/normal/1.png" %></a></li>
+            <li><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/normal/3.png" %></a></li>
+            <li><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/normal/5.png" %></a></li>
+            <li><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/normal/7.png" %></a></li>
+            <li class="active"><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/normal/9.png" %></a></li>
           </ul>
 
           <p style="font-style: inherit; font-size: medium; margin: 0px 0px 5px 30px ;">You can change your mood whenever you want. </p>
@@ -86,13 +98,27 @@
               <div class="page_header">
                 <h1>Feedbacks</h1>
                 <div class="nav pull-right" style="margin: -30px 8px;">
-                <%= link_to '<i class="icon-plus icon-white"></i> New Feedback'.html_safe, {:controller => "feedbacks", :action => "new"} %>
+                <%= link_to '<i class="icon-plus icon-white"></i> New Feedback'.html_safe, {:controller => "feedbacks", :action => "new" },:remote => true %>
                 </div>
               </div>
             </div>
+
+            <div id="#load-more">
+                     <%=   %>
+            </div>
+
             <!--// page header2 -->
             <div class="page_header2">
-                <strong><h4>Show events since: </h4></strong>
+                <strong><h3>Show events since: </h3></strong>
+
+              <div class="input-append date" id="datepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+                <input size="16" type="text" value="12-02-2012" readonly>
+                <span class="add-on"><i class="icon-th"></i></span>
+              </div>
+
+
+
+
             </div>
             <hr>
 
@@ -102,7 +128,7 @@
               <!--// main column -->
               <!--// page contents -->
               <div class="feedbacks_panel">
-                <h1> Hola </h1>
+                <h1> Lista de feedbacks, 3 a la vez </h1>
 
 
 
@@ -125,6 +151,8 @@
               <div class="page_header">
                 <h1>Data</h1>
                 <div class="nav pull-right" style="margin: -30px 8px;">
+
+
                   <%= link_to '<i class="icon-plus icon-white"></i> New Milestone'.html_safe, {:controller => "milestones", :action => "new_milestone"} %>
                 </div>
               </div>
