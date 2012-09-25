@@ -8,7 +8,7 @@ class Client < ActiveRecord::Base
   before_destroy :ensure_not_referenced_by_any_user
 
   attr_accessible :projects, :users,
-                  :id, :name
+                  :name, :created_at
 
   validates :name, :presence => true
   validates :name, :uniqueness => true

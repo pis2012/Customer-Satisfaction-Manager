@@ -2,8 +2,9 @@ class Mood < ActiveRecord::Base
 
   belongs_to :project
 
+
   attr_accessible :project,
-                  :created_at, :project_id, :status
+                  :created_at,  :status
 
   validates :status, :presence  => true
   validates :status, :numericality => {:greater_than_or_equal_to => 1}

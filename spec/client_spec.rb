@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-class Client_spec
+class ClientSpec
   describe Client do
-    it "salva el nombre del cliente" do
+    it "Crea un nuevo cliente" do
       client = Client.new
       client.name = "admin"
       client.name.should eq("admin")

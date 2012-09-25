@@ -8,7 +8,7 @@ class Project < ActiveRecord::Base
   has_many :feedbacks
 
   attr_accessible :client, :milestones, :moods, :feedbacks,
-                  :description, :end_date, :id, :name, :finalized
+                  :description, :end_date, :name, :finalized
 
   validates :name, :description, :end_date, :presence  => true
   validates_inclusion_of :finalized, :in => [true, false]

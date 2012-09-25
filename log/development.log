@@ -319,3 +319,502 @@ Served asset /fontawesome-webfont.eot - 200 OK (0ms)
 Started GET "/assets/fontawesome-webfont.woff" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
 Served asset /fontawesome-webfont.woff - 200 OK (0ms)
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (85.8ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (168.5ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36m (1.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.0ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateRoles (20120901035707)
+  [1m[35m (65.6ms)[0m  CREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (16.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120901035707')[0m
+Migrating to CreateClients (20120915202803)
+  [1m[35m (0.4ms)[0m  CREATE TABLE `clients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+Mysql2::Error: Table 'clients' already exists: CREATE TABLE `clients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (111.7ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (169.1ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36m (2.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateRoles (20120901035707)
+  [1m[35m (186.0ms)[0m  CREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (16.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120901035707')[0m
+Migrating to CreateClients (20120915202803)
+  [1m[35m (50.5ms)[0m  CREATE TABLE `clients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (16.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120915202803')[0m
+Migrating to CreateProjects (20120915204316)
+  [1m[35m (68.6ms)[0m  CREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `client_id` int(11), `name` varchar(255), `description` text, `end_date` datetime, `finalized` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (302.0ms)[0m  [1mCREATE INDEX `index_projects_on_client_id` ON `projects` (`client_id`)[0m
+  [1m[35m (24.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120915204316')
+Migrating to CreateUsers (20120915220034)
+  [1m[36m (50.4ms)[0m  [1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_id` int(11), `client_id` int(11), `username` varchar(255), `full_name` varchar(255), `email` varchar(255), `encrypted_password` varchar(255) DEFAULT '', `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (127.1ms)[0m  CREATE INDEX `index_users_on_client_id` ON `users` (`client_id`)
+  [1m[36m (33.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120915220034')[0m
+Migrating to CreateProfiles (20120920191136)
+  [1m[35m (174.8ms)[0m  CREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `project_id` int(11), `last_login_date` date, `image_url` varchar(255), `skype_usr` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (16.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120920191136')[0m
+Migrating to CreateMilestones (20120920233810)
+  [1m[35m (79.8ms)[0m  CREATE TABLE `milestones` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `name` varchar(255), `target_date` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (16.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120920233810')[0m
+Migrating to CreateMoods (20120920234454)
+  [1m[35m (50.6ms)[0m  CREATE TABLE `moods` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `status` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (24.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120920234454')[0m
+Migrating to CreateFeedbacks (20120921023433)
+  [1m[35m (194.3ms)[0m  CREATE TABLE `feedbacks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `user_id` int(11), `feedback_type_id` int(11), `subject` varchar(255), `client_visibility` tinyint(1), `mooveit_visibility` tinyint(1), `content` text, `feeling` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (22.0ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120921023433')[0m
+Migrating to CreateFeedbackTypes (20120921074901)
+  [1m[35m (60.2ms)[0m  CREATE TABLE `feedback_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB
+  [1m[36m (16.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120921074901')[0m
+  [1m[35m (0.2ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+  [1m[36m (0.6ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'clients'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `clients`
+  [1m[36m (0.4ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'feedback_types'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `feedback_types`
+  [1m[36m (0.3ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'feedbacks'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `feedbacks`
+  [1m[36m (0.1ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'milestones'
+ [0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `milestones`
+  [1m[36m (0.2ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'moods'
+ [0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `moods`
+  [1m[36m (0.2ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'profiles'
+ [0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `profiles`
+  [1m[36m (0.2ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'projects'
+ [0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `projects`
+  [1m[36m (0.2ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'roles'
+ [0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `roles`
+  [1m[36m (0.1ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'users'
+ [0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `users`
+Connecting to database specified by database.yml
+  [1m[36m (1.0ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM `roles`
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM `feedback_types`[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM `users`
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM `clients`[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM `projects`
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM `milestones`[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM `moods`
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM `profiles`[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM `feedbacks`
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mRole Exists (0.4ms)[0m  SELECT 1 AS one FROM `roles` WHERE `roles`.`name` = BINARY 'Admin' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `roles` (`name`) VALUES ('Admin')[0m
+  [1m[35m (16.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mRole Exists (0.4ms)[0m  SELECT 1 AS one FROM `roles` WHERE `roles`.`name` = BINARY 'Client' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `roles` (`name`) VALUES ('Client')[0m
+  [1m[35m (13.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mRole Exists (0.3ms)[0m  SELECT 1 AS one FROM `roles` WHERE `roles`.`name` = BINARY 'Mooveit' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `roles` (`name`) VALUES ('Mooveit')[0m
+  [1m[35m (14.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFeedbackType Exists (0.3ms)[0m  SELECT 1 AS one FROM `feedback_types` WHERE `feedback_types`.`name` = BINARY 'Skype' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `feedback_types` (`name`) VALUES ('Skype')[0m
+  [1m[35m (16.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFeedbackType Exists (0.3ms)[0m  SELECT 1 AS one FROM `feedback_types` WHERE `feedback_types`.`name` = BINARY 'Email' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `feedback_types` (`name`) VALUES ('Email')[0m
+  [1m[35m (22.0ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFeedbackType Exists (0.3ms)[0m  SELECT 1 AS one FROM `feedback_types` WHERE `feedback_types`.`name` = BINARY 'Reconocimiento' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `feedback_types` (`name`) VALUES ('Reconocimiento')[0m
+  [1m[35m (14.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFeedbackType Exists (0.3ms)[0m  SELECT 1 AS one FROM `feedback_types` WHERE `feedback_types`.`name` = BINARY 'Comentario' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `feedback_types` (`name`) VALUES ('Comentario')[0m
+  [1m[35m (22.8ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mClient Exists (0.3ms)[0m  SELECT 1 AS one FROM `clients` WHERE `clients`.`name` = BINARY 'MicroHard' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `clients` (`created_at`, `name`, `updated_at`) VALUES ('2012-09-25 14:53:00', 'MicroHard', '2012-09-25 14:53:00')[0m
+  [1m[35m (36.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mClient Exists (0.4ms)[0m  SELECT 1 AS one FROM `clients` WHERE `clients`.`name` = BINARY 'Sony' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `clients` (`created_at`, `name`, `updated_at`) VALUES ('2012-09-25 14:53:00', 'Sony', '2012-09-25 14:53:00')[0m
+  [1m[35m (21.3ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (66.1ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (2, '2012-09-25 14:53:00', 'Software para administracion de una panaderia', '2013-01-01 00:00:00', 0, 'Panaderia El 10', '2012-09-25 14:53:00')
+  [1m[36m (31.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 1, 5, '2012-09-25 14:53:00')[0m
+  [1m[35m (34.1ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 1, 7, '2012-09-25 14:53:00')
+  [1m[36m (13.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 1, 9, '2012-09-25 14:53:00')[0m
+  [1m[35m (15.0ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (2, '2012-09-25 14:53:00', 'Descripcion de proyecto 2', '2013-01-01 00:00:00', 0, 'Proyecto2', '2012-09-25 14:53:00')
+  [1m[36m (13.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 2, 10, '2012-09-25 14:53:00')[0m
+  [1m[35m (14.9ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (2, '2012-09-25 14:53:00', 'Descripcion de proyecto 3', '2013-01-01 00:00:00', 0, 'Proyecto3', '2012-09-25 14:53:00')
+  [1m[36m (14.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 3, 10, '2012-09-25 14:53:00')[0m
+  [1m[35m (15.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:00', 'Descripcion de proyecto4', '2013-01-01 00:00:00', 0, 'Proyecto4', '2012-09-25 14:53:00')
+  [1m[36m (14.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 4, 10, '2012-09-25 14:53:00')[0m
+  [1m[35m (15.0ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:00', 'Descripcion de proyecto5', '2013-01-01 00:00:00', 0, 'Proyecto5', '2012-09-25 14:53:00')
+  [1m[36m (22.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 5, 10, '2012-09-25 14:53:00')[0m
+  [1m[35m (23.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:00', 'Descripcion de proyecto6', '2013-01-01 00:00:00', 0, 'Proyecto6', '2012-09-25 14:53:00')
+  [1m[36m (22.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 6, 10, '2012-09-25 14:53:00')[0m
+  [1m[35m (23.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:00', 'Descripcion de proyecto7', '2013-01-01 00:00:00', 0, 'Proyecto7', '2012-09-25 14:53:00')
+  [1m[36m (22.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 7, 10, '2012-09-25 14:53:00')[0m
+  [1m[35m (23.8ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:00', 'Descripcion de proyecto8', '2013-01-01 00:00:00', 0, 'Proyecto8', '2012-09-25 14:53:00')
+  [1m[36m (22.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 8, 10, '2012-09-25 14:53:00')[0m
+  [1m[35m (31.9ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:00', 'Descripcion de proyecto9', '2013-01-01 00:00:00', 0, 'Proyecto9', '2012-09-25 14:53:00')
+  [1m[36m (31.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 9, 10, '2012-09-25 14:53:00')[0m
+  [1m[35m (31.8ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:00', 'Descripcion de proyecto10', '2013-01-01 00:00:00', 0, 'Proyecto10', '2012-09-25 14:53:00')
+  [1m[36m (80.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 10, 10, '2012-09-25 14:53:00')[0m
+  [1m[35m (23.7ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:00', 'Descripcion de proyecto11', '2013-01-01 00:00:00', 0, 'Proyecto11', '2012-09-25 14:53:00')
+  [1m[36m (14.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 11, 10, '2012-09-25 14:53:00')[0m
+  [1m[35m (14.9ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:00', 'Descripcion de proyecto12', '2013-01-01 00:00:00', 0, 'Proyecto12', '2012-09-25 14:53:00')
+  [1m[36m (14.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 12, 7, '2012-09-25 14:53:00')[0m
+  [1m[35m (15.0ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:00', 'Descripcion de proyecto13', '2013-01-01 00:00:00', 0, 'Proyecto13', '2012-09-25 14:53:00')
+  [1m[36m (14.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 13, 10, '2012-09-25 14:53:00')[0m
+  [1m[35m (15.0ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:00', 'Descripcion de proyecto14', '2013-01-01 00:00:00', 0, 'Proyecto14', '2012-09-25 14:53:00')
+  [1m[36m (14.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 14, 5, '2012-09-25 14:53:00')[0m
+  [1m[35m (15.0ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:01', 'Descripcion de proyecto15', '2013-01-01 00:00:00', 0, 'Proyecto15', '2012-09-25 14:53:01')
+  [1m[36m (14.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:01', 15, 10, '2012-09-25 14:53:01')[0m
+  [1m[35m (15.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:01', 'Descripcion de proyecto16', '2013-01-01 00:00:00', 0, 'Proyecto16', '2012-09-25 14:53:01')
+  [1m[36m (22.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:01', 16, 10, '2012-09-25 14:53:01')[0m
+  [1m[35m (23.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:01', 'Descripcion de proyecto17', '2013-01-01 00:00:00', 0, 'Proyecto17', '2012-09-25 14:53:01')
+  [1m[36m (22.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:01', 17, 5, '2012-09-25 14:53:01')[0m
+  [1m[35m (23.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:01', 'Descripcion de proyecto18', '2013-01-01 00:00:00', 0, 'Proyecto18', '2012-09-25 14:53:01')
+  [1m[36m (23.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:01', 18, 1, '2012-09-25 14:53:01')[0m
+  [1m[35m (23.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:01', 'Descripcion de proyecto19', '2013-01-01 00:00:00', 0, 'Proyecto19', '2012-09-25 14:53:01')
+  [1m[36m (23.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:01', 19, 10, '2012-09-25 14:53:01')[0m
+  [1m[35m (31.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:01', 'Descripcion de proyecto20', '2013-01-01 00:00:00', 0, 'Proyecto20', '2012-09-25 14:53:01')
+  [1m[36m (31.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:01', 20, 10, '2012-09-25 14:53:01')[0m
+  [1m[35m (31.9ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'cabrera@1234.com' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`username` = BINARY 'admin' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `users` (`client_id`, `created_at`, `email`, `encrypted_password`, `full_name`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `role_id`, `updated_at`, `username`) VALUES (1, '2012-09-25 14:53:01', 'cabrera@1234.com', '$2a$10$n6Imq/7jdDgh7ihmnBUPWuYLzFpFJg/G2hlO1J.V1bkqElHJ/JLAq', 'Martin Cabrera', NULL, NULL, NULL, 1, '2012-09-25 14:53:01', 'admin')
+  [1m[36m (19.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `profiles` (`created_at`, `image_url`, `last_login_date`, `project_id`, `skype_usr`, `updated_at`, `user_id`) VALUES ('2012-09-25 14:53:01', NULL, '2012-01-01', 1, 'martin.skype', '2012-09-25 14:53:01', 1)[0m
+  [1m[35m (38.7ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'gates@1234.com' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`username` = BINARY 'client_usr' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `users` (`client_id`, `created_at`, `email`, `encrypted_password`, `full_name`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `role_id`, `updated_at`, `username`) VALUES (1, '2012-09-25 14:53:01', 'gates@1234.com', '$2a$10$mqojSUthPsTP8e4guGRSaePNf8mTESCZyeQ0xIylPuB4P.EyCAQiG', 'Bill Gates', NULL, NULL, NULL, 2, '2012-09-25 14:53:01', 'client_usr')
+  [1m[36m (14.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'sony@1234.com' LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`username` = BINARY 'sony' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `users` (`client_id`, `created_at`, `email`, `encrypted_password`, `full_name`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `role_id`, `updated_at`, `username`) VALUES (2, '2012-09-25 14:53:01', 'sony@1234.com', '$2a$10$TMORUgryJR4FHIgZp7gc7u2OX12m5fwy9K0q4D8iE0NDr1cOU7CBm', 'Sony', NULL, NULL, NULL, 2, '2012-09-25 14:53:01', 'sony')[0m
+  [1m[35m (12.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `profiles` (`created_at`, `image_url`, `last_login_date`, `project_id`, `skype_usr`, `updated_at`, `user_id`) VALUES ('2012-09-25 14:53:01', NULL, '2012-01-01', 1, 'gates.skype', '2012-09-25 14:53:01', 3)
+  [1m[36m (15.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'corrales@1234.com' LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`username` = BINARY 'mooveit' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `users` (`client_id`, `created_at`, `email`, `encrypted_password`, `full_name`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `role_id`, `updated_at`, `username`) VALUES (1, '2012-09-25 14:53:01', 'corrales@1234.com', '$2a$10$bcVW.bK9WMSOutyPpdQePuccb6yaHFkPY9YYJ2P9ohb4njhxZ4Lhy', 'Jorge Corrales', NULL, NULL, NULL, 3, '2012-09-25 14:53:01', 'mooveit')[0m
+  [1m[35m (15.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `profiles` (`created_at`, `image_url`, `last_login_date`, `project_id`, `skype_usr`, `updated_at`, `user_id`) VALUES ('2012-09-25 14:53:01', NULL, '2012-01-01', 1, 'corrales.skype', '2012-09-25 14:53:01', 4)
+  [1m[36m (15.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `milestones` (`created_at`, `name`, `project_id`, `target_date`, `updated_at`) VALUES ('2012-09-25 14:53:01', 'Prueba1', 1, '2011-01-01', '2012-09-25 14:53:01')[0m
+  [1m[35m (14.7ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `milestones` (`created_at`, `name`, `project_id`, `target_date`, `updated_at`) VALUES ('2012-09-25 14:53:01', 'Prueba2', 1, '2011-02-01', '2012-09-25 14:53:01')
+  [1m[36m (15.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `milestones` (`created_at`, `name`, `project_id`, `target_date`, `updated_at`) VALUES ('2012-09-25 14:53:01', 'Prueba3', 1, '2011-03-01', '2012-09-25 14:53:01')[0m
+  [1m[35m (15.8ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `milestones` (`created_at`, `name`, `project_id`, `target_date`, `updated_at`) VALUES ('2012-09-25 14:53:01', 'Prueba4', 1, '2011-04-01', '2012-09-25 14:53:01')
+  [1m[36m (15.1ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (1.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateRoles (20120901035707)
+Migrating to CreateClients (20120915202803)
+Migrating to CreateProjects (20120915204316)
+Migrating to CreateUsers (20120915220034)
+Migrating to CreateProfiles (20120920191136)
+Migrating to CreateMilestones (20120920233810)
+Migrating to CreateMoods (20120920234454)
+Migrating to CreateFeedbacks (20120921023433)
+Migrating to CreateFeedbackTypes (20120921074901)
+  [1m[35m (0.1ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+  [1m[36m (0.3ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'clients'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `clients`
+  [1m[36m (0.3ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'feedback_types'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `feedback_types`
+  [1m[36m (0.3ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'feedbacks'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `feedbacks`
+  [1m[36m (0.3ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'milestones'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `milestones`
+  [1m[36m (0.3ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'moods'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `moods`
+  [1m[36m (0.4ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'profiles'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `profiles`
+  [1m[36m (0.3ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'projects'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `projects`
+  [1m[36m (0.3ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'roles'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `roles`
+  [1m[36m (0.3ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'users'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `users`
+Connecting to database specified by database.yml
+  [1m[36m (1.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (0.5ms)[0m  DROP DATABASE IF EXISTS `CSM_test`
+  [1m[36m (0.3ms)[0m  [1mCREATE DATABASE `CSM_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`[0m
+  [1m[35m (137.4ms)[0m  CREATE TABLE `clients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (41.7ms)[0m  [1mCREATE TABLE `feedback_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB[0m
+  [1m[35m (58.4ms)[0m  CREATE TABLE `feedbacks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `user_id` int(11), `feedback_type_id` int(11), `subject` varchar(255), `client_visibility` tinyint(1), `mooveit_visibility` tinyint(1), `content` text, `feeling` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (150.3ms)[0m  [1mCREATE TABLE `milestones` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `name` varchar(255), `target_date` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (41.6ms)[0m  CREATE TABLE `moods` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `status` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (41.8ms)[0m  [1mCREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `project_id` int(11), `last_login_date` date, `image_url` varchar(255), `skype_usr` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (41.5ms)[0m  CREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `client_id` int(11), `name` varchar(255), `description` text, `end_date` datetime, `finalized` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (243.6ms)[0m  [1mCREATE INDEX `index_projects_on_client_id` ON `projects` (`client_id`)[0m
+  [1m[35m (41.8ms)[0m  CREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (41.6ms)[0m  [1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_id` int(11), `client_id` int(11), `username` varchar(255), `full_name` varchar(255), `email` varchar(255), `encrypted_password` varchar(255) DEFAULT '', `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (118.5ms)[0m  CREATE INDEX `index_users_on_client_id` ON `users` (`client_id`)
+  [1m[36m (166.8ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (127.4ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM `schema_migrations`[0m
+  [1m[35m (15.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120921074901')
+  [1m[36m (16.8ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120920234454')[0m
+  [1m[35m (16.8ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915204316')
+  [1m[36m (16.9ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120915202803')[0m
+  [1m[35m (16.8ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120901035707')
+  [1m[36m (16.9ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120921023433')[0m
+  [1m[35m (16.9ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915220034')
+  [1m[36m (25.2ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120920191136')[0m
+  [1m[35m (25.1ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920233810')
