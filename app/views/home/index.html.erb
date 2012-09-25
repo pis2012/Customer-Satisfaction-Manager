@@ -61,7 +61,7 @@
 
                     <% if project.client_id == current_user.client_id  %>
                         <div style="width: 160px; <%=aux%> display: inline-block;  margin: 40px 15px 40px 15px; ">
-                          <div onclick="location.href='/user_project';" style="position:relative; width: 160px; margin-bottom: 0px;" >
+                          <div onclick="location.href='/my_projects';" style="position:relative; width: 160px; margin-bottom: 0px;" >
                             <%=image_tag ('status/big/' + mood.get_mood_img(mood.status)) %>
                             <p style="visibility:visible; text-align: right;"><%= project.name %></p>
                           </div>
