@@ -1,0 +1,122 @@
+// Place all the styles related to the admin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+
+
+#page {
+  background-color: #FFFFFF;
+  border: 1px solid #D7D7D7;
+  border-radius: 6px 6px 6px 6px;
+  box-shadow: 0 0 3px #CCCCCC;
+  min-height: 500px;
+  padding: 0 0 30px;
+  position: relative;
+}
+
+
+.page_header {
+  margin-bottom: 25px;
+  padding: 0;
+  background: none repeat scroll 0 0 #FFF8EC;
+  border-bottom: 1px solid #DADEE5;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin: 0;
+  padding: 15px 30px;
+}
+
+div.page_header h1, div.page_divider h2 {
+  color: #000000;
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.page_header2 {
+  margin-bottom: 25px;
+  padding: 0;
+  border-bottom: 1px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin: 0;
+  padding: 15px 30px;
+}
+
+
+
+#breadcrumbs-wrapper {
+  background: url("breadcrumb-bg.png") repeat-x scroll 0 -7px transparent;
+  border-bottom: 1px solid #DEDEDE;
+  border-top: 1px solid #CCCCCC;
+  margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+li {
+  font-size: 12px;
+}
+ul {
+  list-style: none outside none;
+}
+
+#global_nav li.dashboard a.selected {
+  background-position: 8px -104px;
+}
+
+
+
+
+#global_nav a {
+  background: url("iconos-cliente.png") no-repeat scroll 8px 4px transparent;
+  display: block;
+  font-size: 13px;
+  line-height: 35px;
+  overflow: hidden;
+  padding: 0 6px 0 40px;
+  text-decoration: none;
+}
+
+
+
+#global_nav a:hover, #global_nav a:visited:hover {
+  background-color: #F8F8F8;
+  color: #333333;
+}
+
+#global_nav li.active{
+  background-color: #EBEBEB;
+  color: #000000;
+  font-weight: bold;
+}
+
+
+#global_nav li.summary.active a {
+  background-position: 8px -38px;
+}
+
+#global_nav li.projects a {
+  background-position: 8px -80px;
+}
+
+#global_nav li.projects.active a {
+  background-position: 8px -122px;
+}
+

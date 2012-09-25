@@ -1,0 +1,197 @@
+<div id="breadcrumbs-wrapper">
+
+    <div class="container">
+
+
+
+
+      <ul class="nav nav-pills" style="margin-bottom: 0px;">
+        <li class="dropdown">
+          <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#"><b class="caret"></b>   Dropdown 3</a>
+          <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
+            <li><a tabindex="-1" href="#">Action</a></li>
+            <li><a tabindex="-1" href="#">Another action</a></li>
+            <li><a tabindex="-1" href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a tabindex="-1" href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul> <!-- /tabs -->
+
+
+
+    </div>
+
+</div>
+<script>
+    $('a[data-toggle="tab"]').on('shown', function (e) {
+        e.target // activated tab
+        e.relatedTarget // previous tab
+    })
+
+</script>
+
+
+<div class="container" xmlns="http://www.w3.org/1999/html">
+    <div class="row-fluid">
+    <div class="span3">
+    <br>
+    <div id="global_nav">
+      <ul id="myTab" >
+        <li class="summary active">
+          <a href="#summary" data-toggle="tab">Summary</a>
+        </li>
+        <li> </li>
+        <li class="projects">
+          <a href="#projects" data-toggle="tab">Projects</a>
+        </li>
+      </ul>
+    </div>
+      </div>
+    <div class="span8">
+        <div id="page">
+      <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade active in" id="summary">
+          <!-- page header -->
+          <div class="page_header_wrapper">
+              <div class="page_header">
+                <h1>Summary</h1>
+              </div>
+          </div>
+          <!--// page header -->
+          <!-- page contents -->
+          <div class="page_content">
+            <!-- main column -->
+            <!--// main column -->
+            <!--// page contents -->
+          </div>
+        </div>
+        <div class="tab-pane fade" id="projects">
+          <!-- page header -->
+          <div id="page_header_wrapper">
+              <div class="page_header">
+                <h1>Projects</h1>
+              </div>
+          </div>
+          <!--// page header -->
+          <!-- page contents -->
+          <div id="page_content">
+            <!-- main column -->
+            <!--// main column -->
+
+            <!--// page contents -->
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+
+
+
+    </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <%#
+    <div class="tabbable tabs-left">
+    <ul id="myTab" class="nav nav-tabs">
+      <li class="home active">
+        <a href="#home" data-toggle="tab">Home</a>
+      </li>
+      <li class="profile">
+        <a href="#profile" data-toggle="tab">Profile</a>
+      </li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade active in" id="home">
+        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+      </div>
+      <div class="tab-pane fade" id="profile">
+        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+      </div>
+    </div>
+    </div>
+
+    <div class="tabbable tabs-left">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a href="#lA" data-toggle="tab">Section 1</a>
+        </li>
+        <li class="">
+          <a href="#lB" data-toggle="tab">Section 2</a>
+        </li>
+        <li class="">
+          <a href="#lC" data-toggle="tab">Section 3</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="lA">
+          <p>I'm in Section A.</p>
+        </div>
+        <div class="tab-pane" id="lB">
+          <p>Howdy, I'm in Section B.</p>
+        </div>
+        <div class="tab-pane" id="lC">
+          <p>What up girl, this is Section C.</p>
+        </div>
+      </div>
+    </div>
+
+
+
+      <ul class="nav nav-pills nav-stacked">
+        <li>
+          <a href="#"><i class="icon-table"></i> Summary</a>
+        </li>
+        <li>
+          <a href="/projects"><i class="icon-briefcase"></i> Projects</a>
+        </li>
+        <li>
+          <a href="/users"><i class="icon-user"></i> Users</a>
+        </li>
+        <li>
+          <a href="/clients"><i class="icon-user-md"></i> Customers</a>
+        </li>
+        <li>
+          <a href="#"><i class="icon-file"></i> Forms</a>
+        </li>
+      </ul>
+    </div>
+
+
+
+
+
+
+      <table class="table table-bordered" >
+        <thead>
+        <tr style="background-color: #6495ed;">
+          <th>
+            </br>
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th><h4>Recent Activity</h4></th>
+        </tr>
+        </tbody>
+      </table>
+
+
+
+
+
+    %>
+
+
+
+
