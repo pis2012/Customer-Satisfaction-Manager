@@ -5,9 +5,17 @@
         e.relatedTarget // previous tab
     })
 
+    function updatePanel(url) {
+        $.get(url, function(res){
+            //alert(res);
+            var f = $('#feedbacks');
+            f.innerHTML = res;
+
+            document.getElementById('feedbacks').innerHTML = res;
+        });
+    }
+
 </script>
-
-
 
 
 <div class="container" xmlns="http://www.w3.org/1999/html">
@@ -51,7 +59,7 @@
           %>
 
           <div style="width: 140px; height: 140px; vertical-align: top; display: inline-block;  margin: 5px 5px 30px 50px; ">
-              <%=image_tag "status/#{mood}.png" %>
+              <%=image_tag "status/big/#{mood}.png" %>
           </div>
 
           <ul class="nav nav-tabs">
@@ -86,7 +94,9 @@
               <div class="page_header">
                 <h1>Feedbacks</h1>
                 <div class="nav pull-right" style="margin: -30px 8px;">
-                <%= link_to '<i class="icon-plus icon-white"></i> New Feedback'.html_safe, {:controller => "feedbacks", :action => "new"} %>
+                  <button class="btn btn-link .add" type="button" onclick="updatePanel('<%= new_feedback_path %>')">
+                    <i class="icon-plus icon-white"></i> New Feedback
+                  </button>
                 </div>
               </div>
             </div>
