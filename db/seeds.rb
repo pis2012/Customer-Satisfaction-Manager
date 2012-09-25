@@ -36,12 +36,50 @@ p1 = Project.create(client: client2,
                     end_date: end_date,
                     finalized: false)
 
-Mood.create(project: p1,
-            status: 5)
-Mood.create(project: p1,
-            status: 7)
-Mood.create(project: p1,
-            status: 9)
+date1 = DateTime.new(2012,1,1)
+date2 = DateTime.new(2012,3,5)
+date3 = DateTime.new(2012,4,7)
+date4 = DateTime.new(2012,6,10)
+date5 = DateTime.new(2012,8,12)
+
+mood1 = Mood.new
+mood1.project = p1
+mood1.status = 7
+mood1.created_at = date1
+mood1.save
+
+mood2 = Mood.new
+mood2.project = p1
+mood2.status = 3
+mood2.created_at = date2
+mood2.save
+
+mood3 = Mood.new
+mood3.project = p1
+mood3.status = 7
+mood3.created_at = date3
+mood3.save
+
+mood4 = Mood.new
+mood4.project = p1
+mood4.status = 5
+mood4.created_at = date4
+mood4.save
+
+mood5 = Mood.new
+mood5.project = p1
+mood5.status = 9
+mood5.created_at = date5
+mood5.save
+
+
+
+#Mood.create(project: p1,
+    #        status: 5)
+#Mood.create(project: p1,
+ #           status: 7)
+#Mood.create(project: p1,
+ #           status: 9)
 
 p2 = Project.create(client: client2,
                     name:'Proyecto2',
