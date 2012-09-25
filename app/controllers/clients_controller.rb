@@ -51,15 +51,7 @@ class ClientsController < ApplicationController
     redirect_to clients_url
   end
 
-  def show_project
-    @profile = current_user.profile
-    if (@profile != nil)
-      @project = @profile.project
-      @milestones = @project.milestones
-      @feedbacks = @project.feedbacks
-    end
 
-  end
 
 
 end

@@ -1,39 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Subject:</b>
-  <%= @feedback.subject %>
+  <b>Asunto:</b>
+  <%= @feedback.asunto %>
 </p>
 
 <p>
-  <b>Visibility:</b>
-  <%= @feedback.visibility %>
+  <b>Contenido:</b>
+  <%= @feedback.contenido %>
 </p>
 
 <p>
-  <b>Content:</b>
-  <%= @feedback.content %>
+  <b>Feedback type:</b>
+  <%= FeedbackType.find(@feedback.feedback_type_id).name %>
 </p>
 
 <p>
   <b>Project:</b>
-  <%= @feedback.project_id %>
+  <%= @feedback.project %>
 </p>
 
-<p>
-  <b>Author:</b>
-  <%= @feedback.author_id %>
-</p>
 
-<p>
-  <b>Type:</b>
-  <%= @feedback.type %>
-</p>
-
-<p>
-  <b>Feeling:</b>
-  <%= @feedback.feeling %>
-</p>
 
 
 <%= link_to 'Edit', edit_feedback_path(@feedback) %> |

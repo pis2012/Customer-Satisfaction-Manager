@@ -1,4 +1,4 @@
-class ProjectsController < ApplicationController
+  class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
@@ -80,4 +80,30 @@ class ProjectsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def show_project_complete
+    @profile = current_user.profile
+    if (@profile != nil)
+      @project = @profile.project
+    end
+
+    # Para el grafico de los estados de animo
+
+    @grafica = Gchart.bar(:size => '200x300', :title => "example title", :bg => 'efefef', :legend => ['label 1', 'label 2'], :data => [10, 30])
+
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @project }
+    end
+  end
+
+  def change_profile_project
+    project_id = params[:id]
+
+
+
+  end
+
+
 end

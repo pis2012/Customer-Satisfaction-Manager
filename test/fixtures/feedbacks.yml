@@ -1,19 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  subject: MyString
-  visibility: 1
-  content: MyString
-  project_id: 1
-  author_id: 1
-  type: 1
-  feeling: 1
+  asunto: MyString
+  contenido: MyString
+  feedback_type: MyString
+  project: MyString
+  comentario: MyString
 
 two:
-  subject: MyString
-  visibility: 1
-  content: MyString
-  project_id: 1
-  author_id: 1
-  type: 1
-  feeling: 1
+  asunto: MyString
+  contenido: MyString
+  feedback_type: MyString
+  project: MyString
+  comentario: MyString

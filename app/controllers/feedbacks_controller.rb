@@ -26,6 +26,7 @@ class FeedbacksController < ApplicationController
   def new
     @feedback = Feedback.new
 
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @feedback }
@@ -80,4 +81,6 @@ class FeedbacksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 end
