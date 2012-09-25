@@ -128,25 +128,39 @@
               <!--// main column -->
               <!--// page contents -->
               <div class="feedbacks_panel">
-                <h1> Lista de feedbacks, 3 a la vez </h1>
+
+                <% @feedbacks =  Feedback.find_all_by_project_id(@project.id) %>
+                <!--    <table>    -->
+                <% @feedbacks.each do |feedback| %>
+                    <!--  <tr>   -->
+                      <div class="seccion2" >
+                          <%= image_tag(   FeedbackType.find(feedback.feedback_type_id).name + ".png", :alt => "Moove-It",:class => "ImgFeedback") %>
+                          <a href="feedbacks/<%= feedback.id %>" class="fill-div">
+                            <h4 class="show_Asunto"><%= feedback.asunto %></h4>
+                            <h6 class="fechaFeedback" >03/09/2012</h6>
+
+                            <h6 class="ultimoCometario"  >Ultimo comentario echo por mauro@mooveit , 06 de agosto 2012</h6>
+                          </a>
+                      </div>
+                    <!--  </tr>   -->
+                <% end %>
+                <!-- </table>     -->
 
 
+               </div>
 
 
-              </div>
+               <div style="position: relative; ">
+                 <ul class="pager">
+                     <li class="disabled"><a href="#">Previous</a></li>
+                     <li><a href="#">Next</a></li>
+                 </ul>
+               </div>
 
-
-              <div style="position: relative; ">
-                <ul class="pager">
-                    <li class="disabled"><a href="#">Previous</a></li>
-                    <li><a href="#">Next</a></li>
-                </ul>
-              </div>
-
-            </div>
-          </div>
-          <div class="tab-pane fade" id="data">
-            <!-- page header -->
+             </div>
+           </div>
+           <div class="tab-pane fade" id="data">
+             <!-- page header -->
             <div id="page_header_wrapper">
               <div class="page_header">
                 <h1>Data</h1>
