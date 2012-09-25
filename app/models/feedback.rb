@@ -1,6 +1,6 @@
 class Feedback < ActiveRecord::Base
   belongs_to :feedback_type
-  accepts_nested_attributes_for :feedback_type
+
   belongs_to :project
   has_many :comentarios
 
