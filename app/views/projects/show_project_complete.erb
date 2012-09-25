@@ -5,7 +5,17 @@
         e.relatedTarget // previous tab
     })
 
+    $("#load-more").bind("ajax:complete", function(et, e){
+        $("#products-list").html(e.responseText); // insert content
+    });
+
+    $("#load-more").bind("ajax:loading", function(et, e){
+        $(this).html("Loading..."); // swap link text
+    });
+
 </script>
+
+
 
 
 
@@ -86,10 +96,15 @@
               <div class="page_header">
                 <h1>Feedbacks</h1>
                 <div class="nav pull-right" style="margin: -30px 8px;">
-                <%= link_to '<i class="icon-plus icon-white"></i> New Feedback'.html_safe, {:controller => "feedbacks", :action => "new"} %>
+                <%= link_to '<i class="icon-plus icon-white"></i> New Feedback'.html_safe, {:controller => "feedbacks", :action => "new" },:remote => true %>
                 </div>
               </div>
             </div>
+
+            <div id="#load-more">
+                     <%=   %>
+            </div>
+
             <!--// page header2 -->
             <div class="page_header2">
                 <strong><h4>Show events since: </h4></strong>
@@ -125,6 +140,8 @@
               <div class="page_header">
                 <h1>Data</h1>
                 <div class="nav pull-right" style="margin: -30px 8px;">
+
+
                   <%= link_to '<i class="icon-plus icon-white"></i> New Milestone'.html_safe, {:controller => "milestones", :action => "new_milestone"} %>
                 </div>
               </div>
