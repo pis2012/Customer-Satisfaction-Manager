@@ -40,7 +40,6 @@
 
     <div class="span3">
       <br>
-      <div id="global_nav">
 
         <div class="estado_animo">
           <p style="font-style: inherit; font-size: medium; margin: 0px 0px 5px 30px ;">Current Mood:</p>
@@ -53,19 +52,21 @@
               <%=image_tag "status/#{mood}.png" %>
           </div>
 
-          <ul class="nav nav-tabs">
-            <li class="active">
-              <a href="#">1</a>
-            </li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
+          <ul class="nav nav-pills" style="width: 250px; height: 30px; margin: 0px 10px 30px 10px;">
+            <li><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/1-small.png" %></a></li>
+            <li><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/3-small.png" %></a></li>
+            <li><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/5-small.png" %></a></li>
+            <li><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/7-small.png" %></a></li>
+            <li class="active"><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/9-small.png" %></a></li>
           </ul>
 
+          <p style="font-style: inherit; font-size: medium; margin: 0px 0px 5px 30px ;">You can change your mood whenever you want. </p>
+          <br>
 
         </div>
 
+
+      <div id="global_nav">
         <ul id="myTab" >
           <li class="summary active">
             <a href="#feedbacks" data-toggle="tab"> Feedbacks</a>
