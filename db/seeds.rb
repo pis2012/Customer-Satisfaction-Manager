@@ -295,6 +295,10 @@ profile3 = Profile.create(user:mooveit_usr, project:p1,
                           last_login_date:'2012-01-01 00:00:00',skype_usr:'corrales.skype')
 
 
+Feedback.create
+
+
+
 Milestone.create(:target_date => '2011-01-01 00:00:00', :project => p1, :name => "Prueba1")
 Milestone.create(:target_date => '2011-02-01 00:00:00', :project => p1, :name => "Prueba2")
 Milestone.create(:target_date => '2011-03-01 00:00:00', :project => p1, :name => "Prueba3")
