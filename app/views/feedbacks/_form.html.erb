@@ -1,48 +1,65 @@
 <%= form_for(@feedback) do |f| %>
-  <% if @feedback.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
+    <% if @feedback.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
 
-      <ul>
-      <% @feedback.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @feedback.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+
+
+
+    <div class="row seccion wide" style="margin: auto;">
+      <div  style="border-bottom: solid; background: #ffffbc;border-bottom-width: 0.8px;border-bottom-color: #c8d0e2;">
+        <h2 style="margin-left: 10px;">Nuevo Feedback</h2>
+      </div>
+
+      <div class="margin4">
+        <%= f.label :Tipo_de_feedback ,:class => "Etiqueta" %>
+        <%= f.select(:feedback_type_id,FeedbackType.all.map {|fe| [fe.name, fe.id]},:prompt => true) %>
+      </div>
+
+      <div class="margin4">
+        <%= f.label :asunto ,:class => "Etiqueta" %>
+        <%= f.text_field :asunto , :class => "TextField" %>
+      </div>
+
+
+
+
+      <div class="margin3" >
+        <%= f.label :contenido ,:class => "Etiqueta" %>
+        <%= f.text_area :contenido, :class => "estilotextarea" %>
+
+      </div>
+      <div class="" style="border-bottom: solid;border-bottom-width: 0.5px;">
+
+      </div>
+
+
+
+      <div class="margin3" >
+        <%= f.label :visibilidad ,:class => "Etiqueta" %>
+        <%= f.check_box :VisibilidadEmpleado %> Empleados Moove-IT   <%= f.check_box :VisibilidadCliente %> Cliente
+      </div>
+
+      <div class="margin3" >
+        <h7 style="float: left;margin-right: 5%;"> ¿Cómo crees que este feedback afecta al estado de ánimo del proyecto? </h7>
+        -1<input type="radio" name="animo" value="-1" style="margin-right: 3%;margin-left: 2px;">
+        0<input type="radio" name="animo" value="0" style="margin-right: 3%;margin-left: 2px;">
+        1<input type="radio" name="animo" value="1" style="margin-right: 3%;margin-left: 2px;">
+
+      </div>
+
+      <div class="margin4">
+        <%=  f.submit :Crear%>  or <%= link_to 'Cancelar', projects_path %>
+      </div>
+
     </div>
-  <% end %>
 
-
-
-
-<div class="field">
-    <%= f.label :subject %>
-  <br />
-
-  </div>
-  <div class="field">
-    <%= f.label :visibility %><br />
-
-  </div>
-  <div class="field">
-    <%= f.label :content %><br />
-
-  </div>
-  <div class="field">
-    <%= f.label :project_id %><br />
-
-  </div>
-  <div class="field">
-    <%= f.label :author_id %><br />
-
-  </div>
-  <div class="field">
-    <%= f.label :type %><br />
-
-  </div>
-  <div class="field">
-    <%= f.label :feeling %><br />
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

@@ -26,6 +26,7 @@ class FeedbacksController < ApplicationController
   def new
     @feedback = Feedback.new
 
+    @feedback.project_id = params[:id]
 
     respond_to do |format|
       format.html # new.html.erb
