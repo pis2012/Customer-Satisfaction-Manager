@@ -13,7 +13,6 @@
 
 
 
-
     <div class="row seccion wide" style="margin: auto;">
       <div  style="border-bottom: solid; background: #ffffbc;border-bottom-width: 0.8px;border-bottom-color: #c8d0e2;">
         <h2 style="margin-left: 10px;">Nuevo Feedback</h2>
@@ -57,7 +56,7 @@
       </div>
 
       <div class="margin4">
-        <%=  f.submit :Crear%>  or <%= link_to 'Cancelar', projects_path %>
+        <%=  f.submit :Crear , :Projectid => params[:Projectid] %>  or <%= link_to 'Cancelar', projects_path %>
       </div>
 
     </div>
