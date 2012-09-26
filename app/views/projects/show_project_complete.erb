@@ -16,7 +16,7 @@
     $('#datepicker').datepicker();
 
     function updatePanel(url) {
-        $.get(url, function(res){
+        $.get(url , function(res){
             //var f = $('#feedbacks');
             //f.innerHTML = res;
             document.getElementById('feedbacks').innerHTML = res;
@@ -106,7 +106,7 @@
               <div class="page_header">
                 <h1>Feedbacks</h1>
                 <div class="nav pull-right" style="margin: -30px 8px;">
-                  <button class="btn btn-link .add" type="button" onclick="updatePanel('<%= new_feedback_path %>')">
+                  <button class="btn btn-link .add" type="button" onclick="updatePanel('<%=  new_feedback_path %>')">
                     <i class="icon-plus icon-white"></i> New Feedback
                   </button>
                 </div>
