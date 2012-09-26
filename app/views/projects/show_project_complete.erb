@@ -15,12 +15,10 @@
 
     $('#datepicker').datepicker();
 
-    function updatePanel(url) {
-        $.get(url, function(res){
-            //var f = $('#feedbacks');
-            //f.innerHTML = res;
-            document.getElementById('feedbacks').innerHTML = res;
-        });
+    function activate(me)
+    {
+        $('.state').each(function(){$(this).removeClass('active');});
+        $(me).addClass('active');
     }
 
 </script>
@@ -73,11 +71,11 @@
           </div>
 
           <ul class="nav nav-pills" style="width: 250px; height: 30px; margin: 0px 10px 30px 10px;">
-            <li><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/normal/1.png" %></a></li>
-            <li><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/normal/3.png" %></a></li>
-            <li><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/normal/5.png" %></a></li>
-            <li><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/normal/7.png" %></a></li>
-            <li class="active"><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/normal/9.png" %></a></li>
+            <li onclick="activate(this)" class="state"><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/normal/1.png" %></a></li>
+            <li onclick="activate(this)" class="state"><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/normal/3.png" %></a></li>
+            <li onclick="activate(this)" class="state"><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/normal/5.png" %></a></li>
+            <li onclick="activate(this)" class="state"><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/normal/7.png" %></a></li>
+            <li onclick="activate(this)" class="active state"><a href="#" style="width: 20px; height: 25px;"><%=image_tag "status/normal/9.png" %></a></li>
           </ul>
 
           <p style="font-style: inherit; font-size: medium; margin: 0px 0px 5px 30px ;">You can change your mood whenever you want. </p>
@@ -106,9 +104,7 @@
               <div class="page_header">
                 <h1>Feedbacks</h1>
                 <div class="nav pull-right" style="margin: -30px 8px;">
-                  <button class="btn btn-link .add" type="button" onclick="updatePanel('<%= new_feedback_path %>')">
-                    <i class="icon-plus icon-white"></i> New Feedback
-                  </button>
+                <%= link_to '<i class="icon-plus icon-white"></i> New Feedback'.html_safe, {:controller => "feedbacks", :action => "new" },:remote => true %>
                 </div>
               </div>
             </div>
@@ -138,39 +134,25 @@
               <!--// main column -->
               <!--// page contents -->
               <div class="feedbacks_panel">
-
-                <% @feedbacks =  Feedback.find_all_by_project_id(@project.id) %>
-                <!--    <table>    -->
-                <% @feedbacks.each do |feedback| %>
-                    <!--  <tr>   -->
-                      <div class="seccion2" >
-                          <%= image_tag(   FeedbackType.find(feedback.feedback_type_id).name + ".png", :alt => "Moove-It",:class => "ImgFeedback") %>
-                          <a href="feedbacks/<%= feedback.id %>" class="fill-div">
-                            <h4 class="show_Asunto"><%= feedback.asunto %></h4>
-                            <h6 class="fechaFeedback" >03/09/2012</h6>
-
-                            <h6 class="ultimoCometario"  >Ultimo comentario echo por mauro@mooveit , 06 de agosto 2012</h6>
-                          </a>
-                      </div>
-                    <!--  </tr>   -->
-                <% end %>
-                <!-- </table>     -->
+                <h1> Lista de feedbacks, 3 a la vez </h1>
 
 
-               </div>
 
 
-               <div style="position: relative; ">
-                 <ul class="pager">
-                     <li class="disabled"><a href="#">Previous</a></li>
-                     <li><a href="#">Next</a></li>
-                 </ul>
-               </div>
+              </div>
 
-             </div>
-           </div>
-           <div class="tab-pane fade" id="data">
-             <!-- page header -->
+
+              <div style="position: relative; ">
+                <ul class="pager">
+                    <li class="disabled"><a href="#">Previous</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+          <div class="tab-pane fade" id="data">
+            <!-- page header -->
             <div id="page_header_wrapper">
               <div class="page_header">
                 <h1>Data</h1>
