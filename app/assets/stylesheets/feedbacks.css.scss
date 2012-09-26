@@ -27,8 +27,11 @@
 
 .show_Asunto{
   float: left;
-  margin-top: 3%;
+
   text-decoration: underline;
+  margin-top: 3%;
+  margin-left: 2%;
+
 
 }
 
@@ -69,28 +72,29 @@
 }
 .fechaFeedback{
 
-  float: left;
+  position: absolute;
+  margin-top: 5%;
+  margin-left: 16%;
 
-  margin-left: -10%;
-
-  margin-top:6.5%;
 }
 .ImgFeedback{
   height:100px;
   width: 100px;
   position: relative;
   float: left;
-  margin-right: 2%;
+  margin-left: 2%;
   margin-top: 3%;
-  margin-left: 4%;
+
 
 }
 
 .ultimoCometario{
-  margin-left: -12%;
+
   position: relative;
   float: left;
-  margin-top:20%;
+  margin-top: 10%;
+  margin-left: 2%;
+
 }
 
 a.fill-div {
