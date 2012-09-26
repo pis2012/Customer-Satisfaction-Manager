@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24a2b01f-edc3-4247-aadc-97fec85dda96" name="Default" comment="p">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.generators" afterPath="$PROJECT_DIR$/.idea/.generators" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/feedbacks.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/feedbacks.css.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/feedbacks/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/feedbacks/_form.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/projects/show_project_complete.erb" afterPath="$PROJECT_DIR$/app/views/projects/show_project_complete.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.yml" afterPath="$PROJECT_DIR$/config/database.yml" />
     </list>
@@ -36,25 +37,28 @@
       <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/feedbacks/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="19" selection-start="527" selection-end="527" vertical-scroll-proportion="-10.625">
+            <state line="18" column="80" selection-start="588" selection-end="608" vertical-scroll-proportion="-9.375">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show_project_complete.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="show_project_complete.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/projects/show_project_complete.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="156" column="78" selection-start="5998" selection-end="5998" vertical-scroll-proportion="-9.0">
-              <folding />
+            <state line="111" column="66" selection-start="4005" selection-end="4005" vertical-scroll-proportion="0.30985916">
+              <folding>
+                <element signature="tag#div#2;tag#div#0;tag#div#0;tag#div#0;tag#div#2;tag#div#0;tag#div#0" expanded="false" />
+                <element signature="tag#div#3;tag#div#0;tag#div#0;tag#div#0;tag#div#2;tag#div#0;tag#div#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="feedbacks.css.scss" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="feedbacks.css.scss" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/feedbacks.css.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="11" selection-start="1400" selection-end="1400" vertical-scroll-proportion="1.2958963">
+            <state line="10" column="0" selection-start="187" selection-end="187" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -130,10 +134,10 @@
         <option value="$PROJECT_DIR$/db/seeds.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/models/feedback.rb" />
-        <option value="$PROJECT_DIR$/app/views/feedbacks/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/feedbacks_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/projects/show_project_complete.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/feedbacks.css.scss" />
+        <option value="$PROJECT_DIR$/app/views/feedbacks/_form.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/projects/show_project_complete.erb" />
       </list>
     </option>
   </component>
@@ -821,7 +825,11 @@
       <created>1348697824263</created>
       <updated>1348697824263</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="p">
+      <created>1348699806539</created>
+      <updated>1348699806539</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -930,13 +938,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/comentarios/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/seeds.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="299" column="188" selection-start="10849" selection-end="12873" vertical-scroll-proportion="0.0">
@@ -993,6 +994,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/feedbacks.css.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="187" selection-end="187" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/admin.css.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="380" selection-end="380" vertical-scroll-proportion="0.33261338">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/feedbacks_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="96" selection-start="1318" selection-end="1318" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/projects/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="33" selection-start="648" selection-end="648" vertical-scroll-proportion="-17.5">
@@ -1007,13 +1029,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/feedbacks_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="96" selection-start="1318" selection-end="1318" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/projects/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -1023,22 +1038,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/feedbacks/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="19" selection-start="527" selection-end="527" vertical-scroll-proportion="-10.625">
+        <state line="18" column="80" selection-start="588" selection-end="608" vertical-scroll-proportion="-9.375">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/projects/show_project_complete.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="78" selection-start="5998" selection-end="5998" vertical-scroll-proportion="-9.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/feedbacks.css.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="11" selection-start="1400" selection-end="1400" vertical-scroll-proportion="1.2958963">
-          <folding />
+        <state line="111" column="66" selection-start="4005" selection-end="4005" vertical-scroll-proportion="0.30985916">
+          <folding>
+            <element signature="tag#div#2;tag#div#0;tag#div#0;tag#div#0;tag#div#2;tag#div#0;tag#div#0" expanded="false" />
+            <element signature="tag#div#3;tag#div#0;tag#div#0;tag#div#0;tag#div#2;tag#div#0;tag#div#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
