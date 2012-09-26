@@ -28,7 +28,7 @@ class FeedbacksController < ApplicationController
 
 
     respond_to do |format|
-      format.html { render :layout => ! request.xhr? }
+      format.html # new.html.erb
       format.json { render json: @feedback }
     end
   end

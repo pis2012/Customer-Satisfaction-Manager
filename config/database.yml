@@ -19,8 +19,8 @@ test:
   reconnect: false
   database: CSM_test
   pool: 5
-  username: csmtestuser
-  password: 'password'
+  username: root
+  password: '4317743'
   socket: /var/run/mysqld/mysqld.sock
 
 production:
