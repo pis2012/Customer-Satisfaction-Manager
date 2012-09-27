@@ -51,7 +51,7 @@
 
                 <% @projects = Project.all.shuffle %>
                 <% @projects.each do |project| %>
-                    <% mood = project.moods.last! %>
+                    <% mood = project.moods.order(:created_at).last %>
 
                     <% if count % 2 == 0 %>
                         <% aux = "height: 160px; vertical-align: top;" %>
