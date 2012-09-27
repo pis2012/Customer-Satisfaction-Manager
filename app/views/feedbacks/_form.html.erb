@@ -3,6 +3,7 @@
 
 
 
+
     <div class="row seccion wide" style="margin: auto;">
       <%= form_for(@feedback) do |f| %>
           <% if @feedback.errors.any? %>
@@ -16,6 +17,8 @@
                 </ul>
               </div>
           <% end %>
+
+    <div id="myTabContent" class="Data">
       <div class="page_header" style="border-bottom: solid; background: #ffffbc;border-bottom-width: 0.8px;border-bottom-color: #c8d0e2;">
         <h1>Nuevo Feedback</h1>
       </div>
@@ -63,5 +66,7 @@
       </div>
 
     </div>
+          </div>
+
 
 <% end %>
