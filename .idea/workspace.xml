@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24a2b01f-edc3-4247-aadc-97fec85dda96" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.generators" afterPath="$PROJECT_DIR$/.idea/.generators" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/feedbacks.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/feedbacks.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/feedbacks_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/feedbacks_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/feedback.rb" afterPath="$PROJECT_DIR$/app/models/feedback.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/feedbacks/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/feedbacks/_form.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/projects/show_project_complete.erb" afterPath="$PROJECT_DIR$/app/views/projects/show_project_complete.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
     </list>
     <ignored path="CSM.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,16 +29,7 @@
       <file leaf-file-name="show_project_complete.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/projects/show_project_complete.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="210" column="10" selection-start="7871" selection-end="7871" vertical-scroll-proportion="0.1833811">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="projects_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/projects_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="22" selection-start="2338" selection-end="2338" vertical-scroll-proportion="0.0">
+            <state line="210" column="10" selection-start="7865" selection-end="7865" vertical-scroll-proportion="0.36419752">
               <folding />
             </state>
           </provider>
@@ -48,7 +38,7 @@
       <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/admin/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -57,7 +47,7 @@
       <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/home/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="67" selection-start="1713" selection-end="1713" vertical-scroll-proportion="-18.125">
+            <state line="53" column="67" selection-start="1713" selection-end="1713" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -112,6 +102,15 @@
         <entry file="file://$PROJECT_DIR$/app/views/feedbacks/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="projects_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/projects_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="94" column="22" selection-start="2338" selection-end="2338" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -246,68 +245,6 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CSM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CSM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CSM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CSM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CSM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CSM" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -346,15 +283,15 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="76" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="120" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="72" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="72" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="126" />
     <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="880" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="126" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="944" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="880" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="96" />
     <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="90" />
@@ -870,21 +807,21 @@
     <frame x="65" y="24" width="1295" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3287037" sideWeight="0.49720225" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15432099" sideWeight="0.48433736" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287037" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3180723" sideWeight="0.70987654" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32369477" sideWeight="0.6712963" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29192546" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15432099" sideWeight="0.51004016" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29012346" sideWeight="0.47469878" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28858024" sideWeight="0.47469878" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33796296" sideWeight="0.49076304" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47839507" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287037" sideWeight="0.49720225" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -925,7 +862,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/develop' into develop&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;db/seeds.rb&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/develop' into develop&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -940,7 +877,6 @@
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="agregado login con google apps" />
     <MESSAGE value="agregado de modelos project, role&#10;agreado de migraciones&#10;agreagado de seed para la tabla roles" />
-    <MESSAGE value="Merge remote-tracking branch 'origin/develop' into develop&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;" />
     <MESSAGE value="Actualizada la vista de ver proyecto.&#10;" />
     <MESSAGE value="Arreglado un ruteo del home." />
     <MESSAGE value="Mejorada la vista de ver proyecto, agregadas unas seeds para mas moods y con fecha de creacion distantes para visualizar mejor la grafica de moods." />
@@ -948,6 +884,7 @@
     <MESSAGE value="Ajustes en la vista de ver proyecto. Ahora se puede de cambiar del proyecto del profile y agregado unos seeds de moods y milestones a unos proyectos" />
     <MESSAGE value="p" />
     <MESSAGE value="Merge remote-tracking branch 'origin/develop' into develop&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;db/seeds.rb&#10;" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/develop' into develop&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -970,9 +907,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/feedback_type.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/feedbacks/edit.html.erb">
@@ -1038,7 +973,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/home/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="67" selection-start="1713" selection-end="1713" vertical-scroll-proportion="-18.125">
+        <state line="53" column="67" selection-start="1713" selection-end="1713" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1052,7 +987,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/projects/show_project_complete.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="210" column="10" selection-start="7871" selection-end="7871" vertical-scroll-proportion="0.1833811">
+        <state line="210" column="10" selection-start="7865" selection-end="7865" vertical-scroll-proportion="0.36419752">
           <folding />
         </state>
       </provider>
