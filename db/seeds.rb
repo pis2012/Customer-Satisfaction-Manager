@@ -268,6 +268,231 @@ p20 = Project.create(client: client1,
 Mood.create(project: p20,
             status: 10)
 
+p21 = Project.create(client: client1,
+                     name:'Proyecto21',
+                     description:'Descripcion de proyecto21',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p21,
+            status: 10)
+
+p22 = Project.create(client: client1,
+                     name:'Proyecto22',
+                     description:'Descripcion de proyecto22',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p22,
+            status: 10)
+
+p23 = Project.create(client: client1,
+                     name:'Proyecto23',
+                     description:'Descripcion de proyecto23',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p23,
+            status: 10)
+
+p24 = Project.create(client: client1,
+                     name:'Proyecto24',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p24,
+            status: 10)
+
+p25 = Project.create(client: client1,
+                     name:'Proyecto25',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p25,
+            status: 10)
+
+p26 = Project.create(client: client1,
+                     name:'Proyecto26',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p26,
+            status: 10)
+
+p27 = Project.create(client: client1,
+                     name:'Proyecto27',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p27,
+            status: 10)
+
+p28 = Project.create(client: client1,
+                     name:'Proyecto28',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p28,
+            status: 10)
+
+p29 = Project.create(client: client1,
+                     name:'Proyecto29',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p29,
+            status: 10)
+
+p30 = Project.create(client: client1,
+                     name:'Proyecto30',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p30,
+            status: 10)
+
+p31 = Project.create(client: client1,
+                     name:'Proyecto31',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p31,
+            status: 10)
+
+p32 = Project.create(client: client1,
+                     name:'Proyecto32',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p32,
+            status: 10)
+
+p33 = Project.create(client: client1,
+                     name:'Proyecto33',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p33,
+            status: 10)
+
+p34 = Project.create(client: client1,
+                     name:'Proyecto34',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p34,
+            status: 10)
+
+p35 = Project.create(client: client1,
+                     name:'Proyecto35',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p35,
+            status: 10)
+
+p36 = Project.create(client: client1,
+                     name:'Proyecto36',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p36,
+            status: 10)
+
+p37 = Project.create(client: client1,
+                     name:'Proyecto37',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p37,
+            status: 10)
+
+p38 = Project.create(client: client1,
+                     name:'Proyecto38',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p38,
+            status: 10)
+
+p39 = Project.create(client: client1,
+                     name:'Proyecto39',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p39,
+            status: 10)
+
+p40 = Project.create(client: client1,
+                     name:'Proyecto40',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p40,
+            status: 10)
+
+p41 = Project.create(client: client1,
+                     name:'Proyecto41',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p41,
+            status: 10)
+
+p42 = Project.create(client: client1,
+                     name:'Proyecto42',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p42,
+            status: 10)
+
+p43 = Project.create(client: client1,
+                     name:'Proyecto43',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p43,
+            status: 10)
+
+p44 = Project.create(client: client1,
+                     name:'Proyecto44',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p44,
+            status: 10)
+
+p45 = Project.create(client: client1,
+                     name:'Proyecto45',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p45,
+            status: 10)
+
 
 admin_usr = User.create(role: rol_admin, client: client1,
                         username: 'admin',password:'admin',password_confirmation:'admin',
