@@ -138,7 +138,6 @@
                   <p style="margin: -14% 105%">
                     <button class="btn btn-primary" type="button">Filtrar</button>
                   </p>
-
               </div>
             </div>
             <hr> </hr>
@@ -202,7 +201,7 @@
 
             <div class="project_description">
               <h4><strong> Description</strong></h4>
-              <p style="font-family: Lemon;"> <%= @project.description %>  </p>
+              <p> <%= @project.description %>  </p>
 
                 <!-- page contents -->
                 <div id="page_content">
@@ -221,7 +220,7 @@
                   <h4><strong>Milestones</strong></h4>
 
                   <% @project.milestones.each do |mile| %>
-                      <p style="font-family: Lemon;"> <%= "#{mile.target_date.to_s} ----- #{mile.name}" %></p>
+                      <p> <%= "#{mile.target_date.to_s} ----- #{mile.name}" %></p>
                   <% end %>
 
                 </div>
