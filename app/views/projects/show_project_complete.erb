@@ -26,10 +26,12 @@
             //var f = $('#feedbacks');
             //f.innerHTML = res;
 
-            var dom = $.parseXML(res);
+            document.getElementById('feedbacks').innerHTML = res;
+
+     /*       var dom = $.parseXML(res);
             var content = dom.getElementById(id);
             //alert(form);
-            document.getElementById('feedbacks').innerHTML = (new XMLSerializer()).serializeToString(content);
+            document.getElementById('feedbacks').innerHTML = (new XMLSerializer()).serializeToString(content);*/
         });
     }
 
