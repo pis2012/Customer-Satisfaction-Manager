@@ -111,7 +111,7 @@
             <div class="page_header_wrapper">
               <div class="page_header">
                 <h1>Feedbacks</h1>
-                <div class="nav pull-right" style="margin: -30px 8px;">
+                <div class="nav pull-right" style="margin: -35px 8px;">
                   <button class="btn btn-link .add" type="button" onclick="updatePanel('<%=  new_feedback_path + '?Projectid=' +  @project.id.to_s %>')">
                     <i class="icon-plus icon-white"></i> New Feedback
                   </button>
@@ -135,7 +135,6 @@
                   <p style="margin: -14% 105%">
                     <button class="btn btn-primary" type="button">Filtrar</button>
                   </p>
-
               </div>
             </div>
             <hr>
@@ -153,8 +152,14 @@
                       <div class="seccion2" >
                           <%= image_tag(feedback.feedback_type.name + ".png", :alt => "Moove-It",:class => "ImgFeedback") %>
                           <a href="feedbacks/<%= feedback.id %>" class="fill-div">
-                            <h4 class="show_Asunto"><%= feedback.asunto %></h4>
+                            <h4 class="show_Asunto"><%= truncate(strip_tags(feedback.asunto),
+                                                                 :length => 45) %></h4>
                             <h6 class="fechaFeedback" >03/09/2012</h6>
+                            <h7 class="Contenido"><%= truncate(strip_tags(feedback.contenido),
+                                             :length => 180) %></h7>
+
+
+
 
                             <h6 class="ultimoCometario"  >Ultimo comentario echo por mauro@mooveit , 06 de agosto 2012</h6>
                           </a>
@@ -192,7 +197,7 @@
 
             <div class="project_description">
               <h4><strong> Description</strong></h4>
-              <p style="font-family: Lemon;"> <%= @project.description %>  </p>
+              <p> <%= @project.description %>  </p>
 
                 <!-- page contents -->
                 <div id="page_content">
@@ -211,7 +216,7 @@
                   <h4><strong>Milestones</strong></h4>
 
                   <% @project.milestones.each do |mile| %>
-                      <p style="font-family: Lemon;"> <%= "#{mile.target_date.to_s} ----- #{mile.name}" %></p>
+                      <p> <%= "#{mile.target_date.to_s} ----- #{mile.name}" %></p>
                   <% end %>
 
                 </div>

@@ -8,6 +8,8 @@ class Feedback < ActiveRecord::Base
 
   attr_accessible :project, :user, :feedback_type, :asunto,  :contenido ,:created_at, :VisibilidadCliente,:VisibilidadEmpleado,:feedback_type_id , :project_id,:comentario_id
 
-  validate :asunto,  :contenido , :feedback_type_id, :presence  => true
+  validates :asunto,   :presence  => true
+  validates :contenido ,:presence  => true
+  validates :feedback_type_id,:presence  => true
 
 end
