@@ -1,24 +1,37 @@
 require 'spec_helper'
 
-class ProjectControlerSpec
+class ProjectControllerSpec
+
   describe ProjectsController do
+
+
+
     it "def index" do
-        get :index,
+        get :index
         assert_response :success
         assert_not_nil assigns(:projects)
     end
 
-    it "def new & show" do
-      post :create, format: 'json', project: {name:'Proyecto',
+    it "def new" do
+      post :create, project: {name:'Proyecto',
                                 description:'Descripcion de proyecto',
                                 end_date:'2013-01-01 00:00:00',
                                 finalized:false}
 
-      assert_not_nil assigns(:project)
+      @var1 = projects_path(assigns[:project])
+      @var2 = @var1.gsub(".", "/")
+      response.should redirect_to(@var2)
+    end
 
-      get :show, id: @controller.instance_variable_get(:project)
+    it "def show" do
+      @project1=Project.create(name: "Projecto test",
+                               description: "projecto test",
+                               end_date:'2013-01-01 00:00:00',
+                               finalized: false)
+
+      get :show, id: @project1.to_param
+
       assert_response :success
-      assert_not_nil assigns(:project)
     end
   end
 end
