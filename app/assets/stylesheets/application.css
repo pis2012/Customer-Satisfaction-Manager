@@ -12,3 +12,47 @@
  *= require_tree .
  */
 
+
+#global-wrapper
+{
+
+}
+
+#header
+{
+    background: url("header_bg.png") repeat-x scroll left top transparent;
+    height: 135px;
+}
+
+#header #logo
+{
+    background: url("moove-it.png");
+    display: block;
+    float: left;
+    height: 135px;
+    width: 220px;
+}
+
+
+#content
+{
+
+}
+
+#content a {
+    color: #000;
+}
+
+
+
+#footer
+{
+    background-color: #F5F5F5;
+    border-top: 1px solid #E5E5E5;
+    width:100%;
+    margin-top: 50px;
+    height: 100px;
+}
+
+
+
