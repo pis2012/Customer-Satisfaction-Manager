@@ -36,12 +36,42 @@ p1 = Project.create(client: client2,
                     end_date: end_date,
                     finalized: false)
 
-Mood.create(project: p1,
-            status: 5)
-Mood.create(project: p1,
-            status: 7)
-Mood.create(project: p1,
-            status: 9)
+date1 = DateTime.new(2012,1,1)
+date2 = DateTime.new(2012,3,5)
+date3 = DateTime.new(2012,4,7)
+date4 = DateTime.new(2012,6,10)
+date5 = DateTime.new(2012,8,12)
+
+mood1 = Mood.new
+mood1.project = p1
+mood1.status = 7
+mood1.created_at = date1
+mood1.save
+
+mood2 = Mood.new
+mood2.project = p1
+mood2.status = 3
+mood2.created_at = date2
+mood2.save
+
+mood3 = Mood.new
+mood3.project = p1
+mood3.status = 7
+mood3.created_at = date3
+mood3.save
+
+mood4 = Mood.new
+mood4.project = p1
+mood4.status = 5
+mood4.created_at = date4
+mood4.save
+
+mood5 = Mood.new
+mood5.project = p1
+mood5.status = 9
+mood5.created_at = date5
+mood5.save
+
 
 p2 = Project.create(client: client2,
                     name:'Proyecto2',
@@ -50,7 +80,19 @@ p2 = Project.create(client: client2,
                     finalized:false)
 
 Mood.create(project: p2,
-            status: 10)
+            status: 5)
+
+mood1 = Mood.new
+mood1.project = p2
+mood1.status = 1
+mood1.created_at = date1
+mood1.save
+
+mood1 = Mood.new
+mood1.project = p2
+mood1.status = 9
+mood1.created_at = date2
+mood1.save
 
 p3 = Project.create(client: client2,
                     name:'Proyecto3',
@@ -59,7 +101,19 @@ p3 = Project.create(client: client2,
                     finalized:false)
 
 Mood.create(project: p3,
-            status: 10)
+            status: 1)
+
+mood1 = Mood.new
+mood1.project = p3
+mood1.status = 7
+mood1.created_at = date2
+mood1.save
+
+mood1 = Mood.new
+mood1.project = p3
+mood1.status = 9
+mood1.created_at = date3
+mood1.save
 
 p4 = Project.create(client: client1,
                     name:'Proyecto4',
@@ -241,11 +295,28 @@ profile3 = Profile.create(user:mooveit_usr, project:p1,
                           last_login_date:'2012-01-01 00:00:00',skype_usr:'corrales.skype')
 
 
+Feedback.create(project: p1, user: client_usr, feedback_type: type_skype, asunto: "Email de requerimientos - interfaz", contenido: " Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id. Quo mundi lobortis reformidans eu, legimus senserit definiebas an eos. Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per. In usu latine equidem dolores. Quo no falli viris intellegam, ut fugit veritus placerat per. Ius id vidit volumus mandamus, vide veritus democritum te nec, ei eos debet libris consulatu. No mei ferri graeco dicunt, ad cum veri accommodare. Sed at malis omnesque delicata, usu et iusto zzril meliore. Dicunt maiorum eloquentiam cum cu, sit summo dolor essent te. Ne quodsi nusquam legendos has, ea dicit voluptua eloquentiam pro, ad sit quas qualisque. Eos vocibus deserunt quaestio ei. Blandit incorrupte quaerendum in quo, nibh impedit id vis, vel no nullam semper audiam. Ei populo graeci consulatu mei, has ea stet modus phaedrum. Inani oblique ne has, duo et veritus detraxit. Tota ludus oratio ea mel, offendit persequeris ei vim. Eos dicat oratio partem ut, id cum ignota senserit intellegat. Sit inani ubique graecis ad, quando graecis liberavisse et cum, dicit option eruditi at duo. Homero salutatus suscipiantur eum id, tamquam voluptaria expetendis ad sed, nobis feugiat similique usu ex.")
+Feedback.create(project: p1, user: client_usr, feedback_type: type_email, asunto: "Conversacion Skype respecto a Integracion Servidores", contenido: " Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id. Quo mundi lobortis reformidans eu, legimus senserit definiebas an eos. Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per. In usu latine equidem dolores. Quo no falli viris intellegam, ut fugit veritus placerat per. Ius id vidit volumus mandamus, vide veritus democritum te nec, ei eos debet libris consulatu. No mei ferri graeco dicunt, ad cum veri accommodare. Sed at malis omnesque delicata, usu et iusto zzril meliore. Dicunt maiorum eloquentiam cum cu, sit summo dolor essent te. Ne quodsi nusquam legendos has, ea dicit voluptua eloquentiam pro, ad sit quas qualisque. Eos vocibus deserunt quaestio ei. Blandit incorrupte quaerendum in quo, nibh impedit id vis, vel no nullam semper audiam. Ei populo graeci consulatu mei, has ea stet modus phaedrum. Inani oblique ne has, duo et veritus detraxit. Tota ludus oratio ea mel, offendit persequeris ei vim. Eos dicat oratio partem ut, id cum ignota senserit intellegat. Sit inani ubique graecis ad, quando graecis liberavisse et cum, dicit option eruditi at duo. Homero salutatus suscipiantur eum id, tamquam voluptaria expetendis ad sed, nobis feugiat similique usu ex.")
+Feedback.create(project: p1, user: client_usr, feedback_type: type_email, asunto: "Situacion de Formularios", contenido: " Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id. Quo mundi lobortis reformidans eu, legimus senserit definiebas an eos. Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per. In usu latine equidem dolores. Quo no falli viris intellegam, ut fugit veritus placerat per. Ius id vidit volumus mandamus, vide veritus democritum te nec, ei eos debet libris consulatu. No mei ferri graeco dicunt, ad cum veri accommodare. Sed at malis omnesque delicata, usu et iusto zzril meliore. Dicunt maiorum eloquentiam cum cu, sit summo dolor essent te. Ne quodsi nusquam legendos has, ea dicit voluptua eloquentiam pro, ad sit quas qualisque. Eos vocibus deserunt quaestio ei. Blandit incorrupte quaerendum in quo, nibh impedit id vis, vel no nullam semper audiam. Ei populo graeci consulatu mei, has ea stet modus phaedrum. Inani oblique ne has, duo et veritus detraxit. Tota ludus oratio ea mel, offendit persequeris ei vim. Eos dicat oratio partem ut, id cum ignota senserit intellegat. Sit inani ubique graecis ad, quando graecis liberavisse et cum, dicit option eruditi at duo. Homero salutatus suscipiantur eum id, tamquam voluptaria expetendis ad sed, nobis feugiat similique usu ex.")
+
+
+
+
+
 Milestone.create(:target_date => '2011-01-01 00:00:00', :project => p1, :name => "Prueba1")
 Milestone.create(:target_date => '2011-02-01 00:00:00', :project => p1, :name => "Prueba2")
 Milestone.create(:target_date => '2011-03-01 00:00:00', :project => p1, :name => "Prueba3")
 Milestone.create(:target_date => '2011-04-01 00:00:00', :project => p1, :name => "Prueba4")
 
 
+Milestone.create(:target_date => '2012-04-06 00:00:00', :project => p2, :name => "Proyecto 2, mileston 1")
+Milestone.create(:target_date => '2012-05-07 00:00:00', :project => p2, :name => "Proyecto 2, mileston 2")
+Milestone.create(:target_date => '2012-06-08 00:00:00', :project => p2, :name => "Proyecto 2, mileston 3")
+Milestone.create(:target_date => '2012-07-09 00:00:00', :project => p2, :name => "Proyecto 2, mileston 4")
 
+
+Milestone.create(:target_date => '2012-05-22 00:00:00', :project => p3, :name => "Proyecto 3, mileston 1")
+Milestone.create(:target_date => '2012-06-12 00:00:00', :project => p3, :name => "Proyecto 3, mileston 2")
+Milestone.create(:target_date => '2012-08-06 00:00:00', :project => p3, :name => "Proyecto 3, mileston 3")
+Milestone.create(:target_date => '2012-08-09 00:00:00', :project => p3, :name => "Proyecto 3, mileston 4")
 

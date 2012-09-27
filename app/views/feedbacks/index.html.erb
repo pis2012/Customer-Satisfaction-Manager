@@ -1,35 +1,37 @@
 <h1>Listing feedbacks</h1>
 
 <table>
-  <tr>
-    <th>Subject</th>
-    <th>Visibility</th>
-    <th>Content</th>
+  <!-- <tr>
+    <th>Asunto</th>
+    <th>Contenido</th>
+    <th>Feedback type</th>
     <th>Project</th>
-    <th>Author</th>
-    <th>Type</th>
-    <th>Feeling</th>
+    <th>Comentario</th>
     <th></th>
     <th></th>
     <th></th>
-  </tr>
+  </tr>-->
 
-<% @feedbacks.each do |feedback| %>
-  <tr>
-    <td><%= feedback.subject %></td>
-    <td><%= feedback.visibility %></td>
-    <td><%= feedback.content %></td>
-    <td><%= feedback.project_id %></td>
-    <td><%= feedback.author_id %></td>
-    <td><%= feedback.type %></td>
-    <td><%= feedback.feeling %></td>
-    <td><%= link_to 'Show', feedback %></td>
-    <td><%= link_to 'Edit', edit_feedback_path(feedback) %></td>
-    <td><%= link_to 'Destroy', feedback, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+  <table>
+    <% @feedbacks.each do |feedback| %>
 
-<br />
+        <tr>
+          <div class="seccion2">
+              <%= image_tag(   FeedbackType.find(feedback.feedback_type_id).name + ".png", :alt => "Moove-It",:class => "ImgFeedback") %>
+              <a href="feedbacks/<%= feedback.id %>" class="fill-div"> </a>
+                <h5 class="fechaFeedback" >03/09/2012</h5>
+                <h4 class="show_Asunto"><%= feedback.asunto %></h4>
+                <h6 >Ultimo comentario echo por mauro@mooveit , 06 de agosto 2012</h6>
+          </div>
+        </tr>
+
+    <% end %>
+  </table>
+
+
+
+
+
+
 
 <%= link_to 'New Feedback', new_feedback_path %>

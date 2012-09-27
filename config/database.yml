@@ -4,8 +4,8 @@ development:
   reconnect: false
   database: CSM_development
   pool: 5
-  username: csmdevuser
-  password: password
+  username: root
+  password: '4317743'
   socket: /var/run/mysqld/mysqld.sock
   host: localhost
   port: 3306
@@ -19,8 +19,8 @@ test:
   reconnect: false
   database: CSM_test
   pool: 5
-  username: csmtestuser
-  password: password
+  username: root
+  password: '4317743'
   socket: /var/run/mysqld/mysqld.sock
 
 production:
@@ -30,5 +30,5 @@ production:
   database: CSM_production
   pool: 5
   username: root
-  password:
+  password: '096nC9uM'
   socket: /var/run/mysqld/mysqld.sock

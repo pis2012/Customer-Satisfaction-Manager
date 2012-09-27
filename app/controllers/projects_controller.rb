@@ -82,15 +82,18 @@
   end
 
   def show_project_complete
-    @profile = current_user.profile
-    if (@profile != nil)
-      @project = @profile.project
-    end
+    @project = current_user.profile.project
 
     # Para el grafico de los estados de animo
+    data = Array.new
+    axis = Array.new
+    @project.moods.order(:created_at).each do |mood|
+      data = data + [mood.status]
+      axis = axis + ["#{mood.created_at.mday}/#{mood.created_at.mon}"]
+    end
 
-    @grafica = Gchart.bar(:size => '200x300', :title => "example title", :bg => 'efefef', :legend => ['label 1', 'label 2'], :data => [10, 30])
-
+    @grafica = Gchart.line(:size => '450x250', :data => data, :bg => {:color => 'efefef', :type => 'stripes', :angle => 90},
+                           :data => data, :axis_with_labels => ['x','y'], :axis_labels => [axis])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -99,9 +102,10 @@
   end
 
   def change_profile_project
-    project_id = params[:id]
+    proj = Project.find(params[:id])
+    current_user.profile.update_attributes(:project => proj)
 
-
+    redirect_to my_projects_url
 
   end
 

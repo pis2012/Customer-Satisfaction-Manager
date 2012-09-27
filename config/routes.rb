@@ -1,18 +1,20 @@
 CSM::Application.routes.draw do
 
-  resources :feedbacks
+  resources :comentarios
 
-  get "admin/index"
+  resources :feedbacks
 
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   resources :clients
 
-  match "/my_projects" , to: "projects#show_project_complete"
+  match "/my_projects" , to: "projects#show_project_complete" , :as => :my_projects
   match "/my_projects/change_profile_project", to: "projects#change_profile_project"
-  match "/my_projects/new_feedback", to: "feedbacks#new_feedback"
+  match "/my_projects/new_feedback", to: "feedbacks#new"
   match "/my_projects/new_milestone", to: "milestones#new_milestone"
 
+
   resources :projects
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -71,6 +73,6 @@ CSM::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 
-  root :to => 'home#index', :as => 'home'
+  root :to => 'home#index'
 
 end

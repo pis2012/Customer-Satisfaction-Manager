@@ -5,7 +5,33 @@
         e.relatedTarget // previous tab
     })
 
+    $("#load-more").bind("ajax:complete", function(et, e){
+        $("#products-list").html(e.responseText); // insert content
+    });
+
+    $("#load-more").bind("ajax:loading", function(et, e){
+        $(this).html("Loading..."); // swap link text
+    });
+
+    function activate(me)
+    {
+        $('.active').each(function(){$(this).removeClass('active');});
+        $(me).addClass('active');
+    }
+
+    $('#datepicker').datepicker();
+
+    function updatePanel(url) {
+        $.get(url , function(res){
+            //var f = $('#feedbacks');
+            //f.innerHTML = res;
+            document.getElementById('feedbacks').innerHTML = res;
+        });
+    }
+
 </script>
+
+
 
 
 
@@ -40,33 +66,33 @@
 
     <div class="span3">
       <br>
-      <div id="global_nav">
 
         <div class="estado_animo">
           <p style="font-style: inherit; font-size: medium; margin: 0px 0px 5px 30px ;">Current Mood:</p>
 
-          <% mood_lvl = @project.moods.last.status
+          <% mood_lvl = @project.moods.order(:created_at).last.status
              mood_lvl = mood_lvl-1 if mood_lvl % 2 == 0
-             mood = mood_lvl.to_s
-          %>
+             mood = mood_lvl.to_s   %>
 
-          <div style="width: 140px; height: 140px; vertical-align: top; display: inline-block;  margin: 5px 5px 30px 50px; ">
-              <%=image_tag "status/#{mood}.png" %>
+          <div style="width: 140px; height: 140px; vertical-align: top; display: inline-block;  margin: 10px 5px 5px 50px; ">
+              <%=image_tag "status/normal/#{mood}.png" %>
           </div>
 
-          <ul class="nav nav-tabs">
-            <li class="active">
-              <a href="#">1</a>
-            </li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
+          <ul class="nav nav-pills" style="width: 300px; height: 30px; margin: 0px 10px 30px 0px;">
+            <li onclick="activate(this)"><a href="#" style="width: 20px; height: 20px;"><%=image_tag "status/normal/1.png" %></a></li>
+            <li onclick="activate(this)"><a href="#" style="width: 20px; height: 20px;"><%=image_tag "status/normal/3.png" %></a></li>
+            <li onclick="activate(this)"><a href="#" style="width: 20px; height: 20px;"><%=image_tag "status/normal/5.png" %></a></li>
+            <li onclick="activate(this)"><a href="#" style="width: 20px; height: 20px;"><%=image_tag "status/normal/7.png" %></a></li>
+            <li onclick="activate(this)" class="active"><a href="#" style="width:    20px; height: 20px;"><%=image_tag "status/normal/9.png" %></a></li>
           </ul>
 
+          <p style="font-style: inherit; font-size: medium; margin: 0px 0px 5px 30px ;">You can change your mood whenever you want. </p>
+          <br>
 
         </div>
 
+
+      <div id="global_nav">
         <ul id="myTab" >
           <li class="summary active">
             <a href="#feedbacks" data-toggle="tab"> Feedbacks</a>
@@ -83,16 +109,34 @@
           <div class="tab-pane fade active in" id="feedbacks">
             <!-- page header -->
             <div class="page_header_wrapper">
-              <div class="page_header">
+              <div class="page_header" style="background: #ffffbc;">
                 <h1>Feedbacks</h1>
                 <div class="nav pull-right" style="margin: -30px 8px;">
-                <%= link_to '<i class="icon-plus icon-white"></i> New Feedback'.html_safe, {:controller => "feedbacks", :action => "new_feedback"} %>
+                  <button class="btn btn-link .add" type="button" onclick="updatePanel('<%=  new_feedback_path + '?Projectid=' +  @project.id.to_s %>')">
+                    <i class="icon-plus icon-white"></i> New Feedback
+                  </button>
                 </div>
               </div>
             </div>
+
+            <div id="#load-more">
+                     <%=   %>
+            </div>
+
             <!--// page header2 -->
-            <div class="page_header2">
-                <strong><h4>Show events since: </h4></strong>
+            <div class="page_header2" style="margin: 0% 0% -2%;">
+
+              <h4>Show events since:</h4>
+              <div class="nav pull-right" style="margin: -5% 40%;">
+                  <div class="input-append date" id="datepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+                    <input size="12" type="text" value="12-02-2012" readonly>
+                    <span class="add-on"><i class="icon-th"></i></span>
+                  </div>
+                  <p style="margin: -14% 105%">
+                    <button class="btn btn-primary" type="button">Filtrar</button>
+                  </p>
+
+              </div>
             </div>
             <hr>
 
@@ -102,29 +146,51 @@
               <!--// main column -->
               <!--// page contents -->
               <div class="feedbacks_panel">
-                <h1> Hola </h1>
+
+                <!--    <table>    -->
+                <% @project.feedbacks.each do |feedback| %>
+                    <!--  <tr>   -->
+                      <div class="seccion2" >
+                          <%= image_tag(feedback.feedback_type.name + ".png", :alt => "Moove-It",:class => "ImgFeedback") %>
+                          <a href="feedbacks/<%= feedback.id %>" class="fill-div">
+                            <h4 class="show_Asunto"><%= truncate(strip_tags(feedback.asunto),
+                                                                 :length => 45) %></h4>
+                            <h6 class="fechaFeedback" >03/09/2012</h6>
+                            <h7 class="Contenido"><%= truncate(strip_tags(feedback.contenido),
+                                             :length => 180) %></h7>
 
 
 
 
-              </div>
+                            <h6 class="ultimoCometario"  >Ultimo comentario echo por mauro@mooveit , 06 de agosto 2012</h6>
+                          </a>
+                      </div>
+                    <!--  </tr>   -->
+                <% end %>
+                <!-- </table>     -->
 
 
-              <div style="position: relative; ">
-                <ul class="pager">
-                    <li class="disabled"><a href="#">Previous</a></li>
-                    <li><a href="#">Next</a></li>
-                </ul>
-              </div>
+               </div>
 
-            </div>
-          </div>
-          <div class="tab-pane fade" id="data">
-            <!-- page header -->
+
+               <div style="position: relative; ">
+                 <ul class="pager">
+                     <li class="disabled"><a href="#">Previous</a></li>
+                     <li><a href="#">Next</a></li>
+                 </ul>
+               </div>
+
+             </div>
+           </div>
+
+           <div class="tab-pane fade" id="data">
+             <!-- page header -->
             <div id="page_header_wrapper">
               <div class="page_header">
                 <h1>Data</h1>
                 <div class="nav pull-right" style="margin: -30px 8px;">
+
+
                   <%= link_to '<i class="icon-plus icon-white"></i> New Milestone'.html_safe, {:controller => "milestones", :action => "new_milestone"} %>
                 </div>
               </div>
@@ -142,7 +208,7 @@
                   <hr>
 
                   <h4><strong>Changes in mood</strong></h4>
-                  <div style="position: relative;">
+                  <div style="margin: 5% 10% 5% 20%;">
                     <%= image_tag @grafica %>
 
                   </div>

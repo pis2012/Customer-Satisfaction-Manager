@@ -11,3 +11,84 @@
  *= require_self
  *= require_tree .
  */
+
+#feedback_tipoFeedback{
+    margin-top: 6px;
+
+}
+
+.Etiqueta{
+    float: left;
+    margin-right:5%;
+    margin-top: 5px;
+    margin-left: 10px
+}
+
+.estilotextarea {
+    width:90%;
+    height:200px;
+    border: 0.5px solid #000000;
+    resize: none;
+    margin-left: 5%;
+
+}
+.feedback_feedback_type{
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.seccion {
+    color: rgba(0, 0, 0, 0.99);
+    background: rgba(62, 69, 255, 0);
+
+
+    border: 0px;
+    border-color: #dbe0ff;
+    border-style:groove;
+
+    border-style: solid;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+#feedback_asunto{
+    	background-color:#f0f0f0;
+    	border:1px solid #dbdbdb;
+    	padding:5px;
+    	-webkit-border-radius:7px;
+    	-moz-border-radius:7px;
+    	color: #000;
+    	font-style:italic;
+    	font-weight:bold;
+        margin-left: 63px;
+}
+.wide{
+    width:100%;
+    height: 100%;
+
+
+
+}
+.margin{
+    width: 100%;
+
+    margin-top: 10px;
+
+}
+
+.margin2{
+    border-bottom-width: 2px;
+
+    border-bottom-style: solid;
+
+}
+
+.margin3{
+    margin-top: 5px;
+}
+
+.margin4{
+    margin-top: 10px;
+}

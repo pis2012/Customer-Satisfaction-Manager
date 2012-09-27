@@ -5,19 +5,118 @@
 
 
 
-.feedbacks_panel {
-  margin-bottom: 25px;
-  padding: 0;
-  border-bottom: 1px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  margin: 0;
-  padding: 15px 30px;
+
+
+
+.seccion2 {
+  color:#fff;
+  background: rgba(255, 241, 187, 0);
+
+  height: 150px;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 10px;
+  border-radius: 15px 55px 15px 55px;
+  -moz-border-radius: 15px 55px 15px 55px;
+}
+.scroll {
+  height:480px;
+  width: 100%;
+  overflow:auto;
+
 }
 
-div.feedbacks_panel h1 {
-  color: #000000;
-  font-size: 16px;
-  font-weight: normal;
-  margin: 0;
+.show_Asunto{
+  float: left;
+  position: absolute;
+  text-decoration: underline;
+  margin-top: 2%;
+  margin-left: 16%;
+
+
 }
+
+.scroll2{
+  height:100px;
+  width: 80%;
+  overflow:auto;
+  background: #bcc6c6;
+  margin-left: 10%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-decoration-color: #000000;
+  border-color: #1219aa;
+  border-width: 0.5px;
+  border-style: solid;
+
+
+}
+.sinscroll {
+  height:480px;
+  border-color: #0f94aa;
+  border-width: 1px;
+  border-style: solid;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+
+
+.ImgCaritaCliente{
+  height:40%;
+  margin: auto;
+  width: 48%;
+  margin-left: 28%;
+  margin-top: 3%;
+
+}
+.fechaFeedback{
+
+  position: absolute;
+  margin-top: 5%;
+  margin-left: 16%;
+
+}
+.ImgFeedback{
+  height:100px;
+  width: 100px;
+  position: absolute;
+  float: left;
+  margin-left: 2%;
+  margin-top: 2%;
+
+
+}
+.Contenido{
+  position: absolute;
+
+  margin-top: 8%;
+  width: 60%;
+  margin-left: 16%;
+
+}
+
+.ultimoCometario{
+
+  position: absolute;
+
+
+  margin-top: 17%;
+  margin-left: 16%;
+
+}
+
+a.fill-div {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  border-radius: 15px 55px 15px 55px;
+  -moz-border-radius: 15px 55px 15px 55px;
+}
+
+a.fill-div:hover {
+  background: #b1b59e;
+}
+
