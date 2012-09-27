@@ -2,8 +2,7 @@ require 'spec_helper'
 
 class ProjectControllerSpec
 
-  describe feedbacksController do
-
+  describe FeedbacksController do
 
 
     it "def index" do
@@ -13,25 +12,30 @@ class ProjectControllerSpec
     end
 
     it "def new" do
-      post :create, feedback: {name:'Proyecto',
+
+
+      rol_admin = Role.create(name:'Admin'),
+      client1 = Client.create(name:'MicroHard'),
+      @admin_usr = User.create(role: rol_admin, client: client1,
+                              username: 'admin',password:'admin',password_confirmation:'admin',
+                              full_name:'Martin Cabrera', email:'cabrera@1234.com')
+
+      post :create, project: {name:'Proyecto',
                               description:'Descripcion de proyecto',
                               end_date:'2013-01-01 00:00:00',
                               finalized:false}
 
-      @var1 = feedbacks_path(assigns[:feedback])
+
+
+      post :create, feedback: {project: :project,
+                               feedback_type: type_skype,
+                               contenido: "hola daniel"}
+
+      @var1 = Feedbacks_path(assigns[:feedback])
       @var2 = @var1.gsub(".", "/")
       response.should redirect_to(@var2)
     end
 
-    it "def show" do
-      @feedback1=feedback.create(subject: "Alfonso",
-                               content: "This is Sparta",
-                               feeling: 1,
-                               visibility: true)
 
-      get :show, id: @feedback1.to_param
-
-      assert_response :success
-    end
   end
 end

@@ -25,9 +25,9 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
-  config.before(:each) do
-    load "#{Rails.root}/db/seeds.rb"
-  end
+  # config.before(:each) do
+  # load "#{Rails.root}/db/seeds.rb"
+  # end
 
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
