@@ -21,11 +21,15 @@
 
     $('#datepicker').datepicker();
 
-    function updatePanel(url) {
-        $.get(url , function(res){
+    function updatePanel(url,id) {
+        $.get(url, function(res){
             //var f = $('#feedbacks');
             //f.innerHTML = res;
-            document.getElementById('feedbacks').innerHTML = res;
+
+            var dom = $.parseXML(res);
+            var content = dom.getElementById(id);
+            //alert(form);
+            document.getElementById('feedbacks').innerHTML = (new XMLSerializer()).serializeToString(content);
         });
     }
 
@@ -45,7 +49,7 @@
           <li class="dropdown">
             <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">
               <b class="caret"></b>
-              <i class="icon-book"></i>
+              <i class="icon-book"> </i>
               <%= @project.name %>
             </a>
             <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
@@ -65,7 +69,7 @@
 
 
     <div class="span3">
-      <br>
+      <br> </br>
 
         <div class="estado_animo">
           <p style="font-style: inherit; font-size: medium; margin: 0px 0px 5px 30px ;">Current Mood:</p>
@@ -87,7 +91,7 @@
           </ul>
 
           <p style="font-style: inherit; font-size: medium; margin: 0px 0px 5px 30px ;">You can change your mood whenever you want. </p>
-          <br>
+          <br> </br>
 
         </div>
 
@@ -111,16 +115,15 @@
             <div class="page_header_wrapper">
               <div class="page_header" style="background: #ffffbc;">
                 <h1>Feedbacks</h1>
-                <div class="nav pull-right" style="margin: -35px 8px;">
-                  <button class="btn btn-link .add" type="button" onclick="updatePanel('<%=  new_feedback_path + '?Projectid=' +  @project.id.to_s %>')">
-                    <i class="icon-plus icon-white"></i> New Feedback
+                <div class="nav pull-right" style="margin: -30px 8px;">
+                  <button class="btn btn-link .add" type="button" onclick="updatePanel('<%=  new_feedback_path + '?Projectid=' +  @project.id.to_s %>','new_feedback')">
+                    <i class="icon-plus icon-white"> </i> New Feedback
                   </button>
                 </div>
               </div>
             </div>
 
             <div id="#load-more">
-                     <%=   %>
             </div>
 
             <!--// page header2 -->
@@ -129,15 +132,15 @@
               <h4>Show events since:</h4>
               <div class="nav pull-right" style="margin: -5% 40%;">
                   <div class="input-append date" id="datepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                    <input size="12" type="text" value="12-02-2012" readonly>
-                    <span class="add-on"><i class="icon-th"></i></span>
+                    <input size="12" type="text" value="12-02-2012" readonly="true"/>
+                    <span class="add-on"><i class="icon-th"> </i></span>
                   </div>
                   <p style="margin: -14% 105%">
                     <button class="btn btn-primary" type="button">Filtrar</button>
                   </p>
               </div>
             </div>
-            <hr>
+            <hr> </hr>
 
             <!-- page contents -->
             <div class="page_content">
@@ -190,7 +193,7 @@
                 <div class="nav pull-right" style="margin: -30px 8px;">
 
 
-                  <%= link_to '<i class="icon-plus icon-white"></i> New Milestone'.html_safe, {:controller => "milestones", :action => "new_milestone"} %>
+                  <%= link_to '<i class="icon-plus icon-white"> </i> New Milestone'.html_safe, {:controller => "milestones", :action => "new_milestone"} %>
                 </div>
               </div>
             </div>
@@ -204,7 +207,7 @@
                 <div id="page_content">
                   <!-- main column -->
                   <!--// main column -->
-                  <hr>
+                  <hr> </hr>
 
                   <h4><strong>Changes in mood</strong></h4>
                   <div style="margin: 5% 10% 5% 20%;">
@@ -212,7 +215,7 @@
 
                   </div>
 
-                  <hr>
+                  <hr> </hr>
 
                   <h4><strong>Milestones</strong></h4>
 
@@ -234,4 +237,3 @@
 
   </div>
 
-</div>

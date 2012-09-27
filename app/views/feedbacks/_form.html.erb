@@ -1,10 +1,4 @@
-
-
-
-
-
-
-    <div class="row seccion wide" style="margin: auto;">
+<div class="row seccion wide" style="margin: auto;" xmlns="http://www.w3.org/1999/html">
       <%= form_for(@feedback) do |f| %>
           <% if @feedback.errors.any? %>
               <div id="error_explanation">
@@ -55,18 +49,23 @@
 
       <div class="margin3" >
         <h7 style="float: left;margin-right: 5%;"> ¿Cómo crees que este feedback afecta al estado de ánimo del proyecto? </h7>
-        -1<input type="radio" name="animo" value="-1" style="margin-right: 3%;margin-left: 2px;">
-        0<input type="radio" name="animo" value="0" style="margin-right: 3%;margin-left: 2px;">
-        1<input type="radio" name="animo" value="1" style="margin-right: 3%;margin-left: 2px;">
+        -1<input type="radio" name="animo" value="-1" style="margin-right: 3%;margin-left: 2px;"/>
+        0<input type="radio" name="animo" value="0" style="margin-right: 3%;margin-left: 2px;"/>
+        1<input type="radio" name="animo" value="1" style="margin-right: 3%;margin-left: 2px;"/>
 
       </div>
 
-      <div class="margin4">
-        <%=  f.submit :Crear %>  or <%= link_to 'Cancelar', :controller => "/projects", :action => "show_project_complete"  %>
+      <div class="margin4" style="margin-left: 10px;">
+        <%=  f.submit :Crear %> or
+        <button class="btn btn-link" type="button"  onclick="updatePanel('my_projects','page')" >
+          Cancelar
+        </button>
+        <!--< %= link_to 'Cancelar', :controller => "/projects", :action => "show_project_complete"  %>-->
       </div>
 
     </div>
-          </div>
 
 
-<% end %>
+
+      <% end %>
+    </div>
