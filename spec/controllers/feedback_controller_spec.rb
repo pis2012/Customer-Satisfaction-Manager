@@ -13,27 +13,24 @@ class ProjectControllerSpec
 
     it "def new" do
 
-
+      type_skype = FeedbackType.create(name:'Skype')
       rol_admin = Role.create(name:'Admin'),
       client1 = Client.create(name:'MicroHard'),
-      @admin_usr = User.create(role: rol_admin, client: client1,
+      admin_usr = User.create(role: rol_admin, client: client1,
                               username: 'admin',password:'admin',password_confirmation:'admin',
                               full_name:'Martin Cabrera', email:'cabrera@1234.com')
 
-      post :create, project: {name:'Proyecto',
+      project = Project.create({name:'Proyecto',
                               description:'Descripcion de proyecto',
                               end_date:'2013-01-01 00:00:00',
-                              finalized:false}
+                              finalized:false})
 
-
-
-      post :create, feedback: {project: :project,
-                               feedback_type: type_skype,
+      post :create, feedback: {project_id: project.id,
+                               feedback_type_id: type_skype.id,
                                contenido: "hola daniel"}
 
-      @var1 = Feedbacks_path(assigns[:feedback])
-      @var2 = @var1.gsub(".", "/")
-      response.should redirect_to(@var2)
+
+      response.should redirect_to("/my_projects")
     end
 
 
