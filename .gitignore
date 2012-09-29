@@ -1,6 +1,6 @@
 /log/*.log
 /tmp
 /.idea/*
-
+/.idea/
 /config/database.yml
 /.idea/workspace.xml

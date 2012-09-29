@@ -268,6 +268,231 @@ p20 = Project.create(client: client1,
 Mood.create(project: p20,
             status: 10)
 
+p21 = Project.create(client: client1,
+                     name:'Proyecto21',
+                     description:'Descripcion de proyecto21',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p21,
+            status: 10)
+
+p22 = Project.create(client: client1,
+                     name:'Proyecto22',
+                     description:'Descripcion de proyecto22',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p22,
+            status: 10)
+
+p23 = Project.create(client: client1,
+                     name:'Proyecto23',
+                     description:'Descripcion de proyecto23',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p23,
+            status: 10)
+
+p24 = Project.create(client: client1,
+                     name:'Proyecto24',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p24,
+            status: 10)
+
+p25 = Project.create(client: client1,
+                     name:'Proyecto25',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p25,
+            status: 10)
+
+p26 = Project.create(client: client1,
+                     name:'Proyecto26',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p26,
+            status: 10)
+
+p27 = Project.create(client: client1,
+                     name:'Proyecto27',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p27,
+            status: 10)
+
+p28 = Project.create(client: client1,
+                     name:'Proyecto28',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p28,
+            status: 10)
+
+p29 = Project.create(client: client1,
+                     name:'Proyecto29',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p29,
+            status: 10)
+
+p30 = Project.create(client: client1,
+                     name:'Proyecto30',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p30,
+            status: 10)
+
+p31 = Project.create(client: client1,
+                     name:'Proyecto31',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p31,
+            status: 10)
+
+p32 = Project.create(client: client1,
+                     name:'Proyecto32',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p32,
+            status: 10)
+
+p33 = Project.create(client: client1,
+                     name:'Proyecto33',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p33,
+            status: 10)
+
+p34 = Project.create(client: client1,
+                     name:'Proyecto34',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p34,
+            status: 10)
+
+p35 = Project.create(client: client1,
+                     name:'Proyecto35',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p35,
+            status: 10)
+
+p36 = Project.create(client: client1,
+                     name:'Proyecto36',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p36,
+            status: 10)
+
+p37 = Project.create(client: client1,
+                     name:'Proyecto37',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p37,
+            status: 10)
+
+p38 = Project.create(client: client1,
+                     name:'Proyecto38',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p38,
+            status: 10)
+
+p39 = Project.create(client: client1,
+                     name:'Proyecto39',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p39,
+            status: 10)
+
+p40 = Project.create(client: client1,
+                     name:'Proyecto40',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p40,
+            status: 10)
+
+p41 = Project.create(client: client1,
+                     name:'Proyecto41',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p41,
+            status: 10)
+
+p42 = Project.create(client: client1,
+                     name:'Proyecto42',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p42,
+            status: 10)
+
+p43 = Project.create(client: client1,
+                     name:'Proyecto43',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p43,
+            status: 10)
+
+p44 = Project.create(client: client1,
+                     name:'Proyecto44',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p44,
+            status: 10)
+
+p45 = Project.create(client: client1,
+                     name:'Proyecto45',
+                     description:'Descripcion de proyecto20',
+                     end_date:'2013-01-01 00:00:00',
+                     finalized:false)
+
+Mood.create(project: p45,
+            status: 10)
+
 
 admin_usr = User.create(role: rol_admin, client: client1,
                         username: 'admin',password:'admin',password_confirmation:'admin',
@@ -280,12 +505,17 @@ client_usr = User.create(role: rol_client, client: client1,
                          username: 'client_usr',password:'client',password_confirmation:'client',
                          full_name:'Bill Gates', email:'gates@1234.com')
 
+profile = Profile.create(user:client_usr, project:p4,
+                          last_login_date:'2012-01-01 00:00:00',skype_usr:'gates.skype')
+
+
+
 client_usr = User.create(role: rol_client, client: client2,
                          username: 'sony',password:'sony',password_confirmation:'sony',
                          full_name:'Sony', email:'sony@1234.com')
 
 profile2 = Profile.create(user:client_usr, project:p1,
-                          last_login_date:'2012-01-01 00:00:00',skype_usr:'gates.skype')
+                          last_login_date:'2012-01-01 00:00:00',skype_usr:'sony.skype')
 
 mooveit_usr = User.create(role: rol_mooveit, client: client1,
                           username: 'mooveit',password:'mooveit',password_confirmation:'mooveit',
@@ -298,9 +528,6 @@ profile3 = Profile.create(user:mooveit_usr, project:p1,
 Feedback.create(project: p1, user: client_usr, feedback_type: type_skype, asunto: "Email de requerimientos - interfaz", contenido: " Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id. Quo mundi lobortis reformidans eu, legimus senserit definiebas an eos. Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per. In usu latine equidem dolores. Quo no falli viris intellegam, ut fugit veritus placerat per. Ius id vidit volumus mandamus, vide veritus democritum te nec, ei eos debet libris consulatu. No mei ferri graeco dicunt, ad cum veri accommodare. Sed at malis omnesque delicata, usu et iusto zzril meliore. Dicunt maiorum eloquentiam cum cu, sit summo dolor essent te. Ne quodsi nusquam legendos has, ea dicit voluptua eloquentiam pro, ad sit quas qualisque. Eos vocibus deserunt quaestio ei. Blandit incorrupte quaerendum in quo, nibh impedit id vis, vel no nullam semper audiam. Ei populo graeci consulatu mei, has ea stet modus phaedrum. Inani oblique ne has, duo et veritus detraxit. Tota ludus oratio ea mel, offendit persequeris ei vim. Eos dicat oratio partem ut, id cum ignota senserit intellegat. Sit inani ubique graecis ad, quando graecis liberavisse et cum, dicit option eruditi at duo. Homero salutatus suscipiantur eum id, tamquam voluptaria expetendis ad sed, nobis feugiat similique usu ex.")
 Feedback.create(project: p1, user: client_usr, feedback_type: type_email, asunto: "Conversacion Skype respecto a Integracion Servidores", contenido: " Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id. Quo mundi lobortis reformidans eu, legimus senserit definiebas an eos. Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per. In usu latine equidem dolores. Quo no falli viris intellegam, ut fugit veritus placerat per. Ius id vidit volumus mandamus, vide veritus democritum te nec, ei eos debet libris consulatu. No mei ferri graeco dicunt, ad cum veri accommodare. Sed at malis omnesque delicata, usu et iusto zzril meliore. Dicunt maiorum eloquentiam cum cu, sit summo dolor essent te. Ne quodsi nusquam legendos has, ea dicit voluptua eloquentiam pro, ad sit quas qualisque. Eos vocibus deserunt quaestio ei. Blandit incorrupte quaerendum in quo, nibh impedit id vis, vel no nullam semper audiam. Ei populo graeci consulatu mei, has ea stet modus phaedrum. Inani oblique ne has, duo et veritus detraxit. Tota ludus oratio ea mel, offendit persequeris ei vim. Eos dicat oratio partem ut, id cum ignota senserit intellegat. Sit inani ubique graecis ad, quando graecis liberavisse et cum, dicit option eruditi at duo. Homero salutatus suscipiantur eum id, tamquam voluptaria expetendis ad sed, nobis feugiat similique usu ex.")
 Feedback.create(project: p1, user: client_usr, feedback_type: type_email, asunto: "Situacion de Formularios", contenido: " Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id. Quo mundi lobortis reformidans eu, legimus senserit definiebas an eos. Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per. In usu latine equidem dolores. Quo no falli viris intellegam, ut fugit veritus placerat per. Ius id vidit volumus mandamus, vide veritus democritum te nec, ei eos debet libris consulatu. No mei ferri graeco dicunt, ad cum veri accommodare. Sed at malis omnesque delicata, usu et iusto zzril meliore. Dicunt maiorum eloquentiam cum cu, sit summo dolor essent te. Ne quodsi nusquam legendos has, ea dicit voluptua eloquentiam pro, ad sit quas qualisque. Eos vocibus deserunt quaestio ei. Blandit incorrupte quaerendum in quo, nibh impedit id vis, vel no nullam semper audiam. Ei populo graeci consulatu mei, has ea stet modus phaedrum. Inani oblique ne has, duo et veritus detraxit. Tota ludus oratio ea mel, offendit persequeris ei vim. Eos dicat oratio partem ut, id cum ignota senserit intellegat. Sit inani ubique graecis ad, quando graecis liberavisse et cum, dicit option eruditi at duo. Homero salutatus suscipiantur eum id, tamquam voluptaria expetendis ad sed, nobis feugiat similique usu ex.")
-
-
-
 
 
 Milestone.create(:target_date => '2011-01-01 00:00:00', :project => p1, :name => "Prueba1")

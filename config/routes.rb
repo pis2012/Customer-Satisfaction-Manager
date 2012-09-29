@@ -13,6 +13,8 @@ CSM::Application.routes.draw do
   match "/my_projects/new_milestone", to: "milestones#new_milestone"
 
 
+  match "/admin" => "admin#index"
+
   resources :projects
 
 

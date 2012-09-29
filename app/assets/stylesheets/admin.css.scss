@@ -6,7 +6,8 @@
 
 
 
-#page {
+#page
+{
   background-color: #FFFFFF;
   border: 1px solid #D7D7D7;
   border-radius: 6px 6px 6px 6px;
@@ -16,36 +17,37 @@
   position: relative;
 }
 
+.page_content
+{
+  padding: 15px 30px;
+}
+
 
 .page_header {
-  margin-bottom: 25px;
-  padding: 0;
   background: none repeat scroll 0 0 #FFF8EC;
   border-bottom: 1px solid #DADEE5;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  margin: 0;
   padding: 15px 30px;
+  height: 40px;
 }
 
-div.page_header h1, div.page_divider h2 {
-  color: #000000;
+.page_header .add_element
+{
+  margin-top: 4px;
+  float: right;
+}
+
+.page_header h1 {
+  float: left;
   font-size: 16px;
   font-weight: normal;
   margin: 0;
 }
 
-.page_header2 {
-  margin-bottom: 25px;
-  padding: 0;
-  border-bottom: 1px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  margin: 0;
-  padding: 15px 30px;
+.page_header h5 {
+
 }
-
-
 
 #breadcrumbs-wrapper {
   background: url("breadcrumb-bg.png") repeat-x scroll 0 -7px transparent;
@@ -96,9 +98,14 @@ ul {
 
 
 
-#global_nav a:hover, #global_nav a:visited:hover {
+#global_nav a:hover, #global_nav a:visited {
   background-color: #F8F8F8;
   color: #333333;
+}
+
+#global_nav li.active a:hover, #global_nav li.active a:visited{
+  background-color: #EBEBEB;
+  color: #000000;
 }
 
 #global_nav li.active{
@@ -120,3 +127,8 @@ ul {
   background-position: 8px -122px;
 }
 
+#font-face
+{
+  font-family: Lemon;
+  src: url('lemon.ttf');
+}

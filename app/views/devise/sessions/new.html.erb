@@ -1,15 +1,6 @@
 <div class="container">
   <div class="row-fluid">
-    <div class="span2">
-      <!--Sidebar content-->
-    </div>
-    <div class="span10">
-      <div class="container">
-        <div class="row-fluid">
-          <div class="span5">
-
-          </div>
-          <div class="span5" style="background-color: #f0f8ff; border-radius: 5px; ">
+    <div class="span5 offset6" style="margin-top: 20px; margin-bottom: 200px; background-color: #f0f8ff; border-radius: 5px; ">
               <div style="width: 98%; margin-left: 5px;" >
               <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form-horizontal"} ) do |f| %>
                <legend>Sign in</legend>
@@ -75,6 +66,3 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
