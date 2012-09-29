@@ -10,7 +10,7 @@ class ProjectControllerSpec
         assert_not_nil assigns(:projects)
     end
 
-    it "def new" do
+    it "def create" do
       post :create, project: {name:'Proyecto',
                                 description:'Descripcion de proyecto',
                                 end_date:'2013-01-01 00:00:00',
