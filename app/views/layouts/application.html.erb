@@ -4,16 +4,16 @@
   <title>CSM</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
-
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
+<div id="global-wrapper">
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
             <a class="brand" href="#">CSM</a>
-            <div class="nav">
+            <div class="nav-collapse collapse">
                 <ul class="nav">
                     <li>
                         <a href="/"><i class="icon-home icon-white"></i> Home</a>
@@ -63,9 +63,25 @@
     </div><!-- /.navbar-inner -->
 </div><!-- /.navbar -->
 
-      <%= yield %>
+
+<div id="header">
+  <div class="container">
+
+    <a  href="/">
+      <div id="logo"></div>
+    </a>
+
+  </div>
+</div>
+
+<div id="content">
+<%= yield %>
+</div>
 
 
-
+<div id="footer">
+<div class="container"> </div>
+</div>
+</div>
 </body>
 </html>

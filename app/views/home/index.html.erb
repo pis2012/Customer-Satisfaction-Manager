@@ -30,7 +30,7 @@
     }
 </script>
 
-
+ <div id="home">
 <% if user_signed_in? %>
     <% if current_user.role_id == 2 %>
 
@@ -45,7 +45,7 @@
             </div>
             <div class="span10">
               <div style="text-align: center;">
-                <h2 style="font-family: Lemon; text-align: left;">MOOD OF OUR CUSTOMERS</h2>
+                <h2>MOOD OF OUR CUSTOMERS</h2>
                 <% count = 0 %>
                 <% aux = "height: 160px; vertical-align: top;" %>
 
@@ -103,7 +103,7 @@
             </div>
             <div class="span10">
               <div style="text-align: center;">
-                <h2 style="font-family: Lemon; text-align: left;">MOOD OF OUR CUSTOMERS</h2>
+                <h2>MOOD OF OUR CUSTOMERS</h2>
                 <% count = 0 %>
                 <% @projects = Project.all.shuffle %>
                 <% @projects.each do |project| %>
@@ -151,29 +151,35 @@
     <% end %>
 
 <% else %>
-
+    <br>
+    <br>
+       <br>
+       <br>
     <div class="container">
       <div class="row-fluid">
         <div class="span2">
         </div>
         <div class="span8">
           <div style="text-align: center;">
-            <div style="display: inline-block; vertical-align: middle; width: 170px; margin: 50px;">
+            <div style="display: inline-block; vertical-align: middle; width: 190px; margin-right: 30px;">
               <%= image_tag "status/big/9.png" %>
             </div>
             <div style="display: inline-block; vertical-align: middle; text-align: left; width: 60%;">
-              <h3 style="font-family: Lemon;">CUSTOMER SATISFACTION MANAGER</h3>
+              <h2 >CUSTOMER SATISFACTION MANAGER</h2>
               </br>
-              <p style="font-size: 16px;">
+              <p>
                 Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum
                 liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id.
+              </p>
+              <p>
+                <a href="/" class="continue-reading">Continue reading...</a>
               </p>
             </div>
           </div>
 
           <div style="text-align: center;">
             <hr/>
-            <h3 style="font-family: Lemon; text-align: left;">MOOD OF OUR CUSTOMERS</h3>
+            <h2 style="text-align: left;">MOOD OF OUR CUSTOMERS</h2>
 
             <% @projects = Project.all.shuffle %>
             <% @projects.each do |project| %>
@@ -198,3 +204,4 @@
     </div>
 
 <% end %>
+</div>

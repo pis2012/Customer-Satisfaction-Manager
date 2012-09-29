@@ -1,3 +1,29 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#home h1,h2,h3
+{
+  font-family: Lemon;
+  text-align: left;
+}
+
+#home p
+{
+  margin-bottom:10px;
+}
+
+#home p .project-name
+{
+  visibility:hidden;
+  text-align: right;
+}
+
+#home p a.continue-reading
+{
+  color:#456E99;
+  display:block;
+  font-weight:bold;
+}
+

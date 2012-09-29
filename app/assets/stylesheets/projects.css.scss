@@ -4,14 +4,24 @@
 
 
 .project_description {
-  margin-bottom: 25px;
-  padding: 0;
-  border-bottom: 1px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  margin: 0;
-  padding: 15px 30px;
+
+}
+
+.current-mood p
+{
+  margin-right: 15px;
+}
+
+#global_nav li.feedbacks.active a {
+  background-position: 8px -38px;
+}
+
+#global_nav li.data a {
+  background-position: 8px -80px;
 }
 
 
+#global_nav li.data.active a {
+  background-position: 8px -122px;
+}
 
