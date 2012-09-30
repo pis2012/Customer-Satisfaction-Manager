@@ -3,13 +3,11 @@ class Feedback < ActiveRecord::Base
   accepts_nested_attributes_for :feedback_type
   belongs_to :project
   belongs_to :user
-  has_many :comentarios
+  has_many :comments
 
 
-  attr_accessible :project, :user, :feedback_type, :asunto,  :contenido ,:created_at, :VisibilidadCliente,:VisibilidadEmpleado,:feedback_type_id , :project_id,:comentario_id
+  attr_accessible :project, :user, :feedback_type,
+                  :subject, :content ,:created_at, :updated_at, :client_visibility, :mooveit_visibility
 
-  validates :asunto,   :presence  => true
-  validates :contenido ,:presence  => true
-  validates :feedback_type_id,:presence  => true
-
+  validates :feedback_type, :user, :project, :subject, :content, :presence  => true
 end
