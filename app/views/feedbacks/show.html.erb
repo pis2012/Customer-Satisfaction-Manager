@@ -1,24 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div class="row seccion wide" style="margin: auto;" xmlns="http://www.w3.org/1999/html">
+    <div id="myTabContent" class="Data">
+      <div class="page_header" style="border-bottom: solid; background: #ffffbc;border-bottom-width: 0.8px;border-bottom-color: #c8d0e2;">
+        <h1>Feedback</h1>
+      </div>
 
-<p>
-  <b>Subject:</b>
-  <%= @feedback.subject %>
-</p>
+      <input class="TextField" id="feedback_project_id" name="project_id" size="30" type="hidden" value="<%= params[:Projectid] %>" />
+      <div class="seccion3" >
 
-<p>
-  <b>Content:</b>
-  <%= @feedback.content %>
-</p>
 
-<p>
-  <b>Feedback type:</b>
-  <%= FeedbackType.find(@feedback.feedback_type_id).name %>
-</p>
 
-<p>
-  <b>Project:</b>
-  <%= @feedback.project %>
-</p>
+          <h4 class="show_Asunto2"><%= truncate(strip_tags( @feedback.subject),
+                                               :length => 45) %></h4>
+
+          <h6 class="fechaFeedback2" >03/09/2012</h6>
+          <h7 class="Contenido2"><%= @feedback.content %></h7>
+
+
+      </div>
+
+      <br></br>
+
+      <div class="Separador" >
+
+      </div>
+
+
+
+      <div class="margin3" >
+
+      </div>
+
+
+      <div class="margin4" style="margin-left: 10px;">
+
+
+      </div>
+
+</div>
+</div>
+
 
 
 

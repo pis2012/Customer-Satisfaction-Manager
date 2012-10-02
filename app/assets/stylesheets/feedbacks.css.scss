@@ -92,6 +92,16 @@
   border-radius: 15px 55px 15px 55px;
   -moz-border-radius: 15px 55px 15px 55px;
 }
+.seccion3 {
+  position: relative;
+  background: #ff0000;
+
+}
+
+
+
+
+
 .scroll {
   height:480px;
   width: 100%;
@@ -105,6 +115,17 @@
   text-decoration: underline;
   margin-top: 2%;
   margin-left: 16%;
+
+
+}
+
+
+.show_Asunto2{
+
+  position: absolute;
+  text-decoration: underline;
+  margin-top: 1%;
+  margin-left: 1%;
 
 
 }
@@ -151,6 +172,15 @@
   margin-left: 16%;
 
 }
+
+.fechaFeedback2{
+
+  position: absolute;
+  margin-top: 2.5%;
+  margin-left: 1%;
+
+}
+
 .ImgFeedback{
   height:100px;
   width: 100px;
@@ -168,6 +198,25 @@
   width: 78%;
   margin-left: 16%;
 
+}
+
+.Contenido2{
+
+
+  position: absolute;
+  margin-top: 5%;
+  width: 99%;
+  margin-left: 1%;
+  text-align: justify;
+
+}
+
+.Separador{
+  position: absolute;
+  border-bottom: solid;
+  border-bottom-width: 0.5px;
+  margin-top:15%;
+  position: relative;
 }
 
 .ultimoCometario{

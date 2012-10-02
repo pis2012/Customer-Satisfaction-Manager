@@ -29,7 +29,7 @@ class FeedbacksController < ApplicationController
     @feedback.project_id = params[:id]
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html {  }
       format.json { render json: @feedback }
     end
   end
