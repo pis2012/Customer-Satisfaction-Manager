@@ -1,14 +1,14 @@
 require 'spec_helper.rb'
 require 'rubygems'
-gem 'activerecord'
 require 'active_record'
-require Rails.root.join('app/models/feedback')
-require Rails.root.join('app/models/project')
-require Rails.root.join('app/models/user')
-require Rails.root.join('app/models/role')
-require Rails.root.join('app/models/profile')
-require Rails.root.join('app/models/feedback_type')
-require Rails.root.join('app/models/client')
+#gem 'activerecord'
+#require Rails.root.join('app/models/feedback')
+#require Rails.root.join('app/models/project')
+#require Rails.root.join('app/models/user')
+#require Rails.root.join('app/models/role')
+#require Rails.root.join('app/models/profile')
+#require Rails.root.join('app/models/feedback_type')
+#require Rails.root.join('app/models/client')
 
 describe Feedback do
   before(:all) do
@@ -29,100 +29,100 @@ describe Feedback do
     Profile.delete_all
     Feedback.delete_all
 
-    rol_admin = Role.new(:name=>'Admin')
-    rol_admin.save
-    rol_client = Role.new(:name=>'Client')
-    rol_client.save
-    rol_mooveit = Role.new(:name=>'Mooveit')
-    rol_mooveit.save
+    rol_admin = Role.create(:name=>'Admin')
+    #rol_admin.save
+    rol_client = Role.create(:name=>'Client')
+    #rol_client.save
+    rol_mooveit = Role.create(:name=>'Mooveit')
+    #rol_mooveit.save
 
-    type_skype = FeedbackType.new(:name=>'Skype')
-    type_email = FeedbackType.new(:name=>'Email')
-    type_reconocimiento = FeedbackType.new(:name=>'Reconocimiento')
-    type_comentario = FeedbackType.new(:name=>'Comentario')
+    type_skype = FeedbackType.create(:name=>'Skype')
+    type_email = FeedbackType.create(:name=>'Email')
+    type_reconocimiento = FeedbackType.create(:name=>'Reconocimiento')
+    type_comentario = FeedbackType.create(:name=>'Comentario')
 
-    type_skype.save
-    type_email.save
-    type_reconocimiento.save
-    type_comentario.save
+    #type_skype.save
+    #type_email.save
+    #type_reconocimiento.save
+    #type_comentario.save
 
-    client1 = Client.new(:name=>"MicroHard")
-    #client2 = Client.new(:name=>"Sony")
+    client1 = Client.create(:name=>"MicroHard")
+    #client2 = Client.create(:name=>"Sony")
 
-    client1.save
+    #client1.save
     #client2.save
 
-    end_date = DateTime.new(2013,1,1)
+    end_date = DateTime.create(2013,1,1)
 
-    admin_usr = User.new(:role=>rol_admin, :client=>client1,
+    admin_usr = User.create(:role=>rol_admin, :client=>client1,
                          :username=>'admin',:password=>'admin',:password_confirmation=>'admin',
                          :full_name=>'Martin Cabrera', :email=>'cabrera@1234.com')
 
-    admin_usr.save
+    #admin_usr.save
 
 
-    p1 = Project.new(:client=> client1,
+    p1 = Project.create(:client=> client1,
                      :name=> "Panaderia El 10",
                      :description=> "Software para administracion de una panaderia",
                      :end_date=> end_date,
                      :finalized=> false)
-    p1.save
+    #p1.save
 
-    profile1 = Profile.new(:user=>admin_usr, :project=>p1,
+    profile1 = Profile.create(:user=>admin_usr, :project=>p1,
                            :last_login_date=>'2012-01-01 00:00:00', :skype_usr=>'martin.skype')
 
-    profile1.save
+    #profile1.save
 
-    @feedback=Feedback.new(:project=> p1, :user=> admin_usr,
+    @feedback=Feedback.create(:project=> p1, :user=> admin_usr,
                            :feedback_type=> type_skype, :asunto=> "Email de requerimientos - interfaz",
                            :contenido=> " Ipsum dolor sit amet id, nobis feugiat similique usu ex.")
-    @feedback.save
+    #@feedback.save
 
   end
 
-  rol_admin = Role.new(:name=>'Admin')
-  rol_admin.save
-  rol_client = Role.new(:name=>'Client')
-  rol_client.save
-  rol_mooveit = Role.new(:name=>'Mooveit')
-  rol_mooveit.save
+  rol_admin = Role.create(:name=>'Admin')
+  #rol_admin.save
+  rol_client = Role.create(:name=>'Client')
+  #rol_client.save
+  rol_mooveit = Role.create(:name=>'Mooveit')
+  #rol_mooveit.save
 
-  type_skype = FeedbackType.new(:name=>'Skype')
-  type_email = FeedbackType.new(:name=>'Email')
-  type_reconocimiento = FeedbackType.new(:name=>'Reconocimiento')
-  type_comentario = FeedbackType.new(:name=>'Comentario')
+  type_skype = FeedbackType.create(:name=>'Skype')
+  type_email = FeedbackType.create(:name=>'Email')
+  type_reconocimiento = FeedbackType.create(:name=>'Reconocimiento')
+  type_comentario = FeedbackType.create(:name=>'Comentario')
 
-  type_skype.save
-  type_email.save
-  type_reconocimiento.save
-  type_comentario.save
+  #type_skype.save
+  #type_email.save
+  #type_reconocimiento.save
+  #type_comentario.save
 
-  client1 = Client.new(:name=>"MicroHard")
-  #client2 = Client.new(:name=>"Sony")
+  client1 = Client.create(:name=>"MicroHard")
+  #client2 = Client.create(:name=>"Sony")
 
-  client1.save
+  #client1.save
   #client2.save
 
-  end_date = DateTime.new(2013,1,1)
+  end_date = DateTime.create(2013,1,1)
 
-  admin_usr = User.new(:role=>rol_admin, :client=>client1,
+  admin_usr = User.create(:role=>rol_admin, :client=>client1,
                        :username=>'admin',:password=>'admin',:password_confirmation=>'admin',
                        :full_name=>'Martin Cabrera', :email=>'cabrera@1234.com')
 
-  admin_usr.save
+  #admin_usr.save
 
 
-  p1 = Project.new(:client=> client1,
+  p1 = Project.create(:client=> client1,
                    :name=> "Panaderia El 10",
                    :description=> "Software para administracion de una panaderia",
                    :end_date=> end_date,
                    :finalized=> false)
-  p1.save
+  #p1.save
 
-  profile1 = Profile.new(:user=>admin_usr, :project=>p1,
+  profile1 = Profile.create(:user=>admin_usr, :project=>p1,
                          :last_login_date=>'2012-01-01 00:00:00', :skype_usr=>'martin.skype')
 
-  profile1.save
+  #profile1.save
 
   ########### Asunto ###########
   it "should have a asunto" do
