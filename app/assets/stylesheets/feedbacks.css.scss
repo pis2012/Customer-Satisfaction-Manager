@@ -27,6 +27,13 @@
   margin-left: 5%;
 
 }
+.TextAreaComent{
+  width:97%;
+  height:50px;
+  border: 0.5px solid #000000;
+  resize: none;
+  margin-left: 1%;
+}
 .feedback_feedback_type{
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -64,6 +71,9 @@
   margin-top: 10px;
 
 }
+.margin1{
+  margin-left: 1%;
+}
 
 .margin2{
   border-bottom-width: 2px;
@@ -94,7 +104,8 @@
 }
 .seccion3 {
   position: relative;
-  background: #ff0000;
+  background: rgba(255, 241, 187, 0);
+
 
 }
 
@@ -205,9 +216,18 @@
 
   position: absolute;
   margin-top: 5%;
+  width: 98%;
+  margin-left: 1%;
+  text-align: justify;
+
+}
+.Contenido3{
+  position: relative;
+  margin-top: 5%;
   width: 99%;
   margin-left: 1%;
   text-align: justify;
+  visibility: hidden;
 
 }
 
@@ -215,7 +235,7 @@
   position: absolute;
   border-bottom: solid;
   border-bottom-width: 0.5px;
-  margin-top:15%;
+  margin-top:5%;
   position: relative;
 }
 

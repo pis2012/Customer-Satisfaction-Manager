@@ -12,8 +12,9 @@
           <h4 class="show_Asunto2"><%= truncate(strip_tags( @feedback.subject),
                                                :length => 45) %></h4>
 
-          <h6 class="fechaFeedback2" >03/09/2012</h6>
+          <h6 class="fechaFeedback2" ><%= "Create by " + @feedback.user.full_name + " on   " + @feedback.created_at.strftime("   %A, %d %B, %Y,  %H:%M")  %></h6>
           <h7 class="Contenido2"><%= @feedback.content %></h7>
+          <h7 class="Contenido3"><%= @feedback.content %></h7>
 
 
       </div>
@@ -28,6 +29,36 @@
   <div class="Separador" >
 
   </div>
+
+  <table>
+    <tr>
+      <th>Content</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <% @feedback.comments.each do |comment| %>
+        <tr>
+          <td><%= comment.content %></td>
+          <td><%= link_to 'Show', comment %></td>
+          <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+          <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+  </table>
+
+  <%= form_for(@commentNew) do |f| %>
+
+
+      <div class="field">
+        <%= f.text_area :content, :class => "TextAreaComent" %>
+      </div>
+      <div class="actions">
+        <%= f.submit :class => "margin1" %>
+      </div>
+  <% end %>
+
 
 </div>
 

@@ -15,6 +15,10 @@ class FeedbacksController < ApplicationController
   def show
     @feedback = Feedback.find(params[:id])
 
+    @comment  = Comment.find_all_by_feedback_id(@feedback.id)
+
+    @commentNew = Comment.new
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @feedback }
