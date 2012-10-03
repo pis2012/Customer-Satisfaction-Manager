@@ -154,7 +154,7 @@
                           <a href="feedbacks/<%= feedback.id %>" class="fill-div">
                             <h4 class="show_Asunto"><%= truncate(strip_tags(feedback.subject),
                                                                  :length => 45) %></h4>
-                            <h6 class="fechaFeedback" >03/09/2012</h6>
+                            <h6 class="fechaFeedback" ><%= "Subido por " + feedback.user.full_name + " on   " + feedback.created_at.strftime("   %A, %d %B, %Y,  %H:%M")  %></h6>
                             <h7 class="Contenido"><%= truncate(strip_tags(feedback.content),
                                              :length => 180) %></h7>
 

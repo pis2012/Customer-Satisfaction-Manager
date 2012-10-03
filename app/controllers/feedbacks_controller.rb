@@ -45,13 +45,14 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new(params[:feedback])
 
     @feedback.project_id = params[:project_id]
+    @feedback.user_id= current_user.id
 
     respond_to do |format|
       if @feedback.save
         format.html { redirect_to :controller => "/projects", :action => "show_project_complete" }
         format.json { render json: @feedback, status: :created, location: @feedback }
       else
-        format.html {redirect_to :controller => "/projects", :action => "show_project_complete" }
+        format.html { render action: "new" }
         format.json { render json: @feedback.errors, status: :unprocessable_entity }
       end
     end

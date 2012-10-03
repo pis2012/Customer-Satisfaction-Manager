@@ -1,5 +1,7 @@
 CSM::Application.routes.draw do
 
+  resources :pruebas
+
   resources :comments
 
   resources :comentarios
