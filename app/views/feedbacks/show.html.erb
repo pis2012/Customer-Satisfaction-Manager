@@ -30,33 +30,33 @@
 
   </div>
 
-  <table>
-    <tr>
-      <th>Content</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+
+
+
 
     <% @feedback.comments.each do |comment| %>
-        <tr>
-          <td><%= comment.content %></td>
-          <td><%= link_to 'Show', comment %></td>
-          <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-          <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+
+          <div class="seccionComent">
+            <%= image_tag("Skype.png", :alt => "Moove-It",:class => "ImgAvatComen") %>
+
+            <h9 class="fechaComment"><%= "Create by " + comment.user.full_name + " at   " + comment.created_at.strftime("   %A, %d %B, %Y,  %H:%M")  %></h9>
+            <h7 class="show_Coment"><%= comment.content  %></h7>
+          </div>
+
     <% end %>
-  </table>
+
 
   <%= form_for(@commentNew) do |f| %>
 
-
+    <div class="seccionComent">
       <div class="field">
         <%= f.text_area :content, :class => "TextAreaComent" %>
       </div>
+      <input class="TextField" id="comment_feedback_id" name="feedback_id" size="30" type="hidden" value="<%= @feedback.id %>" />
       <div class="actions">
         <%= f.submit :class => "margin1" %>
       </div>
+    </div>
   <% end %>
 
 
