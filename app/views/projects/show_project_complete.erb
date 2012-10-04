@@ -160,8 +160,10 @@
 
 
 
+                            <% if !(Comment.find_last_by_feedback_id(feedback.id) == nil)  %>
 
-                            <h6 class="ultimoCometario"  >Ultimo comentario echo por mauro@mooveit , 06 de agosto 2012</h6>
+                            <h6 class="ultimoCometario"  ><%= "Last Comment made by" +  Comment.find_last_by_feedback_id(feedback.id).user.full_name  + ", "+ Comment.find_last_by_feedback_id(feedback.id).created_at.strftime("%A %d %B, %Y") %></h6>
+                            <% end %>
                           </a>
                       </div>
                     <!--  </tr>   -->
