@@ -16,6 +16,17 @@ Mood.delete_all
 Profile.delete_all
 Feedback.delete_all
 
+#Pone en 0 el autoincrement 'id' de las tablas
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'roles'}")
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'feedback_types'}")
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'users'}")
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'clients'}")
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'projects'}")
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'milestones'}")
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'moods'}")
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'profiles'}")
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'feedbacks'}")
+
 rol_admin = Role.create(name:'Admin')
 rol_client = Role.create(name:'Client')
 rol_mooveit = Role.create(name:'Mooveit')
