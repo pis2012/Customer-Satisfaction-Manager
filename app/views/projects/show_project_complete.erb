@@ -51,11 +51,11 @@
         <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">
           <b class="caret"></b>
           <i class="icon-book"> </i>
-          <%= @project.name %>
+          <%= @view[:project].name %>
         </a>
         <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
-          <% Project.where(:client_id => @project.client_id).order(:name).each do |proj| %>
-              <% if proj.id != @project.id %>
+          <% Project.where(:client_id => @view[:project].client_id).order(:name).each do |proj| %>
+              <% if proj.id != @view[:project].id %>
                   <li>
                     <%= link_to proj.name, {:controller => "projects", :action => "change_profile_project", :id => proj.id} %>
                   </li>
@@ -75,7 +75,7 @@
         <div class="current-mood">
           <p>Yor current mood:</p>
 
-          <% mood = @project.moods.order(:created_at).last.get_mood_img %>
+          <% mood = @view[:project].moods.order(:created_at).last.get_mood_img %>
 
           <div class="face-mood-state">
               <%=image_tag "status/normal/#{mood}" %>
@@ -106,9 +106,9 @@
       </div>
 
       <div class="milestone-box">
-
-
-
+        <%= @view[:mile1] %>
+        <hr/>
+        <p> <%= @view[:mile2] %> </p>
       </div>
 
     </div>
@@ -124,7 +124,7 @@
                 <h1>Feedbacks</h1>
                 <div class="add_element">
 
-                      <button class="btn btn-link" type="button" onclick="updatePanel('<%=  new_feedback_path + '?Projectid=' +  @project.id.to_s %>','new_feedback')">
+                      <button class="btn btn-link" type="button" onclick="updatePanel('<%=  new_feedback_path + '?Projectid=' +  @view[:project].id.to_s %>','new_feedback')">
                         <i class="icon-plus icon-white"> </i> New Feedback
                       </button>
 
@@ -150,7 +150,7 @@
               <div class="feedbacks_panel">
 
                 <!--    <table>    -->
-                <% @project.feedbacks.each do |feedback| %>
+                <% @view[:project].feedbacks.each do |feedback| %>
                     <!--  <tr>   -->
                       <div class="seccion2" >
                           <%= image_tag(feedback.feedback_type.name + ".png", :alt => "Moove-It",:class => "ImgFeedback") %>
@@ -160,9 +160,6 @@
                             <h6 class="fechaFeedback" ><%= "Subido por " + feedback.user.full_name + " on   " + feedback.created_at.strftime("   %A, %d %B, %Y,  %H:%M")  %></h6>
                             <h7 class="Contenido"><%= truncate(strip_tags(feedback.content),
                                              :length => 180) %></h7>
-
-
-
 
                             <h6 class="ultimoCometario"  >Ultimo comentario echo por mauro@mooveit , 06 de agosto 2012</h6>
                           </a>
@@ -197,7 +194,7 @@
 
                 <div class="add_element">
 
-                  <button class="btn btn-link .add" type="button" onclick="updatePanel('<%=  new_feedback_path + '?Projectid=' +  @project.id.to_s %>','new_feedback')">
+                  <button class="btn btn-link .add" type="button" onclick="updatePanel('<%=  new_feedback_path + '?Projectid=' +  @view[:project].id.to_s %>','new_feedback')">
                     <i class="icon-plus icon-white"> </i> New Milestone
                   </button>
 
@@ -215,22 +212,22 @@
                 <div class="page_content">
 
                   <h4>Description</h4>
-                  <p> <%= @project.description %>  </p>
+                  <p> <%= @view[:project].description %>  </p>
 
                   <hr>
 
                   <h4>Changes in mood</h4>
                   <br/>
                   <div class="mood-graph">
-                    <%= image_tag @grafica %>
+                    <%= image_tag @view[:graph] %>
                   </div>
                   <br/>
                   <hr>
 
                   <h4>Milestones</h4>
 
-                  <% @project.milestones.each do |mile| %>
-                      <p> <%= "#{mile.target_date.to_s} #{mile.name}" %></p>
+                  <% @view[:project].milestones.each do |mile| %>
+                      <p> <%= "#{mile.target_date} #{mile.name}" %></p>
                   <% end %>
 
                 </div>

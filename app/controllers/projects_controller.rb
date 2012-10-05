@@ -82,22 +82,32 @@
   end
 
   def show_project_complete
-
-    @view = {:project => current_user.profile.project, :graph => nil}
+    project = current_user.profile.project
+    @view = {:project => project, :graph => nil, :mile1 => nil, :mile2 => nil}
 
     data = Array.new
     #axis = Array.new
-    @view[:project].moods.order(:created_at).each do |mood|
+    project.moods.order(:created_at).each do |mood|
       data = data + [mood.status]
       #axis = axis + ["#{mood.created_at.mday}/#{mood.created_at.mon}"]
     end
 
-
-
-    @view[:grafica] = Gchart.line(:size => '450x250', :bg => {:color => '76A4FB,1,ffffff,0', :type => 'gradient'}, :graph_bg => 'E5E5E5', :theme => :keynote,
+    @view[:graph] = Gchart.line(:size => '450x250', :bg => {:color => '76A4FB,1,ffffff,0', :type => 'gradient'}, :graph_bg => 'E5E5E5', :theme => :keynote,
                            :data => data, :axis_with_labels => ['y'], :axis_labels => [[1,2,3,4,5,6,7,8,9,10]])
-
-
+    if !@view[:project].finalized
+      current_date = Time.now.to_date
+      miles = project.milestones.order(:target_date).select {|mile| mile.target_date > current_date}
+      td = miles.first.target_date
+      sec = (td.to_time - current_date.to_time).to_i
+      min = (sec/60).to_i
+      hours = (min/60).to_i
+      days = (hours/24).to_i
+      @view[:mile1] = "Missing #{days} days and #{hours%24} hours to end #{miles.first.name}."
+      if (miles.count > 1)
+        td = miles.second.target_date
+        @view[:mile2] = "Next milestone: #{td.strftime("%B")} #{td.strftime("%e")}"
+      end
+    end
 
     respond_to do |format|
       format.html # show.html.erb
