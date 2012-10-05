@@ -8,6 +8,8 @@ CSM::Application.routes.draw do
 
   resources :feedbacks
 
+  resources :moods
+
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   resources :clients
 
@@ -15,6 +17,7 @@ CSM::Application.routes.draw do
   match "/my_projects/change_profile_project", to: "projects#change_profile_project"
   match "/my_projects/new_feedback", to: "feedbacks#new"
   match "/my_projects/new_milestone", to: "milestones#new_milestone"
+  match "/my_projects/change_mood", to: "projects#change_mood"
 
 
   match "/admin" => "admin#index"

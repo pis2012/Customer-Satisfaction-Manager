@@ -123,5 +123,12 @@
 
   end
 
+  def change_mood
+    @project = current_user.profile.project
+    @project.moods.create(:status => params[:new_status], :project => @project)
+    #@project.update_attributes(:moods => new_mood)
+    redirect_to my_projects_url
+  end
+
 
 end
