@@ -82,18 +82,22 @@
   end
 
   def show_project_complete
-    @project = current_user.profile.project
 
-    # Para el grafico de los estados de animo
+    @view = {:project => current_user.profile.project, :graph => nil}
+
     data = Array.new
-    axis = Array.new
-    @project.moods.order(:created_at).each do |mood|
+    #axis = Array.new
+    @view[:project].moods.order(:created_at).each do |mood|
       data = data + [mood.status]
-      axis = axis + ["#{mood.created_at.mday}/#{mood.created_at.mon}"]
+      #axis = axis + ["#{mood.created_at.mday}/#{mood.created_at.mon}"]
     end
 
-    @grafica = Gchart.line(:size => '450x250', :data => data, :bg => {:color => 'efefef', :type => 'stripes', :angle => 90},
-                           :data => data, :axis_with_labels => ['x','y'], :axis_labels => [axis])
+
+
+    @view[:grafica] = Gchart.line(:size => '450x250', :bg => {:color => '76A4FB,1,ffffff,0', :type => 'gradient'}, :graph_bg => 'E5E5E5', :theme => :keynote,
+                           :data => data, :axis_with_labels => ['y'], :axis_labels => [[1,2,3,4,5,6,7,8,9,10]])
+
+
 
     respond_to do |format|
       format.html # show.html.erb
