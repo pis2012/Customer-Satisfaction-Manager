@@ -3,14 +3,17 @@ class Profile < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
 
-  attr_accessible :user, :project,
-                  :last_login_date, :image_url, :skype_usr, :project_id, :user_id
+  attr_accessible :user, :project, :skype_usr, :user_id, :project_id,:avatar
 
-  validates :user, :project, :last_login_date, :presence  => true
 
-  validates :image_url, :format => {
-      :with  => %r{(\.(gif|jpg|png)$|)}i,
-      :message => 'must be a URL for GIF, JPG or PNG image.'
-  }
+  has_attached_file :avatar, :styles => { :medium => "100x100>", :thumb => "80x80>" }
+
+  validates :user, :project, :presence  => true
+
+  validates_attachment :avatar,
+                       :content_type => { :content_type => [ "image/jpeg","image/png","image/gif" ] },
+                       :size => { :in => 0..2.megabytes }
+
+
 
 end

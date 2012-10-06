@@ -61,11 +61,13 @@ ActiveRecord::Schema.define(:version => 20120930162941) do
   create_table "profiles", :force => true do |t|
     t.integer  "user_id"
     t.integer  "project_id"
-    t.date     "last_login_date"
-    t.string   "image_url"
     t.string   "skype_usr"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   create_table "projects", :force => true do |t|

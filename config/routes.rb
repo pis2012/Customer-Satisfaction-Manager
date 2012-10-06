@@ -1,5 +1,7 @@
 CSM::Application.routes.draw do
 
+  resources :profiles, :only => [:update,:edit]
+
   resources :comments
 
   resources :comentarios
