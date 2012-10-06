@@ -86,14 +86,16 @@
     @view = {:project => @project, :graph => nil, :mile1 => nil, :mile2 => nil}
 
     data = Array.new
-    #axis = Array.new
-    @project.moods.order(:created_at).each do |mood|
+    axis = Array.new
+    count = @project.moods.count
+    offset = count > 25 ? count-25 : 0  # Last 25 moods
+    @project.moods.order(:created_at).offset(offset).each do |mood|
       data = data + [mood.status]
-      #axis = axis + ["#{mood.created_at.mday}/#{mood.created_at.mon}"]
+      axis = axis + ["#{mood.created_at.mday}/#{mood.created_at.mon}"]
     end
 
-    @view[:graph] = Gchart.line(:size => '450x250', :bg => {:color => '76A4FB,1,ffffff,0', :type => 'gradient'}, :graph_bg => 'E5E5E5', :theme => :keynote,
-                           :data => data, :axis_with_labels => ['y'], :axis_labels => [[1,2,3,4,5,6,7,8,9,10]])
+    @view[:graph] = Gchart.line(:size => '850x350', :bg => {:color => '76A4FB,1,ffffff,0', :type => 'gradient'}, :graph_bg => 'E5E5E5', :theme => :keynote,
+                           :data => data, :axis_with_labels => ['x','y'], :axis_labels => [axis,[1,2,3,4,5,6,7,8,9,10]])
     if !@view[:project].finalized
       current_date = Time.now.to_date
       miles = @project.milestones.order(:target_date).select {|mile| mile.target_date > current_date}
