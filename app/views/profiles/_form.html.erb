@@ -56,7 +56,7 @@
 
                     <label for="inputUsername">My picture:</label>
                     <div class="controls">
-                        <% if !@profile.avatar.nil? %>
+                        <% if @profile.avatar.file? %>
                             <%= image_tag @profile.avatar.url(:medium) %>
                         <% else %>
                             <%= gravatar_image_tag( @profile.user.email.gsub('spam', 'mdeering'), :alt => @profile.user.full_name, :gravatar => { :size => 100 })  %>
