@@ -1,5 +1,7 @@
 CSM::Application.routes.draw do
 
+  resources :profiles, :only => [:update,:edit]
+
   resources :comments
 
   match "/feedbacks/project_feedbacks/:project_id" => "feedbacks#project_feedbacks", :as => :project_feedbacks

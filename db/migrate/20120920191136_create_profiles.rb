@@ -5,9 +5,8 @@ class CreateProfiles < ActiveRecord::Migration
       t.references :user
       t.references :project
 
-      t.date :last_login_date
-      t.string :image_url
       t.string :skype_usr
+      t.has_attached_file :avatar
 
       t.timestamps
     end
