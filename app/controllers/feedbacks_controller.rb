@@ -1,4 +1,5 @@
 class FeedbacksController < ApplicationController
+  layout false
   # GET /feedbacks
   # GET /feedbacks.json
   def index
@@ -7,6 +8,14 @@ class FeedbacksController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @feedbacks }
+    end
+  end
+
+  def project_feedbacks
+    @feedbacks = Feedback.find_all_by_project_id(params[:project_id])
+
+    respond_to do |format|
+      format.html { render action: 'index' }
     end
   end
 
@@ -28,12 +37,10 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks/new
   # GET /feedbacks/new.json
   def new
-    @feedback = Feedback.new
-
-    @feedback.project_id = params[:id]
+    @feedback = Feedback.new(:project_id => params[:project_id])
 
     respond_to do |format|
-      format.html {  }
+      format.html { }
       format.json { render json: @feedback }
     end
   end

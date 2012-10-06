@@ -1,14 +1,20 @@
 CSM::Application.routes.draw do
 
-  resources :pruebas
-
   resources :comments
 
-  resources :comentarios
+  match "/feedbacks/project_feedbacks/:project_id" => "feedbacks#project_feedbacks", :as => :project_feedbacks
+  match "/feedbacks/new/:project_id" => "feedbacks#new", :as => :new_feedback
 
   resources :feedbacks
 
+
+
+  match "profile" => "users#show"
+
   resources :moods
+
+  match "/milestones/new/:project_id" => "milestones#new", :as => :new_milestone
+  resources :milestones
 
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   resources :clients

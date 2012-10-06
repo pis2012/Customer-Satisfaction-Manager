@@ -82,12 +82,12 @@
   end
 
   def show_project_complete
-    project = current_user.profile.project
-    @view = {:project => project, :graph => nil, :mile1 => nil, :mile2 => nil}
+    @project = current_user.profile.project
+    @view = {:project => @project, :graph => nil, :mile1 => nil, :mile2 => nil}
 
     data = Array.new
     #axis = Array.new
-    project.moods.order(:created_at).each do |mood|
+    @project.moods.order(:created_at).each do |mood|
       data = data + [mood.status]
       #axis = axis + ["#{mood.created_at.mday}/#{mood.created_at.mon}"]
     end
@@ -96,7 +96,7 @@
                            :data => data, :axis_with_labels => ['y'], :axis_labels => [[1,2,3,4,5,6,7,8,9,10]])
     if !@view[:project].finalized
       current_date = Time.now.to_date
-      miles = project.milestones.order(:target_date).select {|mile| mile.target_date > current_date}
+      miles = @project.milestones.order(:target_date).select {|mile| mile.target_date > current_date}
       td = miles.first.target_date
       sec = (td.to_time - current_date.to_time).to_i
       min = (sec/60).to_i
@@ -108,6 +108,8 @@
         @view[:mile2] = "Next milestone: #{td.strftime("%B")} #{td.strftime("%e")}"
       end
     end
+
+    @feedbacks = @project.feedbacks
 
     respond_to do |format|
       format.html # show.html.erb
