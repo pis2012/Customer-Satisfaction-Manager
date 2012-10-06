@@ -1,8 +1,6 @@
 <div class="row seccion wide" style="margin: auto;" xmlns="http://www.w3.org/1999/html" >
     <div id="myTabContent" class="Data">
-      <div class="page_header" style="border-bottom: solid; background: #ffffbc;border-bottom-width: 0.8px;border-bottom-color: #c8d0e2;">
-        <h1>Feedback</h1>
-      </div>
+
 
       <input class="TextField" id="feedback_project_id" name="project_id" size="30" type="hidden" value="<%= params[:Projectid] %>" />
       <div class="seccion3" >
@@ -50,11 +48,11 @@
 
     <div class="seccionComent">
       <div class="field">
-        <%= f.text_area :content, :class => "TextAreaComent" %>
+        <%= f.text_area :content, :class => "TextAreaComent marginTop1" %>
       </div>
       <input class="TextField" id="comment_feedback_id" name="feedback_id" size="30" type="hidden" value="<%= @feedback.id %>" />
       <div class="actions">
-        <%= f.submit :class => "margin1" %>
+        <%= f.submit :class => "margin1 top1" %> or <button class="btn btn-link" type="button" onclick="updatePanel('<%=  project_feedbacks_path(:project_id => @feedback.project_id) %>','feedbacks-content','feedbacks')">Back</button>
       </div>
     </div>
   <% end %>
@@ -64,7 +62,3 @@
 
 
 
-
-
-<%= link_to 'Edit', edit_feedback_path(@feedback) %> |
-<%= link_to 'Back', feedbacks_path %>

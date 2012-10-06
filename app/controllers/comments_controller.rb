@@ -47,7 +47,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to :controller => "/feedbacks", :action => "show",:id => params[:feedback_id]  }
+        format.html { redirect_to :controller => "/projects", :action => "show_project_complete" }
         format.json { render json: @comment, status: :created, location: @comment }
       else
         format.html { render action: "new" }
