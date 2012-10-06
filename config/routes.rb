@@ -28,7 +28,7 @@ CSM::Application.routes.draw do
   match "/my_projects/change_mood", to: "projects#change_mood"
 
 
-  match "/admin" => "admin#index"
+  match "/admin" => "admin#index", :as => :admin
 
   resources :projects
 
