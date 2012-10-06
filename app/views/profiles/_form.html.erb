@@ -36,6 +36,17 @@
                                 <%= fa.text_field :full_name %>
                             </div>
                         </div>
+
+                        </br>
+
+                        <div class="controls">
+                            Email:
+                            </br>
+                            <div class="input-prepend">
+                                <%= fa.text_field :email,:readonly => true %>
+                            </div>
+                        </div>
+
                     <% end %>
 
                     </br>
@@ -82,7 +93,7 @@
                         </br>
                         <div class="input-prepend">
 
-                        <%= f.select(:project_id, Project.where(:client_id => @profile.user.client_id).map {|project| [project.name, project.id]},:prompt => true) %>
+                        <%= f.select(:project_id, Project.all().map {|project| [project.name, project.id]},:prompt => true) %>
 
                         </div>
                     </div>
@@ -91,43 +102,46 @@
 
                 <hr> </hr>
 
-                <div class="control-group">
+                <% if @profile.user.role.name != "Mooveit" %>
 
-                    <label for="inputUsername">Change Password:</label>
+                    <div class="control-group">
 
-                    <%= fields_for @profile.user do |fa| %>
+                        <label for="inputUsername">Change Password:</label>
 
-                        <div class="controls">
-                            Current Password:
-                            </br>
-                            <div class="input-prepend">
-                                <%= fa.password_field :current_password %>
+                        <%= fields_for @profile.user do |fa| %>
+
+                            <div class="controls">
+                                Current Password:
+                                </br>
+                                <div class="input-prepend">
+                                    <%= fa.password_field :current_password %>
+                                </div>
                             </div>
-                        </div>
 
-                        </br>
-
-                        <div class="controls">
-                            New Password:
                             </br>
-                            <div class="input-prepend">
-                                <%= fa.password_field :password %>
+
+                            <div class="controls">
+                                New Password:
+                                </br>
+                                <div class="input-prepend">
+                                    <%= fa.password_field :password %>
+                                </div>
                             </div>
-                        </div>
 
-                        </br>
-
-                        <div class="controls">
-                            Confirm New Password:
                             </br>
-                            <div class="input-prepend">
-                                <%= fa.password_field :password_confirmation %>
-                            </div>
-                        </div>
-                    <% end %>
-                </div>
 
-                <hr> </hr>
+                            <div class="controls">
+                                Confirm New Password:
+                                </br>
+                                <div class="input-prepend">
+                                    <%= fa.password_field :password_confirmation %>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+
+                    <hr> </hr>
+                <% end %>
 
                 <%=  f.submit "Save Changes" %> or
                 <%=  link_to "Cancel", "/" %>
