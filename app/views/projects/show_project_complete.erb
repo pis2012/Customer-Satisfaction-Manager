@@ -1,38 +1,43 @@
-
 <script>
     $('a[data-toggle="tab"]').on('shown', function (e) {
         e.target // activated tab
         e.relatedTarget // previous tab
     })
 
-    $("#load-more").bind("ajax:complete", function(et, e){
+    $("#load-more").bind("ajax:complete", function (et, e) {
         $("#products-list").html(e.responseText); // insert content
     });
 
-    $("#load-more").bind("ajax:loading", function(et, e){
+    $("#load-more").bind("ajax:loading", function (et, e) {
         $(this).html("Loading..."); // swap link text
     });
 
-    function activate(me)
-    {
-        $('.active').each(function(){$(this).removeClass('active');});
+    function activate(me) {
+        $('.active').each(function () {
+            $(this).removeClass('active');
+        });
         $(me).addClass('active');
     }
 
     $('#datepicker').datepicker();
 
-    function updatePanel(url,id) {
-        $.get(url, function(res){
-            //var f = $('#feedbacks');
-            //f.innerHTML = res;
+    function updatePanel(url, id_replace, tab) {
+        $.get(url, function (res) {
+            $('#' + id_replace).html(res);
+            $('#myTab  a[href=#' + tab + ']').tab('show');
+        },'html');
 
-            document.getElementById('feedbacks').innerHTML = res;
+    }
 
-     /*       var dom = $.parseXML(res);
-            var content = dom.getElementById(id);
-            //alert(form);
-            document.getElementById('feedbacks').innerHTML = (new XMLSerializer()).serializeToString(content);*/
+    function updatePanelMoods(me, url, id, mood) {
+        $.get(url, function (res) {
+            document.getElementById('moods').innerHTML = '<div style="width: 140px; height: 140px; vertical-align: top; display: inline-block;  margin: 10px 5px 5px 50px;" ><img alt="' + mood + '" src="/assets/status/normal/' + mood + '.png"/></div>';
+            //document.getElementById('moods').innerHTML = '<img src="/assets/status/normal/3.png"/>';
         });
+        $('.active').each(function () {
+            $(this).removeClass('active');
+        });
+        $(me).addClass('active');
     }
 
 </script>
@@ -51,11 +56,11 @@
         <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">
           <b class="caret"></b>
           <i class="icon-book"> </i>
-          <%= @project.name %>
+          <%= @view[:project].name %>
         </a>
         <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
-          <% Project.where(:client_id => @project.client_id).order(:name).each do |proj| %>
-              <% if proj.id != @project.id %>
+          <% Project.where(:client_id => @view[:project].client_id).order(:name).each do |proj| %>
+              <% if proj.id != @view[:project].id %>
                   <li>
                     <%= link_to proj.name, {:controller => "projects", :action => "change_profile_project", :id => proj.id} %>
                   </li>
@@ -63,7 +68,8 @@
           <% end %>
         </ul>
       </li>
-    </ul> <!-- /tabs -->
+    </ul>
+    <!-- /tabs -->
   </div>
 </div>
 
@@ -71,45 +77,66 @@
 <div class="container">
   <div class="row-fluid">
     <div class="span3">
-      <br> </br>
+      <br>
 
-        <div class="current-mood">
-          <p>Yor current mood:</p>
+      <div class="current-mood">
+        <p>Yor current mood:</p>
 
-          <% mood_lvl = @project.moods.order(:created_at).last.status
-             mood_lvl = mood_lvl-1 if mood_lvl % 2 == 0
-             mood = mood_lvl.to_s   %>
+        <div class="face-mood-state">
 
-          <div style="width: 140px; height: 140px; vertical-align: top; display: inline-block;  margin: 10px 5px 5px 50px; ">
-              <%=image_tag "status/normal/#{mood}.png" %>
+          <div id="moodsTabContent" class="tab-content">
+            <!-- page moods -->
+            <div class="tab-pane fade active in" id="moods">
+              <% mood = @view[:project].moods.order(:created_at).last.get_mood_img %>
+              <div class="face-mood-state">
+                <%= image_tag "status/normal/#{mood}" %>
+              </div>
+
+            </div>
           </div>
 
-          <ul class="nav nav-pills" style="width: 300px; height: 30px; margin: 0px 10px 30px 0px;">
-            <li onclick="activate(this)"><a href="#" style="width: 20px; height: 20px;"><%=image_tag "status/normal/1.png" %></a></li>
-            <li onclick="activate(this)"><a href="#" style="width: 20px; height: 20px;"><%=image_tag "status/normal/3.png" %></a></li>
-            <li onclick="activate(this)"><a href="#" style="width: 20px; height: 20px;"><%=image_tag "status/normal/5.png" %></a></li>
-            <li onclick="activate(this)"><a href="#" style="width: 20px; height: 20px;"><%=image_tag "status/normal/7.png" %></a></li>
-            <li onclick="activate(this)" class="active"><a href="#" style="width:    20px; height: 20px;"><%=image_tag "status/normal/9.png" %></a></li>
+          <ul class="nav-pills">
+            <li onclick="updatePanelMoods(this,'<%=  "/my_projects/change_mood?new_status=1" %>','moods', mood)" <% if mood == "1.png" %> class="active" <% end %>><a href="/my_projects/change_mood?new_status=1" remote="true"><img alt="1" src="/assets/status/normal/1.png" class="face-mood"/></a></li>
+            <li onclick="updatePanelMoods(this,'<%=  "/my_projects/change_mood?new_status=3" %>','moods', mood)" <% if mood == "3.png" %> class="active" <% end %>><a href="/my_projects/change_mood?new_status=3" remote="true"><img alt="3" src="/assets/status/normal/3.png" class="face-mood" /></a></li>
+            <li onclick="updatePanelMoods(this,'<%=  "/my_projects/change_mood?new_status=5" %>','moods', mood)" <% if mood == "5.png" %> class="active" <% end %>><a href="/my_projects/change_mood?new_status=5" remote="true"><img alt="5" src="/assets/status/normal/5.png" class="face-mood" /></a></li>
+            <li onclick="updatePanelMoods(this,'<%=  "/my_projects/change_mood?new_status=7" %>','moods', mood)" <% if mood == "7.png" %> class="active" <% end %>><a href="/my_projects/change_mood?new_status=7" remote="true"><img alt="7" src="/assets/status/normal/7.png" class="face-mood" /></a></li>
+            <li onclick="updatePanelMoods(this,'<%=  "/my_projects/change_mood?new_status=9" %>','moods', mood)" <% if mood == "9.png" %> class="active" <% end %>><a href="/my_projects/change_mood?new_status=9" remote="true"><img alt="9" src="/assets/status/normal/9.png" class="face-mood" /></a></li>
           </ul>
-
-          <p>Just click on your mood whenever you want to change it. </p>
-          <br>
-
         </div>
+
+        <p>Just click on your mood whenever you want to change it. </p>
+        <br>
+      </div>
 
 
       <div id="global_nav">
-        <ul id="myTab" >
+        <ul id="myTab">
           <li class="feedbacks active">
-            <a href="#feedbacks" data-toggle="tab"> Feedbacks</a>
+            <a href="#feedbacks" onclick="updatePanel('<%=  project_feedbacks_path(@view[:project].id) %>','feedbacks-content','feedbacks')"> Feedbacks</a>
           </li>
           <li class="data">
             <a href="#data" data-toggle="tab"> Data</a>
           </li>
+          <li class="new-feedback" hidden="true">
+            <a href="#new-feedback" data-toggle="tab"> New Feedback</a>
+          </li>
+          <li class="show-feedback" hidden="true">
+            <a href="#show-feedback" data-toggle="tab"> Show Feedback</a>
+          </li>
+          <li class="new-milestone" hidden="true">
+            <a href="#new-milestone" data-toggle="tab"> New Milestone</a>
+          </li>
         </ul>
       </div>
+
+      <div class="milestone-box">
+        <%= @view[:mile1] %>
+        <hr/>
+        <p> <%= @view[:mile2] %> </p>
+      </div>
+
     </div>
-    <div class="span8">
+    <div class="span9">
       <div id="page">
         <div id="myTabContent" class="tab-content">
 
@@ -117,69 +144,25 @@
           <div class="tab-pane fade active in" id="feedbacks">
 
             <!-- page header -->
-              <div class="page_header">
-                <h1>Feedbacks</h1>
-                <div class="add_element">
+            <div class="page_header">
+              <h1>Feedbacks</h1>
 
-                      <button class="btn btn-link" type="button" onclick="updatePanel('<%=  new_feedback_path + '?Projectid=' +  @project.id.to_s %>','new_feedback')">
-                        <i class="icon-plus icon-white"> </i> New Feedback
-                      </button>
+              <div class="add_element">
+                <button class="btn btn-link" type="button" onclick="updatePanel('<%=  new_feedback_path(@project) %>','new-feedback-content','new-feedback')">
+                  <i class="icon-plus icon-white"> </i> New Feedback
+                </button>
 
-                </div>
               </div>
+            </div>
             <!--// page header -->
 
 
             <!-- page contents -->
-            <div class="page_content">
-              <h5 style="display:inline;">Show events since:</h5>
+            <div class="page_content" id="feedbacks-content">
 
-                <div class="input-append date" style="display:inline;" id="datepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-                  <input size="12" type="text" value="12-02-2012" readonly="true"/>
-                  <span class="add-on"><i class="icon-th"> </i></span>
-                </div>
-              &nbsp;
+              <%= render template: "feedbacks/index" %>
 
-                  <button style="display:inline;" class="btn" type="button">Filtrar</button>
-
-              <hr>
-
-              <div class="feedbacks_panel">
-
-                <!--    <table>    -->
-                <% @project.feedbacks.each do |feedback| %>
-                    <!--  <tr>   -->
-                      <div class="seccion2" >
-                          <%= image_tag(feedback.feedback_type.name + ".png", :alt => "Moove-It",:class => "ImgFeedback") %>
-                          <a href="feedbacks/<%= feedback.id %>" class="fill-div">
-                            <h4 class="show_Asunto"><%= truncate(strip_tags(feedback.asunto),
-                                                                 :length => 45) %></h4>
-                            <h6 class="fechaFeedback" >03/09/2012</h6>
-                            <h7 class="Contenido"><%= truncate(strip_tags(feedback.contenido),
-                                             :length => 180) %></h7>
-
-
-
-
-                            <h6 class="ultimoCometario"  >Ultimo comentario echo por mauro@mooveit , 06 de agosto 2012</h6>
-                          </a>
-                      </div>
-                    <!--  </tr>   -->
-                <% end %>
-                <!-- </table>     -->
-
-
-               </div>
-
-
-               <div style="position: relative; ">
-                 <ul class="pager">
-                     <li class="disabled"><a href="#">Previous</a></li>
-                     <li><a href="#">Next</a></li>
-                 </ul>
-               </div>
-
-             </div>
+            </div>
             <!--// page contents -->
 
           </div>
@@ -189,60 +172,110 @@
           <div class="tab-pane fade" id="data">
 
             <!-- page header -->
-              <div class="page_header">
-                <h1>Data</h1>
+            <div class="page_header">
+              <h1>Data</h1>
 
-                <div class="add_element">
+              <div class="add_element">
 
-                  <button class="btn btn-link .add" type="button" onclick="updatePanel('<%=  new_feedback_path + '?Projectid=' +  @project.id.to_s %>','new_feedback')">
-                    <i class="icon-plus icon-white"> </i> New Milestone
-                  </button>
+                <button class="btn btn-link .add" type="button" onclick="updatePanel('<%=  new_milestone_path(@project) %>','new-milestone-content','new-milestone')">
+                  <i class="icon-plus icon-white"> </i> New Milestone
+                </button>
 
-                </div>
-                <!--
+              </div>
+              <!--
                 <div class="nav pull-right" style="margin: -30px 8px;">
                   <%= link_to '<i class="icon-plus icon-white"> </i> New Milestone'.html_safe, {:controller => "milestones", :action => "new_milestone"} %>
                 </div>
                 -->
 
-              </div>
+            </div>
             <!--// page header -->
 
-                <!-- page contents -->
-                <div class="page_content">
+            <!-- page contents -->
+            <div class="page_content">
 
-                  <h4><strong> Description</strong></h4>
-                  <p> <%= @project.description %>  </p>
+              <h4>Description</h4>
 
-                  <hr>
+              <p> <%= @view[:project].description %>  </p>
 
-                  <h4><strong>Changes in mood</strong></h4>
-                  <div style="margin: 5% 10% 5% 20%;">
-                    <%= image_tag @grafica %>
+              <hr>
 
-                  </div>
+              <h4>Changes in mood</h4>
+              <br/>
 
-                  <hr>
+              <div class="mood-graph">
+                <%= image_tag @view[:graph] %>
+              </div>
+              <br/>
+              <hr>
 
-                  <h4><strong>Milestones</strong></h4>
+              <h4>Milestones</h4>
 
-                  <% @project.milestones.each do |mile| %>
-                      <p> <%= "#{mile.target_date.to_s} ----- #{mile.name}" %></p>
-                  <% end %>
+              <% @view[:project].milestones.each do |mile| %>
+                  <p> <%= "#{mile.target_date} #{mile.name}" %></p>
+              <% end %>
 
-                </div>
-                <!--// page contents -->
+            </div>
+            <!--// page contents -->
 
           </div>
           <!--// page data -->
 
 
+          <!-- page new feedback -->
+          <div class="tab-pane fade" id="new-feedback">
+            <!-- page header -->
+            <div class="page_header">
+              <h1>New Feedback</h1>
+            </div>
+            <!--// page header -->
+            <!-- page contents -->
+            <div class="page_content" id="new-feedback-content">
+
+            </div>
+            <!--// page contents -->
           </div>
+          <!--// page new feedback -->
+
+          <!-- page show feedback -->
+          <div class="tab-pane fade" id="show-feedback">
+            <!-- page header -->
+            <div class="page_header">
+              <h1>Show Feedback</h1>
+            </div>
+            <!--// page header -->
+            <!-- page contents -->
+            <div class="page_content" id="show-feedback-content">
+
+            </div>
+            <!--// page contents -->
+          </div>
+          <!--// page show feedback -->
+
+          <!-- page new milestone -->
+          <div class="tab-pane fade" id="new-milestone">
+            <!-- page header -->
+            <div class="page_header">
+              <h1>New Milestone</h1>
+            </div>
+            <!--// page header -->
+            <!-- page contents -->
+            <div class="page_content" id="new-milestone-content">
+
+            </div>
+            <!--// page contents -->
+          </div>
+          <!--// page new feedback -->
+
         </div>
       </div>
     </div>
-
-
-
   </div>
 
+
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>

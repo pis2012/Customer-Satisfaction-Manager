@@ -1,4 +1,5 @@
 class FeedbacksController < ApplicationController
+  layout false
   # GET /feedbacks
   # GET /feedbacks.json
   def index
@@ -10,10 +11,22 @@ class FeedbacksController < ApplicationController
     end
   end
 
+  def project_feedbacks
+    @feedbacks = Feedback.find_all_by_project_id(params[:project_id])
+
+    respond_to do |format|
+      format.html { render action: 'index' }
+    end
+  end
+
   # GET /feedbacks/1
   # GET /feedbacks/1.json
   def show
     @feedback = Feedback.find(params[:id])
+
+    @comment  = Comment.find_all_by_feedback_id(@feedback.id)
+
+    @commentNew = Comment.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,12 +37,10 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks/new
   # GET /feedbacks/new.json
   def new
-    @feedback = Feedback.new
-
-    @feedback.project_id = params[:id]
+    @feedback = Feedback.new(:project_id => params[:project_id])
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { }
       format.json { render json: @feedback }
     end
   end
@@ -45,13 +56,14 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new(params[:feedback])
 
     @feedback.project_id = params[:project_id]
+    @feedback.user_id= current_user.id
 
     respond_to do |format|
       if @feedback.save
         format.html { redirect_to :controller => "/projects", :action => "show_project_complete" }
         format.json { render json: @feedback, status: :created, location: @feedback }
       else
-        format.html {redirect_to :controller => "/projects", :action => "show_project_complete" }
+        format.html { render action: "new" }
         format.json { render json: @feedback.errors, status: :unprocessable_entity }
       end
     end

@@ -10,9 +10,10 @@ class User < ActiveRecord::Base
   belongs_to :client
   has_one :profile
   has_many :feedbacks
+  has_many :comments
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :role, :client, :profile, :feedbacks,
+  attr_accessible :role, :client, :profile, :feedbacks, :comments,
                   :id, :full_name, :username, :email, :password, :password_confirmation, :remember_me, :role_id, :client_id, :project_id
 
   validates :username, :full_name, :email, :presence  => true

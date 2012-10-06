@@ -1,27 +1,64 @@
-<p id="notice"><%= notice %></p>
+<div class="row seccion wide" style="margin: auto;" xmlns="http://www.w3.org/1999/html" >
+    <div id="myTabContent" class="Data">
 
-<p>
-  <b>Asunto:</b>
-  <%= @feedback.asunto %>
-</p>
 
-<p>
-  <b>Contenido:</b>
-  <%= @feedback.contenido %>
-</p>
-
-<p>
-  <b>Feedback type:</b>
-  <%= FeedbackType.find(@feedback.feedback_type_id).name %>
-</p>
-
-<p>
-  <b>Project:</b>
-  <%= @feedback.project %>
-</p>
+      <input class="TextField" id="feedback_project_id" name="project_id" size="30" type="hidden" value="<%= params[:Projectid] %>" />
+      <div class="seccion3" >
 
 
 
+          <h4 class="show_Asunto2"><%= truncate(strip_tags( @feedback.subject),
+                                               :length => 45) %></h4>
 
-<%= link_to 'Edit', edit_feedback_path(@feedback) %> |
-<%= link_to 'Back', feedbacks_path %>
+          <h6 class="fechaFeedback2" ><%= "Create by " + @feedback.user.full_name + " on   " + @feedback.created_at.strftime("   %A, %d %B, %Y,  %H:%M")  %></h6>
+          <h7 class="Contenido2"><%= @feedback.content %></h7>
+          <h7 class="Contenido3"><%= @feedback.content %></h7>
+
+
+      </div>
+
+      <br>
+
+
+
+
+</div>
+
+  <div class="Separador" >
+
+  </div>
+
+
+
+
+
+    <% @feedback.comments.each do |comment| %>
+
+          <div class="seccionComent">
+            <%= image_tag("Skype.png", :alt => "Moove-It",:class => "ImgAvatComen") %>
+
+            <h9 class="fechaComment"><%= "Create by " + comment.user.full_name + " at   " + comment.created_at.strftime("   %A, %d %B, %Y,  %H:%M")  %></h9>
+            <h7 class="show_Coment"><%= comment.content  %></h7>
+          </div>
+
+    <% end %>
+
+
+  <%= form_for(@commentNew) do |f| %>
+
+    <div class="seccionComent">
+      <div class="field">
+        <%= f.text_area :content, :class => "TextAreaComent marginTop1" %>
+      </div>
+      <input class="TextField" id="comment_feedback_id" name="feedback_id" size="30" type="hidden" value="<%= @feedback.id %>" />
+      <div class="actions">
+        <%= f.submit :class => "margin1 top1" %> or <button class="btn btn-link" type="button" onclick="updatePanel('<%=  project_feedbacks_path(:project_id => @feedback.project_id) %>','feedbacks-content','feedbacks')">Back</button>
+      </div>
+    </div>
+  <% end %>
+
+
+</div>
+
+
+
