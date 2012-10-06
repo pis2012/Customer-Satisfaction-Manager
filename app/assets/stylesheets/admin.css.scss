@@ -50,10 +50,19 @@
 }
 
 #breadcrumbs-wrapper {
-  background: url("breadcrumb-bg.png") repeat-x scroll 0 -7px transparent;
+  background: image-url("breadcrumb-bg.png") repeat-x scroll 0 -7px transparent;
   border-bottom: 1px solid #DEDEDE;
   border-top: 1px solid #CCCCCC;
   margin-bottom: 20px;
+}
+
+
+.bar-graph{
+  text-align: center;
+}
+
+.pie-graph{
+  text-align: center;
 }
 
 
@@ -87,7 +96,7 @@ ul {
 
 
 #global_nav a {
-  background: url("iconos-cliente.png") no-repeat scroll 8px 4px transparent;
+  background: image-url("iconos-cliente.png") no-repeat scroll 8px 4px transparent;
   display: block;
   font-size: 13px;
   line-height: 35px;
