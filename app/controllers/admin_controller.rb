@@ -43,8 +43,10 @@ class AdminController < ApplicationController
     data = [0,0,0,0,0]
     Project.all.each do |proj|
       mood = proj.moods.order(:created_at).last
-      mood_lvl = mood.status % 2 == 0 ? (mood.status / 2) - 1 : (mood.status - 1) / 2
-      data[mood_lvl] += 1
+      if (mood)
+        mood_lvl = mood.status % 2 == 0 ? (mood.status / 2) - 1 : (mood.status - 1) / 2
+        data[mood_lvl] += 1
+      end
     end
 
     total = Project.count

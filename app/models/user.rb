@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   #:lockable, :timeoutable, :openid_authenticatable,
 
   devise :database_authenticatable, :registerable, :recoverable, :omniauthable, :rememberable
+  after_create :create_profile
 
   belongs_to :role
   belongs_to :client
@@ -19,6 +20,7 @@ class User < ActiveRecord::Base
 
   validates :username, :full_name, :email, :presence  => true
   validates :email, :username, :uniqueness => true
+  validates_confirmation_of :password
 
   def self.find_for_open_id(access_token, signed_in_resource=nil)
     data = access_token['info']
@@ -38,5 +40,13 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  def create_profile
+    if self.role.name == 'Mooveit'
+      p = Project.all.first
+      Profile.create(user:self, project:p,skype_usr:'')
+    end
+  end
+
 
 end
