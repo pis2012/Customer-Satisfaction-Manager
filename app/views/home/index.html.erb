@@ -11,22 +11,22 @@
 <script xmlns="http://www.w3.org/1999/html">
     function Big(me)
     {
-        var image = me.getElementsByTagName("img")[0];
-        me.style.width  = '130px';
-        //me.style.height = '139px';
-        //image.src.replace('small','big');
+        $(me).removeClass("homeface");
+        $(me).addClass("homefaceb");
+
         var p = me.getElementsByTagName("p")[0];
-        p.style.visibility = 'visible';
+        $(p).removeClass("homeprojectnameh");
+        $(p).addClass("homeprojectnamev");
 
     }
     function Small(me)
     {
-        var image = me.getElementsByTagName("img")[0];
-        me.style.width  = '110px';
-        //me.style.height = '118px';
-        //image.src.replace('big','small');
+        $(me).removeClass("homefaceb");
+        $(me).addClass("homeface");
+
         var p = me.getElementsByTagName("p")[0];
-        p.style.visibility = 'hidden';
+        $(p).removeClass("homeprojectnamev");
+        $(p).addClass("homeprojectnameh");
     }
 </script>
 
@@ -44,33 +44,26 @@
             <div class="span1">
             </div>
             <div class="span10">
-              <div style="text-align: center;">
+              <div class="homecenter">
                 <h2>MOOD OF OUR CUSTOMERS</h2>
                 <% count = 0 %>
-                <% aux = "height: 160px; vertical-align: top;" %>
 
                 <% @projects = Project.all.shuffle %>
                 <% @projects.each do |project| %>
                     <% mood = project.moods.order(:created_at).last %>
 
-                    <!--< % if count % 2 == 0 %>
-                        < % aux = "height: 160px; vertical-align: top;" %>
-                    < % else %>
-                        < % aux = "height: 118px; vertical-align: bottom;" %>
-                    < % end %>-->
-
                     <% if project.client_id == current_user.client_id  %>
-                        <div style="width: 160px; <%=aux%> display: inline-block;  margin: 40px 15px 40px 15px; ">
-                          <div onclick="location.href='/my_projects';" style="position:relative; width: 160px; margin-bottom: 0px;" >
+                        <div class="chomefacewrapperbig">
+                          <div onclick="location.href='/my_projects';" class="chomefacebig" >
                             <%=image_tag ('status/big/' + mood.get_mood_img) %>
-                            <p style="visibility:visible; text-align: right;"><%= project.name %></p>
+                            <p class="homeprojectnamev"><%= project.name %></p>
                           </div>
                         </div>
                     <% else %>
-                        <div style="width: 110px; <%=aux%> display: inline-block; margin: 40px;">
-                          <div onmouseover="Big(this)" onmouseout="Small(this)" style="position:relative; width: 110px; margin-bottom: 0px;" >
+                        <div class="chomefacewrapper">
+                          <div onmouseover="Big(this)" onmouseout="Small(this)" class="homeface" >
                             <%=image_tag ('status/normal/' + mood.get_mood_img) %>
-                            <p style="visibility:hidden; text-align: right;"><%= project.name %></p>
+                            <p class="homeprojectnameh"><%= project.name %></p>
                           </div>
                         </div>
                     <% end %>
@@ -103,17 +96,17 @@
             <div class="span2">
             </div>
             <div class="span8">
-              <div style="text-align: center;">
+              <div class="homecenter">
                 <h2>MOOD OF OUR CUSTOMERS</h2>
                 <% count = 0 %>
                 <% @projects = Project.all.shuffle %>
                 <% @projects.each do |project| %>
                     <% mood = project.moods.last! %>
 
-                        <div style="width: 110px; height: 118px; display: inline-block; vertical-align: bottom; margin: 18px 15px 20px 15px;">
-                          <div onclick="location.href='<%= project_path(project.id) %>'" onmouseover="Big(this)" onmouseout="Small(this)" style="position:relative; width:110px; margin-bottom: 0px;" >
+                        <div class="ahomefacewrapper">
+                          <div onclick="location.href='<%= project_path(project.id) %>'" onmouseover="Big(this)" onmouseout="Small(this)" class="homeface" >
                             <%= image_tag ('status/normal/' + mood.get_mood_img) %>
-                            <p style="visibility:hidden; text-align: right;"><%= project.name %></p>
+                            <p class="homeprojectnameh"><%= project.name %></p>
                           </div>
                         </div>
 
@@ -142,11 +135,11 @@
         <div class="span2">
         </div>
         <div class="span8">
-          <div style="text-align: center;">
-            <div style="display: inline-block; vertical-align: middle; width: 190px; margin-right: 30px;">
+          <div class="vhomecenter">
+            <div class="vheaderimage">
               <%= image_tag "status/big/9.png" %>
             </div>
-            <div style="display: inline-block; vertical-align: middle; text-align: left; width: 60%;">
+            <div class="vheader">
               <h2 >CUSTOMER SATISFACTION MANAGER</h2>
               </br>
               <p>
@@ -159,18 +152,18 @@
             </div>
           </div>
 
-          <div style="text-align: center;">
+          <div class="homecenter">
             <hr/>
-            <h2 style="text-align: left;">MOOD OF OUR CUSTOMERS</h2>
+            <h2 class="vhomeleft">MOOD OF OUR CUSTOMERS</h2>
 
             <% @projects = Project.all.shuffle %>
             <% @projects.each do |project| %>
                 <% mood = project.moods.last! %>
 
-                <div  style="width: 110px; height: 118px; display: inline-block; vertical-align: top; margin: 18px 15px 20px 15px;">
-                  <div onmouseover="Big(this)" onmouseout="Small(this)" style=" position:relative; width:110px; margin-bottom: 0px;" >
+                <div class="vhomefacewrapper">
+                  <div onmouseover="Big(this)" onmouseout="Small(this)" class="homeface" >
                     <%= image_tag ('status/normal/' + mood.get_mood_img) %>
-                    <p style="visibility:hidden; text-align: right;"><%= project.name %></p>
+                    <p class="homeprojectnameh"><%= project.name %></p>
                   </div>
                 </div>
 
