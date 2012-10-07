@@ -1,33 +1,8 @@
 <script>
-    $('a[data-toggle="tab"]').on('shown', function (e) {
-        e.target // activated tab
-        e.relatedTarget // previous tab
-    })
-
-    $("#load-more").bind("ajax:complete", function (et, e) {
-        $("#products-list").html(e.responseText); // insert content
+    $(document).load(function () {
+        //updatePanel("<%=  project_feedbacks_path(@project) %>", 'feedbacks-content', 'feedbacks');
+        //$('#myTab  a[href=#' + 'feedbacks' + ']').tab('show');
     });
-
-    $("#load-more").bind("ajax:loading", function (et, e) {
-        $(this).html("Loading..."); // swap link text
-    });
-
-    function activate(me) {
-        $('.active').each(function () {
-            $(this).removeClass('active');
-        });
-        $(me).addClass('active');
-    }
-
-    $('#datepicker').datepicker();
-
-    function updatePanel(url, id_replace, tab) {
-        $.get(url, function (res) {
-            $('#' + id_replace).html(res);
-            $('#myTab  a[href=#' + tab + ']').tab('show');
-        },'html');
-
-    }
 
     function updatePanelMoods(me, url, id, mood) {
         $.get(url, function (res) {
@@ -41,13 +16,6 @@
     }
 
 </script>
-
-
-
-
-
-
-
 
 <div id="breadcrumbs-wrapper">
   <div class="container">
@@ -93,11 +61,21 @@
           </div>
 
           <ul class="nav-pills">
-            <li onclick="updatePanelMoods(this,'<%=  "/my_projects/change_mood?new_status=1" %>','moods', mood)" <% if mood == "1.png" %> class="active" <% end %>><a href="/my_projects/change_mood?new_status=1" remote="true"><img alt="1" src="/assets/status/normal/1.png" class="face-mood"/></a></li>
-            <li onclick="updatePanelMoods(this,'<%=  "/my_projects/change_mood?new_status=3" %>','moods', mood)" <% if mood == "3.png" %> class="active" <% end %>><a href="/my_projects/change_mood?new_status=3" remote="true"><img alt="3" src="/assets/status/normal/3.png" class="face-mood"/></a></li>
-            <li onclick="updatePanelMoods(this,'<%=  "/my_projects/change_mood?new_status=5" %>','moods', mood)" <% if mood == "5.png" %> class="active" <% end %>><a href="/my_projects/change_mood?new_status=5" remote="true"><img alt="5" src="/assets/status/normal/5.png" class="face-mood"/></a></li>
-            <li onclick="updatePanelMoods(this,'<%=  "/my_projects/change_mood?new_status=7" %>','moods', mood)" <% if mood == "7.png" %> class="active" <% end %>><a href="/my_projects/change_mood?new_status=7" remote="true"><img alt="7" src="/assets/status/normal/7.png" class="face-mood"/></a></li>
-            <li onclick="updatePanelMoods(this,'<%=  "/my_projects/change_mood?new_status=9" %>','moods', mood)" <% if mood == "9.png" %> class="active" <% end %>><a href="/my_projects/change_mood?new_status=9" remote="true"><img alt="9" src="/assets/status/normal/9.png" class="face-mood"/></a></li>
+            <li onclick="updatePanelMoods(this,'<%= "/my_projects/change_mood?new_status=1" %>','moods', mood)"
+      <% if mood == "1.png" %> class="active"
+      <% end %>><a href="/my_projects/change_mood?new_status=1" remote="true"><img alt="1" src="/assets/status/normal/1.png" class="face-mood"/></a></li>
+            <li onclick="updatePanelMoods(this,'<%= "/my_projects/change_mood?new_status=3" %>','moods', mood)"
+      <% if mood == "3.png" %> class="active"
+      <% end %>><a href="/my_projects/change_mood?new_status=3" remote="true"><img alt="3" src="/assets/status/normal/3.png" class="face-mood"/></a></li>
+            <li onclick="updatePanelMoods(this,'<%= "/my_projects/change_mood?new_status=5" %>','moods', mood)"
+      <% if mood == "5.png" %> class="active"
+      <% end %>><a href="/my_projects/change_mood?new_status=5" remote="true"><img alt="5" src="/assets/status/normal/5.png" class="face-mood"/></a></li>
+            <li onclick="updatePanelMoods(this,'<%= "/my_projects/change_mood?new_status=7" %>','moods', mood)"
+      <% if mood == "7.png" %> class="active"
+      <% end %>><a href="/my_projects/change_mood?new_status=7" remote="true"><img alt="7" src="/assets/status/normal/7.png" class="face-mood"/></a></li>
+            <li onclick="updatePanelMoods(this,'<%= "/my_projects/change_mood?new_status=9" %>','moods', mood)"
+      <% if mood == "9.png" %> class="active"
+      <% end %>><a href="/my_projects/change_mood?new_status=9" remote="true"><img alt="9" src="/assets/status/normal/9.png" class="face-mood"/></a></li>
           </ul>
         </div>
 
@@ -106,27 +84,42 @@
       </div>
 
 
+
       <div id="global_nav">
         <ul id="myTab">
           <li class="feedbacks active">
-            <a href="#feedbacks" onclick="updatePanel('<%=  project_feedbacks_path(@view[:project].id) %>','feedbacks-content','feedbacks')"> Feedbacks</a>
+            <a href="#feedbacks" class="feedbacks-link" data-url="<%= project_feedbacks_path(@project) %>"> Feedbacks</a>
+            <ul>
+              <li class="feedbacks" hidden="true">
+                <a href="#feedbacks"> Feedbacks</a>
+              </li>
+              <li class="new-feedback" hidden="true">
+                <a href="#new-feedback"> New Feedback</a>
+              </li>
+              <li class="show-feedback" hidden="true">
+                <a href="#show-feedback"> Show Feedback</a>
+              </li>
+            </ul>
           </li>
           <li class="data">
-            <a href="#data" data-toggle="tab"> Data</a>
+            <a href="#project-data" class="data-link" data-url="<%= project_data_path(@project) %>"> Data</a>
+            <ul>
+              <li class="data" hidden="true">
+                <a href="#project-data"> Data</a>
+              </li>
+              <li class="new-milestone" hidden="true">
+                <a href="#new-milestone"> New Milestone</a>
+              </li>
+            </ul>
+
           </li>
-          <li class="new-feedback" hidden="true">
-            <a href="#new-feedback" data-toggle="tab"> New Feedback</a>
-          </li>
-          <li class="show-feedback" hidden="true">
-            <a href="#show-feedback" data-toggle="tab"> Show Feedback</a>
-          </li>
-          <li class="new-milestone" hidden="true">
-            <a href="#new-milestone" data-toggle="tab"> New Milestone</a>
-          </li>
+
+
         </ul>
       </div>
 
       <br/>
+
       <div class="milestone-box">
         <%= @view[:mile1] %>
         <hr/>
@@ -139,16 +132,16 @@
         <div id="myTabContent" class="tab-content">
 
           <!-- page feedbacks -->
-          <div class="tab-pane fade active in" id="feedbacks">
+          <div class="tab-pane fade  in active" id="feedbacks">
 
             <!-- page header -->
             <div class="page_header">
               <h1>Feedbacks</h1>
 
               <div class="add_element">
-                <button class="btn btn-link" type="button" onclick="updatePanel('<%=  new_feedback_path(@project) %>','new-feedback-content','new-feedback')">
+                <a href="#new-feedback" class="btn btn-link new-feedback-link" data-url="<%= new_feedback_path(@project) %>">
                   <i class="icon-plus icon-white"> </i> New Feedback
-                </button>
+                </a>
 
               </div>
             </div>
@@ -167,7 +160,7 @@
           <!--// page feedbacks -->
 
           <!-- page data -->
-          <div class="tab-pane fade" id="data">
+          <div class="tab-pane fade" id="project-data">
 
             <!-- page header -->
             <div class="page_header">
@@ -175,43 +168,17 @@
 
               <div class="add_element">
 
-                <button class="btn btn-link .add" type="button" onclick="updatePanel('<%=  new_milestone_path(@project) %>','new-milestone-content','new-milestone')">
+                <button class="btn btn-link new-milestone-link" data-url="<%= new_milestone_path(@project) %>">
                   <i class="icon-plus icon-white"> </i> New Milestone
                 </button>
 
               </div>
-              <!--
-                <div class="nav pull-right" style="margin: -30px 8px;">
-                  <%= link_to '<i class="icon-plus icon-white"> </i> New Milestone'.html_safe, {:controller => "milestones", :action => "new_milestone"} %>
-                </div>
-                -->
 
             </div>
             <!--// page header -->
 
             <!-- page contents -->
-            <div class="page_content">
-
-              <h4>Description</h4>
-
-              <p> <%= @view[:project].description %>  </p>
-
-              <hr>
-
-              <h4>Changes in mood</h4>
-              <br/>
-
-              <div class="mood-graph">
-                <%= image_tag @view[:graph] %>
-              </div>
-              <br/>
-              <hr>
-
-              <h4>Milestones</h4>
-
-              <% @view[:project].milestones.each do |mile| %>
-                  <p> <%= "#{mile.target_date} #{mile.name}" %></p>
-              <% end %>
+            <div class="page_content" id="data-content">
 
             </div>
             <!--// page contents -->

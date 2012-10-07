@@ -1,3 +1,7 @@
+
+
+
+
 <h5 style="display:inline;">Show events since:</h5>
 
 <div class="input-append date" style="display:inline;" id="datepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
@@ -16,7 +20,7 @@
       <!--  <tr>   -->
       <div class="seccion2">
         <%= image_tag(feedback.feedback_type.name + ".png", :alt => "Moove-It", :class => "ImgFeedback") %>
-        <a href="#show-feedback" class="fill-div" onclick="updatePanel('<%=  feedback_path(feedback.id) %>','show-feedback-content','show-feedback')">
+        <a href="#show-feedback<%= feedback.id.to_s %>" class="fill-div show-feedback-link" data-url="<%= feedback_path(feedback) %>">
           <h4 class="show_Asunto"><%= truncate(strip_tags(feedback.subject),
                                                :length => 45) %></h4>
           <h6 class="fechaFeedback"><%= "Subido por " + feedback.user.full_name + " on   " + feedback.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h6>

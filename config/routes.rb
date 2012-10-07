@@ -23,10 +23,8 @@ CSM::Application.routes.draw do
 
   match "/my_projects" , to: "projects#show_project_complete" , :as => :my_projects
   match "/my_projects/change_profile_project", to: "projects#change_profile_project"
-  match "/my_projects/new_feedback", to: "feedbacks#new"
-  match "/my_projects/new_milestone", to: "milestones#new_milestone"
+  match "/projects/show_project_data/:project_id" => "projects#show_project_data", :as => :project_data
   match "/my_projects/change_mood", to: "projects#change_mood"
-
 
   match "/admin" => "admin#index", :as => :admin
 
