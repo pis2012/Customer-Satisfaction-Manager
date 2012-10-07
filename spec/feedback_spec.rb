@@ -11,7 +11,7 @@ require 'active_record'
 #require Rails.root.join('app/models/client')
 
 describe Feedback do
-  before(:all) do
+  before(:suite) do
     ActiveRecord::Base.establish_connection(
         :adapter=>'mysql2',
         :database=>'CSM_test',

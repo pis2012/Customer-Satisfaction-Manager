@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe MilestonesController do
+describe MilestonesController, :type => :controller do
 
 end

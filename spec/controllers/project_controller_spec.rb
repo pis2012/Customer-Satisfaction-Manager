@@ -2,7 +2,7 @@ require 'spec_helper'
 
 class ProjectControllerSpec
 
-  describe ProjectsController do
+  describe ProjectsController, :type => :controller do
 
     it "def index" do
         get :index
@@ -56,6 +56,93 @@ class ProjectControllerSpec
       @var1 = projects_path(assigns[:project])
       @var2 = @var1.gsub(".", "/")
       response.should redirect_to(@var2)
+    end
+
+    it "show_project_complete" do
+
+      client1 = Client.create(name:'MicroHard2')
+
+      project2 = Project.create(client: client1,
+                                name:'Proyecto2',
+                                description:'proyecto de verificadores',
+                                end_date:'2013-01-01 00:00:00',
+                                finalized:false)
+
+      #Se deberá testear que un usurario debe contener un rol.
+      rol_simple = Role.create(name:'simple')
+
+      user = User.create(role: rol_simple, client: client1,
+                              username: 'user1',password:'user1',password_confirmation:'user1',
+                              full_name:'Martin Cabrera', email:'cabrera2@1234.com')
+
+      profile1 = Profile.create(user: user, project:project2,
+                                last_login_date:'2012-01-01 00:00:00', skype_usr:'martin.skype')
+
+      user.profile=profile1
+
+      project2.milestones.create(:target_date => '2015-01-01 00:00:00', :project => project2, :name => "Prueba1")
+
+    sign_in user
+    get :show_project_complete
+
+    sign_out user
+
+    end
+
+
+    it "change_profile_project" do
+      client1 = Client.create(name:'MicroHard2')
+
+      project2 = Project.create(client: client1,
+                                name:'Proyecto2',
+                                description:'proyecto de verificadores',
+                                end_date:'2013-01-01 00:00:00',
+                                finalized:false)
+
+      #Se deberá testear que un usurario debe contener un rol.
+      rol_simple = Role.create(name:'simple')
+
+      user = User.create(role: rol_simple, client: client1,
+                         username: 'user1',password:'user1',password_confirmation:'user1',
+                         full_name:'Martin Cabrera', email:'cabrera2@1234.com')
+
+      profile1 = Profile.create(user: user, project:project2,
+                                last_login_date:'2012-01-01 00:00:00', skype_usr:'martin.skype')
+
+      user.profile=profile1
+
+      sign_in user
+      post :change_profile_project, id: project2.id
+
+      sign_out user
+
+    end
+
+    it "change_mood" do
+      client1 = Client.create(name:'MicroHard2')
+
+      project2 = Project.create(client: client1,
+                                name:'Proyecto2',
+                                description:'proyecto de verificadores',
+                                end_date:'2013-01-01 00:00:00',
+                                finalized:false)
+
+      #Se deberá testear que un usurario debe contener un rol.
+      rol_simple = Role.create(name:'simple')
+
+      user = User.create(role: rol_simple, client: client1,
+                         username: 'user1',password:'user1',password_confirmation:'user1',
+                         full_name:'Martin Cabrera', email:'cabrera2@1234.com')
+
+      profile1 = Profile.create(user: user, project:project2,
+                                last_login_date:'2012-01-01 00:00:00', skype_usr:'martin.skype')
+
+      user.profile=profile1
+
+      sign_in user
+      post :change_profile_project, id: project2.id
+      post :change_mood, new_status: 10
+      sign_out user
     end
 
   end

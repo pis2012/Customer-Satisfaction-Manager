@@ -2,7 +2,7 @@ require 'spec_helper'
 
 class FeedbacksControllerSpec
 
-  describe FeedbacksController do
+  describe FeedbacksController, :type => :controller do
 
     it "def index" do
       get :index
@@ -28,7 +28,7 @@ class FeedbacksControllerSpec
       contenido =  "hola soy un feedback"
 
       post :create, project_id: @project.id,feedback: {project: @project, feedback_type_id: @type_skype.id,
-                               contenido: contenido, asunto: "mira no soy nil"}
+                               content: contenido, subject: "mira no soy nil"}
 
 
       feedbackCreado = assigns(:feedback);
