@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20120930162941) do
 
   create_table "feedback_types", :force => true do |t|
     t.string "name"
+    t.string "image_url"
   end
 
   create_table "feedbacks", :force => true do |t|

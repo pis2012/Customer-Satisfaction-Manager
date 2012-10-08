@@ -59,7 +59,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     @user = User.find(params[:profile][:user_id])
 
-    password_changed = !params[:user][:password].empty?
+    password_changed = !params[:user][:password].nil? && !params[:user][:password].empty?
 
     successfully_updated = if password_changed
        @user.update_with_password(params[:user])

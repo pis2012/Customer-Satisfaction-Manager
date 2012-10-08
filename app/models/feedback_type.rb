@@ -1,8 +1,8 @@
 class FeedbackType < ActiveRecord::Base
 
-  attr_accessible :id, :name
+  attr_accessible :id, :name, :image_url
 
-  validates :name, :presence  => true
+  validates :name, :image_url, :presence  => true
   validates :name, :uniqueness => true
 
 end
