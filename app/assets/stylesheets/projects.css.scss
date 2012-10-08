@@ -45,18 +45,46 @@
 }
 
 #face-list li.active {
-  background-color: #2175bc;
   -moz-border-radius: 35px;
   border-radius: 35px;
   font-size: 44px;
   line-height: 70px;
+
+  background: #ccc;
+  color: black;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+  -webkit-transform: scale(4.5,4.5);
+  -moz-transform: scale(4.5,4.5);
+  -ms-transform: scale(4.5,4.5);
+  -o-transform: scale(4.5,4.5);
+  transform: scale(4.5,4.5);
+
+  -webkit-transition: all .8s linear;
+  -moz-transition: all .8s linear;
+  -ms-transition: all .8s linear;
+  -o-transition: all .8s linear;
+  transition: all .8s linear;
 }
 
 #face-list li a:hover {
-  background-color: #2586d7;
   -moz-border-radius: 35px;
   border-radius: 35px;
   font-size: 44px;
+
+  background: #ccc;
+  color: black;
+  box-shadow: 5px 5px 5px rgba(0.4, 0.4, 0.4, 0.4);
+  -webkit-transform: scale(4.5,4.5);
+  -moz-transform: scale(4.5,4.5);
+  -ms-transform: scale(4.5,4.5);
+  -o-transform: scale(4.5,4.5);
+  transform: scale(4.5,4.5);
+
+  -webkit-transition: all .8s linear;
+  -moz-transition: all .8s linear;
+  -ms-transition: all .8s linear;
+  -o-transition: all .8s linear;
+   transition: all .8s linear;
 }
 
 #face-list li a:active {
@@ -73,8 +101,11 @@
 }
 
 #face-list li img:hover {
-  width: 18%;
-  height: 18%;
+  -webkit-transform: scale(1.3,1.3);
+  -moz-transform: scale(1.3,1.3);
+  -ms-transform: scale(1.3,1.3);
+  -o-transform: scale(1.3,1.3);
+  transform: scale(1.3,1.3);
 }
 
 .mood-graph {
@@ -102,4 +133,3 @@
   text-align:right;
   margin-right: 10%;
 }
-
