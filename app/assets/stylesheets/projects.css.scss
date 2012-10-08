@@ -29,9 +29,52 @@
   text-align:  center;
 }
 
-.face-mood-state li {
-  width: 20%;
-  height: 20%;
+#face-list {
+  list-style: none outside none;
+  margin-left: 0;
+  margin-right: 5%;
+  margin-left: -3%;
+}
+
+#face-list li {
+  display: inline;
+  padding: 0;
+  margin-left: -3px;
+  line-height: 70px;
+  font-size: 44px;
+}
+
+#face-list li.active {
+  background-color: #2175bc;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  font-size: 44px;
+  line-height: 70px;
+}
+
+#face-list li a:hover {
+  background-color: #2586d7;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  font-size: 44px;
+}
+
+#face-list li a:active {
+  background-color: #2175bc;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  font-size: 44px;
+}
+
+#face-list img {
+  width: 16%;
+  height: 16%;
+  padding: 3px;
+}
+
+#face-list li img:hover {
+  width: 18%;
+  height: 18%;
 }
 
 .mood-graph {
