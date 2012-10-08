@@ -6,7 +6,7 @@ CSM::Application.routes.draw do
 
   match "/feedbacks/project_feedbacks/:project_id" => "feedbacks#project_feedbacks", :as => :project_feedbacks
   match "/feedbacks/new/:project_id" => "feedbacks#new", :as => :new_feedback
-
+  match "/feedbacks/date_filter" => "feedbacks#date_filter", :as => :feedbacks_date_filter
   resources :feedbacks
 
 

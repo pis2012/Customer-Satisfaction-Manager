@@ -64,7 +64,7 @@
         <input class="TextField" id="comment_feedback_id" name="feedback_id" size="30" type="hidden" value="<%= @feedback.id %>"/>
 
         <div class="actions">
-          <%= f.submit :class => "margin1 top1" %> or
+          <%= f.submit :class => "btn margin1 top1" %> or
           <a href="#feedbacks" class="btn btn-link feedbacks-link" type="button" data-url="<%=  project_feedbacks_path(@feedback.project) %>">Back</a>
         </div>
 

@@ -1,48 +1,36 @@
-
-
-
-
-<h5 style="display:inline;">Show events since:</h5>
-
-<div class="input-append date" style="display:inline;" id="datepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
-  <input size="12" type="text" value="12-02-2012" readonly="true"/>
-  <span class="add-on"><i class="icon-th"> </i></span>
-</div>
-&nbsp;
-
-<button style="display:inline;" class="btn" type="button">Filtrar</button>
-
-<hr>
-
-<div class="feedbacks_panel">
-  <!--    <table>    -->
+<table class="feedbacks_table">
   <% @feedbacks.each do |feedback| %>
-      <!--  <tr>   -->
-      <div class="seccion2">
-        <%= image_tag(feedback.feedback_type.name + ".png", :alt => "Moove-It", :class => "ImgFeedback") %>
-        <a href="#show-feedback<%= feedback.id.to_s %>" class="fill-div show-feedback-link" data-url="<%= feedback_path(feedback) %>">
-          <h4 class="show_Asunto"><%= truncate(strip_tags(feedback.subject),
-                                               :length => 45) %></h4>
-          <h6 class="fechaFeedback"><%= "Subido por " + feedback.user.full_name + " on   " + feedback.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h6>
-          <h7 class="Contenido"><%= truncate(strip_tags(feedback.content),
-                                             :length => 180) %></h7>
-
-          <% if !(Comment.find_last_by_feedback_id(feedback.id) == nil) %>
-              <h6 class="ultimoCometario"><%= "Last Comment made by" + Comment.find_last_by_feedback_id(feedback.id).user.full_name + ", "+ Comment.find_last_by_feedback_id(feedback.id).created_at.strftime("%A %d %B, %Y") %></h6>
+      <tr id="row_feedback_<%= feedback.id %>">
+        <td class="avatar">
+          <a href="#show-feedback<%= feedback.id.to_s %>" class="avatar_image" class="show-feedback-link" data-url="<%= feedback_path(feedback) %>">
+            <%= image_tag(feedback.feedback_type.image_url, :alt => "feedback_image", :class => "feedback_image") %>
+          </a>
+        </td>
+        <td class="feedback_info">
+          <a href="#show-feedback<%= feedback.id.to_s %>" class="feedback_subject show-feedback-link" data-url="<%= feedback_path(feedback) %>"><%= truncate(strip_tags(feedback.subject), :length => 45) %></a>
+          <h6 class="feedback_date"><%= "Uploaded by " + feedback.user.full_name + " on   " + feedback.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h6>
+          <h7 class="feedback_content"><%= truncate(strip_tags(feedback.content), :length => 180) %></h7>
+          <% @last_comment = feedback.comments.order('created_at').first %>
+          <% if @last_comment != nil %>
+              <h6 class="feedback_last_comment"><%= "Last comment made by " + @last_comment.user.full_name + ", "+ @last_comment.created_at.strftime("%A %d %B, %Y") %></h6>
+          <% else %>
+              <h6 class="feedback_last_comment">No comments</h6>
           <% end %>
-        </a>
-      </div>
-      <!--  </tr>   -->
-  <% end %>
-  <!-- </table>     -->
-</div>
+        </td>
+      </tr>
 
-<div style="position: relative; ">
+  <% end %>
+  <!--
+<div class="feedback_pager">
   <ul class="pager">
     <li class="disabled"><a href="#">Previous</a></li>
     <li><a href="#">Next</a></li>
   </ul>
 </div>
+-->
+</table>
+
+
 
 
 

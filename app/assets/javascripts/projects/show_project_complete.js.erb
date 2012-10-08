@@ -40,7 +40,7 @@ window.onpopstate = function (e) {
 };
 
 $('.feedbacks-link').live('click', function () {
-    updatePanel($(this).data('url'), 'feedbacks-content', 'feedbacks');
+    updatePanel($(this).data('url'), 'feedbacks-table', 'feedbacks');
     return false;
 });
 
@@ -60,5 +60,4 @@ $('.new-milestone-link').live('click', function () {
     updatePanel($(this).data('url'), 'new-milestone-content', 'new-milestone');
     return false;
 });
-
 
