@@ -50,7 +50,7 @@
   font-size: 44px;
   line-height: 70px;
 
-  background: #ccc;
+  background: #aaa;
   color: black;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
   -webkit-transform: scale(4.5,4.5);
@@ -69,9 +69,9 @@
 #face-list li a:hover {
   -moz-border-radius: 35px;
   border-radius: 35px;
-  font-size: 44px;
+  font-size: 40px;
 
-  background: #ccc;
+  background: #bbb;
   color: black;
   box-shadow: 5px 5px 5px rgba(0.4, 0.4, 0.4, 0.4);
   -webkit-transform: scale(4.5,4.5);
@@ -101,6 +101,8 @@
 }
 
 #face-list li img:hover {
+  width: 18%;
+  height: 18%;
   -webkit-transform: scale(1.3,1.3);
   -moz-transform: scale(1.3,1.3);
   -ms-transform: scale(1.3,1.3);
