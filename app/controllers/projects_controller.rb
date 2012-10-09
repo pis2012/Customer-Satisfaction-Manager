@@ -83,7 +83,8 @@
 
   def show_project_complete
     @project = current_user.profile.project
-    @view = {:project => @project, :mile1 => nil, :mile2 => nil}
+    @lastmood = @project.moods.order(:created_at).last.get_mood_img
+    @view = {:project => @project, :mile1 => nil, :mile2 => nil, :lastmood => @lastmood}
 
     if !@view[:project].finalized
       current_date = Time.now.to_date
@@ -141,8 +142,14 @@
   def change_mood
     @project = current_user.profile.project
     @project.moods.create(:status => params[:new_status], :project => @project)
-    #@project.update_attributes(:moods => new_mood)
-    redirect_to my_projects_url
+
+    @lastmood = @project.moods.order(:created_at).last.get_mood_img
+
+    @view = {:project => @project, :lastmood =>  @lastmood}
+    respond_to do |format|
+      format.html { render :layout => false }
+      format.json { render json: @project }
+    end
   end
 
 

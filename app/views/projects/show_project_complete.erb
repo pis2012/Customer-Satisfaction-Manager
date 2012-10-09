@@ -5,15 +5,11 @@
 
     });
 
-    function updatePanelMoods(me, url, id, mood) {
+    function updatePanelMoods1(me, url, id, mood) {
         $.get(url, function (res) {
             document.getElementById('moods').innerHTML = '<img alt="' + mood + '" src="/assets/status/normal/' + mood + '.png"/>';
             //document.getElementById('moods').innerHTML = '<img src="/assets/status/normal/3.png"/>';
         });
-        $('.active').each(function () {
-            $(this).removeClass('active');
-        });
-        $(me).addClass('active');
     }
 </script>
 
@@ -52,30 +48,46 @@
 
         <div class="face-mood-state">
 
-          <div id="moodsTabContent" class="tab-content">
+          <div id="myTabContentMoods" class="tab-content">
+
             <!-- page moods -->
-            <div class="tab-pane fade active in" id="moods">
-              <% mood = @view[:project].moods.order(:created_at).last.get_mood_img %>
-              <%= image_tag "status/normal/#{mood}" %>
+            <div class="tab-pane fade in active" id="change-mood1">
+                <!-- page contents -->
+                <div class="page_content" id="change-mood1-content">
+
+                  <%= render template:'projects/change_mood' %>
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="change-mood3">
+              <!-- page contents -->
+              <div class="page_content" id="change-mood3-content">
+              </div>
+            </div>
+            <div class="tab-pane fade" id="change-mood5">
+              <!-- page contents -->
+              <div class="page_content" id="change-mood5-content">
+              </div>
+            </div>
+            <div class="tab-pane fade" id="change-mood7">
+              <!-- page contents -->
+              <div class="page_content" id="change-mood7-content">
+              </div>
+            </div>
+            <div class="tab-pane fade" id="change-mood9">
+              <!-- page contents -->
+              <div class="page_content" id="change-mood9-content">
+              </div>
             </div>
           </div>
 
-          <ul class="nav-pills">
-            <li onclick="updatePanelMoods(this,'<%= "/my_projects/change_mood?new_status=1" %>','moods', mood)"
-      <% if mood == "1.png" %> class="active"
-      <% end %>><a href="/my_projects/change_mood?new_status=1" remote="true"><img alt="1" src="/assets/status/normal/1.png" class="face-mood"/></a></li>
-            <li onclick="updatePanelMoods(this,'<%= "/my_projects/change_mood?new_status=3" %>','moods', mood)"
-      <% if mood == "3.png" %> class="active"
-      <% end %>><a href="/my_projects/change_mood?new_status=3" remote="true"><img alt="3" src="/assets/status/normal/3.png" class="face-mood"/></a></li>
-            <li onclick="updatePanelMoods(this,'<%= "/my_projects/change_mood?new_status=5" %>','moods', mood)"
-      <% if mood == "5.png" %> class="active"
-      <% end %>><a href="/my_projects/change_mood?new_status=5" remote="true"><img alt="5" src="/assets/status/normal/5.png" class="face-mood"/></a></li>
-            <li onclick="updatePanelMoods(this,'<%= "/my_projects/change_mood?new_status=7" %>','moods', mood)"
-      <% if mood == "7.png" %> class="active"
-      <% end %>><a href="/my_projects/change_mood?new_status=7" remote="true"><img alt="7" src="/assets/status/normal/7.png" class="face-mood"/></a></li>
-            <li onclick="updatePanelMoods(this,'<%= "/my_projects/change_mood?new_status=9" %>','moods', mood)"
-      <% if mood == "9.png" %> class="active"
-      <% end %>><a href="/my_projects/change_mood?new_status=9" remote="true"><img alt="9" src="/assets/status/normal/9.png" class="face-mood"/></a></li>
+          <ul id="face-list">
+            <% mood = @view[:project].moods.order(:created_at).last.get_mood_img %>
+            <li <% if mood == "1.png" %> class="active" <% end %>><a href="#change-mood1" class="change-mood1-link" data-url="<%= change_mood_path('1') %>"><img alt="1" src="/assets/status/normal/1.png" class="face-mood"/></a></li>
+            <li <% if mood == "3.png" %> class="active" <% end %>><a href="#change-mood3" class="change-mood3-link" data-url="<%= change_mood_path('3') %>"><img alt="3" src="/assets/status/normal/3.png" class="face-mood"/></a></li>
+            <li <% if mood == "5.png" %> class="active" <% end %>><a href="#change-mood5" class="change-mood5-link" data-url="<%= change_mood_path('5') %>"><img alt="5" src="/assets/status/normal/5.png" class="face-mood"/></a></li>
+            <li <% if mood == "7.png" %> class="active" <% end %>><a href="#change-mood7" class="change-mood7-link" data-url="<%= change_mood_path('7') %>"><img alt="7" src="/assets/status/normal/7.png" class="face-mood"/></a></li>
+            <li <% if mood == "9.png" %> class="active" <% end %>><a href="#change-mood9" class="change-mood9-link" data-url="<%= change_mood_path('9') %>"><img alt="9" src="/assets/status/normal/9.png" class="face-mood"/></a></li>
           </ul>
         </div>
 

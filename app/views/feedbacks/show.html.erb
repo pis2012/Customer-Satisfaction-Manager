@@ -33,26 +33,32 @@
 
 
 
-
-
+  <div class="accordion" id="accordion2">
+    <% cant = 1 %>
   <% @feedback.comments.each do |comment| %>
-
-      <div class="seccionComent">
-        <%= image_tag("Skype.png", :alt => "Moove-It", :class => "ImgAvatComen") %>
-
-        <P>
-        <h7 class="show_Coment"><%= comment.content %></h7>
-
-        <P>
-        <P>
-        <h9 class="fechaComment"><%= "Create by " + comment.user.full_name + " at   " + comment.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h9>
-
-
-
-      </div>
+        <% cant = cant + 1 %>
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%=cant%>">
+              <h9 class="fechaComment"><%= "Create by " + comment.user.full_name + " at   " + comment.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h9>
+            </a>
+          </div>
+          <div id="collapse<%=cant%>" class="accordion-body collapse">
+            <div class="accordion-inner">
+              <div class="seccionComent">
+                <%= image_tag("Skype.png", :alt => "Moove-It", :class => "ImgAvatComen") %>
+                <P>
+                  <h7 class="show_Coment"><%= comment.content %></h7>
+                <P>
+                <P>
+                  <h9 class="fechaComment"><%= "Create by " + comment.user.full_name + " at   " + comment.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h9>
+              </div>
+            </div>
+          </div>
+        </div>
 
   <% end %>
-
+  </div>
 
   <%= form_for(@commentNew) do |f| %>
 
