@@ -12,6 +12,18 @@
   margin-right: 15px;
 }
 
+#msj-face-changed{
+  text-align: center;
+  display:none;
+  width: 50%;
+}
+
+#msj-face-changed-container{
+  background-color: yellow;
+  display: inline;
+  text-align: center;
+}
+
 #global_nav li.feedbacks.active a {
   background-position: 8px -38px;
 }
@@ -135,3 +147,4 @@
   text-align:right;
   margin-right: 10%;
 }
+
