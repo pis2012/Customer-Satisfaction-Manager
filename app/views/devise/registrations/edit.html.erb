@@ -1,25 +1,115 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>CHOOSE YOUR PROFILE SETTINGS</h2>
+<div class="container">
+  <div class="row-fluid">
+    <div class="span2">
+    </div>
+    <div class="span8">
+        <div style="text-align: center;">
+          <br> </br>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+          <!--< %= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "form-horizontal", :method => :put }) do |f| %>-->
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+          <%= form_for(@user, :url => registration_path(@user), :html => {:id => "userpic_form", :method => :put, :multipart => true}) do |f| %>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password %></div>
+        <div class="control-group">
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+                <label class="control-label" for="inputUsername">Personal data:</label>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
+                <div class="controls">
+                  Full Name:
+                  <div class="input-prepend">
+                    <%= f.text_field :full_name %>
+                  </div>
+                </div>
 
-  <div><%= f.submit "Update" %></div>
-<% end %>
+                <br> </br>
 
-<h3>Cancel my account</h3>
+                <div class="controls">
+                  Skype User:
+                  <div class="input-prepend">
+                    <%= f.text_field :email.to_s() %>
+                  </div>
+                </div>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+              </div>
 
-<%= link_to "Back", :back %>
+              <hr> </hr>
+
+              <div class="control-group">
+
+                <label class="control-label" for="inputUsername">My picture:</label>
+
+                <%= gravatar_image_tag( @user.email.gsub('spam', 'mdeering'), :alt => @user.full_name)  %>
+
+                <% if @user.avatar.nil? %>
+                    <%= image_tag @user.avatar.url(:medium) %>
+                <% end %>
+
+                <%=f.file_field :avatar %>
+
+              </div>
+
+              <hr> </hr>
+
+              <div class="control-group">
+
+                <label class="control-label" for="inputUsername">My proyect:</label>
+
+                <div class="controls">
+                  Default Proyect:
+                  <div class="input-prepend">
+
+  <!--< %= f.select(:project_id, Project.all.map {|project| [project.name, project.id]},:prompt => true) %>
+  < %= f.select(:role_id,Role.all.map {|role| [role.name, role.id]},:prompt => true) %>
+      -->
+
+                  </div>
+                </div>
+
+              </div>
+
+              <hr> </hr>
+
+              <div class="control-group">
+
+                <label class="control-label" for="inputUsername">Change Password:</label>
+
+                <div class="controls">
+                  Current Password:
+                  <div class="input-prepend">
+                    <%= f.password_field :current_password %>
+                  </div>
+                </div>
+
+                <br> </br>
+
+                <div class="controls">
+                  New Password:
+                  <div class="input-prepend">
+                    <%= f.password_field :password %>
+                  </div>
+                </div>
+
+                <br> </br>
+
+                <div class="controls">
+                  Confirm New Password:
+                  <div class="input-prepend">
+                    <%= f.password_field :password_confirmation %>
+                  </div>
+                </div>
+
+              </div>
+
+              <hr> </hr>
+
+              <%=  f.submit "Save Changes" %> or
+              <%=  link_to "Cancel", :back %>
+
+        <% end %>
+        </div>
+    </div>
+    <div class="span2">
+    </div>
+  </div>
+</div>

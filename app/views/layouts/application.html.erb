@@ -8,80 +8,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+
 <div id="global-wrapper">
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="brand" href="#">CSM</a>
-            <div class="nav-collapse collapse">
-                <ul class="nav">
-                    <li>
-                        <a href="/"><i class="icon-home icon-white"></i> Home</a>
-                    </li>
-                  <% if user_signed_in? %>
-                      <% if current_user.role_id == 1 %>
-                        <li>
-                            <a href="admin#index"><i class="icon-wrench icon-white"></i> Admin</a>
-                        </li>
-                      <% else %>
-                          <li>
-                            <%= link_to '<i class="icon-wrench icon-white"></i> My Projects'.html_safe, my_projects_path %>
-                          </li>
-                      <% end %>
-                  <% end %>
-                </ul>
-            </div><!-- /.nav -->
-            <div class="nav pull-right">
-                <% if user_signed_in? %>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="#">CSM</a>
+                <div class="nav-collapse collapse">
                     <ul class="nav">
                         <li>
-                          <a href="#"><%= current_user.full_name %></a>
+                            <a href="/"><i class="icon-home icon-white"></i> Home</a>
                         </li>
-                        <li>
-                          <%= link_to '<i class="icon-off icon-white"></i> Sign out'.html_safe, destroy_user_session_path, :method => :delete %>
-                        </li>
+                      <% if user_signed_in? %>
+                          <% if current_user.role_id == 1 %>
+                            <li>
+                                <%= link_to '<i class="icon-wrench icon-white"></i> Admin'.html_safe, admin_path %>
+                            </li>
+                          <% else %>
+                            <li>
+                                <%= link_to '<i class="icon-wrench icon-white"></i> My Projects'.html_safe, my_projects_path %>
+                            </li>
+                          <% end %>
+                      <% end %>
                     </ul>
-                <% else %>
-                  <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                      <i class="icon-user icon-white"></i>
-                      Sign in
-                      <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu inverse">
-                      <li>
-                        <%= link_to 'Customers'.html_safe, new_user_session_path %>
+                </div><!-- /.nav -->
+                <div class="nav pull-right">
+                    <% if user_signed_in? %>
+                        <ul class="nav">
+                            <li>
+                              <%= link_to current_user.full_name, edit_profile_path(Profile.find_by_user_id(current_user )) %>
+                            </li>
+                            <li>
+                              <%= link_to '<i class="icon-off icon-white"></i> Sign out'.html_safe, destroy_user_session_path, :method => :delete %>
+                            </li>
+                        </ul>
+                    <% else %>
+                      <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                          <i class="icon-user icon-white"></i>
+                          Sign in
+                          <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu inverse">
+                          <li>
+                            <%= link_to 'Customers'.html_safe, new_user_session_path %>
+                          </li>
+                          <li>
+                            <%= link_to 'Moove-it'.html_safe, user_omniauth_authorize_path(:google) %>
+                          </li>
+                        </ul>
                       </li>
-                      <li>
-                        <%= link_to 'Moove-it'.html_safe, user_omniauth_authorize_path(:google) %>
-                      </li>
-                    </ul>
-                  </li>
-                <% end %>
-            </div>
-        </div><!-- /.container -->
-    </div><!-- /.navbar-inner -->
-</div><!-- /.navbar -->
+                    <% end %>
+                </div>
+            </div><!-- /.container -->
+        </div><!-- /.navbar-inner -->
+    </div><!-- /.navbar -->
 
 
-<div id="header">
-  <div class="container">
+    <div id="header">
+      <div class="container">
 
-    <a  href="/">
-      <div id="logo"></div>
-    </a>
+        <a  href="/">
+          <div id="logo"></div>
+        </a>
 
-  </div>
+      </div>
+    </div>
+
+    <div id="content">
+        <%= yield %>
+    </div>
+
 </div>
 
-<div id="content">
-<%= yield %>
-</div>
-
-
-<div id="footer">
-<div class="container"> </div>
-</div>
-</div>
 </body>
 </html>

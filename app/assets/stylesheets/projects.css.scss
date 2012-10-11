@@ -12,6 +12,18 @@
   margin-right: 15px;
 }
 
+#msj-face-changed{
+  text-align: center;
+  display:none;
+  width: 50%;
+}
+
+#msj-face-changed-container{
+  background-color: yellow;
+  display: inline;
+  text-align: center;
+}
+
 #global_nav li.feedbacks.active a {
   background-position: 8px -38px;
 }
@@ -23,5 +35,116 @@
 
 #global_nav li.data.active a {
   background-position: 8px -122px;
+}
+
+.face-mood-state {
+  text-align:  center;
+}
+
+#face-list {
+  list-style: none outside none;
+  margin-left: 0;
+  margin-right: 5%;
+  margin-left: -3%;
+}
+
+#face-list li {
+  display: inline;
+  padding: 0;
+  margin-left: -3px;
+  line-height: 70px;
+  font-size: 44px;
+}
+
+#face-list li.active {
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  font-size: 44px;
+  line-height: 70px;
+
+  background: blue;
+  color: blue;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+  -webkit-transform: scale(4.5,4.5);
+  -moz-transform: scale(4.5,4.5);
+  -ms-transform: scale(4.5,4.5);
+  -o-transform: scale(4.5,4.5);
+  transform: scale(4.5,4.5);
+
+  -webkit-transition: all .8s linear;
+  -moz-transition: all .8s linear;
+  -ms-transition: all .8s linear;
+  -o-transition: all .8s linear;
+  transition: all .8s linear;
+}
+
+#face-list li a:hover {
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  font-size: 40px;
+
+  background: blue;
+  color: blue;
+  box-shadow: 5px 5px 5px rgba(0.4, 0.4, 0.4, 0.4);
+  -webkit-transform: scale(4.5,4.5);
+  -moz-transform: scale(4.5,4.5);
+  -ms-transform: scale(4.5,4.5);
+  -o-transform: scale(4.5,4.5);
+  transform: scale(4.5,4.5);
+
+  -webkit-transition: all .8s linear;
+  -moz-transition: all .8s linear;
+  -ms-transition: all .8s linear;
+  -o-transition: all .8s linear;
+   transition: all .8s linear;
+}
+
+#face-list li a:active {
+  background-color: #2175bc;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  font-size: 44px;
+}
+
+#face-list img {
+  width: 16%;
+  height: 16%;
+  padding: 3px;
+}
+
+#face-list li img:hover {
+  width: 18%;
+  height: 18%;
+  -webkit-transform: scale(1.3,1.3);
+  -moz-transform: scale(1.3,1.3);
+  -ms-transform: scale(1.3,1.3);
+  -o-transform: scale(1.3,1.3);
+  transform: scale(1.3,1.3);
+}
+
+.mood-graph {
+  text-align: center;
+}
+
+.milestone-box {
+  text-align: left;
+  font-style: normal;
+  text-decoration:none;
+  color:#791111;
+  font-family:Arial;
+  font-size:16px;
+  font-weight:bold;
+  margin-right:10%;
+  background-color: #FFF8EC;
+}
+
+.milestone-box p {
+  font-family:Arial;
+  font-size:13px;
+  font-weight:normal;
+  font-style:normal;
+  text-decoration:none;
+  text-align:right;
+  margin-right: 10%;
 }
 

@@ -4,7 +4,68 @@
 
 
 
+// feedbacks/index
 
+.feedbacks_filer_element{
+   display:inline;
+}
+
+.hr_feedbacks_table
+{
+  margin-bottom: 0%;
+}
+
+table.feedbacks_table{
+  width: 100%;
+}
+
+table.feedbacks_table tr > td{
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border-bottom: 1px solid #EEEEEE;
+}
+
+table.feedbacks_table td.avatar {
+  width: 8%;
+}
+
+table.feedbacks_table td.avatar .feedback_image {
+     width: 100%;
+}
+
+table.feedbacks_table td.feedback_info {
+
+  padding-left: 4%;
+
+  .feedback_subject{
+    font-size: 18px;
+    text-decoration: underline;
+    color: inherit;
+    font-weight: bold;
+
+
+  }
+
+  .feedback_date{
+    font-weight: normal;
+    margin-top: 0;
+  }
+
+  .feedback_last_comment{
+
+
+  }
+
+  .feedback_division{
+    margin-top: 1%;
+    margin-bottom: 1%;
+
+  }
+
+}
+
+
+// feedbacks/index
 
 
 #feedback_tipoFeedback{
@@ -26,6 +87,15 @@
   resize: none;
   margin-left: 5%;
 
+}
+.TextAreaComent{
+  width:97%;
+  height:50px;
+
+  resize: none;
+  margin-left: 1%;
+  border:2px #006dcc;
+  border-bottom-style: solid;
 }
 .feedback_feedback_type{
   -webkit-border-radius: 10px;
@@ -64,6 +134,10 @@
   margin-top: 10px;
 
 }
+.margin1{
+  margin-left: 1%;
+  margin-top: -2%;
+}
 
 .margin2{
   border-bottom-width: 2px;
@@ -94,9 +168,11 @@
 }
 .seccion3 {
   position: relative;
-  background: #ff0000;
+  background: rgba(255, 241, 187, 0);
+
 
 }
+
 
 
 
@@ -118,6 +194,9 @@
 
 
 }
+
+
+
 
 
 .show_Asunto2{
@@ -173,13 +252,7 @@
 
 }
 
-.fechaFeedback2{
 
-  position: absolute;
-  margin-top: 2.5%;
-  margin-left: 1%;
-
-}
 
 .ImgFeedback{
   height:100px;
@@ -191,6 +264,15 @@
 
 
 }
+
+.ImgAvatComen{
+  height:60px;
+  width: 60px;
+  position: absolute;
+  float: left;
+  margin-left: 1%;
+  margin-top: 1%;
+}
 .Contenido{
   position: absolute;
 
@@ -200,22 +282,25 @@
 
 }
 
-.Contenido2{
+.SubjectText{
+        margin-left: 7.6%;
+  }
 
-
-  position: absolute;
-  margin-top: 5%;
-  width: 99%;
-  margin-left: 1%;
-  text-align: justify;
-
+.marginTop1{
+  margin-top: 2%;
 }
 
+.top1{
+  margin-top: 0.2%;
+  margin-right: 2%;
+}
+
+
 .Separador{
-  position: absolute;
+
   border-bottom: solid;
-  border-bottom-width: 0.5px;
-  margin-top:15%;
+  border-bottom-width:1px;
+  margin-top:5%;
   position: relative;
 }
 
@@ -224,7 +309,7 @@
   position: absolute;
 
 
-  margin-top: 17%;
+  margin-top: 14%;
   margin-left: 16%;
 
 }
@@ -240,3 +325,79 @@ a.fill-div:hover {
   background: #b1b59e;
 }
 
+.Contenido2 {
+  margin-left:1%;
+  margin-top:13%;
+  position:absolute;
+  text-align:justify;
+  width:98%;
+}
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++ Ver Feedback ++++++++++++++++++++++++++++++++++++++++++++++
+.Contenido3 {
+  margin-left:1%;
+  margin-top:20%;
+  position:relative;
+  text-align:justify;
+  visibility:hidden;
+  width:99%;
+}
+.show_Asunto2 {
+  margin-left:1%;
+  margin-top:1%;
+
+  text-decoration:underline;
+}
+
+.Contenido4 {
+  position: absolute;
+  margin-left:1%;
+  margin-top:13%;
+  text-align:justify;
+  width:98%;
+}
+
+.fechaFeedback2 {
+  margin-left:1%;
+  margin-top:6%;
+  position: absolute;
+
+}
+
+
+.seccionComent {
+  background-attachment:initial;
+  background-clip:initial;
+  background-color:rgba(255, 0, 0, 0);
+  background-image:initial;
+  background-origin:initial;
+  background-position:initial initial;
+  background-repeat:initial initial;
+  height:100px;
+  margin-bottom:auto;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:2%;
+  position:relative;
+
+}
+.show_Coment {
+  position: relative;
+  margin-left:9%;
+  margin-top:1%;
+  padding: 0;
+  top:1%;
+  left:9% ;
+  margin: 0;
+}
+.fechaComment {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  left:9% ;
+  margin-top: 40%;
+
+
+
+}

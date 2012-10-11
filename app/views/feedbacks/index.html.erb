@@ -1,37 +1,40 @@
-<h1>Listing feedbacks</h1>
+<table class="feedbacks_table">
+  <% @feedbacks.each do |feedback| %>
+      <tr id="row_feedback_<%= feedback.id %>">
+        <td class="avatar">
+          <a href="#show-feedback<%= feedback.id.to_s %>" class="avatar_image" class="show-feedback-link" data-url="<%= feedback_path(feedback) %>">
+            <%= image_tag(feedback.feedback_type.image_url, :alt => "feedback_image", :class => "feedback_image") %>
+          </a>
+        </td>
+        <td class="feedback_info">
+          <a href="#show-feedback<%= feedback.id.to_s %>" class="feedback_subject show-feedback-link" data-url="<%= feedback_path(feedback) %>"><%= truncate(strip_tags(feedback.subject), :length => 45) %></a>
+          <h6 class="feedback_date"><%= "Uploaded by " + feedback.user.full_name + " on   " + feedback.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h6>
+          <h7 class="feedback_content"><%= truncate(strip_tags(feedback.content), :length => 180) %></h7>
+          <% @last_comment = feedback.comments.order('created_at').first %>
+          <% if @last_comment != nil %>
+              <h6 class="feedback_last_comment"><%= "Last comment made by " + @last_comment.user.full_name + ", "+ @last_comment.created_at.strftime("%A %d %B, %Y") %></h6>
+          <% else %>
+              <h6 class="feedback_last_comment">No comments</h6>
+          <% end %>
+        </td>
+      </tr>
 
-<table>
-  <!-- <tr>
-    <th>Asunto</th>
-    <th>Contenido</th>
-    <th>Feedback type</th>
-    <th>Project</th>
-    <th>Comentario</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>-->
-
-  <table>
-    <% @feedbacks.each do |feedback| %>
-
-        <tr>
-          <div class="seccion2">
-              <%= image_tag(   FeedbackType.find(feedback.feedback_type_id).name + ".png", :alt => "Moove-It",:class => "ImgFeedback") %>
-              <a href="feedbacks/<%= feedback.id %>" class="fill-div"> </a>
-                <h5 class="fechaFeedback" >03/09/2012</h5>
-                <h4 class="show_Asunto"><%= feedback.asunto %></h4>
-                <h6 >Ultimo comentario echo por mauro@mooveit , 06 de agosto 2012</h6>
-          </div>
-        </tr>
-
-    <% end %>
-  </table>
-
-
-
-
+  <% end %>
+  <!--
+<div class="feedback_pager">
+  <ul class="pager">
+    <li class="disabled"><a href="#">Previous</a></li>
+    <li><a href="#">Next</a></li>
+  </ul>
+</div>
+-->
+</table>
 
 
 
-<%= link_to 'New Feedback', new_feedback_path %>
+
+
+
+
+
+
