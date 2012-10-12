@@ -1,0 +1,32 @@
+<%= form_for(@form) do |f| %>
+
+    <% if @form.errors.any? %>
+        <div class="alert alert-error">
+            <% @form.errors.full_messages.each do |msg| %>
+                  <strong><%= msg %></strong>
+            <% end %>
+        </div>
+    <% end %>
+
+
+    <div class="">
+      <%= f.label :Google_email %>
+      <%= f.text_field :email %>
+    </div>
+
+    <div class="">
+      <%= f.label :Password %>
+      <%= f.password_field :password %>
+    </div>
+
+    <div class="">
+      <%= f.label :Form_name %>
+      <%= f.text_field :name %>
+    </div>
+
+
+    <%=  f.submit "Accept" %> or
+    <%=  link_to "Cancel", "/" %>
+
+
+<% end %>
