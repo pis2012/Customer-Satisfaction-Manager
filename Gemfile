@@ -9,6 +9,8 @@ gem 'mysql2'
 
 gem 'devise'
 
+gem 'google_drive'
+
 gem 'foreigner'
 
 #gem "devise_openid_authenticatable"
