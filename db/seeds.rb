@@ -31,10 +31,10 @@ rol_admin = Role.create(name:'Admin')
 rol_client = Role.create(name:'Client')
 rol_mooveit = Role.create(name:'Mooveit')
 
-type_skype = FeedbackType.create(name:'Skype')
-type_email = FeedbackType.create(name:'Email')
-type_reconocimiento = FeedbackType.create(name:'Reconocimiento')
-type_comentario = FeedbackType.create(name:'Comentario')
+type_skype = FeedbackType.create(name:'Skype',image_url:'/assets/feedbacks/generic.png')
+type_email = FeedbackType.create(name:'Email',image_url:'/assets/feedbacks/generic.png')
+type_reconocimiento = FeedbackType.create(name:'Recognition',image_url:'/assets/feedbacks/generic.png')
+type_comentario = FeedbackType.create(name:'Comment',image_url:'/assets/feedbacks/generic.png')
 
 client1 = Client.create(name:'MicroHard')
 client2 = Client.create(name:'Sony')
@@ -509,15 +509,13 @@ admin_usr = User.create(role: rol_admin, client: client1,
                         username: 'admin',password:'admin',password_confirmation:'admin',
                         full_name:'Martin Cabrera', email:'cabrera@1234.com')
 
-profile1 = Profile.create(user:admin_usr, project:p1,
-                          last_login_date:'2012-01-01 00:00:00', skype_usr:'martin.skype')
+profile1 = Profile.create(user:admin_usr, project:p1,skype_usr:'martin.skype')
 
 client_usr = User.create(role: rol_client, client: client1,
                          username: 'client_usr',password:'client',password_confirmation:'client',
                          full_name:'Bill Gates', email:'gates@1234.com')
 
-profile = Profile.create(user:client_usr, project:p4,
-                          last_login_date:'2012-01-01 00:00:00',skype_usr:'gates.skype')
+profile = Profile.create(user:client_usr, project:p4,skype_usr:'gates.skype')
 
 
 
@@ -525,16 +523,7 @@ client_usr = User.create(role: rol_client, client: client2,
                          username: 'sony',password:'sony',password_confirmation:'sony',
                          full_name:'Sony', email:'sony@1234.com')
 
-profile2 = Profile.create(user:client_usr, project:p1,
-                          last_login_date:'2012-01-01 00:00:00',skype_usr:'sony.skype')
-
-mooveit_usr = User.create(role: rol_mooveit, client: client1,
-                          username: 'mooveit',password:'mooveit',password_confirmation:'mooveit',
-                          full_name: 'Jorge Corrales', email:'corrales@1234.com')
-
-profile3 = Profile.create(user:mooveit_usr, project:p1,
-                          last_login_date:'2012-01-01 00:00:00',skype_usr:'corrales.skype')
-
+profile2 = Profile.create(user:client_usr, project:p1,skype_usr:'sony.skype')
 
 Feedback.create(project: p1, user: client_usr, feedback_type: type_skype, subject: "Email de requerimientos - interfaz", content: " Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id. Quo mundi lobortis reformidans eu, legimus senserit definiebas an eos. Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per. In usu latine equidem dolores. Quo no falli viris intellegam, ut fugit veritus placerat per. Ius id vidit volumus mandamus, vide veritus democritum te nec, ei eos debet libris consulatu. No mei ferri graeco dicunt, ad cum veri accommodare. Sed at malis omnesque delicata, usu et iusto zzril meliore. Dicunt maiorum eloquentiam cum cu, sit summo dolor essent te. Ne quodsi nusquam legendos has, ea dicit voluptua eloquentiam pro, ad sit quas qualisque. Eos vocibus deserunt quaestio ei. Blandit incorrupte quaerendum in quo, nibh impedit id vis, vel no nullam semper audiam. Ei populo graeci consulatu mei, has ea stet modus phaedrum. Inani oblique ne has, duo et veritus detraxit. Tota ludus oratio ea mel, offendit persequeris ei vim. Eos dicat oratio partem ut, id cum ignota senserit intellegat. Sit inani ubique graecis ad, quando graecis liberavisse et cum, dicit option eruditi at duo. Homero salutatus suscipiantur eum id, tamquam voluptaria expetendis ad sed, nobis feugiat similique usu ex.")
 Feedback.create(project: p1, user: client_usr, feedback_type: type_email, subject: "Conversacion Skype respecto a Integracion Servidores", content: " Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id. Quo mundi lobortis reformidans eu, legimus senserit definiebas an eos. Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per. In usu latine equidem dolores. Quo no falli viris intellegam, ut fugit veritus placerat per. Ius id vidit volumus mandamus, vide veritus democritum te nec, ei eos debet libris consulatu. No mei ferri graeco dicunt, ad cum veri accommodare. Sed at malis omnesque delicata, usu et iusto zzril meliore. Dicunt maiorum eloquentiam cum cu, sit summo dolor essent te. Ne quodsi nusquam legendos has, ea dicit voluptua eloquentiam pro, ad sit quas qualisque. Eos vocibus deserunt quaestio ei. Blandit incorrupte quaerendum in quo, nibh impedit id vis, vel no nullam semper audiam. Ei populo graeci consulatu mei, has ea stet modus phaedrum. Inani oblique ne has, duo et veritus detraxit. Tota ludus oratio ea mel, offendit persequeris ei vim. Eos dicat oratio partem ut, id cum ignota senserit intellegat. Sit inani ubique graecis ad, quando graecis liberavisse et cum, dicit option eruditi at duo. Homero salutatus suscipiantur eum id, tamquam voluptaria expetendis ad sed, nobis feugiat similique usu ex.")
@@ -547,14 +536,14 @@ Milestone.create(:target_date => '2012-12-03 00:00:00', :project => p1, :name =>
 Milestone.create(:target_date => '2013-04-01 00:00:00', :project => p1, :name => "Prueba4")
 
 
-Milestone.create(:target_date => '2012-04-06 00:00:00', :project => p2, :name => "Proyecto 2, mileston 1")
-Milestone.create(:target_date => '2012-05-07 00:00:00', :project => p2, :name => "Proyecto 2, mileston 2")
-Milestone.create(:target_date => '2012-06-08 00:00:00', :project => p2, :name => "Proyecto 2, mileston 3")
-Milestone.create(:target_date => '2013-07-09 00:00:00', :project => p2, :name => "Proyecto 2, mileston 4")
+Milestone.create(:target_date => '2012-04-06 00:00:00', :project => p2, :name => "Proyecto 2, milestone 1")
+Milestone.create(:target_date => '2012-05-07 00:00:00', :project => p2, :name => "Proyecto 2, milestone 2")
+Milestone.create(:target_date => '2012-06-08 00:00:00', :project => p2, :name => "Proyecto 2, milestone 3")
+Milestone.create(:target_date => '2013-07-09 00:00:00', :project => p2, :name => "Proyecto 2, milestone 4")
 
 
-Milestone.create(:target_date => '2012-05-22 00:00:00', :project => p3, :name => "Proyecto 3, mileston 1")
-Milestone.create(:target_date => '2012-06-12 00:00:00', :project => p3, :name => "Proyecto 3, mileston 2")
-Milestone.create(:target_date => '2013-08-06 00:00:00', :project => p3, :name => "Proyecto 3, mileston 3")
-Milestone.create(:target_date => '2014-08-09 00:00:00', :project => p3, :name => "Proyecto 3, mileston 4")
+Milestone.create(:target_date => '2012-05-22 00:00:00', :project => p3, :name => "Proyecto 3, milestone 1")
+Milestone.create(:target_date => '2012-06-12 00:00:00', :project => p3, :name => "Proyecto 3, milestone 2")
+Milestone.create(:target_date => '2013-08-06 00:00:00', :project => p3, :name => "Proyecto 3, milestone 3")
+Milestone.create(:target_date => '2014-08-09 00:00:00', :project => p3, :name => "Proyecto 3, milestone 4")
 

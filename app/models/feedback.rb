@@ -1,4 +1,6 @@
 class Feedback < ActiveRecord::Base
+  default_scope :order => 'created_at desc'
+
   belongs_to :feedback_type
   accepts_nested_attributes_for :feedback_type
   belongs_to :project

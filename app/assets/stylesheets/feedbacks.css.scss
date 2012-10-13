@@ -2,8 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-
+// ESTO SE VA A BORRAR
+// HAY QUE PASARLO DE FORMA CORRECTA A MY_PROJECTS
 
 
 
@@ -30,9 +30,11 @@
 .TextAreaComent{
   width:97%;
   height:50px;
-  border: 0.5px solid #000000;
+
   resize: none;
   margin-left: 1%;
+  border:2px #006dcc;
+  border-bottom-style: solid;
 }
 .feedback_feedback_type{
   -webkit-border-radius: 10px;
@@ -111,16 +113,6 @@
 }
 
 
-.seccionComent{
-               position: relative;
-  background: rgba(255, 0, 0, 0);
-  height: 100px;
-  margin: auto;
-
-
-
-}
-
 
 
 
@@ -143,14 +135,7 @@
 }
 
 
-.show_Coment{
-  float: left;
-  position: absolute;
-  margin-top: 1%;
-  margin-left: 9%;
 
-
-}
 
 
 .show_Asunto2{
@@ -205,21 +190,8 @@
   margin-left: 16%;
 
 }
-.fechaComment{
 
-  position: absolute;
-  margin-top: 6%;
-  margin-left: 9%;
 
-}
-
-.fechaFeedback2{
-
-  position: absolute;
-  margin-top: 3.5%;
-  margin-left: 1%;
-
-}
 
 .ImgFeedback{
   height:100px;
@@ -252,16 +224,7 @@
 .SubjectText{
         margin-left: 7.6%;
   }
-.Contenido2{
 
-
-  position: absolute;
-  margin-top: 7%;
-  width: 98%;
-  margin-left: 1%;
-  text-align: justify;
-
-}
 .marginTop1{
   margin-top: 2%;
 }
@@ -270,20 +233,12 @@
   margin-top: 0.2%;
   margin-right: 2%;
 }
-.Contenido3{
-  position: relative;
-  margin-top: 7%;
-  width: 99%;
-  margin-left: 1%;
-  text-align: justify;
-  visibility: hidden;
 
-}
 
 .Separador{
-  position: absolute;
+
   border-bottom: solid;
-  border-bottom-width: 0.5px;
+  border-bottom-width:1px;
   margin-top:5%;
   position: relative;
 }
@@ -309,3 +264,79 @@ a.fill-div:hover {
   background: #b1b59e;
 }
 
+.Contenido2 {
+  margin-left:1%;
+  margin-top:13%;
+  position:absolute;
+  text-align:justify;
+  width:98%;
+}
+
+
+//++++++++++++++++++++++++++++++++++++++++++++++ Ver Feedback ++++++++++++++++++++++++++++++++++++++++++++++
+.Contenido3 {
+  margin-left:1%;
+  margin-top:20%;
+  position:relative;
+  text-align:justify;
+  visibility:hidden;
+  width:99%;
+}
+.show_Asunto2 {
+  margin-left:1%;
+  margin-top:1%;
+
+  text-decoration:underline;
+}
+
+.Contenido4 {
+  position: absolute;
+  margin-left:1%;
+  margin-top:13%;
+  text-align:justify;
+  width:98%;
+}
+
+.fechaFeedback2 {
+  margin-left:1%;
+  margin-top:6%;
+  position: absolute;
+
+}
+
+
+.seccionComent {
+  background-attachment:initial;
+  background-clip:initial;
+  background-color:rgba(255, 0, 0, 0);
+  background-image:initial;
+  background-origin:initial;
+  background-position:initial initial;
+  background-repeat:initial initial;
+  height:100px;
+  margin-bottom:auto;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:2%;
+  position:relative;
+
+}
+.show_Coment {
+  position: relative;
+  margin-left:9%;
+  margin-top:1%;
+  padding: 0;
+  top:1%;
+  left:9% ;
+  margin: 0;
+}
+.fechaComment {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  left:9% ;
+  margin-top: 40%;
+
+
+
+}

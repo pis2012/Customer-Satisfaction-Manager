@@ -1,53 +1,24 @@
 <script>
-    $('a[data-toggle="tab"]').on('shown', function (e) {
-        e.target // activated tab
-        e.relatedTarget // previous tab
-    })
+    $(document).ready(function () {
+        //updatePanel("<%=  project_feedbacks_path(@project) %>", 'feedbacks-content', 'feedbacks');
+        //$('#myTab  a[href=#' + 'feedbacks' + ']').tab('show');
 
-    $("#load-more").bind("ajax:complete", function (et, e) {
-        $("#products-list").html(e.responseText); // insert content
     });
 
-    $("#load-more").bind("ajax:loading", function (et, e) {
-        $(this).html("Loading..."); // swap link text
-    });
-
-    function activate(me) {
-        $('.active').each(function () {
-            $(this).removeClass('active');
-        });
-        $(me).addClass('active');
-    }
-
-    $('#datepicker').datepicker();
-
-    function updatePanel(url, id_replace, tab) {
+    function updatePanelMoods1(me, url, id, mood) {
         $.get(url, function (res) {
-            $('#' + id_replace).html(res);
-            $('#myTab  a[href=#' + tab + ']').tab('show');
-        },'html');
-
-    }
-
-    function updatePanelMoods(me, url, id, mood) {
-        $.get(url, function (res) {
-            document.getElementById('moods').innerHTML = '<div style="width: 140px; height: 140px; vertical-align: top; display: inline-block;  margin: 10px 5px 5px 50px;" ><img alt="' + mood + '" src="/assets/status/normal/' + mood + '.png"/></div>';
+            document.getElementById('moods').innerHTML = '<img alt="' + mood + '" src="/assets/status/normal/' + mood + '.png"/>';
             //document.getElementById('moods').innerHTML = '<img src="/assets/status/normal/3.png"/>';
         });
-        $('.active').each(function () {
-            $(this).removeClass('active');
-        });
-        $(me).addClass('active');
     }
+    $(document).ready(function(){
+        $("#face-list li").click(function () {
+            $("#msj-face-changed").fadeIn(300).fadeOut(1000);
+            //$("#msj-face-changed").fadeOut(5000);
+        });
 
+    })
 </script>
-
-
-
-
-
-
-
 
 <div id="breadcrumbs-wrapper">
   <div class="container">
@@ -80,54 +51,96 @@
       <br>
 
       <div class="current-mood">
-        <p>Yor current mood:</p>
+
+        <div id="msj-face-changed-container">
+          <div id="msj-face-changed" class="label label-important">
+            Mood state changed!!!
+          </div>
+        </div>
 
         <div class="face-mood-state">
+          <div id="myTabContentMoods" class="tab-content">
 
-          <div id="moodsTabContent" class="tab-content">
             <!-- page moods -->
-            <div class="tab-pane fade active in" id="moods">
-              <% mood = @view[:project].moods.order(:created_at).last.get_mood_img %>
-              <div class="face-mood-state">
-                <%= image_tag "status/normal/#{mood}" %>
-              </div>
+            <div class="tab-pane fade in active" id="change-mood1">
+                <!-- page contents -->
+                <div class="page_content" id="change-mood1-content">
 
+                  <%= render template:'projects/change_mood' %>
+
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="change-mood3">
+              <!-- page contents -->
+              <div class="page_content" id="change-mood3-content">
+              </div>
+            </div>
+            <div class="tab-pane fade" id="change-mood5">
+              <!-- page contents -->
+              <div class="page_content" id="change-mood5-content">
+              </div>
+            </div>
+            <div class="tab-pane fade" id="change-mood7">
+              <!-- page contents -->
+              <div class="page_content" id="change-mood7-content">
+              </div>
+            </div>
+            <div class="tab-pane fade" id="change-mood9">
+              <!-- page contents -->
+              <div class="page_content" id="change-mood9-content">
+              </div>
             </div>
           </div>
 
-          <ul class="nav-pills">
-            <li onclick="updatePanelMoods(this,'<%=  "/my_projects/change_mood?new_status=1" %>','moods', mood)" <% if mood == "1.png" %> class="active" <% end %>><a href="/my_projects/change_mood?new_status=1" remote="true"><img alt="1" src="/assets/status/normal/1.png" class="face-mood"/></a></li>
-            <li onclick="updatePanelMoods(this,'<%=  "/my_projects/change_mood?new_status=3" %>','moods', mood)" <% if mood == "3.png" %> class="active" <% end %>><a href="/my_projects/change_mood?new_status=3" remote="true"><img alt="3" src="/assets/status/normal/3.png" class="face-mood" /></a></li>
-            <li onclick="updatePanelMoods(this,'<%=  "/my_projects/change_mood?new_status=5" %>','moods', mood)" <% if mood == "5.png" %> class="active" <% end %>><a href="/my_projects/change_mood?new_status=5" remote="true"><img alt="5" src="/assets/status/normal/5.png" class="face-mood" /></a></li>
-            <li onclick="updatePanelMoods(this,'<%=  "/my_projects/change_mood?new_status=7" %>','moods', mood)" <% if mood == "7.png" %> class="active" <% end %>><a href="/my_projects/change_mood?new_status=7" remote="true"><img alt="7" src="/assets/status/normal/7.png" class="face-mood" /></a></li>
-            <li onclick="updatePanelMoods(this,'<%=  "/my_projects/change_mood?new_status=9" %>','moods', mood)" <% if mood == "9.png" %> class="active" <% end %>><a href="/my_projects/change_mood?new_status=9" remote="true"><img alt="9" src="/assets/status/normal/9.png" class="face-mood" /></a></li>
+          <ul id="face-list">
+            <% mood = @view[:project].moods.order(:created_at).last.get_mood_img %>
+            <li <% if mood == "1.png" %> class="active" <% end %>><a href="#change-mood1" class="change-mood1-link" data-url="<%= change_mood_path('1') %>" rel="tooltip" title="Change mood"><img alt="1" src="/assets/status/normal/1.png" class="face-mood" id="miniMood1"/></a></li>
+            <li <% if mood == "3.png" %> class="active" <% end %>><a href="#change-mood3" class="change-mood3-link" data-url="<%= change_mood_path('3') %>" rel="tooltip" title="Change mood"><img alt="3" src="/assets/status/normal/3.png" class="face-mood" id="miniMood3"/></a></li>
+            <li <% if mood == "5.png" %> class="active" <% end %>><a href="#change-mood5" class="change-mood5-link" data-url="<%= change_mood_path('5') %>" rel="tooltip" title="Change mood"><img alt="5" src="/assets/status/normal/5.png" class="face-mood" id="miniMood5"/></a></li>
+            <li <% if mood == "7.png" %> class="active" <% end %>><a href="#change-mood7" class="change-mood7-link" data-url="<%= change_mood_path('7') %>" rel="tooltip" title="Change mood"><img alt="7" src="/assets/status/normal/7.png" class="face-mood" id="miniMood7"/></a></li>
+            <li <% if mood == "9.png" %> class="active" <% end %>><a href="#change-mood9" class="change-mood9-link" data-url="<%= change_mood_path('9') %>" rel="tooltip" title="Change mood"><img alt="9" src="/assets/status/normal/9.png" class="face-mood" id="miniMood9"/></a></li>
           </ul>
         </div>
 
-        <p>Just click on your mood whenever you want to change it. </p>
+        <p></p>
         <br>
       </div>
-
 
       <div id="global_nav">
         <ul id="myTab">
           <li class="feedbacks active">
-            <a href="#feedbacks" onclick="updatePanel('<%=  project_feedbacks_path(@view[:project].id) %>','feedbacks-content','feedbacks')"> Feedbacks</a>
+            <a href="#feedbacks" class="feedbacks-link" data-url="<%= project_feedbacks_path(@project) %>"> Feedbacks</a>
+            <ul>
+              <li class="feedbacks" hidden="true">
+                <a href="#feedbacks"> Feedbacks</a>
+              </li>
+              <li class="new-feedback" hidden="true">
+                <a href="#new-feedback"> New Feedback</a>
+              </li>
+              <li class="show-feedback" hidden="true">
+                <a href="#show-feedback"> Show Feedback</a>
+              </li>
+            </ul>
           </li>
           <li class="data">
-            <a href="#data" data-toggle="tab"> Data</a>
+            <a href="#project-data" class="data-link" data-url="<%= project_data_path(@project) %>"> Data</a>
+            <ul>
+              <li class="data" hidden="true">
+                <a href="#project-data"> Data</a>
+              </li>
+              <li class="new-milestone" hidden="true">
+                <a href="#new-milestone"> New Milestone</a>
+              </li>
+            </ul>
+
           </li>
-          <li class="new-feedback" hidden="true">
-            <a href="#new-feedback" data-toggle="tab"> New Feedback</a>
-          </li>
-          <li class="show-feedback" hidden="true">
-            <a href="#show-feedback" data-toggle="tab"> Show Feedback</a>
-          </li>
-          <li class="new-milestone" hidden="true">
-            <a href="#new-milestone" data-toggle="tab"> New Milestone</a>
-          </li>
+
+
         </ul>
       </div>
+
+      <br/>
 
       <div class="milestone-box">
         <%= @view[:mile1] %>
@@ -141,16 +154,16 @@
         <div id="myTabContent" class="tab-content">
 
           <!-- page feedbacks -->
-          <div class="tab-pane fade active in" id="feedbacks">
+          <div class="tab-pane fade  in active" id="feedbacks">
 
             <!-- page header -->
             <div class="page_header">
               <h1>Feedbacks</h1>
 
               <div class="add_element">
-                <button class="btn btn-link" type="button" onclick="updatePanel('<%=  new_feedback_path(@project) %>','new-feedback-content','new-feedback')">
+                <a href="#new-feedback" class="btn btn-link new-feedback-link" data-url="<%= new_feedback_path(@project) %>">
                   <i class="icon-plus icon-white"> </i> New Feedback
-                </button>
+                </a>
 
               </div>
             </div>
@@ -159,7 +172,21 @@
 
             <!-- page contents -->
             <div class="page_content" id="feedbacks-content">
+              <%= form_tag(feedbacks_date_filter_path, :remote => true) do %>
+                  <%= hidden_field_tag(:project_id,@project.id) %>
+                  <div class="feedbacks_filter">
+                    <h5 class="feedbacks_filer_element">Show events since:</h5>
 
+                    <div class="input-append date feedbacks_filer_element" id="datepicker" data-date="<%= Time.now.strftime("%d/%m/%Y") %>" data-date-format="dd/mm/yyyy">
+                      <%= text_field_tag(:date,Time.now.strftime("%d/%m/%Y"),:class => "span2", :size => 16) %>
+                      <span class="add-on"><i class="icon-calendar"></i></span>
+                    </div>
+
+                    &nbsp;
+                    <%= button_tag("Filter",:class => "btn") %>
+                  </div>
+              <% end %>
+              <hr class="hr_feedbacks_table">
               <%= render template: "feedbacks/index" %>
 
             </div>
@@ -169,7 +196,7 @@
           <!--// page feedbacks -->
 
           <!-- page data -->
-          <div class="tab-pane fade" id="data">
+          <div class="tab-pane fade" id="project-data">
 
             <!-- page header -->
             <div class="page_header">
@@ -177,43 +204,17 @@
 
               <div class="add_element">
 
-                <button class="btn btn-link .add" type="button" onclick="updatePanel('<%=  new_milestone_path(@project) %>','new-milestone-content','new-milestone')">
+                <button class="btn btn-link new-milestone-link" data-url="<%= new_milestone_path(@project) %>">
                   <i class="icon-plus icon-white"> </i> New Milestone
                 </button>
 
               </div>
-              <!--
-                <div class="nav pull-right" style="margin: -30px 8px;">
-                  <%= link_to '<i class="icon-plus icon-white"> </i> New Milestone'.html_safe, {:controller => "milestones", :action => "new_milestone"} %>
-                </div>
-                -->
 
             </div>
             <!--// page header -->
 
             <!-- page contents -->
-            <div class="page_content">
-
-              <h4>Description</h4>
-
-              <p> <%= @view[:project].description %>  </p>
-
-              <hr>
-
-              <h4>Changes in mood</h4>
-              <br/>
-
-              <div class="mood-graph">
-                <%= image_tag @view[:graph] %>
-              </div>
-              <br/>
-              <hr>
-
-              <h4>Milestones</h4>
-
-              <% @view[:project].milestones.each do |mile| %>
-                  <p> <%= "#{mile.target_date} #{mile.name}" %></p>
-              <% end %>
+            <div class="page_content" id="data-content">
 
             </div>
             <!--// page contents -->

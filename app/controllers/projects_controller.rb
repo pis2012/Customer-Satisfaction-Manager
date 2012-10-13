@@ -83,17 +83,9 @@
 
   def show_project_complete
     @project = current_user.profile.project
-    @view = {:project => @project, :graph => nil, :mile1 => nil, :mile2 => nil}
+    @lastmood = @project.moods.order(:created_at).last.get_mood_img
+    @view = {:project => @project, :mile1 => nil, :mile2 => nil, :lastmood => @lastmood}
 
-    data = Array.new
-    #axis = Array.new
-    @project.moods.order(:created_at).each do |mood|
-      data = data + [mood.status]
-      #axis = axis + ["#{mood.created_at.mday}/#{mood.created_at.mon}"]
-    end
-
-    @view[:graph] = Gchart.line(:size => '450x250', :bg => {:color => '76A4FB,1,ffffff,0', :type => 'gradient'}, :graph_bg => 'E5E5E5', :theme => :keynote,
-                           :data => data, :axis_with_labels => ['y'], :axis_labels => [[1,2,3,4,5,6,7,8,9,10]])
     if !@view[:project].finalized
       current_date = Time.now.to_date
       miles = @project.milestones.order(:target_date).select {|mile| mile.target_date > current_date}
@@ -112,7 +104,29 @@
     @feedbacks = @project.feedbacks
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :layout => 'my_projects' }# show_project_complete.html.erb
+      format.json { render json: @project }
+    end
+  end
+
+  def show_project_data
+    @project = current_user.profile.project
+    @view = {:project => @project, :graph => nil}
+
+    data = Array.new
+    axis = Array.new
+    count = @project.moods.count
+    offset = count > 25 ? count-25 : 0  # Last 25 moods
+    @project.moods.order(:created_at).offset(offset).each do |mood|
+      data = data + [mood.status]
+      axis = axis + ["#{mood.created_at.mday}/#{mood.created_at.mon}"]
+    end
+
+    @view[:graph] = Gchart.line(:size => '850x350', :bg => {:color => '76A4FB,1,ffffff,0', :type => 'gradient'}, :graph_bg => 'E5E5E5', :theme => :keynote,
+                                :data => data, :axis_with_labels => ['x','y'], :axis_labels => [axis,[1,2,3,4,5,6,7,8,9,10]])
+
+    respond_to do |format|
+      format.html { render :layout => false } # show_project_data.html.erb
       format.json { render json: @project }
     end
   end
@@ -128,8 +142,14 @@
   def change_mood
     @project = current_user.profile.project
     @project.moods.create(:status => params[:new_status], :project => @project)
-    #@project.update_attributes(:moods => new_mood)
-    redirect_to my_projects_url
+
+    @lastmood = @project.moods.order(:created_at).last.get_mood_img
+
+    @view = {:project => @project, :lastmood =>  @lastmood}
+    respond_to do |format|
+      format.html { render :layout => false }
+      format.json { render json: @project }
+    end
   end
 
 

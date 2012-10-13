@@ -8,6 +8,9 @@ gem 'rails', '3.2.8'
 gem 'mysql2'
 
 gem 'devise'
+gem 'devise-encryptable'
+
+gem 'google_drive'
 
 gem 'foreigner'
 
@@ -33,6 +36,10 @@ gem 'omniauth-openid'
 
 gem 'will_paginate'
 
+gem 'gravatar_image_tag'
+
+gem "paperclip", "~> 3.0"
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -57,7 +64,9 @@ gem 'jquery-rails'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
+
+gem 'passenger'
 
 # To use debugger
 # gem 'debugger'

@@ -4,9 +4,10 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks.json
   def index
     @feedbacks = Feedback.all
-
     respond_to do |format|
+      if request.xhr?
       format.html # index.html.erb
+      end
       format.json { render json: @feedbacks }
     end
   end
@@ -15,7 +16,19 @@ class FeedbacksController < ApplicationController
     @feedbacks = Feedback.find_all_by_project_id(params[:project_id])
 
     respond_to do |format|
+      if request.xhr?
       format.html { render action: 'index' }
+        end
+    end
+  end
+  Project.where('start_date <= ?', Time.now)
+
+  def date_filter
+    fecha = Time.parse(params[:date])
+    @feedbacks = Feedback.where('created_at >= ?', fecha).where(project_id:params[:project_id])
+    @project = Project.find(params[:project_id])
+    respond_to do |format|
+      format.js {}
     end
   end
 
@@ -29,7 +42,9 @@ class FeedbacksController < ApplicationController
     @commentNew = Comment.new
 
     respond_to do |format|
+      if request.xhr?
       format.html # show.html.erb
+      end
       format.json { render json: @feedback }
     end
   end
