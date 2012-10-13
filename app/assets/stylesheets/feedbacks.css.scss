@@ -2,70 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// ESTO SE VA A BORRAR
+// HAY QUE PASARLO DE FORMA CORRECTA A MY_PROJECTS
 
-
-// feedbacks/index
-
-.feedbacks_filer_element{
-   display:inline;
-}
-
-.hr_feedbacks_table
-{
-  margin-bottom: 0%;
-}
-
-table.feedbacks_table{
-  width: 100%;
-}
-
-table.feedbacks_table tr > td{
-  padding-top: 2%;
-  padding-bottom: 2%;
-  border-bottom: 1px solid #EEEEEE;
-}
-
-table.feedbacks_table td.avatar {
-  width: 8%;
-}
-
-table.feedbacks_table td.avatar .feedback_image {
-     width: 100%;
-}
-
-table.feedbacks_table td.feedback_info {
-
-  padding-left: 4%;
-
-  .feedback_subject{
-    font-size: 18px;
-    text-decoration: underline;
-    color: inherit;
-    font-weight: bold;
-
-
-  }
-
-  .feedback_date{
-    font-weight: normal;
-    margin-top: 0;
-  }
-
-  .feedback_last_comment{
-
-
-  }
-
-  .feedback_division{
-    margin-top: 1%;
-    margin-bottom: 1%;
-
-  }
-
-}
-
-
-// feedbacks/index
 
 
 #feedback_tipoFeedback{
