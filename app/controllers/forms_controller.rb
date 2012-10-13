@@ -1,10 +1,5 @@
 class FormsController < ApplicationController
 
-  def index
-
-
-  end
-
   def new
     @form = Form.new
 
@@ -32,19 +27,6 @@ class FormsController < ApplicationController
   def show
     form = Form.find(params[:id])
     @graphs = form.get_data(params[:client_id])
-
-
-
-
-
-
-
   end
-
-
-
-
-
-
 
 end

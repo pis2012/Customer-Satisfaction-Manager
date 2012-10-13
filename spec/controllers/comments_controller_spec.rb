@@ -12,8 +12,8 @@ describe CommentsController, :type => :controller do
   it "def create" do
     content = 'Comment1'
     created_at = Time.now
-
-    user = User.create( username: 'usr',password:'pass',password_confirmation:'pass',
+    rol_simple = Role.create(name:'simple')
+    user = User.create(role: rol_simple,  username: 'usr',password:'pass',password_confirmation:'pass',
                                     full_name:'sample user', email:'user@1234.com')
     sign_in user
     type_skype = FeedbackType.find_all_by_name('Skype')[0]

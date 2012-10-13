@@ -68,6 +68,12 @@ class ProjectControllerSpec
                                 end_date:'2013-01-01 00:00:00',
                                 finalized:false)
 
+      mood3 = Mood.new
+      mood3.project = project2
+      mood3.status = 7
+      mood3.created_at = Time.now
+      mood3.save
+
       #Se deberá testear que un usurario debe contener un rol.
       rol_simple = Role.create(name:'simple')
 
@@ -75,17 +81,53 @@ class ProjectControllerSpec
                               username: 'user1',password:'user1',password_confirmation:'user1',
                               full_name:'Martin Cabrera', email:'cabrera2@1234.com')
 
-      profile1 = Profile.create(user: user, project:project2,
-                                last_login_date:'2012-01-01 00:00:00', skype_usr:'martin.skype')
+      profile1 = Profile.create(user: user, project:project2, skype_usr:'martin.skype')
 
       user.profile=profile1
 
       project2.milestones.create(:target_date => '2015-01-01 00:00:00', :project => project2, :name => "Prueba1")
 
-    sign_in user
-    get :show_project_complete
+      sign_in user
+      get :show_project_complete
 
-    sign_out user
+      sign_out user
+
+    end
+
+
+    it "show_project_data" do
+
+      client1 = Client.create(name:'MicroHard2')
+
+      project2 = Project.create(client: client1,
+                                name:'Proyecto2',
+                                description:'proyecto de verificadores',
+                                end_date:'2013-01-01 00:00:00',
+                                finalized:false)
+
+      mood3 = Mood.new
+      mood3.project = project2
+      mood3.status = 7
+      mood3.created_at = Time.now
+      mood3.save
+
+      #Se deberá testear que un usurario debe contener un rol.
+      rol_simple = Role.create(name:'simple')
+
+      user = User.create(role: rol_simple, client: client1,
+                         username: 'user1',password:'user1',password_confirmation:'user1',
+                         full_name:'Martin Cabrera', email:'cabrera2@1234.com')
+
+      profile1 = Profile.create(user: user, project:project2, skype_usr:'martin.skype')
+
+      user.profile=profile1
+
+      project2.milestones.create(:target_date => '2015-01-01 00:00:00', :project => project2, :name => "Prueba1")
+
+      sign_in user
+      get :show_project_data, format: 'json', project_id: project2.id
+
+      sign_out user
 
     end
 
@@ -106,8 +148,7 @@ class ProjectControllerSpec
                          username: 'user1',password:'user1',password_confirmation:'user1',
                          full_name:'Martin Cabrera', email:'cabrera2@1234.com')
 
-      profile1 = Profile.create(user: user, project:project2,
-                                last_login_date:'2012-01-01 00:00:00', skype_usr:'martin.skype')
+      profile1 = Profile.create(user: user, project:project2, skype_usr:'martin.skype')
 
       user.profile=profile1
 
@@ -134,8 +175,7 @@ class ProjectControllerSpec
                          username: 'user1',password:'user1',password_confirmation:'user1',
                          full_name:'Martin Cabrera', email:'cabrera2@1234.com')
 
-      profile1 = Profile.create(user: user, project:project2,
-                                last_login_date:'2012-01-01 00:00:00', skype_usr:'martin.skype')
+      profile1 = Profile.create(user: user, project:project2, skype_usr:'martin.skype')
 
       user.profile=profile1
 
