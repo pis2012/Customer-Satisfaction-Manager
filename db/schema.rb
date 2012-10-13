@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20121012012332) do
   end
 
   create_table "forms", :force => true do |t|
+    t.integer  "user_id"
     t.string   "name"
     t.string   "email"
     t.string   "password"

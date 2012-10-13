@@ -5,6 +5,15 @@ class FormsController < ApplicationController
 
   end
 
+  def new
+    @form = Form.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @form }
+    end
+  end
+
   def create
     @form = Form.new(params[:form])
     @form.user_id = current_user.id
@@ -18,6 +27,18 @@ class FormsController < ApplicationController
         format.json { render json: @form.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def show
+    form = Form.find(params[:id])
+    @graphs = form.get_data(params[:client_id])
+
+
+
+
+
+
+
   end
 
 
