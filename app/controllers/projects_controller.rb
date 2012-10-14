@@ -86,7 +86,7 @@
     @lastmood = @project.moods.order(:created_at).last.get_mood_img
     @view = {:project => @project, :mile1 => nil, :mile2 => nil, :lastmood => @lastmood}
 
-    if !@view[:project].finalized
+    if !@project.finalized && @project.milestones.count > 0
       current_date = Time.now.to_date
       miles = @project.milestones.order(:target_date).select {|mile| mile.target_date > current_date}
       td = miles.first.target_date
