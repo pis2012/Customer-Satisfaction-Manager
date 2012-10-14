@@ -3,7 +3,8 @@ class Profile < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
 
-  attr_accessible :user, :project, :skype_usr, :user_id, :project_id,:avatar
+  attr_accessible :user, :project, :skype_usr, :user_id, :project_id, :avatar, :feedbacks_notifications,
+                  :comments_notifications
 
 
   has_attached_file :avatar, :styles => { :medium => "100x100>", :thumb => "80x80>" }

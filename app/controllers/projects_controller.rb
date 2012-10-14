@@ -15,6 +15,12 @@
   def show
     @project = Project.find(params[:id])
 
+    if !params['default'].nil?
+       @profile = Profile.find_by_user_id(current_user)
+       @profile.project_id = @project.id
+       @profile.save
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }
@@ -82,7 +88,18 @@
   end
 
   def show_project_complete
+
+    if !params['default'].nil?
+      @profile = Profile.find_by_user_id(current_user)
+      @p = Project.find(params['project_id'])
+      if !@p.nil?
+        @profile.project_id = @p.id
+        @profile.save
+      end
+    end
+
     @project = current_user.profile.project
+
     @lastmood = @project.moods.order(:created_at).last.get_mood_img
     @view = {:project => @project, :mile1 => nil, :mile2 => nil, :lastmood => @lastmood}
 

@@ -36,7 +36,7 @@
                     <% if user_signed_in? %>
                         <ul class="nav">
                             <li>
-                              <%= link_to current_user.full_name, edit_profile_path(Profile.find_by_user_id(current_user )) %>
+                              <%= link_to current_user.full_name, edit_profile_path(Profile.find_by_user_id(current_user)) %>
                             </li>
                             <li>
                               <%= link_to '<i class="icon-off icon-white"></i> Sign out'.html_safe, destroy_user_session_path, :method => :delete %>
@@ -54,7 +54,7 @@
                             <%= link_to 'Customers'.html_safe, new_user_session_path %>
                           </li>
                           <li>
-                            <%= link_to 'Moove-it'.html_safe, user_omniauth_authorize_path(:google) %>
+                            <%= link_to 'Moove-it'.html_safe, user_omniauth_authorize_path(:google_apps) %>
                           </li>
                         </ul>
                       </li>

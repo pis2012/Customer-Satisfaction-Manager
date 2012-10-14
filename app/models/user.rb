@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
   default_scope :order => 'full_name'
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :trackable, :encryptable, :confirmable,
+  # :token_authenticatable, :trackable, :encryptable,
   #:lockable, :timeoutable, :openid_authenticatable,
 
-  devise :database_authenticatable, :registerable, :recoverable, :omniauthable, :rememberable
+  devise :database_authenticatable, :registerable, :recoverable, :omniauthable, :rememberable, :confirmable
   after_create :create_profile
 
   belongs_to :role
@@ -14,39 +14,70 @@ class User < ActiveRecord::Base
   has_many :comments
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :role, :client, :profile, :feedbacks, :comments,
-                  :id, :full_name, :username, :email, :current_password, :password, :password_confirmation, :remember_me, :role_id, :client_id, :project_id
+  attr_accessible :role,      :client,       :profile,   :feedbacks, :comments,    :unconfirmed_email,
+                  :id,        :full_name,    :username,  :email,     :openidemail, :current_password,
+                  :password,  :remember_me,  :role_id,   :client_id, :project_id,  :password_confirmation
+
 
 
   validates :username, :full_name, :email, :presence  => true
   validates :email, :username, :uniqueness => true
-  validates_confirmation_of :password
+  validates_confirmation_of :password, :email
 
-  def self.find_for_open_id(access_token, signed_in_resource=nil)
+
+  def self.find_for_open_id_google_apps(access_token, signed_in_resource=nil)
     data = access_token['info']
 
-    if user = User.where(:email => data['email']).first
-      return user
-    else
-      role = Role.find_by_name 'Mooveit'
-      User.create!(:email => data['email'],:full_name => data['name'],:username => data['first_name'],:role_id => role.id)
+    if user = User.find_by_openidemail(data['email'])
+        return user
+      else
+        role = Role.find_by_name 'Mooveit'
+        client = Client.find_by_name 'Sony'
+        user = User.create(:email => data['email'],:openidemail => data['email'],:full_name => data['name'],:username => data['first_name'],:role_id => role.id,:client_id => client.id)
+        user.skip_confirmation!
+        user.save
+        return user
     end
   end
 
-  def self.new_with_session(params, session)
-    super.tap do |user|
-      if data = session['devise.googleapps_data'] && session['devise.googleapps_data']['user_info']
-        user = User.find_all_by_email data['email']
+  def self.find_for_open_id_google(access_token, signed_in_resource=nil)
+    data = access_token['info']
+
+    if !signed_in_resource.nil?
+      user =  User.find_by_id(signed_in_resource.id)
+      user.openidemail = data['email']
+      user.save
+      return user
+    else
+      if user = User.find_by_openidemail(data['email'])
+        return user
+      else
+        role = Role.find_by_name 'Client'
+        client = Client.find_by_name 'Sony'
+        user = User.create(:email => data['email'],:openidemail => data['email'],:full_name => data['name'],:username => data['first_name'],:role_id => role.id,:client_id => client.id)
+        user.skip_confirmation!
+        user.save
+        return user
       end
     end
   end
+
+  #def self.new_with_session(params, session)
+  #super.tap do |user|
+  #if data = session['devise.googleapps_data'] && session['devise.googleapps_data']['user_info']
+  #user = User.find_all_by_email data['email']
+  #end
+  #end
+  #end
 
   def create_profile
     if self.role.name == 'Mooveit'
       p = Project.all.first
       Profile.create(user:self, project:p,skype_usr:'')
+    elsif self.role.name == 'Client'
+      p = Project.all.first
+      Profile.create(user:self, project:p,skype_usr:'')
     end
   end
-
 
 end
