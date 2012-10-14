@@ -542,14 +542,14 @@ Milestone.create(:target_date => '2012-12-03 00:00:00', :project => p1, :name =>
 Milestone.create(:target_date => '2013-04-01 00:00:00', :project => p1, :name => "Prueba4")
 
 
-Milestone.create(:target_date => '2012-04-06 00:00:00', :project => p2, :name => "Proyecto 2, mileston 1")
-Milestone.create(:target_date => '2012-05-07 00:00:00', :project => p2, :name => "Proyecto 2, mileston 2")
-Milestone.create(:target_date => '2012-06-08 00:00:00', :project => p2, :name => "Proyecto 2, mileston 3")
-Milestone.create(:target_date => '2013-07-09 00:00:00', :project => p2, :name => "Proyecto 2, mileston 4")
+Milestone.create(:target_date => '2012-04-06 00:00:00', :project => p2, :name => "Proyecto 2, milestone 1")
+Milestone.create(:target_date => '2012-05-07 00:00:00', :project => p2, :name => "Proyecto 2, milestone 2")
+Milestone.create(:target_date => '2012-06-08 00:00:00', :project => p2, :name => "Proyecto 2, milestone 3")
+Milestone.create(:target_date => '2013-07-09 00:00:00', :project => p2, :name => "Proyecto 2, milestone 4")
 
 
-Milestone.create(:target_date => '2012-05-22 00:00:00', :project => p3, :name => "Proyecto 3, mileston 1")
-Milestone.create(:target_date => '2012-06-12 00:00:00', :project => p3, :name => "Proyecto 3, mileston 2")
-Milestone.create(:target_date => '2013-08-06 00:00:00', :project => p3, :name => "Proyecto 3, mileston 3")
-Milestone.create(:target_date => '2014-08-09 00:00:00', :project => p3, :name => "Proyecto 3, mileston 4")
+Milestone.create(:target_date => '2012-05-22 00:00:00', :project => p3, :name => "Proyecto 3, milestone 1")
+Milestone.create(:target_date => '2012-06-12 00:00:00', :project => p3, :name => "Proyecto 3, milestone 2")
+Milestone.create(:target_date => '2013-08-06 00:00:00', :project => p3, :name => "Proyecto 3, milestone 3")
+Milestone.create(:target_date => '2014-08-09 00:00:00', :project => p3, :name => "Proyecto 3, milestone 4")
 

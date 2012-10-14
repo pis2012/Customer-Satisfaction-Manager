@@ -12,11 +12,13 @@ class User < ActiveRecord::Base
   has_one :profile
   has_many :feedbacks
   has_many :comments
+  has_many :forms
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role,      :client,       :profile,   :feedbacks, :comments,    :unconfirmed_email,
                   :id,        :full_name,    :username,  :email,     :openidemail, :current_password,
-                  :password,  :remember_me,  :role_id,   :client_id, :project_id,  :password_confirmation
+                  :password,  :remember_me,  :role_id,   :client_id, :project_id,  :password_confirmation,
+                  :forms
 
 
 

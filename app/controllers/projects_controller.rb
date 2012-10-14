@@ -121,7 +121,7 @@
     @feedbacks = @project.feedbacks
 
     respond_to do |format|
-      format.html # show_project_complete.html.erb
+      format.html { render :layout => 'my_projects' }# show_project_complete.html.erb
       format.json { render json: @project }
     end
   end
