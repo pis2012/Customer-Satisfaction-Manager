@@ -46,8 +46,8 @@ CSM::Application.configure do
       :address              => "smtp.gmail.com",
       :port                 => 587,
       :domain               => 'gmail.com',
-      :user_name            => 'diegoregueira@gmail.com',
-      :password             => '',
+      :user_name            => 'pis2012g1@gmail.com',
+      :password             => 'pis2012g1',
       :authentication       => 'plain',
       :enable_starttls_auto => true  }
 
