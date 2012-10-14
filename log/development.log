@@ -1,0 +1,1198 @@
+Connecting to database specified by database.yml
+
+
+Started GET "/clients" for 127.0.0.1 at 2012-09-11 15:16:22 -0300
+
+ActionController::RoutingError (No route matches [GET] "/clients"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.8) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.4.1) lib/thin/connection.rb:80:in `block in pre_process'
+  thin (1.4.1) lib/thin/connection.rb:78:in `catch'
+  thin (1.4.1) lib/thin/connection.rb:78:in `pre_process'
+  thin (1.4.1) lib/thin/connection.rb:53:in `process'
+  thin (1.4.1) lib/thin/connection.rb:38:in `receive_data'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run_machine'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run'
+  thin (1.4.1) lib/thin/backends/base.rb:63:in `start'
+  thin (1.4.1) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.8) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.8) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.8) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.8) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /home/gmarcone/.rvm/gems/ruby-1.9.3-p194@pis/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (2.7ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/clients" for 127.0.0.1 at 2012-09-11 15:18:18 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mClient Load (111.9ms)[0m  [1mSELECT `csm_clients`.* FROM `csm_clients` [0m
+  Rendered clients/index.html.erb within layouts/application (2.1ms)
+Compiled bootstrap_and_overrides.css  (510ms)  (pid 13758)
+Compiled clients.css  (56ms)  (pid 13758)
+Compiled login.css  (1ms)  (pid 13758)
+Compiled scaffolds.css  (9ms)  (pid 13758)
+Compiled application.css  (650ms)  (pid 13758)
+Compiled jquery.js  (7ms)  (pid 13758)
+Compiled jquery_ujs.js  (0ms)  (pid 13758)
+Compiled twitter/bootstrap/bootstrap-transition.js  (0ms)  (pid 13758)
+Compiled twitter/bootstrap/bootstrap-alert.js  (0ms)  (pid 13758)
+Compiled twitter/bootstrap/bootstrap-modal.js  (0ms)  (pid 13758)
+Compiled twitter/bootstrap/bootstrap-dropdown.js  (0ms)  (pid 13758)
+Compiled twitter/bootstrap/bootstrap-scrollspy.js  (0ms)  (pid 13758)
+Compiled twitter/bootstrap/bootstrap-tab.js  (0ms)  (pid 13758)
+Compiled twitter/bootstrap/bootstrap-tooltip.js  (0ms)  (pid 13758)
+Compiled twitter/bootstrap/bootstrap-popover.js  (0ms)  (pid 13758)
+Compiled twitter/bootstrap/bootstrap-button.js  (0ms)  (pid 13758)
+Compiled twitter/bootstrap/bootstrap-collapse.js  (0ms)  (pid 13758)
+Compiled twitter/bootstrap/bootstrap-carousel.js  (0ms)  (pid 13758)
+Compiled twitter/bootstrap/bootstrap-typeahead.js  (0ms)  (pid 13758)
+Compiled twitter/bootstrap/bootstrap-affix.js  (0ms)  (pid 13758)
+Compiled twitter/bootstrap.js  (223ms)  (pid 13758)
+Compiled bootstrap.js  (73ms)  (pid 13758)
+Compiled clients.js  (0ms)  (pid 13758)
+Compiled login.js  (0ms)  (pid 13758)
+Compiled application.js  (447ms)  (pid 13758)
+Mysql2::Error: Table 'customer_satisfaction_manager.users' doesn't exist: SHOW FULL FIELDS FROM `users`
+Completed 500 Internal Server Error in 1417ms
+
+ActionView::Template::Error (Mysql2::Error: Table 'customer_satisfaction_manager.users' doesn't exist: SHOW FULL FIELDS FROM `users`):
+    23:                 </ul>
+    24:             </div><!-- /.nav -->
+    25:             <div class="nav pull-right">
+    26:                 <% if user_signed_in? %>
+    27:                     <ul class="nav">
+    28:                         <li>
+    29:                           <a href="#"><%= current_user.first_name %></a>
+  app/views/layouts/application.html.erb:26:in `_app_views_layouts_application_html_erb__751486694_81830850'
+
+
+  Rendered /home/gmarcone/.rvm/gems/ruby-1.9.3-p194@pis/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (22.6ms)
+  Rendered /home/gmarcone/.rvm/gems/ruby-1.9.3-p194@pis/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /home/gmarcone/.rvm/gems/ruby-1.9.3-p194@pis/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (29.7ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/clients" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Processing by ClientsController#index as HTML
+  [1m[36mClient Load (0.2ms)[0m  [1mSELECT `csm_clients`.* FROM `csm_clients` [0m
+  Rendered clients/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 133ms (Views: 80.6ms | ActiveRecord: 50.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /application.css - 200 OK (7ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /bootstrap_and_overrides.css - 200 OK (2ms)
+
+
+Started GET "/assets/clients.css?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /clients.css - 200 OK (1ms)
+
+
+Started GET "/assets/login.css?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /login.css - 200 OK (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /scaffolds.css - 200 OK (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /jquery.js - 200 OK (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /jquery_ujs.js - 200 OK (1ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /twitter/bootstrap/bootstrap-transition.js - 200 OK (4ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /twitter/bootstrap/bootstrap-tab.js - 200 OK (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /twitter/bootstrap/bootstrap-alert.js - 200 OK (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /twitter/bootstrap/bootstrap-modal.js - 200 OK (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 200 OK (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 200 OK (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 200 OK (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /twitter/bootstrap/bootstrap-popover.js - 200 OK (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 200 OK (23ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /twitter/bootstrap/bootstrap-button.js - 200 OK (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 200 OK (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 200 OK (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /twitter/bootstrap/bootstrap-affix.js - 200 OK (2ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /twitter/bootstrap.js - 200 OK (10ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /bootstrap.js - 200 OK (1ms)
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /clients.js - 200 OK (1ms)
+
+
+Started GET "/assets/login.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /login.js - 200 OK (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:32 -0300
+Served asset /application.js - 200 OK (14ms)
+
+
+Started GET "/assets/fontawesome-webfont.eot" for 127.0.0.1 at 2012-09-11 15:19:33 -0300
+Served asset /fontawesome-webfont.eot - 200 OK (20ms)
+
+
+Started GET "/assets/fontawesome-webfont.woff" for 127.0.0.1 at 2012-09-11 15:19:33 -0300
+Served asset /fontawesome-webfont.woff - 200 OK (15ms)
+
+
+Started GET "/clients/new" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Processing by ClientsController#new as HTML
+  Rendered clients/_form.html.erb (2.3ms)
+  Rendered clients/new.html.erb within layouts/application (53.8ms)
+Completed 200 OK in 83ms (Views: 82.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /application.css - 200 OK (0ms)
+
+
+Started GET "/assets/clients.css?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /clients.css - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /bootstrap_and_overrides.css - 200 OK (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /jquery.js - 200 OK (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /scaffolds.css - 200 OK (0ms)
+
+
+Started GET "/assets/login.css?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /login.css - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /twitter/bootstrap/bootstrap-transition.js - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /twitter/bootstrap/bootstrap-alert.js - 200 OK (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /jquery_ujs.js - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /twitter/bootstrap/bootstrap-modal.js - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /twitter/bootstrap/bootstrap-tab.js - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /twitter/bootstrap/bootstrap-popover.js - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-affix.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /twitter/bootstrap/bootstrap-affix.js - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /twitter/bootstrap/bootstrap-button.js - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 200 OK (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /twitter/bootstrap.js - 200 OK (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /application.js - 200 OK (2ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /bootstrap.js - 200 OK (0ms)
+
+
+Started GET "/assets/clients.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /clients.js - 200 OK (0ms)
+
+
+Started GET "/assets/login.js?body=1" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /login.js - 200 OK (0ms)
+
+
+Started GET "/assets/fontawesome-webfont.eot" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /fontawesome-webfont.eot - 200 OK (0ms)
+
+
+Started GET "/assets/fontawesome-webfont.woff" for 127.0.0.1 at 2012-09-11 15:19:39 -0300
+Served asset /fontawesome-webfont.woff - 200 OK (0ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (85.8ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (168.5ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36m (1.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.0ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateRoles (20120901035707)
+  [1m[35m (65.6ms)[0m  CREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (16.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120901035707')[0m
+Migrating to CreateClients (20120915202803)
+  [1m[35m (0.4ms)[0m  CREATE TABLE `clients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+Mysql2::Error: Table 'clients' already exists: CREATE TABLE `clients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (111.7ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (169.1ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36m (2.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateRoles (20120901035707)
+  [1m[35m (186.0ms)[0m  CREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (16.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120901035707')[0m
+Migrating to CreateClients (20120915202803)
+  [1m[35m (50.5ms)[0m  CREATE TABLE `clients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (16.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120915202803')[0m
+Migrating to CreateProjects (20120915204316)
+  [1m[35m (68.6ms)[0m  CREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `client_id` int(11), `name` varchar(255), `description` text, `end_date` datetime, `finalized` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (302.0ms)[0m  [1mCREATE INDEX `index_projects_on_client_id` ON `projects` (`client_id`)[0m
+  [1m[35m (24.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120915204316')
+Migrating to CreateUsers (20120915220034)
+  [1m[36m (50.4ms)[0m  [1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_id` int(11), `client_id` int(11), `username` varchar(255), `full_name` varchar(255), `email` varchar(255), `encrypted_password` varchar(255) DEFAULT '', `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (127.1ms)[0m  CREATE INDEX `index_users_on_client_id` ON `users` (`client_id`)
+  [1m[36m (33.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120915220034')[0m
+Migrating to CreateProfiles (20120920191136)
+  [1m[35m (174.8ms)[0m  CREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `project_id` int(11), `last_login_date` date, `image_url` varchar(255), `skype_usr` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (16.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120920191136')[0m
+Migrating to CreateMilestones (20120920233810)
+  [1m[35m (79.8ms)[0m  CREATE TABLE `milestones` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `name` varchar(255), `target_date` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (16.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120920233810')[0m
+Migrating to CreateMoods (20120920234454)
+  [1m[35m (50.6ms)[0m  CREATE TABLE `moods` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `status` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (24.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120920234454')[0m
+Migrating to CreateFeedbacks (20120921023433)
+  [1m[35m (194.3ms)[0m  CREATE TABLE `feedbacks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `user_id` int(11), `feedback_type_id` int(11), `subject` varchar(255), `client_visibility` tinyint(1), `mooveit_visibility` tinyint(1), `content` text, `feeling` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (22.0ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120921023433')[0m
+Migrating to CreateFeedbackTypes (20120921074901)
+  [1m[35m (60.2ms)[0m  CREATE TABLE `feedback_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB
+  [1m[36m (16.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120921074901')[0m
+  [1m[35m (0.2ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+  [1m[36m (0.6ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'clients'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `clients`
+  [1m[36m (0.4ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'feedback_types'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `feedback_types`
+  [1m[36m (0.3ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'feedbacks'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `feedbacks`
+  [1m[36m (0.1ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'milestones'
+ [0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `milestones`
+  [1m[36m (0.2ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'moods'
+ [0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `moods`
+  [1m[36m (0.2ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'profiles'
+ [0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `profiles`
+  [1m[36m (0.2ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'projects'
+ [0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `projects`
+  [1m[36m (0.2ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'roles'
+ [0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `roles`
+  [1m[36m (0.1ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'users'
+ [0m
+  [1m[35m (0.1ms)[0m  SHOW CREATE TABLE `users`
+Connecting to database specified by database.yml
+  [1m[36m (1.0ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM `roles`
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM `feedback_types`[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM `users`
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM `clients`[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM `projects`
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM `milestones`[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM `moods`
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM `profiles`[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM `feedbacks`
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mRole Exists (0.4ms)[0m  SELECT 1 AS one FROM `roles` WHERE `roles`.`name` = BINARY 'Admin' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `roles` (`name`) VALUES ('Admin')[0m
+  [1m[35m (16.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mRole Exists (0.4ms)[0m  SELECT 1 AS one FROM `roles` WHERE `roles`.`name` = BINARY 'Client' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `roles` (`name`) VALUES ('Client')[0m
+  [1m[35m (13.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mRole Exists (0.3ms)[0m  SELECT 1 AS one FROM `roles` WHERE `roles`.`name` = BINARY 'Mooveit' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `roles` (`name`) VALUES ('Mooveit')[0m
+  [1m[35m (14.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFeedbackType Exists (0.3ms)[0m  SELECT 1 AS one FROM `feedback_types` WHERE `feedback_types`.`name` = BINARY 'Skype' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `feedback_types` (`name`) VALUES ('Skype')[0m
+  [1m[35m (16.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFeedbackType Exists (0.3ms)[0m  SELECT 1 AS one FROM `feedback_types` WHERE `feedback_types`.`name` = BINARY 'Email' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `feedback_types` (`name`) VALUES ('Email')[0m
+  [1m[35m (22.0ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFeedbackType Exists (0.3ms)[0m  SELECT 1 AS one FROM `feedback_types` WHERE `feedback_types`.`name` = BINARY 'Reconocimiento' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `feedback_types` (`name`) VALUES ('Reconocimiento')[0m
+  [1m[35m (14.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFeedbackType Exists (0.3ms)[0m  SELECT 1 AS one FROM `feedback_types` WHERE `feedback_types`.`name` = BINARY 'Comentario' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `feedback_types` (`name`) VALUES ('Comentario')[0m
+  [1m[35m (22.8ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mClient Exists (0.3ms)[0m  SELECT 1 AS one FROM `clients` WHERE `clients`.`name` = BINARY 'MicroHard' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `clients` (`created_at`, `name`, `updated_at`) VALUES ('2012-09-25 14:53:00', 'MicroHard', '2012-09-25 14:53:00')[0m
+  [1m[35m (36.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mClient Exists (0.4ms)[0m  SELECT 1 AS one FROM `clients` WHERE `clients`.`name` = BINARY 'Sony' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `clients` (`created_at`, `name`, `updated_at`) VALUES ('2012-09-25 14:53:00', 'Sony', '2012-09-25 14:53:00')[0m
+  [1m[35m (21.3ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (66.1ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (2, '2012-09-25 14:53:00', 'Software para administracion de una panaderia', '2013-01-01 00:00:00', 0, 'Panaderia El 10', '2012-09-25 14:53:00')
+  [1m[36m (31.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 1, 5, '2012-09-25 14:53:00')[0m
+  [1m[35m (34.1ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 1, 7, '2012-09-25 14:53:00')
+  [1m[36m (13.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 1, 9, '2012-09-25 14:53:00')[0m
+  [1m[35m (15.0ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (2, '2012-09-25 14:53:00', 'Descripcion de proyecto 2', '2013-01-01 00:00:00', 0, 'Proyecto2', '2012-09-25 14:53:00')
+  [1m[36m (13.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 2, 10, '2012-09-25 14:53:00')[0m
+  [1m[35m (14.9ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (2, '2012-09-25 14:53:00', 'Descripcion de proyecto 3', '2013-01-01 00:00:00', 0, 'Proyecto3', '2012-09-25 14:53:00')
+  [1m[36m (14.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 3, 10, '2012-09-25 14:53:00')[0m
+  [1m[35m (15.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:00', 'Descripcion de proyecto4', '2013-01-01 00:00:00', 0, 'Proyecto4', '2012-09-25 14:53:00')
+  [1m[36m (14.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 4, 10, '2012-09-25 14:53:00')[0m
+  [1m[35m (15.0ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:00', 'Descripcion de proyecto5', '2013-01-01 00:00:00', 0, 'Proyecto5', '2012-09-25 14:53:00')
+  [1m[36m (22.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 5, 10, '2012-09-25 14:53:00')[0m
+  [1m[35m (23.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:00', 'Descripcion de proyecto6', '2013-01-01 00:00:00', 0, 'Proyecto6', '2012-09-25 14:53:00')
+  [1m[36m (22.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 6, 10, '2012-09-25 14:53:00')[0m
+  [1m[35m (23.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:00', 'Descripcion de proyecto7', '2013-01-01 00:00:00', 0, 'Proyecto7', '2012-09-25 14:53:00')
+  [1m[36m (22.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 7, 10, '2012-09-25 14:53:00')[0m
+  [1m[35m (23.8ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:00', 'Descripcion de proyecto8', '2013-01-01 00:00:00', 0, 'Proyecto8', '2012-09-25 14:53:00')
+  [1m[36m (22.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 8, 10, '2012-09-25 14:53:00')[0m
+  [1m[35m (31.9ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:00', 'Descripcion de proyecto9', '2013-01-01 00:00:00', 0, 'Proyecto9', '2012-09-25 14:53:00')
+  [1m[36m (31.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 9, 10, '2012-09-25 14:53:00')[0m
+  [1m[35m (31.8ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:00', 'Descripcion de proyecto10', '2013-01-01 00:00:00', 0, 'Proyecto10', '2012-09-25 14:53:00')
+  [1m[36m (80.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 10, 10, '2012-09-25 14:53:00')[0m
+  [1m[35m (23.7ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:00', 'Descripcion de proyecto11', '2013-01-01 00:00:00', 0, 'Proyecto11', '2012-09-25 14:53:00')
+  [1m[36m (14.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 11, 10, '2012-09-25 14:53:00')[0m
+  [1m[35m (14.9ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:00', 'Descripcion de proyecto12', '2013-01-01 00:00:00', 0, 'Proyecto12', '2012-09-25 14:53:00')
+  [1m[36m (14.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 12, 7, '2012-09-25 14:53:00')[0m
+  [1m[35m (15.0ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:00', 'Descripcion de proyecto13', '2013-01-01 00:00:00', 0, 'Proyecto13', '2012-09-25 14:53:00')
+  [1m[36m (14.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 13, 10, '2012-09-25 14:53:00')[0m
+  [1m[35m (15.0ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:00', 'Descripcion de proyecto14', '2013-01-01 00:00:00', 0, 'Proyecto14', '2012-09-25 14:53:00')
+  [1m[36m (14.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:00', 14, 5, '2012-09-25 14:53:00')[0m
+  [1m[35m (15.0ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:01', 'Descripcion de proyecto15', '2013-01-01 00:00:00', 0, 'Proyecto15', '2012-09-25 14:53:01')
+  [1m[36m (14.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:01', 15, 10, '2012-09-25 14:53:01')[0m
+  [1m[35m (15.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:01', 'Descripcion de proyecto16', '2013-01-01 00:00:00', 0, 'Proyecto16', '2012-09-25 14:53:01')
+  [1m[36m (22.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:01', 16, 10, '2012-09-25 14:53:01')[0m
+  [1m[35m (23.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:01', 'Descripcion de proyecto17', '2013-01-01 00:00:00', 0, 'Proyecto17', '2012-09-25 14:53:01')
+  [1m[36m (22.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:01', 17, 5, '2012-09-25 14:53:01')[0m
+  [1m[35m (23.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:01', 'Descripcion de proyecto18', '2013-01-01 00:00:00', 0, 'Proyecto18', '2012-09-25 14:53:01')
+  [1m[36m (23.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:01', 18, 1, '2012-09-25 14:53:01')[0m
+  [1m[35m (23.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:01', 'Descripcion de proyecto19', '2013-01-01 00:00:00', 0, 'Proyecto19', '2012-09-25 14:53:01')
+  [1m[36m (23.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:01', 19, 10, '2012-09-25 14:53:01')[0m
+  [1m[35m (31.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `projects` (`client_id`, `created_at`, `description`, `end_date`, `finalized`, `name`, `updated_at`) VALUES (1, '2012-09-25 14:53:01', 'Descripcion de proyecto20', '2013-01-01 00:00:00', 0, 'Proyecto20', '2012-09-25 14:53:01')
+  [1m[36m (31.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `moods` (`created_at`, `project_id`, `status`, `updated_at`) VALUES ('2012-09-25 14:53:01', 20, 10, '2012-09-25 14:53:01')[0m
+  [1m[35m (31.9ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'cabrera@1234.com' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`username` = BINARY 'admin' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `users` (`client_id`, `created_at`, `email`, `encrypted_password`, `full_name`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `role_id`, `updated_at`, `username`) VALUES (1, '2012-09-25 14:53:01', 'cabrera@1234.com', '$2a$10$n6Imq/7jdDgh7ihmnBUPWuYLzFpFJg/G2hlO1J.V1bkqElHJ/JLAq', 'Martin Cabrera', NULL, NULL, NULL, 1, '2012-09-25 14:53:01', 'admin')
+  [1m[36m (19.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `profiles` (`created_at`, `image_url`, `last_login_date`, `project_id`, `skype_usr`, `updated_at`, `user_id`) VALUES ('2012-09-25 14:53:01', NULL, '2012-01-01', 1, 'martin.skype', '2012-09-25 14:53:01', 1)[0m
+  [1m[35m (38.7ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'gates@1234.com' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`username` = BINARY 'client_usr' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `users` (`client_id`, `created_at`, `email`, `encrypted_password`, `full_name`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `role_id`, `updated_at`, `username`) VALUES (1, '2012-09-25 14:53:01', 'gates@1234.com', '$2a$10$mqojSUthPsTP8e4guGRSaePNf8mTESCZyeQ0xIylPuB4P.EyCAQiG', 'Bill Gates', NULL, NULL, NULL, 2, '2012-09-25 14:53:01', 'client_usr')
+  [1m[36m (14.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'sony@1234.com' LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`username` = BINARY 'sony' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `users` (`client_id`, `created_at`, `email`, `encrypted_password`, `full_name`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `role_id`, `updated_at`, `username`) VALUES (2, '2012-09-25 14:53:01', 'sony@1234.com', '$2a$10$TMORUgryJR4FHIgZp7gc7u2OX12m5fwy9K0q4D8iE0NDr1cOU7CBm', 'Sony', NULL, NULL, NULL, 2, '2012-09-25 14:53:01', 'sony')[0m
+  [1m[35m (12.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `profiles` (`created_at`, `image_url`, `last_login_date`, `project_id`, `skype_usr`, `updated_at`, `user_id`) VALUES ('2012-09-25 14:53:01', NULL, '2012-01-01', 1, 'gates.skype', '2012-09-25 14:53:01', 3)
+  [1m[36m (15.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'corrales@1234.com' LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`username` = BINARY 'mooveit' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `users` (`client_id`, `created_at`, `email`, `encrypted_password`, `full_name`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `role_id`, `updated_at`, `username`) VALUES (1, '2012-09-25 14:53:01', 'corrales@1234.com', '$2a$10$bcVW.bK9WMSOutyPpdQePuccb6yaHFkPY9YYJ2P9ohb4njhxZ4Lhy', 'Jorge Corrales', NULL, NULL, NULL, 3, '2012-09-25 14:53:01', 'mooveit')[0m
+  [1m[35m (15.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `profiles` (`created_at`, `image_url`, `last_login_date`, `project_id`, `skype_usr`, `updated_at`, `user_id`) VALUES ('2012-09-25 14:53:01', NULL, '2012-01-01', 1, 'corrales.skype', '2012-09-25 14:53:01', 4)
+  [1m[36m (15.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `milestones` (`created_at`, `name`, `project_id`, `target_date`, `updated_at`) VALUES ('2012-09-25 14:53:01', 'Prueba1', 1, '2011-01-01', '2012-09-25 14:53:01')[0m
+  [1m[35m (14.7ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `milestones` (`created_at`, `name`, `project_id`, `target_date`, `updated_at`) VALUES ('2012-09-25 14:53:01', 'Prueba2', 1, '2011-02-01', '2012-09-25 14:53:01')
+  [1m[36m (15.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `milestones` (`created_at`, `name`, `project_id`, `target_date`, `updated_at`) VALUES ('2012-09-25 14:53:01', 'Prueba3', 1, '2011-03-01', '2012-09-25 14:53:01')[0m
+  [1m[35m (15.8ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `milestones` (`created_at`, `name`, `project_id`, `target_date`, `updated_at`) VALUES ('2012-09-25 14:53:01', 'Prueba4', 1, '2011-04-01', '2012-09-25 14:53:01')
+  [1m[36m (15.1ms)[0m  [1mCOMMIT[0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (1.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateRoles (20120901035707)
+Migrating to CreateClients (20120915202803)
+Migrating to CreateProjects (20120915204316)
+Migrating to CreateUsers (20120915220034)
+Migrating to CreateProfiles (20120920191136)
+Migrating to CreateMilestones (20120920233810)
+Migrating to CreateMoods (20120920234454)
+Migrating to CreateFeedbacks (20120921023433)
+Migrating to CreateFeedbackTypes (20120921074901)
+  [1m[35m (0.1ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+  [1m[36m (0.3ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'clients'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `clients`
+  [1m[36m (0.3ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'feedback_types'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `feedback_types`
+  [1m[36m (0.3ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'feedbacks'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `feedbacks`
+  [1m[36m (0.3ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'milestones'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `milestones`
+  [1m[36m (0.3ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'moods'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `moods`
+  [1m[36m (0.4ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'profiles'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `profiles`
+  [1m[36m (0.3ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'projects'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `projects`
+  [1m[36m (0.3ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'roles'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `roles`
+  [1m[36m (0.3ms)[0m  [1m
+ SELECT fk.referenced_table_name as 'to_table'
+ ,fk.referenced_column_name as 'primary_key'
+ ,fk.column_name as 'column'
+ ,fk.constraint_name as 'name'
+ FROM information_schema.key_column_usage fk
+ WHERE fk.referenced_column_name is not null
+ AND fk.table_schema = 'CSM_development'
+ AND fk.table_name = 'users'
+ [0m
+  [1m[35m (0.2ms)[0m  SHOW CREATE TABLE `users`
+Connecting to database specified by database.yml
+  [1m[36m (1.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (0.5ms)[0m  DROP DATABASE IF EXISTS `CSM_test`
+  [1m[36m (0.3ms)[0m  [1mCREATE DATABASE `CSM_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`[0m
+  [1m[35m (137.4ms)[0m  CREATE TABLE `clients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (41.7ms)[0m  [1mCREATE TABLE `feedback_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB[0m
+  [1m[35m (58.4ms)[0m  CREATE TABLE `feedbacks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `user_id` int(11), `feedback_type_id` int(11), `subject` varchar(255), `client_visibility` tinyint(1), `mooveit_visibility` tinyint(1), `content` text, `feeling` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (150.3ms)[0m  [1mCREATE TABLE `milestones` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `name` varchar(255), `target_date` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (41.6ms)[0m  CREATE TABLE `moods` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `status` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (41.8ms)[0m  [1mCREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `project_id` int(11), `last_login_date` date, `image_url` varchar(255), `skype_usr` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (41.5ms)[0m  CREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `client_id` int(11), `name` varchar(255), `description` text, `end_date` datetime, `finalized` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (243.6ms)[0m  [1mCREATE INDEX `index_projects_on_client_id` ON `projects` (`client_id`)[0m
+  [1m[35m (41.8ms)[0m  CREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (41.6ms)[0m  [1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_id` int(11), `client_id` int(11), `username` varchar(255), `full_name` varchar(255), `email` varchar(255), `encrypted_password` varchar(255) DEFAULT '', `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (118.5ms)[0m  CREATE INDEX `index_users_on_client_id` ON `users` (`client_id`)
+  [1m[36m (166.8ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (127.4ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM `schema_migrations`[0m
+  [1m[35m (15.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120921074901')
+  [1m[36m (16.8ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120920234454')[0m
+  [1m[35m (16.8ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915204316')
+  [1m[36m (16.9ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120915202803')[0m
+  [1m[35m (16.8ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120901035707')
+  [1m[36m (16.9ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120921023433')[0m
+  [1m[35m (16.9ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915220034')
+  [1m[36m (25.2ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120920191136')[0m
+  [1m[35m (25.1ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920233810')
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (26.7ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (1017.7ms)[0m  DROP DATABASE IF EXISTS `CSM_test`
+  [1m[36m (45.1ms)[0m  [1mCREATE DATABASE `CSM_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`[0m
+  [1m[35m (272.1ms)[0m  CREATE TABLE `clients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (246.4ms)[0m  [1mCREATE TABLE `comments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `feedback_id` int(11), `user_id` int(11), `content` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (223.5ms)[0m  CREATE TABLE `feedback_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB
+  [1m[36m (188.6ms)[0m  [1mCREATE TABLE `feedbacks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `feedback_type_id` int(11), `user_id` int(11), `subject` varchar(255), `content` text, `client_visibility` tinyint(1), `mooveit_visibility` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (197.1ms)[0m  CREATE TABLE `milestones` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `name` varchar(255), `target_date` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (197.3ms)[0m  [1mCREATE TABLE `moods` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `status` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (252.7ms)[0m  CREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `project_id` int(11), `last_login_date` date, `image_url` varchar(255), `skype_usr` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (200.9ms)[0m  [1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `client_id` int(11), `name` varchar(255), `description` text, `end_date` datetime, `finalized` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (619.8ms)[0m  CREATE INDEX `index_projects_on_client_id` ON `projects` (`client_id`)
+  [1m[36m (285.2ms)[0m  [1mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (179.9ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_id` int(11), `client_id` int(11), `username` varchar(255), `full_name` varchar(255), `email` varchar(255), `encrypted_password` varchar(255) DEFAULT '', `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (415.0ms)[0m  [1mCREATE INDEX `index_users_on_client_id` ON `users` (`client_id`)[0m
+  [1m[35m (257.3ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (388.9ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35m (0.4ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (34.2ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120930162941')[0m
+  [1m[35m (45.1ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915220034')
+  [1m[36m (58.0ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120920191136')[0m
+  [1m[35m (37.2ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915204316')
+  [1m[36m (45.1ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120922010723')[0m
+  [1m[35m (57.9ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920233810')
+  [1m[36m (37.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120915202803')[0m
+  [1m[35m (45.1ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120901035707')
+  [1m[36m (102.2ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120921074901')[0m
+  [1m[35m (34.9ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920234454')
+Connecting to database specified by database.yml
+  [1m[36m (23.8ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (618.3ms)[0m  DROP DATABASE IF EXISTS `CSM_test`
+  [1m[36m (0.5ms)[0m  [1mCREATE DATABASE `CSM_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`[0m
+  [1m[35m (222.2ms)[0m  CREATE TABLE `clients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (196.9ms)[0m  [1mCREATE TABLE `comments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `feedback_id` int(11), `user_id` int(11), `content` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (206.4ms)[0m  CREATE TABLE `feedback_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB
+  [1m[36m (272.2ms)[0m  [1mCREATE TABLE `feedbacks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `feedback_type_id` int(11), `user_id` int(11), `subject` varchar(255), `content` text, `client_visibility` tinyint(1), `mooveit_visibility` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (197.6ms)[0m  CREATE TABLE `milestones` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `name` varchar(255), `target_date` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (206.1ms)[0m  [1mCREATE TABLE `moods` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `status` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (197.7ms)[0m  CREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `project_id` int(11), `last_login_date` date, `image_url` varchar(255), `skype_usr` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (264.7ms)[0m  [1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `client_id` int(11), `name` varchar(255), `description` text, `end_date` datetime, `finalized` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (535.4ms)[0m  CREATE INDEX `index_projects_on_client_id` ON `projects` (`client_id`)
+  [1m[36m (201.6ms)[0m  [1mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (316.6ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_id` int(11), `client_id` int(11), `username` varchar(255), `full_name` varchar(255), `email` varchar(255), `encrypted_password` varchar(255) DEFAULT '', `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (446.1ms)[0m  [1mCREATE INDEX `index_users_on_client_id` ON `users` (`client_id`)[0m
+  [1m[35m (205.8ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (477.5ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35m (0.4ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (51.2ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120930162941')[0m
+  [1m[35m (49.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915220034')
+  [1m[36m (36.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120920191136')[0m
+  [1m[35m (46.0ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915204316')
+  [1m[36m (49.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120922010723')[0m
+  [1m[35m (44.9ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920233810')
+  [1m[36m (46.1ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120915202803')[0m
+  [1m[35m (49.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120901035707')
+  [1m[36m (36.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120921074901')[0m
+  [1m[35m (46.0ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920234454')
+Connecting to database specified by database.yml
+  [1m[36m (3.4ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (718.5ms)[0m  DROP DATABASE IF EXISTS `CSM_test`
+  [1m[36m (0.5ms)[0m  [1mCREATE DATABASE `CSM_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`[0m
+  [1m[35m (190.5ms)[0m  CREATE TABLE `clients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (260.2ms)[0m  [1mCREATE TABLE `comments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `feedback_id` int(11), `user_id` int(11), `content` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (212.0ms)[0m  CREATE TABLE `feedback_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB
+  [1m[36m (211.2ms)[0m  [1mCREATE TABLE `feedbacks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `feedback_type_id` int(11), `user_id` int(11), `subject` varchar(255), `content` text, `client_visibility` tinyint(1), `mooveit_visibility` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (214.6ms)[0m  CREATE TABLE `milestones` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `name` varchar(255), `target_date` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (276.1ms)[0m  [1mCREATE TABLE `moods` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `status` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (186.5ms)[0m  CREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `project_id` int(11), `last_login_date` date, `image_url` varchar(255), `skype_usr` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (210.8ms)[0m  [1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `client_id` int(11), `name` varchar(255), `description` text, `end_date` datetime, `finalized` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (448.3ms)[0m  CREATE INDEX `index_projects_on_client_id` ON `projects` (`client_id`)
+  [1m[36m (279.0ms)[0m  [1mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (185.1ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_id` int(11), `client_id` int(11), `username` varchar(255), `full_name` varchar(255), `email` varchar(255), `encrypted_password` varchar(255) DEFAULT '', `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (462.8ms)[0m  [1mCREATE INDEX `index_users_on_client_id` ON `users` (`client_id`)[0m
+  [1m[35m (263.8ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (408.1ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35m (0.7ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (53.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120930162941')[0m
+  [1m[35m (35.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915220034')
+  [1m[36m (47.1ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120920191136')[0m
+  [1m[35m (49.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915204316')
+  [1m[36m (35.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120922010723')[0m
+  [1m[35m (47.2ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920233810')
+  [1m[36m (49.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120915202803')[0m
+  [1m[35m (35.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120901035707')
+  [1m[36m (47.1ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120921074901')[0m
+  [1m[35m (116.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920234454')
+Connecting to database specified by database.yml
+  [1m[36m (21.9ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (611.1ms)[0m  DROP DATABASE IF EXISTS `CSM_test`
+  [1m[36m (0.5ms)[0m  [1mCREATE DATABASE `CSM_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`[0m
+  [1m[35m (195.2ms)[0m  CREATE TABLE `clients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (244.2ms)[0m  [1mCREATE TABLE `comments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `feedback_id` int(11), `user_id` int(11), `content` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (183.3ms)[0m  CREATE TABLE `feedback_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB
+  [1m[36m (214.6ms)[0m  [1mCREATE TABLE `feedbacks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `feedback_type_id` int(11), `user_id` int(11), `subject` varchar(255), `content` text, `client_visibility` tinyint(1), `mooveit_visibility` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (179.9ms)[0m  CREATE TABLE `milestones` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `name` varchar(255), `target_date` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (206.3ms)[0m  [1mCREATE TABLE `moods` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `status` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (228.6ms)[0m  CREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `project_id` int(11), `last_login_date` date, `image_url` varchar(255), `skype_usr` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (166.2ms)[0m  [1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `client_id` int(11), `name` varchar(255), `description` text, `end_date` datetime, `finalized` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (392.2ms)[0m  CREATE INDEX `index_projects_on_client_id` ON `projects` (`client_id`)
+  [1m[36m (195.3ms)[0m  [1mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (262.8ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_id` int(11), `client_id` int(11), `username` varchar(255), `full_name` varchar(255), `email` varchar(255), `encrypted_password` varchar(255) DEFAULT '', `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (428.4ms)[0m  [1mCREATE INDEX `index_users_on_client_id` ON `users` (`client_id`)[0m
+  [1m[35m (202.2ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (459.0ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35m (0.4ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (53.2ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120930162941')[0m
+  [1m[35m (49.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915220034')
+  [1m[36m (34.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120920191136')[0m
+  [1m[35m (48.1ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915204316')
+  [1m[36m (49.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120922010723')[0m
+  [1m[35m (34.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920233810')
+  [1m[36m (48.1ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120915202803')[0m
+  [1m[35m (49.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120901035707')
+  [1m[36m (34.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120921074901')[0m
+  [1m[35m (48.1ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920234454')
+Connecting to database specified by database.yml
+  [1m[36m (2.4ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (591.4ms)[0m  DROP DATABASE IF EXISTS `CSM_test`
+  [1m[36m (0.5ms)[0m  [1mCREATE DATABASE `CSM_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`[0m
+  [1m[35m (203.4ms)[0m  CREATE TABLE `clients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (205.9ms)[0m  [1mCREATE TABLE `comments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `feedback_id` int(11), `user_id` int(11), `content` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (261.9ms)[0m  CREATE TABLE `feedback_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB
+  [1m[36m (382.6ms)[0m  [1mCREATE TABLE `feedbacks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `feedback_type_id` int(11), `user_id` int(11), `subject` varchar(255), `content` text, `client_visibility` tinyint(1), `mooveit_visibility` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (314.4ms)[0m  CREATE TABLE `milestones` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `name` varchar(255), `target_date` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (378.8ms)[0m  [1mCREATE TABLE `moods` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `status` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (174.2ms)[0m  CREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `project_id` int(11), `last_login_date` date, `image_url` varchar(255), `skype_usr` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (214.0ms)[0m  [1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `client_id` int(11), `name` varchar(255), `description` text, `end_date` datetime, `finalized` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (392.9ms)[0m  CREATE INDEX `index_projects_on_client_id` ON `projects` (`client_id`)
+  [1m[36m (235.8ms)[0m  [1mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (354.3ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_id` int(11), `client_id` int(11), `username` varchar(255), `full_name` varchar(255), `email` varchar(255), `encrypted_password` varchar(255) DEFAULT '', `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (426.2ms)[0m  [1mCREATE INDEX `index_users_on_client_id` ON `users` (`client_id`)[0m
+  [1m[35m (245.4ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (417.9ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35m (0.4ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (35.9ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120930162941')[0m
+  [1m[35m (40.8ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915220034')
+  [1m[36m (49.7ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120920191136')[0m
+  [1m[35m (33.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915204316')
+  [1m[36m (40.8ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120922010723')[0m
+  [1m[35m (49.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920233810')
+  [1m[36m (109.0ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120915202803')[0m
+  [1m[35m (32.3ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120901035707')
+  [1m[36m (40.9ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120921074901')[0m
+  [1m[35m (49.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920234454')
+Connecting to database specified by database.yml
+  [1m[36m (3.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (582.0ms)[0m  DROP DATABASE IF EXISTS `CSM_test`
+  [1m[36m (0.5ms)[0m  [1mCREATE DATABASE `CSM_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`[0m
+  [1m[35m (186.3ms)[0m  CREATE TABLE `clients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (180.9ms)[0m  [1mCREATE TABLE `comments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `feedback_id` int(11), `user_id` int(11), `content` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (172.8ms)[0m  CREATE TABLE `feedback_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB
+  [1m[36m (253.0ms)[0m  [1mCREATE TABLE `feedbacks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `feedback_type_id` int(11), `user_id` int(11), `subject` varchar(255), `content` text, `client_visibility` tinyint(1), `mooveit_visibility` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (167.0ms)[0m  CREATE TABLE `milestones` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `name` varchar(255), `target_date` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (197.5ms)[0m  [1mCREATE TABLE `moods` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `status` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (188.8ms)[0m  CREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `project_id` int(11), `last_login_date` date, `image_url` varchar(255), `skype_usr` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (189.3ms)[0m  [1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `client_id` int(11), `name` varchar(255), `description` text, `end_date` datetime, `finalized` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (464.8ms)[0m  CREATE INDEX `index_projects_on_client_id` ON `projects` (`client_id`)
+  [1m[36m (197.2ms)[0m  [1mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (197.0ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_id` int(11), `client_id` int(11), `username` varchar(255), `full_name` varchar(255), `email` varchar(255), `encrypted_password` varchar(255) DEFAULT '', `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (456.7ms)[0m  [1mCREATE INDEX `index_users_on_client_id` ON `users` (`client_id`)[0m
+  [1m[35m (197.6ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (421.4ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35m (0.4ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (32.1ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120930162941')[0m
+  [1m[35m (41.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915220034')
+  [1m[36m (49.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120920191136')[0m
+  [1m[35m (116.2ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915204316')
+  [1m[36m (41.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120922010723')[0m
+  [1m[35m (66.1ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920233810')
+  [1m[36m (32.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120915202803')[0m
+  [1m[35m (41.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120901035707')
+  [1m[36m (57.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120921074901')[0m
+  [1m[35m (32.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920234454')
+Connecting to database specified by database.yml
+  [1m[36m (2.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (625.2ms)[0m  DROP DATABASE IF EXISTS `CSM_test`
+  [1m[36m (0.5ms)[0m  [1mCREATE DATABASE `CSM_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`[0m
+  [1m[35m (267.6ms)[0m  CREATE TABLE `clients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (174.0ms)[0m  [1mCREATE TABLE `comments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `feedback_id` int(11), `user_id` int(11), `content` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (198.0ms)[0m  CREATE TABLE `feedback_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB
+  [1m[36m (205.7ms)[0m  [1mCREATE TABLE `feedbacks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `feedback_type_id` int(11), `user_id` int(11), `subject` varchar(255), `content` text, `client_visibility` tinyint(1), `mooveit_visibility` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (197.2ms)[0m  CREATE TABLE `milestones` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `name` varchar(255), `target_date` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (463.2ms)[0m  [1mCREATE TABLE `moods` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `status` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (209.0ms)[0m  CREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `project_id` int(11), `last_login_date` date, `image_url` varchar(255), `skype_usr` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (197.2ms)[0m  [1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `client_id` int(11), `name` varchar(255), `description` text, `end_date` datetime, `finalized` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (471.1ms)[0m  CREATE INDEX `index_projects_on_client_id` ON `projects` (`client_id`)
+  [1m[36m (199.8ms)[0m  [1mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (197.0ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_id` int(11), `client_id` int(11), `username` varchar(255), `full_name` varchar(255), `email` varchar(255), `encrypted_password` varchar(255) DEFAULT '', `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (435.5ms)[0m  [1mCREATE INDEX `index_users_on_client_id` ON `users` (`client_id`)[0m
+  [1m[35m (259.9ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (386.8ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35m (0.5ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (51.2ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120930162941')[0m
+  [1m[35m (38.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915220034')
+  [1m[36m (44.0ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120920191136')[0m
+  [1m[35m (49.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915204316')
+  [1m[36m (38.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120922010723')[0m
+  [1m[35m (118.7ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920233810')
+  [1m[36m (39.0ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120915202803')[0m
+  [1m[35m (44.0ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120901035707')
+  [1m[36m (49.7ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120921074901')[0m
+  [1m[35m (38.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920234454')
+Connecting to database specified by database.yml
+  [1m[36m (16.7ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (642.2ms)[0m  DROP DATABASE IF EXISTS `CSM_test`
+  [1m[36m (0.5ms)[0m  [1mCREATE DATABASE `CSM_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`[0m
+  [1m[35m (184.8ms)[0m  CREATE TABLE `clients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (225.6ms)[0m  [1mCREATE TABLE `comments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `feedback_id` int(11), `user_id` int(11), `content` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (165.9ms)[0m  CREATE TABLE `feedback_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB
+  [1m[36m (188.5ms)[0m  [1mCREATE TABLE `feedbacks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `feedback_type_id` int(11), `user_id` int(11), `subject` varchar(255), `content` text, `client_visibility` tinyint(1), `mooveit_visibility` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (172.1ms)[0m  CREATE TABLE `milestones` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `name` varchar(255), `target_date` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (196.3ms)[0m  [1mCREATE TABLE `moods` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `status` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (180.6ms)[0m  CREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `project_id` int(11), `last_login_date` date, `image_url` varchar(255), `skype_usr` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (237.9ms)[0m  [1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `client_id` int(11), `name` varchar(255), `description` text, `end_date` datetime, `finalized` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (479.2ms)[0m  CREATE INDEX `index_projects_on_client_id` ON `projects` (`client_id`)
+  [1m[36m (223.8ms)[0m  [1mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (245.7ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_id` int(11), `client_id` int(11), `username` varchar(255), `full_name` varchar(255), `email` varchar(255), `encrypted_password` varchar(255) DEFAULT '', `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (464.0ms)[0m  [1mCREATE INDEX `index_users_on_client_id` ON `users` (`client_id`)[0m
+  [1m[35m (283.4ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (487.2ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35m (0.6ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (47.2ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120930162941')[0m
+  [1m[35m (57.8ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915220034')
+  [1m[36m (46.1ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120920191136')[0m
+  [1m[35m (44.8ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915204316')
+  [1m[36m (49.7ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120922010723')[0m
+  [1m[35m (45.9ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920233810')
+  [1m[36m (44.8ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120915202803')[0m
+  [1m[35m (49.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120901035707')
+  [1m[36m (37.7ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120921074901')[0m
+  [1m[35m (44.8ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920234454')
+Connecting to database specified by database.yml
+  [1m[36m (32.4ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (824.0ms)[0m  DROP DATABASE IF EXISTS `CSM_test`
+  [1m[36m (42.6ms)[0m  [1mCREATE DATABASE `CSM_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`[0m
+  [1m[35m (317.5ms)[0m  CREATE TABLE `clients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (230.2ms)[0m  [1mCREATE TABLE `comments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `feedback_id` int(11), `user_id` int(11), `content` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (201.6ms)[0m  CREATE TABLE `feedback_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB
+  [1m[36m (196.9ms)[0m  [1mCREATE TABLE `feedbacks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `feedback_type_id` int(11), `user_id` int(11), `subject` varchar(255), `content` text, `client_visibility` tinyint(1), `mooveit_visibility` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (197.3ms)[0m  CREATE TABLE `milestones` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `name` varchar(255), `target_date` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (270.0ms)[0m  [1mCREATE TABLE `moods` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `status` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (183.5ms)[0m  CREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `project_id` int(11), `last_login_date` date, `image_url` varchar(255), `skype_usr` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (189.2ms)[0m  [1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `client_id` int(11), `name` varchar(255), `description` text, `end_date` datetime, `finalized` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (671.5ms)[0m  CREATE INDEX `index_projects_on_client_id` ON `projects` (`client_id`)
+  [1m[36m (216.1ms)[0m  [1mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (241.7ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_id` int(11), `client_id` int(11), `username` varchar(255), `full_name` varchar(255), `email` varchar(255), `encrypted_password` varchar(255) DEFAULT '', `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (516.1ms)[0m  [1mCREATE INDEX `index_users_on_client_id` ON `users` (`client_id`)[0m
+  [1m[35m (317.7ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (415.6ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35m (8.0ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (130.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120930162941')[0m
+  [1m[35m (53.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915220034')
+  [1m[36m (45.7ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120920191136')[0m
+  [1m[35m (49.7ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915204316')
+  [1m[36m (36.9ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120922010723')[0m
+  [1m[35m (45.7ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920233810')
+  [1m[36m (49.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120915202803')[0m
+  [1m[35m (37.0ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120901035707')
+  [1m[36m (45.7ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120921074901')[0m
+  [1m[35m (49.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920234454')
+Connecting to database specified by database.yml
+  [1m[36m (63.9ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (625.3ms)[0m  DROP DATABASE IF EXISTS `CSM_test`
+  [1m[36m (0.5ms)[0m  [1mCREATE DATABASE `CSM_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`[0m
+  [1m[35m (204.8ms)[0m  CREATE TABLE `clients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (305.6ms)[0m  [1mCREATE TABLE `comments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `feedback_id` int(11), `user_id` int(11), `content` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (171.7ms)[0m  CREATE TABLE `feedback_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB
+  [1m[36m (212.5ms)[0m  [1mCREATE TABLE `feedbacks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `feedback_type_id` int(11), `user_id` int(11), `subject` varchar(255), `content` text, `client_visibility` tinyint(1), `mooveit_visibility` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (176.4ms)[0m  CREATE TABLE `milestones` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `name` varchar(255), `target_date` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (211.1ms)[0m  [1mCREATE TABLE `moods` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `status` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (232.9ms)[0m  CREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `project_id` int(11), `last_login_date` date, `image_url` varchar(255), `skype_usr` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (178.8ms)[0m  [1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `client_id` int(11), `name` varchar(255), `description` text, `end_date` datetime, `finalized` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (710.2ms)[0m  CREATE INDEX `index_projects_on_client_id` ON `projects` (`client_id`)
+  [1m[36m (271.6ms)[0m  [1mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (194.9ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_id` int(11), `client_id` int(11), `username` varchar(255), `full_name` varchar(255), `email` varchar(255), `encrypted_password` varchar(255) DEFAULT '', `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (426.4ms)[0m  [1mCREATE INDEX `index_users_on_client_id` ON `users` (`client_id`)[0m
+  [1m[35m (233.2ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (421.7ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35m (0.4ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (38.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120930162941')[0m
+  [1m[35m (46.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915220034')
+  [1m[36m (49.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120920191136')[0m
+  [1m[35m (36.1ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915204316')
+  [1m[36m (46.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120922010723')[0m
+  [1m[35m (49.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920233810')
+  [1m[36m (36.1ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120915202803')[0m
+  [1m[35m (110.9ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120901035707')
+  [1m[36m (38.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120921074901')[0m
+  [1m[35m (46.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920234454')
+Connecting to database specified by database.yml
+  [1m[36m (23.9ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (854.8ms)[0m  DROP DATABASE IF EXISTS `CSM_test`
+  [1m[36m (0.4ms)[0m  [1mCREATE DATABASE `CSM_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`[0m
+  [1m[35m (411.3ms)[0m  CREATE TABLE `clients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (283.1ms)[0m  [1mCREATE TABLE `comments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `feedback_id` int(11), `user_id` int(11), `content` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (297.9ms)[0m  CREATE TABLE `feedback_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB
+  [1m[36m (364.1ms)[0m  [1mCREATE TABLE `feedbacks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `feedback_type_id` int(11), `user_id` int(11), `subject` varchar(255), `content` text, `client_visibility` tinyint(1), `mooveit_visibility` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (281.0ms)[0m  CREATE TABLE `milestones` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `name` varchar(255), `target_date` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (322.8ms)[0m  [1mCREATE TABLE `moods` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `status` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (278.4ms)[0m  CREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `project_id` int(11), `last_login_date` date, `image_url` varchar(255), `skype_usr` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (231.7ms)[0m  [1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `client_id` int(11), `name` varchar(255), `description` text, `end_date` datetime, `finalized` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (523.6ms)[0m  CREATE INDEX `index_projects_on_client_id` ON `projects` (`client_id`)
+  [1m[36m (363.4ms)[0m  [1mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (246.2ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_id` int(11), `client_id` int(11), `username` varchar(255), `full_name` varchar(255), `email` varchar(255), `encrypted_password` varchar(255) DEFAULT '', `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (523.8ms)[0m  [1mCREATE INDEX `index_users_on_client_id` ON `users` (`client_id`)[0m
+  [1m[35m (422.1ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (523.9ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35m (0.4ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (140.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120930162941')[0m
+  [1m[35m (56.2ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915220034')
+  [1m[36m (91.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120920191136')[0m
+  [1m[35m (66.3ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915204316')
+  [1m[36m (58.0ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120922010723')[0m
+  [1m[35m (49.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920233810')
+  [1m[36m (74.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120915202803')[0m
+  [1m[35m (83.0ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120901035707')
+  [1m[36m (91.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120921074901')[0m
+  [1m[35m (97.3ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920234454')
+Connecting to database specified by database.yml
+  [1m[36m (45.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (763.3ms)[0m  DROP DATABASE IF EXISTS `CSM_test`
+  [1m[36m (0.5ms)[0m  [1mCREATE DATABASE `CSM_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`[0m
+  [1m[35m (210.3ms)[0m  CREATE TABLE `clients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (203.8ms)[0m  [1mCREATE TABLE `comments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `feedback_id` int(11), `user_id` int(11), `content` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (217.2ms)[0m  CREATE TABLE `feedback_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB
+  [1m[36m (169.4ms)[0m  [1mCREATE TABLE `feedbacks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `feedback_type_id` int(11), `user_id` int(11), `subject` varchar(255), `content` text, `client_visibility` tinyint(1), `mooveit_visibility` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (179.9ms)[0m  CREATE TABLE `milestones` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `name` varchar(255), `target_date` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (180.6ms)[0m  [1mCREATE TABLE `moods` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `status` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (181.2ms)[0m  CREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `project_id` int(11), `last_login_date` date, `image_url` varchar(255), `skype_usr` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (203.9ms)[0m  [1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `client_id` int(11), `name` varchar(255), `description` text, `end_date` datetime, `finalized` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (557.7ms)[0m  CREATE INDEX `index_projects_on_client_id` ON `projects` (`client_id`)
+  [1m[36m (256.2ms)[0m  [1mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (305.8ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_id` int(11), `client_id` int(11), `username` varchar(255), `full_name` varchar(255), `email` varchar(255), `encrypted_password` varchar(255) DEFAULT '', `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (436.4ms)[0m  [1mCREATE INDEX `index_users_on_client_id` ON `users` (`client_id`)[0m
+  [1m[35m (191.7ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (471.5ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (34.2ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120930162941')[0m
+  [1m[35m (48.0ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915220034')
+  [1m[36m (49.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120920191136')[0m
+  [1m[35m (34.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915204316')
+  [1m[36m (47.9ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120922010723')[0m
+  [1m[35m (49.7ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920233810')
+  [1m[36m (34.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120915202803')[0m
+  [1m[35m (47.9ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120901035707')
+  [1m[36m (49.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120921074901')[0m
+  [1m[35m (34.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920234454')
+Connecting to database specified by database.yml
+  [1m[36m (2.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (890.5ms)[0m  DROP DATABASE IF EXISTS `CSM_test`
+  [1m[36m (0.5ms)[0m  [1mCREATE DATABASE `CSM_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`[0m
+  [1m[35m (193.3ms)[0m  CREATE TABLE `clients` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (231.4ms)[0m  [1mCREATE TABLE `comments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `feedback_id` int(11), `user_id` int(11), `content` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (221.5ms)[0m  CREATE TABLE `feedback_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255)) ENGINE=InnoDB
+  [1m[36m (188.5ms)[0m  [1mCREATE TABLE `feedbacks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `feedback_type_id` int(11), `user_id` int(11), `subject` varchar(255), `content` text, `client_visibility` tinyint(1), `mooveit_visibility` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (205.5ms)[0m  CREATE TABLE `milestones` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `name` varchar(255), `target_date` date, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (172.0ms)[0m  [1mCREATE TABLE `moods` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `project_id` int(11), `status` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (232.2ms)[0m  CREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `project_id` int(11), `last_login_date` date, `image_url` varchar(255), `skype_usr` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (188.2ms)[0m  [1mCREATE TABLE `projects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `client_id` int(11), `name` varchar(255), `description` text, `end_date` datetime, `finalized` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (432.3ms)[0m  CREATE INDEX `index_projects_on_client_id` ON `projects` (`client_id`)
+  [1m[36m (196.3ms)[0m  [1mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (254.1ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_id` int(11), `client_id` int(11), `username` varchar(255), `full_name` varchar(255), `email` varchar(255), `encrypted_password` varchar(255) DEFAULT '', `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (413.6ms)[0m  [1mCREATE INDEX `index_users_on_client_id` ON `users` (`client_id`)[0m
+  [1m[35m (175.7ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (474.8ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35m (0.4ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (46.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120930162941')[0m
+  [1m[35m (33.7ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915220034')
+  [1m[36m (40.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120920191136')[0m
+  [1m[35m (49.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120915204316')
+  [1m[36m (42.0ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120922010723')[0m
+  [1m[35m (40.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920233810')
+  [1m[36m (49.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120915202803')[0m
+  [1m[35m (33.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120901035707')
+  [1m[36m (40.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120921074901')[0m
+  [1m[35m (57.9ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120920234454')
