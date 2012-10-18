@@ -1,9 +1,23 @@
 <div class="container">
   <div class="row-fluid">
-    <div class="span5 offset6" style="margin-top: 20px; margin-bottom: 200px; background-color: #f0f8ff; border-radius: 5px; ">
+    <div class="span5 offset6" style="margin-top: 20px; margin-bottom: 200px;">
               <div style="width: 98%; margin-left: 5px;" >
-              <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form-horizontal"} ) do |f| %>
-               <legend>Sign in</legend>
+
+               <div class="tabbable " style="vertical-align: bottom; background-color: #f0f8ff; border-radius: 5px; ">
+                  <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#tab1" data-toggle="tab">Sign In</a>
+                    </li>
+                    <li>
+                      <%= link_to 'Sign in with OpenID'.html_safe, user_omniauth_authorize_path(:google) %>
+                    </li>
+                  </ul>
+
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="tab1">
+
+               <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form-horizontal"} ) do |f| %>
+
                     <div class="control-group">
                     <label class="control-label" for="inputUsername">Username</label>
                     <div class="controls">
@@ -49,18 +63,18 @@
                       < % end -%>-->
 
                       <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-                          <%= link_to "Forgot your password?", new_password_path(resource_name), :style => 'float:right;' %><br />
+                          <%= link_to "Forgot your password?", new_password_path(resource_name), :style => 'float:right; margin-right:50px' %><br />
                       <% end -%>
                     </div>
 
 
               <% end %>
-
+              </div>
               </div>
 
+               </div>
 
-
-
+              </div>
 
 
           </div>

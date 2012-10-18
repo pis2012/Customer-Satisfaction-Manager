@@ -508,12 +508,16 @@ Mood.create(project: p45,
 admin_usr = User.create(role: rol_admin, client: client1,
                         username: 'admin',password:'admin',password_confirmation:'admin',
                         full_name:'Martin Cabrera', email:'cabrera@1234.com')
+admin_usr.skip_confirmation!
+admin_usr.save
 
 profile1 = Profile.create(user:admin_usr, project:p1,skype_usr:'martin.skype')
 
 client_usr = User.create(role: rol_client, client: client1,
                          username: 'client_usr',password:'client',password_confirmation:'client',
                          full_name:'Bill Gates', email:'gates@1234.com')
+client_usr.skip_confirmation!
+client_usr.save
 
 profile = Profile.create(user:client_usr, project:p4,skype_usr:'gates.skype')
 
@@ -521,7 +525,9 @@ profile = Profile.create(user:client_usr, project:p4,skype_usr:'gates.skype')
 
 client_usr = User.create(role: rol_client, client: client2,
                          username: 'sony',password:'sony',password_confirmation:'sony',
-                         full_name:'Sony', email:'sony@1234.com')
+                         full_name:'Sony',email:'sony@1234.com')
+client_usr.skip_confirmation!
+client_usr.save
 
 profile2 = Profile.create(user:client_usr, project:p1,skype_usr:'sony.skype')
 
@@ -536,14 +542,14 @@ Milestone.create(:target_date => '2012-12-03 00:00:00', :project => p1, :name =>
 Milestone.create(:target_date => '2013-04-01 00:00:00', :project => p1, :name => "Prueba4")
 
 
-Milestone.create(:target_date => '2012-04-06 00:00:00', :project => p2, :name => "Proyecto 2, mileston 1")
-Milestone.create(:target_date => '2012-05-07 00:00:00', :project => p2, :name => "Proyecto 2, mileston 2")
-Milestone.create(:target_date => '2012-06-08 00:00:00', :project => p2, :name => "Proyecto 2, mileston 3")
-Milestone.create(:target_date => '2013-07-09 00:00:00', :project => p2, :name => "Proyecto 2, mileston 4")
+Milestone.create(:target_date => '2012-04-06 00:00:00', :project => p2, :name => "Proyecto 2, milestone 1")
+Milestone.create(:target_date => '2012-05-07 00:00:00', :project => p2, :name => "Proyecto 2, milestone 2")
+Milestone.create(:target_date => '2012-06-08 00:00:00', :project => p2, :name => "Proyecto 2, milestone 3")
+Milestone.create(:target_date => '2013-07-09 00:00:00', :project => p2, :name => "Proyecto 2, milestone 4")
 
 
-Milestone.create(:target_date => '2012-05-22 00:00:00', :project => p3, :name => "Proyecto 3, mileston 1")
-Milestone.create(:target_date => '2012-06-12 00:00:00', :project => p3, :name => "Proyecto 3, mileston 2")
-Milestone.create(:target_date => '2013-08-06 00:00:00', :project => p3, :name => "Proyecto 3, mileston 3")
-Milestone.create(:target_date => '2014-08-09 00:00:00', :project => p3, :name => "Proyecto 3, mileston 4")
+Milestone.create(:target_date => '2012-05-22 00:00:00', :project => p3, :name => "Proyecto 3, milestone 1")
+Milestone.create(:target_date => '2012-06-12 00:00:00', :project => p3, :name => "Proyecto 3, milestone 2")
+Milestone.create(:target_date => '2013-08-06 00:00:00', :project => p3, :name => "Proyecto 3, milestone 3")
+Milestone.create(:target_date => '2014-08-09 00:00:00', :project => p3, :name => "Proyecto 3, milestone 4")
 

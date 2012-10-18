@@ -8,6 +8,9 @@ gem 'rails', '3.2.8'
 gem 'mysql2'
 
 gem 'devise'
+gem 'devise-encryptable'
+
+gem 'google_drive'
 
 gem 'foreigner'
 
@@ -61,7 +64,9 @@ gem 'jquery-rails'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
+
+gem 'passenger'
 
 # To use debugger
 # gem 'debugger'

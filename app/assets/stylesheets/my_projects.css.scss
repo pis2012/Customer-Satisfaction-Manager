@@ -1,0 +1,257 @@
+// All the styles related to the view projects/show_project_complete goes here.
+
+
+/* ============== [ PROJECTS SELECTOR ] ============== */
+
+#breadcrumbs-wrapper {
+  background: image-url("breadcrumb-bg.png") repeat-x scroll 0 -7px transparent;
+  border-bottom: 1px solid #DEDEDE;
+  border-top: 1px solid #CCCCCC;
+  margin-bottom: 20px;
+}
+
+/* ============== [ MOOD SELECTOR ] ============== */
+
+.current-mood p
+{
+  margin-right: 15px;
+}
+
+#msj-face-changed{
+  text-align: center;
+  width: 50%;
+}
+
+#msj-face-changed-container{
+  background-color: yellow;
+  display: inline;
+  text-align: center;
+}
+
+.face-mood-state {
+  text-align:  center;
+}
+
+#face-list {
+  list-style: none outside none;
+  margin-left: 0;
+  margin-right: 5%;
+  margin-left: -3%;
+}
+
+#face-list li {
+  display: inline;
+  padding: 0;
+  margin-left: -3px;
+  line-height: 70px;
+  font-size: 44px;
+}
+
+#face-list li.active {
+  background-color: #2175bc;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+
+}
+
+#face-list li.active a:hover{
+  background-color: #2175bc;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+
+}
+
+#face-list li a:hover {
+  background-color: #F8F8F8;
+  -moz-border-radius: 35px;
+  border-radius: 40px;
+}
+
+#face-list img {
+  width: 16%;
+  height: 16%;
+  padding: 3px;
+}
+
+#face-list li img:hover {
+  width: 18%;
+  height: 18%;
+}
+
+/* ============== [ MILESTONE NOTIFIER ] ============== */
+
+.milestone-box {
+  text-align: left;
+  font-style: normal;
+  text-decoration:none;
+  color:#791111;
+  font-family:Arial;
+  font-size:16px;
+  font-weight:bold;
+  margin-right:10%;
+  background-color: #FFF8EC;
+}
+
+.milestone-box p {
+  font-family:Arial;
+  font-size:13px;
+  font-weight:normal;
+  font-style:normal;
+  text-decoration:none;
+  text-align:right;
+  margin-right: 10%;
+}
+
+/* ============== [ SIDEBAR ] ============== */
+
+#global_nav li {
+  font-size: 12px;
+}
+
+#global_nav ul {
+  list-style: none outside none;
+}
+
+#global_nav a {
+  background: image-url("iconos-cliente.png") no-repeat scroll 8px 4px transparent;
+  display: block;
+  font-size: 13px;
+  line-height: 35px;
+  overflow: hidden;
+  padding: 0 6px 0 40px;
+  text-decoration: none;
+}
+
+#global_nav a:hover, #global_nav a:visited {
+  background-color: #F8F8F8;
+  color: #333333;
+}
+
+#global_nav li.active a:hover, #global_nav li.active a:visited{
+  background-color: #EBEBEB;
+  color: #000000;
+}
+
+#global_nav li.active{
+  background-color: #EBEBEB;
+  color: #000000;
+  font-weight: bold;
+}
+
+#global_nav li.feedbacks.active a {
+  background-position: 8px -38px;
+}
+
+#global_nav li.data a {
+  background-position: 8px -80px;
+}
+
+#global_nav li.data.active a {
+  background-position: 8px -122px;
+}
+
+/* ============== [ PAGE ] ============== */
+
+#page {
+  background-color: #FFFFFF;
+  border: 1px solid #D7D7D7;
+  border-radius: 6px 6px 6px 6px;
+  box-shadow: 0 0 3px #CCCCCC;
+  min-height: 500px;
+  padding: 0 0 30px;
+  position: relative;
+}
+
+.page_content {
+  padding: 15px 30px;
+}
+
+.page_header {
+  background: none repeat scroll 0 0 #FFF8EC;
+  border-bottom: 1px solid #DADEE5;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 15px 30px;
+  height: 40px;
+}
+
+.page_header .add_element {
+  margin-top: 4px;
+  float: right;
+}
+
+.page_header h1 {
+  float: left;
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0;
+}
+
+/* ============== [ FEEDBACKS TAB INDEX ] ============== */
+
+.feedbacks_filer_element {
+  display: inline;
+}
+
+.hr_feedbacks_table {
+  margin-bottom: 0%;
+}
+
+.feedbacks_table {
+  width: 100%;
+}
+
+.feedbacks_table {
+
+  tr > td {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-bottom: 1px solid #EEEEEE;
+  }
+
+  .avatar {
+    width: 8%;
+  }
+}
+
+.feedbacks_table .avatar .feedback_image {
+  width: 100%;
+}
+
+.feedbacks_table .feedback_info {
+
+  padding-left: 4%;
+
+  .feedback_subject {
+    font-size: 18px;
+    text-decoration: underline;
+    color: inherit;
+    font-weight: bold;
+
+  }
+
+  .feedback_date {
+    font-weight: normal;
+    margin-top: 0;
+  }
+
+  .feedback_last_comment {
+
+  }
+
+  .feedback_division {
+    margin-top: 1%;
+    margin-bottom: 1%;
+
+  }
+
+}
+
+/* ============== [ DATA TAB ] ============== */
+
+/* ============== [ GRAPHS ] ============== */
+
+.mood-graph {
+  text-align: center;
+}
+

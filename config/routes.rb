@@ -18,7 +18,7 @@ CSM::Application.routes.draw do
   match "/milestones/new/:project_id" => "milestones#new", :as => :new_milestone
   resources :milestones
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :passwords => "passwords"}
   resources :clients
 
   match "/my_projects" , to: "projects#show_project_complete" , :as => :my_projects
@@ -31,6 +31,8 @@ CSM::Application.routes.draw do
   match "/admin" => "admin#index", :as => :admin
 
   resources :projects
+
+  resources :forms
 
 
   # The priority is based upon order of creation:
