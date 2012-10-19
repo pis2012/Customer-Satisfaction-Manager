@@ -59,6 +59,18 @@ $('.data-link').live('click', function () {
     return false;
 });
 
+$('#face-list').ready(function(){
+    $('#msj-face-changed').fadeOut(0);
+    $('#face-list li').click(function () {
+        $('#msj-face-changed').fadeIn(300).fadeOut(1000);
+    });
+})
+
+
+
+
+
+
 $('.change-mood1-link').live('click', function () {
     updatePanelMood($(this).data('url'), 'change-mood1-content', 'change-mood1');
     return false;
