@@ -36,11 +36,12 @@
 
 #content
 {
-
+    color: rgba(36, 31, 36, 0.8);
 }
 
 #content a {
-    color: #000;
+    /*color: #000;*/
+    color: rgba(36, 31, 36, 0.8)
 }
 
 

@@ -64,12 +64,9 @@ $('#face-list').ready(function(){
     $('#face-list li').click(function () {
         $('#msj-face-changed').fadeIn(300).fadeOut(1000);
     });
+
+    $('.estilotextarea').wysihtml5();
 })
-
-
-
-
-
 
 $('.change-mood1-link').live('click', function () {
     updatePanelMood($(this).data('url'), 'change-mood1-content', 'change-mood1');
