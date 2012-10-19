@@ -1,158 +1,192 @@
-<div class="container">
+<div class="container" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
   <h2>CHOOSE YOUR PROFILE SETTINGS</h2>
-<div class="row-fluid">
+  <div class="row-fluid">
     <div class="span4">
     </div>
     <div class="span6">
-        <div>
-            </br>
+      <div>
+        </br>
 
-            <%= form_for(@profile, :html => {:id => "userpic_form",:class => "form-horizontal", :method => :put, :multipart => true}) do |f| %>
+        <%= form_for(@profile, :html => {:id => "userpic_form",:class => "form-horizontal", :method => :put, :multipart => true}) do |f| %>
 
-                <% if @profile.errors.any? || (!@user.nil? &&  @user.errors.any?)  %>
-                    <div class="alert alert-error">
-                      <% if @profile.errors.any? %>
-                        <% @profile.errors.full_messages.each do |msg| %>
-                            <strong><%= msg %></strong>
-                        <% end %>
+            <% if @profile.errors.any? || (!@user.nil? &&  @user.errors.any?)  %>
+                <div class="alert alert-error">
+                  <% if @profile.errors.any? %>
+                      <% @profile.errors.full_messages.each do |msg| %>
+                          <strong><%= msg %></strong>
                       <% end %>
+                  <% end %>
 
-                      <% if !@user.nil? &&  @user.errors.any? %>
-                        <% @user.errors.full_messages.each do |msg| %>
-                            <strong><%= msg %></strong>
-                        <% end %>
+                  <% if !@user.nil? &&  @user.errors.any? %>
+                      <% @user.errors.full_messages.each do |msg| %>
+                          <strong><%= msg %></strong>
                       <% end %>
-                    </div>
-                <% end %>
-
-                <div class="control-group">
-
-                    <label for="inputUsername">Personal data:</label>
-                    <%= fields_for @profile.user do |fa| %>
-                        <div class="controls">
-                            Full Name:
-                            </br>
-                            <div class="input-prepend">
-                                <%= fa.text_field :full_name %>
-                            </div>
-                        </div>
-
-                        </br>
-
-                        <div class="controls">
-                            Email:
-                            </br>
-                            <div class="input-prepend">
-                                <%= fa.text_field :email,:readonly => true %>
-                            </div>
-                        </div>
-
-                    <% end %>
-
-                    </br>
-
-                    <div class="controls">
-                        Skype User:
-                        </br>
-                        <div class="input-prepend">
-                            <%= f.text_field :skype_usr %>
-                        </div>
-                    </div>
-
+                  <% end %>
                 </div>
-
-                <hr> </hr>
-
-                <div class="control-group">
-
-                    <label for="inputUsername">My picture:</label>
-                    <div class="controls">
-                        <% if @profile.avatar.file? %>
-                            <%= image_tag @profile.avatar.url(:medium) %>
-                        <% else %>
-                            <%= gravatar_image_tag( @profile.user.email.gsub('spam', 'mdeering'), :alt => @profile.user.full_name, :gravatar => { :size => 100 })  %>
-                        <% end %>
-                    </div>
-
-                    </br>
-
-                    <div class="controls">
-                        <%=f.file_field :avatar, :accept => "image/jpeg,image/png,image/gif" %>
-                    </div>
-
-                </div>
-
-                <hr> </hr>
-
-                <div class="control-group">
-
-                    <label for="inputUsername">My proyect:</label>
-
-                    <div class="controls">
-                        Default Proyect:
-                        </br>
-                        <div class="input-prepend">
-
-                        <%= f.select(:project_id, Project.all().map {|project| [project.name, project.id]},:prompt => true) %>
-
-                        </div>
-                    </div>
-
-                </div>
-
-                <hr> </hr>
-
-                <% if @profile.user.role.name != "Mooveit" %>
-
-                    <div class="control-group">
-
-                        <label for="inputUsername">Change Password:</label>
-
-                        <%= fields_for @profile.user do |fa| %>
-
-                            <div class="controls">
-                                Current Password:
-                                </br>
-                                <div class="input-prepend">
-                                    <%= fa.password_field :current_password %>
-                                </div>
-                            </div>
-
-                            </br>
-
-                            <div class="controls">
-                                New Password:
-                                </br>
-                                <div class="input-prepend">
-                                    <%= fa.password_field :password %>
-                                </div>
-                            </div>
-
-                            </br>
-
-                            <div class="controls">
-                                Confirm New Password:
-                                </br>
-                                <div class="input-prepend">
-                                    <%= fa.password_field :password_confirmation %>
-                                </div>
-                            </div>
-                        <% end %>
-                    </div>
-
-                    <hr> </hr>
-                <% end %>
-
-                <%=  f.submit "Save Changes" %> or
-                <%=  link_to "Cancel", "/" %>
-
-                <%= f.hidden_field :user_id %>
             <% end %>
 
+            <div class="control-group">
 
-        </div>
+              <label for="inputUsername">Personal data:</label>
+              <%= fields_for @profile.user do |fa| %>
+                  <div class="controls">
+                    Full Name:
+                    </br>
+                    <div class="input-prepend">
+                      <%= fa.text_field :full_name %>
+                    </div>
+                  </div>
+
+                  </br>
+
+                  <div class="controls">
+                    Email:
+                    </br>
+                    <div class="input-prepend">
+                      <%= fa.text_field :email%>
+                    </div>
+                  </div>
+
+                  </br>
+
+                  <div class="controls">
+                    OpenID:
+                    </br>
+                    <div class="input-prepend">
+                      <%= fa.text_field :openidemail,:readonly => true, :id => "openidField" %>
+                    </div>
+                  </div>
+
+                  <div class="controls">
+                      <%= link_to "Load OpenID from Gmail's session".html_safe, user_omniauth_authorize_path(:google) %>
+                  </div>
+
+            <% end %>
+
+              </br>
+
+              <div class="controls">
+                Skype User:
+                </br>
+                <div class="input-prepend">
+                  <%= f.text_field :skype_usr %>
+                </div>
+              </div>
+
+            </div>
+
+            <hr> </hr>
+
+            <div class="control-group">
+
+                <label for="inputUsername">Notifications:</label>
+                <div class="controls">
+                    Feedbacks &nbsp;
+                  <div class="input-prepend">
+                      <label class="checkbox">
+                        <%= f.check_box :feedbacks_notifications %>
+                      </label>
+                    </div>
+                </div>
+                <div class="controls">
+                    Comments &nbsp;
+                  <div class="input-prepend">
+                      <label class="checkbox">
+                        <%= f.check_box :comments_notifications %>
+                      </label>
+                    </div>
+                </div>
+            </div>
+
+            <hr> </hr>
+
+
+            <div class="control-group">
+
+              <label for="inputUsername">My picture:</label>
+              <div class="controls">
+                <% if @profile.avatar.file? %>
+                    <%= image_tag @profile.avatar.url(:medium) %>
+                <% else %>
+                    <%= gravatar_image_tag( @profile.user.email.gsub('spam', 'mdeering'), :alt => @profile.user.full_name, :gravatar => { :size => 100 })  %>
+                <% end %>
+              </div>
+
+              </br>
+
+              <div class="controls">
+                <%=f.file_field :avatar, :accept => "image/jpeg,image/png,image/gif" %>
+              </div>
+
+            </div>
+
+            <hr> </hr>
+
+            <div class="control-group">
+
+              <label for="inputUsername">My proyect:</label>
+
+              <div class="controls">
+                Default Proyect:
+                </br>
+                <div class="input-prepend">
+                  <%= f.select(:project_id, Project.where(:client_id => @profile.user.client_id ).map {|project| [project.name, project.id]},:prompt => true) %>
+                </div>
+              </div>
+
+            </div>
+
+            <hr> </hr>
+
+            <% if @profile.user.role.name != "Mooveit" %>
+
+                <div class="control-group">
+
+                  <label for="inputUsername">Change Password:</label>
+
+                  <%= fields_for @profile.user do |fa| %>
+
+                      <div class="controls">
+                        Current Password:
+                        </br>
+                        <div class="input-prepend">
+                          <%= fa.password_field :current_password %>
+                        </div>
+                      </div>
+
+                      </br>
+
+                      <div class="controls">
+                        New Password:
+                        </br>
+                        <div class="input-prepend">
+                          <%= fa.password_field :password %>
+                        </div>
+                      </div>
+
+                      </br>
+
+                      <div class="controls">
+                        Confirm New Password:
+                        </br>
+                        <div class="input-prepend">
+                          <%= fa.password_field :password_confirmation %>
+                        </div>
+                      </div>
+                  <% end %>
+                </div>
+
+                <hr> </hr>
+            <% end %>
+
+            <%=  f.submit "Save Changes" %> or
+            <%=  link_to "Cancel", "/" %>
+
+            <%= f.hidden_field :user_id %>
+        <% end %>
+      </div>
     </div>
     <div class="span2">
     </div>
-</div>
+  </div>
 </div>

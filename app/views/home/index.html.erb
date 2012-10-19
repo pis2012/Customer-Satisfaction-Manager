@@ -9,25 +9,7 @@
 </p> -->
 
 <script xmlns="http://www.w3.org/1999/html">
-    function Big(me)
-    {
-        $(me).removeClass("homeface");
-        $(me).addClass("homefaceb");
 
-        var p = me.getElementsByTagName("p")[0];
-        $(p).removeClass("homeprojectnameh");
-        $(p).addClass("homeprojectnamev");
-
-    }
-    function Small(me)
-    {
-        $(me).removeClass("homefaceb");
-        $(me).addClass("homeface");
-
-        var p = me.getElementsByTagName("p")[0];
-        $(p).removeClass("homeprojectnamev");
-        $(p).addClass("homeprojectnameh");
-    }
 </script>
 
 <div id="home">
@@ -54,14 +36,14 @@
 
                     <% if project.client_id == current_user.client_id  %>
                         <div class="chomefacewrapperbig">
-                          <div onclick="location.href='/my_projects';" class="chomefacebig" >
+                          <div onclick="location.href='/my_projects?default=true&project_id=<%=project.id%>';" class="chomefacebig" >
                             <%=image_tag ('status/big/' + mood.get_mood_img) %>
                             <p class="homeprojectnamev"><%= project.name %></p>
                           </div>
                         </div>
                     <% else %>
                         <div class="chomefacewrapper">
-                          <div onmouseover="Big(this)" onmouseout="Small(this)" class="homeface" >
+                          <div class="homeface" >
                             <%=image_tag ('status/normal/' + mood.get_mood_img) %>
                             <p class="homeprojectnameh"><%= project.name %></p>
                           </div>
@@ -93,9 +75,9 @@
 
         <div class="container">
           <div class="row-fluid">
-            <div class="span2">
+            <div class="span1">
             </div>
-            <div class="span8">
+            <div class="span10">
               <div class="homecenter">
                 <h2>MOOD OF OUR CUSTOMERS</h2>
                 <% count = 0 %>
@@ -104,7 +86,7 @@
                     <% mood = project.moods.last! %>
 
                         <div class="ahomefacewrapper">
-                          <div onclick="location.href='<%= project_path(project.id) %>'" onmouseover="Big(this)" onmouseout="Small(this)" class="homeface" >
+                          <div onclick="location.href='<%= project_path(project.id) %>?default=true'" class="homeface" >
                             <%= image_tag ('status/normal/' + mood.get_mood_img) %>
                             <p class="homeprojectnameh"><%= project.name %></p>
                           </div>
@@ -118,7 +100,7 @@
               </br>
               </br>
             </div>
-            <div class="span2">
+            <div class="span1">
             </div>
           </div>
         </div>
@@ -154,14 +136,16 @@
 
           <div class="homecenter">
             <hr/>
-            <h2 class="vhomeleft">MOOD OF OUR CUSTOMERS</h2>
+            <div class="vhomeleft">
+                <h2>MOOD OF OUR CUSTOMERS</h2>
+            </div>
 
             <% @projects = Project.all.shuffle %>
             <% @projects.each do |project| %>
                 <% mood = project.moods.last! %>
 
                 <div class="vhomefacewrapper">
-                  <div onmouseover="Big(this)" onmouseout="Small(this)" class="homeface" >
+                  <div class="homeface" >
                     <%= image_tag ('status/normal/' + mood.get_mood_img) %>
                     <p class="homeprojectnameh"><%= project.name %></p>
                   </div>
