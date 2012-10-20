@@ -2,4 +2,112 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  user:
+            status_of_proyects:  "Status of Projects"
+            recent_activity:  "Recent Activity"
+            name:  "Name:"
+            date_created:   "Date Created:"
+            username:  "Username"
+            fullname:  "Full Name:"
+            skype_user:  "Skype User:"
+            my_picture:  "My picture:"
+            my_project:  "My Project"
+            default_proyect:  "Default Project:"
+            hello:  "Hello"
+            welcome:  "Welcome"
+            cannot_save_client:  "Cannot save client"
+            new_client:  "New Client"
+            new_comment:  "New Comment"
+            new_password:  "New Password"
+            sign_up:  "Sign up"
+            sign_in:  "Sign in"
+            remember_me:  "Remember me"
+            forgot_password:  "Forgot your password? "
+            resend_confirmation_instructions:  "Resend confirmation instructions"
+            account_locked:  "Your account has been locked due to an excessive amount of unsuccessful sign in attempts."
+            unlock_account_link:  "Click the link below to unlock your account:"
+            unlock_account:  "Unlock my account"
+            confirm_account_link:   "You can confirm your account email through the link below:"
+            confirm_account:  "Confirm my account"
+            change_password_link:  "Someone has requested a link to change your password, and you can do this through the link below."
+            change_password:  "Change Password:"
+            current_password:  "Current Password:"
+            new_password:  "New Password:"
+            confirm_new_password: "Confirm New Password:"
+            change_my_password:  "Change my password"
+            change_your_password:  "Change your password"
+            ignore_email:  "If you didn't request this, please ignore this email."
+            change_password_warning:  "Your password won't change until you access the link above and create a new one."
+            confirm_password:  "Confirm new password"
+            profile_settings:  "Profile settings"
+            new_profile:  "New profile"
+            resend_unlock_instructions:  "Resend unlock instructions"
+            did_not_recieve_confirmation_instructions:  "Didn't receive confirmation instructions?"
+            did_not_recieve_unlock_instructions:  "Didn't receive unlock instructions?"
+            sing_in_with:  "Sign in with"
+
+  feedback:
+            feedbacks:  "Feedback"
+            feedbacks:   "Feedbacks"
+            new_feedback: "New Feedback"
+            show_feedback:   "Show Feedback"
+            editing_feedback:   "Editing feedback"
+            cannot_save_feedback:  "Cannot save Project:"
+            moove_it_employee: "Moove-IT employee"
+            feedback_affects_proyect:   "How much you think the mood of the project is affected by this feedback? "
+            uploaded_by:  "Uploaded by"
+            last_comment_made_by: "Last comment made by"
+            no_comments: "No comments"
+            list_comments:  "List of Comments"
+  form:
+            add_form:  "Add form"
+
+  general:
+            customer_satisfaction_manager:    "CUSTOMER SATISFACTION MANAGER"
+            customers:    "Customers"
+            summary:   "Summary"
+            reports:    "Reports "
+            projects:    "Projects"
+            users:   "Users"
+            clients:  "Clients"
+            forms:  "Forms"
+            evolution_of_general_mood: "Evolution of the general mood"
+            accept:    "Accept"
+            cancel:   "Cancel"
+            previous:  "Previous"
+            next:   "Next"
+            back:   "Back"
+            edit:    "Edit"
+            back:   "Back"
+            show:     "Show"
+            delete:    "Delete"
+            are_you_sure:  "Are you sure?"
+            save_changes:   "Save Changes"
+
+
+  milestone:
+            data:  "Data"
+            milestone:  "Milestone"
+            milestones:   "Milestones"
+            new_milestone:  "New Milestone"
+
+  proyect:
+            list_projects:  "List of Projects"
+            new_proyect:     "New Project"
+            cannot_save_project: "Cannot save Project"
+            description:    "Description"
+            end_date:     "End date"
+            name:     "Name"
+            status:    "Status"
+            editing_project: "Editing project"
+            filter:       "Filter"
+
+
+  mood:
+            mood_of_our_customers:     "MOOD OF OUR CUSTOMERS"
+            mood_state_changed:      "Mood state changed!!! "
+            changes_in_mood:     "Changes in mood"
+
+
+
+
