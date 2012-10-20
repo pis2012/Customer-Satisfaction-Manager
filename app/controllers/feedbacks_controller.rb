@@ -1,4 +1,7 @@
 class FeedbacksController < ApplicationController
+
+  before_filter :authenticate_user!
+
   layout false
   # GET /feedbacks
   # GET /feedbacks.json

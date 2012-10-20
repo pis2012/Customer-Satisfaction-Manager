@@ -30,7 +30,8 @@ CSM::Application.routes.draw do
 
   match "/admin" => "admin#index", :as => :admin
 
-  resources :projects
+
+  resources :projects, :constraints => lambda { |request| request.env['warden'].user.admin? }
 
   resources :forms
 
