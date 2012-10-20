@@ -1,3 +1,5 @@
+
+
 <%= form_for(@feedback) do |f| %>
 
     <% if @feedback.errors.any? %>
@@ -30,9 +32,6 @@
         <%= f.text_area :content, :id => "feedback_textarea" %>
 
       </div>
-      <div class="" style="border-bottom: solid;border-bottom-width: 0.5px;">
-
-      </div>
 
 
       <div class="margin3">
@@ -42,9 +41,9 @@
 
 
 
-      <div class="margin4" style="margin-left: 10px;">
+      <div class="margin4">
         <%= f.submit :Crear %> or
-        <button class="btn btn-link" type="button" onclick="updatePanel('<%=  project_feedbacks_path(:project_id => @feedback.project_id) %>','feedbacks-content','feedbacks')" >
+        <button class="btn btn-link cancel-feedback-link" type="button" data-url="<%= project_feedbacks_path(:project_id => @feedback.project_id) %>"  >
           Cancelar
         </button>
       </div>

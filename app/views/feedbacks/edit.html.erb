@@ -38,9 +38,6 @@
       <%= f.text_area :content, :class => "estilotextarea field span12" %>
 
     </div>
-    <div class="" style="border-bottom: solid;border-bottom-width: 0.5px;">
-
-    </div>
 
 
     <div class="margin3">
@@ -48,17 +45,9 @@
       <%= f.check_box :mooveit_visibility %> Empleado Moove-IT   <%= f.check_box :client_visibility %> Cliente
     </div>
 
-    <div class="margin3">
-      <h7 style="float: left;margin-right: 5%;"> ¿Cómo crees que este feedback afecta al estado de ánimo del proyecto?</h7>
-      -1<input type="radio" name="animo" value="-1" style="margin-right: 3%;margin-left: 2px;"/>
-      0<input type="radio" name="animo" value="0" style="margin-right: 3%;margin-left: 2px;"/>
-      1<input type="radio" name="animo" value="1" style="margin-right: 3%;margin-left: 2px;"/>
-
-    </div>
-
-    <div class="margin4" style="margin-left: 10px;">
+    <div class="margin4">
       <%= f.submit :Save %> or
-      <button class="btn btn-link" type="button" onclick="updatePanel('<%=  project_feedbacks_path(:project_id => @feedback.project_id) %>','feedbacks-content','feedbacks')" >
+      <button class="btn btn-link cancel-feedback-link" type="button" data-url="<%= project_feedbacks_path(:project_id => @feedback.project_id) %>"  >
         Cancelar
       </button>
     </div>
