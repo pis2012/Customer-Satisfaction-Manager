@@ -5,6 +5,8 @@ class FeedbacksControllerSpec
   describe FeedbacksController, :type => :controller do
 
     before :all do
+      FeedbackType.delete_all
+      User.delete_all
       @valid_attributes =
       {
           :contenido => "hola soy un feedback",
@@ -100,6 +102,7 @@ class FeedbacksControllerSpec
       user = @valid_attributes[:usr]
       sign_in user
       put :update, id: feedback.id, :feedback=> {content: "new content"}
+
 
       var = feedbacks_url(assigns[:feedback]).gsub(".", "/").gsub("test/host", "test.host")
       response.should redirect_to(var)
