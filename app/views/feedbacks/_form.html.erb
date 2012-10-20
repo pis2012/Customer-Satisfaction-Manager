@@ -12,22 +12,22 @@
         </div>
     <% end %>
 
-      <input class="TextField" id="feedback_project_id" name="project_id" size="30" type="hidden" value="<%= @feedback.project_id %>"/>
+      <input  id="feedback_project_id" name="project_id" size="30" type="hidden" value="<%= @feedback.project_id %>"/>
 
       <div class="margin4">
-        <%= f.label :Tipo_de_feedback, :class => "Etiqueta" %>
+        <%= f.label :Tipo_de_feedback, :class => "feedback_Label" %>
         <%= f.select(:feedback_type_id, FeedbackType.all.map { |fe| [fe.name, fe.id] }, :prompt => true) %>
       </div>
 
       <div class="margin4">
-        <%= f.label :subject, :class => "Etiqueta" %>
-        <%= f.text_field :subject, :class => "SubjectText" %>
+        <%= f.label :subject, :class => "feedback_Label" %>
+        <%= f.text_field :subject, :id=> "feedback_subjectText" %>
       </div>
 
 
       <div class="margin3">
-        <%= f.label :content, :class => "Etiqueta" %>
-        <%= f.text_area :content, :class => "estilotextarea" %>
+        <%= f.label :content, :class => "feedback_Label" %>
+        <%= f.text_area :content, :id => "feedback_textarea" %>
 
       </div>
       <div class="" style="border-bottom: solid;border-bottom-width: 0.5px;">
@@ -36,17 +36,11 @@
 
 
       <div class="margin3">
-        <%= f.label :visibility, :class => "Etiqueta" %>
+        <%= f.label :visibility, :class => "feedback_Label" %>
         <%= f.check_box :mooveit_visibility %> Empleado Moove-IT   <%= f.check_box :client_visibility %> Cliente
       </div>
 
-      <div class="margin3">
-        <h7 style="float: left;margin-right: 5%;"> ¿Cómo crees que este feedback afecta al estado de ánimo del proyecto?</h7>
-        -1<input type="radio" name="animo" value="-1" style="margin-right: 3%;margin-left: 2px;"/>
-        0<input type="radio" name="animo" value="0" style="margin-right: 3%;margin-left: 2px;"/>
-        1<input type="radio" name="animo" value="1" style="margin-right: 3%;margin-left: 2px;"/>
 
-      </div>
 
       <div class="margin4" style="margin-left: 10px;">
         <%= f.submit :Crear %> or

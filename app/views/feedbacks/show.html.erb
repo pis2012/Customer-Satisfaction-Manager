@@ -7,18 +7,18 @@
     <div class="seccion3 Separador">
 
 
-      <h4 class="show_Asunto2"><%= truncate(strip_tags(@feedback.subject),:length => 45) %></h4>
+      <h4 id="feedbackShow_Asunto"><%= truncate(strip_tags(@feedback.subject),:length => 45) %></h4>
 
-      <h6 class="fechaFeedback2"><%= "Create by " + @feedback.user.full_name + " on   " + @feedback.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h6>
+      <h6 id="feedbackShow_fecha"><%= "Create by " + @feedback.user.full_name + " on   " + @feedback.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h6>
 
-      <h7 class="Contenido4"><%= @feedback.content %></h7>
+      <h7 id="feesbackShow_Contenido"><%= @feedback.content %></h7>
       </br>
       </br>
       </br>
       </br>
       </br>
       </br>
-      <h7 class="Contenido3"><%= @feedback.content %></h7>
+      <h7 id="feesbackShow_AjustarContenido"><%= @feedback.content %></h7>
 
 
 
@@ -40,18 +40,18 @@
         <div class="accordion-group">
           <div class="accordion-heading">
             <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%=cant%>">
-              <h9 class="fechaComment"><%= "Create by " + comment.user.full_name + " at   " + comment.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h9>
+              <h9 id="feedbackShow_fechaComment"><%= "Create by " + comment.user.full_name + " at   " + comment.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h9>
             </a>
           </div>
           <div id="collapse<%=cant%>" class="accordion-body collapse">
             <div class="accordion-inner">
               <div class="seccionComent">
-                <%= image_tag("Skype.png", :alt => "Moove-It", :class => "ImgAvatComen") %>
+                <%= image_tag("Skype.png", :alt => "Moove-It", :id => "feedbackShow_ImgAvatComment") %>
                 <P>
-                  <h7 class="show_Coment"><%= comment.content %></h7>
+                  <h7 id="feedbackShoe_contentComent"><%= comment.content %></h7>
                 <P>
                 <P>
-                  <h9 class="fechaComment"><%= "Create by " + comment.user.full_name + " at   " + comment.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h9>
+                  <h9 id="feedbackShow_fechaComment"><%= "Create by " + comment.user.full_name + " at   " + comment.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h9>
               </div>
             </div>
           </div>
@@ -62,12 +62,12 @@
 
   <%= form_for(@commentNew) do |f| %>
 
-      <div class="seccionComent">
+      <div class="feedbackShow_sectionComment">
         <div class="field">
-          <%= f.text_area :content, :class => "TextAreaComent" %>
+          <%= f.text_area :content, :id => "feedbackShow_TextAreaComment" %>
         </div>
 
-        <input class="TextField" id="comment_feedback_id" name="feedback_id" size="30" type="hidden" value="<%= @feedback.id %>"/>
+        <input  id="comment_feedback_id" name="feedback_id" size="30" type="hidden" value="<%= @feedback.id %>"/>
 
         <div class="actions">
           <%= f.submit :class => "btn margin1 top1" %> or
