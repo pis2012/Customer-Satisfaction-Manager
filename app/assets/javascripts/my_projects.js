@@ -109,3 +109,8 @@ $(".show-feedback-link").live('click', function () {
     updatePanel($(this).data('url'), 'show-feedback-content', 'show-feedback');
     return false;
 });
+
+$(".edit-feedback-link").live('click', function () {
+    updatePanel($(this).data('url'), 'edit-feedback-content', 'edit-feedback');
+    return false;
+});
