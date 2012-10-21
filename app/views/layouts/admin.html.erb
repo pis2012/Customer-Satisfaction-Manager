@@ -20,7 +20,7 @@
             <li>
               <a href="/"><i class="icon-home icon-white"></i> Home</a>
             </li>
-                <% if current_user.role_id == 1 %>
+                <% if current_user.admin? %>
                     <li>
                       <%= link_to '<i class="icon-wrench icon-white"></i> Admin'.html_safe, admin_path %>
                     </li>

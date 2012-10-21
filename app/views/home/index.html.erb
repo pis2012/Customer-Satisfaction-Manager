@@ -14,7 +14,7 @@
 
 <div id="home">
 <% if user_signed_in? %>
-    <% if current_user.role_id == 2 %>
+    <% if current_user.client? %>
 
         <!--<p>
         Vista de todas las caritas.
@@ -75,9 +75,9 @@
 
         <div class="container">
           <div class="row-fluid">
-            <div class="span1">
+            <div class="span2">
             </div>
-            <div class="span10">
+            <div class="span8">
               <div class="homecenter">
                 <h2>MOOD OF OUR CUSTOMERS</h2>
                 <% count = 0 %>
@@ -100,7 +100,7 @@
               </br>
               </br>
             </div>
-            <div class="span1">
+            <div class="span2">
             </div>
           </div>
         </div>
