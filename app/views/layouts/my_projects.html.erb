@@ -22,7 +22,7 @@
             <li>
               <a href="/"><i class="icon-home icon-white"></i> <%= I18n.t ('home.home')  %></a>
             </li>
-                <% if current_user.role_id == 1 %>
+                <% if current_user.admin? %>
                     <li>
                       <%= link_to '<i class="icon-wrench icon-white"></i> '.html_safe + I18n.t('home.admin'), admin_path %>
                     </li>
