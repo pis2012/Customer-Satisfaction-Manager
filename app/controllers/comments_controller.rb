@@ -50,7 +50,8 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to :controller => "/projects", :action => "show_project_complete" }
+        #format.js { render template: "feedbacks/show" }
+        format.html { redirect_to my_projects_path }
         format.json { render json: @comment, status: :created, location: @comment }
       else
         format.html { render action: "new" }

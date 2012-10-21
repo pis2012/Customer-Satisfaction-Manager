@@ -18,14 +18,14 @@
   text-align:  center;
 }
 
-#msj-face-changed{
-  text-align: center;
-  margin:auto;
+#msj-face-changed-container{
+  position: absolute;
+  text-align: right;
 }
 
-#msj-face-changed-container{
+#msj-face-changed{
   display: inline-block;
-  text-align: center;
+  margin:auto;
 }
 
 .face-mood-state {
@@ -79,6 +79,9 @@
 #face-list li img:hover {
   width: 18%;
   height: 18%;
+  -webkit-transition: all .3s linear;
+  -moz-transition: all .3s linear;
+
 }
 
 /* ============== [ MILESTONE NOTIFIER ] ============== */

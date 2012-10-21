@@ -21,7 +21,7 @@ CSM::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :passwords => "passwords"}
   resources :clients
 
-  match "/my_projects" , to: "projects#show_project_complete" , :as => :my_projects
+  match "/my_projects" , to: "my_projects#index" , :as => :my_projects
   match "/my_projects/change_profile_project", to: "projects#change_profile_project"
   match "/projects/show_project_data/:project_id" => "projects#show_project_data", :as => :project_data
   match "/projects/change_mood/:new_status" => "projects#change_mood", :as => :change_mood

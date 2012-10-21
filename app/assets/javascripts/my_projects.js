@@ -62,34 +62,46 @@ $('.data-link').live('click', function () {
 $('#face-list').ready(function(){
     $('#msj-face-changed').fadeOut(0);
     $('#face-list li').click(function () {
-        $('#msj-face-changed').fadeIn(300).fadeOut(1000);
+        if (!$(this).hasClass("active")) {
+            $('#msj-face-changed').fadeIn(300).fadeOut(1000);
+        }
     });
 
     $('.estilotextarea').wysihtml5();
 })
 
 $('.change-mood1-link').live('click', function () {
-    updatePanelMood($(this).data('url'), 'change-mood1-content', 'change-mood1');
+    if (!$(this).parent().hasClass("active")) {
+        updatePanelMood($(this).data('url'), 'change-mood1-content', 'change-mood1');
+    }
     return false;
 });
 
 $('.change-mood3-link').live('click', function () {
-    updatePanelMood($(this).data('url'), 'change-mood3-content', 'change-mood3');
+    if (!$(this).parent().hasClass("active")) {
+        updatePanelMood($(this).data('url'), 'change-mood3-content', 'change-mood3');
+    }
     return false;
 });
 
 $('.change-mood5-link').live('click', function () {
-    updatePanelMood($(this).data('url'), 'change-mood5-content', 'change-mood5');
+    if (!$(this).parent().hasClass("active")) {
+        updatePanelMood($(this).data('url'), 'change-mood5-content', 'change-mood5');
+    }
     return false;
 });
 
 $('.change-mood7-link').live('click', function () {
-    updatePanelMood($(this).data('url'), 'change-mood7-content', 'change-mood7');
+    if (!$(this).parent().hasClass("active")) {
+        updatePanelMood($(this).data('url'), 'change-mood7-content', 'change-mood7');
+    }
     return false;
 });
 
 $('.change-mood9-link').live('click', function () {
-    updatePanelMood($(this).data('url'), 'change-mood9-content', 'change-mood9');
+    if (!$(this).parent().hasClass("active")) {
+        updatePanelMood($(this).data('url'), 'change-mood9-content', 'change-mood9')
+    }
     return false;
 });
 

@@ -58,16 +58,16 @@
  }
 
 .homeface:hover {
-    -webkit-transform: scale(1.2,1.2);
-    -moz-transform: scale(1.2,1.2);
-    -ms-transform: scale(1.2,1.2);
-    -o-transform: scale(1.2,1.2);
-    transform: scale(1.2,1.2);
-    -webkit-transition: all .8s linear;
-    -moz-transition: all .8s linear;
-    -ms-transition: all .8s linear;
-    -o-transition: all .8s linear;
-    transition: all .8s linear;
+    -webkit-transform: scale(1.15,1.16);
+    -moz-transform: scale(1.15,1.16);
+    -ms-transform: scale(1.15,1.16);
+    -o-transform: scale(1.15,1.16);
+    transform: scale(1.15,1.16);
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
 }
 
 //client home page
