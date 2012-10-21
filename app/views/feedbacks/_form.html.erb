@@ -16,7 +16,7 @@
       <input  id="feedback_project_id" name="project_id" size="30" type="hidden" value="<%= @feedback.project_id %>"/>
 
       <div class="margin4">
-        <%= f.label :Tipo_de_feedback, :class => "feedback_Label" %>
+        <%= f.label :feedback_subject, :class => "feedback_Label" %>
         <%= f.select(:feedback_type_id, FeedbackType.all.map { |fe| [fe.name, fe.id] }, :prompt => true) %>
       </div>
 

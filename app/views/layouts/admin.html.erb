@@ -19,15 +19,15 @@
         <div class="nav-collapse collapse">
           <ul class="nav">
             <li>
-              <a href="/"><i class="icon-home icon-white"></i> Home</a>
+              <a href="/"><i class="icon-home icon-white"></i> <%= I18n.t ('home.home')  %></a>
             </li>
                 <% if current_user.role_id == 1 %>
                     <li>
-                      <%= link_to '<i class="icon-wrench icon-white"></i> Admin'.html_safe, admin_path %>
+                      <%= link_to '<i class="icon-wrench icon-white"></i> '.html_safe + I18n.t('home.admin'), admin_path %>
                     </li>
                 <% else %>
                     <li>
-                      <%= link_to '<i class="icon-wrench icon-white"></i> My Projects'.html_safe, my_projects_path %>
+                      <%= link_to '<i class="icon-wrench icon-white"></i> '.html_safe + I18n.t('home.My_Projects'), my_projects_path %>
                     </li>
                 <% end %>
           </ul>
@@ -39,7 +39,7 @@
                   <%= link_to current_user.full_name, edit_profile_path(Profile.find_by_user_id(current_user )) %>
                 </li>
                 <li>
-                  <%= link_to '<i class="icon-off icon-white"></i> Sign out'.html_safe, destroy_user_session_path, :method => :delete %>
+                  <%= link_to '<i class="icon-off icon-white"></i> '.html_safe + I18n.t('home.Sign_out'), destroy_user_session_path, :method => :delete %>
                 </li>
               </ul>
           <% else %>

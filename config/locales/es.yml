@@ -1,7 +1,7 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
+es:
   user:
             status_of_proyects:    "Estado de Proyectos"
             recent_activity:  "Actividad reciente"
@@ -64,16 +64,29 @@ en:
   form:
             add_form: "Agregar"
 
-  general:
+  admin:
             customer_satisfaction_manager: "MANAGER DE  SATISFACCIÓN DEL CLIENTE"
             customers:  "Clientes"
             summary:    "Resumen"
             reports:    "Reportes"
-            projects:   "Proyectos:"
+            projects:   "Proyectos"
             users:   "Usuarioss"
             clients:   "Clientes"
             forms: "Formularios"
             evolution_of_general_mood:  "Evolución del estado de ánimo general"
+            Status_of_Projects: "Estado del proyecto"
+
+  home:
+            home: "Home"
+            singin: "Iniciar Sesion"
+            admin: "Admin"
+            My_Projects: "Mis Proyectos"
+            Sign_out: "Cerrar Sesion"
+            Customers: "Clientes"
+            language: "Idioma"
+            Spanish: "Español"
+            English: "English"
+
             accept: "Aceptar"
             cancel:  "Cancelar"
             previous:    "Anterior"

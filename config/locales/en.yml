@@ -48,9 +48,8 @@ en:
 
   feedback:
             feedbacks:  "Feedback"
-            feedbacks:   "Feedbacks"
             new_feedback: "New Feedback"
-            show_feedback:   "Show Feedback"
+            show_feedbackshow_feedback:   "Show bbbbbFeedback"
             editing_feedback:   "Editing feedback"
             cannot_save_feedback:  "Cannot save Project:"
             moove_it_employee: "Moove-IT employee"
@@ -59,10 +58,11 @@ en:
             last_comment_made_by: "Last comment made by"
             no_comments: "No comments"
             list_comments:  "List of Comments"
+            feedback_subject: "Subject"
   form:
             add_form:  "Add form"
 
-  general:
+  admin:
             customer_satisfaction_manager:    "CUSTOMER SATISFACTION MANAGER"
             customers:    "Customers"
             summary:   "Summary"
@@ -72,6 +72,18 @@ en:
             clients:  "Clients"
             forms:  "Forms"
             evolution_of_general_mood: "Evolution of the general mood"
+            Status_of_Projects: "Status of Projects"
+  home:
+            home: "Home"
+            singin: "Sing In"
+            admin: "Admin"
+            My_Projects: "My Projects"
+            Sign_out: "Sign out"
+            Customers: "Customers"
+            language: "Language"
+            Spanish: "Español"
+            English: "English"
+
             accept:    "Accept"
             cancel:   "Cancel"
             previous:  "Previous"

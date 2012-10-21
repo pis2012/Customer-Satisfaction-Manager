@@ -1,5 +1,6 @@
 <br>
 <br>
+<% I18n.locale = :es %>
 <div class="container" xmlns="http://www.w3.org/1999/html">
     <div class="row-fluid">
         <div class="span3">
@@ -7,23 +8,23 @@
             <div id="global_nav">
               <ul id="myTab" >
                 <li class="summary active">
-                  <a href="#summary" data-toggle="tab">Summary</a>
+                  <a href="#summary" data-toggle="tab"><%= I18n.t ('admin.summary')  %></a>
                 </li>
                 <li> </li>
                 <li class="reports">
-                  <a href="#reports" data-toggle="tab">Reports</a>
+                  <a href="#reports" data-toggle="tab"><%= I18n.t ('admin.reports')  %></a>
                 </li>
                 <li class="projects">
-                  <a href="#projects" data-toggle="tab">Projects</a>
+                  <a href="#projects" data-toggle="tab"><%= I18n.t ('admin.projects')  %></a>
                 </li>
                 <li class="users">
-                  <a href="#users" data-toggle="tab">Users</a>
+                  <a href="#users" data-toggle="tab"><%= I18n.t ('admin.users')  %></a>
                 </li>
                 <li class="clients">
-                  <a href="#clients" data-toggle="tab">Clients</a>
+                  <a href="#clients" data-toggle="tab"><%= I18n.t ('admin.clients')  %></a>
                 </li>
                 <li class="forms">
-                  <a href="#forms" data-toggle="tab">Forms</a>
+                  <a href="#forms" data-toggle="tab"><%= I18n.t ('admin.forms')  %></a>
                 </li>
               </ul>
             </div>
@@ -35,7 +36,7 @@
                   <!-- page header -->
                   <div class="page_header_wrapper">
                       <div class="page_header">
-                        <h1>Summary</h1>
+                        <h1><%= I18n.t ('admin.summary')  %></h1>
                       </div>
                   </div>
                   <!--// page header -->
@@ -50,11 +51,11 @@
                   <!-- page header -->
                   <div class="page_header_wrapper">
                     <div class="page_header">
-                      <h1>Reports</h1>
+                      <h1><%= I18n.t ('admin.reports')  %></h1>
                     </div>
                   </div>
                   <div class="page_content">
-                    <h4>Evolution of the general mood</h4>
+                    <h4> <%= I18n.t ('admin.evolution_of_general_mood') %> </h4>
                     <br/>
                     <div class="bar-graph">
                       <%= image_tag @graph[:bar] %>
@@ -62,7 +63,7 @@
                     <br/>
                     <hr/>
 
-                    <h4>Status of Projects</h4>
+                    <h4><%= I18n.t ('admin.Status_of_Projects') %></h4>
                     <br/>
                     <div class="pie-graph">
                       <%= image_tag @graph[:pie] %>
@@ -74,7 +75,7 @@
                   <!-- page header -->
                   <div class="page_header_wrapper">
                     <div class="page_header">
-                      <h1>Projects</h1>
+                      <h1><%= I18n.t ('admin.projects')  %></h1>
                     </div>
                   </div>
                   <!--// page header -->
@@ -89,7 +90,7 @@
                   <!-- page header -->
                   <div class="page_header_wrapper">
                     <div class="page_header">
-                      <h1>Users</h1>
+                      <h1><%= I18n.t ('admin.users')  %></h1>
                     </div>
                   </div>
                   <!--// page header -->
@@ -104,7 +105,7 @@
                   <!-- page header -->
                   <div class="page_header_wrapper">
                     <div class="page_header">
-                      <h1>Clients</h1>
+                      <h1><%= I18n.t ('admin.clients')  %></h1>
                     </div>
                   </div>
                   <!--// page header -->
@@ -119,7 +120,7 @@
                   <!-- page header -->
                   <div class="page_header_wrapper">
                     <div class="page_header">
-                      <h1>Forms</h1>
+                      <h1><%= I18n.t ('admin.forms')  %></h1>
                     </div>
                   </div>
                   <!--// page header -->

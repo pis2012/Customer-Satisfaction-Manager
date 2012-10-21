@@ -13,7 +13,7 @@
             </div>
             <div class="span10">
               <div class="homecenter">
-                <h2>MOOD OF OUR CUSTOMERS</h2>
+                <h2><%=  I18n.t('mood.mood_of_our_customers')%></h2>
                 <% count = 0 %>
 
                 <% @projects = Project.all.shuffle %>
@@ -65,7 +65,7 @@
             </div>
             <div class="span10">
               <div class="homecenter">
-                <h2>MOOD OF OUR CUSTOMERS</h2>
+                <h2><%=  I18n.t('mood.mood_of_our_customers')%></h2>
                 <% count = 0 %>
                 <% @projects = Project.all.shuffle %>
                 <% @projects.each do |project| %>
@@ -108,7 +108,7 @@
               <%= image_tag "faces/big/9.png" %>
             </div>
             <div class="vheader">
-              <h2 >CUSTOMER SATISFACTION MANAGER</h2>
+              <h2 ><%=  I18n.t('admin.customer_satisfaction_manager')%></h2>
               </br>
               <p>
                 Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum
@@ -123,7 +123,7 @@
           <div class="homecenter">
             <hr/>
             <div class="vhomeleft">
-                <h2>MOOD OF OUR CUSTOMERS</h2>
+                <h2><%=  I18n.t('mood.mood_of_our_customers')%></h2>
             </div>
 
             <% @projects = Project.all.shuffle %>
