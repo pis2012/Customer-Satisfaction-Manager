@@ -60,7 +60,7 @@
   <% end %>
   </div>
 
-  <%= form_for(@commentNew) do |f| %>
+  <%= form_for(@commentNew, :remote => true) do |f| %>
 
       <div class="feedbackShow_sectionComment">
         <div class="field">
