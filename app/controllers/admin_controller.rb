@@ -65,8 +65,7 @@ class AdminController < ApplicationController
 
 
   def forms
-    session = GoogleDrive.login("username@gmail.com", "mypassword")
-    ws = session.spreadsheet_by_title("Customer Satisfaction Survey - July 2012").worksheets[0]
+
 
 
   end

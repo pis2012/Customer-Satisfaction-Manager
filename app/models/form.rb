@@ -80,7 +80,7 @@ class Form < ActiveRecord::Base
             pos = -1
             percent.map! do
               pos = pos + 1
-              percent[pos] = (data[pos] / count).round * 100
+              percent[pos] = (100.0 * data[pos] / count).round
             end
             # Vertical bars graphic
             if axis_answers.first == "1"
