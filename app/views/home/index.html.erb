@@ -36,10 +36,10 @@
 
                     <% if project.client_id == current_user.client_id  %>
                         <div class="chomefacewrapperbig">
-                          <div onclick="location.href='/my_projects?default=true&project_id=<%=project.id%>';" class="chomefacebig" >
+                          <a href="/my_projects?default=true&project_id=<%=project.id%>" class="chomefacebig" >
                             <%=image_tag ('status/big/' + mood.get_mood_img) %>
                             <p class="homeprojectnamev"><%= project.name %></p>
-                          </div>
+                          </a>
                         </div>
                     <% else %>
                         <div class="chomefacewrapper">
@@ -86,10 +86,10 @@
                     <% mood = project.moods.last! %>
 
                         <div class="ahomefacewrapper">
-                          <div onclick="location.href='<%= project_path(project.id) %>?default=true'" class="homeface" >
+                          <a href="<%= project_path(project.id) %>?default=true" class="homeface" >
                             <%= image_tag ('status/normal/' + mood.get_mood_img) %>
                             <p class="homeprojectnameh"><%= project.name %></p>
-                          </div>
+                          </a>
                         </div>
 
                     <!-- < %= project.name  %> -->

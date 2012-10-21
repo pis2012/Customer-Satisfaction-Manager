@@ -1,5 +1,7 @@
 class ClientsController < ApplicationController
 
+  before_filter :authenticate_user!
+
   # GET /clients
   def index
     @clients = Client.all

@@ -1,4 +1,7 @@
 class FeedbacksController < ApplicationController
+
+  before_filter :authenticate_user!
+
   layout false
   # GET /feedbacks
   # GET /feedbacks.json
@@ -91,8 +94,8 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       if @feedback.update_attributes(params[:feedback])
-        format.html { redirect_to @feedback, notice: 'Feedback was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to :controller => "/projects", :action => "show_project_complete" }
+        format.json { render json: @feedback, status: :created, location: @feedback }
       else
         format.html { render action: "edit" }
         format.json { render json: @feedback.errors, status: :unprocessable_entity }

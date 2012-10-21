@@ -2,12 +2,24 @@
   <% @feedbacks.each do |feedback| %>
       <tr id="row_feedback_<%= feedback.id %>">
         <td class="avatar">
+        <% if feedback.editable? current_user.id %>
+          <a href="#edit-feedback<%= feedback.id.to_s %>" class="avatar_image" class="edit-feedback-link" data-url="<%= edit_feedback_path(feedback) %>">
+            <%= image_tag(feedback.feedback_type.image_url, :alt => "feedback_image", :class => "feedback_image") %>
+          </a>
+        <% else %>
           <a href="#show-feedback<%= feedback.id.to_s %>" class="avatar_image" class="show-feedback-link" data-url="<%= feedback_path(feedback) %>">
             <%= image_tag(feedback.feedback_type.image_url, :alt => "feedback_image", :class => "feedback_image") %>
           </a>
+        <% end %>
         </td>
         <td class="feedback_info">
-          <a href="#show-feedback<%= feedback.id.to_s %>" class="feedback_subject show-feedback-link" data-url="<%= feedback_path(feedback) %>"><%= truncate(strip_tags(feedback.subject), :length => 45) %></a>
+          <% if feedback.editable? current_user.id %>
+              <a href="#edit-feedback<%= feedback.id.to_s %>" class="feedback_subject edit-feedback-link" data-url="<%= edit_feedback_path(feedback) %>"><%= truncate(strip_tags(feedback.subject), :length => 45) %></a>
+          <% else %>
+              <a href="#show-feedback<%= feedback.id.to_s %>" class="feedback_subject show-feedback-link" data-url="<%= feedback_path(feedback) %>"><%= truncate(strip_tags(feedback.subject), :length => 45) %></a>
+          <% end %>
+
+
           <h6 class="feedback_date"><%= "Uploaded by " + feedback.user.full_name + " on   " + feedback.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h6>
           <h7 class="feedback_content"><%= truncate(strip_tags(feedback.content), :length => 180) %></h7>
           <% @last_comment = feedback.comments.order('created_at').first %>
