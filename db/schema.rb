@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20121012012332) do
     t.integer  "project_id"
     t.boolean  "feedbacks_notifications", :default => false
     t.boolean  "comments_notifications",  :default => false
+    t.boolean  "show_gravatar",           :default => true
     t.string   "skype_usr"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"

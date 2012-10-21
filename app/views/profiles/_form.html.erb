@@ -104,19 +104,38 @@
             <div class="control-group">
 
               <label for="inputUsername">My picture:</label>
-              <div class="controls">
-                <% if @profile.avatar.file? %>
-                    <%= image_tag @profile.avatar.url(:medium) %>
-                <% else %>
-                    <%= gravatar_image_tag( @profile.user.email.gsub('spam', 'mdeering'), :alt => @profile.user.full_name, :gravatar => { :size => 100 })  %>
-                <% end %>
-              </div>
+                <% if @profile.avatar.file? && !@profile.show_gravatar %>
+                    <div class="controls">
+                        <%= image_tag @profile.avatar.url(:medium) %>
+                    </div>
+                    </br>
 
+
+                <% else %>
+                    <div class="controls">
+                        <%= gravatar_image_tag( @profile.user.email.gsub('spam', 'mdeering'), :alt => @profile.user.full_name, :gravatar => { :size => 100 })  %>
+                    </div>
+                    </br>
+                <% end %>
+
+              <% if !@profile.show_gravatar %>
+                  <div class="controls">
+                    <%=f.file_field :avatar, :accept => "image/jpeg,image/png,image/gif" %>
+                  </div>
+              <% end %>
               </br>
 
-              <div class="controls">
-                <%=f.file_field :avatar, :accept => "image/jpeg,image/png,image/gif" %>
-              </div>
+              <% if @profile.avatar.file? %>
+                  <div class="controls">
+                    Use gravatar image &nbsp;
+                    <div class="input-prepend">
+                      <label class="checkbox">
+                        <%= f.check_box :show_gravatar %>
+                      </label>
+                    </div>
+                  </div>
+              <% end %>
+
 
             </div>
 
