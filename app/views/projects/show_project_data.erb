@@ -16,5 +16,5 @@
 <h4>Milestones</h4>
 
 <% @view[:project].milestones.each do |mile| %>
-    <p> <%= "#{mile.target_date} #{mile.name}" %></p>
+    <p> <%= "#{mile.target_date} #{mile.name}" %> <%= link_to '', mile, method: :delete, data: { confirm: 'Are you sure?' }, class: 'icon-remove-circle' %></p>
 <% end %>
