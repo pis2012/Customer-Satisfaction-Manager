@@ -1,5 +1,5 @@
 <div class="container" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-  <h2>CHOOSE YOUR PROFILE SETTINGS</h2>
+  <h2><%= I18n.t('user_edit.CHOOSE_YOUR_PROFILE_SETTINGS')  %></h2>
   <div class="row-fluid">
     <div class="span4">
     </div>
@@ -27,10 +27,10 @@
 
             <div class="control-group">
 
-              <label for="inputUsername">Personal data:</label>
+              <label for="inputUsername"><%= I18n.t ('user_edit.Personal_data')  %></label>
               <%= fields_for @profile.user do |fa| %>
                   <div class="controls">
-                    Full Name:
+                    <%= I18n.t ('user_edit.Full_Name')  %>
                     </br>
                     <div class="input-prepend">
                       <%= fa.text_field :full_name %>
@@ -40,7 +40,7 @@
                   </br>
 
                   <div class="controls">
-                    Email:
+                    <%= I18n.t ('user_edit.Email')  %>
                     </br>
                     <div class="input-prepend">
                       <%= fa.text_field :email%>
@@ -66,7 +66,7 @@
               </br>
 
               <div class="controls">
-                Skype User:
+                <%= I18n.t ('user_edit.Skype_User')  %>
                 </br>
                 <div class="input-prepend">
                   <%= f.text_field :skype_usr %>
@@ -79,9 +79,9 @@
 
             <div class="control-group">
 
-                <label for="inputUsername">Notifications:</label>
+                <label for="inputUsername"><%= I18n.t ('user_edit.Notifications')  %></label>
                 <div class="controls">
-                    Feedbacks &nbsp;
+                  <%= I18n.t ('feedback.feedback')  %> &nbsp;
                   <div class="input-prepend">
                       <label class="checkbox">
                         <%= f.check_box :feedbacks_notifications %>
@@ -89,7 +89,7 @@
                     </div>
                 </div>
                 <div class="controls">
-                    Comments &nbsp;
+                  <%= I18n.t ('user_edit.Comments')  %> &nbsp;
                   <div class="input-prepend">
                       <label class="checkbox">
                         <%= f.check_box :comments_notifications %>
@@ -103,7 +103,7 @@
 
             <div class="control-group">
 
-              <label for="inputUsername">My picture:</label>
+              <label for="inputUsername"><%= I18n.t ('user_edit.My_picture')  %></label>
                 <% if @profile.avatar.file? && !@profile.show_gravatar %>
                     <div class="controls">
                         <%= image_tag @profile.avatar.url(:medium) %>
@@ -143,10 +143,10 @@
 
             <div class="control-group">
 
-              <label for="inputUsername">My proyect:</label>
+              <label for="inputUsername"><%= I18n.t ('user_edit.My_proyect')  %></label>
 
               <div class="controls">
-                Default Proyect:
+                <%= I18n.t ('user_edit.Default_Proyect')  %>
                 </br>
                 <div class="input-prepend">
                   <%= f.select(:project_id, Project.where(:client_id => @profile.user.client_id ).map {|project| [project.name, project.id]},:prompt => true) %>
@@ -161,12 +161,12 @@
 
                 <div class="control-group">
 
-                  <label for="inputUsername">Change Password:</label>
+                  <label for="inputUsername"><%= I18n.t ('user_edit.Change_Password')  %></label>
 
                   <%= fields_for @profile.user do |fa| %>
 
                       <div class="controls">
-                        Current Password:
+                        <%= I18n.t ('user_edit.Current_Password')  %>
                         </br>
                         <div class="input-prepend">
                           <%= fa.password_field :current_password %>
@@ -176,7 +176,8 @@
                       </br>
 
                       <div class="controls">
-                        New Password:
+                        <%= I18n.t ('user_edit.New_Password')  %>
+
                         </br>
                         <div class="input-prepend">
                           <%= fa.password_field :password %>
@@ -186,7 +187,7 @@
                       </br>
 
                       <div class="controls">
-                        Confirm New Password:
+                        <%= I18n.t ('user_edit.confirm_password')  %>
                         </br>
                         <div class="input-prepend">
                           <%= fa.password_field :password_confirmation %>
@@ -198,8 +199,8 @@
                 <hr> </hr>
             <% end %>
 
-            <%=  f.submit "Save Changes" %> or
-            <%=  link_to "Cancel", "/" %>
+            <%=  f.submit I18n.t ('home.save_changes') %> <%= I18n.t ('home.or') %>
+            <%=  link_to I18n.t ('home.cancel'), "/" %>
 
             <%= f.hidden_field :user_id %>
         <% end %>
