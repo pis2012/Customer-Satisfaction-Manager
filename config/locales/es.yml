@@ -1,13 +1,34 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
+es:
+
+  user_edit:
+
+            CHOOSE_YOUR_PROFILE_SETTINGS: "SELECCIONE LAS OPCIONES DE SU PERFIL"
+            Personal_data: "Informacion Personal"
+            Full_Name: "Nombre Completo"
+            Email: "Email"
+            Skype_User: "Usuario Skype"
+            Comments: "Comentarios"
+            Notifications: "Notificaciones"
+            My_picture: "Mi Imagen"
+            My_proyect: "Mis Proyectos"
+            Default_Proyect: "Proyecto Principal"
+            Change_Password: "Cambiar Contraseña"
+            Current_Password: "Contraseña Actual"
+            New_Password: "Nueva Contraseña"
+            confirm_password: "Confirmar nueva contraseña"
+
   user:
+            continue: "Continuar"
+            password:  "Contraseña"
+            sing_in_with:  "Ingresar con"
             status_of_proyects:    "Estado de Proyectos"
             recent_activity:  "Actividad reciente"
             name: "Nombre:"
             date_created:   "Creado el:"
-            username:  "Nombre de Usuario"
+            username:  "Usuario"
             fullname:  "Nombre Completo:"
             skype_user:  "Usuario de Skype"
             my_picture:  "Mi Imagen:"
@@ -38,16 +59,15 @@ en:
             change_your_password:  "Cambiar su contraseña"
             ignore_email:  "Si no lo solicitaste por favor ignora este mail."
             change_password_warning:  "Su contraseña no cambiara hasta que acceda al link de arriba y cree una nueva."
-            confirm_password: "Confirmar nueva contraseña"
             profile_settings:  "Opciones de perfil."
             new_profile:  "Nuevo Perfil"
             resend_unlock_instructions:  "Reenviar instrucciones de bloqueo"
             did_not_recieve_confirmation_instructions:  "¿No has recibido instrucciones de confirmación?"
             did_not_recieve_unlock_instructions:  "¿No has recibido instrucciones de desbloqueo?"
-            sing_in_with:  "Ingresar con"
+
 
   feedback:
-            feedbacks:  "Feedback"
+            feedback:  "Feedback"
             feedbacks:   "Feedbacks"
             new_feedback:  "Nuevo Feedback"
             editing_feedback:  "Editando Feedback"
@@ -64,16 +84,29 @@ en:
   form:
             add_form: "Agregar"
 
-  general:
+  admin:
             customer_satisfaction_manager: "MANAGER DE  SATISFACCIÓN DEL CLIENTE"
             customers:  "Clientes"
             summary:    "Resumen"
             reports:    "Reportes"
-            projects:   "Proyectos:"
+            projects:   "Proyectos"
             users:   "Usuarioss"
             clients:   "Clientes"
             forms: "Formularios"
             evolution_of_general_mood:  "Evolución del estado de ánimo general"
+            Status_of_Projects: "Estado del proyecto"
+
+  home:
+            home: "Home"
+            singin: "Iniciar Sesion"
+            admin: "Admin"
+            My_Projects: "Mis Proyectos"
+            Sign_out: "Cerrar Sesion"
+            Customers: "Clientes"
+            language: "Idioma"
+            Spanish: "Español"
+            English: "English"
+
             accept: "Aceptar"
             cancel:  "Cancelar"
             previous:    "Anterior"
@@ -85,6 +118,7 @@ en:
             delete:  "Borrar"
             are_you_sure:  "¿Estás seguro?"
             save_changes:  "Guardar Cambios"
+            or: "o"
 
 
   milestone:

@@ -2,7 +2,24 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  user_edit:
+              CHOOSE_YOUR_PROFILE_SETTINGS: "CHOOSE YOUR PROFILE SETTINGS"
+              Personal_data: "Personal Data"
+              Full_Name: "Full Name"
+              Email: "Email"
+              Skype_User: "Skype User"
+              Comments: "Comments"
+              Notifications: "Notifications"
+              My_picture: "My picture"
+              My_proyect: "My Proyects"
+              Default_Proyect: "Default Proyect"
+              Change_Password: "Change Password"
+              Current_Password: "Current Password"
+              New_Password: "New Password"
   user:
+
+            continue: "Continue"
+            password:  "password"
             status_of_proyects:  "Status of Projects"
             recent_activity:  "Recent Activity"
             name:  "Name:"
@@ -48,9 +65,8 @@ en:
 
   feedback:
             feedbacks:  "Feedback"
-            feedbacks:   "Feedbacks"
             new_feedback: "New Feedback"
-            show_feedback:   "Show Feedback"
+            show_feedbackshow_feedback:   "Show bbbbbFeedback"
             editing_feedback:   "Editing feedback"
             cannot_save_feedback:  "Cannot save Project:"
             moove_it_employee: "Moove-IT employee"
@@ -59,10 +75,11 @@ en:
             last_comment_made_by: "Last comment made by"
             no_comments: "No comments"
             list_comments:  "List of Comments"
+            feedback_subject: "Subject"
   form:
             add_form:  "Add form"
 
-  general:
+  admin:
             customer_satisfaction_manager:    "CUSTOMER SATISFACTION MANAGER"
             customers:    "Customers"
             summary:   "Summary"
@@ -72,6 +89,18 @@ en:
             clients:  "Clients"
             forms:  "Forms"
             evolution_of_general_mood: "Evolution of the general mood"
+            Status_of_Projects: "Status of Projects"
+  home:
+            home: "Home"
+            singin: "Sing In"
+            admin: "Admin"
+            My_Projects: "My Projects"
+            Sign_out: "Sign out"
+            Customers: "Customers"
+            language: "Language"
+            Spanish: "Español"
+            English: "English"
+
             accept:    "Accept"
             cancel:   "Cancel"
             previous:  "Previous"
@@ -83,6 +112,7 @@ en:
             delete:    "Delete"
             are_you_sure:  "Are you sure?"
             save_changes:   "Save Changes"
+            or: "or"
 
 
   milestone:

@@ -15,6 +15,7 @@ CSM::Application.routes.draw do
 
   resources :moods
 
+  match "/milestones/project_milestones/:project_id" => "milestones#project_milestones", :as => :project_milestones
   match "/milestones/new/:project_id" => "milestones#new", :as => :new_milestone
   resources :milestones
 
