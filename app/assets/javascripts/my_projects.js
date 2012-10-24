@@ -49,16 +49,6 @@ window.onpopstate = function (e) {
     }
 };
 
-$('.feedbacks-link').live('click', function () {
-    updatePanel($(this).data('url'), 'feedbacks-table', 'feedbacks');
-    return false;
-});
-
-$('.data-link').live('click', function () {
-    updatePanel($(this).data('url'), 'data-content', 'project-data');
-    return false;
-});
-
 $('#face-list').ready(function(){
     $('#msj-face-changed').fadeOut(0);
     $('#face-list li').click(function () {
@@ -105,10 +95,18 @@ $('.change-mood9-link').live('click', function () {
     return false;
 });
 
+$('.feedbacks-link').live('click', function () {
+    updatePanel($(this).data('url'), 'feedbacks-table', 'feedbacks');
+    return false;
+});
+
+$('.data-link').live('click', function () {
+    updatePanel($(this).data('url'), 'data-content', 'project-data');
+    return false;
+});
+
 $('.new-feedback-link').live('click', function () {
     updatePanel($(this).data('url'), 'new-feedback-content', 'new-feedback');
-    $('.new-feedback').removeClass('active');
-    $('.feedbacks').addClass('active');
     return false;
 });
 

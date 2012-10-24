@@ -14,14 +14,14 @@
         </td>
         <td class="feedback_info">
           <% if feedback.editable? current_user.id %>
-              <a href="#edit-feedback<%= feedback.id.to_s %>" class="feedback_subject edit-feedback-link" data-url="<%= edit_feedback_path(feedback) %>"><%= truncate(strip_tags(feedback.subject), :length => 45) %></a>
+              <h4 class="feedback_subject"><a href="#edit-feedback<%= feedback.id.to_s %>" class="edit-feedback-link" data-url="<%= edit_feedback_path(feedback) %>"><%= truncate(strip_tags(feedback.subject), :length => 45) %></a></h4>
           <% else %>
-              <a href="#show-feedback<%= feedback.id.to_s %>" class="feedback_subject show-feedback-link" data-url="<%= feedback_path(feedback) %>"><%= truncate(strip_tags(feedback.subject), :length => 45) %></a>
+              <h4 class="feedback_subject"><a href="#show-feedback<%= feedback.id.to_s %>" class="show-feedback-link" data-url="<%= feedback_path(feedback) %>"><%= truncate(strip_tags(feedback.subject), :length => 45) %></a></h4>
           <% end %>
 
 
           <h6 class="feedback_date"><%= t('feedback.uploaded_by')+" " + feedback.user.full_name + " "+t('feedback.date_on')+"   "+t("date."+"#{feedback.created_at.strftime("%A")}")+ feedback.created_at.strftime(" %d ")+  t("date."+"#{feedback.created_at.strftime("%B")}") +feedback.created_at.strftime(" %Y") %></h6>
-          <h7 class="feedback_content"><%= truncate(strip_tags(feedback.content), :length => 180) %></h7>
+          <div class="feedback_content"><%= truncate(strip_tags(feedback.content), :length => 180) %></div>
           <% @last_comment = feedback.comments.order('created_at').first %>
           <% if @last_comment != nil %>
               <h6 class="feedback_last_comment"><%= t('feedback.last_comment_made_by')+" " + @last_comment.user.full_name + ", "+t("date."+"#{@last_comment.created_at.strftime("%A")}")+ @last_comment.created_at.strftime(" %d ")+  t("date."+"#{@last_comment.created_at.strftime("%B")}") +@last_comment.created_at.strftime(" %Y") %></h6>

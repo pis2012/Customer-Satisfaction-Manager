@@ -24,21 +24,78 @@ es:
             Saturday: "Sábado"
             Sunday: "Domingo"
 
-  user_edit:
+  home:
+            home: "Home"
+            singin: "Iniciar Sesion"
+            admin: "Admin"
+            My_Projects: "Mis Proyectos"
+            Sign_out: "Cerrar Sesion"
+            Customers: "Clientes"
+            language: "Idioma"
+            Spanish: "Español"
+            English: "English"
 
-            CHOOSE_YOUR_PROFILE_SETTINGS: "SELECCIONE LAS OPCIONES DE SU PERFIL"
-            Personal_data: "Informacion Personal"
-            Full_Name: "Nombre Completo"
-            Email: "Email"
-            Skype_User: "Usuario Skype"
-            Comments: "Comentarios"
-            Notifications: "Notificaciones"
-            My_picture: "Mi Imagen"
-            My_proyect: "Mis Proyectos"
-            Default_Proyect: "Proyecto Principal"
-            Change_Password: "Cambiar Contraseña"
-            Current_Password: "Contraseña Actual"
-            New_Password: "Nueva Contraseña"
+  buttons:
+            accept: "Aceptar"
+            cancel:  "Cancelar"
+            previous:    "Anterior"
+            next:  "Próximo"
+            back:   "Atrás"
+            edit:    "Editar"
+            back:   "Atrás"
+            show:  "Mostrar"
+            delete:  "Borrar"
+            are_you_sure:  "¿Estás seguro?"
+            save_changes:  "Guardar Cambios"
+            or: "o"
+            create: "Crear"
+            filter: "Filtrar"
+            comment: "Comentar"
+
+
+  my_projects:
+            tabs:
+                        feedbacks: "Feedbacks"
+                        new_feedback: "Nuevo Feedback"
+                        show_feedback: "Ver Feedback"
+                        edit_feedback: "Editar Feedback"
+                        data: "Datos"
+                        new_milestone: "Nuevo Hito"
+
+            feedbacks_tab:
+                        show_events_since: "Mostrar eventos desde:"
+
+            data_tab:
+                        project_description: "Descripción de Proyecto"
+                        mood_updates: "Actualizaciones de Estado"
+                        milestones: "Hitos"
+
+            mood:
+                        update_mood: "Actualiza tu estado"
+                        mood_updated: "Estado actualizado!"
+
+  admin:
+            tabs:
+
+
+
+
+  user_edit:
+            choose_your_profile_settings: "SELECCIONE LAS OPCIONES DE SU PERFIL"
+            personal_data: "Información Personal"
+            full_Name: "Nombre completo"
+            email: "Email"
+            load_openid: "Tomar OpenID de sesión de Gmail"
+            skype_user: "Usuario skype"
+            notifications: "Notificaciones"
+            feedbacks: "Feedbacks"
+            comments: "Comentarios"
+            my_picture: "Mi Imagen"
+            my_projects: "Mis Proyectos"
+            default_project: "Proyecto principal"
+            change_password: "Cambiar Contraseña"
+            current_password: "Contraseña actual"
+            new_password: "Nueva contraseña"
             confirm_password: "Confirmar nueva contraseña"
 
   user:
@@ -125,33 +182,8 @@ es:
             evolution_of_general_mood:  "Evolución del estado de ánimo general"
             Status_of_Projects: "Estado del proyecto"
 
-  home:
-            home: "Home"
-            singin: "Iniciar Sesion"
-            admin: "Admin"
-            My_Projects: "Mis Proyectos"
-            Sign_out: "Cerrar Sesion"
-            Customers: "Clientes"
-            language: "Idioma"
-            Spanish: "Español"
-            English: "English"
-
-            accept: "Aceptar"
-            cancel:  "Cancelar"
-            previous:    "Anterior"
-            next:  "Próximo"
-            back:   "Atrás"
-            edit:    "Editar"
-            back:   "Atrás"
-            show:  "Mostrar"
-            delete:  "Borrar"
-            are_you_sure:  "¿Estás seguro?"
-            save_changes:  "Guardar Cambios"
-            or: "o"
-
 
   milestone:
-            data: "Datos"
             milestone:  "Hito"
             milestones:   "Hitos"
             new_milestone:  "Nuevo Hito"
@@ -161,9 +193,8 @@ es:
             Next_milestone: "Proximo hito"
 
   proyect:
-            Mood_changed: "Cambio de ánimo!"
             list_projects:  "Lista de Proyectos"
-            Show_events_since: "Mostrar Eventos Desde"
+            show_events_since: "Mostrar eventos desde:"
             changes_in_mood:         "Cambios en el estado de ánimo"
             new_proyect:    "Nuevo Proyecto"
             cannot_save_project:  "No se pudo salvar el Proyecto"
