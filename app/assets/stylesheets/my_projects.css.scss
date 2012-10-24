@@ -12,8 +12,7 @@
 
 /* ============== [ MOOD SELECTOR ] ============== */
 
-.current-mood p
-{
+.current-mood p{
   margin-right: 15px;
   text-align:  center;
 }
@@ -205,9 +204,6 @@
 
 .feedbacks_table {
   width: 100%;
-}
-
-.feedbacks_table {
 
   tr > td {
     padding-top: 2%;
@@ -229,11 +225,9 @@
   padding-left: 4%;
 
   .feedback_subject {
-    font-size: 18px;
     text-decoration: underline;
     color: inherit;
     font-weight: bold;
-
   }
 
   .feedback_date {
@@ -302,101 +296,87 @@
 
 }
 #feedback_subjectText{
-  margin-left: 7.6%;
+  margin-left: 0%;
+}
+
+#feedback_subjectlabel{
+  margin-left: 15%;
 }
 
 // Fin Crear Feedback
 
 
- //VER FEEDBACK
-#feedbackShow_fecha {
-  margin-left:1%;
-  margin-top:6%;
-  position: absolute;
+/* ============== [SHOW FEEDBACK] ============== */
 
-}
-
-#feedbackShow_Asunto{
-
-  position: absolute;
-  text-decoration: underline;
-  margin-top: 1%;
-  margin-left: 1%;
+.feedback{
 
 
-}
+  .feedback_subject {
+    text-decoration: underline;
+    color: inherit;
+    font-weight: bold;
+
+  }
+
+  .feedback_date {
+    font-weight: normal;
+    margin-top: 0;
+  }
+
+  .feedback_content {
+
+  }
+
+  .feedback_division {
+    margin-top: 1%;
+    margin-bottom: 1%;
+
+  }
+
+  .comments_table{
+
+    max-width: 500px;
+
+    tr > td {
+      padding-top: 2%;
+      padding-bottom: 2%;
+      border-bottom: 1px solid #EEEEEE;
+    }
+
+    .avatar {
+      width: 8%;
+    }
+
+  }
+
+  .comments_table .avatar .user_image {
+
+  }
+
+  .comments_table .comment_info {
+
+    padding-left: 4%;
+
+    .comment_content {
+      display: block;
+    }
+
+    .comment_author{
+      font-weight: normal;
+    }
+
+  }
+
+  .new_comment{
+
+    .new_comment_text{
+      width:100%;
+      resize: none;
+    }
+
+  }
 
 
-#feesbackShow_Contenido {
-  position: absolute;
-  margin-left:1%;
-  margin-top:13%;
-  text-align:justify;
-  width:98%;
-}
-
-#feesbackShow_AjustarContenido {
-  margin-left:1%;
-  margin-top:20%;
-  position:relative;
-  text-align:justify;
-  visibility:hidden;
-  width:99%;
-}
-
-
-#feedbackShow_fechaComment {
-  position: relative;
-  padding: 0;
-  margin: 0;
-  left:9% ;
-  margin-top: 40%;
-}
-
-#feedbackShoe_contentComent {
-  position: relative;
-  margin-left:9%;
-  margin-top:1%;
-  padding: 0;
-  top:1%;
-  left:9% ;
-  margin: 0;
-}
-
-#feedbackShow_sectionComment {
-  background-attachment:initial;
-  background-clip:initial;
-  background-color:rgba(255, 0, 0, 0);
-  background-image:initial;
-  background-origin:initial;
-  background-position:initial initial;
-  //ckground-repeat:initial initial;
-  height:100px;
-  margin-bottom:auto;
-  margin-left:auto;
-  margin-right:auto;
-  margin-top:2%;
-  position:relative;
-
-}
-
-#feedbackShow_TextAreaComment{
-  width:97%;
-  height:50px;
-
-  resize: none;
-  margin-left: 1%;
-  border:2px #006dcc;
-  border-bottom-style: solid;
-}
-
-#feedbackShow_ImgAvatComment{
-  height:60px;
-  width: 60px;
-  position: absolute;
-  float: left;
-  margin-left: 1%;
-  margin-top: 1%;
 }
 
 

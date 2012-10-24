@@ -1,84 +1,62 @@
-<div class="row seccion wide" xmlns="http://www.w3.org/1999/html"
-     xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<div class="feedback">
+  <input class="TextField" id="feedback_project_id" name="project_id" size="30" type="hidden" value="<%= params[:Projectid] %>"/>
 
+  <h4 class="feedback_subject"><%= strip_tags(@feedback.subject) %></h4>
 
-    <input class="TextField" id="feedback_project_id" name="project_id" size="30" type="hidden" value="<%= params[:Projectid] %>"/>
+  <h6 class="feedback_date"><%= t('feedback.create_by')+ " " + @feedback.user.full_name + " "+t('feedback.date_on')+"   " + @feedback.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h6>
 
-    <div class="seccion3 Separador">
+  <div class="feedback_content"><%= @feedback.content %></div>
 
+  <hr class="feedback_division">
 
-      <h4 id="feedbackShow_Asunto"><%= truncate(strip_tags(@feedback.subject),:length => 45) %></h4>
+  <table class="comments_table">
 
-      <h6 id="feedbackShow_fecha"><%= "Create by " + @feedback.user.full_name + " on   " + @feedback.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h6>
+    <% @feedback.comments.each do |comment| %>
+        <tr id="row_comment_<%= comment.id %>">
 
-      <h7 id="feesbackShow_Contenido"><%= @feedback.content %></h7>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      <h7 id="feesbackShow_AjustarContenido"><%= @feedback.content %></h7>
+          <td class="avatar">
+            <% if current_user.profile.avatar.file? && !current_user.profile.show_gravatar %>
+                <%= image_tag current_user.profile.avatar.url(:medium), :class => "user_image" %>
+            <% else %>
+                <%= gravatar_image_tag(current_user.profile.user.email.gsub('spam', 'mdeering'), :alt => current_user.profile.user.full_name, :class => "user_image") %>
+            <% end %>
+          </td>
 
+          <td class="comment_info">
+            <p class="comment_content"><%= comment.content %></p>
+            <h6 class="comment_author"><%= t('feedback.create_by')+" " + comment.user.full_name + " "+t('feedback.date_on')+"   " + t("date."+"#{comment.created_at.strftime("%A")}")+ comment.created_at.strftime(" %d ")+ t("date."+"#{comment.created_at.strftime("%B")}") +comment.created_at.strftime(" %Y") %></h6>
+          </td>
 
+        </tr>
+    <% end %>
 
+    <tr id="row_comment_new">
 
+      <td class="avatar">
+        <% if current_user.profile.avatar.file? && !current_user.profile.show_gravatar %>
+            <%= image_tag current_user.profile.avatar.url(:medium), :class => "user_image" %>
+        <% else %>
+            <%= gravatar_image_tag(current_user.profile.user.email.gsub('spam', 'mdeering'), :alt => current_user.profile.user.full_name, :class => "user_image") %>
+        <% end %>
+      </td>
 
+      <td class="comment_info">
+        <%= form_for(@commentNew, :remote => true) do |f| %>
 
-    </div>
+            <%= f.text_area :content, :rows => 3, :class => "new_comment_text" %>
 
-    <hr>
+            <input id="comment_feedback_id" name="feedback_id" size="30" type="hidden" value="<%= @feedback.id %>"/>
 
-
-
-
-
-  <div class="accordion" id="accordion2">
-    <% cant = 1 %>
-  <% @feedback.comments.each do |comment| %>
-        <% cant = cant + 1 %>
-        <div class="accordion-group">
-          <div class="accordion-heading">
-            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%=cant%>">
-              <h9 id="feedbackShow_fechaComment"><%= "Create by " + comment.user.full_name + " at   " + comment.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h9>
-            </a>
-          </div>
-          <div id="collapse<%=cant%>" class="accordion-body collapse">
-            <div class="accordion-inner">
-              <div class="seccionComent">
-                <%= image_tag("Skype.png", :alt => "Moove-It", :id => "feedbackShow_ImgAvatComment") %>
-                <P>
-                  <h7 id="feedbackShoe_contentComent"><%= comment.content %></h7>
-                <P>
-                <P>
-                  <h9 id="feedbackShow_fechaComment"><%= "Create by " + comment.user.full_name + " at   " + comment.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h9>
-              </div>
+            <div class="actions">
+              <%= f.submit t('buttons.comment'), :class => "btn" %> &nbsp <%= t('buttons.or') %>
+              <a href="#feedbacks" class="btn btn-link feedbacks-link" type="button" data-url="<%= project_feedbacks_path(@feedback.project) %>"><%= t('buttons.back') %></a>
             </div>
-          </div>
-        </div>
+        <% end %>
+      </td>
 
-  <% end %>
-  </div>
+    </tr>
 
-  <%= form_for(@commentNew, :remote => true) do |f| %>
-
-      <div class="feedbackShow_sectionComment">
-        <div class="field">
-          <%= f.text_area :content, :id => "feedbackShow_TextAreaComment" %>
-        </div>
-
-        <input  id="comment_feedback_id" name="feedback_id" size="30" type="hidden" value="<%= @feedback.id %>"/>
-
-        <div class="actions">
-          <%= f.submit :class => "btn margin1 top1" %> or
-          <a href="#feedbacks" class="btn btn-link feedbacks-link" type="button" data-url="<%=  project_feedbacks_path(@feedback.project) %>">Back</a>
-        </div>
-
-      </div>
-  <% end %>
-
-
+  </table>
 </div>
-
 
 

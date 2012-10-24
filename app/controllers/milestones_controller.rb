@@ -63,7 +63,7 @@ class MilestonesController < ApplicationController
 
     respond_to do |format|
       if @milestone.save
-        format.html { redirect_to :controller => "/projects", :action => "show_project_complete"}
+        format.html { redirect_to my_projects_path }
         format.json { render json: @milestone, status: :created, location: @milestone }
       else
         format.html { render action: "new" }
@@ -79,7 +79,7 @@ class MilestonesController < ApplicationController
 
     respond_to do |format|
       if @milestone.update_attributes(params[:milestone])
-        format.html { redirect_to :controller => "/projects", :action => "show_project_complete" }
+        format.html { redirect_to my_projects_path }
         format.json { render json: @milestone, status: :created, location: @milestone }
       else
         format.html { render action: "edit" }
@@ -96,7 +96,7 @@ class MilestonesController < ApplicationController
 
     respond_to do |format|
       #format.html { redirect_to milestones_url }
-      format.html { redirect_to :controller => "/projects", :action => "show_project_complete"}
+      format.html { redirect_to my_projects_path }
       format.json { head :no_content }
     end
   end

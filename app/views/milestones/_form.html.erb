@@ -24,15 +24,14 @@
 
     <div class="margin4">
       <%= f.label :target_date, :class => "milestone_Label" %>
-      <%= f.date_select :target_date, :id=> "milestone_target_dateText" %>
+      <%= f.date_select :target_date, :id => "milestone_target_dateText" %>
     </div>
 
 
       <div class="margin4">
-        <%= f.submit :Create %> or
-        <!--<button class="btn btn-link cancel-milestone-link" type="button" data-url="<%= project_data_path(@milestone.project) %>"  >
+        <%= f.submit t('buttons.create'), :class => "btn" %> <%= " " + t('buttons.or') %>
+        <button class="btn btn-link cancel-milestone-link" type="button" data-url="<%= project_data_path(@milestone.project) %>"  >
           Cancel
-        </button> -->
-        <a href="#project-data" class="data-link" data-url="<%= project_data_path(@milestone.project) %>"> Cancel</a>
+        </button>
       </div>
 <% end %>
