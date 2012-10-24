@@ -9,7 +9,7 @@
 
       <h4 id="feedbackShow_Asunto"><%= truncate(strip_tags(@feedback.subject),:length => 45) %></h4>
 
-      <h6 id="feedbackShow_fecha"><%= "Create by " + @feedback.user.full_name + " on   " + @feedback.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h6>
+      <h6 id="feedbackShow_fecha"><%= t('feedback.create_by')+ " " + @feedback.user.full_name + " "+t('feedback.date_on')+"   " + @feedback.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h6>
 
       <h7 id="feesbackShow_Contenido"><%= @feedback.content %></h7>
       </br>
@@ -40,7 +40,7 @@
         <div class="accordion-group">
           <div class="accordion-heading">
             <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%=cant%>">
-              <h9 id="feedbackShow_fechaComment"><%= "Create by " + comment.user.full_name + " at   " + comment.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h9>
+              <h9 id="feedbackShow_fechaComment"><%= t('feedback.create_by')+" "+ comment.user.full_name + " "+t('feedback.date_on')+"   " + t("date."+"#{comment.created_at.strftime("%A")}")+ comment.created_at.strftime(" %d ")+  t("date."+"#{comment.created_at.strftime("%B")}") +comment.created_at.strftime(" %Y")  %></h9>
             </a>
           </div>
           <div id="collapse<%=cant%>" class="accordion-body collapse">
@@ -51,7 +51,7 @@
                   <h7 id="feedbackShoe_contentComent"><%= comment.content %></h7>
                 <P>
                 <P>
-                  <h9 id="feedbackShow_fechaComment"><%= "Create by " + comment.user.full_name + " at   " + comment.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h9>
+                  <h9 id="feedbackShow_fechaComment"><%= t('feedback.create_by')+" " + comment.user.full_name +  " "+t('feedback.date_on')+"   "  + t("date."+"#{comment.created_at.strftime("%A")}")+ comment.created_at.strftime(" %d ")+  t("date."+"#{comment.created_at.strftime("%B")}") +comment.created_at.strftime(" %Y") %></h9>
               </div>
             </div>
           </div>
@@ -70,8 +70,8 @@
         <input  id="comment_feedback_id" name="feedback_id" size="30" type="hidden" value="<%= @feedback.id %>"/>
 
         <div class="actions">
-          <%= f.submit :class => "btn margin1 top1" %> or
-          <a href="#feedbacks" class="btn btn-link feedbacks-link" type="button" data-url="<%=  project_feedbacks_path(@feedback.project) %>">Back</a>
+          <%= f.submit t('feedback.create'), :class => "btn margin1 top1" %> <%= t('home.or') %>
+          <a href="#feedbacks" class="btn btn-link feedbacks-link" type="button" data-url="<%=  project_feedbacks_path(@feedback.project) %>"><%= t('home.back') %></a>
         </div>
 
       </div>

@@ -33,7 +33,7 @@
 
           <div id="msj-face-changed-container">
             <div id="msj-face-changed" class="label label-info">
-               Mood changed!
+              <%= I18n.t ('proyect.Mood_changed')%>
             </div>
           </div>
 
@@ -89,10 +89,10 @@
       <div id="global_nav">
         <ul id="myTab">
           <li class="feedbacks active">
-            <a href="#feedbacks" class="feedbacks-link" data-url="<%= project_feedbacks_path(@project) %>"> Feedbacks</a>
+            <a href="#feedbacks" class="feedbacks-link" data-url="<%= project_feedbacks_path(@project) %>"> <%= I18n.t ('feedback.feedbacks')%></a>
             <ul>
               <li class="feedbacks" hidden="true">
-                <a href="#feedbacks"> Feedbacks</a>
+                <a href="#feedbacks"> <%= I18n.t ('feedback.feedbacks')%></a>
               </li>
               <li class="new-feedback" hidden="true">
                 <a href="#new-feedback"> <%t(:show_feedback)%></a>
@@ -101,7 +101,7 @@
                 <a href="#show-feedback"> <%t(:show_feedback)%></a>
               </li>
               <li class="edit-feedback" hidden="true">
-                <a href="#edit-feedback"> Edit Feedback</a>
+                <a href="#edit-feedback"> <%= I18n.t('home.edit') +' '  +  t('feedback.feedback') %></a>
               </li>
             </ul>
           </li>
@@ -109,10 +109,10 @@
             <a href="#project-data" class="data-link" data-url="<%= project_data_path(@project) %>"> Data</a>
             <ul>
               <li class="data" hidden="true">
-                <a href="#project-data"> Data</a>
+                <a href="#project-data"><%= I18n.t('milestone.data')%></a>
               </li>
               <li class="new-milestone" hidden="true">
-                <a href="#new-milestone"> New Milestone</a>
+                <a href="#new-milestone"><%= I18n.t('milestone.new_milestone')%> </a>
               </li>
             </ul>
 
@@ -140,11 +140,11 @@
 
             <!-- page header -->
             <div class="page_header">
-              <h1>Feedbacks</h1>
+              <h1><%= I18n.t ('feedback.feedbacks')%></h1>
 
               <div class="add_element">
                 <a href="#new-feedback" class="btn btn-link new-feedback-link" data-url="<%= new_feedback_path(@project) %>">
-                  <i class="icon-plus icon-white"> </i> New Feedback
+                  <i class="icon-plus icon-white"> </i> <%= I18n.t('feedback.new_feedback')%>
                 </a>
 
               </div>
@@ -157,7 +157,7 @@
               <%= form_tag(feedbacks_date_filter_path, :remote => true) do %>
                   <%= hidden_field_tag(:project_id,@project.id) %>
                   <div class="feedbacks_filter">
-                    <h5 class="feedbacks_filer_element">Show events since:</h5>
+                    <h5 class="feedbacks_filer_element"><%= I18n.t('proyect.Show_events_since')%></h5>
 
                     <div class="input-append date feedbacks_filer_element" id="datepicker" data-date="<%= Time.now.strftime("%d/%m/%Y") %>" data-date-format="dd/mm/yyyy">
                       <%= text_field_tag(:date,Time.now.strftime("%d/%m/%Y"),:class => "span2", :size => 16) %>
@@ -165,7 +165,7 @@
                     </div>
 
                     &nbsp;
-                    <%= button_tag("Filter",:class => "btn") %>
+                    <%= button_tag(t('proyect.filter'),:class => "btn") %>
                   </div>
               <% end %>
               <hr class="hr_feedbacks_table">
@@ -182,12 +182,12 @@
 
             <!-- page header -->
             <div class="page_header">
-              <h1>Data</h1>
+              <h1> <%=I18n.t('milestone.data')%></h1>
 
               <div class="add_element">
 
                 <button class="btn btn-link new-milestone-link" data-url="<%= new_milestone_path(@project) %>">
-                  <i class="icon-plus icon-white"> </i> New Milestone
+                  <i class="icon-plus icon-white"> </i> <%=I18n.t('milestone.new_milestone')%>
                 </button>
 
               </div>
@@ -209,7 +209,7 @@
           <div class="tab-pane fade" id="new-feedback">
             <!-- page header -->
             <div class="page_header">
-              <h1>New Feedback</h1>
+              <h1><%= I18n.t ('feedback.new_feedback')%></h1>
             </div>
             <!--// page header -->
             <!-- page contents -->
@@ -239,7 +239,7 @@
           <div class="tab-pane fade" id="edit-feedback">
             <!-- page header -->
             <div class="page_header">
-              <h1>Edit Feedback</h1>
+              <h1><%t(:editing_feedback)%></h1>
             </div>
             <!--// page header -->
             <!-- page contents -->
@@ -254,7 +254,7 @@
           <div class="tab-pane fade" id="new-milestone">
             <!-- page header -->
             <div class="page_header">
-              <h1>New Milestone</h1>
+              <h1><%=I18n.t ('milestone.new_milestone')%></h1>
             </div>
             <!--// page header -->
             <!-- page contents -->

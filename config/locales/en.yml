@@ -2,6 +2,27 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  date:
+              January: "January"
+              February: "February"
+              March: "March"
+              April: "April"
+              May: "May"
+              June: "June"
+              July: "July"
+              August: "August"
+              September: "September"
+              October: "October"
+              November: "November"
+              December: "December"
+              Monday: "Monday"
+              Tuesday: "Tuesday"
+              Wednesday: "Wednesday"
+              Thursday: "Thursday"
+              Friday: "Viernes"
+              Saturday: "Saturday"
+              Sunday: "Domingo"
+
   user_edit:
               CHOOSE_YOUR_PROFILE_SETTINGS: "CHOOSE YOUR PROFILE SETTINGS"
               Personal_data: "Personal Data"
@@ -66,7 +87,7 @@ en:
   feedback:
             feedbacks:  "Feedback"
             new_feedback: "New Feedback"
-            show_feedbackshow_feedback:   "Show bbbbbFeedback"
+            show_feedbackshow_feedback:   "Show Feedback"
             editing_feedback:   "Editing feedback"
             cannot_save_feedback:  "Cannot save Project:"
             moove_it_employee: "Moove-IT employee"
@@ -76,6 +97,13 @@ en:
             no_comments: "No comments"
             list_comments:  "List of Comments"
             feedback_subject: "Subject"
+            feedback_type: "Type"
+            feedback_content: "Content"
+            feedback_visivility: "Visibility"
+            Moove_IT_employee: "Moove-IT Employee"
+            create: "Create"
+            create_by: "Create by"
+            date_on: "on"
   form:
             add_form:  "Add form"
 
@@ -120,8 +148,17 @@ en:
             milestone:  "Milestone"
             milestones:   "Milestones"
             new_milestone:  "New Milestone"
+            missing: "Missing"
+            day_and: "day and"
+            hours_to_end: "hours to end"
+            Next_milestone: "Next milestone"
+
 
   proyect:
+            Mood_changed: "Mood changed"
+            Show_events_since: "Show events since"
+            changes_in_mood:     "Changes in mood"
+
             list_projects:  "List of Projects"
             new_proyect:     "New Project"
             cannot_save_project: "Cannot save Project"

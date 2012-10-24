@@ -3,6 +3,27 @@
 
 es:
 
+  date:
+            January: "Enero"
+            February: "Febrero"
+            March: "Marzo"
+            April: "Abril"
+            May: "Mayo"
+            June: "Junio"
+            July: "Julio"
+            August: "Agosto"
+            September: "Septiembre"
+            October: "Octubre"
+            November: "Noviembre"
+            December: "Diciembre"
+            Monday: "Lunes"
+            Tuesday: "Martes"
+            Wednesday: "Miércoles"
+            Thursday: "Jueves"
+            Friday: "Viernes"
+            Saturday: "Sábado"
+            Sunday: "Domingo"
+
   user_edit:
 
             CHOOSE_YOUR_PROFILE_SETTINGS: "SELECCIONE LAS OPCIONES DE SU PERFIL"
@@ -80,6 +101,14 @@ es:
             last_comment_made_by:  "Último comentario hecho por"
             no_comments: "No hay comentarios"
             list_comments: "Lista de Comentarios"
+            feedback_type: "Tipo"
+            feedback_content: "Contenido"
+            feedback_subject: "Asunto"
+            feedback_visivility: "Visibilidad"
+            Moove_IT_employee: "Empleado Moove-IT "
+            create: "Crear"
+            create_by: "Creado por"
+            date_on: "el"
 
   form:
             add_form: "Agregar"
@@ -126,9 +155,16 @@ es:
             milestone:  "Hito"
             milestones:   "Hitos"
             new_milestone:  "Nuevo Hito"
+            missing: "Faltan"
+            day_and: "dias y"
+            hours_to_end: "horas para terminar"
+            Next_milestone: "Proximo hito"
 
   proyect:
+            Mood_changed: "Cambio de ánimo!"
             list_projects:  "Lista de Proyectos"
+            Show_events_since: "Mostrar Eventos Desde"
+            changes_in_mood:         "Cambios en el estado de ánimo"
             new_proyect:    "Nuevo Proyecto"
             cannot_save_project:  "No se pudo salvar el Proyecto"
             description:   "Descripción"
@@ -136,7 +172,8 @@ es:
             name:  "Nombre"
             status:  "Estado"
             editing_project: "Editando Proyecto"
-            filter:  "Filtro"
+            filter:  "Filtrar"
+
 
 
   mood:

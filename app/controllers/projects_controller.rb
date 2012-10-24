@@ -115,10 +115,10 @@
         min = (sec/60).to_i
         hours = (min/60).to_i
         days = (hours/24).to_i
-        @view[:mile1] = "Missing #{days} days and #{hours%24} hours to end #{miles.first.name}."
+        @view[:mile1] = t('milestone.missing')+" "+" #{days}"+" "+t('milestone.day_and')+" #{hours%24} " +t('milestone.hours_to_end') +" #{miles.first.name}."
         if (miles.count > 1)
           td = miles.second.target_date
-          @view[:mile2] = "Next milestone: #{td.strftime("%B")} #{td.strftime("%e")}"
+          @view[:mile2] =  t('milestone.Next_milestone') +": " +t("date."+"#{td.strftime("%B")}") + " #{td.strftime("%e")}"
         end
       end
 

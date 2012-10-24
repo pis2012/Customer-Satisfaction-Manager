@@ -1,13 +1,14 @@
 
 
-<%= form_for(@feedback, :remote => true) do |f| %>
+<%= form_for(@feedback) do |f| %>
 
     <% if @feedback.errors.any? %>
-        <div class="alert alert-error">
-          <h4><%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:</h4>
+        <div id="error_explanation">
+          <h2><%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
+
           <ul>
             <% @feedback.errors.full_messages.each do |msg| %>
-                <li><strong><%= msg %></strong></li>
+                <li><%= msg %></li>
             <% end %>
           </ul>
         </div>
@@ -16,34 +17,34 @@
       <input  id="feedback_project_id" name="project_id" size="30" type="hidden" value="<%= @feedback.project_id %>"/>
 
       <div class="margin4">
-        <%= f.label :feedback_subject, :class => "feedback_Label" %>
-        <%= f.select(:feedback_type_id, FeedbackType.all.map { |fe| [fe.name, fe.id] }, :prompt => true) %>
+        <%= f.label :feedback_subject,t('feedback.feedback_type'), :class => "feedback_Label" %>
+        <%= f.select(:feedback_type_id, FeedbackType.all.map { |fe| [fe.name, fe.id] }  )  %>
       </div>
 
       <div class="margin4">
-        <%= f.label :subject, :class => "feedback_Label" %>
+        <%= f.label :subject,t('feedback.feedback_subject'), :class => "feedback_Label" %>
         <%= f.text_field :subject, :id=> "feedback_subjectText" %>
       </div>
 
 
       <div class="margin3">
-        <%= f.label :content, :class => "feedback_Label" %>
+        <%= f.label :content,t('feedback.feedback_content'), :class => "feedback_Label" %>
         <%= f.text_area :content, :id => "feedback_textarea" %>
 
       </div>
 
 
       <div class="margin3">
-        <%= f.label :visibility, :class => "feedback_Label" %>
-        <%= f.check_box :mooveit_visibility %> Empleado Moove-IT   <%= f.check_box :client_visibility %> Cliente
+        <%= f.label :visibility,t('feedback.feedback_visivility'), :class => "feedback_Label" %>
+        <%= f.check_box :mooveit_visibility %><%= t('feedback.Moove_IT_employee')%>    <%= f.check_box :client_visibility %> <%= t('admin.clients')%>
       </div>
 
 
 
       <div class="margin4">
-        <%= f.submit :Crear %> or
+        <%= f.submit   t('feedback.create') %>  <%= '    '+t('home.or')%>
         <button class="btn btn-link cancel-feedback-link" type="button" data-url="<%= project_feedbacks_path(:project_id => @feedback.project_id) %>"  >
-          Cancelar
+          <%= t('home.cancel')%>
         </button>
       </div>
 <% end %>
