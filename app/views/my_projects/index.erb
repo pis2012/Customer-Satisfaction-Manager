@@ -1,4 +1,4 @@
-<div id="breadcrumbs-wrapper">
+<div id="breadcrumbs-wrapper" xmlns="http://www.w3.org/1999/html">
   <div class="container">
     <ul class="nav nav-pills">
       <li class="dropdown">
@@ -33,9 +33,11 @@
 
           <div id="msj-face-changed-container">
             <div id="msj-face-changed" class="label label-info">
-              <i class="icon-ok"></i> Mood changed!
+               Mood changed!
             </div>
           </div>
+
+          </br>
 
           <div id="myTabContentMoods" class="tab-content">
             <!-- page moods -->
@@ -71,12 +73,12 @@
           </div>
 
           <ul id="face-list">
-            <% mood = @view[:project].moods.order(:created_at).last.get_mood_img %>
-            <li <% if mood == "1.png" %> class="active" <% end %>><a href="#change-mood1" class="change-mood1-link" data-url="<%= change_mood_path('1') %>" rel="tooltip" title="Change mood"><img alt="1" src="/assets/status/small/1.png" class="face-mood" id="miniMood1"/></a></li>
-            <li <% if mood == "3.png" %> class="active" <% end %>><a href="#change-mood3" class="change-mood3-link" data-url="<%= change_mood_path('3') %>" rel="tooltip" title="Change mood"><img alt="3" src="/assets/status/small/3.png" class="face-mood" id="miniMood3"/></a></li>
-            <li <% if mood == "5.png" %> class="active" <% end %>><a href="#change-mood5" class="change-mood5-link" data-url="<%= change_mood_path('5') %>" rel="tooltip" title="Change mood"><img alt="5" src="/assets/status/small/5.png" class="face-mood" id="miniMood5"/></a></li>
-            <li <% if mood == "7.png" %> class="active" <% end %>><a href="#change-mood7" class="change-mood7-link" data-url="<%= change_mood_path('7') %>" rel="tooltip" title="Change mood"><img alt="7" src="/assets/status/small/7.png" class="face-mood" id="miniMood7"/></a></li>
-            <li <% if mood == "9.png" %> class="active" <% end %>><a href="#change-mood9" class="change-mood9-link" data-url="<%= change_mood_path('9') %>" rel="tooltip" title="Change mood"><img alt="9" src="/assets/status/small/9.png" class="face-mood" id="miniMood9"/></a></li>
+            <% mood = @view[:project].moods.order(:created_at).last.status %>
+            <li <% if mood == 1 %> class="active" <% end %>><a href="#change-mood1" class="change-mood1-link" data-url="<%= change_mood_path('1') %>" rel="tooltip" title="Change mood"><img alt="1" src="/assets/faces/small/1.png" class="face-mood img-rounded" id="miniMood1"/></a></li>
+            <li <% if mood == 3 %> class="active" <% end %>><a href="#change-mood3" class="change-mood3-link" data-url="<%= change_mood_path('3') %>" rel="tooltip" title="Change mood"><img alt="3" src="/assets/faces/small/3.png" class="face-mood img-rounded" id="miniMood3"/></a></li>
+            <li <% if mood == 5 %> class="active" <% end %>><a href="#change-mood5" class="change-mood5-link" data-url="<%= change_mood_path('5') %>" rel="tooltip" title="Change mood"><img alt="5" src="/assets/faces/small/5.png" class="face-mood img-rounded" id="miniMood5"/></a></li>
+            <li <% if mood == 7 %> class="active" <% end %>><a href="#change-mood7" class="change-mood7-link" data-url="<%= change_mood_path('7') %>" rel="tooltip" title="Change mood"><img alt="7" src="/assets/faces/small/7.png" class="face-mood img-rounded" id="miniMood7"/></a></li>
+            <li <% if mood == 9 %> class="active" <% end %>><a href="#change-mood9" class="change-mood9-link" data-url="<%= change_mood_path('9') %>" rel="tooltip" title="Change mood"><img alt="9" src="/assets/faces/small/9.png" class="face-mood img-rounded" id="miniMood9"/></a></li>
           </ul>
         </div>
 
@@ -93,10 +95,10 @@
                 <a href="#feedbacks"> Feedbacks</a>
               </li>
               <li class="new-feedback" hidden="true">
-                <a href="#new-feedback"> New Feedback</a>
+                <a href="#new-feedback"> <%t(:show_feedback)%></a>
               </li>
               <li class="show-feedback" hidden="true">
-                <a href="#show-feedback"> Show Feedback</a>
+                <a href="#show-feedback"> <%t(:show_feedback)%></a>
               </li>
               <li class="edit-feedback" hidden="true">
                 <a href="#edit-feedback"> Edit Feedback</a>
@@ -222,7 +224,7 @@
           <div class="tab-pane fade" id="show-feedback">
             <!-- page header -->
             <div class="page_header">
-              <h1>Show Feedback</h1>
+              <h1><%t(:show_feedback)%></h1>
             </div>
             <!--// page header -->
             <!-- page contents -->

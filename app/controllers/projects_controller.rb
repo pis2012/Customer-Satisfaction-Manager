@@ -104,27 +104,30 @@
     @project = current_user.profile.project
 
     @lastmood = @project.moods.order(:created_at).last.get_mood_img
-    @view = {:project => @project, :mile1 => nil, :mile2 => nil, :lastmood => @lastmood}
+    @view = {:project => @project, :mile1 => nil , :mile2 => nil, :lastmood => @lastmood}
 
     if !@project.finalized && @project.milestones.count > 0
       current_date = Time.now.to_date
       miles = @project.milestones.order(:target_date).select {|mile| mile.target_date > current_date}
-      td = miles.first.target_date
-      sec = (td.to_time - current_date.to_time).to_i
-      min = (sec/60).to_i
-      hours = (min/60).to_i
-      days = (hours/24).to_i
-      @view[:mile1] = "Missing #{days} days and #{hours%24} hours to end #{miles.first.name}."
-      if (miles.count > 1)
-        td = miles.second.target_date
-        @view[:mile2] = "Next milestone: #{td.strftime("%B")} #{td.strftime("%e")}"
+      if (miles.count > 0)
+        td = miles.first.target_date
+        sec = (td.to_time - current_date.to_time).to_i
+        min = (sec/60).to_i
+        hours = (min/60).to_i
+        days = (hours/24).to_i
+        @view[:mile1] = "Missing #{days} days and #{hours%24} hours to end #{miles.first.name}."
+        if (miles.count > 1)
+          td = miles.second.target_date
+          @view[:mile2] = "Next milestone: #{td.strftime("%B")} #{td.strftime("%e")}"
+        end
       end
+
     end
 
     @feedbacks = @project.feedbacks
 
     respond_to do |format|
-      format.html { render :layout => 'my_projects' }# show_project_complete.html.erb
+      format.html { render :layout => 'my_projects',:file => 'my_projects/index' }# show_project_complete.html.erb
       format.json { render json: @project }
     end
   end
@@ -132,6 +135,7 @@
   def show_project_data
     @project = current_user.profile.project
     @view = {:project => @project, :graph => nil}
+
 
     data = Array.new
     axis = Array.new

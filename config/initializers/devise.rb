@@ -228,7 +228,7 @@ Devise.setup do |config|
 # Inside the configuration block
 
 # For Google Apps
-  config.omniauth :google_apps, :store => OpenID::Store::Filesystem.new('/tmp'), :domain => 'kefsensei.com'
+  config.omniauth :google_apps, :store => OpenID::Store::Filesystem.new('/tmp'), :domain => 'moove-it.com'
 
 # For standard Google
   config.omniauth :open_id, :store => OpenID::Store::Filesystem.new('/tmp'), :name => 'google', :identifier => 'https://www.google.com/accounts/o8/id', :require => 'omniauth-openid'
