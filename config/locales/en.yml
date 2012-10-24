@@ -2,20 +2,103 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  date:
+              January: "January"
+              February: "February"
+              March: "March"
+              April: "April"
+              May: "May"
+              June: "June"
+              July: "July"
+              August: "August"
+              September: "September"
+              October: "October"
+              November: "November"
+              December: "December"
+              Monday: "Monday"
+              Tuesday: "Tuesday"
+              Wednesday: "Wednesday"
+              Thursday: "Thursday"
+              Friday: "Viernes"
+              Saturday: "Saturday"
+              Sunday: "Domingo"
+
+  home:
+            home: "Home"
+            singin: "Sing In"
+            admin: "Admin"
+            My_Projects: "My Projects"
+            Sign_out: "Sign out"
+            Customers: "Customers"
+            language: "Language"
+            Spanish: "Español"
+            English: "English"
+
+  buttons:
+            accept:    "Accept"
+            cancel:   "Cancel"
+            previous:  "Previous"
+            next:   "Next"
+            back:   "Back"
+            edit:    "Edit"
+            back:   "Back"
+            show:     "Show"
+            delete:    "Delete"
+            are_you_sure:  "Are you sure?"
+            save_changes:   "Save Changes"
+            or: "or"
+            create: "Create"
+            filter: "Filter"
+            comment: "Comment"
+
+  my_projects:
+            tabs:
+                        feedbacks: "Feedbacks"
+                        new_feedback: "New Feedback"
+                        show_feedback: "Show Feedback"
+                        edit_feedback: "Edit Feedback"
+                        data: "Data"
+                        new_milestone: "New Milestone"
+
+            feedbacks_tab:
+                        show_events_since: "Show events since:"
+
+            data_tab:
+                        project_description: "Project Description"
+                        mood_updates: "Mood Updates"
+                        milestones: "Milestones"
+
+            mood:
+                        update_mood: "Update your mood"
+                        mood_updated: "Mood updated!"
+
+
+
+  admin:
+            tabs:
+
+
+
+
+
   user_edit:
-              CHOOSE_YOUR_PROFILE_SETTINGS: "CHOOSE YOUR PROFILE SETTINGS"
-              Personal_data: "Personal Data"
-              Full_Name: "Full Name"
-              Email: "Email"
-              Skype_User: "Skype User"
-              Comments: "Comments"
-              Notifications: "Notifications"
-              My_picture: "My picture"
-              My_proyect: "My Proyects"
-              Default_Proyect: "Default Proyect"
-              Change_Password: "Change Password"
-              Current_Password: "Current Password"
-              New_Password: "New Password"
+              choose_your_profile_settings: "CHOOSE YOUR PROFILE SETTINGS"
+              personal_data: "Personal Data"
+              full_Name: "Full name"
+              email: "Email"
+              load_openid: "Load OpenID from Gmail's session"
+              skype_user: "Skype user"
+              notifications: "Notifications"
+              feedbacks: "Feedbacks"
+              comments: "Comments"
+              my_picture: "My Picture"
+              my_projects: "My Projects"
+              default_project: "Default project"
+              change_password: "Change Password"
+              current_password: "Current password"
+              new_Password: "New password"
+              confirm_password: "Confirm new password"
+              save_changes: "Save Changes"
   user:
 
             continue: "Continue"
@@ -66,7 +149,7 @@ en:
   feedback:
             feedbacks:  "Feedback"
             new_feedback: "New Feedback"
-            show_feedbackshow_feedback:   "Show bbbbbFeedback"
+            show_feedbackshow_feedback:   "Show Feedback"
             editing_feedback:   "Editing feedback"
             cannot_save_feedback:  "Cannot save Project:"
             moove_it_employee: "Moove-IT employee"
@@ -76,6 +159,13 @@ en:
             no_comments: "No comments"
             list_comments:  "List of Comments"
             feedback_subject: "Subject"
+            feedback_type: "Type"
+            feedback_content: "Content"
+            feedback_visivility: "Visibility"
+            Moove_IT_employee: "Moove-IT Employee"
+            create: "Create"
+            create_by: "Create by"
+            date_on: "on"
   form:
             add_form:  "Add form"
 
@@ -90,36 +180,17 @@ en:
             forms:  "Forms"
             evolution_of_general_mood: "Evolution of the general mood"
             Status_of_Projects: "Status of Projects"
-  home:
-            home: "Home"
-            singin: "Sing In"
-            admin: "Admin"
-            My_Projects: "My Projects"
-            Sign_out: "Sign out"
-            Customers: "Customers"
-            language: "Language"
-            Spanish: "Español"
-            English: "English"
-
-            accept:    "Accept"
-            cancel:   "Cancel"
-            previous:  "Previous"
-            next:   "Next"
-            back:   "Back"
-            edit:    "Edit"
-            back:   "Back"
-            show:     "Show"
-            delete:    "Delete"
-            are_you_sure:  "Are you sure?"
-            save_changes:   "Save Changes"
-            or: "or"
 
 
   milestone:
-            data:  "Data"
             milestone:  "Milestone"
             milestones:   "Milestones"
             new_milestone:  "New Milestone"
+            missing: "Missing"
+            day_and: "day and"
+            hours_to_end: "hours to end"
+            Next_milestone: "Next milestone"
+
 
   proyect:
             list_projects:  "List of Projects"

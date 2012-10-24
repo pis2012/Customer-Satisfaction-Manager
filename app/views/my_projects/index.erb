@@ -33,7 +33,7 @@
 
           <div id="msj-face-changed-container">
             <div id="msj-face-changed" class="label label-info">
-               Mood changed!
+              <%= t('my_projects.mood.mood_updated')%>
             </div>
           </div>
 
@@ -74,11 +74,11 @@
 
           <ul id="face-list">
             <% mood = @view[:project].moods.order(:created_at).last.status %>
-            <li <% if mood == 1 %> class="active" <% end %>><a href="#change-mood1" class="change-mood1-link" data-url="<%= change_mood_path('1') %>" rel="tooltip" title="Change mood"><img alt="1" src="/assets/faces/small/1.png" class="face-mood img-rounded" id="miniMood1"/></a></li>
-            <li <% if mood == 3 %> class="active" <% end %>><a href="#change-mood3" class="change-mood3-link" data-url="<%= change_mood_path('3') %>" rel="tooltip" title="Change mood"><img alt="3" src="/assets/faces/small/3.png" class="face-mood img-rounded" id="miniMood3"/></a></li>
-            <li <% if mood == 5 %> class="active" <% end %>><a href="#change-mood5" class="change-mood5-link" data-url="<%= change_mood_path('5') %>" rel="tooltip" title="Change mood"><img alt="5" src="/assets/faces/small/5.png" class="face-mood img-rounded" id="miniMood5"/></a></li>
-            <li <% if mood == 7 %> class="active" <% end %>><a href="#change-mood7" class="change-mood7-link" data-url="<%= change_mood_path('7') %>" rel="tooltip" title="Change mood"><img alt="7" src="/assets/faces/small/7.png" class="face-mood img-rounded" id="miniMood7"/></a></li>
-            <li <% if mood == 9 %> class="active" <% end %>><a href="#change-mood9" class="change-mood9-link" data-url="<%= change_mood_path('9') %>" rel="tooltip" title="Change mood"><img alt="9" src="/assets/faces/small/9.png" class="face-mood img-rounded" id="miniMood9"/></a></li>
+            <li <% if mood == 1 %> class="active" <% end %>><a href="#change-mood1" class="change-mood1-link" data-url="<%= change_mood_path('1') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="1" src="/assets/faces/small/1.png" class="face-mood img-rounded" id="miniMood1"/></a></li>
+            <li <% if mood == 3 %> class="active" <% end %>><a href="#change-mood3" class="change-mood3-link" data-url="<%= change_mood_path('3') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="3" src="/assets/faces/small/3.png" class="face-mood img-rounded" id="miniMood3"/></a></li>
+            <li <% if mood == 5 %> class="active" <% end %>><a href="#change-mood5" class="change-mood5-link" data-url="<%= change_mood_path('5') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="5" src="/assets/faces/small/5.png" class="face-mood img-rounded" id="miniMood5"/></a></li>
+            <li <% if mood == 7 %> class="active" <% end %>><a href="#change-mood7" class="change-mood7-link" data-url="<%= change_mood_path('7') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="7" src="/assets/faces/small/7.png" class="face-mood img-rounded" id="miniMood7"/></a></li>
+            <li <% if mood == 9 %> class="active" <% end %>><a href="#change-mood9" class="change-mood9-link" data-url="<%= change_mood_path('9') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="9" src="/assets/faces/small/9.png" class="face-mood img-rounded" id="miniMood9"/></a></li>
           </ul>
         </div>
 
@@ -89,30 +89,30 @@
       <div id="global_nav">
         <ul id="myTab">
           <li class="feedbacks active">
-            <a href="#feedbacks" class="feedbacks-link" data-url="<%= project_feedbacks_path(@project) %>"> Feedbacks</a>
+            <a href="#feedbacks" class="feedbacks-link" data-url="<%= project_feedbacks_path(@project) %>"> <%= t('my_projects.tabs.feedbacks')%></a>
             <ul>
               <li class="feedbacks" hidden="true">
-                <a href="#feedbacks"> Feedbacks</a>
+                <a href="#feedbacks"> <%= I18n.t ('my_projects.tabs.feedbacks')%></a>
               </li>
               <li class="new-feedback" hidden="true">
-                <a href="#new-feedback"> <%t(:show_feedback)%></a>
+                <a href="#new-feedback"> <% t('my_projects.tabs.new_feedback') %></a>
               </li>
               <li class="show-feedback" hidden="true">
-                <a href="#show-feedback"> <%t(:show_feedback)%></a>
+                <a href="#show-feedback"> <% t('my_projects.tabs.show_feedback') %></a>
               </li>
               <li class="edit-feedback" hidden="true">
-                <a href="#edit-feedback"> Edit Feedback</a>
+                <a href="#edit-feedback"> <%= t('my_projects.tabs.edit_feedback') %></a>
               </li>
             </ul>
           </li>
           <li class="data">
-            <a href="#project-data" class="data-link" data-url="<%= project_data_path(@project) %>"> Data</a>
+            <a href="#project-data" class="data-link" data-url="<%= project_data_path(@project) %>"> <%= t('my_projects.tabs.data') %></a>
             <ul>
               <li class="data" hidden="true">
-                <a href="#project-data"> Data</a>
+                <a href="#project-data"><%= t('my_projects.tabs.data') %></a>
               </li>
               <li class="new-milestone" hidden="true">
-                <a href="#new-milestone"> New Milestone</a>
+                <a href="#new-milestone"><%= t('my_projects.tabs.new_milestone') %> </a>
               </li>
             </ul>
 
@@ -140,11 +140,11 @@
 
             <!-- page header -->
             <div class="page_header">
-              <h1>Feedbacks</h1>
+              <h1><%= t('my_projects.tabs.feedbacks') %></h1>
 
               <div class="add_element">
                 <a href="#new-feedback" class="btn btn-link new-feedback-link" data-url="<%= new_feedback_path(@project) %>">
-                  <i class="icon-plus icon-white"> </i> New Feedback
+                  <i class="icon-plus icon-white"> </i> <%= t('my_projects.tabs.new_feedback')%>
                 </a>
 
               </div>
@@ -157,7 +157,7 @@
               <%= form_tag(feedbacks_date_filter_path, :remote => true) do %>
                   <%= hidden_field_tag(:project_id,@project.id) %>
                   <div class="feedbacks_filter">
-                    <h5 class="feedbacks_filer_element">Show events since:</h5>
+                    <h5 class="feedbacks_filer_element"><%= t('my_projects.feedbacks_tab.show_events_since')%></h5>
 
                     <div class="input-append date feedbacks_filer_element" id="datepicker" data-date="<%= Time.now.strftime("%d/%m/%Y") %>" data-date-format="dd/mm/yyyy">
                       <%= text_field_tag(:date,Time.now.strftime("%d/%m/%Y"),:class => "span2", :size => 16) %>
@@ -165,7 +165,7 @@
                     </div>
 
                     &nbsp;
-                    <%= button_tag("Filter",:class => "btn") %>
+                    <%= button_tag( t('buttons.filter'), :class => "btn") %>
                   </div>
               <% end %>
               <hr class="hr_feedbacks_table">
@@ -182,12 +182,12 @@
 
             <!-- page header -->
             <div class="page_header">
-              <h1>Data</h1>
+              <h1> <%= t('my_projects.tabs.data') %></h1>
 
               <div class="add_element">
 
                 <button class="btn btn-link new-milestone-link" data-url="<%= new_milestone_path(@project) %>">
-                  <i class="icon-plus icon-white"> </i> New Milestone
+                  <i class="icon-plus icon-white"> </i> <%= t('my_projects.tabs.new_milestone')%>
                 </button>
 
               </div>
@@ -209,14 +209,16 @@
           <div class="tab-pane fade" id="new-feedback">
             <!-- page header -->
             <div class="page_header">
-              <h1>New Feedback</h1>
+              <h1><%= t('my_projects.tabs.new_feedback') %></h1>
             </div>
             <!--// page header -->
+
             <!-- page contents -->
             <div class="page_content" id="new-feedback-content">
 
             </div>
             <!--// page contents -->
+
           </div>
           <!--// page new feedback -->
 
@@ -224,14 +226,16 @@
           <div class="tab-pane fade" id="show-feedback">
             <!-- page header -->
             <div class="page_header">
-              <h1><%t(:show_feedback)%></h1>
+              <h1><%= t('my_projects.tabs.show_feedback') %></h1>
             </div>
             <!--// page header -->
+
             <!-- page contents -->
             <div class="page_content" id="show-feedback-content">
 
             </div>
             <!--// page contents -->
+
           </div>
           <!--// page show feedback -->
 
@@ -239,14 +243,16 @@
           <div class="tab-pane fade" id="edit-feedback">
             <!-- page header -->
             <div class="page_header">
-              <h1>Edit Feedback</h1>
+              <h1><% t('my_projects.tabs.edit_feedback') %></h1>
             </div>
             <!--// page header -->
+
             <!-- page contents -->
             <div class="page_content" id="edit-feedback-content">
 
             </div>
             <!--// page contents -->
+
           </div>
           <!--// page edit feedback -->
 
@@ -254,14 +260,16 @@
           <div class="tab-pane fade" id="new-milestone">
             <!-- page header -->
             <div class="page_header">
-              <h1>New Milestone</h1>
+              <h1><%= t('my_projects.tabs.new_milestone') %></h1>
             </div>
             <!--// page header -->
+
             <!-- page contents -->
             <div class="page_content" id="new-milestone-content">
 
             </div>
             <!--// page contents -->
+
           </div>
           <!--// page new feedback -->
 
