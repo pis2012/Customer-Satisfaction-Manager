@@ -10,6 +10,32 @@ class Form < ActiveRecord::Base
   validates :email, :name, :password, :user_id, :presence => true
 
 
+  # Returns the clients that answered the form and the total responses
+  def get_clients
+    # Logs in
+    session = GoogleDrive.login(self.email, self.password)
+    # First worksheet
+    ws = session.spreadsheet_by_title(self.name).worksheets[0]
+
+    if ws != nil
+      # Get the column number of the client(company) name
+      colNameClient = 1
+      for col in 2..ws.num_cols do
+        if ws[1,col].include? "name of your company"
+          colNameClient = col
+          break
+        end
+      end
+
+
+
+    end
+
+
+  end
+
+
+
   # Returns all the graphics with all the data (answers) of the form\
   # that the client with client_id answered
   def get_data client_id
