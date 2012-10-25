@@ -8,11 +8,22 @@
           <%= @view[:project].name %>
         </a>
         <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
-          <% Project.where(:client_id => @view[:project].client_id).order(:name).each do |proj| %>
-              <% if proj.id != @view[:project].id %>
-                  <li>
-                    <%= link_to proj.name, {:controller => "projects", :action => "change_profile_project", :id => proj.id} %>
-                  </li>
+
+          <% if current_user.client? %>
+              <% Project.where(:client_id => @view[:project].client_id).order(:name).each do |proj| %>
+                  <% if proj.id != @view[:project].id %>
+                      <li>
+                        <%= link_to proj.name, {:controller => "projects", :action => "change_profile_project", :id => proj.id} %>
+                      </li>
+                  <% end %>
+              <% end %>
+          <% else %>
+              <% Project.all.each do |proj| %>
+                  <% if proj.id != @view[:project].id %>
+                      <li>
+                        <%= link_to proj.name, {:controller => "projects", :action => "change_profile_project", :id => proj.id} %>
+                      </li>
+                  <% end %>
               <% end %>
           <% end %>
         </ul>
@@ -72,6 +83,8 @@
             </div>
           </div>
 
+          <% if current_user.client? %>
+
           <ul id="face-list">
             <% mood = @view[:project].moods.order(:created_at).last.status %>
             <li <% if mood == 1 %> class="active" <% end %>><a href="#change-mood1" class="change-mood1-link" data-url="<%= change_mood_path('1') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="1" src="/assets/faces/small/1.png" class="face-mood img-rounded" id="miniMood1"/></a></li>
@@ -80,6 +93,9 @@
             <li <% if mood == 7 %> class="active" <% end %>><a href="#change-mood7" class="change-mood7-link" data-url="<%= change_mood_path('7') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="7" src="/assets/faces/small/7.png" class="face-mood img-rounded" id="miniMood7"/></a></li>
             <li <% if mood == 9 %> class="active" <% end %>><a href="#change-mood9" class="change-mood9-link" data-url="<%= change_mood_path('9') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="9" src="/assets/faces/small/9.png" class="face-mood img-rounded" id="miniMood9"/></a></li>
           </ul>
+
+          <% end %>
+
         </div>
 
         <p></p>
@@ -142,12 +158,15 @@
             <div class="page_header">
               <h1><%= t('my_projects.tabs.feedbacks') %></h1>
 
+
+              <% if !current_user.mooveit? %>
               <div class="add_element">
                 <a href="#new-feedback" class="btn btn-link new-feedback-link" data-url="<%= new_feedback_path(@project) %>">
                   <i class="icon-plus icon-white"> </i> <%= t('my_projects.tabs.new_feedback')%>
                 </a>
-
               </div>
+              <% end %>
+
             </div>
             <!--// page header -->
 
@@ -186,10 +205,11 @@
 
               <div class="add_element">
 
+                <% if current_user.admin? %>
                 <button class="btn btn-link new-milestone-link" data-url="<%= new_milestone_path(@project) %>">
                   <i class="icon-plus icon-white"> </i> <%= t('my_projects.tabs.new_milestone')%>
                 </button>
-
+                <% end %>
               </div>
 
             </div>

@@ -117,6 +117,22 @@ $('.new-milestone-link').live('click', function () {
 
 $(".show-feedback-link").live('click', function () {
     updatePanel($(this).data('url'), 'show-feedback-content', 'show-feedback');
+
+
+    $("#feedback_content").cleditor({
+        controls:     // controls to add to the toolbar
+        "bold italic underline | font size " +
+        " highlight | bullets numbering | " +
+        " alignleft center alignright justify | undo redo | " +
+        " image link unlink | source",
+
+        fonts:        // font names in the font popup
+        "Arial,Arial Black,Comic Sans MS,Courier New,Narrow,Garamond," +
+        "Georgia,Impact,Sans Serif,Serif,Tahoma,Trebuchet MS,Verdana",
+        sizes:        // sizes in the font size popup
+        "1,2,3,4,5,6,7"
+        });
+
     return false;
 });
 

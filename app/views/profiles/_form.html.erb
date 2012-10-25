@@ -149,7 +149,15 @@
                 <%= t('user_edit.default_project')  %>
                 </br>
                 <div class="input-prepend">
+                <% if current_user.client? %>
+
                   <%= f.select(:project_id, Project.where(:client_id => @profile.user.client_id ).map {|project| [project.name, project.id]},:prompt => true) %>
+
+                <% else %>
+
+                  <%= f.select(:project_id, Project.all.map {|project| [project.name, project.id]},:prompt => true) %>
+
+                <% end %>
                 </div>
               </div>
 
