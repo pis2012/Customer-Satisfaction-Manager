@@ -1,12 +1,10 @@
-<div class="feedback">
-  <input class="TextField" id="feedback_project_id" name="project_id" size="30" type="hidden" value="<%= params[:Projectid] %>"/>
+<div class="feedback_show">
 
   <h4 class="feedback_subject"><%= strip_tags(@feedback.subject) %></h4>
 
   <h6 class="feedback_date"><%= t('feedback.create_by')+ " " + @feedback.user.full_name + " "+t('feedback.date_on')+"   " + @feedback.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h6>
 
   <div class="feedback_content"><%= @feedback.content %></div>
-
   <hr class="feedback_division">
 
   <table class="comments_table">
@@ -22,9 +20,10 @@
             <% end %>
           </td>
 
+
           <td class="comment_info">
-            <p class="comment_content"><%= comment.content %></p>
-            <h6 class="comment_author"><%= t('feedback.create_by')+" " + comment.user.full_name + " "+t('feedback.date_on')+"   " + t("date."+"#{comment.created_at.strftime("%A")}")+ comment.created_at.strftime(" %d ")+ t("date."+"#{comment.created_at.strftime("%B")}") +comment.created_at.strftime(" %Y") %></h6>
+              <textarea readonly class="comment_content" rows="3"><%= comment.content %></textarea>
+              <h6 class="comment_author"><%= t('feedback.create_by')+" " + comment.user.full_name + " "+t('feedback.date_on')+"   " + t("date."+"#{comment.created_at.strftime("%A")}")+ comment.created_at.strftime(" %d ")+ t("date."+"#{comment.created_at.strftime("%B")}") +comment.created_at.strftime(" %Y") %></h6>
           </td>
 
         </tr>
@@ -58,5 +57,3 @@
 
   </table>
 </div>
-
-
