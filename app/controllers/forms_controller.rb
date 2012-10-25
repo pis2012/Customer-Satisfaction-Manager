@@ -3,6 +3,7 @@ class FormsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
+    @forms = Form.all
 
 
   end
@@ -34,10 +35,6 @@ class FormsController < ApplicationController
   def show
     form = Form.find(params[:id])
     @graphs = form.get_data(params[:client_id])
-
-
-
-
 
 
 

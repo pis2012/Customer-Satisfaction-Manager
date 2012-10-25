@@ -1,0 +1,9 @@
+<div class='forms_index'>
+  <table class='froms_table'>
+    <% @forms.each do |form| %>
+        <tr id='form_row_<%= form.id %>'>
+          <% link_to form.name, form %>
+        </tr>
+    <% end %>
+  </table>
+</div>
