@@ -31,6 +31,7 @@ en:
                   - :year
                   - :month
                   - :day
+              use_short_month: true
 
   home:
             home: "Home"

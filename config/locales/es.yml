@@ -34,7 +34,6 @@ es:
                 - :month
                 - :year
 
-
   home:
             home: "Home"
             singin: "Iniciar Sesion"
