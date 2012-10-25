@@ -203,14 +203,17 @@
             <div class="page_header">
               <h1><%= t('my_projects.tabs.data') %></h1>
 
-              <div class="add_element">
 
-                <% if current_user.admin? %>
-                <button class="btn btn-link new-milestone-link" data-url="<%= new_milestone_path(@project) %>">
+              <% if current_user.admin? %>
+              <div class="add_element">
+                <a href="#new-milestone" class="btn btn-link new-milestone-link" data-url="<%= new_milestone_path(@project) %>">
                   <i class="icon-plus icon-white"> </i> <%= t('my_projects.tabs.new_milestone')%>
-                </button>
-                <% end %>
+                </a>
               </div>
+                <% end %>
+                
+
+              
 
             </div>
             <!--// page header -->

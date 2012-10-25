@@ -24,6 +24,17 @@ es:
             Saturday: "Sábado"
             Sunday: "Domingo"
 
+
+            formats:
+                  default: ! '%d/%m/%Y'
+                  long: ! '%d de %B de %Y'
+                  short: ! '%d de %b'
+            order:
+                - :day
+                - :month
+                - :year
+
+
   home:
             home: "Home"
             singin: "Iniciar Sesion"

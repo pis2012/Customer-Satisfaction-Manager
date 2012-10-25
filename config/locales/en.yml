@@ -23,6 +23,15 @@ en:
               Saturday: "Saturday"
               Sunday: "Domingo"
 
+              formats:
+                    default: ! '%Y-%m-%d'
+                    long: ! '%B %d, %Y'
+                    short: ! '%b %d'
+              order:
+                  - :year
+                  - :month
+                  - :day
+
   home:
             home: "Home"
             singin: "Sing In"
