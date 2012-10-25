@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require cleditor/cleditor
+//= require cleditor/jquery.cleditor.advancedtable
 //= require twitter/bootstrap
 //= require bootstrap-datepicker
 //= require bootstrap
