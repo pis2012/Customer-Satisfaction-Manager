@@ -43,7 +43,7 @@ class FormsController < ApplicationController
 
   def show_client
     form = Form.find(params[:id])
-    @graphs = form.get_data(params[:client_id])
+    @graphs = form.get_data(params[:client_name])
 
   end
 

@@ -17,42 +17,61 @@ class Form < ActiveRecord::Base
     # First worksheet
     ws = session.spreadsheet_by_title(self.name).worksheets[0]
 
+    clients = []
     if ws != nil
-      # Get the column number of the client(company) name
-      colNameClient = 1
+      # Get the column number of the users email
+      email_user_column = 1
       for col in 2..ws.num_cols do
-        if ws[1,col].include? "name of your company"
-          colNameClient = col
+        if ws[1,col].include? "email"
+          email_user_column = col
           break
         end
       end
 
+      if email_user_column > 1
+        for row in 2..ws.nums_row
+          user_email = ws[row, email_user_column]
+          user = User.find_by_email(user_email)
+          if user != nil
+            client_name = user.client.name
+            if clients.collect { |c| c.name == client_name } == nil
+              clients += [{:name => client_name, :cant_resp => 0, :users => nil}]
+            end
 
-
+            user_name = user.full_name
+            clients.map! do |cli|
+              if cli.name == client_name
+                cli.cant_resp += 1
+                cli.users = cli.users == nil ? user_name : ", " + user_name
+                break
+              end
+            end
+          end
+        end
+      end
     end
-
-
+    clients.sort_by! {|cli| cli.name}
   end
 
 
 
   # Returns all the graphics with all the data (answers) of the form\
-  # that the client with client_id answered
-  def get_data client_id
+  # that the client with client_name answered
+  def get_data client_name
     graphs = []
-    client_name = Client.find(client_id).name
-
+    users_client = User.find_all_by_client_id(Client.find_by_name(client_name).id)
     # Logs in
     session = GoogleDrive.login(self.email, self.password)
     # First worksheet
     ws = session.spreadsheet_by_title(self.name).worksheets[0]
 
     if ws != nil
-      # Get the column number of the client(company) name
-      colNameClient = 1
+
+      # Get the column number of the users email
+      col_email_user = 1
       for col in 2..ws.num_cols do
-        if ws[1,col].include? "name of your company"
-          colNameClient = col
+        if ws[1,col].include? "email"
+          col_email_user = col
           break
         end
       end
@@ -79,7 +98,8 @@ class Form < ActiveRecord::Base
           count = 0
           for row in 2..ws.nums_rows do
             # The answer is from the client
-            if ws[row,colNameClient].downcase == client_name.downcase
+            user_email = ws[row,col_email_user]
+            if users_client.colect {|u| u.email == user_email} != nil
               pos = 0
               axis_answers.each do |answ|
                 if answ == ws[row,col]
@@ -121,22 +141,13 @@ class Form < ActiveRecord::Base
               graph = Gchart.bar(:title => question, :orientation => 'horizontal', :bar_colors => 'FF0000', :legend => legend,
                                  :data => data, :axis_with_labels => ['x','y'], :axis_labels => [axis_values,axis_answers])
             end
-
-            # Sort by number at start of the question
-            pos = question[0].to_i
-            if (pos.class == Fixnum)
-              graphs[pos] = graph
-            else
-              graphs += [graph]
-            end
+            graphs += [graph]
           end
         end
       end
     end
-    return graphs
+    graphs.sort_by! {|g| g.title}
   end
-
-
 
 
 end
