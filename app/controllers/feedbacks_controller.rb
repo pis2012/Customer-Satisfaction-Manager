@@ -91,11 +91,10 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       if @feedback.update_attributes(params[:feedback])
-        format.html { redirect_to my_projects_path }
-        format.json { render json: @feedback, status: :created, location: @feedback }
+        @feedbacks = Feedback.find_all_by_project_id(params[:project_id])
+        format.js { render action: "index" }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @feedback.errors, status: :unprocessable_entity }
+        format.js { }
       end
     end
   end

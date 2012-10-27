@@ -108,7 +108,7 @@
             <a href="#feedbacks" class="feedbacks-link" data-url="<%= project_feedbacks_path(@project) %>"> <%= t('my_projects.tabs.feedbacks')%></a>
             <ul>
               <li class="feedbacks" hidden="true">
-                <a href="#feedbacks"> <%= I18n.t ('my_projects.tabs.feedbacks')%></a>
+                <a href="#feedbacks" class="feedbacks-link" data-url="<%= project_feedbacks_path(@project) %>"> <%= t ('my_projects.tabs.feedbacks')%></a>
               </li>
               <li class="new-feedback" hidden="true">
                 <a href="#new-feedback"> <% t('my_projects.tabs.new_feedback') %></a>
@@ -159,7 +159,7 @@
               <h1><%= t('my_projects.tabs.feedbacks') %></h1>
 
 
-              <% if !current_user.mooveit? %>
+              <% unless current_user.mooveit? %>
               <div class="add_element">
                 <a href="#new-feedback" class="btn btn-link new-feedback-link" data-url="<%= new_feedback_path(@project) %>">
                   <i class="icon-plus icon-white"> </i> <%= t('my_projects.tabs.new_feedback')%>
@@ -173,12 +173,13 @@
 
             <!-- page contents -->
             <div class="page_content" id="feedbacks-content">
+
               <%= form_tag(feedbacks_date_filter_path, :remote => true) do %>
                   <%= hidden_field_tag(:project_id,@project.id) %>
                   <div class="feedbacks_filter">
-                    <h5 class="feedbacks_filer_element"><%= t('my_projects.feedbacks_tab.show_events_since')%></h5>
+                    <h5 class="feedbacks_filter_element"><%= t('my_projects.feedbacks_tab.show_events_since')%></h5>
 
-                    <div class="input-append date feedbacks_filer_element" id="datepicker" data-date="<%= Time.now.strftime("%d/%m/%Y") %>" data-date-format="dd/mm/yyyy">
+                    <div class="input-append date feedbacks_filter_element" id="datepicker" data-date="<%= Time.now.strftime("%d/%m/%Y") %>" data-date-format="dd/mm/yyyy">
                       <%= text_field_tag(:date,Time.now.strftime("%d/%m/%Y"),:class => "span2", :size => 16) %>
                       <span class="add-on"><i class="icon-calendar"></i></span>
                     </div>
@@ -188,8 +189,10 @@
                   </div>
               <% end %>
               <hr class="hr_feedbacks_table">
-              <%= render template: "feedbacks/index" %>
 
+              <div class="feedbacks_table_wrapper">
+              <%= render template: "feedbacks/index" %>
+              </div>
             </div>
             <!--// page contents -->
 
@@ -266,7 +269,7 @@
           <div class="tab-pane fade" id="edit-feedback">
             <!-- page header -->
             <div class="page_header">
-              <h1><% t('my_projects.tabs.edit_feedback') %></h1>
+              <h1><%= t('my_projects.tabs.edit_feedback') %></h1>
             </div>
             <!--// page header -->
 

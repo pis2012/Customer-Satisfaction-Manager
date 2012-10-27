@@ -11,39 +11,39 @@
         </div>
     <% end %>
 
-      <input  id="feedback_project_id" name="project_id" size="30" type="hidden" value="<%= @feedback.project_id %>"/>
+    <input id="feedback_project_id" name="project_id" size="30" type="hidden" value="<%= @feedback.project_id %>"/>
 
-      <div class="form-horizontal">
+    <div class="form-horizontal">
       <div class="feedback_type_field control-group">
-        <%= f.label :feedback_subject,t('feedback.feedback_type'), :class => "feedback_type_label control-label"%>
+        <%= f.label :feedback_subject, t('feedback.feedback_type'), :class => "feedback_type_label control-label" %>
         <div class="feedback_type_select_control controls">
-        <%= f.select :feedback_type_id, FeedbackType.all.map { |fe| [fe.name, fe.id] }, {}, {:class => "feedback_type_select"} %>
+          <%= f.select :feedback_type_id, FeedbackType.all.map { |fe| [fe.name, fe.id] }, {}, {:class => "feedback_type_select"} %>
         </div>
       </div>
 
       <div class="feedback_subject_field control-group">
         <%= f.label :subject, t('feedback.feedback_subject'), :class => "feedback_subject_label control-label" %>
         <div class="feedback_subject_text_control controls">
-        <%= f.text_field :subject, :class=> "feedback_subject_text ", :placeholder => "Type something…"  %>
+          <%= f.text_field :subject, :class => "feedback_subject_text ", :placeholder => "Type something…" %>
         </div>
       </div>
 
-      </div>
+    </div>
 
-      <div class="feedback_content_field">
-        <%= f.label :content,t('feedback.feedback_content'), :class => "feedback_content_text" %>
-        <%= f.text_area :content, :class => "feedback_content_text" %>
-      </div>
+    <div class="feedback_content_field">
+      <%= f.label :content, t('feedback.feedback_content'), :class => "feedback_content_label" %>
+      <%= f.text_area :content, :class => "feedback_content_text" %>
+    </div>
 
-      <div class="feedback_visibility_field form-inline">
-        <%= f.label :visibility,t('feedback.feedback_visibility'), :class => "feedback_visibility_label" %> &nbsp&nbsp
-        <%= f.check_box :mooveit_visibility, :type => "checkbox" %><%= t('feedback.Moove_IT_employee')%> &nbsp&nbsp
-        <%= f.check_box :client_visibility, :type=>"checkbox" %><%= t('admin.clients')%>
-      </div>
-        <br>
-        <br>
-        <%= f.submit  t('buttons.create'), :class => "btn" %> &nbsp <%= t('buttons.or') %>
-        <button class="btn btn-link cancel-feedback-link" type="button" data-url="<%= project_feedbacks_path(:project_id => @feedback.project_id) %>"  >
-          <%= t('buttons.cancel')%>
-        </button>
+    <div class="feedback_visibility_field form-inline">
+      <%= f.label :visibility, t('feedback.feedback_visibility'), :class => "feedback_visibility_label" %> &nbsp&nbsp
+      <%= f.check_box :mooveit_visibility, :type => "checkbox" %><%= t('feedback.Moove_IT_employee') %> &nbsp&nbsp
+      <%= f.check_box :client_visibility, :type => "checkbox" %><%= t('admin.clients') %>
+    </div>
+    <br>
+    <br>
+    <%= f.submit t('buttons.create'), :class => "btn" %> &nbsp <%= t('buttons.or') %>
+    <button class="btn btn-link feedbacks-link" type="button" data-url="<%= project_feedbacks_path(:project_id => @feedback.project_id) %>">
+      <%= t('buttons.cancel') %>
+    </button>
 <% end %>

@@ -18,13 +18,10 @@ function activate(me) {
     $(me).addClass('active');
 }
 
-$('#datepicker').datepicker();
-
-function updatePanel(path, id_replace, tab) {
+function updatePanel(path, el_replace, tab) {
     $.get(path, function (response) {
-        $('#' + id_replace).html(response);
+        $(el_replace).html(response);
         $('#myTab  a[href=#' + tab + ']').tab('show');
-
         //document.title = response.pageTitle;
         //window.history.replaceState({"html":response,"pageTitle":response.pageTitle,"id_replace":id_replace,"tab":tab});
     }, 'html');
@@ -95,54 +92,45 @@ $('.change-mood9-link').live('click', function () {
     return false;
 });
 
-$('.feedbacks-link').live('click', function () {
-    updatePanel($(this).data('url'), 'feedbacks-table', 'feedbacks');
+$(document).on('click','.feedbacks-link', function () {
+    updatePanel($(this).data('url'), '.feedbacks_table_wrapper', 'feedbacks');
+    $('#edit-feedback-content').empty();
+    $('#new-feedback-content').empty();
     return false;
 });
+
+
 
 $('.data-link').live('click', function () {
-    updatePanel($(this).data('url'), 'data-content', 'project-data');
+    updatePanel($(this).data('url'), '#data-content', 'project-data');
     return false;
 });
 
-$('.new-feedback-link').live('click', function () {
-    updatePanel($(this).data('url'), 'new-feedback-content', 'new-feedback');
+$(document).on('click','.new-feedback-link', function () {
+    updatePanel($(this).data('url'), '#new-feedback-content', 'new-feedback');
     return false;
+});
+
+$(document).on('show','#myTab a[href=#new-feedback]', function (e) {
+    html_panel.panelInstance('feedback_content');
+});
+
+$(document).on('show','#myTab a[href=#edit-feedback]', function (e) {
+    html_panel.panelInstance('feedback_content');
+
 });
 
 $('.new-milestone-link').live('click', function () {
-    updatePanel($(this).data('url'), 'new-milestone-content', 'new-milestone');
+    updatePanel($(this).data('url'), '#new-milestone-content', 'new-milestone');
     return false;
 });
 
 $(".show-feedback-link").live('click', function () {
-    updatePanel($(this).data('url'), 'show-feedback-content', 'show-feedback');
-
-
-    $("#feedback_content").cleditor({
-        controls:     // controls to add to the toolbar
-        "bold italic underline | font size " +
-        " highlight | bullets numbering | " +
-        " alignleft center alignright justify | undo redo | " +
-        " image link unlink | source",
-
-        fonts:        // font names in the font popup
-        "Arial,Arial Black,Comic Sans MS,Courier New,Narrow,Garamond," +
-        "Georgia,Impact,Sans Serif,Serif,Tahoma,Trebuchet MS,Verdana",
-        sizes:        // sizes in the font size popup
-        "1,2,3,4,5,6,7"
-        });
-
+    updatePanel($(this).data('url'), '#show-feedback-content', 'show-feedback');
     return false;
 });
 
-$(".edit-feedback-link").live('click', function () {
-    updatePanel($(this).data('url'), 'edit-feedback-content', 'edit-feedback');
-    return false;
-});
-
-
-$(".cancel-feedback-link").live('click', function () {
-    updatePanel($(this).data('url'), 'feedbacks-content','feedbacks');
+$(document).on('click','.edit-feedback-link', function () {
+    updatePanel($(this).data('url'), '#edit-feedback-content', 'edit-feedback');
     return false;
 });

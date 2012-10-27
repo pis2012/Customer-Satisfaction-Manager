@@ -194,7 +194,7 @@
 
 /* ============== [ FEEDBACKS TAB INDEX ] ============== */
 
-.feedbacks_filer_element {
+.feedbacks_filter_element {
   display: inline;
 }
 
@@ -295,8 +295,10 @@
 
     .feedback_content_text{
       width: 100%;
-      resize: none;
+      height: 500px;
     }
+
+
 
   }
 
@@ -311,49 +313,6 @@
   margin-bottom: 0;
 
 }
-
-
-.Separador{
-
-  border-bottom: solid;
-  border-bottom-width:1px;
-  margin-top:5%;
-  position: relative;
-}
-
-.margin3{
-  margin-top: 3%;
-}
-
-.margin4{
-  margin-top: 4%;
-}
-
-
-.feedback_Label{
-  float: left;
-  margin-right:5%;
-  margin-top: 5px;
-  margin-left: 10px
-}
-
-#feedback_textarea {
-  width:90%;
-  height:200px;
-  border: 0.5px solid #000000;
-  resize: none;
-  margin-left: 5%;
-
-}
-#feedback_subjectText{
-  margin-left: 0%;
-}
-
-#feedback_subjectlabel{
-  margin-left: 15%;
-}
-
-// Fin Crear Feedback
 
 
 /* ============== [SHOW FEEDBACK] ============== */
