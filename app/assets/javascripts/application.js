@@ -17,6 +17,7 @@
 //= require twitter/bootstrap
 //= require bootstrap-datepicker
 //= require bootstrap
+//= require elrte
 
 
 $(document).ready(function(){

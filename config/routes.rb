@@ -1,5 +1,7 @@
 CSM::Application.routes.draw do
 
+  Elrte.routes(self)
+
   resources :profiles, :only => [:update,:edit]
 
   resources :comments
