@@ -1,0 +1,13 @@
+<div class='forms_index'>
+  <table class='forms_table'>
+    <% @forms_data.each do |form| %>
+        <tr id='form_row_<%= form[:id] %>'>
+          <h4>
+            <a href="#show-form" class="show-form-link" data-url="<%= forms_show_path(form[:id]) %>"><%= form[:name] %></a>
+          </h4>
+          <br/>
+          <%= t('form.total_answers') + form[:total_answers].to_s %>
+        </tr>
+    <% end %>
+  </table>
+</div>

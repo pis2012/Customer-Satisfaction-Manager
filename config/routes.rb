@@ -30,12 +30,16 @@ CSM::Application.routes.draw do
   #match "/my_projects/change_mood" , to: "projects#change_mood"
 
   match "/admin" => "admin#index", :as => :admin
+  match "/admin/reports" => "admin#show_reports", :as => :admin_reports
+  match "/admin/forms" => "forms#index", :as => :admin_forms
 
 
   resources :projects, :constraints => lambda { |request| request.env['warden'].user.admin? }
 
-  resources :forms
-
+  resources :forms, :only => [:index, :new]
+  match "/forms/show_data/:form_id" => "forms#show_data", :as => :forms_show_data
+  match "/forms/show_full_data/:form_id" => "forms#show_full_data", :as => :forms_show_full_data
+  match "/forms/show/:form_id" => "forms#show", :as => :forms_show
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

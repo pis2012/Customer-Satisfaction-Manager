@@ -1,0 +1,16 @@
+
+<div class="form">
+
+  <h4><%= @form_data[:name] %></h4>
+  <br/>
+  <%= t('form.clients') %>
+
+  <%= select_tag "form_client", options_for_select(@form_data[:clients].map {|c| [c,c]}), :prompt => t('form.select'), "data-url" => forms_show_data_path(@form) %>
+
+  <div id="form_client_data" > </div>
+
+  <%= button_tag t('form.full_data'), :id => "btn_full_data", "data-url" => forms_show_full_data_path(@form), :hidden => true %>
+
+  <div id="form_client_full_data"> </div>
+
+</div>
