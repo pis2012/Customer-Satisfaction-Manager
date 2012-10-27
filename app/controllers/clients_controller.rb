@@ -5,6 +5,12 @@ class ClientsController < ApplicationController
   # GET /clients
   def index
     @clients = Client.all
+    respond_to do |format|
+      if request.xhr?
+        format.html # index.html.erb
+      end
+      format.json { render json: @clients }
+    end
   end
 
   # GET /clients/1

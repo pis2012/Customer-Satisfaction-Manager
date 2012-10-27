@@ -31,7 +31,7 @@
       <div class="margin4">
         <%= f.submit t('buttons.create'), :class => "btn" %> <%= " " + t('buttons.or') %>
         <button class="btn btn-link cancel-milestone-link" type="button" data-url="<%= project_data_path(@milestone.project) %>"  >
-          Cancel
+          <%= t('buttons.cancel') %>
         </button>
       </div>
 <% end %>
