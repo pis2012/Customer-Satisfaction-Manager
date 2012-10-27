@@ -2,7 +2,7 @@
 
   <h4 class="feedback_subject"><%= strip_tags(@feedback.subject) %></h4>
 
-  <h6 class="feedback_date"><%= t('feedback.create_by')+ " " + @feedback.user.full_name + " "+t('feedback.date_on')+"   " + @feedback.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h6>
+  <h6 class="feedback_date"><%= t('feedback.create_by')+ " " + @feedback.user.full_name + " "+t('feedback.date_on')+"   "+t("date."+"#{@feedback.created_at.strftime("%A")}")+ @feedback.created_at.strftime(" %d ")+  t("date."+"#{@feedback.created_at.strftime("%B")}") +@feedback.created_at.strftime(" %Y")  + @feedback.created_at.strftime(" ,  %H:%M") %></h6>
 
   <div class="feedback_content"><%= @feedback.content.html_safe %></div>
   <hr class="feedback_division">

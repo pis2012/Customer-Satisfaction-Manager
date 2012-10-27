@@ -134,3 +134,4 @@ $(document).on('click','.edit-feedback-link', function () {
     updatePanel($(this).data('url'), '#edit-feedback-content', 'edit-feedback');
     return false;
 });
+

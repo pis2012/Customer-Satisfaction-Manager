@@ -20,7 +20,7 @@
           <% end %>
 
 
-          <h6 class="feedback_date"><%= t('feedback.uploaded_by')+" " + feedback.user.full_name + " "+t('feedback.date_on')+"   "+t("date."+"#{feedback.created_at.strftime("%A")}")+ feedback.created_at.strftime(" %d ")+  t("date."+"#{feedback.created_at.strftime("%B")}") +feedback.created_at.strftime(" %Y") %></h6>
+          <h6 class="feedback_date"><%= t('feedback.uploaded_by')+" " + feedback.user.full_name + " "+t('feedback.date_on')+"   "+t("date."+"#{feedback.created_at.strftime("%A")}")+ feedback.created_at.strftime(" %d ")+  t("date."+"#{feedback.created_at.strftime("%B")}") +feedback.created_at.strftime(" %Y") + feedback.created_at.strftime((" ,  %H:%M")) %></h6>
           <div class="feedback_content"><%= truncate(strip_tags(feedback.content), :length => 180) %></div>
           <% @last_comment = feedback.comments.order('created_at').first %>
           <% if @last_comment != nil %>

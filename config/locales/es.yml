@@ -148,6 +148,31 @@
             did_not_recieve_confirmation_instructions:  "¿No has recibido instrucciones de confirmación?"
             did_not_recieve_unlock_instructions:  "¿No has recibido instrucciones de desbloqueo?"
 
+  errors:
+      # The default format to use in full error messages.
+      format: "%{message}"
+
+
+  activerecord:
+                errors:
+                        template:
+                                  header:
+                                          one: "Se genero un error al intentar guardar el %{model}"
+                                          other: "Se generaron %{count} errores al intentar guardar el %{model}"
+                        models:
+                                feedback:
+                                          attributes:
+                                                      subject:
+                                                                blank:    "El asunto no puede ser vacio"
+                                                      project:
+                                                                blank:    "El Feedback debe tener asociado un proyecto"
+                                                      user:
+                                                                blank:    "El Feedback debe tener asociado el usuario creador"
+
+                                                      content:
+                                                                blank:    "El contenido no puede ser vacio"
+
+
 
   feedback:
             feedback:  "Feedback"
@@ -171,6 +196,11 @@
             create: "Crear"
             create_by: "Creado por"
             date_on: "el"
+            Remaining_time_for_editing: "Tiempor Restante para poder editar: "
+            minutes: "minutos"
+            seconds: "segundos"
+            and: "y"
+            prohibited_this_feedback_from_being_saved: "no se puede guardar feedback"
 
   form:
             add_form: "Agregar Formulario"
@@ -188,7 +218,7 @@
             summary:    "Resumen"
             reports:    "Reportes"
             projects:   "Proyectos"
-            users:   "Usuarioss"
+            users:   "Usuarios"
             clients:   "Clientes"
             forms: "Formularios"
             evolution_of_general_mood:  "Evolución del estado de ánimo general"
