@@ -166,7 +166,7 @@
             feedback_type: "Tipo"
             feedback_content: "Contenido"
             feedback_subject: "Asunto"
-            feedback_visivility: "Visibilidad"
+            feedback_visibility: "Visibilidad de feedback"
             Moove_IT_employee: "Empleado Moove-IT "
             create: "Crear"
             create_by: "Creado por"

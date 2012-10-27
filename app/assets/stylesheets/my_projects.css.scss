@@ -221,7 +221,6 @@
 }
 
 .feedbacks_table .feedback_info {
-
   padding-left: 4%;
 
   .feedback_subject {
@@ -233,6 +232,9 @@
   .feedback_date {
     font-weight: normal;
     margin-top: 0;
+  }
+
+  .feedback_content{
   }
 
   .feedback_last_comment {
@@ -260,8 +262,56 @@
 
 /* ============== [CREATE FEEDBACK] ============== */
 
+#feedback_create, #feedback_edit{
 
-// Crear Feedback
+  .feedback_type_field{
+
+    .feedback_type_label{
+      width: 5%;
+    }
+
+    .feedback_type_select_control{
+      margin-left: 7%;
+    }
+
+    .feedback_type_select{
+    }
+
+  }
+
+  .feedback_subject_field{
+
+    .feedback_subject_label{
+      width: 5%;
+    }
+
+    .feedback_subject_text_control{
+      margin-left: 7%;
+    }
+
+  }
+
+  .feedback_content_field{
+
+    .feedback_content_text{
+      width: 100%;
+      resize: none;
+    }
+
+  }
+
+  .feedback_visibility_field{
+    margin-top: 1%;
+    margin-bottom: 1%;
+  }
+
+}
+
+#new_feedback{
+  margin-bottom: 0;
+
+}
+
 
 .Separador{
 
@@ -308,8 +358,7 @@
 
 /* ============== [SHOW FEEDBACK] ============== */
 
-.feedback{
-
+.feedback_show{
 
   .feedback_subject {
     text-decoration: underline;
@@ -334,8 +383,7 @@
   }
 
   .comments_table{
-
-    max-width: 500px;
+    width: 100%;
 
     tr > td {
       padding-top: 2%;
@@ -354,14 +402,17 @@
   }
 
   .comments_table .comment_info {
-
     padding-left: 4%;
 
     .comment_content {
-      display: block;
+      width: 100%;
+      margin-bottom: 0;
+      resize: none;
     }
 
     .comment_author{
+      margin-top: 0;
+      margin-bottom: 0;
       font-weight: normal;
     }
 
@@ -373,7 +424,6 @@
       width:100%;
       resize: none;
     }
-
   }
 
 

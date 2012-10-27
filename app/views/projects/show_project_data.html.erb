@@ -4,6 +4,7 @@
 
 <hr>
 
+<% if current_user.admin? || current_user.mooveit? %>
 <h4><%= t('my_projects.data_tab.mood_updates')  %></h4>
 <br/>
 
@@ -12,9 +13,14 @@
 </div>
 <br/>
 <hr>
+<% end %>
 
 <h4><%= t('my_projects.data_tab.milestones')  %></h4>
 
 <% @view[:project].milestones.each do |mile| %>
-    <p> <%= "#{mile.target_date} #{mile.name}" %> <%= link_to '', mile, method: :delete, data: { confirm: 'Are you sure?' }, class: 'icon-remove-circle' %></p>
+    <p> <%= "#{mile.target_date} #{mile.name}" %>
+      <% if current_user.admin? %>
+      <%= link_to '', mile, method: :delete, data: { confirm: 'Are you sure?' }, class: 'icon-remove-circle' %>
+      <% end %>
+          </p>
 <% end %>

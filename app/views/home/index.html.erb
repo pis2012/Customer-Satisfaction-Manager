@@ -66,13 +66,13 @@
             <div class="span8">
               <div class="homecenter">
                 <h2><%=  I18n.t('mood.mood_of_our_customers')%></h2>
-                <% count = 0 %>
                 <% @projects = Project.all.shuffle %>
                 <% @projects.each do |project| %>
                     <% mood = project.moods.last! %>
 
+
                         <div class="ahomefacewrapper">
-                          <a href="<%= project_path(project.id) %>?default=true" class="homeface" >
+                          <a href="/my_projects?default=true&project_id=<%=project.id%>" class="homeface" >
                             <%= image_tag('faces/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
                             <p class="homeprojectnameh"><%= project.name %></p>
                           </a>

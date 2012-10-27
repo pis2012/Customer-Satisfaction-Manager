@@ -1,4 +1,7 @@
 class MyProjectsController < ApplicationController
+  before_filter :authenticate_user!
+
+  layout 'my_projects'
 
   def index
 
@@ -37,7 +40,7 @@ class MyProjectsController < ApplicationController
     @feedbacks = @project.feedbacks
 
     respond_to do |format|
-      format.html { render :layout => 'my_projects',:file => 'my_projects/index' }# show_project_complete.html.erb
+      format.html { }# show_project_complete.html.erb
       format.json { render json: @project }
     end
   end

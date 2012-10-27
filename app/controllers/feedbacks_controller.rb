@@ -39,10 +39,8 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks/1.json
   def show
     @feedback = Feedback.find(params[:id])
-
-    @comment  = Comment.find_all_by_feedback_id(@feedback.id)
-
-    @commentNew = Comment.new
+    @comments = @feedback.comments
+    @new_comment = Comment.new
 
     respond_to do |format|
       if request.xhr?
