@@ -1,0 +1,16 @@
+<div id="reports">
+  <h4> <%= I18n.t ('admin.evolution_of_general_mood') %> </h4>
+  <br/>
+  <div class="bar-graph">
+    <%= image_tag @graph[:bar] %>
+  </div>
+  <br/>
+  <hr/>
+
+  <h4><%= I18n.t ('admin.Status_of_Projects') %></h4>
+  <br/>
+  <div class="pie-graph">
+    <%= image_tag @graph[:pie] %>
+  </div>
+  <br/>
+</div>

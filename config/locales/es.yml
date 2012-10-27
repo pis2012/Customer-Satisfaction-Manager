@@ -1,7 +1,7 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-es:
+"es":
 
   date:
             January: "Enero"
@@ -33,7 +33,6 @@ es:
                 - :day
                 - :month
                 - :year
-
 
   home:
             home: "Home"
@@ -84,11 +83,6 @@ es:
             mood:
                         update_mood: "Actualiza tu estado"
                         mood_updated: "Estado actualizado!"
-
-  admin:
-            tabs:
-
-
 
 
   user_edit:
@@ -179,7 +173,14 @@ es:
             date_on: "el"
 
   form:
-            add_form: "Agregar"
+            add_form: "Agregar Formulario"
+            total_answers: "Total de respuestas: "
+            clients: "Clientes encontrados en el fomulario: "
+            users: "Usuarios que respondieron: "
+            missing_users: "Faltan responder: "
+            select: "Seleccione una"
+            full_data: "Mostrar datos completos"
+
 
   admin:
             customer_satisfaction_manager: "MANAGER DE  SATISFACCIÓN DEL CLIENTE"
@@ -192,6 +193,11 @@ es:
             forms: "Formularios"
             evolution_of_general_mood:  "Evolución del estado de ánimo general"
             Status_of_Projects: "Estado del proyecto"
+
+            tabs:
+              forms: "Formularios"
+              show_form: "Mostrar formulario"
+              reports: "Reportes"
 
 
   milestone:
