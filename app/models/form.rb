@@ -9,14 +9,24 @@ class Form < ActiveRecord::Base
 
   validates :email, :name, :password, :user_id, :presence => true
 
+  def get_session
+    GoogleDrive.login(self.email, self.password)
+  end
 
-  # Returns the clients that answered the form and the total responses
-  def get_clients
+  # Returns the total answers in the form
+  def get_total_answers
     # Logs in
     session = GoogleDrive.login(self.email, self.password)
     # First worksheet
     ws = session.spreadsheet_by_title(self.name).worksheets[0]
+    ws.num_rows-1
+  end
 
+
+  # Returns the clients that answered the form
+  def get_clients session
+    # First worksheet
+    ws = session.spreadsheet_by_title(self.name).worksheets[0]
     clients = []
     if ws != nil
       # Get the column number of the users email
@@ -29,39 +39,86 @@ class Form < ActiveRecord::Base
       end
 
       if email_user_column > 1
-        for row in 2..ws.nums_row
+        for row in 2..ws.num_rows
           user_email = ws[row, email_user_column]
           user = User.find_by_email(user_email)
           if user != nil
             client_name = user.client.name
-            if clients.collect { |c| c.name == client_name } == nil
-              clients += [{:name => client_name, :cant_resp => 0, :users => nil}]
-            end
-
-            user_name = user.full_name
-            clients.map! do |cli|
-              if cli.name == client_name
-                cli.cant_resp += 1
-                cli.users = cli.users == nil ? user_name : ", " + user_name
-                break
-              end
+            if !clients.include? client_name
+              clients += [client_name]
             end
           end
         end
       end
     end
-    clients.sort_by! {|cli| cli.name}
+    clients.sort!
+  end
+
+  # Returns the data of the client, such as total answers, users that answered and did not
+  def get_data (client_name, session)
+    # First worksheet
+    ws = session.spreadsheet_by_title(self.name).worksheets[0]
+
+    users_client = User.find_all_by_client_id(Client.find_by_name(client_name).id)
+    users_full_names = users_client.map {|uc| uc.full_name}
+    data = {:tot_answ => 0, :users => [], :missing_users => users_full_names}
+    if ws != nil
+      # Get the column number of the users email
+      email_user_column = 1
+      for col in 2..ws.num_cols do
+        if ws[1,col].include? "email"
+          email_user_column = col
+          break
+        end
+      end
+
+      if email_user_column > 1
+        for row in 2..ws.num_rows
+          user_email = ws[row, email_user_column]
+          user = User.find_by_email(user_email)
+          if user != nil
+            if client_name == user.client.name
+              data[:tot_answ] += 1
+              user_name = user.full_name
+              data[:users] += [user_name] if !data[:users].include? user_name
+              data[:missing_users].delete(user_name)
+            end
+          end
+        end
+      end
+    end
+    data[:users].sort!
+    data[:missing_users].sort!
+    users = ""
+    data[:users].each do |user|
+      if users == ""
+        users += user
+      else
+        users += ", #{user}"
+      end
+    end
+    data[:users] = users
+    missing_users = ""
+    data[:missing_users].each do |mu|
+      if missing_users == ""
+        missing_users += mu
+      else
+        missing_users += ", #{mu}"
+      end
+    end
+    data[:missing_users] = missing_users
+    data
   end
 
 
 
   # Returns all the graphics with all the data (answers) of the form\
   # that the client with client_name answered
-  def get_data client_name
-    graphs = []
+  def get_full_data (client_name, session)
+    graphs = Array.new()
     users_client = User.find_all_by_client_id(Client.find_by_name(client_name).id)
-    # Logs in
-    session = GoogleDrive.login(self.email, self.password)
+    users_emails = users_client.map {|uc| uc.email}
+
     # First worksheet
     ws = session.spreadsheet_by_title(self.name).worksheets[0]
 
@@ -76,30 +133,29 @@ class Form < ActiveRecord::Base
         end
       end
 
-      possible_answers = {:first => Array.new("Bad", "Fair", "Good", "Very Good", "Excellent"), :sec => Array.new("1","2","3","4","5"),
-                                              :third => Array.new("Email","Landline","Cell","Ticket Management", "Skype or Chat", "Hangout", "Other")}
+      possible_answers = {:first => ["Bad", "Fair", "Good", "Very Good", "Excellent"], :sec => ["1","2","3","4","5"], :third => ["Email","Landline","Cell","Ticket Management", "Skype or Chat", "Hangout", "Other"]}
 
-      for col in 2..ws.nums_cols do
+      for col in 2..ws.num_cols do
         question = ws[1,col]
         data = nil
         axis_answers = nil
         if ws[2,col].start_with?("E","V","G","F","B")
-          axis_answers = possible_answers(:first)
+          axis_answers = possible_answers[:first]
           data = Array.new(5)
         elsif ws[2,col].start_with?("1","2","3","4","5")
-          axis_answers = possible_answers(:sec)
+          axis_answers = possible_answers[:sec]
           data = Array.new(5)
         elsif ws[2,col].start_with?("Email","Landline","Cell","Ticket Management", "Skype or Chat", "Hangout")
-          axis_answers = possible_answers(:third)
+          axis_answers = possible_answers[:third]
           data = Array.new(7)
         end
         if (data != nil)
           data.map! {0}
           count = 0
-          for row in 2..ws.nums_rows do
+          for row in 2..ws.num_rows do
             # The answer is from the client
             user_email = ws[row,col_email_user]
-            if users_client.colect {|u| u.email == user_email} != nil
+            if users_emails.include? user_email
               pos = 0
               axis_answers.each do |answ|
                 if answ == ws[row,col]
@@ -132,6 +188,7 @@ class Form < ActiveRecord::Base
             if axis_answers.first == "1"
               graph = Gchart.bar(:title => question, :bar_colors => 'FF0000', :legend => ["1 - Strongly disagree  #{percent[0]}%","2 -\t\t #{percent[1]}%","3 -\t\t #{percent[2]}%","4 -\t\t #{percent[3]}%","5 - Strongly agree - #{percent[4]}%"],
                                  :data => data, :axis_with_labels => ['x','y'], :axis_labels => [axis_answers,axis_values])
+              graphs += [{:title => question, :graph => graph}]
             else # Horizontal bars
               pos = -1
               legend = axis_answers.map do |a|
@@ -140,13 +197,13 @@ class Form < ActiveRecord::Base
               end
               graph = Gchart.bar(:title => question, :orientation => 'horizontal', :bar_colors => 'FF0000', :legend => legend,
                                  :data => data, :axis_with_labels => ['x','y'], :axis_labels => [axis_values,axis_answers])
+              graphs += [{:title => question, :graph => graph}]
             end
-            graphs += [graph]
           end
         end
       end
     end
-    graphs.sort_by! {|g| g.title}
+    graphs.sort_by {|g| g[:title]}
   end
 
 

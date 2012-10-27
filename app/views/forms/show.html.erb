@@ -1,11 +1,44 @@
+<script>
+    $(document).on('change', '#form_client', function() {
+        $('#form_client_full_data').empty();
+        $('#btn_full_data').hide();
+        $('#form_client_data').empty();
+        if (val != "")
+        {
+            var val = $(this).val();
+            $.get($(this).data('url'), {client_name:val}, function(response) {
+                $('#form_client_data').html(response);
+                $('#btn_full_data').show();
+            }, 'html');
+        }
+        return false;
+    });
+
+    $(document).on('click', '#btn_full_data', function() {
+        var cn = $('#form_client').val();
+        $.get($(this).data('url'), {client_name:cn}, function(response) {
+            $('#form_client_full_data').html(response);
+        }, 'html');
+        return false;
+    });
+
+</script>
+
+
+
+
 <div class="form">
-  <h4><%= @form.name %></h4>
+  <h4><%= @form_data[:name] %></h4>
+  <br/>
+  <%= t('form.clients') %>
 
+  <%= select_tag "form_client", options_for_select(@form_data[:clients].map {|c| [c,c]}), :prompt => t('form.select'), "data-url" => forms_show_data_path(@form) %>
 
+  <div id="form_client_data" > </div>
 
+  <%= button_tag t('form.full_data'), :id => "btn_full_data", "data-url" => forms_show_full_data_path(@form), :hidden => true %>
 
-
-
+  <div id="form_client_full_data"> </div>
 
 
 </div>
