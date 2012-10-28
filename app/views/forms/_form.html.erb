@@ -1,29 +1,31 @@
-<%= form_for(@form) do |f| %>
+<%= form_for(@form, :remote => true) do |f| %>
 
     <% if @form.errors.any? %>
         <div class="alert alert-error">
-            <% @form.errors.full_messages.each do |msg| %>
-                  <strong><%= msg %></strong>
-            <% end %>
+          <% if @form.errors.count > 1 %>
+              <h4><%= t('activerecord.errors.template.header.other', :model=> @form.class.name, :count=> @form.errors.count) %></h4>
+          <% else %>
+              <h4><%= t('activerecord.errors.template.header.one',:model=> @form.class.name) %></h4>
+          <% end %>
+          <% @form.errors.full_messages.each do |msg| %>
+              <strong><%= msg %></strong>
+          <% end %>
         </div>
     <% end %>
 
-
-    <div class="">
-      <%= f.label :Google_email %>
-      <%= f.text_field :email %>
+    <br/>
+    <div class="form-email">
+      <%= f.text_field :email,  :placeholder => t('form.google_email') %>
     </div>
-
-    <div class="">
-      <%= f.label :Password %>
-      <%= f.password_field :password %>
+    <br/>
+    <div class="form-password">
+      <%= f.password_field :password, :placeholder => t('form.password') %>
     </div>
-
-    <div class="">
-      <%= f.label :Form_name %>
-      <%= f.text_field :name %>
+    <br/>
+    <div class="form-name">
+      <%= f.text_field :name,  :placeholder => t('form.name') %>
     </div>
-
+    <br/>
 
     <%= f.submit  t('buttons.create'), :class => "btn" %> &nbsp <%= t('buttons.or') %>
     <button class="btn btn-link forms-link" type="button" data-url="<%= admin_forms_path %>">
