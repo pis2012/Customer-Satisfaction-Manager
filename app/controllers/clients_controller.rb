@@ -39,11 +39,15 @@ class ClientsController < ApplicationController
   # POST /clients
   def create
     @client = Client.new(params[:client])
+
+    respond_to do |format|
     if @client.save
-      format.js { render  :action => "clients/index" }
+      @clients = Client.all
+      format.js { render  :action => "index" }
     else
-      format.js { render  :action => "clients/create" }
+      format.js { }
     end
+      end
   end
 
   # PUT /clients/1
