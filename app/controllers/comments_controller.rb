@@ -7,8 +7,8 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(params[:comment])
 
-    @comment.user_id= current_user.id
-    @comment.feedback= Feedback.find(params[:feedback_id])
+    @comment.user_id = current_user.id
+    @comment.feedback = Feedback.find(params[:feedback_id])
 
     respond_to do |format|
       if @comment.save
@@ -16,7 +16,9 @@ class CommentsController < ApplicationController
         @new_comment = Comment.new
         format.js { render action: "index" }
       else
-        format.js { }
+        @feedback = @comment.feedback
+        @new_comment = @comment
+        format.js { render action: "index" }
       end
     end
   end
