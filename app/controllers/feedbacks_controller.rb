@@ -72,7 +72,7 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new(params[:feedback])
 
     @feedback.project_id = params[:project_id]
-    @feedback.user_id= current_user.id
+    @feedback.user_id = current_user.id
 
     respond_to do |format|
       if @feedback.save

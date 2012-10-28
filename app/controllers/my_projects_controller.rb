@@ -5,15 +5,6 @@ class MyProjectsController < ApplicationController
 
   def index
 
-    if !params['default'].nil?
-      @profile = Profile.find_by_user_id(current_user)
-      @p = Project.find(params['project_id'])
-      if !@p.nil?
-        @profile.project_id = @p.id
-        @profile.save
-      end
-    end
-
     @project = current_user.profile.project
 
     @lastmood = @project.moods.order(:created_at).last.get_mood_img
@@ -34,7 +25,6 @@ class MyProjectsController < ApplicationController
           @view[:mile2] =  t('milestone.Next_milestone') +": " +t("date."+"#{td.strftime("%B")}") + " #{td.strftime("%e")}"
         end
       end
-
     end
 
     @feedbacks = @project.feedbacks

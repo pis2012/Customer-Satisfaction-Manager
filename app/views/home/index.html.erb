@@ -22,10 +22,12 @@
 
                     <% if project.client_id == current_user.client_id  %>
                         <div class="chomefacewrapperbig">
-                          <a href="/my_projects?default=true&project_id=<%=project.id%>" class="chomefacebig" >
+                          <%= link_to :controller => "projects", :action => "change_profile_project", :id => project.id do %>
+                          <div class="chomefacebig" >
                             <%= image_tag('faces/big/' + mood.get_mood_img, :class => 'img-rounded')  %>
                             <p class="homeprojectnamev"><%= project.name %></p>
-                          </a>
+                          </div>
+                          <% end %>
                         </div>
                     <% else %>
                         <div class="chomefacewrapper">
@@ -72,10 +74,12 @@
 
 
                         <div class="ahomefacewrapper">
-                          <a href="/my_projects?default=true&project_id=<%=project.id%>" class="homeface" >
+                          <%= link_to :controller => "projects", :action => "change_profile_project", :id => project.id do %>
+                             <div class="homeface" >
                             <%= image_tag('faces/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
                             <p class="homeprojectnameh"><%= project.name %></p>
-                          </a>
+                            </div>
+                          <% end %>
                         </div>
 
                     <!-- < %= project.name  %> -->

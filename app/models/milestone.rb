@@ -1,4 +1,5 @@
 class Milestone < ActiveRecord::Base
+  default_scope :order => 'target_date desc'
 
   belongs_to :project
 

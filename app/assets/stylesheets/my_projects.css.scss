@@ -257,12 +257,15 @@
   text-align: center;
 }
 
+/* ============== [ MILESTONES ] ============== */
+
 
 
 
 /* ============== [CREATE FEEDBACK] ============== */
 
-#feedback_create, #feedback_edit{
+#new_feedback, #edit_feedback{
+  margin-bottom: 0;
 
   .feedback_type_field{
 
@@ -306,11 +309,6 @@
     margin-top: 1%;
     margin-bottom: 1%;
   }
-
-}
-
-#new_feedback{
-  margin-bottom: 0;
 
 }
 

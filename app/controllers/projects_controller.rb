@@ -93,7 +93,7 @@
   def show_project_data
     @project = current_user.profile.project
     @view = {:project => @project, :graph => nil}
-
+    @milestones = @project.milestones
 
     data = Array.new
     axis = Array.new
@@ -114,10 +114,15 @@
   end
 
   def change_profile_project
-    proj = Project.find(params[:id])
-    current_user.profile.update_attributes(:project => proj)
 
-    redirect_to my_projects_url
+
+    project = Project.find(params[:id])
+    if !current_user.client? || (current_user.client? && project.client_id == current_user.client_id)
+      current_user.profile.update_attributes(:project => project)
+      redirect_to my_projects_url
+    else
+      not_found
+    end
 
   end
 
