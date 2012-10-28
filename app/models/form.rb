@@ -5,7 +5,7 @@ class Form < ActiveRecord::Base
   # :name := Name of the form(spreadsheet) in the google drive account
   # :email := Email corresponding to the google drive account
   # :password := Password corresponding to the google drive account
-  attr_accessible :name, :email, :wise_token, :writely_token, :user_id
+  attr_accessible :name, :email, :wise_token, :actual_total_answers, :writely_token, :user_id
 
   validates :email, :name, :wise_token, :writely_token, :user_id, :presence => true
 
@@ -15,17 +15,17 @@ class Form < ActiveRecord::Base
   end
 
   # Returns the total answers in the form
-  def get_total_answers
-    # Logs in
-    session = GoogleDrive.restore_session({:wise => self.wise_token.to_s, :writely => self.writely_token.to_s})
+  def update_total_answers session
     # First worksheet
     ws = session.spreadsheet_by_title(self.name).worksheets[0]
-    ws.num_rows-1
+    self.actual_total_answers = ws.num_rows-1
   end
 
 
   # Returns the clients that answered the form
   def get_clients session
+    #update total answers and restore_session
+    self.update_total_answers session
     # First worksheet
     ws = session.spreadsheet_by_title(self.name).worksheets[0]
     clients = []

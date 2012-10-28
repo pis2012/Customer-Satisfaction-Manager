@@ -254,13 +254,14 @@
 
   form:
             add_form: "Agregar Formulario"
+            last_total_answers: "Total de respuestas última vez: "
             total_answers: "Total de respuestas: "
             clients: "Clientes encontrados en el fomulario: "
             users: "Usuarios que respondieron: "
             missing_users: "Faltan responder: "
-            select: "Seleccione una"
+            select: "Seleccione uno"
             full_data: "Mostrar datos completos"
-            name: "Nombre del formulario: "
+            name: "Nombre del formulario"
             google_email: "Nombre de usuario Google"
             password: "Contraseña"
             name_filter: "Nombre contiene: "

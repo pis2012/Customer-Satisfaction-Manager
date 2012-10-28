@@ -12,12 +12,12 @@
 
 <div class='forms_index'>
   <table class='forms_table'>
-    <% @forms_data.each do |form| %>
+    <% @forms.each do |form| %>
         <tr id='form_row_<%= form[:id] %>'>
           <h4>
             <a href="#show-form" class="show-form-link" data-url="<%= forms_show_path(form[:id]) %>"><%= form[:name] %></a>
           </h4>
-          <%= t('form.total_answers') + form[:total_answers].to_s %>
+          <%= t('form.last_total_answers') + form[:actual_total_answers].to_s %>
           <br/>
           <br/>
         </tr>

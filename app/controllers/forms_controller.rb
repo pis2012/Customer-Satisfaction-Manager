@@ -3,11 +3,7 @@ class FormsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    forms = Form.all
-    @forms_data = []
-    forms.each do |form|
-      @forms_data += [{:id => form.id, :name => form.name, :total_answers => form.get_total_answers()}]
-    end
+    @forms = Form.where(:user_id => current_user.id)
 
     respond_to do |format|
       if request.xhr?
@@ -36,6 +32,7 @@ class FormsController < ApplicationController
     auth_tokens = session.auth_tokens()
     @form.wise_token = auth_tokens[:wise]
     @form.writely_token = auth_tokens[:writely]
+    @form.update_total_answers session
 
     respond_to do |format|
       if @form.save
@@ -43,15 +40,15 @@ class FormsController < ApplicationController
         format.json { render action: "index" }
       else
         format.html { render action: "new" }
-        #format.json { render json: @form.errors, status: :unprocessable_entity }
+        format.json { render json: @form.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def show
     @form = Form.find(params[:form_id])
-    session[:session_drive] = @form.get_session()
-    clients = @form.get_clients(session[:session_drive])
+    session[:session] = @form.get_session
+    clients = @form.get_clients session[:session]
     @form_data = {:name => @form.name, :clients => clients}
 
     respond_to do |format|
@@ -65,8 +62,8 @@ class FormsController < ApplicationController
 
   def show_data
     @form = Form.find(params[:form_id])
-    session[:session_drive] = @form.get_session() if session[:session_drive] == nil
-    @data = @form.get_data(params[:client_name], session[:session_drive])
+    session[:session] = @form.get_session if session[:session] == nil
+    @data = @form.get_data(params[:client_name], session[:session])
 
     respond_to do |format|
       if request.xhr?
@@ -78,8 +75,8 @@ class FormsController < ApplicationController
 
   def show_full_data
     @form = Form.find(params[:form_id])
-    session[:session_drive] = @form.get_session() if session[:session_drive] == nil
-    @graphs = @form.get_full_data(params[:client_name], session[:session_drive])
+    session[:session] = @form.get_session if session[:session] == nil
+    @graphs = @form.get_full_data(params[:client_name], session[:session])
 
     respond_to do |format|
       if request.xhr?
