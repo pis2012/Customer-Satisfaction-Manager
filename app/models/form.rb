@@ -5,18 +5,19 @@ class Form < ActiveRecord::Base
   # :name := Name of the form(spreadsheet) in the google drive account
   # :email := Email corresponding to the google drive account
   # :password := Password corresponding to the google drive account
-  attr_accessible :name, :email, :password, :user_id
+  attr_accessible :name, :email, :wise_token, :writely_token, :user_id
 
-  validates :email, :name, :password, :user_id, :presence => true
+  validates :email, :name, :wise_token, :writely_token, :user_id, :presence => true
+
 
   def get_session
-    GoogleDrive.login(self.email, self.password)
+    GoogleDrive.restore_session({:wise => self.wise_token.to_s, :writely => self.writely_token.to_s})
   end
 
   # Returns the total answers in the form
   def get_total_answers
     # Logs in
-    session = GoogleDrive.login(self.email, self.password)
+    session = GoogleDrive.restore_session({:wise => self.wise_token.to_s, :writely => self.writely_token.to_s})
     # First worksheet
     ws = session.spreadsheet_by_title(self.name).worksheets[0]
     ws.num_rows-1
@@ -139,7 +140,7 @@ class Form < ActiveRecord::Base
         question = ws[1,col]
         data = nil
         axis_answers = nil
-        if ws[2,col].start_with?("E","V","G","F","B")
+        if ws[2,col].start_with?("Ex","Ver","Goo","Fai","Bad")
           axis_answers = possible_answers[:first]
           data = Array.new(5)
         elsif ws[2,col].start_with?("1","2","3","4","5")
@@ -157,17 +158,18 @@ class Form < ActiveRecord::Base
             user_email = ws[row,col_email_user]
             if users_emails.include? user_email
               pos = 0
+              found = false
               axis_answers.each do |answ|
-                if answ == ws[row,col]
+                if ws[row,col].include? answ
                   data[pos] = data[pos] + 1
                   count = count + 1
-                  break
+                  found = true
                 end
                 pos = pos + 1
               end
               # Case Other in answers type 3
-              if axis_answers.first == "Email" && pos == 6
-                data[pos] = data[pos] + 1
+              if axis_answers.first == "Email" && !found
+                data[6] += 1
               end
             end
           end
@@ -185,25 +187,27 @@ class Form < ActiveRecord::Base
               percent[pos] = (100.0 * data[pos] / count).round
             end
             # Vertical bars graphic
+            data.map! {|d| [d]}
             if axis_answers.first == "1"
-              graph = Gchart.bar(:title => question, :bar_colors => 'FF0000', :legend => ["1 - Strongly disagree  #{percent[0]}%","2 -\t\t #{percent[1]}%","3 -\t\t #{percent[2]}%","4 -\t\t #{percent[3]}%","5 - Strongly agree - #{percent[4]}%"],
-                                 :data => data, :axis_with_labels => ['x','y'], :axis_labels => [axis_answers,axis_values])
+              graph = Gchart.bar(:size => '500x250', :bar_colors => ['FF0000','FFA000','FFFF00','00FFA0','00FF00'], :legend => ["1 - Strongly disagree  #{percent[0]}%","2 -\t\t #{percent[1]}%","3 -\t\t #{percent[2]}%","4 -\t\t #{percent[3]}%","5 - Strongly agree - #{percent[4]}%"],
+                                 :data => data, :axis_with_labels => ['y'], :axis_labels => [axis_values], :stacked => false,  :bar_width_and_spacing => '30,15')
               graphs += [{:title => question, :graph => graph}]
             else # Horizontal bars
+              size = axis_answers.first == "Bad" ? "500x160" : "500x225"
               pos = -1
               legend = axis_answers.map do |a|
                 pos += 1
                 a + " -\t\t #{percent[pos]}%"
               end
-              graph = Gchart.bar(:title => question, :orientation => 'horizontal', :bar_colors => 'FF0000', :legend => legend,
-                                 :data => data, :axis_with_labels => ['x','y'], :axis_labels => [axis_values,axis_answers])
+              graph = Gchart.bar(:size => size, :orientation => 'horizontal', :bar_colors => ['FF0000','FFA000','FFFF00','00FFA0','00FF00','00FFFF','FF00FF'], :legend => legend,
+                                 :data => data, :axis_with_labels => ['x'], :axis_labels => [axis_values], :stacked => false)
               graphs += [{:title => question, :graph => graph}]
             end
           end
         end
       end
     end
-    graphs.sort_by {|g| g[:title]}
+    graphs.sort_by {|g| g[:title][/\d+/].to_i}
   end
 
 

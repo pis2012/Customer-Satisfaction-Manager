@@ -253,6 +253,10 @@
             missing_users: "Faltan responder: "
             select: "Seleccione una"
             full_data: "Mostrar datos completos"
+            name: "Nombre del formulario: "
+            google_email: "Nombre de usuario Google"
+            password: "Contraseña"
+            name_filter: "Nombre contiene: "
 
 
   admin:

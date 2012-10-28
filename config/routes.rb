@@ -38,10 +38,11 @@ CSM::Application.routes.draw do
 
   resources :projects, :constraints => lambda { |request| request.env['warden'].user.admin? }
 
-  resources :forms, :only => [:index, :new]
+  resources :forms, :only => [:index, :new, :create]
   match "/forms/show_data/:form_id" => "forms#show_data", :as => :forms_show_data
   match "/forms/show_full_data/:form_id" => "forms#show_full_data", :as => :forms_show_full_data
   match "/forms/show/:form_id" => "forms#show", :as => :forms_show
+  #resources :forms, :only => [:index, :new]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

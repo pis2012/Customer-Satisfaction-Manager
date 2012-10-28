@@ -2,8 +2,10 @@
 <br/>
 <% if @data[:users] != "" %>
     <%= t('form.users') + @data[:users] %>
+    <br/>
 <% end %>
-<br/>
+
 <% if @data[:missing_users] != "" %>
     <%= t('form.missing_users') + @data[:missing_users]%>
 <% end %>
+

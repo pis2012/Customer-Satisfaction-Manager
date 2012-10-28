@@ -204,6 +204,10 @@
             missing_users: "Still missing: "
             select: "Select one"
             full_data: "Show full data"
+            name: "Form name: "
+            google_email: "Google user name"
+            password: "Password"
+            name_filter: "Name contains: "
 
 
   admin:
