@@ -177,6 +177,8 @@
                                                                 blank: "El content can not be empty"
                                                                 too_short: "The content must be at least 40 characters"
 
+  Comments:
+              Comment: "Comment"
   feedback:
             feedbacks:  "Feedback"
             new_feedback: "New Feedback"

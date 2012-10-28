@@ -221,6 +221,8 @@
                                                                 too_short: "El contenido debe contener al menos 40 caracteres"
 
 
+  Comments:
+          Comment: "Comentario"
 
   feedback:
             feedback:  "Feedback"

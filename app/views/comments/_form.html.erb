@@ -2,9 +2,9 @@
     <% if @new_comment.errors.any? %>
         <div class="alert alert-error">
           <% if @new_comment.errors.count > 1 %>
-              <h4><%= t('activerecord.errors.template.header.other', :model=> t('user_edit.comments'), :count=> @new_comment.errors.count) %></h4>
+              <h4><%= t('activerecord.errors.template.header.other', :model=> t('Comments.Comment'), :count=> @new_comment.errors.count) %></h4>
           <% else %>
-              <h4><%= t('activerecord.errors.template.header.one',:model=>t('user_edit.comments')) %></h4>
+              <h4><%= t('activerecord.errors.template.header.one',:model=>t('Comments.Comment')) %></h4>
           <% end %>
           <ul>
             <% @new_comment.errors.full_messages.each do |msg| %>
