@@ -214,6 +214,11 @@
 
                                                       content:
                                                                 blank:    "El contenido no puede ser vacio"
+                                comment:
+                                          attributes:
+                                                      content:
+                                                                blank: "El contenido no puede ser vacio"
+                                                                too_short: "El contenido debe contener al menos 40 caracteres"
 
 
 

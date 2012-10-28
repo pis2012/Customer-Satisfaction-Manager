@@ -171,6 +171,12 @@
 
                                                       content:
                                                                 blank:    "Content can not be empty"
+                                comment:
+                                          attributes:
+                                                      content:
+                                                                blank: "El content can not be empty"
+                                                                too_short: "The content must be at least 40 characters"
+
   feedback:
             feedbacks:  "Feedback"
             new_feedback: "New Feedback"
