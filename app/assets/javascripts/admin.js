@@ -11,6 +11,11 @@ $(document).on('click', '.reports-link', function () {
     return false;
 });
 
+$(document).on('click', '.clients-link', function () {
+    updatePanel($(this).data('url'), 'client_data', 'clients');
+    return false;
+});
+
 $(document).on('click', '.forms-link', function () {
     updatePanel($(this).data('url'), 'forms_data', 'forms');
     return false;

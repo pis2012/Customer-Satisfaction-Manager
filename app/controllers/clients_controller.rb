@@ -7,9 +7,9 @@ class ClientsController < ApplicationController
     @clients = Client.all
     respond_to do |format|
       if request.xhr?
-        format.html # index.html.erb
+        format.html { render :layout => false } # index.html.erb
       end
-      format.json { render json: @clients }
+      format.json { render json:  @clients }
     end
   end
 

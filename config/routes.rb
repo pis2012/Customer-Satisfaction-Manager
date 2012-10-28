@@ -1,6 +1,6 @@
 CSM::Application.routes.draw do
 
-  Elrte.routes(self)
+ # Elrte.routes(self)
 
   resources :profiles, :only => [:update,:edit]
 
@@ -22,7 +22,9 @@ CSM::Application.routes.draw do
   resources :milestones
 
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :passwords => "passwords"}
+
   resources :clients
+  match "/admin/clients" => "clients#index" , :as => :admin_clients
 
   match "/my_projects" , to: "my_projects#index" , :as => :my_projects
   match "/my_projects/change_profile_project", to: "projects#change_profile_project", :as => :change_profile_project
