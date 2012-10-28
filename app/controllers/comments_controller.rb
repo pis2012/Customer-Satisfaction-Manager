@@ -14,13 +14,9 @@ class CommentsController < ApplicationController
       if @comment.save
         @feedback = @comment.feedback
         @new_comment = Comment.new
-
         format.js { render action: "index" }
-        #format.html { redirect_to my_projects_path }
-        #format.json { render json: @comment, status: :created, location: @comment }
       else
-        format.html { redirect_to my_projects_path }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.js { }
       end
     end
   end

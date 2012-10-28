@@ -19,9 +19,9 @@
               Tuesday: "Tuesday"
               Wednesday: "Wednesday"
               Thursday: "Thursday"
-              Friday: "Viernes"
+              Friday: "Friday"
               Saturday: "Saturday"
-              Sunday: "Domingo"
+              Sunday: "Sunday"
 
               formats:
                     default: ! '%Y-%m-%d'

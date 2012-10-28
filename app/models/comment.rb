@@ -7,4 +7,5 @@ class Comment < ActiveRecord::Base
                   :content, :created_at, :updated_at
 
   validates :feedback, :user,:content, :presence  => true
+  validates_length_of :content, :minimum => 40
 end
