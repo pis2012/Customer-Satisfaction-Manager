@@ -58,3 +58,5 @@ $(document).on('click', '#btn_full_data', function() {
     }, 'html');
     return false;
 });
+
+

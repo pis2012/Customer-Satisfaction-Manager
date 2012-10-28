@@ -40,10 +40,9 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new(params[:client])
     if @client.save
-      format.js { render action: "index" }
+      format.js { render  :action => "clients/index" }
     else
-      format.js { }
-      #format.json { render json: @form.errors, status: :unprocessable_entity }
+      format.js { render  :action => "clients/create" }
     end
   end
 
