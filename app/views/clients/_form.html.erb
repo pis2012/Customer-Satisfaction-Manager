@@ -1,6 +1,6 @@
-<%= form_for(@feedback, :remote => true) do |f| %>
+<%= form_for(@client, :remote => true) do |f| %>
   <% if @client.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert alert-error">
       <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
 
       <ul>
@@ -12,11 +12,14 @@
   <% end %>
 
 <div class="form-horizontal">
-    <%= f.label :name %><br />
+    <%= f.label  :name,t('client.name') %>
     <%= f.text_field :name %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit  t('buttons.create'), :class => "btn" %> &nbsp <%= t('buttons.or') %>
+    <button class="btn btn-link clients-link" type="button" data-url="<%= admin_clients_path %>">
+      <%= t('buttons.cancel')%>
+    </button>
   </div>
 
 

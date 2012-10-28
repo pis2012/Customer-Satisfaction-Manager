@@ -1,25 +1,61 @@
-<h1>Listing clients</h1>
+<div class="clients_filter" xmlns="http://www.w3.org/1999/html">
+  <h5>
+    <%= t('form.name_filter') %>
+    &nbsp;
+    <%= text_field_tag "form_name_filter" %>
+    &nbsp;
+    <%= button_tag( t('buttons.filter'), :id => "clients_filter_btn", :class => "btn") %>
+  </h5>
+</div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Date Created</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @clients.each do |client| %>
-  <tr>
-    <td><%= client.name %></td>
-    <td><%= client.created_at %></td>
-    <td><%= link_to 'Show', client %></td>
-    <td><%= link_to 'Edit', edit_client_path(client) %></td>
-    <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
 
-<br />
+<div class='clients_index'>
+  <table class='clients_table'>
+    <% @clients.each do |client| %>
+        <tr>
+          <td>
+            <h4 id="client_name">
+              <%= client.name %>
+            </h4>
+          </td>
+
+        </tr>
+        <tr>
+          <td>
+            <%= t('client.proyects') + ": " %>
+            <% count = 0 %>
+            <% client.projects.each do |p| %>
+                <% if count > 0  %>
+                    <%= ", " %>
+                <% end %>
+                <%= p.name %>
+                <% count = 1 %>
+            <% end %>
+            <%= "." %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <% count = 0 %>
+            <%= t('client.users') + ": " %>
+            <% client.users.each do |u| %>
+                <% if count > 0  %>
+                    <%= ", " %>
+                <% end %>
+                <%= u.username %>
+                <% count = 1 %>
+            <% end %>
+            <%= "." %>
+          </td>
+        </tr>
+        </br>
+    <% end %>
+  </table>
+</div>
+
+
+
+
 
 
