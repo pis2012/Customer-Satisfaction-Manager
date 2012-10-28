@@ -33,6 +33,9 @@
                   - :day
               use_short_month: true
 
+  client:
+            name: "Name of Client"
+
   home:
             home: "Home"
             singin: "Sing In"
@@ -230,6 +233,7 @@
             forms:  "Forms"
             evolution_of_general_mood: "Evolution of the general mood"
             Status_of_Projects: "Status of Projects"
+            add_clients: "Add Client"
 
             tabs:
               forms: "Forms"

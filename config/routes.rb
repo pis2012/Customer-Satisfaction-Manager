@@ -23,7 +23,7 @@ CSM::Application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :passwords => "passwords"}
 
-  resources :clients
+  resources :clients , :only => [:index, :new, :create]
   match "/admin/clients" => "clients#index" , :as => :admin_clients
 
   match "/my_projects" , to: "my_projects#index" , :as => :my_projects
