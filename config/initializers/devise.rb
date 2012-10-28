@@ -4,7 +4,7 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = "diegoregueira@gmail.com"
+  config.mailer_sender = "pis2012g1@gmail.com"
 
   # Configure the class responsible to send e-mails.
   config.mailer = "Devise::Mailer"
@@ -228,7 +228,7 @@ Devise.setup do |config|
 # Inside the configuration block
 
 # For Google Apps
-  config.omniauth :google_apps, :store => OpenID::Store::Filesystem.new('/tmp'), :domain => 'kefsensei.com'
+  config.omniauth :google_apps, :store => OpenID::Store::Filesystem.new('/tmp'), :domain => 'moove-it.com'
 
 # For standard Google
   config.omniauth :open_id, :store => OpenID::Store::Filesystem.new('/tmp'), :name => 'google', :identifier => 'https://www.google.com/accounts/o8/id', :require => 'omniauth-openid'

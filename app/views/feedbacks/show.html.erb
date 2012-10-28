@@ -1,84 +1,11 @@
-<div class="row seccion wide" style="margin: auto;" xmlns="http://www.w3.org/1999/html"
-     xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<div class="feedback_show">
 
+  <h4 class="feedback_subject"><%= strip_tags(@feedback.subject) %></h4>
 
-    <input class="TextField" id="feedback_project_id" name="project_id" size="30" type="hidden" value="<%= params[:Projectid] %>"/>
+  <h6 class="feedback_date"><%= t('feedback.create_by')+ " " + @feedback.user.full_name + " "+t('feedback.date_on')+"   "+t("date."+"#{@feedback.created_at.strftime("%A")}")+ @feedback.created_at.strftime(" %d ")+  t("date."+"#{@feedback.created_at.strftime("%B")}") +@feedback.created_at.strftime(" %Y")  + @feedback.created_at.strftime(" ,  %H:%M") %></h6>
 
-    <div class="seccion3 Separador">
+  <div class="feedback_content"><%= @feedback.content.html_safe %></div>
+  <hr class="feedback_division">
 
-
-      <h4 class="show_Asunto2"><%= truncate(strip_tags(@feedback.subject),:length => 45) %></h4>
-
-      <h6 class="fechaFeedback2"><%= "Create by " + @feedback.user.full_name + " on   " + @feedback.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h6>
-
-      <h7 class="Contenido4"><%= @feedback.content %></h7>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      <h7 class="Contenido3"><%= @feedback.content %></h7>
-
-
-
-
-
-
-    </div>
-
-    <hr>
-
-
-
-
-
-  <div class="accordion" id="accordion2">
-    <% cant = 1 %>
-  <% @feedback.comments.each do |comment| %>
-        <% cant = cant + 1 %>
-        <div class="accordion-group">
-          <div class="accordion-heading">
-            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%=cant%>">
-              <h9 class="fechaComment"><%= "Create by " + comment.user.full_name + " at   " + comment.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h9>
-            </a>
-          </div>
-          <div id="collapse<%=cant%>" class="accordion-body collapse">
-            <div class="accordion-inner">
-              <div class="seccionComent">
-                <%= image_tag("Skype.png", :alt => "Moove-It", :class => "ImgAvatComen") %>
-                <P>
-                  <h7 class="show_Coment"><%= comment.content %></h7>
-                <P>
-                <P>
-                  <h9 class="fechaComment"><%= "Create by " + comment.user.full_name + " at   " + comment.created_at.strftime("   %A, %d %B, %Y,  %H:%M") %></h9>
-              </div>
-            </div>
-          </div>
-        </div>
-
-  <% end %>
-  </div>
-
-  <%= form_for(@commentNew) do |f| %>
-
-      <div class="seccionComent">
-        <div class="field">
-          <%= f.text_area :content, :class => "TextAreaComent" %>
-        </div>
-
-        <input class="TextField" id="comment_feedback_id" name="feedback_id" size="30" type="hidden" value="<%= @feedback.id %>"/>
-
-        <div class="actions">
-          <%= f.submit :class => "btn margin1 top1" %> or
-          <a href="#feedbacks" class="btn btn-link feedbacks-link" type="button" data-url="<%=  project_feedbacks_path(@feedback.project) %>">Back</a>
-        </div>
-
-      </div>
-  <% end %>
-
-
+  <%= render template: "comments/index" %>
 </div>
-
-
-

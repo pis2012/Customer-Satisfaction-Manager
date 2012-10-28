@@ -1,4 +1,7 @@
 class FeedbacksController < ApplicationController
+
+  before_filter :authenticate_user!
+
   layout false
   # GET /feedbacks
   # GET /feedbacks.json
@@ -28,7 +31,7 @@ class FeedbacksController < ApplicationController
     @feedbacks = Feedback.where('created_at >= ?', fecha).where(project_id:params[:project_id])
     @project = Project.find(params[:project_id])
     respond_to do |format|
-      format.js {}
+      format.js { render action: "index" }
     end
   end
 
@@ -36,10 +39,8 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks/1.json
   def show
     @feedback = Feedback.find(params[:id])
-
-    @comment  = Comment.find_all_by_feedback_id(@feedback.id)
-
-    @commentNew = Comment.new
+    @comments = @feedback.comments
+    @new_comment = Comment.new
 
     respond_to do |format|
       if request.xhr?
@@ -71,15 +72,14 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new(params[:feedback])
 
     @feedback.project_id = params[:project_id]
-    @feedback.user_id= current_user.id
+    @feedback.user_id = current_user.id
 
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to :controller => "/projects", :action => "show_project_complete" }
-        format.json { render json: @feedback, status: :created, location: @feedback }
+        @feedbacks = Feedback.find_all_by_project_id(params[:project_id])
+        format.js { render action: "index" }
       else
-        format.html { render action: "new" }
-        format.json { render json: @feedback.errors, status: :unprocessable_entity }
+        format.js { }
       end
     end
   end
@@ -91,11 +91,10 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       if @feedback.update_attributes(params[:feedback])
-        format.html { redirect_to @feedback, notice: 'Feedback was successfully updated.' }
-        format.json { head :no_content }
+        @feedbacks = Feedback.find_all_by_project_id(params[:project_id])
+        format.js { render action: "index" }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @feedback.errors, status: :unprocessable_entity }
+        format.js { }
       end
     end
   end

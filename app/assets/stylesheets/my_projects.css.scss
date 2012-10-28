@@ -12,19 +12,19 @@
 
 /* ============== [ MOOD SELECTOR ] ============== */
 
-.current-mood p
-{
+.current-mood p{
   margin-right: 15px;
-}
-
-#msj-face-changed{
-  text-align: center;
-  margin:auto;
+  text-align:  center;
 }
 
 #msj-face-changed-container{
+  position: absolute;
+  text-align: right;
+}
+
+#msj-face-changed{
   display: inline-block;
-  text-align: center;
+  margin:auto;
 }
 
 .face-mood-state {
@@ -78,6 +78,9 @@
 #face-list li img:hover {
   width: 18%;
   height: 18%;
+  -webkit-transition: all .3s linear;
+  -moz-transition: all .3s linear;
+
 }
 
 /* ============== [ MILESTONE NOTIFIER ] ============== */
@@ -191,7 +194,7 @@
 
 /* ============== [ FEEDBACKS TAB INDEX ] ============== */
 
-.feedbacks_filer_element {
+.feedbacks_filter_element {
   display: inline;
 }
 
@@ -201,9 +204,6 @@
 
 .feedbacks_table {
   width: 100%;
-}
-
-.feedbacks_table {
 
   tr > td {
     padding-top: 2%;
@@ -221,20 +221,20 @@
 }
 
 .feedbacks_table .feedback_info {
-
   padding-left: 4%;
 
   .feedback_subject {
-    font-size: 18px;
     text-decoration: underline;
     color: inherit;
     font-weight: bold;
-
   }
 
   .feedback_date {
     font-weight: normal;
     margin-top: 0;
+  }
+
+  .feedback_content{
   }
 
   .feedback_last_comment {
@@ -256,4 +256,139 @@
 .mood-graph {
   text-align: center;
 }
+
+/* ============== [ MILESTONES ] ============== */
+
+
+
+
+/* ============== [CREATE FEEDBACK] ============== */
+
+#new_feedback, #edit_feedback{
+  margin-bottom: 0;
+
+  .feedback_type_field{
+
+    .feedback_type_label{
+      width: 5%;
+    }
+
+    .feedback_type_select_control{
+      margin-left: 7%;
+    }
+
+    .feedback_type_select{
+    }
+
+  }
+
+  .feedback_subject_field{
+
+    .feedback_subject_label{
+      width: 5%;
+    }
+
+    .feedback_subject_text_control{
+      margin-left: 7%;
+    }
+
+  }
+
+  .feedback_content_field{
+
+    .feedback_content_text{
+      width: 100%;
+      height: 500px;
+    }
+
+
+
+  }
+
+  .feedback_visibility_field{
+    margin-top: 1%;
+    margin-bottom: 1%;
+  }
+
+}
+
+
+/* ============== [SHOW FEEDBACK] ============== */
+
+.feedback_show{
+
+  .feedback_subject {
+    text-decoration: underline;
+    color: inherit;
+    font-weight: bold;
+
+  }
+
+  .feedback_date {
+    font-weight: normal;
+    margin-top: 0;
+  }
+
+  .feedback_content {
+
+  }
+
+  .feedback_division {
+    margin-top: 1%;
+    margin-bottom: 1%;
+
+  }
+
+  .comments_table{
+    width: 100%;
+
+    tr > td {
+      padding-top: 2%;
+      padding-bottom: 2%;
+      border-bottom: 1px solid #EEEEEE;
+    }
+
+    .avatar {
+      width: 8%;
+    }
+
+  }
+
+  .comments_table .avatar .user_image {
+
+  }
+
+  .comments_table .comment_info {
+    padding-left: 4%;
+
+    .comment_content {
+      cursor: default;
+      width: 100%;
+      margin-bottom: 0;
+      resize: none;
+    }
+
+    .comment_author{
+      margin-top: 0;
+      margin-bottom: 0;
+      font-weight: normal;
+    }
+
+  }
+
+  .new_comment{
+
+    .new_comment_text{
+      width:100%;
+      resize: none;
+    }
+  }
+
+
+}
+
+
+//FIN VER FEEDBACK
+
+
 

@@ -1,20 +1,6 @@
-<!--<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-<p>Esta vista la generará Regueira-Peres</p>  -->
-
-<!-- <p>
- Usuario no logueado
- Vista de todas las caritas y una vista previa de artículo.
- Caritas no clickeables.
-</p> -->
-
-<script xmlns="http://www.w3.org/1999/html">
-
-</script>
-
 <div id="home">
 <% if user_signed_in? %>
-    <% if current_user.role_id == 2 %>
+    <% if current_user.client? %>
 
         <!--<p>
         Vista de todas las caritas.
@@ -27,7 +13,7 @@
             </div>
             <div class="span10">
               <div class="homecenter">
-                <h2>MOOD OF OUR CUSTOMERS</h2>
+                <h2><%=  I18n.t('mood.mood_of_our_customers')%></h2>
                 <% count = 0 %>
 
                 <% @projects = Project.all.shuffle %>
@@ -36,15 +22,17 @@
 
                     <% if project.client_id == current_user.client_id  %>
                         <div class="chomefacewrapperbig">
-                          <div onclick="location.href='/my_projects?default=true&project_id=<%=project.id%>';" class="chomefacebig" >
-                            <%=image_tag ('status/big/' + mood.get_mood_img) %>
+                          <%= link_to :controller => "projects", :action => "change_profile_project", :id => project.id do %>
+                          <div class="chomefacebig" >
+                            <%= image_tag('faces/big/' + mood.get_mood_img, :class => 'img-rounded')  %>
                             <p class="homeprojectnamev"><%= project.name %></p>
                           </div>
+                          <% end %>
                         </div>
                     <% else %>
                         <div class="chomefacewrapper">
                           <div class="homeface" >
-                            <%=image_tag ('status/normal/' + mood.get_mood_img) %>
+                            <%=image_tag('faces/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
                             <p class="homeprojectnameh"><%= project.name %></p>
                           </div>
                         </div>
@@ -75,21 +63,23 @@
 
         <div class="container">
           <div class="row-fluid">
-            <div class="span1">
+            <div class="span2">
             </div>
-            <div class="span10">
+            <div class="span8">
               <div class="homecenter">
-                <h2>MOOD OF OUR CUSTOMERS</h2>
-                <% count = 0 %>
+                <h2><%=  I18n.t('mood.mood_of_our_customers')%></h2>
                 <% @projects = Project.all.shuffle %>
                 <% @projects.each do |project| %>
                     <% mood = project.moods.last! %>
 
+
                         <div class="ahomefacewrapper">
-                          <div onclick="location.href='<%= project_path(project.id) %>?default=true'" class="homeface" >
-                            <%= image_tag ('status/normal/' + mood.get_mood_img) %>
+                          <%= link_to :controller => "projects", :action => "change_profile_project", :id => project.id do %>
+                             <div class="homeface" >
+                            <%= image_tag('faces/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
                             <p class="homeprojectnameh"><%= project.name %></p>
-                          </div>
+                            </div>
+                          <% end %>
                         </div>
 
                     <!-- < %= project.name  %> -->
@@ -100,7 +90,7 @@
               </br>
               </br>
             </div>
-            <div class="span1">
+            <div class="span2">
             </div>
           </div>
         </div>
@@ -119,10 +109,10 @@
         <div class="span8">
           <div class="vhomecenter">
             <div class="vheaderimage">
-              <%= image_tag "status/big/9.png" %>
+              <%= image_tag "faces/big/9.png" %>
             </div>
             <div class="vheader">
-              <h2 >CUSTOMER SATISFACTION MANAGER</h2>
+              <h2 ><%=  t('admin.customer_satisfaction_manager')%></h2>
               </br>
               <p>
                 Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum
@@ -137,7 +127,7 @@
           <div class="homecenter">
             <hr/>
             <div class="vhomeleft">
-                <h2>MOOD OF OUR CUSTOMERS</h2>
+                <h2><%=  I18n.t('mood.mood_of_our_customers')%></h2>
             </div>
 
             <% @projects = Project.all.shuffle %>
@@ -146,7 +136,7 @@
 
                 <div class="vhomefacewrapper">
                   <div class="homeface" >
-                    <%= image_tag ('status/normal/' + mood.get_mood_img) %>
+                    <%= image_tag('faces/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
                     <p class="homeprojectnameh"><%= project.name %></p>
                   </div>
                 </div>

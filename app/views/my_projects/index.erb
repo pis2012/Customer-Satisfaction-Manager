@@ -1,0 +1,313 @@
+<div id="breadcrumbs-wrapper" xmlns="http://www.w3.org/1999/html">
+  <div class="container">
+    <ul class="nav nav-pills">
+      <li class="dropdown">
+        <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">
+          <b class="caret"></b>
+          <i class="icon-book"> </i>
+          <%= @view[:project].name %>
+        </a>
+        <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
+
+          <% if current_user.client? %>
+              <% Project.where(:client_id => @view[:project].client_id).order(:name).each do |proj| %>
+                  <% if proj.id != @view[:project].id %>
+                      <li>
+                        <%= link_to proj.name, {:controller => "projects", :action => "change_profile_project", :id => proj.id} %>
+                      </li>
+                  <% end %>
+              <% end %>
+          <% else %>
+              <% Project.all.each do |proj| %>
+                  <% if proj.id != @view[:project].id %>
+                      <li>
+                        <%= link_to proj.name, {:controller => "projects", :action => "change_profile_project", :id => proj.id} %>
+                      </li>
+                  <% end %>
+              <% end %>
+          <% end %>
+        </ul>
+      </li>
+    </ul>
+    <!-- /tabs -->
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row-fluid">
+    <div class="span3">
+      <br>
+
+      <div class="current-mood">
+        <div class="face-mood-state">
+
+          <div id="msj-face-changed-container">
+            <div id="msj-face-changed" class="label label-info">
+              <%= t('my_projects.mood.mood_updated')%>
+            </div>
+          </div>
+
+          </br>
+
+          <div id="myTabContentMoods" class="tab-content">
+            <!-- page moods -->
+            <div class="tab-pane fade in active" id="change-mood1">
+                <!-- page contents -->
+                <div class="page_content" id="change-mood1-content">
+
+                  <%= render template: 'projects/change_mood' %>
+
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="change-mood3">
+              <!-- page contents -->
+              <div class="page_content" id="change-mood3-content">
+              </div>
+            </div>
+            <div class="tab-pane fade" id="change-mood5">
+              <!-- page contents -->
+              <div class="page_content" id="change-mood5-content">
+              </div>
+            </div>
+            <div class="tab-pane fade" id="change-mood7">
+              <!-- page contents -->
+              <div class="page_content" id="change-mood7-content">
+              </div>
+            </div>
+            <div class="tab-pane fade" id="change-mood9">
+              <!-- page contents -->
+              <div class="page_content" id="change-mood9-content">
+              </div>
+            </div>
+          </div>
+
+          <% if current_user.client? %>
+
+          <ul id="face-list">
+            <% mood = @view[:project].moods.order(:created_at).last.status %>
+            <li <% if mood == 1 %> class="active" <% end %>><a href="#change-mood1" class="change-mood1-link" data-url="<%= change_mood_path('1') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="1" src="/assets/faces/small/1.png" class="face-mood img-rounded" id="miniMood1"/></a></li>
+            <li <% if mood == 3 %> class="active" <% end %>><a href="#change-mood3" class="change-mood3-link" data-url="<%= change_mood_path('3') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="3" src="/assets/faces/small/3.png" class="face-mood img-rounded" id="miniMood3"/></a></li>
+            <li <% if mood == 5 %> class="active" <% end %>><a href="#change-mood5" class="change-mood5-link" data-url="<%= change_mood_path('5') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="5" src="/assets/faces/small/5.png" class="face-mood img-rounded" id="miniMood5"/></a></li>
+            <li <% if mood == 7 %> class="active" <% end %>><a href="#change-mood7" class="change-mood7-link" data-url="<%= change_mood_path('7') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="7" src="/assets/faces/small/7.png" class="face-mood img-rounded" id="miniMood7"/></a></li>
+            <li <% if mood == 9 %> class="active" <% end %>><a href="#change-mood9" class="change-mood9-link" data-url="<%= change_mood_path('9') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="9" src="/assets/faces/small/9.png" class="face-mood img-rounded" id="miniMood9"/></a></li>
+          </ul>
+
+          <% end %>
+
+        </div>
+
+        <p></p>
+        <br>
+      </div>
+
+      <div id="global_nav">
+        <ul id="myTab">
+          <li class="feedbacks active">
+            <a href="#feedbacks" class="feedbacks-link" data-url="<%= project_feedbacks_path(@project) %>"> <%= t('my_projects.tabs.feedbacks')%></a>
+            <ul>
+              <li class="feedbacks" hidden="true">
+                <a href="#feedbacks" class="feedbacks-link" data-url="<%= project_feedbacks_path(@project) %>"> <%= t ('my_projects.tabs.feedbacks')%></a>
+              </li>
+              <li class="new-feedback" hidden="true">
+                <a href="#new-feedback"> <% t('my_projects.tabs.new_feedback') %></a>
+              </li>
+              <li class="show-feedback" hidden="true">
+                <a href="#show-feedback"> <% t('my_projects.tabs.show_feedback') %></a>
+              </li>
+              <li class="edit-feedback" hidden="true">
+                <a href="#edit-feedback"> <%= t('my_projects.tabs.edit_feedback') %></a>
+              </li>
+            </ul>
+          </li>
+          <li class="data">
+            <a href="#project-data" class="data-link" data-url="<%= project_data_path(@project) %>"> <%= t('my_projects.tabs.data') %></a>
+            <ul>
+              <li class="data" hidden="true">
+                <a href="#project-data"><%= t('my_projects.tabs.data') %></a>
+              </li>
+              <li class="new-milestone" hidden="true">
+                <a href="#new-milestone"><%= t('my_projects.tabs.new_milestone') %> </a>
+              </li>
+            </ul>
+
+          </li>
+
+
+        </ul>
+      </div>
+
+      <br/>
+
+      <div class="milestone-box">
+        <%= @view[:mile1] %>
+        <hr/>
+        <p> <%= @view[:mile2] %> </p>
+      </div>
+
+    </div>
+    <div class="span9">
+      <div id="page">
+        <div id="myTabContent" class="tab-content">
+
+          <!-- page feedbacks -->
+          <div class="tab-pane fade in active" id="feedbacks">
+
+            <!-- page header -->
+            <div class="page_header">
+              <h1><%= t('my_projects.tabs.feedbacks') %></h1>
+
+
+              <% unless current_user.mooveit? %>
+              <div class="add_element">
+                <a href="#new-feedback" class="btn btn-link new-feedback-link" data-url="<%= new_feedback_path(@project) %>">
+                  <i class="icon-plus icon-white"> </i> <%= t('my_projects.tabs.new_feedback')%>
+                </a>
+              </div>
+              <% end %>
+
+            </div>
+            <!--// page header -->
+
+
+            <!-- page contents -->
+            <div class="page_content" id="feedbacks-content">
+
+              <%= form_tag(feedbacks_date_filter_path, :remote => true) do %>
+                  <%= hidden_field_tag(:project_id,@project.id) %>
+                  <div class="feedbacks_filter">
+                    <h5 class="feedbacks_filter_element"><%= t('my_projects.feedbacks_tab.show_events_since')%></h5>
+
+                    <div class="input-append date feedbacks_filter_element" id="datepicker" data-date="<%= Time.now.strftime("%d/%m/%Y") %>" data-date-format="dd/mm/yyyy">
+                      <%= text_field_tag(:date,Time.now.strftime("%d/%m/%Y"),:class => "span2", :size => 16) %>
+                      <span class="add-on"><i class="icon-calendar"></i></span>
+                    </div>
+
+                    &nbsp;
+                    <%= button_tag( t('buttons.filter'), :class => "btn") %>
+                  </div>
+              <% end %>
+              <hr class="hr_feedbacks_table">
+
+              <div class="feedbacks_table_wrapper">
+              <%= render template: "feedbacks/index" %>
+              </div>
+            </div>
+            <!--// page contents -->
+
+          </div>
+          <!--// page feedbacks -->
+
+          <!-- page data -->
+          <div class="tab-pane fade" id="project-data">
+
+            <!-- page header -->
+            <div class="page_header">
+              <h1><%= t('my_projects.tabs.data') %></h1>
+
+
+              <% if current_user.admin? %>
+              <div class="add_element">
+                <a href="#new-milestone" class="btn btn-link new-milestone-link" data-url="<%= new_milestone_path(@project) %>">
+                  <i class="icon-plus icon-white"> </i> <%= t('my_projects.tabs.new_milestone')%>
+                </a>
+              </div>
+                <% end %>
+                
+
+              
+
+            </div>
+            <!--// page header -->
+
+            <!-- page contents -->
+            <div class="page_content" id="data-content">
+
+            </div>
+            <!--// page contents -->
+
+          </div>
+          <!--// page data -->
+
+
+          <!-- page new feedback -->
+          <div class="tab-pane fade" id="new-feedback">
+            <!-- page header -->
+            <div class="page_header">
+              <h1><%= t('my_projects.tabs.new_feedback') %></h1>
+            </div>
+            <!--// page header -->
+
+            <!-- page contents -->
+            <div class="page_content" id="new-feedback-content">
+
+            </div>
+            <!--// page contents -->
+
+          </div>
+          <!--// page new feedback -->
+
+          <!-- page show feedback -->
+          <div class="tab-pane fade" id="show-feedback">
+            <!-- page header -->
+            <div class="page_header">
+              <h1><%= t('my_projects.tabs.show_feedback') %></h1>
+            </div>
+            <!--// page header -->
+
+            <!-- page contents -->
+            <div class="page_content" id="show-feedback-content">
+
+            </div>
+            <!--// page contents -->
+
+          </div>
+          <!--// page show feedback -->
+
+          <!-- page edit feedback -->
+          <div class="tab-pane fade" id="edit-feedback">
+            <!-- page header -->
+            <div class="page_header">
+              <h1><%= t('my_projects.tabs.edit_feedback') %></h1>
+            </div>
+            <!--// page header -->
+
+            <!-- page contents -->
+            <div class="page_content" id="edit-feedback-content">
+
+            </div>
+            <!--// page contents -->
+
+          </div>
+          <!--// page edit feedback -->
+
+          <!-- page new milestone -->
+          <div class="tab-pane fade" id="new-milestone">
+            <!-- page header -->
+            <div class="page_header">
+              <h1><%= t('my_projects.tabs.new_milestone') %></h1>
+            </div>
+            <!--// page header -->
+
+            <!-- page contents -->
+            <div class="page_content" id="new-milestone-content">
+
+            </div>
+            <!--// page contents -->
+
+          </div>
+          <!--// page new feedback -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>

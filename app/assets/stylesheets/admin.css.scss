@@ -57,6 +57,7 @@
 }
 
 
+/* ===============GRAPHS===================== */
 .bar-graph{
   text-align: center;
 }
@@ -64,6 +65,45 @@
 .pie-graph{
   text-align: center;
 }
+
+.forms-graphs{
+  text-align: center;
+}
+
+/* ================== [ FORMS ] =============== */
+
+.show-form-link{
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  text-decoration: underline;
+  color: rgb(51, 51, 51);
+  text-align: left;
+}
+
+.show-form-name{
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  text-decoration: underline;
+  color: rgb(51, 51, 51);
+  text-align: left;
+}
+
+#btn_full_data{
+  visibility:hidden;
+}
+
+
+
+
+
+
+
+
+
 
 
 

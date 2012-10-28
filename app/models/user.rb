@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :trackable, :encryptable,
   #:lockable, :timeoutable, :openid_authenticatable,
 
+
   devise :database_authenticatable, :registerable, :recoverable, :omniauthable, :rememberable, :confirmable
   after_create :create_profile
 
@@ -33,7 +34,7 @@ class User < ActiveRecord::Base
     if user = User.find_by_openidemail(data['email'])
         return user
       else
-        role = Role.find_by_name 'Mooveit'
+        role = Role.find_by_name Role::MOOVEIT_ROLE
         client = Client.find_by_name 'Sony'
         user = User.create(:email => data['email'],:openidemail => data['email'],:full_name => data['name'],:username => data['first_name'],:role_id => role.id,:client_id => client.id)
         user.skip_confirmation!
@@ -54,7 +55,7 @@ class User < ActiveRecord::Base
       if user = User.find_by_openidemail(data['email'])
         return user
       else
-        role = Role.find_by_name 'Client'
+        role = Role.find_by_name Role::CLIENT_ROLE
         client = Client.find_by_name 'Sony'
         user = User.create(:email => data['email'],:openidemail => data['email'],:full_name => data['name'],:username => data['first_name'],:role_id => role.id,:client_id => client.id)
         user.skip_confirmation!
@@ -73,13 +74,25 @@ class User < ActiveRecord::Base
   #end
 
   def create_profile
-    if self.role.name == 'Mooveit'
+    if self.role.name == Role::MOOVEIT_ROLE
       p = Project.all.first
       Profile.create(user:self, project:p,skype_usr:'')
-    elsif self.role.name == 'Client'
+    elsif self.role.name == Role::CLIENT_ROLE
       p = Project.all.first
       Profile.create(user:self, project:p,skype_usr:'')
     end
+  end
+
+  def admin?
+    return self.role.name == Role::ADMIN_ROLE
+  end
+
+  def mooveit?
+    return self.role.name == Role::MOOVEIT_ROLE
+  end
+
+  def client?
+    return self.role.name == Role::CLIENT_ROLE
   end
 
 end

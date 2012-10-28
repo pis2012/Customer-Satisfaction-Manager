@@ -5,4 +5,7 @@ class Comment < ActiveRecord::Base
 
   attr_accessible :feedback, :user,:feedback_id,  :user_id,
                   :content, :created_at, :updated_at
+
+  validates :feedback, :user,:content, :presence  => true
+  validates_length_of :content, :minimum => 40
 end

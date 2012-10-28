@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require cleditor/cleditor
  *= require bootstrap_and_overrides
  *= require datepicker
  */
@@ -36,11 +37,12 @@
 
 #content
 {
-
+    color: rgba(36, 31, 36, 0.8);
 }
 
 #content a {
-    color: #000;
+    /*color: #000;*/
+    color: rgba(36, 31, 36, 0.8)
 }
 
 
