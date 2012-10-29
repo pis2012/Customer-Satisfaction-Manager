@@ -73,16 +73,16 @@ ActiveRecord::Schema.define(:version => 20121012012332) do
   create_table "profiles", :force => true do |t|
     t.integer  "user_id"
     t.integer  "project_id"
-    t.boolean  "feedbacks_notifications", :default => false
-    t.boolean  "comments_notifications",  :default => false
+    t.boolean  "feedbacks_notifications", :default => true
+    t.boolean  "comments_notifications",  :default => true
     t.boolean  "show_gravatar",           :default => true
     t.string   "skype_usr"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   create_table "projects", :force => true do |t|
