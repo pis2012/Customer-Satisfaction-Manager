@@ -23,7 +23,7 @@ ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'users'}")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'clients'}")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'projects'}")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'milestones'}")
-ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'faces'}")
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'moods'}")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'profiles'}")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'feedbacks'}")
 
@@ -43,8 +43,8 @@ end_date = DateTime.new(2013,1,1)
 
 p1 = Project.create(client: client2,
                     name: "Panaderia El 10",
-                    description: "Software para administracion de una panaderia",
-                    end_date: end_date,
+                    description: "Panaderia El 10 software helps commercial bakers and other food manufacturers simplify their business. It is a single system for managing inventory, manufacturing, product development, customer service, accounting, sales management and forecasting. Panaderia El 10 is a proven solution to help bakers. It provides a simple and practical way to manage your production, clients and accounts. Panaderia El 10 (football reference) effectively stores information that you require on a daily basis, in a program that any Bakery can work with.",
+                    end_date: '2015-04-01 00:00:00',
                     finalized: false)
 
 date1 = DateTime.new(2012,1,1)
