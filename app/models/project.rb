@@ -55,7 +55,7 @@ class Project < ActiveRecord::Base
     minutes    =  difference % 60
     difference = (difference - minutes) / 60
     hours      =  (difference + 4) % 24
-    difference = (difference - hours)   / 24
+    difference = (difference + 4 - hours)   / 24
     days       =  difference % 365
 
     [days,hours]
@@ -71,9 +71,7 @@ class Project < ActiveRecord::Base
       distance = self.distance_between(current_date,td)
       days = distance[0]
       hours = distance[1]
-      if days == 0 && hours == 0
-        days = 1 #Especial case
-      end
+
       res[0] = [days,hours,miles.first.name]
       if miles.count > 1
         res[1] = [1,miles.second.target_date]
