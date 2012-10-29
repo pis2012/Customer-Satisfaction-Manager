@@ -7,7 +7,7 @@ module MyProjectsHelper
       next_milestones = @project.get_next_milestones
       if next_milestones[1] == nil
         td = next_milestones[0]
-        res[0] = t('milestone.end_project') +": " +t("date."+"#{td.strftime("%B")}") + " #{td.strftime("%e")}" + t("milestone.the") + "#{td.strftime("%Y")}"
+        res[0] = t('milestone.end_project') +": " +t("date."+"#{td.strftime("%B")}") + " #{td.strftime("%e")}" + ", #{td.strftime("%Y")}"
       else
         days = next_milestones[0][0]
         hours = next_milestones[0][1]
@@ -19,7 +19,7 @@ module MyProjectsHelper
         if next_milestones[1][0] == 1
           res[1] = t('milestone.Next_milestone') +": " +t("date."+"#{td.strftime("%B")}") + " #{td.strftime("%e")}" + ", #{td.strftime("%Y")}"
         else
-          res[1] = t('milestone.end_project') +": " +t("date."+"#{td.strftime("%B")}") + " #{td.strftime("%e")}"  "#{td.strftime("%Y")}"
+          res[1] = t('milestone.end_project') +": " +t("date."+"#{td.strftime("%B")}") + " #{td.strftime("%e")}"  ", #{td.strftime("%Y")}"
         end
       end
     end
