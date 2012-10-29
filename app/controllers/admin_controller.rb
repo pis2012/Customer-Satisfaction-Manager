@@ -61,8 +61,10 @@ class AdminController < ApplicationController
                                    :bar_colors => ['FF0000','FFA000','FFFF00','00FFA0','00FF00'],
                                    :legend => ["1,2","3,4","5,6","7,8","9,10"])
 
-  end
 
+    @users =  User.all
+
+  end
 
   def forms
     session = GoogleDrive.login("username@gmail.com", "mypassword")

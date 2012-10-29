@@ -74,16 +74,11 @@ es:
                         update_mood: "Actualiza tu estado"
                         mood_updated: "Estado actualizado!"
 
-  admin:
-            tabs:
-
-
-
 
   user_edit:
             choose_your_profile_settings: "SELECCIONE LAS OPCIONES DE SU PERFIL"
             personal_data: "Información Personal"
-            full_Name: "Nombre completo"
+            full_Name: "Nombre Completo"
             email: "Email"
             load_openid: "Tomar OpenID de sesión de Gmail"
             skype_user: "Usuario skype"
@@ -96,7 +91,7 @@ es:
             change_password: "Cambiar Contraseña"
             current_password: "Contraseña actual"
             new_password: "Nueva contraseña"
-            confirm_password: "Confirmar nueva contraseña"
+            confirm_password: "Confirmar contraseña"
 
   user:
             continue: "Continuar"
@@ -176,11 +171,34 @@ es:
             summary:    "Resumen"
             reports:    "Reportes"
             projects:   "Proyectos"
-            users:   "Usuarioss"
+            users:   "Usuarios"
             clients:   "Clientes"
             forms: "Formularios"
             evolution_of_general_mood:  "Evolución del estado de ánimo general"
             Status_of_Projects: "Estado del proyecto"
+            client:   "Cliente"
+            mooveit_employee:   "Empleado Moove-IT"
+            mooveit_admin:   "Empleado Moove-IT(Admin)"
+            filter_name: "Nombre contiene: "
+            comment_created: "Comentario hecho el "
+            comment_created_on: " en "
+            user_name: "Nombre de Usuario"
+            user_email: "Email: "
+            user_unconfirmed_email: "Email No Confirmado: "
+            user_openid:  "OpenID: "
+            activated: "activado"
+            deactivated: "desactivado"
+            user: "Usuario"
+            enable: "habilitado"
+            disable: "deshabilitado"
+            sure: "Estas seguro?"
+
+            tabs:
+
+              new_user: "Nuevo Usuario de Cliente"
+              show_user: "Ver Usuario"
+              edit_user: "Editar Usuario"
+              delete_user: "Eliminar Usuario"
 
 
   milestone:
@@ -211,3 +229,25 @@ es:
             mood_of_our_customers:   "ESTADO DE ÁNIMO DE NUESTROS CLIENTES"
             mood_state_changed:      "El estado de ánimo ha cambiado!!!"
             changes_in_mood:         "Cambios en el estado de ánimo"
+
+
+  activerecord:
+                errors:
+                    models:
+                        user:
+                            attributes:
+                                username:
+                                     blank: "Nombre de Usuario no puede ser vacio."
+                                full_name:
+                                     blank: "Nombre Completo no puede ser vacio."
+                                email:
+                                     blank: "Email no puede ser vacio."
+                                     format: "Email mal formado."
+                                     taken: "Email en uso."
+                                password:
+                                     blank: "Contraseña no puede ser vacio."
+                                     confirmation: "Confirmar contraseña no coincide."
+                                password_confirmation:
+                                     blank: "Confirmar contraseña no puede ser vacio."
+                                openidemail:
+                                     taken: "OpenID en uso."

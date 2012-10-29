@@ -21,6 +21,8 @@ class CreateUsers < ActiveRecord::Migration
       t.datetime :confirmation_sent_at
       t.string   :unconfirmed_email
 
+      t.boolean  :disable,  :default => false
+
       t.timestamps
     end
     add_index :users, :client_id

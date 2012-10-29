@@ -74,17 +74,11 @@ en:
 
 
 
-  admin:
-            tabs:
-
-
-
-
 
   user_edit:
               choose_your_profile_settings: "CHOOSE YOUR PROFILE SETTINGS"
               personal_data: "Personal Data"
-              full_Name: "Full name"
+              full_Name: "Full Name"
               email: "Email"
               load_openid: "Load OpenID from Gmail's session"
               skype_user: "Skype user"
@@ -97,7 +91,7 @@ en:
               change_password: "Change Password"
               current_password: "Current password"
               new_Password: "New password"
-              confirm_password: "Confirm new password"
+              confirm_password: "Confirm password"
               save_changes: "Save Changes"
   user:
 
@@ -180,7 +174,28 @@ en:
             forms:  "Forms"
             evolution_of_general_mood: "Evolution of the general mood"
             Status_of_Projects: "Status of Projects"
+            client:   "Client: "
+            mooveit_employee:   "Employe Moove-IT"
+            mooveit_admin:   "Employe Moove-IT(Admin)"
+            filter_name: "Name contains: "
+            comment_created: "Comment made on "
+            comment_created_on: " on "
+            user_name: "Username: "
+            user_email: "Email: "
+            user_unconfirmed_email: "Unconfirmed Email: "
+            user_openid:  "OpenID: "
+            activated: "activated"
+            deactivated: "deactivated"
+            user: "User"
+            enable: "enable"
+            disable: "disable"
+            sure: "Are you sure?"
 
+            tabs:
+                    new_user: "New User's Client"
+                    show_user: "View User"
+                    edit_user: "Edit User"
+                    delete_user: "Delete User"
 
   milestone:
             milestone:  "Milestone"
@@ -210,5 +225,23 @@ en:
             changes_in_mood:     "Changes in mood"
 
 
-
-
+  activerecord:
+                  errors:
+                      models:
+                          user:
+                              attributes:
+                                  username:
+                                      blank:  "Username can not be empty."
+                                  full_name:
+                                      blank:  "Full Name can not be empty."
+                                  email:
+                                      blank:  "Email can not be empty."
+                                      format: "Email malformed"
+                                      taken: "Email already taken."
+                                  password:
+                                      blank: "Password can not be empty."
+                                      confirmation: "Confirm Password does not match."
+                                  password_confirmation:
+                                      blank: "Password confirmation can not be empty."
+                                  openidemail:
+                                      taken: "OpenID already taken."

@@ -19,7 +19,13 @@ CSM::Application.routes.draw do
   match "/milestones/new/:project_id" => "milestones#new", :as => :new_milestone
   resources :milestones
 
+  match "/users/name_filter" => "users#name_filter", :as => :users_name_filter
+
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :passwords => "passwords"}
+  scope "/admin" do
+    resources :users
+  end
+
   resources :clients
 
   match "/my_projects" , to: "my_projects#index" , :as => :my_projects
