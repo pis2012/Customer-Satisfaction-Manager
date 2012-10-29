@@ -34,4 +34,54 @@ class Project < ActiveRecord::Base
                   :legend => ["1","2","3","4","5"])
   end
 
+  def get_mood_graph
+    data = Array.new
+    axis = Array.new
+    count = self.moods.count
+    offset = count > 20 ? count-20 : 0  # Last 20 faces
+    self.moods.order(:created_at).offset(offset).each do |mood|
+      data = data + [mood.status]
+      axis = axis + ["#{mood.created_at.mday}/#{mood.created_at.mon}"]
+    end
+
+    Gchart.line(:size => '850x350', :bg => {:color => '76A4FB,1,ffffff,0', :type => 'gradient'}, :graph_bg => 'E5E5E5', :theme => :keynote,
+                :data => data, :axis_with_labels => ['x','y'], :axis_labels => [axis,[1,2,3,4,5]])
+  end
+
+  def distance_between(start_date, end_date)
+    difference =  end_date.to_i - start_date.to_i
+    seconds    =  difference % 60
+    difference = (difference - seconds) / 60
+    minutes    =  difference % 60
+    difference = (difference - minutes) / 60
+    hours      =  (difference + 4) % 24
+    difference = (difference + 4 - hours)   / 24
+    days       =  difference % 365
+
+    [days,hours]
+  end
+
+  def get_next_milestones
+    res = [nil,nil]
+    current_date = Time.now.to_datetime
+    miles = self.milestones.select {|mile| mile.target_date.to_datetime > current_date}
+    miles.sort_by! {|m| m[:target_date]}
+    if miles.count > 0
+      td = miles.first.target_date.to_datetime
+      distance = self.distance_between(current_date,td)
+      days = distance[0]
+      hours = distance[1]
+
+      res[0] = [days,hours,miles.first.name]
+      if miles.count > 1
+        res[1] = [1,miles.second.target_date]
+      else
+        res[1] = [2,self.end_date]
+      end
+    else
+      res[0] = self.end_date
+    end
+    res
+  end
+
 end

@@ -21,11 +21,18 @@ CSM::Application.routes.draw do
   match "/milestones/new/:project_id" => "milestones#new", :as => :new_milestone
   resources :milestones
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :passwords => "passwords"}
+  match "/users/name_filter" => "users#name_filter", :as => :users_name_filter
 
-  resources :clients , :only => [:index, :new, :create]
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :passwords => "passwords"}
+  scope "/admin" do
+    resources :users
+  end
+
+  resources :clients , :only => [:index, :new, :create,:update , :edit,:destroy]
   match "/admin/clients" => "clients#index" , :as => :admin_clients
   match "/admin/client/:client_id" => "clients#show", :as => :clients_show
+  match "/admin/client/edit/:client_id" => "clients#edit", :as => :clients_edit
+  match "/admin/client/delete/:client_id" => "clients#destroy", :as => :clients_delete
 
   match "/my_projects" , to: "my_projects#index" , :as => :my_projects
   match "/my_projects/change_profile_project", to: "projects#change_profile_project", :as => :change_profile_project
@@ -45,7 +52,6 @@ CSM::Application.routes.draw do
   match "/forms/show_data/:form_id" => "forms#show_data", :as => :forms_show_data
   match "/forms/show_full_data/:form_id" => "forms#show_full_data", :as => :forms_show_full_data
   match "/forms/show/:form_id" => "forms#show", :as => :forms_show
-  #resources :forms, :only => [:index, :new]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

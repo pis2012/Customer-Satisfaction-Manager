@@ -1,0 +1,147 @@
+  <div class="page_header">
+    <h1>
+      <%= t('admin.tabs.edit_user') %>
+    </h1>
+
+    <div class="add_element">
+
+      <%= form_tag(user_path, :method => "post", :remote => true, :id => "delete_form") do %>
+          <input name="_method" type="hidden" value="delete">
+          <button type="submit" value="borrar"><i class="icon-minus icon-white"> </i> <%= t('admin.tabs.delete_user')%> </button>
+      <% end %>
+    </div>
+
+  </div>
+
+<div class="page_content" id="edit-user-content">
+
+  <%= form_for(@user, :remote => true, :html => {:class => "form-horizontal"} ) do |f| %>
+
+
+
+    <% if @user.errors.any?  %>
+        <div class="alert alert-error">
+          <% @user.errors.messages.each do |msg| %>
+              <strong><%= msg[1][0] %></strong></br>
+          <% end %>
+
+        </div>
+    <% end %>
+
+    </br>
+
+    <div class="control-group">
+
+      <label class="control-label" ><%= t('user_edit.full_Name')  %>: </label>
+
+      <div class="controls">
+        <div class="input-prepend">
+          <%= f.text_field :full_name %>
+        </div>
+      </div>
+
+      </br>
+
+
+      <% if @user.client? %>
+
+          <label class="control-label" ><%= t('admin.client')  %>: </label>
+
+          <div class="controls">
+            <div class="input-prepend">
+              <%= f.select(:client_id, Client.all.map {|client| [client.name, client.id]},:prompt => true) %>
+            </div>
+          </div>
+
+          </br>
+
+          <label class="control-label" ><%= t('admin.user_name')%>:</label>
+
+          <div class="controls">
+            <div class="input-prepend">
+              <%= f.text_field :username %>
+            </div>
+          </div>
+
+          </br>
+      <% else %>
+
+          <label class="control-label "><%= t('home.admin')  %></label>
+
+          <div class="controls">
+            &nbsp;
+            <div class="input-prepend">
+              <label class="checkbox label-check ">
+                <%= check_box_tag :is_admin, f.object.admin? , f.object.admin? %>
+              </label>
+            </div>
+          </div>
+
+          </br>
+
+      <% end %>
+
+      <hr>
+
+      <label class="control-label"><%= t('admin.user_email')  %></label>
+
+      <div class="controls">
+        <div class="input-prepend">
+          <%= f.text_field :email %>
+        </div>
+      </div>
+
+      </br>
+
+      <% if !f.object.unconfirmed_email.nil? && !f.object.unconfirmed_email.blank? %>
+          <label class="control-label"><%= t('admin.user_unconfirmed_email')  %></label>
+          <div class="controls">
+            <div class="input-prepend">
+                <%= f.text_field :unconfirmed_email, :readonly => true %>
+            </div>
+          </div>
+
+
+          </br>
+      <% end %>
+
+
+      <%= fields_for @user.profile do |fa| %>
+          <label class="control-label"><%= t('user_edit.skype_user')  %></label>
+
+          <div class="controls">
+            <div class="input-prepend">
+              <%= fa.text_field :skype_usr %>
+            </div>
+          </div>
+
+          </br>
+      <%end%>
+
+      <hr>
+
+      <label class="control-label "><%= t('admin.user') + ' ' +t('admin.disable')  %></label>
+
+      <div class="controls">
+        &nbsp;
+        <div class="input-prepend">
+          <label class="checkbox label-check ">
+            <%= f.check_box :disable %>
+          </label>
+        </div>
+      </div>
+
+      </br>
+
+      <div class="actions">
+        <%= f.submit t('buttons.save_changes') %>   <%= t('buttons.or') %>
+        <%=  link_to t('buttons.cancel'), :back %>
+      </div>
+
+
+    </div>
+
+  <% end %>
+
+</div>
+

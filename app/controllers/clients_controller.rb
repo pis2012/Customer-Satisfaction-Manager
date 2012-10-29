@@ -40,7 +40,15 @@ class ClientsController < ApplicationController
 
   # GET /clients/1/edit
   def edit
-    @client = Client.find(params[:id])
+    @client = Client.find(params[:client_id])
+
+    respond_to do |format|
+      if request.xhr?
+        format.html { render :layout => false } # edi.html.erb
+      end
+      format.json { render json: @client }
+    end
+
   end
 
   # POST /clients
@@ -63,19 +71,26 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.update_attributes(params[:client])
-        format.html { redirect_to @client, notice: 'Client was successfully updated.' }
+        @clients = Client.all
+        format.js { render  :action => "index" }
       else
-        format.html { render action: "edit" }
+        format.js { }
       end
     end
   end
 
   # DELETE /clients/1
   def destroy
-    @client = Client.find(params[:id])
-    @client.destroy
+    @client = Client.find(params[:client_id])
 
-    redirect_to clients_url
+    respond_to do |format|
+      if @client.destroy
+        @clients = Client.all
+        format.js { render  :action => "index" }
+      else
+        format.js { }
+      end
+    end
   end
 
 

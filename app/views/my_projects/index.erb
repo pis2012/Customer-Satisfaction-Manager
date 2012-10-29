@@ -141,9 +141,12 @@
       <br/>
 
       <div class="milestone-box">
-        <%= @view[:mile1] %>
-        <hr/>
-        <p> <%= @view[:mile2] %> </p>
+        <% miles_data = get_milestones_data %>
+        <%= miles_data[0] %>
+        <% if miles_data[1] != nil  %>
+            <hr/>
+            <p> <%= miles_data[1] %> </p>
+        <% end %>
       </div>
 
     </div>

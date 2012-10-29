@@ -36,7 +36,7 @@ class FormsController < ApplicationController
 
     respond_to do |format|
       if @form.save
-        format.html { }
+        @forms = Form.where(:user_id => current_user.id)
         format.json { render action: "index" }
       else
         format.html { render action: "new" }

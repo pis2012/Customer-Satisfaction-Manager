@@ -104,8 +104,8 @@
 }
 
 .client_div{
-  margin-top: -20%;
-  position: relative;
+  margin-top: -10%;
+
 }
 
 
@@ -172,3 +172,65 @@ ul {
   src: url('lemon.ttf');
 }
 
+
+//Users
+.name-filter
+{
+  font-size: 16px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.user-name
+{
+  vertical-align: top;
+  display: inline-block;
+  width: 80%;
+}
+
+.users-avatar
+{
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  vertical-align: top;
+}
+
+.show-user-link
+{
+  font-size: 26px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.user-role
+{
+  font-size: 9px;
+  margin: 0px;
+}
+
+.user-comment
+{
+  font-size: 12px;
+  margin-bottom: 1px;
+}
+
+.user-comment-date
+{
+  font-size: 11px;
+  margin: 0px;
+  font-weight: bold;
+}
+
+.show-user-name
+{
+  font-size: 26px;
+  font-weight: bold;
+  text-decoration: underline;
+  margin-bottom: 4px;
+}
+
+.label-check
+{
+  padding-top: 5px;
+}

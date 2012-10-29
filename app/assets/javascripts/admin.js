@@ -25,6 +25,10 @@ $(document).on('click', '.show-client-link', function () {
     updatePanel($(this).data('url'), 'show_client_data', 'show_client');
     return false;
 });
+$(document).on('click', '.edit-client-link', function () {
+    updatePanel($(this).data('url'), 'edit_client_data', 'edit_client');
+    return false;
+});
 
 $(document).on('click', '.forms-link', function () {
     updatePanel($(this).data('url'), 'forms_data', 'forms');
@@ -64,4 +68,23 @@ $(document).on('click', '#btn_full_data', function() {
     return false;
 });
 
+$('.new-user-link').live('click', function () {
+    updatePanel($(this).attr('data-url'), 'new-user', 'new-user');
+    return false;
+});
+
+$('.edit-user-link').live('click', function () {
+    updatePanel($(this).attr('data-url'), 'edit-user', 'edit-user');
+    return false;
+});
+
+$('.show-user-link').live('click', function () {
+    updatePanel($(this).attr('data-url'), 'show-user', 'show-user');
+    return false;
+});
+
+$('.users-link').live('click', function () {
+    updatePanel($(this).attr('data-url'), 'users-content', 'users');
+    return false;
+});
 

@@ -40,6 +40,8 @@ gem 'gravatar_image_tag'
 
 gem "paperclip", "~> 3.0"
 
+gem 'validates_email_format_of'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

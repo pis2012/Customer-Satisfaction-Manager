@@ -1,0 +1,18 @@
+<% if !@profile.show_gravatar %>
+    <% if @profile.avatar.file?  %>
+        <div class="controls">
+          <%= image_tag @profile.avatar.url(:medium) %>
+        </div>
+        </br>
+    <% else %>
+        <div class="controls">
+          <%= gravatar_image_tag( @profile.user.email.gsub('spam', 'mdeering'), :alt => @profile.user.full_name, :gravatar => { :size => 100 })  %>
+        </div>
+        </br>
+    <% end %>
+<% else %>
+    <div class="controls">
+      <%= gravatar_image_tag( @profile.user.email.gsub('spam', 'mdeering'), :alt => @profile.user.full_name, :gravatar => { :size => 100 })  %>
+    </div>
+    </br>
+<% end %>

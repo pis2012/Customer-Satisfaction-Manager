@@ -1,5 +1,15 @@
 
+<div class="add_element">
+  <button class="btn btn-link edit-client-link" data-url="<%= clients_edit_path(@client.id) %>">
+    <i class="icon-edit icon-white"> </i> <%= t('client.edit_client') %>
+  </button>
+ <% if @client.projects.count == 0  %>
+  <button class="btn btn-link clients-link" data-url="<%= clients_delete_path(@client.id) %>">
+    <i class="icon-minus icon-white"> </i> <%= t('client.delete_client')%>
+  </button>
+  <% end %>
 
+</div>
 <h3>
 <p>
   <b> <%= t('client.name') + " :" %>  </b>
