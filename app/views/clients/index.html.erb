@@ -1,4 +1,4 @@
-<div class="forms_filter" xmlns="http://www.w3.org/1999/html">
+<div class="" xmlns="http://www.w3.org/1999/html">
   <h5>
     <%= t('form.name_filter') %>
     &nbsp;
@@ -9,44 +9,14 @@
 </div>
 
 
-
-<div class='clients_index'>
-  <table class='clients_table'>
+<div class='client_div'>
+  <table class=''>
     <% @clients.each do |client| %>
         <tr>
           <td>
             <h4 id="client_name">
-              <%= client.name %>
+              <a href="#show-client" class="show-client-link" data-url="<%= clients_show_path(client.id) %>"><%= client.name %></a>
             </h4>
-          </td>
-
-        </tr>
-        <tr>
-          <td>
-            <%= t('client.proyects') + ": " %>
-            <% count = 0 %>
-            <% client.projects.each do |p| %>
-                <% if count > 0  %>
-                    <%= ", " %>
-                <% end %>
-                <%= p.name %>
-                <% count = 1 %>
-            <% end %>
-            <%= "." %>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <% count = 0 %>
-            <%= t('client.users') + ": " %>
-            <% client.users.each do |u| %>
-                <% if count > 0  %>
-                    <%= ", " %>
-                <% end %>
-                <%= u.username %>
-                <% count = 1 %>
-            <% end %>
-            <%= "." %>
           </td>
         </tr>
         </br>

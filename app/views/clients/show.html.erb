@@ -1,15 +1,74 @@
-<p id="notice"><%= notice %></p>
 
+
+<h3>
 <p>
-  <b>Name:</b>
+  <b> <%= t('client.name') + " :" %>  </b>
   <%= @client.name %>
 </p>
+</h3>
 
+<h6>
 <p>
-  <b>Date Created:</b>
-  <%= @client.created_at %>
+  <b><%= t('client.date_create') + " :" %></b>
+  <%= t("date."+"#{@client.created_at.strftime("%A")}")+ @client.created_at.strftime(" %d ")+  t("date."+"#{@client.created_at.strftime("%B")}") +@client.created_at.strftime(" %Y") + @client.created_at.strftime((" ,  %H:%M")) %>
 </p>
+</h6>
+
+<br>
+<br>
 
 
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+
+  <% if @client.users.count > 0 %>
+        <b><h5><%= t('client.users') + " : " %> </h5></b>
+  <table class="table table-striped">
+
+      <thead>
+    <tr>
+        <th><h4>Full Name</h4></th>
+        <th><h4>User</h4> </th>
+        <th><h4>Email</h4></th>
+    </tr>
+      </thead>
+
+    <% @client.users.each do |user| %>
+        <tr>
+          <td><h5><%= user.full_name %></h5></td>
+          <td><h5><%= user.username %></h5></td>
+          <td><h5><%= user.email %></h5></td>
+        </tr>
+    <%end%>
+    </table>
+    <% else %>
+    <b><h5><%= t('client.users') + " : No tiene usuarios asociado" %> </h5></b>
+  <% end %>
+
+<br>
+<br>
+
+<% if @client.projects.count > 0 %>
+    <b><h5><%= t('client.proyect') + " : " %> </h5></b>
+    <table class="table table-striped">
+
+      <thead>
+      <tr>
+        <th><h4>Nombre</h4></th>
+        <th><h4>Fecha De Fin</h4></th>
+      </tr>
+      </thead>
+
+      <% @client.projects.each do |project| %>
+          <tr>
+            <td><h5><%= project.name %></h5></td>
+            <td><h5><%= t("date."+"#{project.end_date.strftime("%A")}")+ project.end_date.strftime(" %d ")+  t("date."+"#{project.end_date.strftime("%B")}") +project.end_date.strftime(" %Y") %></h5></td>
+          </tr>
+      <%end%>
+    </table>
+<% else %>
+    <b><h5><%= t('client.proyect') + " : No tiene proyectos asociados" %> </h5></b>
+<% end %>
+
+
+
+
+

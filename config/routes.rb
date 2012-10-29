@@ -25,6 +25,7 @@ CSM::Application.routes.draw do
 
   resources :clients , :only => [:index, :new, :create]
   match "/admin/clients" => "clients#index" , :as => :admin_clients
+  match "/admin/client/:client_id" => "clients#show", :as => :clients_show
 
   match "/my_projects" , to: "my_projects#index" , :as => :my_projects
   match "/my_projects/change_profile_project", to: "projects#change_profile_project", :as => :change_profile_project

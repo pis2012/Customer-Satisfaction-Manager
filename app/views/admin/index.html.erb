@@ -20,13 +20,16 @@
                   <a href="#users"><%= I18n.t('admin.users')  %></a>
                 </li>
                 <li class="clients">
-                  <a href="#clients" class="clients-link" data-url="<%= admin_clients_path %>" ><%= I18n.t('admin.clients')  %></a>
+                  <a href="#clients" class="clients-link " data-url="<%= admin_clients_path %>" ><%= I18n.t('admin.clients')  %></a>
                   <ul>
                     <li class="clients" hidden="true">
                       <a href="#clients"> <%= I18n.t('admin.clients')%></a>
                     </li>
                     <li class="add_clients" hidden="true">
                       <a href="#add_clients"> <% t('admin.add_clients') %></a>
+                    </li>
+                    <li class="show_client" hidden="true">
+                      <a href="#show_client"> <% t('admin.add_clients') %></a>
                     </li>
                   </ul>
                 </li>
@@ -148,6 +151,24 @@
                   <!--// page header -->
                   <!-- page contents -->
                   <div class="page_content" id="add_client_data">
+                    <!-- main column -->
+                    <!--// main column -->
+                    <!--// page contents -->
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="show_client">
+                  <!-- page header -->
+                  <div class="page_header_wrapper">
+                    <div class="page_header">
+                      <h1><%= t ('admin.add_clients')  %></h1>
+
+
+                    </div>
+                  </div>
+                  <!--// page header -->
+                  <!-- page contents -->
+                  <div class="page_content" id="show_client_data">
                     <!-- main column -->
                     <!--// main column -->
                     <!--// page contents -->
