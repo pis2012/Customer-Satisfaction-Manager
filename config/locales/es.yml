@@ -340,6 +340,8 @@
             status:  "Estado"
             editing_project: "Editando Proyecto"
             filter:  "Filtrar"
+            at: " a las "
+            hours: " horas "
 
 
 

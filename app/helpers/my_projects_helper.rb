@@ -17,7 +17,7 @@ module MyProjectsHelper
         res[0] = t('milestone.missing')+" "+" #{days}" + " " + daystr + " #{hours} " + hoursstr +" #{name}."
         td = next_milestones[1][1]
         if next_milestones[1][0] == 1
-          res[1] = t('milestone.Next_milestone') +": " +t("date."+"#{td.strftime("%B")}") + " #{td.strftime("%e")}" + t("milestone.the") + "#{td.strftime("%Y")}"
+          res[1] = t('milestone.Next_milestone') +": " +t("date."+"#{td.strftime("%B")}") + " #{td.strftime("%e")}" + ", #{td.strftime("%Y")}"
         else
           res[1] = t('milestone.end_project') +": " +t("date."+"#{td.strftime("%B")}") + " #{td.strftime("%e")}"  "#{td.strftime("%Y")}"
         end
