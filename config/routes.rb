@@ -43,6 +43,7 @@ CSM::Application.routes.draw do
 
   match "/admin" => "admin#index", :as => :admin
   match "/admin/reports" => "admin#show_reports", :as => :admin_reports
+  match "/admin/projects" => "admin#show_projects", :as => :admin_projects
   match "/admin/forms" => "forms#index", :as => :admin_forms
 
 
