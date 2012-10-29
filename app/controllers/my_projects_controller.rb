@@ -4,11 +4,9 @@ class MyProjectsController < ApplicationController
   layout 'my_projects'
 
   def index
-
     @project = current_user.profile.project
-
     @lastmood = @project.moods.order(:created_at).last.get_mood_img
-    @view = {:project => @project, :mile1 => nil , :mile2 => nil, :lastmood => @lastmood}
+    @view = {:project => @project, :lastmood => @lastmood}
     @feedbacks = @project.feedbacks
 
     respond_to do |format|

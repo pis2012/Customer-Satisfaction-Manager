@@ -269,6 +269,8 @@
             status:    "Status"
             editing_project: "Editing project"
             filter:       "Filter"
+            at: " at "
+            hours: " hours "
 
 
   mood:
