@@ -9,11 +9,11 @@ class Feedback < ActiveRecord::Base
   belongs_to :user
   has_many :comments
 
-  attr_accessible :project, :user, :feedback_type,:project_id,:user_id,
+  attr_accessible :project, :user, :feedback_type,:project_id,:user_id, :comments,
                   :subject, :content ,:created_at, :updated_at, :client_visibility, :mooveit_visibility  ,:feedback_type_id
 
   validates :feedback_type, :user, :project, :subject, :content, :presence  => true
-
+  validates_length_of :content, :minimum => 100
 
   def self.reset_pk_sequence
         ActiveRecord::Base.connection.reset_pk_sequence!("Feedback")

@@ -1,29 +1,91 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-es:
+"es":
 
   date:
-            January: "Enero"
-            February: "Febrero"
-            March: "Marzo"
-            April: "Abril"
-            May: "Mayo"
-            June: "Junio"
-            July: "Julio"
-            August: "Agosto"
-            September: "Septiembre"
-            October: "Octubre"
-            November: "Noviembre"
-            December: "Diciembre"
-            Monday: "Lunes"
-            Tuesday: "Martes"
-            Wednesday: "Miércoles"
-            Thursday: "Jueves"
-            Friday: "Viernes"
-            Saturday: "Sábado"
-            Sunday: "Domingo"
+        January: "Enero"
+        February: "Febrero"
+        March: "Marzo"
+        April: "Abril"
+        May: "Mayo"
+        June: "Junio"
+        July: "Julio"
+        August: "Agosto"
+        September: "Setiembre"
+        October: "Octubre"
+        November: "Noviembre"
+        December: "Diciembre"
+        Monday: "Lunes"
+        Tuesday: "Martes"
+        Wednesday: "Miercoles"
+        Thursday: "Jueves"
+        Friday: "Viernes"
+        Saturday: "Sabado"
+        Sunday: "Domingo"
+        order:
+          - :year
+          - :month
+          - :day
+        formats:
+          default: ! '%d/%m/%Y'
+          long: ! '%A, %d de %B de %Y'
+          short: ! '%d de %b'
+        abbr_day_names:
+            - dom
+            - lun
+            - mar
+            - mié
+            - jue
+            - vie
+            - sáb
+        abbr_month_names:
+            -
+            - ene
+            - feb
+            - mar
+            - abr
+            - may
+            - jun
+            - jul
+            - ago
+            - sep
+            - oct
+            - nov
+            - dic
+        day_names:
+            - domingo
+            - lunes
+            - martes
+            - miércoles
+            - jueves
+            - viernes
+            - sábado
+        month_names:
+            -
+            - enero
+            - febrero
+            - marzo
+            - abril
+            - mayo
+            - junio
+            - julio
+            - agosto
+            - septiembre
+            - octubre
+            - noviembre
+            - diciembre
 
+
+  client:
+          name: "Nombre de Cliente"
+          date_create: "Fecha de Creacion"
+          users: "Usuarios Asociados"
+          proyect: "Proyectos Asociados"
+          add_client: "Crear Cliente"
+          edit_client: "Editar Cliente"
+          delete_client: "Eliminar Cliente"
+          show_client: "Ver Cliente"
   home:
             home: "Home"
             singin: "Iniciar Sesion"
@@ -138,6 +200,38 @@ es:
             did_not_recieve_confirmation_instructions:  "¿No has recibido instrucciones de confirmación?"
             did_not_recieve_unlock_instructions:  "¿No has recibido instrucciones de desbloqueo?"
 
+  errors:
+      # The default format to use in full error messages.
+      format: "%{message}"
+
+
+  activerecord:
+                errors:
+                        template:
+                                  header:
+                                          one: "Se genero un error al intentar guardar el %{model}"
+                                          other: "Se generaron %{count} errores al intentar guardar el %{model}"
+                        models:
+                                feedback:
+                                          attributes:
+                                                      subject:
+                                                                blank:    "El asunto no puede ser vacio"
+                                                      project:
+                                                                blank:    "El Feedback debe tener asociado un proyecto"
+                                                      user:
+                                                                blank:    "El Feedback debe tener asociado el usuario creador"
+
+                                                      content:
+                                                                blank:    "El contenido no puede ser vacio"
+                                comment:
+                                          attributes:
+                                                      content:
+                                                                blank: "El contenido no puede ser vacio"
+                                                                too_short: "El contenido debe contener al menos 40 caracteres"
+
+
+  Comments:
+          Comment: "Comentario"
 
   feedback:
             feedback:  "Feedback"
@@ -156,14 +250,31 @@ es:
             feedback_type: "Tipo"
             feedback_content: "Contenido"
             feedback_subject: "Asunto"
-            feedback_visivility: "Visibilidad"
+            feedback_visibility: "Visibilidad de feedback"
             Moove_IT_employee: "Empleado Moove-IT "
             create: "Crear"
             create_by: "Creado por"
             date_on: "el"
+            Remaining_time_for_editing: "Tiempor Restante para poder editar: "
+            minutes: "minutos"
+            seconds: "segundos"
+            and: "y"
+            prohibited_this_feedback_from_being_saved: "no se puede guardar feedback"
 
   form:
-            add_form: "Agregar"
+            add_form: "Agregar Formulario"
+            last_total_answers: "Total de respuestas última vez: "
+            total_answers: "Total de respuestas: "
+            clients: "Clientes encontrados en el fomulario: "
+            users: "Usuarios que respondieron: "
+            missing_users: "Faltan responder: "
+            select: "Seleccione uno"
+            full_data: "Mostrar datos completos"
+            name: "Nombre del formulario"
+            google_email: "Nombre de usuario Google"
+            password: "Contraseña"
+            name_filter: "Nombre contiene: "
+
 
   admin:
             customer_satisfaction_manager: "MANAGER DE  SATISFACCIÓN DEL CLIENTE"
@@ -175,8 +286,8 @@ es:
             clients:   "Clientes"
             forms: "Formularios"
             evolution_of_general_mood:  "Evolución del estado de ánimo general"
-            Status_of_Projects: "Estado del proyecto"
-            client:   "Cliente"
+            Status_of_Projects: "Estado de los proyectos"
+            add_clients: "Nuevo Cliente"
             mooveit_employee:   "Empleado Moove-IT"
             mooveit_admin:   "Empleado Moove-IT(Admin)"
             filter_name: "Nombre contiene: "
@@ -194,6 +305,9 @@ es:
             sure: "Estas seguro?"
 
             tabs:
+              forms: "Formularios"
+              show_form: "Mostrar formulario"
+              reports: "Reportes"
 
               new_user: "Nuevo Usuario de Cliente"
               show_user: "Ver Usuario"
@@ -207,8 +321,12 @@ es:
             new_milestone:  "Nuevo Hito"
             missing: "Faltan"
             day_and: "dias y"
+            one_day_and: "dia y"
             hours_to_end: "horas para terminar"
+            one_hour_to_end: "hora para terminar"
             Next_milestone: "Proximo hito"
+            end_project: "Final de proyecto"
+            the: " de "
 
   proyect:
             list_projects:  "Lista de Proyectos"

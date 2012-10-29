@@ -3,8 +3,8 @@
     <% if current_user.client? %>
 
         <!--<p>
-        Vista de todas las caritas.
-        Aquellas que pertenecen a los proyectos del cliente del usuario logueado se ven más grandes  y se les puede clickear
+         View all faces.
+         Those belonging to the user's client projects look bigger logged and can be click
         </p>-->
 
         <div class="container">
@@ -22,15 +22,17 @@
 
                     <% if project.client_id == current_user.client_id  %>
                         <div class="chomefacewrapperbig">
-                          <a href="/my_projects?default=true&project_id=<%=project.id%>" class="chomefacebig" >
-                            <%= image_tag('faces/big/' + mood.get_mood_img, :class => 'img-rounded')  %>
+                          <%= link_to :controller => "projects", :action => "change_profile_project", :id => project.id do %>
+                          <div class="chomefacebig" >
+                            <%= image_tag('moods/big/' + mood.get_mood_img, :class => 'img-rounded')  %>
                             <p class="homeprojectnamev"><%= project.name %></p>
-                          </a>
+                          </div>
+                          <% end %>
                         </div>
                     <% else %>
                         <div class="chomefacewrapper">
                           <div class="homeface" >
-                            <%=image_tag('faces/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
+                            <%=image_tag('moods/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
                             <p class="homeprojectnameh"><%= project.name %></p>
                           </div>
                         </div>
@@ -66,16 +68,18 @@
             <div class="span10">
               <div class="homecenter">
                 <h2><%=  I18n.t('mood.mood_of_our_customers')%></h2>
-                <% count = 0 %>
                 <% @projects = Project.all.shuffle %>
                 <% @projects.each do |project| %>
                     <% mood = project.moods.last! %>
 
+
                         <div class="ahomefacewrapper">
-                          <a href="<%= project_path(project.id) %>?default=true" class="homeface" >
-                            <%= image_tag('faces/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
+                          <%= link_to :controller => "projects", :action => "change_profile_project", :id => project.id do %>
+                             <div class="homeface" >
+                            <%= image_tag('moods/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
                             <p class="homeprojectnameh"><%= project.name %></p>
-                          </a>
+                            </div>
+                          <% end %>
                         </div>
 
                     <!-- < %= project.name  %> -->
@@ -105,7 +109,7 @@
         <div class="span8">
           <div class="vhomecenter">
             <div class="vheaderimage">
-              <%= image_tag "faces/big/9.png" %>
+              <%= image_tag "moods/big/5.png" %>
             </div>
             <div class="vheader">
               <h2 ><%=  t('admin.customer_satisfaction_manager')%></h2>
@@ -132,7 +136,7 @@
 
                 <div class="vhomefacewrapper">
                   <div class="homeface" >
-                    <%= image_tag('faces/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
+                    <%= image_tag('moods/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
                     <p class="homeprojectnameh"><%= project.name %></p>
                   </div>
                 </div>

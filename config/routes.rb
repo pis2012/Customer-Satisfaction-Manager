@@ -1,5 +1,7 @@
 CSM::Application.routes.draw do
 
+ # Elrte.routes(self)
+
   resources :profiles, :only => [:update,:edit]
 
   resources :comments
@@ -13,7 +15,7 @@ CSM::Application.routes.draw do
 
   match "profile" => "users#show"
 
-  resources :moods
+  resources :faces
 
   match "/milestones/project_milestones/:project_id" => "milestones#project_milestones", :as => :project_milestones
   match "/milestones/new/:project_id" => "milestones#new", :as => :new_milestone
@@ -26,22 +28,31 @@ CSM::Application.routes.draw do
     resources :users
   end
 
-  resources :clients
+  resources :clients , :only => [:index, :new, :create,:update , :edit,:destroy]
+  match "/admin/clients" => "clients#index" , :as => :admin_clients
+  match "/admin/client/:client_id" => "clients#show", :as => :clients_show
+  match "/admin/client/edit/:client_id" => "clients#edit", :as => :clients_edit
+  match "/admin/client/delete/:client_id" => "clients#destroy", :as => :clients_delete
 
   match "/my_projects" , to: "my_projects#index" , :as => :my_projects
-  match "/my_projects/change_profile_project", to: "projects#change_profile_project"
+  match "/my_projects/change_profile_project", to: "projects#change_profile_project", :as => :change_profile_project
   match "/projects/show_project_data/:project_id" => "projects#show_project_data", :as => :project_data
   match "/projects/change_mood/:new_status" => "projects#change_mood", :as => :change_mood
 
   #match "/my_projects/change_mood" , to: "projects#change_mood"
 
   match "/admin" => "admin#index", :as => :admin
+  match "/admin/reports" => "admin#show_reports", :as => :admin_reports
+  match "/admin/forms" => "forms#index", :as => :admin_forms
 
 
   resources :projects, :constraints => lambda { |request| request.env['warden'].user.admin? }
 
-  resources :forms
-
+  resources :forms, :only => [:index, :new, :create]
+  match "/forms/show_data/:form_id" => "forms#show_data", :as => :forms_show_data
+  match "/forms/show_full_data/:form_id" => "forms#show_full_data", :as => :forms_show_full_data
+  match "/forms/show/:form_id" => "forms#show", :as => :forms_show
+  #resources :forms, :only => [:index, :new]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,7 +1,7 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
+"en":
   date:
               January: "January"
               February: "February"
@@ -19,9 +19,29 @@ en:
               Tuesday: "Tuesday"
               Wednesday: "Wednesday"
               Thursday: "Thursday"
-              Friday: "Viernes"
+              Friday: "Friday"
               Saturday: "Saturday"
-              Sunday: "Domingo"
+              Sunday: "Sunday"
+
+              formats:
+                    default: ! '%Y-%m-%d'
+                    long: ! '%B %d, %Y'
+                    short: ! '%b %d'
+              order:
+                  - :year
+                  - :month
+                  - :day
+              use_short_month: true
+
+  client:
+            name: "Name of Client"
+            date_create: "Create Date"
+            users: "Associate Users"
+            proyect: "Associate Projects"
+            add_client: "Add Client"
+            edit_client: "Edit Client"
+            delete_client: "Delete Client"
+            show_client: "Show Client"
 
   home:
             home: "Home"
@@ -140,6 +160,37 @@ en:
             did_not_recieve_unlock_instructions:  "Didn't receive unlock instructions?"
             sing_in_with:  "Sign in with"
 
+  errors:
+      # The default format to use in full error messages.
+      format: "%{message}"
+
+
+  activerecord:
+                errors:
+                        template:
+                                  header:
+                                          one: "It generated an error when trying to save the %{model}"
+                                          other: "Were generated %{count} errors when trying to save the %{model}"
+                        models:
+                                feedback:
+                                          attributes:
+                                                      subject:
+                                                                blank:    "The subject can not be empty"
+                                                      project:
+                                                                blank:    "The Feedback must have an associated project"
+                                                      user:
+                                                                blank:    "The Feedback must have associated the user creator"
+
+                                                      content:
+                                                                blank:    "Content can not be empty"
+                                comment:
+                                          attributes:
+                                                      content:
+                                                                blank: "El content can not be empty"
+                                                                too_short: "The content must be at least 40 characters"
+
+  Comments:
+              Comment: "Comment"
   feedback:
             feedbacks:  "Feedback"
             new_feedback: "New Feedback"
@@ -152,16 +203,33 @@ en:
             last_comment_made_by: "Last comment made by"
             no_comments: "No comments"
             list_comments:  "List of Comments"
-            feedback_subject: "Subject"
             feedback_type: "Type"
+            feedback_subject: "Subject"
             feedback_content: "Content"
-            feedback_visivility: "Visibility"
+            feedback_visibility: "Feedback visibility"
             Moove_IT_employee: "Moove-IT Employee"
             create: "Create"
             create_by: "Create by"
             date_on: "on"
+            Remaining_time_for_editing: "Remaining time for editing: "
+            minutes: "minutes"
+            seconds: "seconds"
+            and: "and"
+            prohibited_this_feedback_from_being_saved: "prohibited this feedback from being saved"
   form:
             add_form:  "Add form"
+            last_total_answers: "Total answers last time: "
+            total_answers: "Total answers: "
+            clients: "Clients found in the form: "
+            users: "Users who responded: "
+            missing_users: "Still missing: "
+            select: "Select one"
+            full_data: "Show full data"
+            name: "Form name"
+            google_email: "Google user name"
+            password: "Password"
+            name_filter: "Name contains: "
+
 
   admin:
             customer_satisfaction_manager:    "CUSTOMER SATISFACTION MANAGER"
@@ -174,7 +242,7 @@ en:
             forms:  "Forms"
             evolution_of_general_mood: "Evolution of the general mood"
             Status_of_Projects: "Status of Projects"
-            client:   "Client: "
+            add_clients: "Add Client"
             mooveit_employee:   "Employe Moove-IT"
             mooveit_admin:   "Employe Moove-IT(Admin)"
             filter_name: "Name contains: "
@@ -192,20 +260,25 @@ en:
             sure: "Are you sure?"
 
             tabs:
-                    new_user: "New User's Client"
-                    show_user: "View User"
-                    edit_user: "Edit User"
-                    delete_user: "Delete User"
+              forms: "Forms"
+              show_form: "Show form"
+              reports: "Reports"
+              new_user: "New User's Client"
+              show_user: "View User"
+              edit_user: "Edit User"
+              delete_user: "Delete User"
 
   milestone:
             milestone:  "Milestone"
             milestones:   "Milestones"
             new_milestone:  "New Milestone"
             missing: "Missing"
-            day_and: "day and"
+            day_and: "days and"
+            one_day_and: "day and"
             hours_to_end: "hours to end"
             Next_milestone: "Next milestone"
-
+            end_project: "End of project"
+            the: " of "
 
   proyect:
             list_projects:  "List of Projects"

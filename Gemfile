@@ -56,6 +56,9 @@ end
 
 gem 'jquery-rails'
 
+gem 'rails-ckeditor'
+gem 'cleditor-rails'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -70,7 +73,6 @@ gem 'capistrano'
 
 gem 'passenger'
 
-gem 'rails-ckeditor'
 
 # To use debugger
 # gem 'debugger'

@@ -194,7 +194,7 @@
 
 /* ============== [ FEEDBACKS TAB INDEX ] ============== */
 
-.feedbacks_filer_element {
+.feedbacks_filter_element {
   display: inline;
 }
 
@@ -221,7 +221,6 @@
 }
 
 .feedbacks_table .feedback_info {
-
   padding-left: 4%;
 
   .feedback_subject {
@@ -233,6 +232,9 @@
   .feedback_date {
     font-weight: normal;
     margin-top: 0;
+  }
+
+  .feedback_content{
   }
 
   .feedback_last_comment {
@@ -255,61 +257,65 @@
   text-align: center;
 }
 
+/* ============== [ MILESTONES ] ============== */
+
 
 
 
 /* ============== [CREATE FEEDBACK] ============== */
 
+#new_feedback, #edit_feedback{
+  margin-bottom: 0;
 
-// Crear Feedback
+  .feedback_type_field{
 
-.Separador{
+    .feedback_type_label{
+      width: 5%;
+    }
 
-  border-bottom: solid;
-  border-bottom-width:1px;
-  margin-top:5%;
-  position: relative;
+    .feedback_type_select_control{
+      margin-left: 7%;
+    }
+
+    .feedback_type_select{
+    }
+
+  }
+
+  .feedback_subject_field{
+
+    .feedback_subject_label{
+      width: 5%;
+    }
+
+    .feedback_subject_text_control{
+      margin-left: 7%;
+    }
+
+  }
+
+  .feedback_content_field{
+
+    .feedback_content_text{
+      width: 100%;
+      height: 500px;
+    }
+
+
+
+  }
+
+  .feedback_visibility_field{
+    margin-top: 1%;
+    margin-bottom: 1%;
+  }
+
 }
-
-.margin3{
-  margin-top: 3%;
-}
-
-.margin4{
-  margin-top: 4%;
-}
-
-
-.feedback_Label{
-  float: left;
-  margin-right:5%;
-  margin-top: 5px;
-  margin-left: 10px
-}
-
-#feedback_textarea {
-  width:90%;
-  height:200px;
-  border: 0.5px solid #000000;
-  resize: none;
-  margin-left: 5%;
-
-}
-#feedback_subjectText{
-  margin-left: 0%;
-}
-
-#feedback_subjectlabel{
-  margin-left: 15%;
-}
-
-// Fin Crear Feedback
 
 
 /* ============== [SHOW FEEDBACK] ============== */
 
-.feedback{
-
+.feedback_show{
 
   .feedback_subject {
     text-decoration: underline;
@@ -334,8 +340,7 @@
   }
 
   .comments_table{
-
-    max-width: 500px;
+    width: 100%;
 
     tr > td {
       padding-top: 2%;
@@ -354,14 +359,18 @@
   }
 
   .comments_table .comment_info {
-
     padding-left: 4%;
 
     .comment_content {
-      display: block;
+      cursor: default;
+      width: 97%;
+      margin-bottom: 0;
+      resize: none;
     }
 
     .comment_author{
+      margin-top: 0;
+      margin-bottom: 0;
       font-weight: normal;
     }
 
@@ -373,7 +382,6 @@
       width:100%;
       resize: none;
     }
-
   }
 
 

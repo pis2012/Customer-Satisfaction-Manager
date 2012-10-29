@@ -1,0 +1,9 @@
+/**
+ * Created with Geany.
+ * User: bdi-usr
+ * Date: 25/10/12
+ * Time: 04:55 AM
+ */
+
+$('#show-feedback-content').html("<%= escape_javascript( render template: "feedbacks/show.html.erb" ) %>");
+$('#myTab  a[href=#show-feedback]').tab('show');

@@ -39,10 +39,8 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks/1.json
   def show
     @feedback = Feedback.find(params[:id])
-
-    @comment  = Comment.find_all_by_feedback_id(@feedback.id)
-
-    @commentNew = Comment.new
+    @comments = @feedback.comments
+    @new_comment = Comment.new
 
     respond_to do |format|
       if request.xhr?
@@ -74,7 +72,7 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new(params[:feedback])
 
     @feedback.project_id = params[:project_id]
-    @feedback.user_id= current_user.id
+    @feedback.user_id = current_user.id
 
     respond_to do |format|
       if @feedback.save
@@ -93,11 +91,10 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       if @feedback.update_attributes(params[:feedback])
-        format.html { redirect_to my_projects_path }
-        format.json { render json: @feedback, status: :created, location: @feedback }
+        @feedbacks = Feedback.find_all_by_project_id(params[:project_id])
+        format.js { render action: "index" }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @feedback.errors, status: :unprocessable_entity }
+        format.js { }
       end
     end
   end

@@ -1,66 +1,21 @@
-<%= form_for(@feedback) do |f| %>
+<div id="edit_feedback">
+  <div class="margin4 alert jCounterDefault countdown2">
+    <%= t("feedback.Remaining_time_for_editing") %>
+    <span class="minutes">00</span>
+    <%= t("feedback.minutes") + " " + t("feedback.and") %>
+    <span class="seconds">00</span>
+    <%= t("feedback.seconds") %>
+  </div>
+  <%= render 'form' %>
 
-    <% if @feedback.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
-
-          <ul>
-            <% @feedback.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-
-    <input class="TextField" id="feedback_project_id" name="project_id" size="30" type="hidden" value="<%= @feedback.project_id %>"/>
-
-    <div class="margin4 alert jCounterDefault countdown2">
-      Remaining time for editing:
-      <span class="minutes">00</span>
-      minutes and
-      <span class="seconds">00</span>
-      seconds
-    </div>
-
-    <div class="margin4">
-      <%= f.label :Tipo_de_feedback, :class => "Etiqueta" %>
-      <%= f.select(:feedback_type_id, FeedbackType.all.map { |fe| [fe.name, fe.id] }, :prompt => true) %>
-    </div>
-
-    <div class="margin4">
-      <%= f.label :subject, :class => "Etiqueta" %>
-      <%= f.text_field :subject, :class => "SubjectText" %>
-    </div>
-
-
-    <div class="margin3">
-      <%= f.label :content, :class => "Etiqueta" %>
-      <%= f.text_area :content, :class => "estilotextarea field span12" %>
-
-    </div>
-
-
-    <div class="margin3">
-      <%= f.label :visibility, :class => "Etiqueta" %>
-      <%= f.check_box :mooveit_visibility %> Empleado Moove-IT   <%= f.check_box :client_visibility %> Cliente
-    </div>
-
-    <div class="margin4">
-      <%= f.submit :Save %> or
-      <button class="btn btn-link cancel-feedback-link" type="button" data-url="<%= project_feedbacks_path(:project_id => @feedback.project_id) %>"  >
-        Cancelar
-      </button>
-    </div>
-    <script>
-            $(".countdown2").jCounter({
-                format: "mm:ss",
-                twoDigits: 'on',
-                customDuration: <%= @feedback.remaining_time %>,
-                fallback: function() {
-                    window.location.reload()
-                }
-            });
-    </script>
-
-
-<% end %>
+<script>
+    $(".countdown2").jCounter({
+        format: "mm:ss",
+        twoDigits: 'on',
+        customDuration: <%= @feedback.remaining_time %>,
+        fallback: function() {
+            window.location.reload()
+        }
+    });
+</script>
+</div>

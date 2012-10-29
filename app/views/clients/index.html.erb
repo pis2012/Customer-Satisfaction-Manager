@@ -1,25 +1,31 @@
-<h1>Listing clients</h1>
+<div class="" xmlns="http://www.w3.org/1999/html">
+  <h5>
+    <%= t('form.name_filter') %>
+    &nbsp;
+    <%= text_field_tag "form_name_filter" %>
+    &nbsp;
+    <%= button_tag( t('buttons.filter'), :id => "clients_filter_btn", :class => "btn") %>
+  </h5>
+</div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Date Created</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @clients.each do |client| %>
-  <tr>
-    <td><%= client.name %></td>
-    <td><%= client.created_at %></td>
-    <td><%= link_to 'Show', client %></td>
-    <td><%= link_to 'Edit', edit_client_path(client) %></td>
-    <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<div class='client_div'>
+  <table class=''>
+    <% @clients.each do |client| %>
+        <tr>
+          <td>
+            <h4 id="client_name">
+              <a href="#show-client" class="show-client-link" data-url="<%= clients_show_path(client.id) %>"><%= client.name %></a>
+            </h4>
+          </td>
+        </tr>
+        </br>
+    <% end %>
+  </table>
+</div>
 
-<br />
 
-<%= link_to 'New Client', new_client_path %>
+
+
+
+

@@ -48,9 +48,11 @@ ActiveRecord::Schema.define(:version => 20121012012332) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "email"
-    t.string   "password"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "wise_token"
+    t.text     "writely_token"
+    t.integer  "actual_total_answers", :default => 0
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
   create_table "milestones", :force => true do |t|
