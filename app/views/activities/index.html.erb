@@ -11,7 +11,7 @@
         <td class="activity_info">
           <h4 class="activity_action">
             <%= link_to activity.link do %>
-                <%= truncate(strip_tags(activity_action), :length => 45) %>
+                <%= truncate(strip_tags(activity.action), :length => 45) %>
             <% end %>
           </h4>
           <h6 class="activity_date"><%= t('activity.authored_by')+" " + activity.author + " "+t('activity.date_time')+"   "+t("date."+"#{activity.date_time.strftime("%A")}")+ activity.date_time.strftime(" %d ")+ t("date."+"#{activity.date_time.strftime("%B")}") + activity.date_time.strftime(" %Y") + activity.date_time.strftime((" ,  %H:%M")) %></h6>
