@@ -1,6 +1,6 @@
 class CreateMoods < ActiveRecord::Migration
   def change
-    create_table :faces do |t|
+    create_table :moods do |t|
 
       t.references :project
 
