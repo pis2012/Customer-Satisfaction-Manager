@@ -23,9 +23,11 @@ CSM::Application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :passwords => "passwords"}
 
-  resources :clients , :only => [:index, :new, :create]
+  resources :clients , :only => [:index, :new, :create,:update , :edit,:destroy]
   match "/admin/clients" => "clients#index" , :as => :admin_clients
   match "/admin/client/:client_id" => "clients#show", :as => :clients_show
+  match "/admin/client/edit/:client_id" => "clients#edit", :as => :clients_edit
+  match "/admin/client/delete/:client_id" => "clients#destroy", :as => :clients_delete
 
   match "/my_projects" , to: "my_projects#index" , :as => :my_projects
   match "/my_projects/change_profile_project", to: "projects#change_profile_project", :as => :change_profile_project

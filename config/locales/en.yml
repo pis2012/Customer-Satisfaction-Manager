@@ -38,6 +38,10 @@
             date_create: "Create Date"
             users: "Associate Users"
             proyect: "Associate Projects"
+            add_client: "Add Client"
+            edit_client: "Edit Client"
+            delete_client: "Delete Client"
+            show_client: "Show Client"
 
   home:
             home: "Home"
