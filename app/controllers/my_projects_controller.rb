@@ -7,11 +7,9 @@ class MyProjectsController < ApplicationController
     @project = current_user.profile.project
     @lastmood = @project.moods.order(:created_at).last.get_mood_img
     @view = {:project => @project, :lastmood => @lastmood}
-    @feedbacks = @project.feedbacks
 
     respond_to do |format|
-      format.html { }# show_project_complete.html.erb
-      format.json { render json: @project }
+      format.html { }
     end
   end
 

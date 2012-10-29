@@ -35,7 +35,7 @@ CSM::Application.routes.draw do
   match "/admin/client/delete/:client_id" => "clients#destroy", :as => :clients_delete
 
   match "/my_projects" , to: "my_projects#index" , :as => :my_projects
-  match "/my_projects/change_profile_project", to: "projects#change_profile_project", :as => :change_profile_project
+  match "/projects/change_profile_project/:project_id", to: "projects#change_profile_project", :as => :change_profile_project
   match "/projects/show_project_data/:project_id" => "projects#show_project_data", :as => :project_data
   match "/projects/change_mood/:new_status" => "projects#change_mood", :as => :change_mood
 

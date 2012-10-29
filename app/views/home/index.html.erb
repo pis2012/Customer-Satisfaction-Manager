@@ -1,160 +1,162 @@
 <div id="home">
-<% if user_signed_in? %>
-    <% if current_user.client? %>
+  <% if user_signed_in? %>
+      <% if current_user.client? %>
 
-        <!--<p>
-         View all faces.
-         Those belonging to the user's client projects look bigger logged and can be click
-        </p>-->
+          <!--<p>
+           View all faces.
+           Those belonging to the user's client projects look bigger logged and can be click
+          </p>-->
 
-        <div class="container">
-          <div class="row-fluid">
-            <div class="span1">
-            </div>
-            <div class="span10">
-              <div class="homecenter">
-                <h2><%=  I18n.t('mood.mood_of_our_customers')%></h2>
-                <% count = 0 %>
-
-                <% @projects = Project.all.shuffle %>
-                <% @projects.each do |project| %>
-                    <% mood = project.moods.order(:created_at).last %>
-
-                    <% if project.client_id == current_user.client_id  %>
-                        <div class="chomefacewrapperbig">
-                          <%= link_to :controller => "projects", :action => "change_profile_project", :id => project.id do %>
-                          <div class="chomefacebig" >
-                            <%= image_tag('moods/big/' + mood.get_mood_img, :class => 'img-rounded')  %>
-                            <p class="homeprojectnamev"><%= project.name %></p>
-                          </div>
-                          <% end %>
-                        </div>
-                    <% else %>
-                        <div class="chomefacewrapper">
-                          <div class="homeface" >
-                            <%=image_tag('moods/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
-                            <p class="homeprojectnameh"><%= project.name %></p>
-                          </div>
-                        </div>
-                    <% end %>
-
-
-                    <% if count == 4 %>
-                        <% count = 0 %>
-                    <% else %>
-                        <% count += 1 %>
-                    <% end %>
-
-                    <!-- < %= project.name  %> -->
-                    <!--< %= mood.id  %>-->
-                <% end %>
+          <div class="container">
+            <div class="row-fluid">
+              <div class="span1">
               </div>
-              </br>
-              </br>
-              </br>
-            </div>
-            <div class="span1">
-            </div>
-          </div>
-        </div>
+              <div class="span10">
+                <div class="homecenter">
+                  <h2><%= t('mood.mood_of_our_customers') %></h2>
+                  <% count = 0 %>
 
+                  <% @projects = Project.all.shuffle %>
+                  <% @projects.each do |project| %>
+                      <% mood = project.moods.order(:created_at).last %>
 
-    <% else %>
-
-        <div class="container">
-          <div class="row-fluid">
-            <div class="span1">
-            </div>
-            <div class="span10">
-              <div class="homecenter">
-                <h2><%=  I18n.t('mood.mood_of_our_customers')%></h2>
-                <% @projects = Project.all.shuffle %>
-                <% @projects.each do |project| %>
-                    <% mood = project.moods.last! %>
-
-
-                        <div class="ahomefacewrapper">
-                          <%= link_to :controller => "projects", :action => "change_profile_project", :id => project.id do %>
-                             <div class="homeface" >
-                            <%= image_tag('moods/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
-                            <p class="homeprojectnameh"><%= project.name %></p>
+                      <% if project.client_id == current_user.client_id %>
+                          <div class="chomefacewrapperbig">
+                            <%= link_to change_profile_project_path(project) do %>
+                                <div class="chomefacebig">
+                                  <%= image_tag('moods/big/' + mood.get_mood_img, :class => 'img-rounded') %>
+                                  <p class="homeprojectnamev"><%= project.name %></p>
+                                </div>
+                            <% end %>
+                          </div>
+                      <% else %>
+                          <div class="chomefacewrapper">
+                            <div class="homeface">
+                              <%= image_tag('moods/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
+                              <p class="homeprojectnameh"><%= project.name %></p>
                             </div>
-                          <% end %>
-                        </div>
+                          </div>
+                      <% end %>
 
-                    <!-- < %= project.name  %> -->
-                    <!--< %= mood.id  %>-->
-                <% end %>
-              </div>
-              </br>
-              </br>
-              </br>
-            </div>
-            <div class="span1">
-            </div>
-          </div>
-        </div>
 
-    <% end %>
+                      <% if count == 4 %>
+                          <% count = 0 %>
+                      <% else %>
+                          <% count += 1 %>
+                      <% end %>
 
-<% else %>
-    <br>
-    <br>
-       <br>
-       <br>
-    <div class="container">
-      <div class="row-fluid">
-        <div class="span2">
-        </div>
-        <div class="span8">
-          <div class="vhomecenter">
-            <div class="vheaderimage">
-              <%= image_tag "moods/big/5.png" %>
-            </div>
-            <div class="vheader">
-              <h2 ><%=  t('admin.customer_satisfaction_manager')%></h2>
-              </br>
-              <p>
-                Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum
-                liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id.
-              </p>
-              <p>
-                <a href="/" class="continue-reading">Continue reading...</a>
-              </p>
-            </div>
-          </div>
-
-          <div class="homecenter">
-            <hr/>
-            <div class="vhomeleft">
-                <h2><%=  I18n.t('mood.mood_of_our_customers')%></h2>
-            </div>
-
-            <% @projects = Project.all.shuffle %>
-            <% @projects.each do |project| %>
-                <% mood = project.moods.last! %>
-
-                <div class="vhomefacewrapper">
-                  <div class="homeface" >
-                    <%= image_tag('moods/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
-                    <p class="homeprojectnameh"><%= project.name %></p>
-                  </div>
+                      <!-- < %= project.name  %> -->
+                      <!--< %= mood.id  %>-->
+                  <% end %>
                 </div>
-
-            <% end %>
+                </br>
+                </br>
+                </br>
+              </div>
+              <div class="span1">
+              </div>
+            </div>
           </div>
-          </br>
-          </br>
-          </br>
-        </div>
-        <div class="span2">
+
+
+      <% else %>
+
+          <div class="container">
+            <div class="row-fluid">
+              <div class="span1">
+              </div>
+              <div class="span10">
+                <div class="homecenter">
+                  <h2><%= t('mood.mood_of_our_customers') %></h2>
+                  <% @projects = Project.all.shuffle %>
+                  <% @projects.each do |project| %>
+                      <% mood = project.moods.last! %>
+
+
+                      <div class="ahomefacewrapper">
+                        <%= link_to change_profile_project_path(project) do %>
+                            <div class="homeface">
+                              <%= image_tag('moods/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
+                              <p class="homeprojectnameh"><%= project.name %></p>
+                            </div>
+                        <% end %>
+                      </div>
+
+                      <!-- < %= project.name  %> -->
+                      <!--< %= mood.id  %>-->
+                  <% end %>
+                </div>
+                </br>
+                </br>
+                </br>
+              </div>
+              <div class="span1">
+              </div>
+            </div>
+          </div>
+
+      <% end %>
+
+  <% else %>
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <div class="container">
+        <div class="row-fluid">
+          <div class="span2">
+          </div>
+          <div class="span8">
+            <div class="vhomecenter">
+              <div class="vheaderimage">
+                <%= image_tag "moods/big/5.png" %>
+              </div>
+              <div class="vheader">
+                <h2><%= t('admin.customer_satisfaction_manager') %></h2>
+                </br>
+                <p>
+                  Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum
+                  liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id.
+                </p>
+
+                <p>
+                  <a href="/" class="continue-reading">Continue reading...</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="homecenter">
+              <hr/>
+              <div class="vhomeleft">
+                <h2><%= t('mood.mood_of_our_customers') %></h2>
+              </div>
+
+              <% @projects = Project.all.shuffle %>
+              <% @projects.each do |project| %>
+                  <% mood = project.moods.last! %>
+
+                  <div class="vhomefacewrapper">
+                    <div class="homeface">
+                      <%= image_tag('moods/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
+                      <p class="homeprojectnameh"><%= project.name %></p>
+                    </div>
+                  </div>
+
+              <% end %>
+            </div>
+            </br>
+            </br>
+            </br>
+          </div>
+          <div class="span2">
+          </div>
         </div>
       </div>
-    </div>
 
-<% end %>
+  <% end %>
 </div>
 
 <div id="footer">
-  <div class="container"> </div>
+  <div class="container"></div>
 </div>

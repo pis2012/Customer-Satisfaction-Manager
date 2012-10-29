@@ -4,10 +4,10 @@
       <tr id="row_comment_<%= comment.id %>">
 
         <td class="avatar">
-          <% if current_user.profile.avatar.file? && !current_user.profile.show_gravatar %>
-              <%= image_tag current_user.profile.avatar.url(:medium), :class => "user_image" %>
+          <% if comment.user.profile.avatar.file? && !comment.user.profile.show_gravatar %>
+              <%= image_tag comment.user.profile.avatar.url(:medium), :class => "user_image img-polaroid" %>
           <% else %>
-              <%= gravatar_image_tag(current_user.profile.user.email.gsub('spam', 'mdeering'), :alt => current_user.profile.user.full_name, :class => "user_image") %>
+              <%= gravatar_image_tag(comment.user.profile.user.email.gsub('spam', 'mdeering'), :alt => comment.user.profile.user.full_name, :class => "user_image img-polaroid") %>
           <% end %>
         </td>
 
@@ -24,9 +24,9 @@
 
     <td class="avatar">
       <% if current_user.profile.avatar.file? && !current_user.profile.show_gravatar %>
-          <%= image_tag current_user.profile.avatar.url(:medium), :class => "user_image" %>
+          <%= image_tag current_user.profile.avatar.url(:medium), :class => "user_image img-polaroid" %>
       <% else %>
-          <%= gravatar_image_tag(current_user.profile.user.email.gsub('spam', 'mdeering'), :alt => current_user.profile.user.full_name, :class => "user_image") %>
+          <%= gravatar_image_tag(current_user.profile.user.email.gsub('spam', 'mdeering'), :alt => current_user.profile.user.full_name, :class => "user_image img-polaroid") %>
       <% end %>
     </td>
 

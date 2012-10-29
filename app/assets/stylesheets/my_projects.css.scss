@@ -349,13 +349,15 @@
     }
 
     .avatar {
+
       width: 8%;
     }
+
 
   }
 
   .comments_table .avatar .user_image {
-
+    max-height: 100px;
   }
 
   .comments_table .comment_info {

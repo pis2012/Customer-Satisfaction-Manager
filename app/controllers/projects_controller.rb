@@ -2,6 +2,8 @@
 
   before_filter :authenticate_user!
 
+  # THIS CONTROLLER HAS TO BE CLEANED FROM UNUSED METHODS AND SCAFFOLDING
+
   # GET /projects
   # GET /projects.json
   def index
@@ -103,14 +105,13 @@
   end
 
   def change_profile_project
-    project = Project.find(params[:id])
+    project = Project.find(params[:project_id])
     if !current_user.client? || (current_user.client? && project.client_id == current_user.client_id)
       current_user.profile.update_attributes(:project => project)
       redirect_to my_projects_url
     else
       not_found
     end
-
   end
 
   def change_mood

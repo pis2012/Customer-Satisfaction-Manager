@@ -1,11 +1,31 @@
-<div class="feedback_show">
+<!-- page header -->
+<div class="page_header">
+  <h1><%= t('my_projects.tabs.show_feedback') %></h1>
 
-  <h4 class="feedback_subject"><%= strip_tags(@feedback.subject) %></h4>
-
-  <h6 class="feedback_date"><%= t('feedback.create_by')+ " " + @feedback.user.full_name + " "+t('feedback.date_on')+"   "+t("date."+"#{@feedback.created_at.strftime("%A")}")+ @feedback.created_at.strftime(" %d ")+  t("date."+"#{@feedback.created_at.strftime("%B")}") +@feedback.created_at.strftime(" %Y")  + @feedback.created_at.strftime(" ,  %H:%M") %></h6>
-
-  <pre class="feedback_content"><%= @feedback.content.html_safe %></pre>
-  <hr class="feedback_division">
-
-  <%= render template: "comments/index" %>
+  <!-- an administrator can always edit a feedback -->
+  <% if current_user.admin? && !@project.finalized %>
+      <div class="add_element">
+        <button href="#edit-feedback" class="btn btn-link edit-feedback-link" data-url="<%= edit_feedback_path(@feedback) %>">
+          <i class="icon-pencil icon-white"> </i> <%= t('my_projects.tabs.edit_feedback') %>
+        </button>
+      </div>
+  <% end %>
 </div>
+<!--// page header -->
+
+<!-- page contents -->
+<div class="page_content" id="show-feedback-content">
+  <div class="feedback_show">
+
+    <h4 class="feedback_subject"><%= strip_tags(@feedback.subject) %></h4>
+
+    <h6 class="feedback_date"><%= t('feedback.create_by')+ " " + @feedback.user.full_name + " "+t('feedback.date_on')+"   "+t("date."+"#{@feedback.created_at.strftime("%A")}")+ @feedback.created_at.strftime(" %d ")+ t("date."+"#{@feedback.created_at.strftime("%B")}") +@feedback.created_at.strftime(" %Y") + @feedback.created_at.strftime(" ,  %H:%M") %></h6>
+
+    <pre class="feedback_content"><%= @feedback.content.html_safe %></pre>
+    <hr class="feedback_division">
+
+    <%= render template: "comments/index" %>
+  </div>
+</div>
+<!--// page contents -->
+

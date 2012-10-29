@@ -8,7 +8,7 @@
             <div id="global_nav">
               <ul id="myTab" >
                 <li class="summary active">
-                  <a href="#summary"><%= I18n.t('admin.summary')  %></a>
+                  <a href="#summary"><%= t('admin.summary')  %></a>
                 </li>
                 <li class="reports">
                   <a href="#reports" class="reports-link" data-url="<%= admin_reports_path %>"><%= I18n.t('admin.tabs.reports') %></a>
@@ -66,21 +66,23 @@
             <div id="page">
               <div id="myTabContent" class="tab-content">
 
+              <!-- page summary -->
                 <div class="tab-pane fade active in" id="summary">
+
                   <!-- page header -->
-                  <div class="page_header_wrapper">
-                      <div class="page_header">
-                        <h1><%= I18n.t ('admin.summary') %></h1>
-                      </div>
+                  <div class="page_header">
+                    <h1><%= t ('admin.summary') %></h1>
                   </div>
                   <!--// page header -->
+
                   <!-- page contents -->
-                  <div class="page_content">
-                    <!-- main column -->
-                    <!--// main column -->
-                    <!--// page contents -->
+                  <div class="page_content" id="summary-content">
+
                   </div>
+                  <!--// page contents -->
+
                 </div>
+              <!--// page summary -->
 
                 <div class="tab-pane fade" id="reports">
                   <!-- page header -->

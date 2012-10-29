@@ -27,8 +27,8 @@ class FeedbacksController < ApplicationController
   Project.where('start_date <= ?', Time.now)
 
   def date_filter
-    fecha = Time.parse(params[:date])
-    @feedbacks = Feedback.where('created_at >= ?', fecha).where(project_id:params[:project_id])
+    date = Time.parse(params[:date])
+    @feedbacks = Feedback.where('created_at >= ?', date).where(project_id:params[:project_id])
     @project = Project.find(params[:project_id])
     respond_to do |format|
       format.js { render action: "index" }
@@ -39,6 +39,7 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks/1.json
   def show
     @feedback = Feedback.find(params[:id])
+    @project = @feedback.project
     @comments = @feedback.comments
     @new_comment = Comment.new
 
