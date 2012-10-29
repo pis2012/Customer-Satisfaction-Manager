@@ -142,8 +142,10 @@
 
       <div class="milestone-box">
         <%= @view[:mile1] %>
-        <hr/>
-        <p> <%= @view[:mile2] %> </p>
+        <% if @view[:mile2] != nil  %>
+            <hr/>
+            <p> <%= @view[:mile2] %> </p>
+        <% end %>
       </div>
 
     </div>

@@ -281,7 +281,7 @@
             clients:   "Clientes"
             forms: "Formularios"
             evolution_of_general_mood:  "Evolución del estado de ánimo general"
-            Status_of_Projects: "Estado del proyecto"
+            Status_of_Projects: "Estado de los proyectos"
             add_clients: "Nuevo Cliente"
 
             tabs:
@@ -296,8 +296,12 @@
             new_milestone:  "Nuevo Hito"
             missing: "Faltan"
             day_and: "dias y"
+            one_day_and: "dia y"
             hours_to_end: "horas para terminar"
+            one_hour_to_end: "hora para terminar"
             Next_milestone: "Proximo hito"
+            end_project: "Final de proyecto"
+            the: " de "
 
   proyect:
             list_projects:  "Lista de Proyectos"

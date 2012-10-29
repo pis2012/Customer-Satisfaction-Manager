@@ -248,10 +248,12 @@
             milestones:   "Milestones"
             new_milestone:  "New Milestone"
             missing: "Missing"
-            day_and: "day and"
+            day_and: "days and"
+            one_day_and: "day and"
             hours_to_end: "hours to end"
             Next_milestone: "Next milestone"
-
+            end_project: "End of project"
+            the: " of "
 
   proyect:
             list_projects:  "List of Projects"
