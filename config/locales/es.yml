@@ -81,6 +81,10 @@
           date_create: "Fecha de Creacion"
           users: "Usuarios Asociados"
           proyect: "Proyectos Asociados"
+          add_client: "Crear Cliente"
+          edit_client: "Editar Cliente"
+          delete_client: "Eliminar Cliente"
+          show_client: "Ver Cliente"
   home:
             home: "Home"
             singin: "Iniciar Sesion"
