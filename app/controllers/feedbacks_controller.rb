@@ -9,7 +9,7 @@ class FeedbacksController < ApplicationController
     @feedbacks = Feedback.all
     respond_to do |format|
       if request.xhr?
-      format.html # index.html.erb
+        format.html # index.html.erb
       end
       format.json { render json: @feedbacks }
     end
@@ -96,18 +96,6 @@ class FeedbacksController < ApplicationController
       else
         format.js { }
       end
-    end
-  end
-
-  # DELETE /feedbacks/1
-  # DELETE /feedbacks/1.json
-  def destroy
-    @feedback = Feedback.find(params[:id])
-    @feedback.destroy
-
-    respond_to do |format|
-      format.html { redirect_to feedbacks_url }
-      format.json { head :no_content }
     end
   end
 

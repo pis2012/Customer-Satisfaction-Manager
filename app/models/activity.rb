@@ -16,11 +16,6 @@ class Activity
     activities = Array.new
     activities_limit = limit
 
-    # balance between items
-    feedbacks_count = limit * 1/2 # feedbacks are more important than mood updates and comments
-    moods_count = limit * 1/4
-    comments_count = limit * 1/4
-
     moods = Mood.all
     feedbacks = Feedback.all
     comments = Comment.all
