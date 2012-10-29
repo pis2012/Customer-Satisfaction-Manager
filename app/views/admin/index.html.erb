@@ -8,26 +8,28 @@
             <div id="global_nav">
               <ul id="myTab" >
                 <li class="summary active">
-                  <a href="#summary" data-toggle="tab"><%= I18n.t('admin.summary')  %></a>
+                  <a href="#summary"><%= I18n.t('admin.summary')  %></a>
                 </li>
-                <li> </li>
                 <li class="reports">
                   <a href="#reports" class="reports-link" data-url="<%= admin_reports_path %>"><%= I18n.t('admin.tabs.reports') %></a>
                 </li>
                 <li class="projects">
-                  <a href="#projects" data-toggle="tab"><%= I18n.t('admin.projects')  %></a>
+                  <a href="#projects"><%= I18n.t('admin.projects')  %></a>
                 </li>
                 <li class="users">
-                  <a href="#users" data-toggle="tab"><%= I18n.t('admin.users')  %></a>
+                  <a href="#users"><%= I18n.t('admin.users')  %></a>
                 </li>
                 <li class="clients">
-                  <a href="#clients" class="clients-link" data-toggle="tab"  data-url="<%= admin_clients_path %>" ><%= I18n.t('admin.clients')  %></a>
+                  <a href="#clients" class="clients-link " data-url="<%= admin_clients_path %>" ><%= I18n.t('admin.clients')  %></a>
                   <ul>
                     <li class="clients" hidden="true">
                       <a href="#clients"> <%= I18n.t('admin.clients')%></a>
                     </li>
                     <li class="add_clients" hidden="true">
                       <a href="#add_clients"> <% t('admin.add_clients') %></a>
+                    </li>
+                    <li class="show_client" hidden="true">
+                      <a href="#show_client"> <% t('admin.add_clients') %></a>
                     </li>
                   </ul>
                 </li>
@@ -149,6 +151,24 @@
                   <!--// page header -->
                   <!-- page contents -->
                   <div class="page_content" id="add_client_data">
+                    <!-- main column -->
+                    <!--// main column -->
+                    <!--// page contents -->
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="show_client">
+                  <!-- page header -->
+                  <div class="page_header_wrapper">
+                    <div class="page_header">
+                      <h1><%= t ('admin.add_clients')  %></h1>
+
+
+                    </div>
+                  </div>
+                  <!--// page header -->
+                  <!-- page contents -->
+                  <div class="page_content" id="show_client_data">
                     <!-- main column -->
                     <!--// main column -->
                     <!--// page contents -->

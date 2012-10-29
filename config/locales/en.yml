@@ -35,6 +35,9 @@
 
   client:
             name: "Name of Client"
+            date_create: "Create Date"
+            users: "Associate Users"
+            proyect: "Associate Projects"
 
   home:
             home: "Home"

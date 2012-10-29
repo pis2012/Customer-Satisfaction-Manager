@@ -78,6 +78,9 @@
 
   client:
           name: "Nombre de Cliente"
+          date_create: "Fecha de Creacion"
+          users: "Usuarios Asociados"
+          proyect: "Proyectos Asociados"
   home:
             home: "Home"
             singin: "Iniciar Sesion"
