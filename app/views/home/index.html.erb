@@ -24,7 +24,7 @@
                         <div class="chomefacewrapperbig">
                           <%= link_to :controller => "projects", :action => "change_profile_project", :id => project.id do %>
                           <div class="chomefacebig" >
-                            <%= image_tag('faces/big/' + mood.get_mood_img, :class => 'img-rounded')  %>
+                            <%= image_tag('moods/big/' + mood.get_mood_img, :class => 'img-rounded')  %>
                             <p class="homeprojectnamev"><%= project.name %></p>
                           </div>
                           <% end %>
@@ -32,7 +32,7 @@
                     <% else %>
                         <div class="chomefacewrapper">
                           <div class="homeface" >
-                            <%=image_tag('faces/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
+                            <%=image_tag('moods/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
                             <p class="homeprojectnameh"><%= project.name %></p>
                           </div>
                         </div>
@@ -76,7 +76,7 @@
                         <div class="ahomefacewrapper">
                           <%= link_to :controller => "projects", :action => "change_profile_project", :id => project.id do %>
                              <div class="homeface" >
-                            <%= image_tag('faces/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
+                            <%= image_tag('moods/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
                             <p class="homeprojectnameh"><%= project.name %></p>
                             </div>
                           <% end %>
@@ -109,7 +109,7 @@
         <div class="span8">
           <div class="vhomecenter">
             <div class="vheaderimage">
-              <%= image_tag "faces/big/2.png" %>
+              <%= image_tag "moods/big/5.png" %>
             </div>
             <div class="vheader">
               <h2 ><%=  t('admin.customer_satisfaction_manager')%></h2>
@@ -136,7 +136,7 @@
 
                 <div class="vhomefacewrapper">
                   <div class="homeface" >
-                    <%= image_tag('faces/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
+                    <%= image_tag('moods/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
                     <p class="homeprojectnameh"><%= project.name %></p>
                   </div>
                 </div>

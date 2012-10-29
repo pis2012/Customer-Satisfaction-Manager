@@ -87,11 +87,11 @@
 
           <ul id="face-list">
             <% mood = @view[:project].moods.order(:created_at).last.status %>
-            <li <% if mood == 1 %> class="active" <% end %>><a href="#change-mood1" class="change-mood1-link" data-url="<%= change_mood_path('1') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="1" src="/assets/faces/small/1.png" class="face-mood img-rounded" id="miniMood1"/></a></li>
-            <li <% if mood == 2 %> class="active" <% end %>><a href="#change-mood2" class="change-mood2-link" data-url="<%= change_mood_path('2') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="2" src="/assets/faces/small/2.png" class="face-mood img-rounded" id="miniMood2"/></a></li>
-            <li <% if mood == 3 %> class="active" <% end %>><a href="#change-mood3" class="change-mood3-link" data-url="<%= change_mood_path('3') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="3" src="/assets/faces/small/3.png" class="face-mood img-rounded" id="miniMood3"/></a></li>
-            <li <% if mood == 4 %> class="active" <% end %>><a href="#change-mood4" class="change-mood4-link" data-url="<%= change_mood_path('4') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="4" src="/assets/faces/small/4.png" class="face-mood img-rounded" id="miniMood4"/></a></li>
-            <li <% if mood == 5 %> class="active" <% end %>><a href="#change-mood5" class="change-mood5-link" data-url="<%= change_mood_path('5') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="5" src="/assets/faces/small/5.png" class="face-mood img-rounded" id="miniMood5"/></a></li>
+            <li <% if mood == 1 %> class="active" <% end %>><a href="#change-mood1" class="change-mood1-link" data-url="<%= change_mood_path('1') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="1" src="/assets/moods/small/1.png" class="face-mood img-rounded" id="miniMood1"/></a></li>
+            <li <% if mood == 2 %> class="active" <% end %>><a href="#change-mood2" class="change-mood2-link" data-url="<%= change_mood_path('2') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="2" src="/assets/moods/small/2.png" class="face-mood img-rounded" id="miniMood2"/></a></li>
+            <li <% if mood == 3 %> class="active" <% end %>><a href="#change-mood3" class="change-mood3-link" data-url="<%= change_mood_path('3') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="3" src="/assets/moods/small/3.png" class="face-mood img-rounded" id="miniMood3"/></a></li>
+            <li <% if mood == 4 %> class="active" <% end %>><a href="#change-mood4" class="change-mood4-link" data-url="<%= change_mood_path('4') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="4" src="/assets/moods/small/4.png" class="face-mood img-rounded" id="miniMood4"/></a></li>
+            <li <% if mood == 5 %> class="active" <% end %>><a href="#change-mood5" class="change-mood5-link" data-url="<%= change_mood_path('5') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="5" src="/assets/moods/small/5.png" class="face-mood img-rounded" id="miniMood5"/></a></li>
           </ul>
 
           <% end %>
