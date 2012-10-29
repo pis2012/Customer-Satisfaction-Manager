@@ -23,7 +23,7 @@ ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'users'}")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'clients'}")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'projects'}")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'milestones'}")
-ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'moods'}")
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'faces'}")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'profiles'}")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'feedbacks'}")
 
@@ -55,31 +55,31 @@ date5 = DateTime.new(2012,8,12)
 
 mood1 = Mood.new
 mood1.project = p1
-mood1.status = 7
+mood1.status = 4
 mood1.created_at = date1
 mood1.save
 
 mood2 = Mood.new
 mood2.project = p1
-mood2.status = 3
+mood2.status = 2
 mood2.created_at = date2
 mood2.save
 
 mood3 = Mood.new
 mood3.project = p1
-mood3.status = 7
+mood3.status = 4
 mood3.created_at = date3
 mood3.save
 
 mood4 = Mood.new
 mood4.project = p1
-mood4.status = 5
+mood4.status = 3
 mood4.created_at = date4
 mood4.save
 
 mood5 = Mood.new
 mood5.project = p1
-mood5.status = 9
+mood5.status = 5
 mood5.created_at = date5
 mood5.save
 
@@ -91,7 +91,7 @@ p2 = Project.create(client: client2,
                     finalized:false)
 
 Mood.create(project: p2,
-            status: 5)
+            status: 3)
 
 mood1 = Mood.new
 mood1.project = p2
@@ -101,7 +101,7 @@ mood1.save
 
 mood1 = Mood.new
 mood1.project = p2
-mood1.status = 9
+mood1.status = 5
 mood1.created_at = date2
 mood1.save
 
@@ -116,13 +116,13 @@ Mood.create(project: p3,
 
 mood1 = Mood.new
 mood1.project = p3
-mood1.status = 7
+mood1.status = 4
 mood1.created_at = date2
 mood1.save
 
 mood1 = Mood.new
 mood1.project = p3
-mood1.status = 9
+mood1.status = 5
 mood1.created_at = date3
 mood1.save
 
@@ -133,7 +133,7 @@ p4 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p4,
-            status: 10)
+            status: 5)
 
 p5 = Project.create(client: client1,
                     name:'Proyecto5',
@@ -142,7 +142,7 @@ p5 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p5,
-            status: 10)
+            status: 5)
 
 p6 = Project.create(client: client1,
                     name:'Proyecto6',
@@ -151,7 +151,7 @@ p6 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p6,
-            status: 10)
+            status: 5)
 
 p7 = Project.create(client: client1,
                     name:'Proyecto7',
@@ -160,7 +160,7 @@ p7 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p7,
-            status: 10)
+            status: 5)
 
 p8 = Project.create(client: client1,
                     name:'Proyecto8',
@@ -169,7 +169,7 @@ p8 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p8,
-            status: 10)
+            status: 5)
 
 p9 = Project.create(client: client1,
                     name:'Proyecto9',
@@ -178,7 +178,7 @@ p9 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p9,
-            status: 10)
+            status: 5)
 
 p10 = Project.create(client: client1,
                     name:'Proyecto10',
@@ -187,7 +187,7 @@ p10 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p10,
-            status: 10)
+            status: 5)
 
 p11 = Project.create(client: client1,
                     name:'Proyecto11',
@@ -196,7 +196,7 @@ p11 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p11,
-            status: 10)
+            status: 5)
 
 p12 = Project.create(client: client1,
                     name:'Proyecto12',
@@ -205,7 +205,7 @@ p12 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p12,
-            status: 7)
+            status: 4)
 
 p13 = Project.create(client: client1,
                     name:'Proyecto13',
@@ -214,7 +214,7 @@ p13 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p13,
-            status: 10)
+            status: 5)
 
 p14 = Project.create(client: client1,
                     name:'Proyecto14',
@@ -223,7 +223,7 @@ p14 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p14,
-            status: 5)
+            status: 3)
 
 p15 = Project.create(client: client1,
                     name:'Proyecto15',
@@ -232,7 +232,7 @@ p15 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p15,
-            status: 10)
+            status: 5)
 
 p16 = Project.create(client: client1,
                     name:'Proyecto16',
@@ -241,7 +241,7 @@ p16 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p16,
-            status: 10)
+            status: 5)
 
 p17 = Project.create(client: client1,
                     name:'Proyecto17',
@@ -250,7 +250,7 @@ p17 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p17,
-            status: 5)
+            status: 3)
 
 p18 = Project.create(client: client1,
                     name:'Proyecto18',
@@ -268,7 +268,7 @@ p19 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p19,
-            status: 10)
+            status: 5)
 
 p20 = Project.create(client: client1,
                     name:'Proyecto20',
@@ -277,7 +277,7 @@ p20 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p20,
-            status: 10)
+            status: 5)
 
 p21 = Project.create(client: client1,
                      name:'Proyecto21',
@@ -286,7 +286,7 @@ p21 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p21,
-            status: 10)
+            status: 5)
 
 p22 = Project.create(client: client1,
                      name:'Proyecto22',
@@ -295,7 +295,7 @@ p22 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p22,
-            status: 10)
+            status: 5)
 
 p23 = Project.create(client: client1,
                      name:'Proyecto23',
@@ -304,7 +304,7 @@ p23 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p23,
-            status: 10)
+            status: 5)
 
 p24 = Project.create(client: client1,
                      name:'Proyecto24',
@@ -313,7 +313,7 @@ p24 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p24,
-            status: 10)
+            status: 5)
 
 p25 = Project.create(client: client1,
                      name:'Proyecto25',
@@ -322,7 +322,7 @@ p25 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p25,
-            status: 10)
+            status: 5)
 
 p26 = Project.create(client: client1,
                      name:'Proyecto26',
@@ -331,7 +331,7 @@ p26 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p26,
-            status: 10)
+            status: 5)
 
 p27 = Project.create(client: client1,
                      name:'Proyecto27',
@@ -340,7 +340,7 @@ p27 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p27,
-            status: 10)
+            status: 5)
 
 p28 = Project.create(client: client1,
                      name:'Proyecto28',
@@ -349,7 +349,7 @@ p28 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p28,
-            status: 10)
+            status: 5)
 
 p29 = Project.create(client: client1,
                      name:'Proyecto29',
@@ -358,7 +358,7 @@ p29 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p29,
-            status: 10)
+            status: 5)
 
 p30 = Project.create(client: client1,
                      name:'Proyecto30',
@@ -367,7 +367,7 @@ p30 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p30,
-            status: 10)
+            status: 5)
 
 p31 = Project.create(client: client1,
                      name:'Proyecto31',
@@ -376,7 +376,7 @@ p31 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p31,
-            status: 10)
+            status: 5)
 
 p32 = Project.create(client: client1,
                      name:'Proyecto32',
@@ -385,7 +385,7 @@ p32 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p32,
-            status: 10)
+            status: 5)
 
 p33 = Project.create(client: client1,
                      name:'Proyecto33',
@@ -394,7 +394,7 @@ p33 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p33,
-            status: 10)
+            status: 5)
 
 p34 = Project.create(client: client1,
                      name:'Proyecto34',
@@ -403,7 +403,7 @@ p34 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p34,
-            status: 10)
+            status: 5)
 
 p35 = Project.create(client: client1,
                      name:'Proyecto35',
@@ -412,7 +412,7 @@ p35 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p35,
-            status: 10)
+            status: 5)
 
 p36 = Project.create(client: client1,
                      name:'Proyecto36',
@@ -421,7 +421,7 @@ p36 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p36,
-            status: 10)
+            status: 5)
 
 p37 = Project.create(client: client1,
                      name:'Proyecto37',
@@ -430,7 +430,7 @@ p37 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p37,
-            status: 10)
+            status: 5)
 
 p38 = Project.create(client: client1,
                      name:'Proyecto38',
@@ -439,7 +439,7 @@ p38 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p38,
-            status: 10)
+            status: 5)
 
 p39 = Project.create(client: client1,
                      name:'Proyecto39',
@@ -448,7 +448,7 @@ p39 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p39,
-            status: 10)
+            status: 5)
 
 p40 = Project.create(client: client1,
                      name:'Proyecto40',
@@ -457,7 +457,7 @@ p40 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p40,
-            status: 10)
+            status: 5)
 
 p41 = Project.create(client: client1,
                      name:'Proyecto41',
@@ -466,7 +466,7 @@ p41 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p41,
-            status: 10)
+            status: 5)
 
 p42 = Project.create(client: client1,
                      name:'Proyecto42',
@@ -475,7 +475,7 @@ p42 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p42,
-            status: 10)
+            status: 5)
 
 p43 = Project.create(client: client1,
                      name:'Proyecto43',
@@ -484,7 +484,7 @@ p43 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p43,
-            status: 10)
+            status: 5)
 
 p44 = Project.create(client: client1,
                      name:'Proyecto44',
@@ -493,7 +493,7 @@ p44 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p44,
-            status: 10)
+            status: 5)
 
 p45 = Project.create(client: client1,
                      name:'Proyecto45',
@@ -502,7 +502,7 @@ p45 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p45,
-            status: 10)
+            status: 5)
 
 
 admin_usr = User.create(role: rol_admin, client: client1,

@@ -1,16 +1,17 @@
-<div class="forms_filter">
-  <h5>
-    <%= t('form.name_filter') %>
-    &nbsp;
-    <%= text_field_tag "form_name_filter" %>
-    &nbsp;
-    <%= button_tag( t('buttons.filter'), :id => "form_filter_btn", :class => "btn") %>
-  </h5>
-</div>
-
-<hr/>
 
 <div class='forms_index'>
+  <div class="forms_filter">
+    <h5>
+      <%= t('form.name_filter') %>
+      &nbsp;
+      <%= text_field_tag "form_name_filter" %>
+      &nbsp;
+      <%= button_tag( t('buttons.filter'), :id => "form_filter_btn", :class => "btn") %>
+    </h5>
+  </div>
+
+  <hr/>
+
   <table class='forms_table'>
     <% @forms.each do |form| %>
         <tr id='form_row_<%= form[:id] %>'>

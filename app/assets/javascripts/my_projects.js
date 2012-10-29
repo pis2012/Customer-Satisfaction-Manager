@@ -64,6 +64,13 @@ $('.change-mood1-link').live('click', function () {
     return false;
 });
 
+$('.change-mood2-link').live('click', function () {
+    if (!$(this).parent().hasClass("active")) {
+        updatePanelMood($(this).data('url'), 'change-mood2-content', 'change-mood2');
+    }
+    return false;
+});
+
 $('.change-mood3-link').live('click', function () {
     if (!$(this).parent().hasClass("active")) {
         updatePanelMood($(this).data('url'), 'change-mood3-content', 'change-mood3');
@@ -71,23 +78,16 @@ $('.change-mood3-link').live('click', function () {
     return false;
 });
 
+$('.change-mood4-link').live('click', function () {
+    if (!$(this).parent().hasClass("active")) {
+        updatePanelMood($(this).data('url'), 'change-mood4-content', 'change-mood4');
+    }
+    return false;
+});
+
 $('.change-mood5-link').live('click', function () {
     if (!$(this).parent().hasClass("active")) {
-        updatePanelMood($(this).data('url'), 'change-mood5-content', 'change-mood5');
-    }
-    return false;
-});
-
-$('.change-mood7-link').live('click', function () {
-    if (!$(this).parent().hasClass("active")) {
-        updatePanelMood($(this).data('url'), 'change-mood7-content', 'change-mood7');
-    }
-    return false;
-});
-
-$('.change-mood9-link').live('click', function () {
-    if (!$(this).parent().hasClass("active")) {
-        updatePanelMood($(this).data('url'), 'change-mood9-content', 'change-mood9')
+        updatePanelMood($(this).data('url'), 'change-mood5-content', 'change-mood5')
     }
     return false;
 });

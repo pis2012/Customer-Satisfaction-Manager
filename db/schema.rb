@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(:version => 20121012012332) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "moods", :force => true do |t|
+  create_table "faces", :force => true do |t|
     t.integer  "project_id"
     t.integer  "status"
     t.datetime "created_at", :null => false

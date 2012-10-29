@@ -98,14 +98,14 @@
     data = Array.new
     axis = Array.new
     count = @project.moods.count
-    offset = count > 25 ? count-25 : 0  # Last 25 moods
+    offset = count > 20 ? count-20 : 0  # Last 20 faces
     @project.moods.order(:created_at).offset(offset).each do |mood|
       data = data + [mood.status]
       axis = axis + ["#{mood.created_at.mday}/#{mood.created_at.mon}"]
     end
 
     @view[:graph] = Gchart.line(:size => '850x350', :bg => {:color => '76A4FB,1,ffffff,0', :type => 'gradient'}, :graph_bg => 'E5E5E5', :theme => :keynote,
-                                :data => data, :axis_with_labels => ['x','y'], :axis_labels => [axis,[1,2,3,4,5,6,7,8,9,10]])
+                                :data => data, :axis_with_labels => ['x','y'], :axis_labels => [axis,[1,2,3,4,5]])
 
     respond_to do |format|
       format.html { render :layout => false } # show_project_data.html.erb
@@ -114,8 +114,6 @@
   end
 
   def change_profile_project
-
-
     project = Project.find(params[:id])
     if !current_user.client? || (current_user.client? && project.client_id == current_user.client_id)
       current_user.profile.update_attributes(:project => project)
