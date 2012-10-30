@@ -1,5 +1,4 @@
 
-<div class='forms_index'>
   <div class="forms_filter form-inline">
     <h5 class="form_filter_subject"><%= t('form.name_filter') %></h5>
       &nbsp;
@@ -7,9 +6,7 @@
       &nbsp;
       <%= button_tag( t('buttons.filter'), :id => "form_filter_btn", :class => "btn") %>
   </div>
-
   <hr/>
-
   <div id="forms_list">
     <% @forms.each do |form| %>
         <div class="form_item" value="<%= form[:name] %>">
@@ -22,9 +19,8 @@
         </div>
     <% end %>
   </div>
-</div>
 
-<div class="prueba"></div>
+
 
 
 

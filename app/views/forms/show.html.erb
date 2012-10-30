@@ -1,6 +1,11 @@
 <div class="form">
 
-  <div class="show-form-name"><%= @form_data[:name] %></div>
+  <div class="show-form-name" style="display: inline-block;" ><%= @form_data[:name] %>
+      <div id="loading-gif" style="display: inline-block;">
+        <%= image_tag("ajax-loader.gif") %>
+      </div>
+  </div>
+  <br/>
   <br/>
   <%= t('form.clients') %>
   &nbsp;

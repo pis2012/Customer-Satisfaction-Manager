@@ -229,6 +229,7 @@
             google_email: "Google user name"
             password: "Password"
             name_filter: "Name contains: "
+            delete_form: "Delete form"
 
 
   admin:

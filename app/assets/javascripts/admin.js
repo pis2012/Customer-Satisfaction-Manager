@@ -31,19 +31,25 @@ $(document).on('click', '.edit-client-link', function () {
 });
 
 $(document).on('click', '.forms-link', function () {
-    updatePanel($(this).data('url'), 'forms_data', 'forms');
+    updatePanel($(this).data('url'), 'forms-content', 'forms');
     return false;
 });
 
-$(document).on('click', '.add-form-link', function () {
-    updatePanel($(this).data('url'), 'add_form_data', 'add_form');
+$(document).on('click', '.new-form-link', function () {
+    updatePanel($(this).data('url'), 'new-form-content', 'new-form');
     return false;
 });
 
 $(document).on('click', '.show-form-link', function () {
-    updatePanel($(this).data('url'), 'show_form_data', 'show_form');
+    updatePanel($(this).data('url'), 'show-form-content', 'show-form');
     return false;
 });
+
+$(document).on('click', '.delete-form-link', function () {
+    updatePanel($(this).data('url'), 'forms-content', 'forms');
+    return false;
+});
+
 
 $(document).on('change', '#form_client', function() {
     $('#form_client_full_data').empty();
@@ -104,6 +110,17 @@ $('.users-link').live('click', function () {
     updatePanel($(this).attr('data-url'), 'users-content', 'users');
     return false;
 });
+
+
+$(document).on({
+    ajaxStart: function() {
+        $("#loading-gif").css("visibility","visible");
+    },
+    ajaxStop: function() {
+        $("#loading-gif").css("visibility","hidden");
+    }
+});
+
 
 
 

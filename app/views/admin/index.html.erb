@@ -60,20 +60,18 @@
                     </li>
                   </ul>
                 </li>
+
                 <li class="forms">
                   <a href="#forms" class="forms-link" data-url="<%= admin_forms_path %>"><%= I18n.t('admin.tabs.forms')  %></a>
-                  <ul>
-                    <li class="forms" hidden="true">
-                      <a href="#forms"> <%= I18n.t('admin.tabs.forms')%></a>
-                    </li>
-                    <li class="add_form" hidden="true">
-                      <a href="#add_form"> <% t('form.add_form') %></a>
-                    </li>
-                    <li class="show_form" hidden="true">
-                      <a href="#show_form"> <% t('admin.tabs.show_form') %></a>
-                    </li>
-                  </ul>
                 </li>
+                <li class="new-form" hidden="true">
+                   <a href="#new-form"> <% t('form.add_form') %></a>
+                </li>
+                <li class="show-form" hidden="true">
+                    <a href="#show-form"> <% t('admin.tabs.show_form') %></a>
+                </li>
+
+
               </ul>
             </div>
          </div>
@@ -222,7 +220,7 @@
                     <div class="page_header">
                       <h1><%= I18n.t ('admin.forms')  %></h1>
                       <div class="add_element">
-                        <button class="btn btn-link add-form-link" data-url="<%= new_form_path %>">
+                        <button class="btn btn-link new-form-link" data-url="<%= new_form_path %>">
                           <i class="icon-plus icon-white"> </i> <%= t('form.add_form')%>
                         </button>
                       </div>
@@ -230,7 +228,7 @@
                   </div>
                   <!--// page header -->
                   <!-- page contents -->
-                  <div class="page_content" id="forms_data">
+                  <div class="page_content" id="forms-content">
                     <!-- main column -->
                     <!--// main column -->
                     <!--// page contents -->
@@ -238,7 +236,7 @@
                 </div>
 
                 <!-- page add form -->
-                <div class="tab-pane fade" id="add_form">
+                <div class="tab-pane fade" id="new-form">
                   <!-- page header -->
                   <div class="page_header">
                     <h1><%= t('form.add_form') %></h1>
@@ -246,7 +244,7 @@
                   <!--// page header -->
 
                   <!-- page contents -->
-                  <div class="page_content" id="add_form_data">
+                  <div class="page_content" id="new-form-content">
 
                   </div>
                   <!--// page contents -->
@@ -254,15 +252,25 @@
                 </div>
 
                 <!-- page show form -->
-                <div class="tab-pane fade" id="show_form">
+                <div class="tab-pane fade" id="show-form">
                   <!-- page header -->
-                  <div class="page_header">
-                    <h1><%= t('admin.tabs.show_form') %></h1>
-                  </div>
+                    <div class="page_header_wrapper">
+                      <div class="page_header">
+                        <h1><%= t('admin.tabs.show_form') %></h1>
+                        <div class="add_element">
+                          <%= form_tag(form_path, :method => "post", :remote => true) do %>
+                              <input name="_method" type="hidden" value="delete">
+                              <button class="btn btn-link delete-btn" type="submit" >
+                                <i class="icon-minus icon-white"> </i> <%= t('form.delete_form')%>
+                              </button>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
                   <!--// page header -->
 
                   <!-- page contents -->
-                  <div class="page_content" id="show_form_data">
+                  <div class="page_content" id="show-form-content">
 
                   </div>
                   <!--// page contents -->

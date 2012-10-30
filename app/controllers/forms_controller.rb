@@ -88,7 +88,17 @@ class FormsController < ApplicationController
     end
   end
 
+  def destroy
+    @form = Form.find(params[:form_id])
+    @form.destroy
 
+    respond_to do |format|
+      if request.xhr?
+        @forms = Form.where(:user_id => current_user.id)
+        format.js { render action: "index" }
+      end
+    end
+  end
 
 
 end
