@@ -1,30 +1,38 @@
 CSM::Application.routes.draw do
 
- # Elrte.routes(self)
-
-  resources :profiles, :only => [:update,:edit]
-
-  resources :comments
-
-  match "/feedbacks/project_feedbacks/:project_id" => "feedbacks#project_feedbacks", :as => :project_feedbacks
-  match "/feedbacks/new/:project_id" => "feedbacks#new", :as => :new_feedback
-  match "/feedbacks/date_filter" => "feedbacks#date_filter", :as => :feedbacks_date_filter
-  resources :feedbacks
 
 
 
-  match "profile" => "users#show"
+  # MY_PROJECT ROUTES
+  scope "/my_projects" do
+    # FEEDBACKS ROUTES
+    match "/feedbacks/project_feedbacks/:project_id" => "feedbacks#project_feedbacks", :as => :project_feedbacks
+    match "/feedbacks/new/:project_id" => "feedbacks#new", :as => :new_feedback
+    match "/feedbacks/date_filter" => "feedbacks#date_filter", :as => :feedbacks_date_filter
+    resources :feedbacks, :only => [:show, :create, :edit, :update, :destroy]
 
-  resources :faces
+    # COMMENTS ROUTES
+    resources :comments, :only => [:create, :destroy]
 
-  match "/milestones/project_milestones/:project_id" => "milestones#project_milestones", :as => :project_milestones
-  match "/milestones/new/:project_id" => "milestones#new", :as => :new_milestone
-  resources :milestones
+    # MILESTONES ROUTES
+    match "/milestones/project_milestones/:project_id" => "milestones#project_milestones", :as => :project_milestones
+    match "/milestones/new/:project_id" => "milestones#new", :as => :new_milestone
+    resources :milestones, :only => [:destroy]
+  end
 
-  match "/users/name_filter" => "users#name_filter", :as => :users_name_filter
+  # PROFILE ROUTES
+  match "profile" => "profiles#edit", :as => :edit_profile
+  resources :profiles, :only => [:update]
 
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :passwords => "passwords"}
+
+  # ADMINISTRATION ROUTES
   scope "/admin" do
+    #SUMMARY ROUTES
+    match "/summary/site_activities_filter" => "activities#activities_filter", :as => :activities_filter
+
+    # USERS ROUTES
+    match "/users/name_filter" => "users#name_filter", :as => :users_name_filter
     resources :users
   end
 
@@ -35,8 +43,8 @@ CSM::Application.routes.draw do
   match "/admin/client/delete/:client_id" => "clients#destroy", :as => :clients_delete
 
   match "/my_projects" , to: "my_projects#index" , :as => :my_projects
-  match "/projects/change_profile_project/:project_id", to: "projects#change_profile_project", :as => :change_profile_project
-  match "/projects/show_project_data/:project_id" => "projects#show_project_data", :as => :project_data
+  match "/my_projects/:project_id", to: "projects#change_profile_project", :as => :change_profile_project
+  match "/my_projects/:project_id/show_project_data/" => "projects#show_project_data", :as => :project_data
   match "/projects/change_mood/:new_status" => "projects#change_mood", :as => :change_mood
 
   #match "/my_projects/change_mood" , to: "projects#change_mood"

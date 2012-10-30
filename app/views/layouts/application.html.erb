@@ -57,7 +57,7 @@
                     <% if user_signed_in? %>
                         <ul class="nav">
                             <li>
-                              <%= link_to current_user.full_name, edit_profile_path(Profile.find_by_user_id(current_user)) %>
+                              <%= link_to current_user.full_name, edit_profile_path %>
                             </li>
                             <li>
                               <%= link_to '<i class="icon-off icon-white"></i> '.html_safe + I18n.t('home.Sign_out'), destroy_user_session_path, :method => :delete %>
