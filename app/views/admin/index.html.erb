@@ -8,26 +8,53 @@
             <div id="global_nav">
               <ul id="myTab" >
                 <li class="summary active">
-                  <a href="#summary"><%= t('admin.summary')  %></a>
+                  <a href="#summary" class="summary-link" data-url="<%= summary_path %>"><%= t('admin.summary')  %></a>
                 </li>
                 <li class="reports">
-                  <a href="#reports" class="reports-link" data-url="<%= admin_reports_path %>"><%= I18n.t('admin.tabs.reports') %></a>
+                  <a href="#reports" class="reports-link" data-url="<%= admin_reports_path %>"><%= t('admin.tabs.reports') %></a>
                 </li>
+
+
                 <li class="projects">
-                  <a href="#projects"><%= I18n.t('admin.projects')  %></a>
+                  <a href="#projects" class="projects-link" data-url="<%= admin_projects_path %>"><%= t('admin.projects')  %></a>
+                  <ul>
+                    <li class="projects" hidden="true">
+                      <a href="#projects" class="projects-link" data-url="<%= admin_projects_path %>"> <% t('admin.projects') %></a>
+                    </li>
+                    <li class="new-project" hidden="true">
+                      <a href="#new-project"> <% t('admin.projects') %></a>
+                    </li>
+                    <li class="edit-project" hidden="true">
+                      <a href="#edit-project"> <%= t('admin.projects')%></a>
+                    </li>
+                    <li class="show-project" hidden="true">
+                      <a href="#show-project"> <% t('admin.projects') %></a>
+                    </li>
+                  </ul>
                 </li>
+
+
+
                 <li class="users">
-                  <a href="#users" data-toggle="tab" class="users-link" data-url="<%=users_path%>" ><%= I18n.t ('admin.users')  %></a>
+                  <a href="#users" class="users-link" data-url="<%=users_path%>" ><%= t('admin.users')  %></a>
+                  <ul>
+                    <li class="users" hidden="true">
+                      <a href="#users" class="users-link" data-url="<%=users_path%>"> <% t('admin.users') %></a>
+                    </li>
+                    <li class="new-user" hidden="true">
+                      <a href="#new-user"> <% t('admin.new_users') %></a>
+                    </li>
+                    <li class="edit-user" hidden="true">
+                      <a href="#edit-user"> <% t('admin.edit_users') %></a>
+                    </li>
+                    <li class="show-user" hidden="true">
+                      <a href="#show-user"> <% t('show.users') %></a>
+                    </li>
+                  </ul>
                 </li>
-                <li class="new-user" hidden="true">
-                  <a href="#new-user"> <% t('my_projects.tabs.new_feedback') %></a>
-                </li>
-                <li class="edit-user" hidden="true">
-                  <a href="#edit-user"> <% t('my_projects.tabs.new_feedback') %></a>
-                </li>
-                <li class="show-user" hidden="true">
-                  <a href="#show-user"> <% t('my_projects.tabs.new_feedback') %></a>
-                </li>
+
+
+
                 <li class="clients">
                   <a href="#clients" class="clients-link " data-url="<%= admin_clients_path %>" ><%= I18n.t('admin.clients')  %></a>
                   <ul>
@@ -46,10 +73,10 @@
                   </ul>
                 </li>
                 <li class="forms">
-                  <a href="#forms" class="forms-link" data-url="<%= admin_forms_path %>"><%= I18n.t('admin.tabs.forms')  %></a>
+                  <a href="#forms" class="forms-link" data-url="<%= admin_forms_path %>"><%= t('admin.tabs.forms')  %></a>
                   <ul>
                     <li class="forms" hidden="true">
-                      <a href="#forms"> <%= I18n.t('admin.tabs.forms')%></a>
+                      <a href="#forms" class="forms-link" data-url="<%= admin_forms_path %>"> <%= t('admin.tabs.forms')%></a>
                     </li>
                     <li class="add_form" hidden="true">
                       <a href="#add_form"> <% t('form.add_form') %></a>
@@ -90,15 +117,20 @@
                   <!-- page header -->
                   <div class="page_header_wrapper">
                     <div class="page_header">
-                      <h1><%= I18n.t ('admin.projects')  %></h1>
+                      <h1><%= t('admin.projects')  %></h1>
+
+                      <div class="add_element">
+                        <a href="#new-project" class="btn btn-link new-project-link" data-url="<%= new_project_path %>">
+                          <i class="icon-plus icon-white"> </i> <%= t('admin.tabs.new_project') %>
+                        </a>
+                      </div>
+
                     </div>
                   </div>
                   <!--// page header -->
                   <!-- page contents -->
-                  <div class="page_content">
-                    <!-- main column -->
-                    <!--// main column -->
-                    <!--// page contents -->
+                  <div class="page_content" id="projects-content">
+
                   </div>
                 </div>
 
@@ -114,18 +146,14 @@
                             </a>
                         </div>
 
-
                     </div>
                   </div>
                   <!--// page header -->
                   <!-- page contents -->
                   <div class="page_content" id="users-content">
-                    <!-- main column -->
-                    <!--// main column -->
-                    <!--// page contents -->
-                    <%= render template: "users/index" %>
 
                   </div>
+
                 </div>
 
                 <div class="tab-pane fade" id="clients">
@@ -176,43 +204,12 @@
 
                 <div class="tab-pane fade" id="edit_client">
                   <!-- page header -->
-                  <div class="page_header_wrapper">
-                    <div class="page_header">
-                      <h1><%= t('client.edit_client')  %></h1>
 
-
-                    </div>
-                  </div>
-                  <!--// page header -->
-                  <!-- page contents -->
-                  <div class="page_content" id="edit_client_data">
-                    <!-- main column -->
-                    <!--// main column -->
-                    <!--// page contents -->
-                  </div>
                 </div>
 
 
                 <div class="tab-pane fade" id="show_client">
-                  <!-- page header -->
-                  <div class="page_header_wrapper">
-                    <div class="page_header">
-                     <h1><%= t('client.show_client') %></h1>
 
-
-
-
-
-
-                    </div>
-                  </div>
-                  <!--// page header -->
-                  <!-- page contents -->
-                  <div class="page_content" id="show_client_data">
-                    <!-- main column -->
-                    <!--// main column -->
-                    <!--// page contents -->
-                  </div>
                 </div>
 
                 <div class="tab-pane fade" id="forms">
@@ -220,19 +217,11 @@
                   <div class="page_header_wrapper">
                     <div class="page_header">
                       <h1><%= I18n.t ('admin.forms')  %></h1>
-
                       <div class="add_element">
-
                         <button class="btn btn-link add-form-link" data-url="<%= new_form_path %>">
                           <i class="icon-plus icon-white"> </i> <%= t('form.add_form')%>
                         </button>
-
-
-
-
-
                       </div>
-
                     </div>
                   </div>
                   <!--// page header -->
@@ -277,12 +266,29 @@
                 </div>
 
 
+                  <!-- page new project -->
+                  <div class="tab-pane fade" id="new-project">
+                  </div>
+                  <!--// page new project -->
+
+                  <!-- page edit project -->
+                  <div class="tab-pane fade" id="edit-project">
+                  </div>
+                  <!--// page edit project -->
+
+                  <!-- page show project -->
+                  <div class="tab-pane fade" id="show-project">
+                  </div>
+                  <!--// page show project -->
+
+
+
+
 
                 <!-- page new user -->
                 <div class="tab-pane fade" id="new-user">
                 </div>
                 <!--// page new user -->
-
 
                 <!-- page edit user -->
                 <div class="tab-pane fade" id="edit-user">
@@ -303,106 +309,3 @@
 <br>
 <br>
 <br>
-
-
-
-
-
-
-
-
-    <%#
-    <div class="tabbable tabs-left">
-    <ul id="myTab" class="nav nav-tabs">
-      <li class="home active">
-        <a href="#home" data-toggle="tab">Home</a>
-      </li>
-      <li class="profile">
-        <a href="#profile" data-toggle="tab">Profile</a>
-      </li>
-    </ul>
-    <div id="myTabContent" class="tab-content">
-      <div class="tab-pane fade active in" id="home">
-        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-      </div>
-      <div class="tab-pane fade" id="profile">
-        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
-      </div>
-    </div>
-    </div>
-
-    <div class="tabbable tabs-left">
-      <ul class="nav nav-tabs">
-        <li class="active">
-          <a href="#lA" data-toggle="tab">Section 1</a>
-        </li>
-        <li class="">
-          <a href="#lB" data-toggle="tab">Section 2</a>
-        </li>
-        <li class="">
-          <a href="#lC" data-toggle="tab">Section 3</a>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane active" id="lA">
-          <p>I'm in Section A.</p>
-        </div>
-        <div class="tab-pane" id="lB">
-          <p>Howdy, I'm in Section B.</p>
-        </div>
-        <div class="tab-pane" id="lC">
-          <p>What up girl, this is Section C.</p>
-        </div>
-      </div>
-    </div>
-
-
-
-      <ul class="nav nav-pills nav-stacked">
-        <li>
-          <a href="#"><i class="icon-table"></i> Summary</a>
-        </li>
-        <li>
-          <a href="/projects"><i class="icon-briefcase"></i> Projects</a>
-        </li>
-        <li>
-          <a href="/users"><i class="icon-user"></i> Users</a>
-        </li>
-        <li>
-          <a href="/clients"><i class="icon-user-md"></i> Customers</a>
-        </li>
-        <li>
-          <a href="#"><i class="icon-file"></i> Forms</a>
-        </li>
-      </ul>
-    </div>
-
-
-
-
-
-
-      <table class="table table-bordered" >
-        <thead>
-        <tr >
-          <th>
-            </br>
-          </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th><h4>Recent Activity</h4></th>
-        </tr>
-        </tbody>
-      </table>
-
-
-
-
-
-    %>
-
-
-
-

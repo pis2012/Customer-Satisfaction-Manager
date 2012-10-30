@@ -1,9 +1,11 @@
 CSM::Application.routes.draw do
 
-
-
-
   # MY_PROJECT ROUTES
+  match "/my_projects" , to: "my_projects#index" , :as => :my_projects
+  match "/my_projects/:project_id", to: "projects#change_profile_project", :as => :change_profile_project
+  match "/my_projects/:project_id/show_project_data/" => "projects#show_project_data", :as => :project_data
+  match "/my_projects/change_mood/:new_status" => "projects#change_mood", :as => :change_mood
+
   scope "/my_projects" do
     # FEEDBACKS ROUTES
     match "/feedbacks/project_feedbacks/:project_id" => "feedbacks#project_feedbacks", :as => :project_feedbacks
@@ -24,37 +26,48 @@ CSM::Application.routes.draw do
   match "profile" => "profiles#edit", :as => :edit_profile
   resources :profiles, :only => [:update]
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :passwords => "passwords"}
 
-  # ADMINISTRATION ROUTES
+
+  match "/users/name_filter" => "users#name_filter", :as => :users_name_filter
+
+
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :passwords => "passwords"}
   scope "/admin" do
     #SUMMARY ROUTES
+    match "/summary" => "activities#index", :as => :summary
     match "/summary/site_activities_filter" => "activities#activities_filter", :as => :activities_filter
 
     # USERS ROUTES
-    match "/users/name_filter" => "users#name_filter", :as => :users_name_filter
     resources :users
+    resources :projects
   end
 
-  resources :clients , :only => [:index, :new, :create,:update , :edit,:destroy]
+  resources :clients # , :only => [:index, :new, :create,:update , :edit,:destroy]
   match "/admin/clients" => "clients#index" , :as => :admin_clients
   match "/admin/client/:client_id" => "clients#show", :as => :clients_show
   match "/admin/client/edit/:client_id" => "clients#edit", :as => :clients_edit
   match "/admin/client/delete/:client_id" => "clients#destroy", :as => :clients_delete
 
-  match "/my_projects" , to: "my_projects#index" , :as => :my_projects
-  match "/my_projects/:project_id", to: "projects#change_profile_project", :as => :change_profile_project
-  match "/my_projects/:project_id/show_project_data/" => "projects#show_project_data", :as => :project_data
-  match "/projects/change_mood/:new_status" => "projects#change_mood", :as => :change_mood
+
 
   #match "/my_projects/change_mood" , to: "projects#change_mood"
 
   match "/admin" => "admin#index", :as => :admin
   match "/admin/reports" => "admin#show_reports", :as => :admin_reports
+  #match "/admin/projects" => "admin#index", :as => :admin_projects
   match "/admin/forms" => "forms#index", :as => :admin_forms
 
 
-  resources :projects, :constraints => lambda { |request| request.env['warden'].user.admin? }
+  resources :projects, :only => [:index, :new, :create,:update , :edit,:destroy] #:constraints => lambda { |request| request.env['warden'].user.admin? }
+  match "/admin/projects" => "projects#index" , :as => :admin_projects
+
+  match "/projects/name_filter" => "projects#name_filter", :as => :projects_name_filter
+  match "/admin/projects/new" => "projects#new-project", :as => :new_project
+  match "/admin/projects/:project_id" => "projects#show", :as => :projects_show
+  match "/admin/projects/edit/:project_id" => "projects#edit", :as => :projects_edit
+  match "/admin/projects/delete/:project_id" => "projects#destroy", :as => :projects_delete
+
 
   resources :forms, :only => [:index, :new, :create]
   match "/forms/show_data/:form_id" => "forms#show_data", :as => :forms_show_data

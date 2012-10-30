@@ -47,6 +47,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
+    @user.skip_confirmation!
 
     @user.role = Role.find_by_name Role::CLIENT_ROLE
     respond_to do |format|

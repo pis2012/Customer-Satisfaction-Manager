@@ -6,10 +6,34 @@ function updatePanel(path, id_replace, tab) {
     }, 'html');
 }
 
+//************** SUMMARY TAB **************** //
+
+$(document).on('click', '.summary-link', function () {
+    updatePanel($(this).data('url'), 'summary', 'summary');
+    return false;
+});
+
+
+//************** REPORTS TAB **************** //
+
 $(document).on('click', '.reports-link', function () {
     updatePanel($(this).data('url'), 'reports_data', 'reports');
     return false;
 });
+
+//************** PROJECTS TAB **************** //
+
+$(document).on('click', '.projects-link', function () {
+    updatePanel($(this).data('url'), 'projects-content', 'projects');
+    return false;
+});
+
+$(document).on('click', '.new-project-link', function () {
+    updatePanel($(this).data('url'), 'new-project', 'new-project');
+    return false;
+});
+
+//************** CLIENTS TAB **************** //
 
 $(document).on('click', '.clients-link', function () {
     updatePanel($(this).data('url'), 'client_data', 'clients');
@@ -29,6 +53,9 @@ $(document).on('click', '.edit-client-link', function () {
     updatePanel($(this).data('url'), 'edit_client_data', 'edit_client');
     return false;
 });
+
+//************** FORMS TAB **************** //
+
 
 $(document).on('click', '.forms-link', function () {
     updatePanel($(this).data('url'), 'forms_data', 'forms');
@@ -68,6 +95,25 @@ $(document).on('click', '#btn_full_data', function() {
     return false;
 });
 
+$(document).on('click', '#form_filter_btn', function() {
+    var forms_table_items = $("#forms_list .form_item");
+    forms_table_items.each(function() {
+        var name_filter = $('#form_name_filter').val();
+        var name = $(this).attr("value");
+        if (name.indexOf(name_filter) == -1) //name_filter not in form's name
+        {
+            $(this).css("visibility","hidden");
+        }
+        else
+        {
+            $(this).css("visibility","visible");
+        }
+    });
+    return false;
+});
+
+//************** USERS TAB **************** //
+
 $('.new-user-link').live('click', function () {
     updatePanel($(this).attr('data-url'), 'new-user', 'new-user');
     return false;
@@ -87,4 +133,6 @@ $('.users-link').live('click', function () {
     updatePanel($(this).attr('data-url'), 'users-content', 'users');
     return false;
 });
+
+
 

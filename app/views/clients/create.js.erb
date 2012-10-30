@@ -1,2 +1,4 @@
-$('#add_client_data').html('<%= escape_javascript render("form") %>');
+$('#myTab  a[href=#add_clients]').tab('show');
+$('#add_client_data').html("<%= escape_javascript( render  :template => "clients/new", :formats => [:html], :handlers => [:erb] ) %>");
+
 

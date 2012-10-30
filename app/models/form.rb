@@ -9,7 +9,6 @@ class Form < ActiveRecord::Base
 
   validates :email, :name, :wise_token, :writely_token, :user_id, :presence => true
 
-
   def get_session
     GoogleDrive.restore_session({:wise => self.wise_token.to_s, :writely => self.writely_token.to_s})
   end

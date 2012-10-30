@@ -1,7 +1,11 @@
 class ActivitiesController < ApplicationController
 
+  before_filter :authenticate_user!
+
+  layout false
+
   def index
-    @activities = Activity.recent_activity Time.now, 10
+    @activities = Activity.recent_activity Date.today, 10
     respond_to do |format|
       if request.xhr?
         format.html # index.html.erb
