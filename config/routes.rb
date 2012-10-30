@@ -28,7 +28,7 @@ CSM::Application.routes.draw do
     resources :users
   end
 
-  resources :clients , :only => [:index, :new, :create,:update , :edit,:destroy]
+  resources :clients # , :only => [:index, :new, :create,:update , :edit,:destroy]
   match "/admin/clients" => "clients#index" , :as => :admin_clients
   match "/admin/client/:client_id" => "clients#show", :as => :clients_show
   match "/admin/client/edit/:client_id" => "clients#edit", :as => :clients_edit

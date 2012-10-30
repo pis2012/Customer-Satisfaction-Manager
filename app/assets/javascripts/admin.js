@@ -22,11 +22,11 @@ $(document).on('click', '.add-clients-link', function () {
 });
 
 $(document).on('click', '.show-client-link', function () {
-    updatePanel($(this).data('url'), 'show_client_data', 'show_client');
+    updatePanel($(this).data('url'), 'show_client', 'show_client');
     return false;
 });
 $(document).on('click', '.edit-client-link', function () {
-    updatePanel($(this).data('url'), 'edit_client_data', 'edit_client');
+    updatePanel($(this).data('url'), 'edit_client', 'edit_client');
     return false;
 });
 

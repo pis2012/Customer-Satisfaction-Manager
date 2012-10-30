@@ -82,14 +82,10 @@ class ClientsController < ApplicationController
   # DELETE /clients/1
   def destroy
     @client = Client.find(params[:client_id])
-
+    @client.destroy
     respond_to do |format|
-      if @client.destroy
         @clients = Client.all
         format.js { render  :action => "index" }
-      else
-        format.js { }
-      end
     end
   end
 
