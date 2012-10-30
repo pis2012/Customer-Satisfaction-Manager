@@ -1,13 +1,11 @@
 
 <div class='forms_index'>
-  <div class="forms_filter">
-    <h5>
-      <%= t('form.name_filter') %>
+  <div class="forms_filter form-inline">
+    <h5 class="form_filter_subject"><%= t('form.name_filter') %></h5>
       &nbsp;
       <%= text_field_tag "form_name_filter" %>
       &nbsp;
       <%= button_tag( t('buttons.filter'), :id => "form_filter_btn", :class => "btn") %>
-    </h5>
   </div>
 
   <hr/>

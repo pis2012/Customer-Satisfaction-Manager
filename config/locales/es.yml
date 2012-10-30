@@ -342,7 +342,7 @@
             filter:  "Filtrar"
             at: " a las "
             hours: " horas "
-
+            finalized: "Proyecto finalizado"
 
 
   mood:

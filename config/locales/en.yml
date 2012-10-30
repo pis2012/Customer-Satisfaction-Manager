@@ -292,6 +292,7 @@
             filter:       "Filter"
             at: " at "
             hours: " hours "
+            finalized: "Project finished"
 
 
   mood:

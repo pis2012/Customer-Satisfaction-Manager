@@ -63,23 +63,25 @@ class Project < ActiveRecord::Base
 
   def get_next_milestones
     res = [nil,nil]
-    current_date = Time.now.to_datetime
-    miles = self.milestones.select {|mile| mile.target_date.to_datetime > current_date}
-    miles.sort_by! {|m| m[:target_date]}
-    if miles.count > 0
-      td = miles.first.target_date.to_datetime
-      distance = self.distance_between(current_date,td)
-      days = distance[0]
-      hours = distance[1]
+    if !self.finalized
+      current_date = Time.now.to_datetime
+      miles = self.milestones.select {|mile| mile.target_date.to_datetime > current_date}
+      miles.sort_by! {|m| m[:target_date]}
+      if miles.count > 0
+        td = miles.first.target_date.to_datetime
+        distance = self.distance_between(current_date,td)
+        days = distance[0]
+        hours = distance[1]
 
-      res[0] = [days,hours,miles.first.name]
-      if miles.count > 1
-        res[1] = [1,miles.second.target_date]
+        res[0] = [days,hours,miles.first.name]
+        if miles.count > 1
+          res[1] = [1,miles.second.target_date]
+        else
+          res[1] = [2,self.end_date]
+        end
       else
-        res[1] = [2,self.end_date]
+        res[0] = self.end_date
       end
-    else
-      res[0] = self.end_date
     end
     res
   end
