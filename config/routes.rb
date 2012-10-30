@@ -53,10 +53,10 @@ CSM::Application.routes.draw do
   resources :projects, :only => [:index, :new, :create,:update , :edit,:destroy] #:constraints => lambda { |request| request.env['warden'].user.admin? }
   match "/admin/projects" => "projects#index" , :as => :admin_projects
 
-  match "/admin/projects/new" => "projects#new-project", :as => :new_project
-  match "/admin/projects/:project_id" => "projects#show", :as => :projects_show
-  match "/admin/projects/edit/:project_id" => "projects#edit", :as => :projects_edit
-  match "/admin/projects/delete/:project_id" => "projects#destroy", :as => :projects_delete
+  #match "/admin/projects/new" => "projects#new-project", :as => :new_project
+  #match "/admin/projects/:project_id" => "projects#show", :as => :projects_show
+  #match "/admin/projects/edit/:project_id" => "projects#edit", :as => :projects_edit
+  #match "/admin/projects/delete/:project_id" => "projects#destroy", :as => :projects_delete
 
 
   resources :forms, :only => [:index, :new, :create]
