@@ -267,6 +267,7 @@
               show_user: "View User"
               edit_user: "Edit User"
               delete_user: "Delete User"
+              new_project: "New project"
 
   milestone:
             milestone:  "Milestone"

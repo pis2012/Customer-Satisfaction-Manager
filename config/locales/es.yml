@@ -314,6 +314,8 @@
               edit_user: "Editar Usuario"
               delete_user: "Eliminar Usuario"
 
+              new_project: "Nuevo proyecto"
+
 
   milestone:
             milestone:  "Hito"
