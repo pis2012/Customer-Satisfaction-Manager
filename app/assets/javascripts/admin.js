@@ -68,6 +68,28 @@ $(document).on('click', '#btn_full_data', function() {
     return false;
 });
 
+function filter_name(name_filter)
+{
+
+}
+
+$(document).on('click', '#form_filter_btn', function() {
+    var forms_table_items = $("#forms_list .form_item");
+    forms_table_items.each(function() {
+        var name_filter = $('#form_name_filter').val();
+        var name = $(this).attr("value");
+        if (name.indexOf(name_filter) == -1) //name_filter not in form's name
+        {
+            $(this).css("visibility","hidden");
+        }
+        else
+        {
+            $(this).css("visibility","visible");
+        }
+    });
+    return false;
+});
+
 $('.new-user-link').live('click', function () {
     updatePanel($(this).attr('data-url'), 'new-user', 'new-user');
     return false;
@@ -87,4 +109,6 @@ $('.users-link').live('click', function () {
     updatePanel($(this).attr('data-url'), 'users-content', 'users');
     return false;
 });
+
+
 

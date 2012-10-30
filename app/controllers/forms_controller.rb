@@ -2,6 +2,8 @@ class FormsController < ApplicationController
 
   before_filter :authenticate_user!
 
+  layout false
+
   def index
     @forms = Form.where(:user_id => current_user.id)
 
@@ -9,7 +11,7 @@ class FormsController < ApplicationController
       if request.xhr?
         format.html { render :layout => false } # index.html.erb
       end
-      format.json { render json: @form_data }
+      format.js { render js: @form_data }
     end
   end
 
@@ -20,7 +22,7 @@ class FormsController < ApplicationController
       if request.xhr?
         format.html { render :layout => false } # new.html.erb
       end
-      format.json { render json: @form }
+      format.js { render js: @form }
     end
   end
 
@@ -37,10 +39,10 @@ class FormsController < ApplicationController
     respond_to do |format|
       if @form.save
         @forms = Form.where(:user_id => current_user.id)
-        format.json { render action: "index" }
+        format.js { render action: "index" }
       else
         format.html { render action: "new" }
-        format.json { render json: @form.errors, status: :unprocessable_entity }
+        format.js { render js: @form.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -55,7 +57,7 @@ class FormsController < ApplicationController
       if request.xhr?
         format.html { render :layout => false } # show_project_data.html.erb
       end
-      format.json { render json: @form_data }
+      format.js { render js: @form_data }
     end
   end
 
@@ -69,7 +71,7 @@ class FormsController < ApplicationController
       if request.xhr?
         format.html { render :layout => false } # show_data.html.erb
       end
-      format.json { render json: @data }
+      format.js { render js: @data }
     end
   end
 
@@ -82,7 +84,7 @@ class FormsController < ApplicationController
       if request.xhr?
         format.html { render :layout => false } # show_full_data.html.erb
       end
-      format.json { render json: @data }
+      format.js { render js: @data }
     end
   end
 

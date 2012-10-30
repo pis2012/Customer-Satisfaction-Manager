@@ -11,5 +11,6 @@ class CreateForms < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :forms, [:name, :email], :unique => true
   end
 end

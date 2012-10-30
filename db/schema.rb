@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(:version => 20121012012332) do
     t.datetime "updated_at",                          :null => false
   end
 
+  add_index "forms", ["name", "email"], :name => "index_forms_on_name_and_email", :unique => true
+
   create_table "milestones", :force => true do |t|
     t.integer  "project_id"
     t.string   "name"

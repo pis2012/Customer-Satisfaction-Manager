@@ -56,7 +56,7 @@ class Project < ActiveRecord::Base
     difference = (difference - minutes) / 60
     hours      =  (difference + 4) % 24
     difference = (difference + 4 - hours)   / 24
-    days       =  difference % 365
+    days       =  difference
 
     [days,hours]
   end
