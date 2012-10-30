@@ -112,7 +112,7 @@
 
 
 li {
-  font-size: 12px;
+  font-size: 14px;
 }
 ul {
   list-style: none outside none;
@@ -233,4 +233,9 @@ ul {
 .label-check
 {
   padding-top: 5px;
+}
+
+.delete-btn
+{
+  color: rgba(36, 31, 36, 0.8);
 }

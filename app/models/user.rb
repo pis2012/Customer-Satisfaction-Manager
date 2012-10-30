@@ -118,8 +118,8 @@ class User < ActiveRecord::Base
     return self.role.name == Role::CLIENT_ROLE
   end
 
-  #def skip_confirmation!
-    #self.confirmed_at = Time.now
-  #end
+  def skip_confirmation!
+    self.confirmed_at = Time.now
+  end
 
 end

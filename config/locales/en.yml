@@ -320,3 +320,8 @@
                                       blank: "Password confirmation can not be empty."
                                   openidemail:
                                       taken: "OpenID already taken."
+  devise:
+        failure:
+          user:
+              invalid: "Login failed."
+              email_not_allowed: "Email not allowed."
