@@ -23,9 +23,12 @@ CSM::Application.routes.draw do
 
   match "/users/name_filter" => "users#name_filter", :as => :users_name_filter
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :passwords => "passwords"}
+  match "/projects/name_filter" => "projects#name_filter", :as => :projects_name_filter
+
+  devise_for :users, :projects, :controllers => { :omniauth_callbacks => "callbacks", :passwords => "passwords"}
   scope "/admin" do
     resources :users
+    resources :projects
   end
 
   resources :clients # , :only => [:index, :new, :create,:update , :edit,:destroy]
@@ -43,11 +46,18 @@ CSM::Application.routes.draw do
 
   match "/admin" => "admin#index", :as => :admin
   match "/admin/reports" => "admin#show_reports", :as => :admin_reports
-  match "/admin/projects" => "admin#show_projects", :as => :admin_projects
+  #match "/admin/projects" => "admin#index", :as => :admin_projects
   match "/admin/forms" => "forms#index", :as => :admin_forms
 
 
-  resources :projects, :constraints => lambda { |request| request.env['warden'].user.admin? }
+  resources :projects, :only => [:index, :new, :create,:update , :edit,:destroy] #:constraints => lambda { |request| request.env['warden'].user.admin? }
+  match "/admin/projects" => "projects#index" , :as => :admin_projects
+
+  match "/admin/projects/new" => "projects#new-project", :as => :new_project
+  match "/admin/projects/:project_id" => "projects#show", :as => :projects_show
+  match "/admin/projects/edit/:project_id" => "projects#edit", :as => :projects_edit
+  match "/admin/projects/delete/:project_id" => "projects#destroy", :as => :projects_delete
+
 
   resources :forms, :only => [:index, :new, :create]
   match "/forms/show_data/:form_id" => "forms#show_data", :as => :forms_show_data

@@ -88,3 +88,26 @@ $('.users-link').live('click', function () {
     return false;
 });
 
+
+/******************************   PROJECTS   *********************************/
+
+$('.new-project-link').live('click', function () {
+    updatePanel($(this).attr('data-url'), 'new-project', 'new-project');
+    return false;
+});
+
+$('.edit-project-link').live('click', function () {
+    updatePanel($(this).attr('data-url'), 'edit-project', 'edit-project');
+    return false;
+});
+
+$('.show-project-link').live('click', function () {
+    updatePanel($(this).attr('data-url'), 'show-project', 'show-project');
+    return false;
+});
+
+$('.projects-link').live('click', function () {
+    updatePanel($(this).attr('data-url'), 'projects-content', 'projects');
+    return false;
+});
+

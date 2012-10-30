@@ -4,14 +4,16 @@
 
   # THIS CONTROLLER HAS TO BE CLEANED FROM UNUSED METHODS AND SCAFFOLDING
 
+  layout false
+
   # GET /projects
-  # GET /projects.json
   def index
     @projects = Project.all
-
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @projects }
+      if request.xhr?
+        format.html #{ render :layout => false } # index.html.erb
+      end
+      format.json { render json:  @projects }
     end
   end
 
@@ -38,7 +40,9 @@
     @project = Project.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      if request.xhr?
+        format.html { render :layout => false } # new.html.erb
+      end
       format.json { render json: @project }
     end
   end
@@ -55,8 +59,10 @@
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
-        format.json { render json: @project, status: :created, location: @project }
+        #format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        #format.json { render json: @project, status: :created, location: @project }
+        @projects = Project.all
+        format.json { render action: "index" }
       else
         format.html { render action: "new" }
         format.json { render json: @project.errors, status: :unprocessable_entity }
@@ -87,8 +93,10 @@
     @project.destroy
 
     respond_to do |format|
-      format.html { redirect_to projects_url }
-      format.json { head :no_content }
+      #format.html { redirect_to projects_url }
+      #format.json { head :no_content }
+      @projects = User.all
+      format.js { render action: "index" }
     end
   end
 
@@ -124,6 +132,16 @@
     respond_to do |format|
       format.html { render :layout => false }
       format.json { render json: @project }
+    end
+  end
+
+  def name_filter
+    name = params[:name]
+    p = Project.arel_table
+    @projects = Project.where(p[:name].matches("%#{name}%"))
+
+    respond_to do |format|
+      format.js { render action: "index" }
     end
   end
 
