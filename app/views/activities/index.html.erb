@@ -19,7 +19,7 @@
     </div>
 
     <div class="tab-pane" id="summary_tab2">
-      <%= form_tag(activities_filter_path, :remote => true) do %>
+      <%= form_tag(activities_filter_path, :method => "get", :remote => true) do %>
           <div class="activities_filter form-inline">
             <h5 class="activities_filter_element">Enter your search query here: </h5>
             &nbsp;

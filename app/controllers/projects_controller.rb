@@ -9,6 +9,7 @@
   # GET /projects
   def index
     @projects = Project.all
+    @clients = Client.all
     respond_to do |format|
       if request.xhr?
         format.html #{ render :layout => false } # index.html.erb
@@ -29,9 +30,15 @@
     end
 
     respond_to do |format|
-      format.html # show.html.erb
+      if request.xhr?
+        format.html # show.html.erb
+      end
       format.json { render json: @project }
     end
+    #respond_to do |format|
+    #  format.html # show.html.erb
+    #  format.json { render json: @project }
+    #end
   end
 
   # GET /projects/new
@@ -40,9 +47,7 @@
     @project = Project.new
 
     respond_to do |format|
-      if request.xhr?
-        format.html { render :layout => false } # new.html.erb
-      end
+      format.html # new.html.erb
       format.json { render json: @project }
     end
   end
@@ -56,6 +61,8 @@
   # POST /projects.json
   def create
     @project = Project.new(params[:project])
+
+    #@project.client_id =  "1"
 
     respond_to do |format|
       if @project.save

@@ -42,6 +42,7 @@
             edit_client: "Edit Client"
             delete_client: "Delete Client"
             show_client: "Show Client"
+            client: "Client"
 
   home:
             home: "Home"
@@ -169,26 +170,47 @@
                 errors:
                         template:
                                   header:
-                                          one: "It generated an error when trying to save the %{model}"
-                                          other: "Were generated %{count} errors when trying to save the %{model}"
+                                          one: "It generated an error when trying to save the %{model}."
+                                          other: "Were generated %{count} errors when trying to save the %{model}."
                         models:
                                 feedback:
                                           attributes:
                                                       subject:
-                                                                blank:    "The subject can not be empty"
+                                                                blank:    "The subject can not be empty."
                                                       project:
-                                                                blank:    "The Feedback must have an associated project"
+                                                                blank:    "The Feedback must have an associated project."
                                                       user:
-                                                                blank:    "The Feedback must have associated the user creator"
+                                                                blank:    "The Feedback must have associated the user creator."
 
                                                       content:
-                                                                blank:    "Content can not be empty"
+                                                                blank:    "Content can not be empty."
                                 comment:
                                           attributes:
                                                       content:
-                                                                blank: "El content can not be empty"
-                                                                too_short: "The content must be at least 40 characters"
-
+                                                                blank: "The content can not be empty."
+                                                                too_short: "The content must be at least 40 characters."
+                                client:
+                                          attributes:
+                                                      name:
+                                                            blank: "Name can not be empty."
+                                                            taken: "Name already taken."
+                                user:
+                                          attributes:
+                                                      username:
+                                                          blank:  "Username can not be empty."
+                                                      full_name:
+                                                          blank:  "Full Name can not be empty."
+                                                      email:
+                                                          blank:  "Email can not be empty."
+                                                          format: "Email malformed"
+                                                          taken: "Email already taken."
+                                                      password:
+                                                          blank: "Password can not be empty."
+                                                          confirmation: "Confirm Password does not match."
+                                                      password_confirmation:
+                                                          blank: "Password confirmation can not be empty."
+                                                      openidemail:
+                                                          taken: "OpenID already taken."
   Comments:
               Comment: "Comment"
   feedback:
@@ -302,26 +324,8 @@
             changes_in_mood:     "Changes in mood"
 
 
-  activerecord:
-                  errors:
-                      models:
-                          user:
-                              attributes:
-                                  username:
-                                      blank:  "Username can not be empty."
-                                  full_name:
-                                      blank:  "Full Name can not be empty."
-                                  email:
-                                      blank:  "Email can not be empty."
-                                      format: "Email malformed"
-                                      taken: "Email already taken."
-                                  password:
-                                      blank: "Password can not be empty."
-                                      confirmation: "Confirm Password does not match."
-                                  password_confirmation:
-                                      blank: "Password confirmation can not be empty."
-                                  openidemail:
-                                      taken: "OpenID already taken."
+
+
   devise:
         failure:
           user:
