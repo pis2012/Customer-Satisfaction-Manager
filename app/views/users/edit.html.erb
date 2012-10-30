@@ -5,10 +5,19 @@
 
     <div class="add_element">
 
+      <script>
+          $(document).ready(function() {
+             // $('#pepe').hide();
+          });
+      </script>
+
       <%= form_tag(user_path, :method => "post", :remote => true, :id => "delete_form") do %>
           <input name="_method" type="hidden" value="delete">
-          <button type="submit" value="borrar"><i class="icon-minus icon-white"> </i> <%= t('admin.tabs.delete_user')%> </button>
+          <button class="btn btn-link delete-btn" type="submit" >
+            <i class="icon-minus icon-white"> </i> <%= t('admin.tabs.delete_user')%>
+          </button>
       <% end %>
+
     </div>
 
   </div>

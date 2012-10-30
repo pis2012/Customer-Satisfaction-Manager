@@ -1,0 +1,44 @@
+
+<div class="projects_div">
+
+  </br>
+  <%= form_tag(projects_name_filter_path, :remote => true, :class => "form-horizontal" ) do %>
+      <div class="control-group">
+
+        <label class="control-label name-filter" for="inputProjectname">
+          <%= t('admin.filter_name')%>
+        </label>
+
+        <div class="controls">
+          <div class="input-prepend">
+            <%= text_field_tag :name %>
+          </div>
+
+          <div class="input-prepend">
+            <%= button_tag( t('buttons.filter'), :class => "btn") %>
+          </div>
+        </div>
+
+      </div>
+  <% end %>
+  </br>
+  <hr>
+
+
+  </br>
+  <% @projects.each do |project| %>
+      <div class="row">
+        <div class="project-name">
+          <a href="#show-project" class="show-project-link" data-url="<%= projects_show_path project.id %>">
+            <%= project.name %>
+          </a>
+        </div>
+      </div>
+      <hr>
+  <% end %>
+</div>
+
+
+
+
+

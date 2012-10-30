@@ -267,6 +267,7 @@
               show_user: "View User"
               edit_user: "Edit User"
               delete_user: "Delete User"
+              new_project: "New project"
 
   milestone:
             milestone:  "Milestone"
@@ -321,3 +322,8 @@
                                       blank: "Password confirmation can not be empty."
                                   openidemail:
                                       taken: "OpenID already taken."
+  devise:
+        failure:
+          user:
+              invalid: "Login failed."
+              email_not_allowed: "Email not allowed."

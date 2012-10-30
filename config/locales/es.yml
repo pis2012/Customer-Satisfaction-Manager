@@ -314,6 +314,8 @@
               edit_user: "Editar Usuario"
               delete_user: "Eliminar Usuario"
 
+              new_project: "Nuevo proyecto"
+
 
   milestone:
             milestone:  "Hito"
@@ -371,3 +373,9 @@
                                      blank: "Confirmar contraseña no puede ser vacio."
                                 openidemail:
                                      taken: "OpenID en uso."
+
+  devise:
+      failure:
+        user:
+            invalid: "Login incorrecto."
+            email_not_allowed: "Email no permitido."

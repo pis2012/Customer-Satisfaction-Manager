@@ -68,11 +68,6 @@ $(document).on('click', '#btn_full_data', function() {
     return false;
 });
 
-function filter_name(name_filter)
-{
-
-}
-
 $(document).on('click', '#form_filter_btn', function() {
     var forms_table_items = $("#forms_list .form_item");
     forms_table_items.each(function() {

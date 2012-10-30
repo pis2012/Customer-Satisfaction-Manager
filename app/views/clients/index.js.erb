@@ -1,5 +1,8 @@
-$('#client_data').html("<%= escape_javascript( render template: "clients/index.html.erb" ) %>");
-$('#add_client_data').empty();
-$('#edit_client_data').empty();
-$('#show_client_data').empty();
+$('#client_data').html("<%= escape_javascript(render  :template => "clients/index", :formats => [:html], :handlers => [:erb]) %>");
+$('#add_client').empty();
+$('#show_client').empty();
 $('#myTab  a[href=#clients]').tab('show');
+
+
+
+

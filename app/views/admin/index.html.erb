@@ -13,9 +13,22 @@
                 <li class="reports">
                   <a href="#reports" class="reports-link" data-url="<%= admin_reports_path %>"><%= I18n.t('admin.tabs.reports') %></a>
                 </li>
+
+
                 <li class="projects">
-                  <a href="#projects"><%= I18n.t('admin.projects')  %></a>
+                  <a href="#projects" data-toggle="tab" class="projects-link" data-url="<%= admin_projects_path %>"><%= I18n.t('admin.projects')  %></a>
                 </li>
+                <li class="new_project" hidden="true">
+                  <a href="#new_project"> <% t('admin.projects') %></a>
+                </li>
+                <li class="edit_project" hidden="true">
+                  <a href="#edit_project"> <%= t('admin.projects')%></a>
+                </li>
+                <li class="show_project" hidden="true">
+                  <a href="#show_project"> <% t('admin.projects') %></a>
+                </li>
+
+
                 <li class="users">
                   <a href="#users" data-toggle="tab" class="users-link" data-url="<%=users_path%>" ><%= I18n.t ('admin.users')  %></a>
                 </li>
@@ -28,6 +41,8 @@
                 <li class="show-user" hidden="true">
                   <a href="#show-user"> <% t('my_projects.tabs.new_feedback') %></a>
                 </li>
+
+
                 <li class="clients">
                   <a href="#clients" class="clients-link " data-url="<%= admin_clients_path %>" ><%= I18n.t('admin.clients')  %></a>
                   <ul>
@@ -101,14 +116,22 @@
                   <div class="page_header_wrapper">
                     <div class="page_header">
                       <h1><%= I18n.t ('admin.projects')  %></h1>
+
+                      <div class="add_element">
+                        <a href="#new-project" class="btn btn-link new-user-link" data-url="<%=new_project_path%>">
+                          <i class="icon-plus icon-white"> </i> <%= t('admin.tabs.new_project')%>
+                        </a>
+                      </div>
+
                     </div>
                   </div>
                   <!--// page header -->
                   <!-- page contents -->
-                  <div class="page_content">
+                  <div class="page_content" id="projects-content">
                     <!-- main column -->
                     <!--// main column -->
                     <!--// page contents -->
+                    <%= render template: "projects/index" %>
                   </div>
                 </div>
 
@@ -123,7 +146,6 @@
                                 <i class="icon-plus icon-white"> </i> <%= t('admin.tabs.new_user')%>
                             </a>
                         </div>
-
 
                     </div>
                   </div>
@@ -186,43 +208,12 @@
 
                 <div class="tab-pane fade" id="edit_client">
                   <!-- page header -->
-                  <div class="page_header_wrapper">
-                    <div class="page_header">
-                      <h1><%= t('client.edit_client')  %></h1>
 
-
-                    </div>
-                  </div>
-                  <!--// page header -->
-                  <!-- page contents -->
-                  <div class="page_content" id="edit_client_data">
-                    <!-- main column -->
-                    <!--// main column -->
-                    <!--// page contents -->
-                  </div>
                 </div>
 
 
                 <div class="tab-pane fade" id="show_client">
-                  <!-- page header -->
-                  <div class="page_header_wrapper">
-                    <div class="page_header">
-                     <h1><%= t('client.show_client') %></h1>
 
-
-
-
-
-
-                    </div>
-                  </div>
-                  <!--// page header -->
-                  <!-- page contents -->
-                  <div class="page_content" id="show_client_data">
-                    <!-- main column -->
-                    <!--// main column -->
-                    <!--// page contents -->
-                  </div>
                 </div>
 
                 <div class="tab-pane fade" id="forms">
@@ -279,12 +270,29 @@
                 </div>
 
 
+                  <!-- page new project -->
+                  <div class="tab-pane fade" id="new-project">
+                  </div>
+                  <!--// page new project -->
+
+                  <!-- page edit project -->
+                  <div class="tab-pane fade" id="edit-project">
+                  </div>
+                  <!--// page edit project -->
+
+                  <!-- page show project -->
+                  <div class="tab-pane fade" id="show-project">
+                  </div>
+                  <!--// page show project -->
+
+
+
+
 
                 <!-- page new user -->
                 <div class="tab-pane fade" id="new-user">
                 </div>
                 <!--// page new user -->
-
 
                 <!-- page edit user -->
                 <div class="tab-pane fade" id="edit-user">

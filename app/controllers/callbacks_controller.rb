@@ -5,7 +5,7 @@ class CallbacksController < Devise::OmniauthCallbacksController
   def google
     @user = User.find_for_open_id_google(request.env["omniauth.auth"], current_user)
 
-    if !@user.nil?
+    if !@user.nil? && !@user.disable?
       if @user.persisted?
         flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
         sign_in_and_redirect @user, :event => :authentication
@@ -14,6 +14,11 @@ class CallbacksController < Devise::OmniauthCallbacksController
         redirect_to new_user_registration_url
       end
     else
+        if !@user.nil?
+          flash[:alert] = t("devise.failure.user.disable")
+        else
+          flash[:alert] = t("devise.failure.user.email_not_allowed")
+        end
         redirect_to new_user_session_path
     end
   end
@@ -23,13 +28,19 @@ class CallbacksController < Devise::OmniauthCallbacksController
   def google_apps
     @user = User.find_for_open_id_google_apps(request.env["omniauth.auth"], current_user)
 
-    if @user.persisted?
-      flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
-      sign_in_and_redirect @user, :event => :authentication
+    if !@user.disable?
+      if @user.persisted?
+        flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
+        sign_in_and_redirect @user, :event => :authentication
+      else
+        session["devise.google_data"] = request.env["omniauth.auth"]
+        redirect_to new_user_registration_url
+      end
     else
-      session["devise.google_data"] = request.env["omniauth.auth"]
-      redirect_to new_user_registration_url
+      flash[:alert] = t("devise.failure.user.disable")
+      redirect_to new_user_session_path
     end
+
   end
 
 end
