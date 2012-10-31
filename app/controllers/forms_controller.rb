@@ -48,7 +48,7 @@ class FormsController < ApplicationController
   end
 
   def show
-    @form = Form.find(params[:form_id])
+    @form = Form.find(params[:id])
     session[:session] = @form.get_session
     clients = @form.get_clients session[:session]
     @form_data = {:name => @form.name, :clients => clients}
@@ -63,7 +63,7 @@ class FormsController < ApplicationController
 
 
   def show_data
-    @form = Form.find(params[:form_id])
+    @form = Form.find(params[:id])
     session[:session] = @form.get_session if session[:session] == nil
     @data = @form.get_data(params[:client_name], session[:session])
 
@@ -76,7 +76,7 @@ class FormsController < ApplicationController
   end
 
   def show_full_data
-    @form = Form.find(params[:form_id])
+    @form = Form.find(params[:id])
     session[:session] = @form.get_session if session[:session] == nil
     @graphs = @form.get_full_data(params[:client_name], session[:session])
 
@@ -88,7 +88,17 @@ class FormsController < ApplicationController
     end
   end
 
+  def destroy
+    @form = Form.find(params[:id])
+    @form.destroy
 
+    respond_to do |format|
+      if request.xhr?
+        @forms = Form.where(:user_id => current_user.id)
+        format.js { render action: "index" }
+      end
+    end
+  end
 
 
 end

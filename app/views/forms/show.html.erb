@@ -1,6 +1,30 @@
-<div class="form">
+<!-- page header -->
+<div class="page_header_wrapper">
+  <div class="page_header">
+    <h1><%= t('admin.tabs.show_form') %></h1>
+    <div class="add_element">
+      <%= form_tag(form_path, :method => "post", :remote => true, :id => "delete_form") do %>
+          <input name="_method" type="hidden" value="delete">
+          <button class="btn btn-link delete-btn" type="submit" >
+            <i class="icon-minus icon-white"> </i> <%= t('form.delete_form')%>
+          </button>
+      <% end %>
+    </div>
+  </div>
+</div>
+<!--// page header -->
 
-  <div class="show-form-name"><%= @form_data[:name] %></div>
+<!-- page contents -->
+<div class="page_content" id="show-form-content">
+
+
+
+  <div class="show-form-name" style="display: inline-block;" ><%= @form_data[:name] %>
+      <div id="loading-gif" style="display: inline-block;">
+        <%= image_tag("ajax-loader.gif") %>
+      </div>
+  </div>
+  <br/>
   <br/>
   <%= t('form.clients') %>
   &nbsp;
@@ -16,3 +40,4 @@
   <div id="form_client_full_data"> </div>
 
 </div>
+<!--// page contents -->

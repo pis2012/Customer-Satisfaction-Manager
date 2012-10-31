@@ -302,6 +302,7 @@
             google_email: "Nombre de usuario Google"
             password: "Contraseña"
             name_filter: "Nombre contiene: "
+            delete_form: "Eliminar formulario"
 
 
   admin:
