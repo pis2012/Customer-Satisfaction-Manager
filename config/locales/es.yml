@@ -258,6 +258,13 @@
                                                            blank: "Confirmar contraseña no puede ser vacio."
                                                       openidemail:
                                                            taken: "OpenID en uso."
+                                form:
+                                          attributes:
+                                                      name:
+                                                        blank: "Nombre del formulario no puede ser vacio."
+                                                      email:
+                                                        blank: "Email no puede ser vacio."
+
 
 
   Comments:
@@ -305,6 +312,8 @@
             password: "Contraseña"
             name_filter: "Nombre contiene: "
             delete_form: "Eliminar formulario"
+            authentication_error: "Error de autenticación."
+            form: "Formulario"
 
 
   admin:

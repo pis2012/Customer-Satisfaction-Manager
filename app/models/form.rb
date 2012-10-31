@@ -7,7 +7,7 @@ class Form < ActiveRecord::Base
   # :password := Password corresponding to the google drive account
   attr_accessible :name, :email, :wise_token, :actual_total_answers, :writely_token, :user_id
 
-  validates :email, :name, :wise_token, :writely_token, :user_id, :presence => true
+  validates :email, :name, :presence => true
 
   def get_session
     GoogleDrive.restore_session({:wise => self.wise_token.to_s, :writely => self.writely_token.to_s})

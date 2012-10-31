@@ -72,13 +72,18 @@
                 </li>
 
                 <li class="forms">
-                  <a href="#forms" data-toggle="tab" class="forms-link" data-url="<%= forms_path %>"><%= I18n.t('admin.tabs.forms')  %></a>
-                </li>
-                <li class="new-form" hidden="true">
-                   <a href="#new-form"> <% t('form.add_form') %></a>
-                </li>
-                <li class="show-form" hidden="true">
-                    <a href="#show-form"> <% t('admin.tabs.show_form') %></a>
+                  <a href="#forms" class="forms-link" data-url="<%= forms_path %>"><%= I18n.t('admin.tabs.forms')  %></a>
+                  <ul>
+                    <li class="forms" hidden="true">
+                      <a href="#forms" data-toggle="tab" class="forms-link" data-url="<%= forms_path %>"><%= I18n.t('admin.tabs.forms')  %></a>
+                    </li>
+                    <li class="new-form" hidden="true">
+                       <a href="#new-form"> <% t('form.add_form') %></a>
+                    </li>
+                    <li class="show-form" hidden="true">
+                        <a href="#show-form"> <% t('admin.tabs.show_form') %></a>
+                    </li>
+                  </ul>
                 </li>
 
 

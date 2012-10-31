@@ -27,23 +27,31 @@ class FormsController < ApplicationController
   end
 
   def create
+    auth_err = false
+    begin
     session = GoogleDrive.login(params["form"]["email"],params["form"]["password"])
-    params["form"].delete("password")
-    @form = Form.new(params["form"])
-    @form.user_id = current_user.id
-    auth_tokens = session.auth_tokens()
-    @form.wise_token = auth_tokens[:wise]
-    @form.writely_token = auth_tokens[:writely]
-    @form.update_total_answers session
-
+    rescue
+      params["form"].delete("password")
+      @form = Form.new(params["form"])
+      auth_err = true
+    else
+      params["form"].delete("password")
+      @form = Form.new(params["form"])
+      @form.user_id = current_user.id
+      auth_tokens = session.auth_tokens()
+      @form.wise_token = auth_tokens[:wise]
+      @form.writely_token = auth_tokens[:writely]
+      @form.update_total_answers session
+    end
     respond_to do |format|
       if @form.save
         @forms = Form.where(:user_id => current_user.id)
         format.js { render action: "index" }
       else
-        #format.html { render action: "new" }
+        if auth_err
+          @form.errors[:base] << "authentication"
+        end
         format.js { render action: "new" }
-        #format.js { render js: @form.errors, status: :unprocessable_entity }
       end
     end
   end
