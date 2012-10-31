@@ -28,12 +28,11 @@ class FormsController < ApplicationController
 
   def create
     auth_err = false
-    exists = true
+    exists = false
     begin
       session = GoogleDrive.login(params["form"]["email"],params["form"]["password"])
     rescue
-      params["form"].delete("password")
-      @form = Form.new(params["form"])
+      @form = Form.new
       auth_err = true
     else
       params["form"].delete("password")
@@ -43,8 +42,8 @@ class FormsController < ApplicationController
       @form.writely_token = auth_tokens[:writely]
       begin
       @form.update_total_answers session
+      exists = true
       rescue
-        exists = false
       end
     end
     respond_to do |format|
@@ -63,10 +62,10 @@ class FormsController < ApplicationController
       else
         if auth_err
           @form.errors[:base] << "authentication"
-        elsif duplicated
-          @form.errors[:base] << "duplicated"
         elsif !exists
           @form.errors[:base] << "not_exists"
+        elsif duplicated
+          @form.errors[:base] << "duplicated"
         end
         format.js { render action: "new" }
       end
