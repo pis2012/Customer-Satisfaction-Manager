@@ -41,8 +41,9 @@ class FormsController < ApplicationController
         @forms = Form.where(:user_id => current_user.id)
         format.js { render action: "index" }
       else
-        format.html { render action: "new" }
-        format.js { render js: @form.errors, status: :unprocessable_entity }
+        #format.html { render action: "new" }
+        format.js { render action: "new" }
+        #format.js { render js: @form.errors, status: :unprocessable_entity }
       end
     end
   end
