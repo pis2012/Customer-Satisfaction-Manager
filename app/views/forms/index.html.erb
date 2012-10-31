@@ -5,6 +5,9 @@
     <%= text_field_tag "form_name_filter" %>
     &nbsp;
     <%= button_tag( t('buttons.filter'), :id => "form_filter_btn", :class => "btn") %>
+    <div id="loading-gif-1" style="display: inline-block;">
+      <%= image_tag("ajax-loader.gif") %>
+    </div>
   </div>
   <hr/>
   <div id="forms_list">

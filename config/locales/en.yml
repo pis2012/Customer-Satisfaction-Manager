@@ -213,6 +213,13 @@
                                                           blank: "Password confirmation can not be empty."
                                                       openidemail:
                                                           taken: "OpenID already taken."
+                                form:
+                                          attributes:
+                                                      name:
+                                                        blank: "Form name can not be empty."
+                                                      email:
+                                                        blank: "Email can not be empty."
+
   Comments:
               Comment: "Comment"
   feedback:
@@ -254,6 +261,8 @@
             password: "Password"
             name_filter: "Name contains: "
             delete_form: "Delete form"
+            authentication_error: "Authentication failed."
+            form: "Form"
 
 
   admin:
