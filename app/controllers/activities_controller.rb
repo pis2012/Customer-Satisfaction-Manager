@@ -5,7 +5,7 @@ class ActivitiesController < ApplicationController
   layout false
 
   def index
-    @activities = Activity.recent_activity Date.today, 10
+    @activities = Activity.recent_activity Date.today - 1.day, 12
     respond_to do |format|
       if request.xhr?
         format.html # index.html.erb

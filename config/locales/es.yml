@@ -387,13 +387,15 @@
             hours: " horas "
             finalized: "Proyecto finalizado"
 
-
   mood:
             mood_of_our_customers:   "ESTADO DE ÁNIMO DE NUESTROS CLIENTES"
             mood_state_changed:      "El estado de ánimo ha cambiado!!!"
             changes_in_mood:         "Cambios en el estado de ánimo"
 
 
+  activity:
+              authored_by: "Realizado por"
+              date_on: "el"
 
   devise:
       failure:

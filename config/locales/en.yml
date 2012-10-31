@@ -336,8 +336,9 @@
             mood_state_changed:      "Mood state changed!!! "
             changes_in_mood:     "Changes in mood"
 
-
-
+  activity:
+            authored_by: "Authored by"
+            date_on: "on"
 
   devise:
         failure:
