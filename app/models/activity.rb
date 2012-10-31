@@ -35,13 +35,12 @@ class Activity
       # feedbacks are more relevant than moods
       if feedbacks.length > 0 && activities_limit > 0
         feedback = feedbacks.first
-        new_activity = Activity.new("New Feedback: " + feedback.subject,
+        activities.push Activity.new("New Feedback: " + feedback.subject,
                                      feedback.user.full_name,
                                      feedback.created_at.to_date,
                                      feedback.feedback_type.image_url,
-                                     '/projects/change_profile_project/' + feedback.project.id.to_s,
+                                     '/my_projects/' + feedback.project.id.to_s,
                                      feedback.content )
-        activities.push new_activity
         feedbacks.pop
         activities_limit = activities_limit - 1
       end
@@ -53,7 +52,7 @@ class Activity
                                      mood.project.client.name,
                                      mood.created_at,
                                      'moods/normal/' + mood.get_mood_img,
-                                     '/projects/change_profile_project/' + mood.project.id.to_s )
+                                     '/my_projects/' + mood.project.id.to_s )
         moods.pop
         activities_limit = activities_limit - 1
       end
@@ -70,11 +69,48 @@ class Activity
                                      comment.user.full_name,
                                      comment.created_at,
                                      picture,
-                                     '/projects/change_profile_project/' + comment.feedback.project.id.to_s )
+                                     '/my_projects/' + comment.feedback.project.id.to_s,
+                                     comment.content )
         comments.pop
         activities_limit = activities_limit - 1
       end
     end
     activities
   end
+
+  def self.activity_filter(filter_text)
+
+    activities = Array.new
+
+    feedbacks = Feedback.where("content LIKE :tag", {:tag => filter_text})
+    comments = Comment.where("content LIKE :tag", {:tag => filter_text})
+
+    feedbacks.each do |feedback|
+      activities.push Activity.new("New Feedback: " + feedback.subject,
+                                   feedback.user.full_name,
+                                   feedback.created_at.to_date,
+                                   feedback.feedback_type.image_url,
+                                   '/my_projects/' + feedback.project.id.to_s,
+                                   feedback.content )
+
+    end
+
+    comments.each do |comment|
+      if comment.user.profile.avatar.file? && !comment.user.profile.show_gravatar
+        picture = comment.user.profile.avatar.url(:medium)
+      else
+        picture = comment.user.profile.user.email.gsub('spam', 'mdeering')
+      end
+
+      activities.push Activity.new("New comment on feedback " + comment.feedback.subject,
+                                   comment.user.full_name,
+                                   comment.created_at,
+                                   picture,
+                                   '/my_projects/' + comment.feedback.project.id.to_s,
+                                   comment.content )
+    end
+
+    activities
+  end
+
 end

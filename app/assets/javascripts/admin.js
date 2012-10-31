@@ -6,10 +6,34 @@ function updatePanel(path, id_replace, tab) {
     }, 'html');
 }
 
+//************** SUMMARY TAB **************** //
+
+$(document).on('click', '.summary-link', function () {
+    updatePanel($(this).data('url'), 'summary', 'summary');
+    return false;
+});
+
+
+//************** REPORTS TAB **************** //
+
 $(document).on('click', '.reports-link', function () {
     updatePanel($(this).data('url'), 'reports_data', 'reports');
     return false;
 });
+
+//************** PROJECTS TAB **************** //
+
+$(document).on('click', '.projects-link', function () {
+    updatePanel($(this).data('url'), 'projects-content', 'projects');
+    return false;
+});
+
+$(document).on('click', '.new-project-link', function () {
+    updatePanel($(this).data('url'), 'new-project', 'new-project');
+    return false;
+});
+
+//************** CLIENTS TAB **************** //
 
 $(document).on('click', '.clients-link', function () {
     updatePanel($(this).data('url'), 'client_data', 'clients');
@@ -30,23 +54,21 @@ $(document).on('click', '.edit-client-link', function () {
     return false;
 });
 
+//************** FORMS TAB **************** //
+
+
 $(document).on('click', '.forms-link', function () {
     updatePanel($(this).data('url'), 'forms-content', 'forms');
     return false;
 });
 
 $(document).on('click', '.new-form-link', function () {
-    updatePanel($(this).data('url'), 'new-form-content', 'new-form');
+    updatePanel($(this).data('url'), 'new-form', 'new-form');
     return false;
 });
 
 $(document).on('click', '.show-form-link', function () {
-    updatePanel($(this).data('url'), 'show-form-content', 'show-form');
-    return false;
-});
-
-$(document).on('click', '.delete-form-link', function () {
-    updatePanel($(this).data('url'), 'forms-content', 'forms');
+    updatePanel($(this).data('url'), 'show-form', 'show-form');
     return false;
 });
 
@@ -90,6 +112,8 @@ $(document).on('click', '#form_filter_btn', function() {
     });
     return false;
 });
+
+//************** USERS TAB **************** //
 
 $('.new-user-link').live('click', function () {
     updatePanel($(this).attr('data-url'), 'new-user', 'new-user');

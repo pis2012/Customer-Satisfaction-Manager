@@ -2,9 +2,87 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* ============== [ SIDEBAR ] ============== */
 
+#global_nav li {
+  font-size: 12px;
+}
 
+#global_nav ul {
+  list-style: none outside none;
+}
 
+#global_nav a {
+  background: image-url("iconos-cliente.png") no-repeat scroll 8px 4px transparent;
+  display: block;
+  font-size: 13px;
+  line-height: 35px;
+  overflow: hidden;
+  padding: 0 6px 0 40px;
+  text-decoration: none;
+}
+
+#global_nav a:hover, #global_nav a:visited {
+  background-color: #F8F8F8;
+  color: #333333;
+}
+
+#global_nav li.active a:hover, #global_nav li.active a:visited{
+  background-color: #EBEBEB;
+  color: #000000;
+}
+
+#global_nav li.active{
+  background-color: #EBEBEB;
+  color: #000000;
+  font-weight: bold;
+}
+
+#global_nav li.summary.active a {
+  background-position: 8px -38px;
+}
+
+#global_nav li.reports a {
+  background-position: 8px -80px;
+}
+
+#global_nav li.reports.active a {
+  background-position: 8px -122px;
+}
+
+#global_nav li.projects a {
+  background-position: 8px -80px;
+}
+
+#global_nav li.projects.active a {
+  background-position: 8px -122px;
+}
+
+#global_nav li.users a {
+  background-position: 8px -80px;
+}
+
+#global_nav li.users.active a {
+  background-position: 8px -122px;
+}
+
+#global_nav li.clients a {
+  background-position: 8px -80px;
+}
+
+#global_nav li.clients.active a {
+  background-position: 8px -122px;
+}
+
+#global_nav li.forms a {
+  background-position: 8px -80px;
+}
+
+#global_nav li.forms.active a {
+  background-position: 8px -122px;
+}
+
+/* ============== [ PAGE ] ============== */
 
 #page
 {
@@ -45,51 +123,69 @@
   margin: 0;
 }
 
-.page_header h5 {
+/* =============== [ SUMMARY TAB ]===================== */
+
+.summary_page_header{
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.7, whiteSmoke), color-stop(1, #E7E7E7));;
+  background: -moz-linear-gradient(center top , #F5F5F5 70%, #E7E7E7 100%) repeat scroll 0 0 transparent;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding-top: 10%;
+  padding-left: 3%;
+}
+
+.summary_page_header .title{
+  font-size: 16px;
+  font-weight: normal;
+  margin-bottom: 7%;
 
 }
 
-#breadcrumbs-wrapper {
-  background: image-url("breadcrumb-bg.png") repeat-x scroll 0 -7px transparent;
-  border-bottom: 1px solid #DEDEDE;
-  border-top: 1px solid #CCCCCC;
-  margin-bottom: 20px;
+.summary_page_tab_nav{
+  margin-bottom: 0;
 }
 
+.activities_table {
+  width: 100%;
 
-/* ===============GRAPHS===================== */
-.bar-graph{
-  text-align: center;
+  tr > td {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-bottom: 1px solid #EEEEEE;
+  }
+
+  .avatar {
+    width: 8%;
+  }
 }
 
-.pie-graph{
-  text-align: center;
+.activities_table .avatar .activity_image {
+  max-height: 100px;
+  width: 100%;
 }
 
-.forms-graphs{
-  text-align: center;
+.activities_table .activity_info {
+  padding-left: 2%;
+
+  .activity_action{
+    text-decoration: underline;
+    color: inherit;
+    font-weight: bold;
+  }
+
+  .activity_date{
+    font-weight: normal;
+    margin-top: 0;
+  }
+
+  .activity_content{
+
+  }
+
 }
 
-/* ================== [ PROJECTS ] =============== */
-
-.show-project-link{
-  font-family: Arial;
-  font-size: 20px;
-  font-weight: bold;
-  font-style: normal;
-  text-decoration: underline;
-  color: rgb(51, 51, 51);
-  text-align: left;
-}
-
-.show-project-name{
-  font-family: Arial;
-  font-size: 20px;
-  font-weight: bold;
-  font-style: normal;
-  text-decoration: underline;
-  color: rgb(51, 51, 51);
-  text-align: left;
+.activities_filter_element{
+  display: inline;
 }
 
 .project_datepicker_element {
@@ -127,9 +223,7 @@
   display:inline;
 }
 
-
 /* ================== [ Client ] =============== */
-
 
 #client_name{
   text-decoration: underline;
@@ -141,71 +235,44 @@
 }
 
 
+/* =============== [ REPORTS TAB ]===================== */
 
-
-li {
-  font-size: 14px;
-}
-ul {
-  list-style: none outside none;
+.bar-graph{
+  text-align: center;
 }
 
-#global_nav li.dashboard a.selected {
-  background-position: 8px -104px;
+.pie-graph{
+  text-align: center;
 }
 
-
-
-
-#global_nav a {
-  background: image-url("iconos-cliente.png") no-repeat scroll 8px 4px transparent;
-  display: block;
-  font-size: 13px;
-  line-height: 35px;
-  overflow: hidden;
-  padding: 0 6px 0 40px;
-  text-decoration: none;
+.forms-graphs{
+  text-align: center;
 }
 
+/* =============== [ PROJECTS TAB ]===================== */
 
-
-#global_nav a:hover, #global_nav a:visited {
-  background-color: #F8F8F8;
-  color: #333333;
-}
-
-#global_nav li.active a:hover, #global_nav li.active a:visited{
-  background-color: #EBEBEB;
-  color: #000000;
-}
-
-#global_nav li.active{
-  background-color: #EBEBEB;
-  color: #000000;
+.show-project-link{
+  font-family: Arial;
+  font-size: 20px;
   font-weight: bold;
+  font-style: normal;
+  text-decoration: underline;
+  color: rgb(51, 51, 51);
+  text-align: left;
 }
 
-
-#global_nav li.summary.active a {
-  background-position: 8px -38px;
+.show-project-name{
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  text-decoration: underline;
+  color: rgb(51, 51, 51);
+  text-align: left;
 }
 
-#global_nav li.projects a {
-  background-position: 8px -80px;
-}
+/* ================== [ USERS TAB ] =============== */
 
-#global_nav li.projects.active a {
-  background-position: 8px -122px;
-}
-
-#font-face
-{
-  font-family: Lemon;
-  src: url('lemon.ttf');
-}
-
-
-//Users
 .name-filter
 {
   font-size: 16px;
@@ -270,4 +337,43 @@ ul {
 .delete-btn
 {
   color: rgba(36, 31, 36, 0.8);
+}
+
+/* ================== [ Client ] =============== */
+
+
+#client_name{
+  text-decoration: underline;
+}
+
+.client_div{
+  margin-top: -10%;
+
+}
+
+
+/* =============== [ FORMS TAB ] =================== */
+
+.show-form-link{
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  text-decoration: underline;
+  color: rgb(51, 51, 51);
+  text-align: left;
+}
+
+.show-form-name{
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  text-decoration: underline;
+  color: rgb(51, 51, 51);
+  text-align: left;
+}
+
+#btn_full_data{
+  visibility:hidden;
 }
