@@ -96,11 +96,20 @@ class Activity
     end
 
     comments.each do |comment|
-      if comment.user.profile.avatar.file? && !comment.user.profile.show_gravatar
-        picture = comment.user.profile.avatar.url(:medium)
+      if !comment.user.profile.show_gravatar
+        if comment.user.profile.avatar.file?
+           picture = comment.user.profile.avatar.url(:medium)
+
+        else
+           picture = "default_user_pic.png"
+        end
       else
         picture = comment.user.profile.user.email.gsub('spam', 'mdeering')
       end
+      picture = "default_user_pic.png"
+
+
+
 
       activities.push Activity.new("New comment on feedback " + comment.feedback.subject,
                                    comment.user.full_name,
@@ -110,7 +119,7 @@ class Activity
                                    comment.content )
     end
 
-    activities
+    activities.order(:date_time)
   end
 
 end

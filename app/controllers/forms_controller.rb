@@ -42,7 +42,7 @@ class FormsController < ApplicationController
         format.js { render action: "index" }
       else
         format.html { render action: "new" }
-        format.js { render js: @form.errors, status: :unprocessable_entity }
+        format.js { }
       end
     end
   end

@@ -6,15 +6,16 @@ CSM::Application.routes.draw do
   match "/my_projects/:project_id/show_project_data/" => "projects#show_project_data", :as => :project_data
   match "/my_projects/change_mood/:new_status" => "projects#change_mood", :as => :change_mood
 
+  resources :feedbacks, :only => [:show, :create, :edit, :update, :destroy]
+
+  # COMMENTS ROUTES
+  resources :comments, :only => [:create, :destroy]
+
   scope "/my_projects" do
     # FEEDBACKS ROUTES
     match "/feedbacks/project_feedbacks/:project_id" => "feedbacks#project_feedbacks", :as => :project_feedbacks
     match "/feedbacks/new/:project_id" => "feedbacks#new", :as => :new_feedback
     match "/feedbacks/date_filter" => "feedbacks#date_filter", :as => :feedbacks_date_filter
-    resources :feedbacks, :only => [:show, :create, :edit, :update, :destroy]
-
-    # COMMENTS ROUTES
-    resources :comments, :only => [:create, :destroy]
 
     # MILESTONES ROUTES
     match "/milestones/project_milestones/:project_id" => "milestones#project_milestones", :as => :project_milestones

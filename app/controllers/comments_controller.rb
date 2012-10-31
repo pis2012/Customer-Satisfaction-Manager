@@ -13,11 +13,10 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         @feedback = @comment.feedback
-        @new_comment = Comment.new
+        @comment = Comment.new
         format.js { render action: "index" }
       else
         @feedback = @comment.feedback
-        @new_comment = @comment
         format.js { render action: "index" }
       end
     end

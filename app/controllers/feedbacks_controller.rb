@@ -41,7 +41,7 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.find(params[:id])
     @project = @feedback.project
     @comments = @feedback.comments
-    @new_comment = Comment.new
+    @comment = Comment.new
 
     respond_to do |format|
       if request.xhr?
