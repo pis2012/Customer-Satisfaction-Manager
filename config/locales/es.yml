@@ -231,6 +231,7 @@
 
                                                       content:
                                                                 blank:    "El contenido no puede ser vacio."
+                                                                too_short: "El contenido debe tener al menos 100 caracteres"
                                 comment:
                                           attributes:
                                                       content:
