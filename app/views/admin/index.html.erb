@@ -218,6 +218,9 @@
                   <div class="page_header_wrapper">
                     <div class="page_header">
                       <h1><%= I18n.t ('admin.forms')  %></h1>
+                      <div class="loading-gif">
+                        <%= image_tag("ajax-loader.gif") %>
+                      </div>
                       <div class="add_element">
                         <button class="btn btn-link new-form-link" data-url="<%= new_form_path %>">
                           <i class="icon-plus icon-white"> </i> <%= t('form.add_form')%>

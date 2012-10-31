@@ -138,12 +138,10 @@ $('.users-link').live('click', function () {
 
 $(document).on({
     ajaxStart: function() {
-        $("#loading-gif-1").css("visibility","visible");
-        $("#loading-gif-2").css("visibility","visible");
+        $(".loading-gif").css("visibility","visible");
     },
     ajaxStop: function() {
-        $("#loading-gif-1").css("visibility","hidden");
-        $("#loading-gif-2").css("visibility","hidden");
+        $(".loading-gif").css("visibility","hidden");
     }
 });
 

@@ -9,9 +9,11 @@
           <% end %>
           <% @form.errors.full_messages.each do |msg| %>
               <% if msg == "authentication" %>
-                <strong><%= t("form.authentication_error") %></strong>
+                  <strong><%= t("form.authentication_error") %></strong>
+              <% elsif msg == "duplicated" %>
+                  <strong><%= t("form.duplicated") %></strong>
               <% else %>
-                <strong><%= msg %></strong>
+                  <strong><%= msg %></strong>
               <% end %>
               <br/>
           <% end %>

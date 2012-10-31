@@ -314,6 +314,7 @@
             delete_form: "Eliminar formulario"
             authentication_error: "Error de autenticación."
             form: "Formulario"
+            duplicated: "El formulario ya existe."
 
 
   admin:
@@ -346,7 +347,7 @@
 
             tabs:
               forms: "Formularios"
-              show_form: "Mostrar formulario"
+              show_form: "Ver formulario"
               reports: "Reportes"
 
               new_user: "Nuevo Usuario de Cliente"

@@ -5,7 +5,7 @@ class FormsController < ApplicationController
   layout false
 
   def index
-    @forms = Form.where(:user_id => current_user.id)
+    @forms = Form.all
 
     respond_to do |format|
       if request.xhr?
@@ -37,19 +37,27 @@ class FormsController < ApplicationController
     else
       params["form"].delete("password")
       @form = Form.new(params["form"])
-      @form.user_id = current_user.id
       auth_tokens = session.auth_tokens()
       @form.wise_token = auth_tokens[:wise]
       @form.writely_token = auth_tokens[:writely]
       @form.update_total_answers session
     end
     respond_to do |format|
-      if @form.save
-        @forms = Form.where(:user_id => current_user.id)
+      duplicated = false
+      saved = false
+      begin
+        saved = @form.save
+      rescue
+        duplicated = true
+      end
+      if saved
+        @forms = Form.all
         format.js { render action: "index" }
       else
         if auth_err
           @form.errors[:base] << "authentication"
+        elsif duplicated
+          @form.errors[:base] << "duplicated"
         end
         format.js { render action: "new" }
       end

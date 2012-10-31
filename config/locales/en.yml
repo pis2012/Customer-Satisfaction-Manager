@@ -262,6 +262,7 @@
             name_filter: "Name contains: "
             delete_form: "Delete form"
             authentication_error: "Authentication failed."
+            duplicated: "Form already exists."
             form: "Form"
 
 
