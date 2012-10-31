@@ -264,6 +264,7 @@
             authentication_error: "Authentication failed."
             duplicated: "Form already exists."
             form: "Form"
+            not_exists: "The form does not exist."
 
 
   admin:

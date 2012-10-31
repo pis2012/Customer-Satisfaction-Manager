@@ -315,6 +315,7 @@
             authentication_error: "Error de autenticación."
             form: "Formulario"
             duplicated: "El formulario ya existe."
+            not_exists: "El formulario no existe."
 
 
   admin:
