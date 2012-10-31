@@ -2,6 +2,9 @@
 <div class="page_header_wrapper">
   <div class="page_header">
     <h1><%= t('admin.tabs.show_form') %></h1>
+    <div class="loading-gif">
+      <%= image_tag("ajax-loader.gif") %>
+    </div>
     <div class="add_element">
       <%= form_tag(form_path, :method => "post", :remote => true, :id => "delete_form") do %>
           <input name="_method" type="hidden" value="delete">
@@ -19,10 +22,7 @@
 
 
 
-  <div class="show-form-name" style="display: inline-block;" ><%= @form_data[:name] %>
-      <div id="loading-gif-2" style="display: inline-block;">
-        <%= image_tag("ajax-loader.gif") %>
-      </div>
+  <div class="show-form-name"><%= @form_data[:name] %>
   </div>
   <br/>
   <br/>
