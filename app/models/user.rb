@@ -122,4 +122,15 @@ class User < ActiveRecord::Base
     self.confirmed_at = Time.now
   end
 
+  def self.send_feedback_notification(feedback)
+    interestedUsers = Project.find(feedback.project_id).client.users
+
+    interestedUsers.each do|interestedUser|
+      profile = Profile.find_by_user_id(interestedUser.id)
+      if (profile.feedbacks_notifications)
+        NotificationMailer.feedback_notification_email(feedback,interestedUser).deliver
+      end
+    end
+  end
+
 end

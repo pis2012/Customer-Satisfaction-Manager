@@ -1,0 +1,16 @@
+Hello!
+
+A new feedback has been added to project <%= @project.name %>:
+
+<%= url_for(:host => "localhost:3000",
+            :controller => "my_projects",
+            :action => "index") %>
+
+Since you manage this project, we automatically notify you whenever new postings are made.
+
+To unsubscribe: Visit the My Account page and choose your notification settings.
+<%= url_for(:host => "localhost:3000", :controller => "profiles", :action => "edit", :id => @profile.id) %>
+
+Have a great day,
+
+The Moove-IT Team

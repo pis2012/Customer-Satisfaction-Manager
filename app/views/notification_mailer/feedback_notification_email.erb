@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>New feedback</title>
+</head>
+<body style="font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 12px;">
+
+  <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#727272" style="width: 600px; margin: 0 auto; background: #727272;">
+    <tr>
+      <td>
+        <%= image_tag attachments['logo'].url %>
+      </td>
+    </tr>
+  </table>
+  <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="width: 600px; margin: 0 auto;">
+    <tr>
+      <td>
+        <br/>
+        <br/>
+        Hello!
+        <br/>
+        A new feedback has been added to project
+        <a href="<%= url_for(:host => "localhost:3000", :controller => "my_projects", :action => "index") %>" >
+          <%= @project.name %>
+        </a>
+        </p>
+        <p>
+          Since you manage this project, we automatically notify you whenever new postings are made.
+          <br/>
+          To unsubscribe: Visit the My Account page and choose your notification settings.
+          <a href="<%= url_for(:host => "localhost:3000", :controller => "profiles", :action => "edit", :id => @profile.id) %>" >
+            <%= url_for(:host => "localhost:3000", :controller => "profiles", :action => "edit", :id => @profile.id) %>
+          </a>
+        </p>
+        <p>
+          Have a great day,
+          <br/>
+          The Moove-iT Team
+        </p>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+
