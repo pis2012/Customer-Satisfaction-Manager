@@ -20,4 +20,22 @@ class NotificationMailer < ActionMailer::Base
     mail(:to => user.email, :subject => "New Feedback for your project in Moove-it")
   end
 
+  def comment_notification_email(comment,user)
+    @comment = comment
+    @project = Project.find(comment.feedback.project_id)
+    @user = user
+    @profile = user.profile
+    attachments.inline['logo'] = {
+        :data => File.read("#{Rails.root.to_s + '/app/assets/images/moove-it.png'}"),
+        :mime_type => "image/png",
+        :encoding => "base64"
+    }
+    attachments.inline['header_bg'] = {
+        :data => File.read("#{Rails.root.to_s + '/app/assets/images/header_bg.png'}"),
+        :mime_type => "image/png",
+        :encoding => "base64"
+    }
+    mail(:to => user.email, :subject => "New Comment for your project in Moove-it")
+  end
+
 end

@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        User.send_comment_notification(@comment)
         @feedback = @comment.feedback
         @comment = Comment.new
         format.js { render action: "index" }
