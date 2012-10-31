@@ -1,5 +1,6 @@
 class NotificationMailer < ActionMailer::Base
   default from: "from@example.com"
+  layout "mailer"
 
   def feedback_notification_email(feedback,user)
     @feedback = feedback
