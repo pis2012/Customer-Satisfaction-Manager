@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title><%= yield(:title) %></title>
 </head>
-<body style="font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 12px;">
+<body style="font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 16px; background-color: #C3DFED;">
 
 <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#727272" style="width: 600px; margin: 0 auto; background: #727272;">
   <tr>
@@ -13,10 +13,20 @@
     </td>
   </tr>
 </table>
-<table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="width: 600px; margin: 0 auto;">
+<table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="width: 600px; margin: 0 auto;; background-color: white;">
   <tr>
     <td>
-      <%= yield %>
+      <table width="500" border="0" cellspacing="0" cellpadding="0" align="center" style="width: 500px; margin: 0 auto;; background-color: white;">
+        <tr>
+          <td>
+            <br/>
+            <br/>
+            <%= yield %>
+            <br/>
+            <br/>
+          </td>
+        </tr>
+      </table>
     </td>
   </tr>
 </table>
