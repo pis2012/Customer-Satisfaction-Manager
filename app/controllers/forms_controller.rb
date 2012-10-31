@@ -5,7 +5,7 @@ class FormsController < ApplicationController
   layout false
 
   def index
-    @forms = Form.where(:user_id => current_user.id)
+    @forms = Form.all
 
     respond_to do |format|
       if request.xhr?
@@ -27,28 +27,53 @@ class FormsController < ApplicationController
   end
 
   def create
-    session = GoogleDrive.login(params["form"]["email"],params["form"]["password"])
-    params["form"].delete("password")
-    @form = Form.new(params["form"])
-    @form.user_id = current_user.id
-    auth_tokens = session.auth_tokens()
-    @form.wise_token = auth_tokens[:wise]
-    @form.writely_token = auth_tokens[:writely]
-    @form.update_total_answers session
-
+    auth_err = false
+    exists = false
+    begin
+      session = GoogleDrive.login(params["form"]["email"],params["form"]["password"])
+    rescue
+      @form = Form.new
+      auth_err = true
+    else
+      params["form"].delete("password")
+      @form = Form.new(params["form"])
+      auth_tokens = session.auth_tokens()
+      @form.wise_token = auth_tokens[:wise]
+      @form.writely_token = auth_tokens[:writely]
+      begin
+      @form.update_total_answers session
+      exists = true
+      rescue
+      end
+    end
     respond_to do |format|
-      if @form.save
-        @forms = Form.where(:user_id => current_user.id)
+      duplicated = false
+      saved = false
+      if exists
+        begin
+          saved = @form.save
+        rescue
+          duplicated = true
+        end
+      end
+      if saved
+        @forms = Form.all
         format.js { render action: "index" }
       else
-        format.html { render action: "new" }
-        format.js { render js: @form.errors, status: :unprocessable_entity }
+        if auth_err
+          @form.errors[:base] << "authentication"
+        elsif !exists
+          @form.errors[:base] << "not_exists"
+        elsif duplicated
+          @form.errors[:base] << "duplicated"
+        end
+        format.js { render action: "new" }
       end
     end
   end
 
   def show
-    @form = Form.find(params[:form_id])
+    @form = Form.find(params[:id])
     session[:session] = @form.get_session
     clients = @form.get_clients session[:session]
     @form_data = {:name => @form.name, :clients => clients}
@@ -63,7 +88,7 @@ class FormsController < ApplicationController
 
 
   def show_data
-    @form = Form.find(params[:form_id])
+    @form = Form.find(params[:id])
     session[:session] = @form.get_session if session[:session] == nil
     @data = @form.get_data(params[:client_name], session[:session])
 
@@ -76,7 +101,7 @@ class FormsController < ApplicationController
   end
 
   def show_full_data
-    @form = Form.find(params[:form_id])
+    @form = Form.find(params[:id])
     session[:session] = @form.get_session if session[:session] == nil
     @graphs = @form.get_full_data(params[:client_name], session[:session])
 
@@ -88,7 +113,17 @@ class FormsController < ApplicationController
     end
   end
 
+  def destroy
+    @form = Form.find(params[:id])
+    @form.destroy
 
+    respond_to do |format|
+      if request.xhr?
+        @forms = Form.where(:user_id => current_user.id)
+        format.js { render action: "index" }
+      end
+    end
+  end
 
 
 end

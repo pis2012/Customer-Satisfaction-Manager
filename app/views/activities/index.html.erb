@@ -1,32 +1,42 @@
-<table class="activities_table">
-  <% @activities.each do |activity| %>
-      <tr id="row_activity">
+<!-- page header -->
+<div class="summary_page_header">
+  <h1 class="title"><%= t ('admin.summary') %></h1>
+  <ul class="nav nav-tabs summary_page_tab_nav">
+    <li class="active"><a href="#summary_tab1" data-toggle="tab">Recent Activity</a></li>
+    <li><a href="#summary_tab2" data-toggle="tab">Site Searcher</a></li>
+  </ul>
+</div>
+<!--// page header -->
 
-        <td class="avatar">
-          <%= link_to activity.link do %>
-              <%= image_tag(activity.image_path, :class => 'activity_image img-rounded') %>
-          <% end %>
-        </td>
+<!-- page contents -->
+<div class="page_content" id="summary-content">
+  <div class="tab-content">
 
-        <td class="activity_info">
-          <h4 class="activity_action">
-            <%= link_to activity.link do %>
-                <%= truncate(strip_tags(activity.action), :length => 45) %>
-            <% end %>
-          </h4>
-          <h6 class="activity_date"><%= t('activity.authored_by')+" " + activity.author + " "+t('activity.date_time')+"   "+t("date."+"#{activity.date_time.strftime("%A")}")+ activity.date_time.strftime(" %d ")+ t("date."+"#{activity.date_time.strftime("%B")}") + activity.date_time.strftime(" %Y") + activity.date_time.strftime((" ,  %H:%M")) %></h6>
-          <pre class="activity_content"><%= truncate(strip_tags(activity.content), :length => 180) %></pre>
-        </td>
+    <div class="tab-pane active" id="summary_tab1">
 
-      </tr>
-  <% end %>
-</table>
+      <%= render 'activities/activities' %>
 
+    </div>
 
+    <div class="tab-pane" id="summary_tab2">
+      <%= form_tag(activities_filter_path, :method => "get", :remote => true) do %>
+          <div class="activities_filter form-inline">
+            <h5 class="activities_filter_element">Enter your search query here: </h5>
+            &nbsp;
+            <%= text_field_tag("activities_filter_text") %>
+            &nbsp;
+            <%= button_tag(t('buttons.find'), :class => "btn activities_filter_element") %>
+          </div>
+      <% end %>
+      <hr class="hr_activities_table">
 
-
-
-
+      <div id="activities_search_result">
 
 
+      </div>
 
+    </div>
+
+  </div>
+</div>
+<!--// page contents -->

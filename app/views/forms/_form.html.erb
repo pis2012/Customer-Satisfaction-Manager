@@ -3,12 +3,21 @@
     <% if @form.errors.any? %>
         <div class="alert alert-error">
           <% if @form.errors.count > 1 %>
-              <h4><%= t('activerecord.errors.template.header.other', :model=> @form.class.name, :count=> @form.errors.count) %></h4>
+              <h4><%= t('activerecord.errors.template.header.other', :model=> t("form.form"), :count=> @form.errors.count) %></h4>
           <% else %>
               <h4><%= t('activerecord.errors.template.header.one',:model=> @form.class.name) %></h4>
           <% end %>
           <% @form.errors.full_messages.each do |msg| %>
-              <strong><%= msg %></strong>
+              <% if msg == "authentication" %>
+                  <strong><%= t("form.authentication_error") %></strong>
+              <% elsif msg == "duplicated" %>
+                  <strong><%= t("form.duplicated") %></strong>
+              <% elsif msg == "not_exists" %>
+                  <strong><%= t("form.not_exists") %></strong>
+              <% else %>
+                  <strong><%= msg %></strong>
+              <% end %>
+              <br/>
           <% end %>
         </div>
     <% end %>

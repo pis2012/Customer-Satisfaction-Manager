@@ -6,8 +6,7 @@ class AdminController < ApplicationController
 
   def index
     @users =  User.all
-    @projects = Project.all
-    @activities = Activity.recent_activity Date.today, 10
+    @activities = Activity.recent_activity Date.today, 12
 
     respond_to do |format|
       format.html { }

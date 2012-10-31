@@ -6,10 +6,34 @@ function updatePanel(path, id_replace, tab) {
     }, 'html');
 }
 
+//************** SUMMARY TAB **************** //
+
+$(document).on('click', '.summary-link', function () {
+    updatePanel($(this).data('url'), 'summary', 'summary');
+    return false;
+});
+
+
+//************** REPORTS TAB **************** //
+
 $(document).on('click', '.reports-link', function () {
     updatePanel($(this).data('url'), 'reports_data', 'reports');
     return false;
 });
+
+//************** PROJECTS TAB **************** //
+
+$(document).on('click', '.projects-link', function () {
+    updatePanel($(this).data('url'), 'projects-content', 'projects');
+    return false;
+});
+
+$(document).on('click', '.new-project-link', function () {
+    updatePanel($(this).data('url'), 'new-project', 'new-project');
+    return false;
+});
+
+//************** CLIENTS TAB **************** //
 
 $(document).on('click', '.clients-link', function () {
     updatePanel($(this).data('url'), 'client_data', 'clients');
@@ -22,28 +46,32 @@ $(document).on('click', '.add-clients-link', function () {
 });
 
 $(document).on('click', '.show-client-link', function () {
-    updatePanel($(this).data('url'), 'show_client_data', 'show_client');
+    updatePanel($(this).data('url'), 'show_client', 'show_client');
     return false;
 });
 $(document).on('click', '.edit-client-link', function () {
-    updatePanel($(this).data('url'), 'edit_client_data', 'edit_client');
+    updatePanel($(this).data('url'), 'edit_client', 'edit_client');
     return false;
 });
+
+//************** FORMS TAB **************** //
+
 
 $(document).on('click', '.forms-link', function () {
-    updatePanel($(this).data('url'), 'forms_data', 'forms');
+    updatePanel($(this).data('url'), 'forms-content', 'forms');
     return false;
 });
 
-$(document).on('click', '.add-form-link', function () {
-    updatePanel($(this).data('url'), 'add_form_data', 'add_form');
+$(document).on('click', '.new-form-link', function () {
+    updatePanel($(this).data('url'), 'new-form', 'new-form');
     return false;
 });
 
 $(document).on('click', '.show-form-link', function () {
-    updatePanel($(this).data('url'), 'show_form_data', 'show_form');
+    updatePanel($(this).data('url'), 'show-form', 'show-form');
     return false;
 });
+
 
 $(document).on('change', '#form_client', function() {
     $('#form_client_full_data').empty();
@@ -85,6 +113,8 @@ $(document).on('click', '#form_filter_btn', function() {
     return false;
 });
 
+//************** USERS TAB **************** //
+
 $('.new-user-link').live('click', function () {
     updatePanel($(this).attr('data-url'), 'new-user', 'new-user');
     return false;
@@ -104,6 +134,17 @@ $('.users-link').live('click', function () {
     updatePanel($(this).attr('data-url'), 'users-content', 'users');
     return false;
 });
+
+
+$(document).on({
+    ajaxStart: function() {
+        $(".loading-gif").css("visibility","visible");
+    },
+    ajaxStop: function() {
+        $(".loading-gif").css("visibility","hidden");
+    }
+});
+
 
 
 

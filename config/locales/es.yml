@@ -86,6 +86,9 @@
           edit_client: "Editar Cliente"
           delete_client: "Eliminar Cliente"
           show_client: "Ver Cliente"
+          client: "Cliente"
+          cout_project: "Proyectos Asociados:  %{count}."
+          cout_users:   "Usuarios Registrados: %{count}."
   home:
             home: "Home"
             singin: "Iniciar Sesion"
@@ -209,25 +212,59 @@
                 errors:
                         template:
                                   header:
-                                          one: "Se genero un error al intentar guardar el %{model}"
-                                          other: "Se generaron %{count} errores al intentar guardar el %{model}"
+                                          one: "Se genero un error al intentar guardar el %{model}."
+                                          other: "Se generaron %{count} errores al intentar guardar el %{model}."
                         models:
+                                client:
+                                        attributes:
+                                                    name:
+                                                          blank: "El nombre no puede ser vacio."
+                                                          too_short: "El contenido debe contener al menos 40 caracteres."
                                 feedback:
                                           attributes:
                                                       subject:
-                                                                blank:    "El asunto no puede ser vacio"
+                                                                blank:    "El asunto no puede ser vacio."
                                                       project:
-                                                                blank:    "El Feedback debe tener asociado un proyecto"
+                                                                blank:    "El Feedback debe tener asociado un proyecto."
                                                       user:
-                                                                blank:    "El Feedback debe tener asociado el usuario creador"
+                                                                blank:    "El Feedback debe tener asociado el usuario creador."
 
                                                       content:
-                                                                blank:    "El contenido no puede ser vacio"
+                                                                blank:    "El contenido no puede ser vacio."
                                 comment:
                                           attributes:
                                                       content:
-                                                                blank: "El contenido no puede ser vacio"
-                                                                too_short: "El contenido debe contener al menos 40 caracteres"
+                                                                blank: "El contenido no puede ser vacio."
+                                                                too_short: "El contenido debe contener al menos 40 caracteres."
+                                client:
+                                          attributes:
+                                                      name:
+                                                            blank: "El nombre no puede ser vacio."
+                                                            taken: "Ya existe un cliente con ese nombre."
+                                user:
+                                          attributes:
+                                                      username:
+                                                           blank: "Nombre de Usuario no puede ser vacio."
+                                                      full_name:
+                                                           blank: "Nombre Completo no puede ser vacio."
+                                                      email:
+                                                           blank: "Email no puede ser vacio."
+                                                           format: "Email mal formado."
+                                                           taken: "Email en uso."
+                                                      password:
+                                                           blank: "Contraseña no puede ser vacio."
+                                                           confirmation: "Confirmar contraseña no coincide."
+                                                      password_confirmation:
+                                                           blank: "Confirmar contraseña no puede ser vacio."
+                                                      openidemail:
+                                                           taken: "OpenID en uso."
+                                form:
+                                          attributes:
+                                                      name:
+                                                        blank: "Nombre del formulario no puede ser vacio."
+                                                      email:
+                                                        blank: "Email no puede ser vacio."
+
 
 
   Comments:
@@ -274,6 +311,11 @@
             google_email: "Nombre de usuario Google"
             password: "Contraseña"
             name_filter: "Nombre contiene: "
+            delete_form: "Eliminar formulario"
+            authentication_error: "Error de autenticación."
+            form: "Formulario"
+            duplicated: "El formulario ya existe."
+            not_exists: "El formulario no existe."
 
 
   admin:
@@ -306,7 +348,7 @@
 
             tabs:
               forms: "Formularios"
-              show_form: "Mostrar formulario"
+              show_form: "Ver formulario"
               reports: "Reportes"
 
               new_user: "Nuevo Usuario de Cliente"
@@ -346,33 +388,15 @@
             hours: " horas "
             finalized: "Proyecto finalizado"
 
-
   mood:
             mood_of_our_customers:   "ESTADO DE ÁNIMO DE NUESTROS CLIENTES"
             mood_state_changed:      "El estado de ánimo ha cambiado!!!"
             changes_in_mood:         "Cambios en el estado de ánimo"
 
 
-  activerecord:
-                errors:
-                    models:
-                        user:
-                            attributes:
-                                username:
-                                     blank: "Nombre de Usuario no puede ser vacio."
-                                full_name:
-                                     blank: "Nombre Completo no puede ser vacio."
-                                email:
-                                     blank: "Email no puede ser vacio."
-                                     format: "Email mal formado."
-                                     taken: "Email en uso."
-                                password:
-                                     blank: "Contraseña no puede ser vacio."
-                                     confirmation: "Confirmar contraseña no coincide."
-                                password_confirmation:
-                                     blank: "Confirmar contraseña no puede ser vacio."
-                                openidemail:
-                                     taken: "OpenID en uso."
+  activity:
+              authored_by: "Realizado por"
+              date_on: "el"
 
   devise:
       failure:

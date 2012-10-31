@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* ============== [ HOME ] ============== */
 
 #home h1,h2,h3
 {
@@ -171,11 +172,17 @@
   font-style: normal;
 }
 
-//login
+/* ============== [ LOGIN ] ============== */
 
 .logincontainer
 {
   background-color: #f0f8ff;
   border-radius: 5px;
   vertical-align: bottom;
+}
+
+/* ============== [ PROFILE ] ============== */
+
+.user_image{
+  max-height: 100px;
 }

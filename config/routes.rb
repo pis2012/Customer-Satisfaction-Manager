@@ -1,34 +1,51 @@
 CSM::Application.routes.draw do
 
- # Elrte.routes(self)
+  # MY_PROJECT ROUTES
+  match "/my_projects" , to: "my_projects#index" , :as => :my_projects
+  match "/my_projects/:project_id", to: "projects#change_profile_project", :as => :change_profile_project
+  match "/my_projects/:project_id/show_project_data/" => "projects#show_project_data", :as => :project_data
+  match "/my_projects/change_mood/:new_status" => "projects#change_mood", :as => :change_mood
 
-  resources :profiles, :only => [:update,:edit]
+  resources :feedbacks, :only => [:show, :create, :edit, :update, :destroy]
 
-  resources :comments
+  # COMMENTS ROUTES
+  resources :comments, :only => [:create, :destroy]
 
-  match "/feedbacks/project_feedbacks/:project_id" => "feedbacks#project_feedbacks", :as => :project_feedbacks
-  match "/feedbacks/new/:project_id" => "feedbacks#new", :as => :new_feedback
-  match "/feedbacks/date_filter" => "feedbacks#date_filter", :as => :feedbacks_date_filter
-  resources :feedbacks
+  scope "/my_projects" do
+    # FEEDBACKS ROUTES
+    match "/feedbacks/project_feedbacks/:project_id" => "feedbacks#project_feedbacks", :as => :project_feedbacks
+    match "/feedbacks/new/:project_id" => "feedbacks#new", :as => :new_feedback
+    match "/feedbacks/date_filter" => "feedbacks#date_filter", :as => :feedbacks_date_filter
+
+    # MILESTONES ROUTES
+    match "/milestones/project_milestones/:project_id" => "milestones#project_milestones", :as => :project_milestones
+    match "/milestones/new/:project_id" => "milestones#new", :as => :new_milestone
+    resources :milestones, :only => [:destroy]
+  end
+
+  # PROFILE ROUTES
+  match "profile" => "profiles#edit", :as => :edit_profile
+  resources :profiles, :only => [:update]
 
 
-
-  match "profile" => "users#show"
-
-  resources :faces
-
-  match "/milestones/project_milestones/:project_id" => "milestones#project_milestones", :as => :project_milestones
-  match "/milestones/new/:project_id" => "milestones#new", :as => :new_milestone
-  resources :milestones
 
   match "/users/name_filter" => "users#name_filter", :as => :users_name_filter
 
-  match "/projects/name_filter" => "projects#name_filter", :as => :projects_name_filter
 
-  devise_for :users, :projects, :controllers => { :omniauth_callbacks => "callbacks", :passwords => "passwords"}
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :passwords => "passwords"}
   scope "/admin" do
+    #SUMMARY ROUTES
+    match "/summary" => "activities#index", :as => :summary
+    match "/summary/site_activities_filter" => "activities#activities_filter", :as => :activities_filter
+
+    # USERS ROUTES
     resources :users
     resources :projects
+
+    resources :forms
+    match "/forms/show_data/:id" => "forms#show_data", :as => :forms_show_data
+    match "/forms/show_full_data/:id" => "forms#show_full_data", :as => :forms_show_full_data
   end
 
   resources :clients # , :only => [:index, :new, :create,:update , :edit,:destroy]
@@ -37,10 +54,7 @@ CSM::Application.routes.draw do
   match "/admin/client/edit/:client_id" => "clients#edit", :as => :clients_edit
   match "/admin/client/delete/:client_id" => "clients#destroy", :as => :clients_delete
 
-  match "/my_projects" , to: "my_projects#index" , :as => :my_projects
-  match "/projects/change_profile_project/:project_id", to: "projects#change_profile_project", :as => :change_profile_project
-  match "/projects/show_project_data/:project_id" => "projects#show_project_data", :as => :project_data
-  match "/projects/change_mood/:new_status" => "projects#change_mood", :as => :change_mood
+
 
   #match "/my_projects/change_mood" , to: "projects#change_mood"
 
@@ -50,19 +64,20 @@ CSM::Application.routes.draw do
   match "/admin/forms" => "forms#index", :as => :admin_forms
 
 
-  resources :projects, :only => [:index, :new, :create,:update , :edit,:destroy] #:constraints => lambda { |request| request.env['warden'].user.admin? }
+  resources :projects, :only => [:index, :new, :create,:update , :edit,:destroy,:show] #:constraints => lambda { |request| request.env['warden'].user.admin? }
   match "/admin/projects" => "projects#index" , :as => :admin_projects
 
+  match "/projects/name_filter" => "projects#name_filter", :as => :projects_name_filter
   match "/admin/projects/new" => "projects#new-project", :as => :new_project
   match "/admin/projects/:project_id" => "projects#show", :as => :projects_show
   match "/admin/projects/edit/:project_id" => "projects#edit", :as => :projects_edit
   match "/admin/projects/delete/:project_id" => "projects#destroy", :as => :projects_delete
 
 
-  resources :forms, :only => [:index, :new, :create]
-  match "/forms/show_data/:form_id" => "forms#show_data", :as => :forms_show_data
-  match "/forms/show_full_data/:form_id" => "forms#show_full_data", :as => :forms_show_full_data
-  match "/forms/show/:form_id" => "forms#show", :as => :forms_show
+  #resources :forms, :only => [:index, :new, :create]
+  #match "/forms/show_data/:form_id" => "forms#show_data", :as => :forms_show_data
+  #match "/forms/show_full_data/:form_id" => "forms#show_full_data", :as => :forms_show_full_data
+  #match "/forms/show/:form_id" => "forms#show", :as => :forms_show
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

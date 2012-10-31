@@ -1,13 +1,13 @@
-<%= form_for(@new_comment, :remote => true) do |f| %>
-    <% if @new_comment.errors.any? %>
+<%= form_for(@comment, :remote => true) do |f| %>
+    <% if @comment.errors.any? %>
         <div class="alert alert-error">
-          <% if @new_comment.errors.count > 1 %>
-              <h4><%= t('activerecord.errors.template.header.other', :model=> t('Comments.Comment'), :count=> @new_comment.errors.count) %></h4>
+          <% if @comment.errors.count > 1 %>
+              <h4><%= t('activerecord.errors.template.header.other', :model=> t('Comments.Comment'), :count=> @comment.errors.count) %></h4>
           <% else %>
               <h4><%= t('activerecord.errors.template.header.one',:model=>t('Comments.Comment')) %></h4>
           <% end %>
           <ul>
-            <% @new_comment.errors.full_messages.each do |msg| %>
+            <% @comment.errors.full_messages.each do |msg| %>
                 <li><strong><%= msg %></strong></li>
             <% end %>
           </ul>

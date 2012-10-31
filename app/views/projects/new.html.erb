@@ -1,7 +1,67 @@
-<div id="project-create">
-  <div class="page_header">
-    <h1><%= t('admin.tabs.new_project') %></h1>
-  </div>
-  <%= render 'form' %>
+<div class="page_header">
+  <h1><%= t('admin.tabs.new_project') %></h1>
+</div>
+
+<div class="page_content" id="new-project-content">
+
+  <%= form_for(@project, :remote => true, :html => {:class => "form-horizontal"}) do |f| %>
+
+      <% if @project.errors.any? %>
+          <div class="alert alert-error">
+            <% if @project.errors.count > 1 %>
+                <h4><%= t('activerecord.errors.template.header.other', :model=> @project.class.name, :count=> @project.errors.count) %></h4>
+            <% else %>
+                <h4><%= t('activerecord.errors.template.header.one',:model=> @project.class.name) %></h4>
+            <% end %>
+            <% @project.errors.full_messages.each do |msg| %>
+                <strong><%= msg %></strong>
+            <% end %>
+          </div>
+      <% end %>
+
+      <br/>
+
+      <div class="controls">
+          <label class="control-label" ><%= t('proyect.name')%>(*):</label>
+          <div class="project-name">
+            <%= f.text_field :name,  :placeholder => I18n.t('proyect.name') %>
+          </div>
+          <br/>
+
+          <label class="control-label" ><%= t('proyect.description')%>(*):</label>
+          <div class="project-description">
+            <%= f.text_field :description, :placeholder => I18n.t('proyect.description') %>
+          </div>
+          <br/>
+
+        <label class="control-label" ><%= t('proyect.client')%>:</label>
+        <div class="input-prepend">
+          <%= f.select(:client_id, Client.all.map {|client| [client.name, client.id]}, {:include_blank => true} , :prompt => true ) %>
+        </div>
+        <br/>
+
+        <label class="control-label" ><%= t('proyect.finalized')%>:</label>
+        <%= f.check_box(:finalized) %>
+
+      <br/>
+
+      </div>
+      <br/>
+
+      <%= f.label :end_date%>
+      <%= f.date_select :end_date %>
+
+      </br>
+
+      <hr>
+
+      <div class="actions">
+        <%= f.submit  I18n.t('buttons.create'), :class => "btn" %> &nbsp <%= I18n.t('buttons.or') %>
+        <button class="btn btn-link projects-link" type="button" data-url="<%= admin_projects_path %>">
+          <%= I18n.t('buttons.cancel')%>
+        </button>
+      </div>
+  <% end %>
+
 </div>
 
