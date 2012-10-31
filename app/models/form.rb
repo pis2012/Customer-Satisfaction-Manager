@@ -11,20 +11,48 @@ class Form < ActiveRecord::Base
     GoogleDrive.restore_session({:wise => self.wise_token.to_s, :writely => self.writely_token.to_s})
   end
 
-  # Returns the total answers in the form
-  def update_total_answers session
+  # Validates, initializes the form and return true if is valid
+  def init_validate session
+    auth_tokens = session.auth_tokens()
+    self.wise_token = auth_tokens[:wise]
+    self.writely_token = auth_tokens[:writely]
     # First worksheet
     ws = session.spreadsheet_by_title(self.name).worksheets[0]
+    self.update_total_answers ws
+    self.is_valid? ws
+  end
+
+  def is_valid? ws
+    valid = false
+    if ws[1][1].include? "Marca temporal"
+      # Get the column number of the users email
+      email_user_column = 1
+      for col in 2..ws.num_cols do
+        if ws[1,col].include? "Please write your email"
+          email_user_column = col
+          break
+        end
+      end
+      if email_user_column != 1
+        valid = true
+      end
+    end
+    valid
+  end
+
+  # Returns the total answers in the form
+  def update_total_answers ws
     self.actual_total_answers = ws.num_rows-1
   end
 
 
   # Returns the clients that answered the form
   def get_clients session
-    #update total answers and restore_session
-    self.update_total_answers session
     # First worksheet
     ws = session.spreadsheet_by_title(self.name).worksheets[0]
+    #update total answers
+    self.update_total_answers ws
+
     clients = []
     if ws != nil
       # Get the column number of the users email

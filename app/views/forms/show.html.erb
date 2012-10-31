@@ -20,6 +20,16 @@
 <!-- page contents -->
 <div class="page_content" id="show-form-content">
 
+  <% if @form.errors.any? %>
+      <div class="alert alert-error">
+        <% @form.errors.full_messages.each do |msg| %>
+            <% if msg == "not_exists" %>
+                <strong><%= t("form.not_exists") %></strong>
+            <br/>
+            <% end %>
+        <% end %>
+      </div>
+  <% end %>
 
 
   <div class="show-form-name"><%= @form_data[:name] %>
