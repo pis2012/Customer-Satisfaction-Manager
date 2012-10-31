@@ -87,6 +87,8 @@
           delete_client: "Eliminar Cliente"
           show_client: "Ver Cliente"
           client: "Cliente"
+          cout_project: "Proyectos Asociados:  %{count}."
+          cout_users:   "Usuarios Registrados: %{count}."
   home:
             home: "Home"
             singin: "Iniciar Sesion"
