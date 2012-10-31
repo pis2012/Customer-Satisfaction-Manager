@@ -133,4 +133,15 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.send_comment_notification(comment)
+    interestedUsers = Project.find(comment.feedback.project_id).client.users
+
+    interestedUsers.each do|interestedUser|
+      profile = Profile.find_by_user_id(interestedUser.id)
+      if (profile.comments_notifications)
+        NotificationMailer.comment_notification_email(comment,interestedUser).deliver
+      end
+    end
+  end
+
 end

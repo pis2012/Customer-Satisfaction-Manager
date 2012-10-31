@@ -231,6 +231,7 @@
 
                                                       content:
                                                                 blank:    "El contenido no puede ser vacio."
+                                                                too_short: "El contenido debe tener al menos 100 caracteres"
                                 comment:
                                           attributes:
                                                       content:
@@ -403,3 +404,27 @@
         user:
             invalid: "Login incorrecto."
             email_not_allowed: "Email no permitido."
+
+  email:
+      notification:
+        feedback:
+            title: "Nuevo Feedback"
+            greeting: "Hola!"
+            new: "Un nuevo articulo ha sido agregado al proyecto"
+            notify: "Como gerente del proyecto recibes notificaciones ante cualquier cambio."
+            unsubscribe1: "Para no recibir estos emails, visita la pagina "
+            unsubscribe2: " y elije tu configuracion de notificaciones."
+            salutation: "Ten un  buen dia,"
+            signature: "El equipo Moove-iT"
+            visitproject: "Para ver el proyecto visita: "
+        comment:
+            title: "Nuevo Comentario"
+            greeting: "Hola!"
+            new: "Un nuevo comentario ha sido agregado a un articulo del proyecto "
+            notify: "Como gerente del proyecto recibes notificaciones ante cualquier cambio. "
+            unsubscribe1: "Para no recibir estos emails, visita la pagina "
+            unsubscribe2: " y elije tu configuracion de notificaciones."
+            salutation: "Ten un  buen dia,"
+            signature: "El equipo Moove-iT"
+            visitproject: "Para ver el proyecto visita: "
+
