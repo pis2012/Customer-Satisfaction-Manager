@@ -12,6 +12,8 @@
                   <strong><%= t("form.authentication_error") %></strong>
               <% elsif msg == "duplicated" %>
                   <strong><%= t("form.duplicated") %></strong>
+              <% elsif msg == "not_exists" %>
+                  <strong><%= t("form.not_exists") %></strong>
               <% else %>
                   <strong><%= msg %></strong>
               <% end %>
