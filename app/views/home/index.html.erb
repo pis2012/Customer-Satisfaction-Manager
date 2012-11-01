@@ -76,8 +76,8 @@
                       <div class="ahomefacewrapper">
                         <%= link_to change_profile_project_path(project) do %>
                             <div class="homeface">
-                              <%= image_tag('moods/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
-                              <p class="homeprojectnameh"><%= project.name %></p>
+                              <%= image_tag('moods/normal/' + mood.get_mood_img, :class => 'img-rounded', :rel => 'tooltip', :title => project.name) %>
+                              <p class="homeprojectnamev"><%= project.client.name %></p>
                             </div>
                         <% end %>
                       </div>
