@@ -416,7 +416,7 @@
       notification:
         feedback:
             title: "Nuevo Feedback"
-            greeting: "Hola!"
+            greeting: "Hola"
             new: "Un nuevo articulo ha sido agregado al proyecto"
             notify: "Como gerente del proyecto recibes notificaciones ante cualquier cambio."
             unsubscribe1: "Para no recibir estos emails, visita la pagina "
@@ -426,7 +426,7 @@
             visitproject: "Para ver el proyecto visita: "
         comment:
             title: "Nuevo Comentario"
-            greeting: "Hola!"
+            greeting: "Hola"
             new: "Un nuevo comentario ha sido agregado a un articulo del proyecto "
             notify: "Como gerente del proyecto recibes notificaciones ante cualquier cambio. "
             unsubscribe1: "Para no recibir estos emails, visita la pagina "
@@ -434,4 +434,19 @@
             salutation: "Ten un  buen dia,"
             signature: "El equipo Moove-iT"
             visitproject: "Para ver el proyecto visita: "
+        reminder:
+            title: "Recordatorio"
+            greeting: "Hola"
+            intro1: "Ha pasado mucho tiempo desde que nos has dicho como te siente con respecto al proyecto "
+            intro2: "Nosotros en Moove-iT estamos muy interesados en lo que piensas de nuestros servicios."
+            salutation: "Ten un  buen dia,"
+            signature: "El equipo Moove-iT"
+            faceclick: "Con solo hacer click en una de las caras puedes decirnos como te sientes actualmente con el proyecto "
+            request: ""
+            face1: "Enojado"
+            face2: "Decepcionado"
+            face3: "Indiferente"
+            face4: "Satisfecho"
+            face5: "Feliz"
+
 
