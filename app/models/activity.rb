@@ -35,11 +35,15 @@ class Activity
     f_weigh = limit/2
     c_weigh = limit/4
 
-    while activities_limit > 0 && (moods.size > 0 || feedbacks.size > 0 || comments.size > 0)
+    feedback = feedbacks.first
+    mood = moods.first
+    comment = comments.first
+    while activities_limit > 0 && (mood || feedback || comment)
 
       # feedbacks are more relevant than moods
-      if feedbacks.size > 0 && activities_limit > 0 && (f_weigh > 0 || (m_weigh <= 0 && c_weigh <= 0))
-        feedback = feedbacks.first
+
+      if feedback && activities_limit > 0 && (f_weigh > 0 || (!mood && !comment))
+
         activities.push Activity.new("New feedback: " + feedback.subject + " on " + feedback.project.name,
                                      feedback.user.full_name,
                                      feedback.created_at,
@@ -48,12 +52,14 @@ class Activity
                                      feedback.content )
         f_weigh = f_weigh - 1
         feedbacks.shift
+        feedback = feedbacks.first
         activities_limit = activities_limit - 1
       end
 
       # moods are more relevant than comments
-      if moods.size > 0 && activities_limit > 0 && (m_weigh > 0 || (f_weigh <= 0 && c_weigh <= 0))
-        mood = moods.first
+
+      if mood && activities_limit > 0 && (m_weigh > 0 || (!feedback && !comment))
+
         activities.push Activity.new("Mood update on project " + mood.project.name + "!",
                                      mood.project.client.name,
                                      mood.created_at,
@@ -61,11 +67,13 @@ class Activity
                                      '/my_projects/' + mood.project.id.to_s )
         m_weigh = m_weigh - 1
         moods.shift
+        mood = moods.first
         activities_limit = activities_limit - 1
       end
 
-      if comments.size > 0 && activities_limit > 0 && (c_weigh > 0 || (f_weigh <= 0 && m_weigh <= 0))
-        comment = comments.first
+
+      if comment && activities_limit > 0 && (c_weigh > 0 || (!feedback && !mood))
+
 
         if comment.user.profile.show_gravatar
             picture = comment.user.profile.user.email.gsub('spam', 'mdeering')
@@ -86,6 +94,7 @@ class Activity
                                      comment.user.profile.show_gravatar )
         c_weigh = c_weigh - 1
         comments.shift
+        comment = comments.first
         activities_limit = activities_limit - 1
       end
     end
