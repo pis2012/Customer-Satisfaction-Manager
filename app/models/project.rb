@@ -18,7 +18,7 @@ class Project < ActiveRecord::Base
   def self.get_graph
     data = [0,0,0,0,0]
     Project.all.each do |proj|
-      mood = proj.moods.order(:created_at).last
+      mood = proj.moods.first
       if mood
         data[mood.status-1] += 1
       end
@@ -38,8 +38,8 @@ class Project < ActiveRecord::Base
     data = Array.new
     axis = Array.new
     count = self.moods.count
-    offset = count > 20 ? count-20 : 0  # Last 20 faces
-    self.moods.order(:created_at).offset(offset).each do |mood|
+    #offset = count > 20 ? count-20 : 0  # Last 20 moods
+    self.moods.limit(20).each do |mood|
       data = data + [mood.status]
       axis = axis + ["#{mood.created_at.mday}/#{mood.created_at.mon}"]
     end
