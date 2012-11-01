@@ -37,12 +37,10 @@ class FormsController < ApplicationController
     else
       params["form"].delete("password")
       @form = Form.new(params["form"])
-      auth_tokens = session.auth_tokens()
-      @form.wise_token = auth_tokens[:wise]
-      @form.writely_token = auth_tokens[:writely]
       begin
-      @form.update_total_answers session
-      exists = true
+      if @form.init_validate session
+        exists = true
+      end
       rescue
       end
     end
@@ -75,14 +73,22 @@ class FormsController < ApplicationController
   def show
     @form = Form.find(params[:id])
     session[:session] = @form.get_session
-    clients = @form.get_clients session[:session]
+    still_exists = true
+    # If fails then the form does not exist anymore?
+    begin
+      clients = @form.get_clients session[:session]
+    rescue
+      clients = []
+      still_exists = false
+    end
     @form_data = {:name => @form.name, :clients => clients}
-
     respond_to do |format|
-      if request.xhr?
+      if request.xhr? && still_exists
+        format.html { render :layout => false } # show_project_data.html.erb
+      elsif !still_exists
+        @form.errors[:base] << "not_exists_anymore?"
         format.html { render :layout => false } # show_project_data.html.erb
       end
-      format.js { render js: @form_data }
     end
   end
 
@@ -119,7 +125,7 @@ class FormsController < ApplicationController
 
     respond_to do |format|
       if request.xhr?
-        @forms = Form.where(:user_id => current_user.id)
+        @forms = Form.all
         format.js { render action: "index" }
       end
     end

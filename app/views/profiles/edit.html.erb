@@ -58,9 +58,11 @@
                   </div>
                 </div>
 
-                <div class="controls">
-                  <%= link_to t('user_edit.load_openid').html_safe, user_omniauth_authorize_path(:google) %>
-                </div>
+                <% if !@profile.user.mooveit? %>
+                    <div class="controls">
+                      <%= link_to t('user_edit.load_openid').html_safe, user_omniauth_authorize_path(:google) %>
+                    </div>
+                <% end %>
 
             <% end %>
 

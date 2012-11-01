@@ -116,6 +116,7 @@
             create: "Crear"
             filter: "Filtrar"
             comment: "Comentar"
+            send: "Enviar"
 
 
   my_projects:
@@ -182,7 +183,7 @@
             sign_in:  "Ingresar"
             remember_me:  "Recuerdamé"
             forgot_password:  "¿Olvido su contraseña?"
-            resend_confirmation_instructions:  "Instrucciones para reenviar confirmación"
+            resend_confirmation_instructions:  "Reenviar instrucciones de confirmación"
             account_locked:  "Su cuenta a sido bloqueada debido a la cantidad excesiva de intentos de hacer log in."
             unlock_account_link:  "Haz click en el link debajo para desbloquear tu cuenta:"
             unlock_account: "Desbloquear mi cuenta"
@@ -252,13 +253,18 @@
                                                            blank: "Email no puede ser vacio."
                                                            format: "Email mal formado."
                                                            taken: "Email en uso."
+                                                           already_confirmed: "Email ya confirmado."
                                                       password:
                                                            blank: "Contraseña no puede ser vacio."
                                                            confirmation: "Confirmar contraseña no coincide."
+                                                           too_short: "La contraseña debe tener un largo minimo de 6 caracteres."
+                                                           too_long: "La contraseña debe tener un largo maximo de 20 caracteres."
                                                       password_confirmation:
                                                            blank: "Confirmar contraseña no puede ser vacio."
                                                       openidemail:
                                                            taken: "OpenID en uso."
+                                                      confirmation_token:
+                                                           invalid: "Token de confirmacion invalido"
                                 form:
                                           attributes:
                                                       name:
@@ -317,7 +323,7 @@
             form: "Formulario"
             duplicated: "El formulario ya existe."
             not_exists: "El formulario no existe."
-
+            not_exists_anymore?: "No se ha encontrado el formulario en el drive de la cuenta google."
 
   admin:
             customer_satisfaction_manager: "MANAGER DE  SATISFACCIÓN DEL CLIENTE"
@@ -404,6 +410,7 @@
         user:
             invalid: "Login incorrecto."
             email_not_allowed: "Email no permitido."
+            unauthenticated: "Usuario no autenticado."
 
   email:
       notification:
