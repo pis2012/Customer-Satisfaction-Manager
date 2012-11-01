@@ -73,6 +73,7 @@
             create: "Create"
             filter: "Filter"
             comment: "Comment"
+            send: "Send"
 
   my_projects:
             tabs:
@@ -214,6 +215,9 @@
                                                           blank: "Password confirmation can not be empty."
                                                       openidemail:
                                                           taken: "OpenID already taken."
+
+                                                      confirmation_token:
+                                                          invalid: "Invalid confirmation token"
                                 form:
                                           attributes:
                                                       name:

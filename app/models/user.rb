@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
         client = Client.find_by_name 'Sony'
         user = User.create(:email => data['email'],:openidemail => data['email'],:full_name => data['name'],:username => data['first_name'],:role_id => role.id,:client_id => client.id)
         user.skip_confirmation!
-        user.save
+        user.save :validate => false
         return user
     end
   end

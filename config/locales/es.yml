@@ -116,6 +116,7 @@
             create: "Crear"
             filter: "Filtrar"
             comment: "Comentar"
+            send: "Enviar"
 
 
   my_projects:
@@ -182,7 +183,7 @@
             sign_in:  "Ingresar"
             remember_me:  "Recuerdamé"
             forgot_password:  "¿Olvido su contraseña?"
-            resend_confirmation_instructions:  "Instrucciones para reenviar confirmación"
+            resend_confirmation_instructions:  "Reenviar instrucciones de confirmación"
             account_locked:  "Su cuenta a sido bloqueada debido a la cantidad excesiva de intentos de hacer log in."
             unlock_account_link:  "Haz click en el link debajo para desbloquear tu cuenta:"
             unlock_account: "Desbloquear mi cuenta"
@@ -252,6 +253,7 @@
                                                            blank: "Email no puede ser vacio."
                                                            format: "Email mal formado."
                                                            taken: "Email en uso."
+                                                           already_confirmed: "Email ya confirmado."
                                                       password:
                                                            blank: "Contraseña no puede ser vacio."
                                                            confirmation: "Confirmar contraseña no coincide."
@@ -259,6 +261,8 @@
                                                            blank: "Confirmar contraseña no puede ser vacio."
                                                       openidemail:
                                                            taken: "OpenID en uso."
+                                                      confirmation_token:
+                                                           invalid: "Token de confirmacion invalido"
                                 form:
                                           attributes:
                                                       name:
