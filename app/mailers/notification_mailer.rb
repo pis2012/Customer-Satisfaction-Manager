@@ -1,6 +1,7 @@
 class NotificationMailer < ActionMailer::Base
   default from: "from@example.com"
   layout "mailer"
+  helper :application
 
   def addInlineImage(name,location)
     attachments.inline[name] = {

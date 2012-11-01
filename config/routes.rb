@@ -3,6 +3,7 @@ CSM::Application.routes.draw do
   # MY_PROJECT ROUTES
   match "/my_projects" , to: "my_projects#index" , :as => :my_projects
   match "/my_projects/:project_id", to: "projects#change_profile_project", :as => :change_profile_project
+  match "/my_projects/:project_id/change_mood/:new_status", to: "projects#change_any_project_mood", :as => :change_any_project_mood
   match "/my_projects/:project_id/show_project_data/" => "projects#show_project_data", :as => :project_data
   match "/my_projects/change_mood/:new_status" => "projects#change_mood", :as => :change_mood
 

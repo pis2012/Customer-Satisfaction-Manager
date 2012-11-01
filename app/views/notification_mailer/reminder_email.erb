@@ -13,18 +13,18 @@
 <%= t('email.notification.reminder.faceclick') %> <%= link_to "#{@project.name}", change_profile_project_url(@project) %>
 <table>
   <tr>
-    <td style="width: 100px; text-align: center;"><%= image_tag attachments['Angry'].url %></td>
-    <td style="width: 100px; text-align: center;"><%= image_tag attachments['Disappointed'].url %></td>
-    <td style="width: 100px; text-align: center;"><%= image_tag attachments['Indifferent'].url %></td>
-    <td style="width: 100px; text-align: center;"><%= image_tag attachments['Pleased'].url %></td>
-    <td style="width: 100px; text-align: center;"><%= image_tag attachments['Happy'].url %></td>
+    <%= mail_mood_face_link('Angry', attachments, change_any_project_mood_url(project_id: @project.id, new_status: 1)) %>
+    <%= mail_mood_face_link('Disappointed', attachments, change_any_project_mood_url(project_id: @project.id, new_status: 2)) %>
+    <%= mail_mood_face_link('Indifferent', attachments, change_any_project_mood_url(project_id: @project.id, new_status: 3)) %>
+    <%= mail_mood_face_link('Pleased', attachments, change_any_project_mood_url(project_id: @project.id, new_status: 4)) %>
+    <%= mail_mood_face_link('Happy', attachments, change_any_project_mood_url(project_id: @project.id, new_status: 5)) %>
   </tr>
   <tr>
-    <td style="width: 100px; text-align: center; font-size: small;"><%= t('email.notification.reminder.face1') %>Angry</td>
-    <td style="width: 100px; text-align: center; font-size: small;"><%= t('email.notification.reminder.face2') %>Disappointed</td>
-    <td style="width: 100px; text-align: center; font-size: small;"><%= t('email.notification.reminder.face3') %>Indifferent</td>
-    <td style="width: 100px; text-align: center; font-size: small;"><%= t('email.notification.reminder.face4') %>Pleased</td>
-    <td style="width: 100px; text-align: center; font-size: small;"><%= t('email.notification.reminder.face5') %>Happy</td>
+    <td style="width: 100px; text-align: center; font-size: small;"><%= t('email.notification.reminder.face1') %></td>
+    <td style="width: 100px; text-align: center; font-size: small;"><%= t('email.notification.reminder.face2') %></td>
+    <td style="width: 100px; text-align: center; font-size: small;"><%= t('email.notification.reminder.face3') %></td>
+    <td style="width: 100px; text-align: center; font-size: small;"><%= t('email.notification.reminder.face4') %></td>
+    <td style="width: 100px; text-align: center; font-size: small;"><%= t('email.notification.reminder.face5') %></td>
   </tr>
 </table>
 <br/>

@@ -131,9 +131,9 @@
 
   def change_mood
     @project = current_user.profile.project
-    @project.moods.create(:status => params[:new_status], :project => @project)
+    mood = @project.moods.create(:status => params[:new_status], :project => @project)
 
-    @lastmood = @project.moods.order(:created_at).last.get_mood_img
+    @lastmood = mood.get_mood_img
 
     @view = {:project => @project, :lastmood =>  @lastmood}
     respond_to do |format|
@@ -152,5 +152,15 @@
     end
   end
 
+  def change_any_project_mood
+    project = Project.find(params[:project_id])
+    if !current_user.client? || (current_user.client? && project.client_id == current_user.client_id)
+      current_user.profile.update_attributes(:project => project)
+      project.moods.create(:status => params[:new_status], :project => @project)
+      redirect_to my_projects_url
+    else
+      not_found
+    end
+  end
 
 end

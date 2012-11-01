@@ -437,7 +437,7 @@
         reminder:
             title: "Recordatorio"
             greeting: "Hola"
-            intro1: "Ha pasado mucho tiempo desde que nos has dicho como te siente con respecto al proyecto "
+            intro1: "Ha pasado mucho tiempo desde que nos has dicho como te sientes con respecto al proyecto "
             intro2: "Nosotros en Moove-iT estamos muy interesados en lo que piensas de nuestros servicios."
             salutation: "Ten un  buen dia,"
             signature: "El equipo Moove-iT"
