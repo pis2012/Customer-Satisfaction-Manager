@@ -16,7 +16,7 @@ class FeedbacksController < ApplicationController
   end
 
   def project_feedbacks
-    @feedbacks = Feedback.find_all_by_project_id(params[:project_id])
+    @feedbacks = Feedback.project_feedbacks params[:project_id]
 
     respond_to do |format|
       if request.xhr?
@@ -64,6 +64,7 @@ class FeedbacksController < ApplicationController
 
   # GET /feedbacks/1/edit
   def edit
+    @feedback_types = current_user.possible_feedback_types
     @feedback = Feedback.find(params[:id])
   end
 
@@ -98,6 +99,7 @@ class FeedbacksController < ApplicationController
         @feedbacks = Feedback.find_all_by_project_id(params[:project_id])
         format.js { render action: "index" }
       else
+        @feedback_types = current_user.possible_feedback_types
         format.js { }
       end
     end

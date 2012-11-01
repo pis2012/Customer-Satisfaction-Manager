@@ -205,7 +205,7 @@
 
               <!-- the first page that can be seen is the feedbacks table so we render it -->
               <div class="feedbacks_table_wrapper">
-              <% @feedbacks = @project.feedbacks %>
+              <% @feedbacks = Feedback.project_feedbacks @project.id %>
               <%= render template: "feedbacks/index" %>
               </div>
             </div>
@@ -229,9 +229,9 @@
                 </button>
               </div>
                 <% end %>
-                
 
-              
+
+
 
             </div>
             <!--// page header -->
