@@ -21,7 +21,7 @@
       <div class="feedback_type_field control-group">
         <%= f.label :feedback_subject, t('feedback.feedback_type'), :class => "feedback_type_label control-label" %>
         <div class="feedback_type_select_control controls">
-          <%= f.select :feedback_type_id, FeedbackType.all.map { |fe| [fe.name, fe.id] }, {}, {:class => "feedback_type_select"} %>
+          <%= f.select :feedback_type_id, @feedback_types.map { |fe| [fe.name, fe.id] }, {}, {:class => "feedback_type_select"} %>
         </div>
       </div>
 

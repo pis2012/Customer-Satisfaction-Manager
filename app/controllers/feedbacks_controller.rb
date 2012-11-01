@@ -55,7 +55,7 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks/new.json
   def new
     @feedback = Feedback.new(:project_id => params[:project_id])
-
+    @feedback_types = current_user.possible_feedback_types
     respond_to do |format|
       format.html { }
       format.json { render json: @feedback }
@@ -82,6 +82,7 @@ class FeedbacksController < ApplicationController
         @feedbacks = Feedback.find_all_by_project_id(params[:project_id])
         format.js { render action: "index" }
       else
+        @feedback_types = current_user.possible_feedback_types
         format.js { }
       end
     end

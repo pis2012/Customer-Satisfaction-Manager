@@ -5,9 +5,9 @@
         <td class="avatar">
           <%= link_to activity.link do %>
               <% if activity.avatar %>
-                <%= gravatar_image_tag(activity.image_path, :class => 'activity_image') %>
+                  <%= gravatar_image_tag(activity.image_path, :class => 'activity_image') %>
               <% else %>
-                <%= image_tag(activity.image_path, :class => 'activity_image') %>
+                  <%= image_tag(activity.image_path, :class => 'activity_image') %>
               <% end %>
           <% end %>
         </td>
@@ -18,14 +18,15 @@
                 <%= truncate(strip_tags(activity.action), :length => 80) %>
             <% end %>
           </h4>
-          <% if activity.content.length > 0 %>
-          <h6 class="activity_date"><%= t('activity.authored_by') + " " + activity.author + " " + t('activity.date_on') + "   " + t("date." + "#{activity.date_time.strftime("%A")}") + activity.date_time.strftime(" %d ") + t("date." + "#{activity.date_time.strftime("%B")}") + activity.date_time.strftime(" %Y") + activity.date_time.strftime((" ,  %H:%M")) %></h6>
-          <pre class="activity_content"><%= truncate(strip_tags(activity.content), :length => 180) %></pre>
+          <% if activity.author.length > 0 %>
+              <h6 class="activity_date"><%= t('activity.authored_by') + " " + activity.author + " " + t('activity.date_on') + "   " + t("date." + "#{activity.date_time.strftime("%A")}") + activity.date_time.strftime(" %d ") + t("date." + "#{activity.date_time.strftime("%B")}") + activity.date_time.strftime(" %Y") + activity.date_time.strftime((" ,  %H:%M")) %></h6>
           <% else %>
               <h6 class="activity_date"><%= t("date." + "#{activity.date_time.strftime("%A")}") + activity.date_time.strftime(" %d ") + t("date." + "#{activity.date_time.strftime("%B")}") + activity.date_time.strftime(" %Y") + activity.date_time.strftime((" ,  %H:%M")) %></h6>
           <% end %>
+          <% if activity.content.length > 0 %>
+              <pre class="activity_content"><%= truncate(strip_tags(activity.content), :length => 180) %></pre>
+          <% end %>
         </td>
-
       </tr>
   <% end %>
 </table>

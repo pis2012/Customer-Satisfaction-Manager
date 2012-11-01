@@ -106,16 +106,24 @@ class User < ActiveRecord::Base
 
   end
 
+  def possible_feedback_types
+    if self.role.name == Role::CLIENT_ROLE
+      return FeedbackType.find(3,4)
+    else
+      return FeedbackType.all
+    end
+  end
+
   def admin?
-    return self.role.name == Role::ADMIN_ROLE
+    self.role.name == Role::ADMIN_ROLE
   end
 
   def mooveit?
-    return self.role.name == Role::MOOVEIT_ROLE
+    self.role.name == Role::MOOVEIT_ROLE
   end
 
   def client?
-    return self.role.name == Role::CLIENT_ROLE
+    self.role.name == Role::CLIENT_ROLE
   end
 
   def skip_confirmation!
@@ -127,7 +135,7 @@ class User < ActiveRecord::Base
 
     interestedUsers.each do|interestedUser|
       profile = Profile.find_by_user_id(interestedUser.id)
-      if (profile.feedbacks_notifications)
+      if profile.feedbacks_notifications
         NotificationMailer.feedback_notification_email(feedback,interestedUser).deliver
       end
     end
@@ -138,7 +146,7 @@ class User < ActiveRecord::Base
 
     interestedUsers.each do|interestedUser|
       profile = Profile.find_by_user_id(interestedUser.id)
-      if (profile.comments_notifications)
+      if profile.comments_notifications
         NotificationMailer.comment_notification_email(comment,interestedUser).deliver
       end
     end
