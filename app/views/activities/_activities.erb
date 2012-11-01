@@ -21,6 +21,8 @@
           <% if activity.content.length > 0 %>
           <h6 class="activity_date"><%= t('activity.authored_by') + " " + activity.author + " " + t('activity.date_on') + "   " + t("date." + "#{activity.date_time.strftime("%A")}") + activity.date_time.strftime(" %d ") + t("date." + "#{activity.date_time.strftime("%B")}") + activity.date_time.strftime(" %Y") + activity.date_time.strftime((" ,  %H:%M")) %></h6>
           <pre class="activity_content"><%= truncate(strip_tags(activity.content), :length => 180) %></pre>
+          <% else %>
+              <h6 class="activity_date"><%= t("date." + "#{activity.date_time.strftime("%A")}") + activity.date_time.strftime(" %d ") + t("date." + "#{activity.date_time.strftime("%B")}") + activity.date_time.strftime(" %Y") + activity.date_time.strftime((" ,  %H:%M")) %></h6>
           <% end %>
         </td>
 
