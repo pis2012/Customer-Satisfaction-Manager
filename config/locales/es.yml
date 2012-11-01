@@ -323,7 +323,7 @@
             form: "Formulario"
             duplicated: "El formulario ya existe."
             not_exists: "El formulario no existe."
-
+            not_exists_anymore?: "No se ha encontrado el formulario en el drive de la cuenta google."
 
   admin:
             customer_satisfaction_manager: "MANAGER DE  SATISFACCIÓN DEL CLIENTE"
