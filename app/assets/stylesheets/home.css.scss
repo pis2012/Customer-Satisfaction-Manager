@@ -59,6 +59,10 @@
     transition: all .2s linear;
  }
 
+.homeface p {
+  display: none;
+}
+
 .homeface:hover {
     -webkit-transform: scale(1.2,1.2);
     -moz-transform: scale(1.2,1.2);
@@ -70,6 +74,10 @@
     -ms-transition: all .2s linear;
     -o-transition: all .2s linear;
     transition: all .2s linear;
+}
+
+.homeface:hover p{
+  display: block;
 }
 
 //client home page
