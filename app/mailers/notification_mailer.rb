@@ -30,11 +30,6 @@ class NotificationMailer < ActionMailer::Base
         :mime_type => "image/png",
         :encoding => "base64"
     }
-    attachments.inline['header_bg'] = {
-        :data => File.read("#{Rails.root.to_s + '/app/assets/images/header_bg.png'}"),
-        :mime_type => "image/png",
-        :encoding => "base64"
-    }
     mail(:to => user.email, :subject => "New Comment for your project in Moove-it")
   end
 

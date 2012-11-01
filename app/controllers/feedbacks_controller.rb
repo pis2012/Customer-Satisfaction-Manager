@@ -78,8 +78,10 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       if @feedback.save
-        User.send_feedback_notification(@feedback)
-
+       # User.send_feedback_notification(@feedback)
+        Thread.new(@feedback) { |feedback|
+         User.send_feedback_notification(feedback)
+        }
         @feedbacks = Feedback.find_all_by_project_id(params[:project_id])
         format.js { render action: "index" }
       else
