@@ -1,4 +1,4 @@
-<%= t('email.notification.feedback.greeting') %>
+<%= t('email.notification.feedback.greeting') %> <%= "#{@user.full_name}" %>
 
 <%= t('email.notification.feedback.new') %>  <%= "#{@project.name}"%>
 <%= t('email.notification.feedback.visitproject') %><%= change_profile_project_url(@project) %>

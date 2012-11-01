@@ -116,6 +116,7 @@
             create: "Crear"
             filter: "Filtrar"
             comment: "Comentar"
+            send: "Enviar"
 
 
   my_projects:
@@ -182,7 +183,7 @@
             sign_in:  "Ingresar"
             remember_me:  "Recuerdamé"
             forgot_password:  "¿Olvido su contraseña?"
-            resend_confirmation_instructions:  "Instrucciones para reenviar confirmación"
+            resend_confirmation_instructions:  "Reenviar instrucciones de confirmación"
             account_locked:  "Su cuenta a sido bloqueada debido a la cantidad excesiva de intentos de hacer log in."
             unlock_account_link:  "Haz click en el link debajo para desbloquear tu cuenta:"
             unlock_account: "Desbloquear mi cuenta"
@@ -252,13 +253,18 @@
                                                            blank: "Email no puede ser vacio."
                                                            format: "Email mal formado."
                                                            taken: "Email en uso."
+                                                           already_confirmed: "Email ya confirmado."
                                                       password:
                                                            blank: "Contraseña no puede ser vacio."
                                                            confirmation: "Confirmar contraseña no coincide."
+                                                           too_short: "La contraseña debe tener un largo minimo de 6 caracteres."
+                                                           too_long: "La contraseña debe tener un largo maximo de 20 caracteres."
                                                       password_confirmation:
                                                            blank: "Confirmar contraseña no puede ser vacio."
                                                       openidemail:
                                                            taken: "OpenID en uso."
+                                                      confirmation_token:
+                                                           invalid: "Token de confirmacion invalido"
                                 form:
                                           attributes:
                                                       name:
@@ -404,12 +410,13 @@
         user:
             invalid: "Login incorrecto."
             email_not_allowed: "Email no permitido."
+            unauthenticated: "Usuario no autenticado."
 
   email:
       notification:
         feedback:
             title: "Nuevo Feedback"
-            greeting: "Hola!"
+            greeting: "Hola"
             new: "Un nuevo articulo ha sido agregado al proyecto"
             notify: "Como gerente del proyecto recibes notificaciones ante cualquier cambio."
             unsubscribe1: "Para no recibir estos emails, visita la pagina "
@@ -419,7 +426,7 @@
             visitproject: "Para ver el proyecto visita: "
         comment:
             title: "Nuevo Comentario"
-            greeting: "Hola!"
+            greeting: "Hola"
             new: "Un nuevo comentario ha sido agregado a un articulo del proyecto "
             notify: "Como gerente del proyecto recibes notificaciones ante cualquier cambio. "
             unsubscribe1: "Para no recibir estos emails, visita la pagina "
@@ -427,4 +434,19 @@
             salutation: "Ten un  buen dia,"
             signature: "El equipo Moove-iT"
             visitproject: "Para ver el proyecto visita: "
+        reminder:
+            title: "Recordatorio"
+            greeting: "Hola"
+            intro1: "Ha pasado mucho tiempo desde que nos has dicho como te sientes con respecto al proyecto "
+            intro2: "Nosotros en Moove-iT estamos muy interesados en lo que piensas de nuestros servicios."
+            salutation: "Ten un  buen dia,"
+            signature: "El equipo Moove-iT"
+            faceclick: "Con solo hacer click en una de las caras puedes decirnos como te sientes actualmente con el proyecto "
+            request: ""
+            face1: "Enojado"
+            face2: "Decepcionado"
+            face3: "Indiferente"
+            face4: "Satisfecho"
+            face5: "Feliz"
+
 

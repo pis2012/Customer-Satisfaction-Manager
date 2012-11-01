@@ -16,7 +16,7 @@ class FeedbacksController < ApplicationController
   end
 
   def project_feedbacks
-    @feedbacks = Feedback.find_all_by_project_id(params[:project_id])
+    @feedbacks = Feedback.project_feedbacks params[:project_id]
 
     respond_to do |format|
       if request.xhr?
@@ -55,7 +55,7 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks/new.json
   def new
     @feedback = Feedback.new(:project_id => params[:project_id])
-
+    @feedback_types = current_user.possible_feedback_types
     respond_to do |format|
       format.html { }
       format.json { render json: @feedback }
@@ -64,6 +64,7 @@ class FeedbacksController < ApplicationController
 
   # GET /feedbacks/1/edit
   def edit
+    @feedback_types = current_user.possible_feedback_types
     @feedback = Feedback.find(params[:id])
   end
 
@@ -77,11 +78,14 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       if @feedback.save
-        User.send_feedback_notification(@feedback)
-
+       # User.send_feedback_notification(@feedback)
+        Thread.new(@feedback) { |feedback|
+         User.send_feedback_notification(feedback)
+        }
         @feedbacks = Feedback.find_all_by_project_id(params[:project_id])
         format.js { render action: "index" }
       else
+        @feedback_types = current_user.possible_feedback_types
         format.js { }
       end
     end
@@ -97,6 +101,7 @@ class FeedbacksController < ApplicationController
         @feedbacks = Feedback.find_all_by_project_id(params[:project_id])
         format.js { render action: "index" }
       else
+        @feedback_types = current_user.possible_feedback_types
         format.js { }
       end
     end

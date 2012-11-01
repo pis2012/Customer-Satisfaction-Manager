@@ -86,4 +86,8 @@ class Project < ActiveRecord::Base
     res
   end
 
+
+  def get_random_user
+    self.client.users.sample
+  end
 end

@@ -52,4 +52,8 @@ class Mood < ActiveRecord::Base
   end
 
 
+  def self.get_mood_in_last_days(days)
+    Mood.where("created_at >= :start_date",{start_date: Time.now.advance(days: -days)})
+  end
+
 end
