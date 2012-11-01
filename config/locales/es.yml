@@ -257,6 +257,8 @@
                                                       password:
                                                            blank: "Contraseña no puede ser vacio."
                                                            confirmation: "Confirmar contraseña no coincide."
+                                                           too_short: "La contraseña debe tener un largo minimo de 6 caracteres."
+                                                           too_long: "La contraseña debe tener un largo maximo de 20 caracteres."
                                                       password_confirmation:
                                                            blank: "Confirmar contraseña no puede ser vacio."
                                                       openidemail:

@@ -211,6 +211,8 @@
                                                       password:
                                                           blank: "Password can not be empty."
                                                           confirmation: "Confirm Password does not match."
+                                                          too_short: "The password must be at least 6 characters long."
+                                                          too_long: "The password must have a maximum length of 20 characters."
                                                       password_confirmation:
                                                           blank: "Password confirmation can not be empty."
                                                       openidemail:
