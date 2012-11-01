@@ -354,6 +354,7 @@
           user:
               invalid: "Login failed."
               email_not_allowed: "Email not allowed."
+              unauthenticated: "User unauthenticated."
 
   email:
       notification:
