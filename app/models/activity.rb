@@ -68,7 +68,7 @@ class Activity
         comment = comments.first
 
         if comment.user.profile.show_gravatar
-            picture = comment.user.profile.user.email.gsub('spam', 'mdeering')
+          picture = comment.user.profile.user.email.gsub('spam', 'mdeering')
         else
           if comment.user.profile.avatar.file?
             picture = comment.user.profile.avatar.url(:medium)

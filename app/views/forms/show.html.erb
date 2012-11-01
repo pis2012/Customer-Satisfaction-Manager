@@ -23,8 +23,8 @@
   <% if @form.errors.any? %>
       <div class="alert alert-error">
         <% @form.errors.full_messages.each do |msg| %>
-            <% if msg == "not_exists" %>
-                <strong><%= t("form.not_exists") %></strong>
+            <% if msg == "not_exists_anymore?" %>
+                <strong><%= t("form.not_exists_anymore?") %></strong>
             <br/>
             <% end %>
         <% end %>

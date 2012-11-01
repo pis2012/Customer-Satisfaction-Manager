@@ -24,7 +24,7 @@ class Form < ActiveRecord::Base
 
   def is_valid? ws
     valid = false
-    if ws[1][1].include? "Marca temporal"
+    if ws[1,1].include? "Marca temporal"
       # Get the column number of the users email
       email_user_column = 1
       for col in 2..ws.num_cols do

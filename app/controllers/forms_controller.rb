@@ -78,16 +78,16 @@ class FormsController < ApplicationController
     begin
       clients = @form.get_clients session[:session]
     rescue
+      clients = []
       still_exists = false
-    else
-    @form_data = {:name => @form.name, :clients => clients}
     end
+    @form_data = {:name => @form.name, :clients => clients}
     respond_to do |format|
       if request.xhr? && still_exists
         format.html { render :layout => false } # show_project_data.html.erb
       elsif !still_exists
-        @form.errors[:base] << "not_exists"
-        format.js { render action: "show" }
+        @form.errors[:base] << "not_exists_anymore?"
+        format.html { render :layout => false } # show_project_data.html.erb
       end
     end
   end
@@ -125,7 +125,7 @@ class FormsController < ApplicationController
 
     respond_to do |format|
       if request.xhr?
-        @forms = Form.where(:user_id => current_user.id)
+        @forms = Form.all
         format.js { render action: "index" }
       end
     end
