@@ -1,15 +1,12 @@
 <div>
-    <div class="" >
-      <h5>
-        <%= t('form.name_filter') %>
+    <div class="clients_filter form-inline" >
+      <h5 class="client_filter_subject"><%= t('form.name_filter') %></h5>
         &nbsp;
-        <%= text_field_tag "form_name_filter" %>
+        <%= text_field_tag "clients_name_filter" %>
         &nbsp;
         <%= button_tag( t('buttons.filter'), :id => "clients_filter_btn", :class => "btn") %>
-      </h5>
     </div>
-
-
+    <hr/>
 
       <table>
         <% @clients.each do |client| %>
