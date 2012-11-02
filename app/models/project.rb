@@ -37,11 +37,9 @@ class Project < ActiveRecord::Base
   def get_mood_graph
     data = Array.new
     axis = Array.new
-    count = self.moods.count
-    #offset = count > 20 ? count-20 : 0  # Last 20 moods
     self.moods.limit(20).each do |mood|
-      data = data + [mood.status]
       axis = axis + ["#{mood.created_at.mday}/#{mood.created_at.mon}"]
+      data = data + [mood.status]
     end
 
     Gchart.line(:size => '850x350', :bg => {:color => '76A4FB,1,ffffff,0', :type => 'gradient'}, :graph_bg => 'E5E5E5', :theme => :keynote,

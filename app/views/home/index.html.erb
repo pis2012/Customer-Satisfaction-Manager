@@ -18,7 +18,7 @@
 
                   <% @projects = Project.all.shuffle %>
                   <% @projects.each do |project| %>
-                      <% mood = project.moods.order(:created_at).last %>
+                      <% mood = project.moods.first %>
 
                       <% if project.client_id == current_user.client_id %>
                           <div class="chomefacewrapperbig">
@@ -70,7 +70,7 @@
                   <h2><%= t('mood.mood_of_our_customers') %></h2>
                   <% @projects = Project.all.shuffle %>
                   <% @projects.each do |project| %>
-                      <% mood = project.moods.last! %>
+                      <% mood = project.moods.first %>
 
 
                       <div class="ahomefacewrapper">
@@ -134,7 +134,7 @@
 
               <% @projects = Project.all.shuffle %>
               <% @projects.each do |project| %>
-                  <% mood = project.moods.last! %>
+                  <% mood = project.moods.first %>
 
                   <div class="vhomefacewrapper">
                     <div class="homeface">
@@ -145,9 +145,9 @@
 
               <% end %>
             </div>
-            </br>
-            </br>
-            </br>
+            <br/>
+            <br/>
+            <br/>
           </div>
           <div class="span2">
           </div>
