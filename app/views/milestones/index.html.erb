@@ -1,9 +1,9 @@
 <div class="milestones_list">
   <h4><%= t('my_projects.data_tab.milestones') %></h4>
 
-  <dl class="dl-horizontal">
-    <% @milestones.each do |milestone| %>
-        <% if milestone.target_date > Time.now.to_date %>
+  <% @milestones.each do |milestone| %>
+      <% if milestone.target_date > Time.now.to_date %>
+          <dl>
             <dt><%= get_milestone_date milestone.target_date %></dt>
             <dd>
               <%= milestone.name %>
@@ -12,18 +12,19 @@
                   <%= link_to '', milestone, method: :delete, data: {confirm: 'Seguro que desea eliminar este hito?'}, class: 'icon-remove-circle' %>
               <% end %>
             </dd>
-        <% else %>
+          </dl>
+      <% else %>
+          <dl>
             <dt class="muted"><%= get_milestone_date milestone.target_date %></dt>
-            <dd class="muted">
-              <%= milestone.name %>
+            <dd class="muted"><%= milestone.name %>
               <!-- only admins can delete milestones -->
               <% if current_user.admin? %>
                   <%= link_to '', milestone, method: :delete, data: {confirm: 'Seguro que desea eliminar este hito?'}, class: 'icon-remove-circle' %>
               <% end %>
             </dd>
-        <% end %>
-    <% end %>
-  </dl>
+          </dl>
+      <% end %>
+  <% end %>
 </div>
 
 
