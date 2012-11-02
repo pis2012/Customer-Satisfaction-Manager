@@ -274,6 +274,7 @@
             form: "Form"
             not_exists: "The form does not exist."
             not_exists_anymore?: "No form found in the drive of the google account."
+            eliminate_confirm: "Are you sure you want to delete this form?"
 
 
   admin:
