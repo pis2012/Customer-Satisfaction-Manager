@@ -5,11 +5,12 @@ class ClientsController < ApplicationController
   # GET /clients
   def index
     @clients = Client.all
+
     respond_to do |format|
       if request.xhr?
-        format.html { render :layout => false } # index.html.erb
+        format.html { render :layout => false }
       end
-      format.json { render json:  @clients }
+      format.json { render json: @clients }
     end
   end
 
@@ -19,7 +20,7 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if request.xhr?
-        format.html  { render :layout => false }
+        format.html { render :layout => false }
       end
       format.json { render json: @client }
     end
@@ -56,13 +57,13 @@ class ClientsController < ApplicationController
     @client = Client.new(params[:client])
 
     respond_to do |format|
-    if @client.save
-      @clients = Client.all
-      format.js { render  :action => "index" }
-    else
-      format.js { }
-    end
+      if @client.save
+        @clients = Client.all
+        format.js { render :action => "index" }
+      else
+        format.js {}
       end
+    end
   end
 
   # PUT /clients/1
@@ -72,9 +73,9 @@ class ClientsController < ApplicationController
     respond_to do |format|
       if @client.update_attributes(params[:client])
         @clients = Client.all
-        format.js { render  :action => "index" }
+        format.js { render :action => "index" }
       else
-        format.js { }
+        format.js {}
       end
     end
   end
@@ -83,13 +84,11 @@ class ClientsController < ApplicationController
   def destroy
     @client = Client.find(params[:client_id])
     @client.destroy
+
     respond_to do |format|
-        @clients = Client.all
-        format.js { render  :action => "index" }
+      @clients = Client.all
+      format.js { render :action => "index" }
     end
   end
-
-
-
 
 end

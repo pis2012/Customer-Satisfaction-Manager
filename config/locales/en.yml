@@ -34,17 +34,18 @@
               use_short_month: true
 
   client:
-            name: "Name of Client"
+            name_field: "Name of client"
             date_create: "Create Date"
             users: "Associate Users"
             proyect: "Associate Projects"
-            add_client: "Add Client"
+            new_client: "New Client"
             edit_client: "Edit Client"
             delete_client: "Delete Client"
             show_client: "Show Client"
-            client: "Client"
+            clients: "Clients"
             cout_project: "Project Partners:  %{count}."
             cout_users:   "Registered Users: %{count}."
+            eliminate_confirm: "Are you sure you want to delete this client?"
 
   home:
             home: "Home"
@@ -202,6 +203,7 @@
                                           attributes:
                                                       username:
                                                           blank:  "Username can not be empty."
+                                                          taken:  "Username taken."
                                                       full_name:
                                                           blank:  "Full Name can not be empty."
                                                       email:
@@ -273,9 +275,24 @@
             form: "Form"
             not_exists: "The form does not exist."
             not_exists_anymore?: "No form found in the drive of the google account."
+            eliminate_confirm: "Are you sure you want to delete this form?"
 
 
   admin:
+            tabs:
+                          forms: "Forms"
+                          show_form: "Show form"
+                          reports: "Reports"
+                          new_user: "New User's Client"
+                          show_user: "View User"
+                          edit_user: "Edit User"
+                          delete_user: "Delete User"
+                          clients: "Clients"
+                          show_client: "Show Client"
+                          new_client: "New Client"
+                          edit_client: "Edit Client"
+                          new_project: "New project"
+
             customer_satisfaction_manager:    "CUSTOMER SATISFACTION MANAGER"
             customers:    "Customers"
             summary:   "Summary"
@@ -302,16 +319,6 @@
             enable: "enable"
             disable: "disable"
             sure: "Are you sure?"
-
-            tabs:
-              forms: "Forms"
-              show_form: "Show form"
-              reports: "Reports"
-              new_user: "New User's Client"
-              show_user: "View User"
-              edit_user: "Edit User"
-              delete_user: "Delete User"
-              new_project: "New project"
 
   milestone:
             milestone:  "Milestone"

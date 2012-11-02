@@ -1,37 +1,31 @@
+<%= form_for(@client, :remote => true) do |f| %>
 
-  <%= form_for(@client, :remote => true) do |f| %>
-      <% if @client.errors.any? %>
-          <div class="alert alert-error">
-            <% if @client.errors.count > 1 %>
-                <h4><%= t('activerecord.errors.template.header.other', :model => t('client.client'), :count => @client.errors.count) %></h4>
-            <% else %>
-                <h4><%= t('activerecord.errors.template.header.one', :model => t('client.client')) %></h4>
+    <% if @client.errors.any? %>
+        <div class="alert alert-error">
+          <% if @client.errors.count > 1 %>
+              <h4><%= t('activerecord.errors.template.header.other', :model => t('client.client'), :count => @client.errors.count) %></h4>
+          <% else %>
+              <h4><%= t('activerecord.errors.template.header.one', :model => t('client.client')) %></h4>
+          <% end %>
+
+          <ul>
+            <% @client.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
             <% end %>
-
-            <ul>
-              <% @client.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
-      <% end %>
-
-      <div class="control-group">
-
-
-        <div class="controls">
-          <div class="input-prepend">
-            <label class="control-label" ><%= t('client.name') + " :  "%>  <%= f.text_field :name %></label>
-          </div>
+          </ul>
         </div>
+    <% end %>
 
-        </br>
-        </br>
-      <div class="actions">
-        <%= f.submit t('buttons.create'), :class => "btn" %> &nbsp <%= t('buttons.or') %>
-        <%= link_to t('buttons.cancel'), :back %>
-      </div>
+    <br>
 
-      </div>
-  <% end %>
+    <div class="client_name_field">
+      <%= f.text_field :name, :placeholder => t('client.name_field') %>
+    </div>
+
+    <br>
+
+    <%= f.submit t('buttons.create'), :class => "btn" %> &nbsp <%= t('buttons.or') %>
+    <%= link_to t('buttons.cancel'), :back %>
+
+<% end %>
 

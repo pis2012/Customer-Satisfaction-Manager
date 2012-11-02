@@ -4,7 +4,7 @@
   <dl class="dl-horizontal">
     <% @milestones.each do |milestone| %>
         <% if milestone.target_date > Time.now.to_date %>
-            <dt> <%= milestone.target_date %> </dt>
+            <dt><%= get_milestone_date milestone.target_date %></dt>
             <dd>
               <%= milestone.name %>
               <!-- only admins can delete milestones -->
@@ -13,7 +13,7 @@
               <% end %>
             </dd>
         <% else %>
-            <dt class="muted"> <%= milestone.target_date %> </dt>
+            <dt class="muted"><%= get_milestone_date milestone.target_date %></dt>
             <dd class="muted">
               <%= milestone.name %>
               <!-- only admins can delete milestones -->

@@ -235,19 +235,38 @@
 
 /* ================== [ CLIENTS TAB ] =============== */
 
-#client_name{
-  text-decoration: underline;
+.client_filter_element{
+  display:inline;
 }
 
-.client_div{
-
-}
-.client-resume
-{
-  font-size: 9px;
-  margin: 0px;
+.hr_clients_table{
+  margin-bottom: 0%;
 }
 
+.clients_table {
+  width: 100%;
+
+  tr > td {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-bottom: 1px solid #EEEEEE;
+  }
+}
+
+.clients_table .client_info {
+
+  .client_name {
+    text-decoration: underline;
+    color: inherit;
+    font-weight: bold;
+  }
+
+  .client_projects_count, .client_users_count {
+    font-weight: normal;
+    margin-top: 0;
+  }
+
+}
 
 /* =============== [ REPORTS TAB ]===================== */
 

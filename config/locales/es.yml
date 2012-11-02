@@ -78,17 +78,18 @@
 
 
   client:
-          name: "Nombre de Cliente"
+          name_field: "Nombre de cliente"
           date_create: "Fecha de Creacion"
           users: "Usuarios Asociados"
           proyect: "Proyectos Asociados"
-          add_client: "Crear Cliente"
+          new_client: "Nuevo Cliente"
           edit_client: "Editar Cliente"
           delete_client: "Eliminar Cliente"
           show_client: "Ver Cliente"
-          client: "Cliente"
+          clients: "Clientes"
           cout_project: "Proyectos Asociados:  %{count}."
           cout_users:   "Usuarios Registrados: %{count}."
+          eliminate_confirm: "¿Esta seguro que desea eliminar este cliente?"
   home:
             home: "Home"
             singin: "Iniciar Sesion"
@@ -247,6 +248,7 @@
                                           attributes:
                                                       username:
                                                            blank: "Nombre de Usuario no puede ser vacio."
+                                                           taken: "Nombre de Usuario en uso."
                                                       full_name:
                                                            blank: "Nombre Completo no puede ser vacio."
                                                       email:
@@ -324,8 +326,23 @@
             duplicated: "El formulario ya existe."
             not_exists: "El formulario no existe."
             not_exists_anymore?: "No se ha encontrado el formulario en el drive de la cuenta google."
+            eliminate_confirm: "¿Esta seguro que desea eliminar este formulario?"
 
   admin:
+            tabs:
+                          forms: "Formularios"
+                          show_form: "Ver formulario"
+                          reports: "Reportes"
+                          new_user: "Nuevo Usuario de Cliente"
+                          show_user: "Ver Usuario"
+                          edit_user: "Editar Usuario"
+                          delete_user: "Eliminar Usuario"
+                          clients: "Clientes"
+                          show_client: "Ver Cliente"
+                          new_client: "Nuevo Cliente"
+                          edit_client: "Editar Cliente"
+                          new_project: "Nuevo proyecto"
+
             customer_satisfaction_manager: "MANAGER DE  SATISFACCIÓN DEL CLIENTE"
             customers:  "Clientes"
             summary:    "Resumen"
@@ -352,18 +369,6 @@
             enable: "habilitado"
             disable: "deshabilitado"
             sure: "Estas seguro?"
-
-            tabs:
-              forms: "Formularios"
-              show_form: "Ver formulario"
-              reports: "Reportes"
-
-              new_user: "Nuevo Usuario de Cliente"
-              show_user: "Ver Usuario"
-              edit_user: "Editar Usuario"
-              delete_user: "Eliminar Usuario"
-
-              new_project: "Nuevo proyecto"
 
 
   milestone:

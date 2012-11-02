@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   #:lockable, :timeoutable, :openid_authenticatable,
 
 
-  devise :database_authenticatable, :registerable, :recoverable, :omniauthable, :rememberable, :confirmable
+  devise :database_authenticatable, :registerable, :recoverable, :omniauthable, :rememberable, :confirmable, :validatable
   after_create :create_profile
 
   belongs_to :role
@@ -32,8 +32,6 @@ class User < ActiveRecord::Base
 
 
   validates_presence_of :password,:password_confirmation, :on => :create
-
-  validates :password, :length => {:within => 6..20}
 
   validates :email, :email_format => {:message => I18n.t('activerecord.errors.models.user.attributes.email.format') }
 

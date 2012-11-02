@@ -146,7 +146,7 @@
       <div class="milestone-box">
         <% miles_data = get_milestones_data %>
         <% if miles_data[0] == nil %>
-            <%= t("project.finalized") %>
+            <%= t('project.finalized') %>
         <% else %>
             <%= miles_data[0] %>
             <% if miles_data[1] != nil  %>
@@ -173,7 +173,7 @@
               <!-- mooveit users can not create milestones. neither can clients and admins when de project is finalized -->
               <% unless current_user.mooveit? || @project.finalized %>
               <div class="add_element">
-                <button href="#new-feedback" class="btn btn-link new-feedback-link" data-url="<%= new_feedback_path(@project) %>">
+                <button class="btn btn-link new-feedback-link" data-url="<%= new_feedback_path(@project) %>">
                   <i class="icon-plus icon-white"> </i> <%= t('my_projects.tabs.new_feedback')%>
                 </button>
               </div>
@@ -223,15 +223,12 @@
 
               <!-- only admins can create milestones -->
               <% if current_user.admin? %>
-              <div class="add_element">
-                <button href="#new-milestone" class="btn btn-link new-milestone-link" data-url="<%= new_milestone_path(@project) %>">
-                  <i class="icon-plus icon-white"> </i> <%= t('my_projects.tabs.new_milestone')%>
-                </button>
-              </div>
-                <% end %>
-
-
-
+                  <div class="add_element">
+                    <button href="#new-milestone" class="btn btn-link new-milestone-link" data-url="<%= new_milestone_path(@project) %>">
+                        <i class="icon-plus icon-white"> </i> <%= t('my_projects.tabs.new_milestone')%>
+                    </button>
+                    </div>
+              <% end %>
 
             </div>
             <!--// page header -->
