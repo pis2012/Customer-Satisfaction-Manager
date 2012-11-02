@@ -5,8 +5,9 @@
     <div class="add_element">
 
       <% if @client.projects.count == 0  %>
-          <button class="btn btn-link clients-link" data-url="<%= clients_delete_path(@client.id) %>">
-            <i class="icon-minus icon-white"> </i> <%= t('client.delete_client')%>
+          <button class="btn btn-link delete-btn">
+            <i class="icon-minus icon-white"></i>
+            <%= link_to t('client.delete_client'), clients_delete_path(@client.id), :method => :delete, :remote => true, :confirm => t('client.eliminate_confirm') %>
           </button>
       <% end %>
 
