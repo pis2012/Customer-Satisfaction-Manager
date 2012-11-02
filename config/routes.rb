@@ -21,6 +21,7 @@ CSM::Application.routes.draw do
     # MILESTONES ROUTES
     match "/milestones/project_milestones/:project_id" => "milestones#project_milestones", :as => :project_milestones
     match "/milestones/new/:project_id" => "milestones#new", :as => :new_milestone
+    #match "/milestones/create/:project_id" => "milestones#create", :as => :create_milestone
     resources :milestones, :only => [:destroy]
   end
 
