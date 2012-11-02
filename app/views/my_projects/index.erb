@@ -173,7 +173,7 @@
               <!-- mooveit users can not create milestones. neither can clients and admins when de project is finalized -->
               <% unless current_user.mooveit? || @project.finalized %>
               <div class="add_element">
-                <button href="#new-feedback" class="btn btn-link new-feedback-link" data-url="<%= new_feedback_path(@project) %>">
+                <button class="btn btn-link new-feedback-link" data-url="<%= new_feedback_path(@project) %>">
                   <i class="icon-plus icon-white"> </i> <%= t('my_projects.tabs.new_feedback')%>
                 </button>
               </div>

@@ -34,7 +34,7 @@
               use_short_month: true
 
   client:
-            name: "Name of Client"
+            name_field: "Name of client"
             date_create: "Create Date"
             users: "Associate Users"
             proyect: "Associate Projects"

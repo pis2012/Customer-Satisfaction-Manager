@@ -1,35 +1,43 @@
 CSM::Application.routes.draw do
 
-  # MY_PROJECT ROUTES
-  match "/my_projects" , to: "my_projects#index" , :as => :my_projects
-  match "/my_projects/:project_id", to: "projects#change_profile_project", :as => :change_profile_project
-  match "/my_projects/:project_id/change_mood/:new_status", to: "projects#change_any_project_mood", :as => :change_any_project_mood
-  match "/my_projects/:project_id/show_project_data/" => "projects#show_project_data", :as => :project_data
-  match "/my_projects/change_mood/:new_status" => "projects#change_mood", :as => :change_mood
+  ########### MY_PROJECT ROUTES ###########
+  match "/my_projects" => "my_projects#index", :as => :my_projects
 
-  resources :feedbacks, :only => [:show, :create, :edit, :update, :destroy]
+  # FEEDBACKS ROUTES
+  resources :feedbacks, :only => [:show, :new, :create, :edit, :update, :destroy]
+  match "/feedbacks/date_filter" => "feedbacks#date_filter", :as => :feedbacks_date_filter
 
   # COMMENTS ROUTES
   resources :comments, :only => [:create, :destroy]
 
   scope "/my_projects" do
+    # CHANGE PROFILE PROJECT
+    match "/:project_id"                    => "projects#change_profile_project", :as => :change_profile_project
+
+    # CHANGE MOOD
+
+    match "/change_mood/:new_status"        => "projects#change_mood",            :as => :change_mood
+
+    # SHOW PROJECT DATA
+    match "/:project_id/show_project_data/" => "projects#show_project_data",      :as => :project_data
+
     # FEEDBACKS ROUTES
-    match "/feedbacks/project_feedbacks/:project_id" => "feedbacks#project_feedbacks", :as => :project_feedbacks
-    match "/feedbacks/new/:project_id" => "feedbacks#new", :as => :new_feedback
-    match "/feedbacks/date_filter" => "feedbacks#date_filter", :as => :feedbacks_date_filter
+    match ":project_id/feedbacks"           => "feedbacks#project_feedbacks",     :as => :project_feedbacks
+    match ":project_id/feedbacks/new/"      => "feedbacks#new",                   :as => :new_feedback
 
     # MILESTONES ROUTES
-    match "/milestones/project_milestones/:project_id" => "milestones#project_milestones", :as => :project_milestones
-    match "/milestones/new/:project_id" => "milestones#new", :as => :new_milestone
+    match "/milestones/project_milestones/:project_id"  => "milestones#project_milestones",   :as => :project_milestones
+    match "/milestones/new/:project_id"                 => "milestones#new",                  :as => :new_milestone
     resources :milestones, :only => [:destroy]
   end
+  #----------- MY_PROJECT ROUTES -----------#
 
-  # PROFILE ROUTES
+  ############ PROFILE ROUTES ############
   match "profile" => "profiles#edit", :as => :edit_profile
-  resources :profiles, :only => [:update]
+  resources :profiles, :only  => [:update]
+  #----------- PROFILE ROUTES -----------#
 
-
-
+  ############ ADMIN ROUTES ############
   match "/users/name_filter" => "users#name_filter", :as => :users_name_filter
 
 
@@ -49,8 +57,8 @@ CSM::Application.routes.draw do
     match "/forms/show_full_data/:id" => "forms#show_full_data", :as => :forms_show_full_data
   end
 
-  resources :clients # , :only => [:index, :new, :create,:update , :edit,:destroy]
-  match "/admin/clients" => "clients#index" , :as => :admin_clients
+  resources :clients, :only => [:new, :create, :update], :path => "/admin/clients"
+  match "/admin/clients" => "clients#index", :as => :admin_clients
   match "/admin/client/:client_id" => "clients#show", :as => :clients_show
   match "/admin/client/edit/:client_id" => "clients#edit", :as => :clients_edit
   match "/admin/client/delete/:client_id" => "clients#destroy", :as => :clients_delete
@@ -74,6 +82,9 @@ CSM::Application.routes.draw do
   match "/admin/projects/edit/:project_id" => "projects#edit", :as => :projects_edit
   match "/admin/projects/delete/:project_id" => "projects#destroy", :as => :projects_delete
 
+
+  # MAILS ROUTES
+  match "/my_projects/:project_id/change_mood/:new_status"  => "projects#change_any_project_mood",  :as => :change_any_project_mood
 
   #resources :forms, :only => [:index, :new, :create]
   #match "/forms/show_data/:form_id" => "forms#show_data", :as => :forms_show_data
