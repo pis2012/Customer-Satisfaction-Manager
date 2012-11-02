@@ -247,6 +247,7 @@
                                           attributes:
                                                       username:
                                                            blank: "Nombre de Usuario no puede ser vacio."
+                                                           taken: "Nombre de Usuario en uso."
                                                       full_name:
                                                            blank: "Nombre Completo no puede ser vacio."
                                                       email:

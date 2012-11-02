@@ -202,6 +202,7 @@
                                           attributes:
                                                       username:
                                                           blank:  "Username can not be empty."
+                                                          taken:  "Username taken."
                                                       full_name:
                                                           blank:  "Full Name can not be empty."
                                                       email:
