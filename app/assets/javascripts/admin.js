@@ -36,21 +36,21 @@ $(document).on('click', '.new-project-link', function () {
 //************** CLIENTS TAB **************** //
 
 $(document).on('click', '.clients-link', function () {
-    updatePanel($(this).data('url'), 'client_data', 'clients');
+    updatePanel($(this).data('url'), 'clients-content', 'clients');
     return false;
 });
 
-$(document).on('click', '.new-clients-link', function () {
-    updatePanel($(this).data('url'), 'add_client_data', 'add_clients');
+$(document).on('click', '.new-client-link', function () {
+    updatePanel($(this).data('url'), 'new-client', 'new-client');
     return false;
 });
 
 $(document).on('click', '.show-client-link', function () {
-    updatePanel($(this).data('url'), 'show_client', 'show_client');
+    updatePanel($(this).data('url'), 'show-client', 'show-client');
     return false;
 });
 $(document).on('click', '.edit-client-link', function () {
-    updatePanel($(this).data('url'), 'edit_client', 'edit_client');
+    updatePanel($(this).data('url'), 'edit-client', 'edit-client');
     return false;
 });
 

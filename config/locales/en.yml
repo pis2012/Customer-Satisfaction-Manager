@@ -38,11 +38,11 @@
             date_create: "Create Date"
             users: "Associate Users"
             proyect: "Associate Projects"
-            add_client: "Add Client"
+            new_client: "New Client"
             edit_client: "Edit Client"
             delete_client: "Delete Client"
             show_client: "Show Client"
-            client: "Client"
+            clients: "Clients"
             cout_project: "Project Partners:  %{count}."
             cout_users:   "Registered Users: %{count}."
 
@@ -277,6 +277,20 @@
 
 
   admin:
+            tabs:
+                          forms: "Forms"
+                          show_form: "Show form"
+                          reports: "Reports"
+                          new_user: "New User's Client"
+                          show_user: "View User"
+                          edit_user: "Edit User"
+                          delete_user: "Delete User"
+                          clients: "Clients"
+                          show_client: "Show Client"
+                          new_client: "New Client"
+                          edit_client: "Edit Client"
+                          new_project: "New project"
+
             customer_satisfaction_manager:    "CUSTOMER SATISFACTION MANAGER"
             customers:    "Customers"
             summary:   "Summary"
@@ -303,16 +317,6 @@
             enable: "enable"
             disable: "disable"
             sure: "Are you sure?"
-
-            tabs:
-              forms: "Forms"
-              show_form: "Show form"
-              reports: "Reports"
-              new_user: "New User's Client"
-              show_user: "View User"
-              edit_user: "Edit User"
-              delete_user: "Delete User"
-              new_project: "New project"
 
   milestone:
             milestone:  "Milestone"

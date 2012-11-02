@@ -1,26 +1,23 @@
-<div class="page_header_wrapper">
-  <div class="page_header">
-    <h1><%= t('client.edit_client')  %></h1>
+<!-- page header -->
+<div class="page_header">
+  <h1><%= t('admin.tabs.edit_client') %></h1>
 
-    <div class="add_element">
-
-      <% if @client.projects.count == 0  %>
-          <button class="btn btn-link clients-link" data-url="<%= clients_delete_path(@client.id) %>">
-            <i class="icon-minus icon-white"> </i> <%= t('client.delete_client')%>
-          </button>
-      <% end %>
-
-    </div>
+  <div class="add_element">
+    <% if @client.projects.count == 0 %>
+        <button class="btn btn-link clients-link" data-url="<%= clients_delete_path(@client.id) %>">
+          <i class="icon-minus icon-white"> </i> <%= t('client.delete_client') %>
+        </button>
+    <% end %>
   </div>
+
 </div>
-<!--// page header -->
+<!--// page header
+
 <!-- page contents -->
 <div class="page_content" id="edit_client_data">
-  <!-- main column -->
-<%= render 'form' %>
-  <!--// page contents -->
+  <%= render 'form' %>
 </div>
-
+<!--// page contents -->
 
 
 

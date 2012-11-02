@@ -1,42 +1,32 @@
-
 <!-- page header -->
-<div class="page_header_wrapper">
-  <div class="page_header">
-    <h1><%= t('client.show_client') %></h1>
+<div class="page_header">
+  <h1><%= t('admin.tabs.show_client') %></h1>
 
-    <div class="add_element">
-      <button class="btn btn-link edit-client-link" data-url="<%= clients_edit_path(@client.id) %>">
-        <i class="icon-edit icon-white"> </i> <%= t('client.edit_client') %>
-      </button>
-
-
-
-    </div>
-
+  <div class="add_element">
+    <button class="btn btn-link edit-client-link" data-url="<%= clients_edit_path(@client.id) %>">
+      <i class="icon-edit icon-white"> </i> <%= t('client.edit_client') %>
+    </button>
   </div>
+
 </div>
 <!--// page header -->
+
 <!-- page contents -->
 <div class="page_content" id="show_client_data">
 
   <h3>
-    <p>
-      <b> <%= t('client.name') + " :" %>  </b>
-      <%= @client.name %>
-    </p>
+    <p><b><%= t('client.name') + " :" %>  </b><%= @client.name %></p>
   </h3>
 
   <h6>
     <p>
       <b><%= t('client.date_create') + " :" %></b>
-      <%= t("date."+"#{@client.created_at.strftime("%A")}")+ @client.created_at.strftime(" %d ")+  t("date."+"#{@client.created_at.strftime("%B")}") +@client.created_at.strftime(" %Y") + @client.created_at.strftime((" ,  %H:%M")) %>
+      <%= t("date." + "#{@client.created_at.strftime("%A")}") + @client.created_at.strftime(" %d ") + t("date." + "#{@client.created_at.strftime("%B")}") + @client.created_at.strftime(" %Y") + @client.created_at.strftime((" ,  %H:%M")) %>
     </p>
   </h6>
 
   <br>
   <br>
-
-
 
   <% if @client.users.count > 0 %>
       <b><h5><%= t('client.users') + " : " %> </h5></b>
@@ -45,7 +35,7 @@
         <thead>
         <tr>
           <th><h4>Full Name</h4></th>
-          <th><h4>User</h4> </th>
+          <th><h4>User</h4></th>
           <th><h4>Email</h4></th>
         </tr>
         </thead>
@@ -56,7 +46,7 @@
               <td><h5><%= user.username %></h5></td>
               <td><h5><%= user.email %></h5></td>
             </tr>
-        <%end%>
+        <% end %>
       </table>
   <% else %>
       <b><h5><%= t('client.users') + " : No tiene usuarios asociado" %> </h5></b>
@@ -79,17 +69,14 @@
         <% @client.projects.each do |project| %>
             <tr>
               <td><h5><%= project.name %></h5></td>
-              <td><h5><%= t("date."+"#{project.end_date.strftime("%A")}")+ project.end_date.strftime(" %d ")+  t("date."+"#{project.end_date.strftime("%B")}") +project.end_date.strftime(" %Y") %></h5></td>
+              <td>
+                <h5><%= t("date." + "#{project.end_date.strftime("%A")}") + project.end_date.strftime(" %d ") + t("date." + "#{project.end_date.strftime("%B")}") + project.end_date.strftime(" %Y") %></h5>
+              </td>
             </tr>
-        <%end%>
+        <% end %>
       </table>
   <% else %>
-      <b><h5><%= t('client.proyect') + " : No tiene proyectos asociados" %> </h5></b>
+      <b><h5><%= t('client.proyect') + " : No tiene proyectos asociados" %></h5></b>
   <% end %>
-
-
-
-
-
-
 </div>
+<!-- page contents -->

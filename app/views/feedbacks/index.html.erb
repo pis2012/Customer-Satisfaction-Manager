@@ -7,11 +7,13 @@
         <td class="avatar">
         <!-- a new feedback made by a client can be edited by him if it has been created less than 10 minutes ago -->
         <% if current_user.client? && (feedback.editable? current_user.id) %>
-          <a href="#edit-feedback<%= feedback.id.to_s %>" class="avatar_image edit-feedback-link" data-url="<%= edit_feedback_path(feedback) %>">
+          <a href="#edit-feedback<%= feedback.id.to_s %>" class="avatar_image edit-feedback-link"
+             data-url="<%= edit_feedback_path(feedback) %>">
             <%= image_tag(feedback.feedback_type.image_url, :alt => "feedback_image", :class => "feedback_image") %>
           </a>
         <% else %>
-          <a href="#show-feedback<%= feedback.id.to_s %>" class="avatar_image show-feedback-link" data-url="<%= feedback_path(feedback) %>">
+          <a href="#show-feedback<%= feedback.id.to_s %>" class="avatar_image show-feedback-link"
+             data-url="<%= feedback_path(feedback) %>">
             <%= image_tag(feedback.feedback_type.image_url, :alt => "feedback_image", :class => "feedback_image") %>
           </a>
         <% end %>
@@ -19,9 +21,11 @@
 
         <td class="feedback_info">
           <% if current_user.client? && (feedback.editable? current_user.id) %>
-              <h4 class="feedback_subject"><a href="#edit-feedback<%= feedback.id.to_s %>" class="edit-feedback-link" data-url="<%= edit_feedback_path(feedback) %>"><%= truncate(strip_tags(feedback.subject), :length => 45) %></a></h4>
+              <h4 class="feedback_subject"><a href="#edit-feedback<%= feedback.id.to_s %>" class="edit-feedback-link"
+                                              data-url="<%= edit_feedback_path(feedback) %>"><%= truncate(strip_tags(feedback.subject), :length => 45) %></a></h4>
           <% else %>
-              <h4 class="feedback_subject"><a href="#show-feedback<%= feedback.id.to_s %>" class="show-feedback-link" data-url="<%= feedback_path(feedback) %>"><%= truncate(strip_tags(feedback.subject), :length => 45) %></a></h4>
+              <h4 class="feedback_subject"><a href="#show-feedback<%= feedback.id.to_s %>" class="show-feedback-link"
+                                              data-url="<%= feedback_path(feedback) %>"><%= truncate(strip_tags(feedback.subject), :length => 45) %></a></h4>
           <% end %>
 
           <h6 class="feedback_date"><%= t('feedback.uploaded_by') + " " + feedback.user.full_name + " " + t('feedback.date_on')+"   " + t("date." + "#{feedback.created_at.strftime("%A")}") + feedback.created_at.strftime(" %d ") + t("date." + "#{feedback.created_at.strftime("%B")}") + feedback.created_at.strftime(" %Y") + feedback.created_at.strftime((" ,  %H:%M")) %></h6>

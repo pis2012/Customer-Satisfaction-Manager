@@ -1,30 +1,28 @@
-<div>
-    <div class="clients_filter form-inline" >
-      <h5 class="client_filter_subject"><%= t('form.name_filter') %></h5>
-        &nbsp;
-        <%= text_field_tag "clients_name_filter" %>
-        &nbsp;
-        <%= button_tag( t('buttons.filter'), :id => "clients_filter_btn", :class => "btn") %>
-    </div>
-    <hr/>
+<div class="clients_table">
+  <div class="clients_filter form-inline">
+    <h5 class="client_filter_subject"><%= t('form.name_filter') %></h5>
+    &nbsp;
+    <%= text_field_tag "clients_name_filter" %>
+    &nbsp;
+    <%= button_tag(t('buttons.filter'), :id => "clients_filter_btn", :class => "btn") %>
+  </div>
+  <hr>
+  <table>
+    <% @clients.each do |client| %>
+        <tr>
+          <td>
+            <h4>
+              <a id="client_name" href="#show-client-<%= client.id.to_s %>" class="show-client-link" data-url="<%= clients_show_path(client.id) %>"><%= client.name %></a>
 
-      <table>
-        <% @clients.each do |client| %>
-            <tr>
-              <td>
-                <h4 >
-                  <a id="client_name" href="#show-client" class="show-client-link" data-url="<%= clients_show_path(client.id) %>"><%= client.name %></a>
-                  <p class="client-resume">
-                    <%= t('client.cout_project' , :count => client.projects.count.to_s) %></br>
-                    <%= t('client.cout_users' , :count => client.users.count.to_s)   %>
-                  </p>
-                </h4>
+              <p class="client-resume">
+                <%= t('client.cout_project', :count => client.projects.count.to_s) %><br>
+                <%= t('client.cout_users', :count => client.users.count.to_s) %>
+              </p>
+            </h4>
 
-              </td>
-            </tr>
-
-            </hr>
-        <% end %>
-      </table>
+          </td>
+        </tr>
+    <% end %>
+  </table>
 
 </div>
