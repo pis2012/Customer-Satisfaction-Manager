@@ -6,12 +6,10 @@
       <%= image_tag("ajax-loader.gif") %>
     </div>
     <div class="add_element">
-      <%= form_tag(form_path, :method => "post", :remote => true, :id => "delete_form") do %>
-          <input name="_method" type="hidden" value="delete">
-          <button class="btn btn-link delete-btn" type="submit" >
-            <i class="icon-minus icon-white"> </i> <%= t('form.delete_form')%>
-          </button>
-      <% end %>
+      <button class="btn btn-link delete-btn">
+        <i class="icon-minus icon-white"></i>
+        <%= link_to t('form.delete_form'), @form, :method => :delete, :remote => true, :confirm => t('form.eliminate_confirm') %>
+      </button>
     </div>
   </div>
 </div>

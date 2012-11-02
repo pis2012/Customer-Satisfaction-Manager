@@ -10,25 +10,26 @@ CSM::Application.routes.draw do
   # COMMENTS ROUTES
   resources :comments, :only => [:create, :destroy]
 
+  # MILESTONES ROUTES
+  resources :milestones, :only => [:destroy, :create]
+
   scope "/my_projects" do
     # CHANGE PROFILE PROJECT
-    match "/:project_id"                    => "projects#change_profile_project", :as => :change_profile_project
+    match "/:project_id"                => "projects#change_profile_project", :as => :change_profile_project
 
     # CHANGE MOOD
-
-    match "/change_mood/:new_status"        => "projects#change_mood",            :as => :change_mood
+    match "/change_mood/:new_status"    => "projects#change_mood",            :as => :change_mood
 
     # SHOW PROJECT DATA
-    match "/:project_id/show_project_data/" => "projects#show_project_data",      :as => :project_data
+    match "/:project_id/data/"          => "projects#show_project_data",      :as => :project_data
 
     # FEEDBACKS ROUTES
-    match ":project_id/feedbacks"           => "feedbacks#project_feedbacks",     :as => :project_feedbacks
-    match ":project_id/feedbacks/new/"      => "feedbacks#new",                   :as => :new_feedback
+    match ":project_id/feedbacks"       => "feedbacks#project_feedbacks",     :as => :project_feedbacks
+    match ":project_id/feedbacks/new/"  => "feedbacks#new",                   :as => :new_feedback
 
     # MILESTONES ROUTES
-    match "/milestones/project_milestones/:project_id"  => "milestones#project_milestones",   :as => :project_milestones
-    match "/milestones/new/:project_id"                 => "milestones#new",                  :as => :new_milestone
-    resources :milestones, :only => [:destroy]
+    match ":project_id/milestones"      => "milestones#project_milestones",   :as => :project_milestones
+    match ":project_id/milestones/new/" => "milestones#new",                  :as => :new_milestone
   end
   #----------- MY_PROJECT ROUTES -----------#
 

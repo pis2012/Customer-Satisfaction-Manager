@@ -100,8 +100,7 @@ $(document).on('click','.feedbacks-link', function () {
 });
 
 
-
-$('.data-link').live('click', function () {
+$(document).on('click','.data-link', function () {
     updatePanel($(this).data('url'), '#data-content', 'project-data');
     return false;
 });
@@ -120,7 +119,7 @@ $(document).on('show','#myTab a[href=#edit-feedback]', function (e) {
 
 });
 
-$('.new-milestone-link').live('click', function () {
+$(document).on('click','.new-milestone-link', function () {
     updatePanel($(this).data('url'), '#new-milestone-content', 'new-milestone');
     return false;
 });

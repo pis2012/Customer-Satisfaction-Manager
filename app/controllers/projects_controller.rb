@@ -102,7 +102,7 @@
     respond_to do |format|
       #format.html { redirect_to projects_url }
       #format.json { head :no_content }
-      @projects = User.all
+      @projects = Project.all
       format.js { render action: "index" }
     end
   end

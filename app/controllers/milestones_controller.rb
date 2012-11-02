@@ -31,8 +31,9 @@ class MilestonesController < ApplicationController
     @milestone = Milestone.new(:project_id => params[:project_id])
 
     respond_to do |format|
-      format.html { }
-      format.json { render json: @milestone }
+      if request.xhr?
+        format.html { }
+      end
     end
   end
 
@@ -40,7 +41,6 @@ class MilestonesController < ApplicationController
   # POST /milestone.json
   def create
     @milestone = Milestone.new(params[:milestone])
-
     @milestone.project_id = params[:project_id]
 
     respond_to do |format|
