@@ -41,7 +41,8 @@ class Project < ActiveRecord::Base
       axis = axis + ["#{mood.created_at.mday}/#{mood.created_at.mon}"]
       data = data + [mood.status]
     end
-
+    axis.reverse!
+    data.reverse!
     Gchart.line(:size => '850x350', :bg => {:color => '76A4FB,1,ffffff,0', :type => 'gradient'}, :graph_bg => 'E5E5E5', :theme => :keynote,
                 :data => data, :axis_with_labels => ['x','y'], :axis_labels => [axis,[1,2,3,4,5]])
   end

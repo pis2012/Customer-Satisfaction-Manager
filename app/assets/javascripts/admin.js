@@ -40,7 +40,7 @@ $(document).on('click', '.clients-link', function () {
     return false;
 });
 
-$(document).on('click', '.add-clients-link', function () {
+$(document).on('click', '.new-clients-link', function () {
     updatePanel($(this).data('url'), 'add_client_data', 'add_clients');
     return false;
 });
