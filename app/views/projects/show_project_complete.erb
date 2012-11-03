@@ -1,25 +1,3 @@
-<script>
-    $(document).ready(function () {
-        //updatePanel("<%=  project_feedbacks_path(@project) %>", 'feedbacks-content', 'feedbacks');
-        //$('#myTab  a[href=#' + 'feedbacks' + ']').tab('show');
-
-    });
-
-    function updatePanelMoods1(me, url, id, mood) {
-        $.get(url, function (res) {
-            document.getElementById('moods').innerHTML = '<img alt="' + mood + '" src="/assets/status/normal/' + mood + '.png"/>';
-            //document.getElementById('moods').innerHTML = '<img src="/assets/status/normal/3.png"/>';
-        });
-    }
-    $(document).ready(function(){
-        $("#face-list li").click(function () {
-            $("#msj-face-changed").fadeIn(300).fadeOut(1000);
-            //$("#msj-face-changed").fadeOut(5000);
-        });
-
-    })
-</script>
-
 <div id="breadcrumbs-wrapper">
   <div class="container">
     <ul class="nav nav-pills">
@@ -51,16 +29,15 @@
       <br>
 
       <div class="current-mood">
-
-           <div id="msj-face-changed-container">
-             <div id="msj-face-changed" class="label label-info">
-               Mood changed!
-             </div>
-           </div>
-
         <div class="face-mood-state">
-          <div id="myTabContentMoods" class="tab-content">
 
+          <div id="msj-face-changed-container">
+            <div id="msj-face-changed" class="label label-info">
+              <i class="icon-ok"></i> Mood changed!
+            </div>
+          </div>
+
+          <div id="myTabContentMoods" class="tab-content">
             <!-- page moods -->
             <div class="tab-pane fade in active" id="change-mood1">
                 <!-- page contents -->
@@ -95,11 +72,11 @@
 
           <ul id="face-list">
             <% mood = @view[:project].moods.order(:created_at).last.get_mood_img %>
-            <li <% if mood == "1.png" %> class="active" <% end %>><a href="#change-mood1" class="change-mood1-link" data-url="<%= change_mood_path('1') %>" rel="tooltip" title="Change mood"><img alt="1" src="/assets/status/normal/1.png" class="face-mood" id="miniMood1"/></a></li>
-            <li <% if mood == "3.png" %> class="active" <% end %>><a href="#change-mood3" class="change-mood3-link" data-url="<%= change_mood_path('3') %>" rel="tooltip" title="Change mood"><img alt="3" src="/assets/status/normal/3.png" class="face-mood" id="miniMood3"/></a></li>
-            <li <% if mood == "5.png" %> class="active" <% end %>><a href="#change-mood5" class="change-mood5-link" data-url="<%= change_mood_path('5') %>" rel="tooltip" title="Change mood"><img alt="5" src="/assets/status/normal/5.png" class="face-mood" id="miniMood5"/></a></li>
-            <li <% if mood == "7.png" %> class="active" <% end %>><a href="#change-mood7" class="change-mood7-link" data-url="<%= change_mood_path('7') %>" rel="tooltip" title="Change mood"><img alt="7" src="/assets/status/normal/7.png" class="face-mood" id="miniMood7"/></a></li>
-            <li <% if mood == "9.png" %> class="active" <% end %>><a href="#change-mood9" class="change-mood9-link" data-url="<%= change_mood_path('9') %>" rel="tooltip" title="Change mood"><img alt="9" src="/assets/status/normal/9.png" class="face-mood" id="miniMood9"/></a></li>
+            <li <% if mood == "1.png" %> class="active" <% end %>><a href="#change-mood1" class="change-mood1-link" data-url="<%= change_mood_path('1') %>" rel="tooltip" title="Change mood"><img alt="1" src="/assets/status/small/1.png" class="face-mood" id="miniMood1"/></a></li>
+            <li <% if mood == "3.png" %> class="active" <% end %>><a href="#change-mood3" class="change-mood3-link" data-url="<%= change_mood_path('3') %>" rel="tooltip" title="Change mood"><img alt="3" src="/assets/status/small/3.png" class="face-mood" id="miniMood3"/></a></li>
+            <li <% if mood == "5.png" %> class="active" <% end %>><a href="#change-mood5" class="change-mood5-link" data-url="<%= change_mood_path('5') %>" rel="tooltip" title="Change mood"><img alt="5" src="/assets/status/small/5.png" class="face-mood" id="miniMood5"/></a></li>
+            <li <% if mood == "7.png" %> class="active" <% end %>><a href="#change-mood7" class="change-mood7-link" data-url="<%= change_mood_path('7') %>" rel="tooltip" title="Change mood"><img alt="7" src="/assets/status/small/7.png" class="face-mood" id="miniMood7"/></a></li>
+            <li <% if mood == "9.png" %> class="active" <% end %>><a href="#change-mood9" class="change-mood9-link" data-url="<%= change_mood_path('9') %>" rel="tooltip" title="Change mood"><img alt="9" src="/assets/status/small/9.png" class="face-mood" id="miniMood9"/></a></li>
           </ul>
         </div>
 

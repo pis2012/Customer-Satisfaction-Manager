@@ -68,5 +68,7 @@ gem 'capistrano'
 
 gem 'passenger'
 
+gem 'rails-ckeditor'
+
 # To use debugger
 # gem 'debugger'
