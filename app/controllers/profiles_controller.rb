@@ -30,17 +30,33 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     @user = User.find(params[:profile][:user_id])
 
-    password_changed = !params[:user][:password].nil? && !params[:user][:password].empty?
+    password_changed = !params[:user][:current_password].nil? && !params[:user][:current_password].empty?
+
+    password = params[:user][:password]
+    confirmation_password = params[:user][:password_confirmation]
 
     successfully_updated = if password_changed
-       @user.update_with_password(params[:user])
+
+      if (password.nil? || password.blank?) && (confirmation_password.nil? || confirmation_password.blank?)
+
+        if password.nil? || password.blank?
+          @user.errors.add(:password, I18n.t('activerecord.errors.models.user.attributes.password.blank'))
+        end
+
+        if confirmation_password.nil? || confirmation_password.blank?
+          @user.errors.add(:confirmation_password, I18n.t('activerecord.errors.models.user.attributes.password_confirmation.blank'))
+        end
+
+      else
+        @user.update_with_password(params[:user])
+      end
     else
        params[:user].delete(:current_password)
        @user.update_without_password(params[:user])
     end
 
     respond_to do |format|
-      if @profile.update_attributes(params[:profile]) && successfully_updated #&& @user.update_attributes(params[:user])
+      if @profile.update_attributes(params[:profile]) && successfully_updated && @user.errors.empty? #&& @user.update_attributes(params[:user])
         format.html { redirect_to '/' }
       else
         format.html { render action: "edit" }
