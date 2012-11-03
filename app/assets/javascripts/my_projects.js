@@ -27,67 +27,32 @@ function updatePanel(path, el_replace, tab) {
     }, 'html');
 }
 
-function updatePanelMood(path, id_replace, tab) {
-    $.get(path, function (response) {
-        $('#' + id_replace).html(response);
-        $('#face-list  a[href=#' + tab + ']').tab('show');
-
-        //document.title = response.pageTitle;
-        //window.history.replaceState({"html":response,"pageTitle":response.pageTitle,"id_replace":id_replace,"tab":tab});
-    }, 'html');
-}
-
-window.onpopstate = function (e) {
+/*window.onpopstate = function (e) {
     if (e.state) {
         $('#' + e.state.id_replace).html(e.state.html);
         $('#myTab  a[href=#' + e.state.tab + ']').tab('show');
         //document.getElementById("content").innerHTML = e.state.html;
         //document.title = e.state.pageTitle;
     }
-};
+};*/
 
-$('#face-list').ready(function(){
+$('#moodsTab').ready(function(){
     $('#msj-face-changed').fadeOut(0);
-    $('#face-list li').click(function () {
+    $('#moodsTab li').click(function () {
         if (!$(this).hasClass("active")) {
             $('#msj-face-changed').fadeIn(300).fadeOut(1000);
         }
     });
 
     $('.estilotextarea').wysihtml5();
-})
-
-$('.change-mood1-link').live('click', function () {
-    if (!$(this).parent().hasClass("active")) {
-        updatePanelMood($(this).data('url'), 'change-mood1-content', 'change-mood1');
-    }
-    return false;
 });
 
-$('.change-mood3-link').live('click', function () {
+$('.change-mood-link').live('click', function () {
     if (!$(this).parent().hasClass("active")) {
-        updatePanelMood($(this).data('url'), 'change-mood3-content', 'change-mood3');
-    }
-    return false;
-});
-
-$('.change-mood5-link').live('click', function () {
-    if (!$(this).parent().hasClass("active")) {
-        updatePanelMood($(this).data('url'), 'change-mood5-content', 'change-mood5');
-    }
-    return false;
-});
-
-$('.change-mood7-link').live('click', function () {
-    if (!$(this).parent().hasClass("active")) {
-        updatePanelMood($(this).data('url'), 'change-mood7-content', 'change-mood7');
-    }
-    return false;
-});
-
-$('.change-mood9-link').live('click', function () {
-    if (!$(this).parent().hasClass("active")) {
-        updatePanelMood($(this).data('url'), 'change-mood9-content', 'change-mood9')
+        var mood = $(this).data('mood');
+        $.get("my_projects/change_mood/" + mood, function (_) {
+            $('#moodsTab  a[href=#mood' + mood + ']').tab('show');
+        }, 'html');
     }
     return false;
 });
@@ -100,8 +65,7 @@ $(document).on('click','.feedbacks-link', function () {
 });
 
 
-
-$('.data-link').live('click', function () {
+$(document).on('click','.data-link', function () {
     updatePanel($(this).data('url'), '#data-content', 'project-data');
     return false;
 });
@@ -120,13 +84,13 @@ $(document).on('show','#myTab a[href=#edit-feedback]', function (e) {
 
 });
 
-$('.new-milestone-link').live('click', function () {
+$(document).on('click','.new-milestone-link', function () {
     updatePanel($(this).data('url'), '#new-milestone-content', 'new-milestone');
     return false;
 });
 
-$(".show-feedback-link").live('click', function () {
-    updatePanel($(this).data('url'), '#show-feedback-content', 'show-feedback');
+$(document).on('click','.show-feedback-link', function () {
+    updatePanel($(this).data('url'), '#show-feedback', 'show-feedback');
     return false;
 });
 

@@ -1,36 +1,44 @@
 <table class="feedbacks_table">
   <% @feedbacks.each do |feedback| %>
+      <!-- feedbacks have a certain scope. Not everyone can see every feedback. Only admins can see every feedback -->
+      <% if(current_user.client? && feedback.client_visibility?) || (current_user.mooveit? && feedback.mooveit_visibility?) || (current_user.admin?) %>
       <tr id="row_feedback_<%= feedback.id %>">
+
         <td class="avatar">
-        <% if feedback.editable? current_user.id %>
-          <a href="#edit-feedback<%= feedback.id.to_s %>" class="avatar_image" class="edit-feedback-link" data-url="<%= edit_feedback_path(feedback) %>">
+        <!-- a new feedback made by a client can be edited by him if it has been created less than 10 minutes ago -->
+        <% if current_user.client? && (feedback.editable? current_user.id) %>
+          <a href="#edit-feedback<%= feedback.id.to_s %>" class="avatar_image edit-feedback-link"
+             data-url="<%= edit_feedback_path(feedback) %>">
             <%= image_tag(feedback.feedback_type.image_url, :alt => "feedback_image", :class => "feedback_image") %>
           </a>
         <% else %>
-          <a href="#show-feedback<%= feedback.id.to_s %>" class="avatar_image" class="show-feedback-link" data-url="<%= feedback_path(feedback) %>">
+          <a href="#show-feedback<%= feedback.id.to_s %>" class="avatar_image show-feedback-link"
+             data-url="<%= feedback_path(feedback) %>">
             <%= image_tag(feedback.feedback_type.image_url, :alt => "feedback_image", :class => "feedback_image") %>
           </a>
         <% end %>
         </td>
+
         <td class="feedback_info">
-          <% if feedback.editable? current_user.id %>
-              <h4 class="feedback_subject"><a href="#edit-feedback<%= feedback.id.to_s %>" class="edit-feedback-link" data-url="<%= edit_feedback_path(feedback) %>"><%= truncate(strip_tags(feedback.subject), :length => 45) %></a></h4>
+          <% if current_user.client? && (feedback.editable? current_user.id) %>
+              <h4 class="feedback_subject"><a href="#edit-feedback<%= feedback.id.to_s %>" class="edit-feedback-link"
+                                              data-url="<%= edit_feedback_path(feedback) %>"><%= truncate(strip_tags(feedback.subject), :length => 45) %></a></h4>
           <% else %>
-              <h4 class="feedback_subject"><a href="#show-feedback<%= feedback.id.to_s %>" class="show-feedback-link" data-url="<%= feedback_path(feedback) %>"><%= truncate(strip_tags(feedback.subject), :length => 45) %></a></h4>
+              <h4 class="feedback_subject"><a href="#show-feedback<%= feedback.id.to_s %>" class="show-feedback-link"
+                                              data-url="<%= feedback_path(feedback) %>"><%= truncate(strip_tags(feedback.subject), :length => 45) %></a></h4>
           <% end %>
 
-
-          <h6 class="feedback_date"><%= t('feedback.uploaded_by')+" " + feedback.user.full_name + " "+t('feedback.date_on')+"   "+t("date."+"#{feedback.created_at.strftime("%A")}")+ feedback.created_at.strftime(" %d ")+  t("date."+"#{feedback.created_at.strftime("%B")}") +feedback.created_at.strftime(" %Y") + feedback.created_at.strftime((" ,  %H:%M")) %></h6>
-          <div class="feedback_content"><%= truncate(strip_tags(feedback.content), :length => 180) %></div>
+          <h6 class="feedback_date"><%= t('feedback.uploaded_by') + " " + feedback.user.full_name + " " + t('feedback.date_on')+"   " + t("date." + "#{feedback.created_at.strftime("%A")}") + feedback.created_at.strftime(" %d ") + t("date." + "#{feedback.created_at.strftime("%B")}") + feedback.created_at.strftime(" %Y") + feedback.created_at.strftime((" ,  %H:%M")) %></h6>
+          <pre class="feedback_content"><%= truncate(strip_tags(feedback.content), :length => 180) %></pre>
           <% @last_comment = feedback.comments.order('created_at').first %>
           <% if @last_comment != nil %>
-              <h6 class="feedback_last_comment"><%= t('feedback.last_comment_made_by')+" " + @last_comment.user.full_name + ", "+t("date."+"#{@last_comment.created_at.strftime("%A")}")+ @last_comment.created_at.strftime(" %d ")+  t("date."+"#{@last_comment.created_at.strftime("%B")}") +@last_comment.created_at.strftime(" %Y") %></h6>
+              <h6 class="feedback_last_comment"><%= t('feedback.last_comment_made_by') + " " + @last_comment.user.full_name + ", " + t("date." + "#{@last_comment.created_at.strftime("%A")}") + @last_comment.created_at.strftime(" %d ") + t("date." + "#{@last_comment.created_at.strftime("%B")}") + @last_comment.created_at.strftime(" %Y") %></h6>
           <% else %>
               <h6 class="feedback_last_comment"><%= t('feedback.no_comments') %></h6>
           <% end %>
         </td>
       </tr>
-
+      <% end %>
   <% end %>
   <!--
 <div class="feedback_pager">

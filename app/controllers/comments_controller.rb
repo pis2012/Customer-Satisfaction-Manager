@@ -12,26 +12,19 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        # User.send_comment_notification(@comment)
+        Thread.new(@comment) { |comment|
+          User.send_comment_notification(comment)
+        }
+
         @feedback = @comment.feedback
-        @new_comment = Comment.new
+        @comment = Comment.new
         format.js { render action: "index" }
       else
         @feedback = @comment.feedback
-        @new_comment = @comment
         format.js { render action: "index" }
       end
     end
   end
 
-  # DELETE /comments/1
-  # DELETE /comments/1.json
-  def destroy
-    @comment = Comment.find(params[:id])
-    @comment.destroy
-
-    respond_to do |format|
-      format.html { redirect_to comments_url }
-      format.json { head :no_content }
-    end
-  end
 end

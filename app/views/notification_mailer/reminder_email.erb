@@ -1,0 +1,39 @@
+<% content_for :title do   %>
+    <%= "Friendly reminder from Moove-iT" %>
+<% end %>
+<%= t('email.notification.reminder.greeting') %> <%= "#{@user.full_name}" %>
+<br/>
+<p>
+  <%= t('email.notification.reminder.intro1') %> <%= link_to "#{@project.name}", change_profile_project_url(@project) %>.
+  <%= t('email.notification.reminder.intro2') %>
+
+</p>
+<br/>
+<br/>
+<%= t('email.notification.reminder.faceclick') %> <%= link_to "#{@project.name}", change_profile_project_url(@project) %>
+<table>
+  <tr>
+    <%= mail_mood_face_link('Angry', attachments, change_any_project_mood_url(project_id: @project.id, new_status: 1)) %>
+    <%= mail_mood_face_link('Disappointed', attachments, change_any_project_mood_url(project_id: @project.id, new_status: 2)) %>
+    <%= mail_mood_face_link('Indifferent', attachments, change_any_project_mood_url(project_id: @project.id, new_status: 3)) %>
+    <%= mail_mood_face_link('Pleased', attachments, change_any_project_mood_url(project_id: @project.id, new_status: 4)) %>
+    <%= mail_mood_face_link('Happy', attachments, change_any_project_mood_url(project_id: @project.id, new_status: 5)) %>
+  </tr>
+  <tr>
+    <td style="width: 100px; text-align: center; font-size: small;"><%= t('email.notification.reminder.face1') %></td>
+    <td style="width: 100px; text-align: center; font-size: small;"><%= t('email.notification.reminder.face2') %></td>
+    <td style="width: 100px; text-align: center; font-size: small;"><%= t('email.notification.reminder.face3') %></td>
+    <td style="width: 100px; text-align: center; font-size: small;"><%= t('email.notification.reminder.face4') %></td>
+    <td style="width: 100px; text-align: center; font-size: small;"><%= t('email.notification.reminder.face5') %></td>
+  </tr>
+</table>
+<br/>
+<br/>
+<p>
+  <%= t('email.notification.reminder.request') %>
+  <br/>
+  <%= t('email.notification.reminder.salutation') %>
+  <br/>
+  <%= t('email.notification.reminder.signature') %>
+</p>
+

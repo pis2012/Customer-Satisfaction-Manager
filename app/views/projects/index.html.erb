@@ -1,29 +1,42 @@
-<h1>Listing projects</h1>
 
-<table>
-  <tr>
-    <th>Description</th>
-    <th>End date</th>
-    <th>Name</th>
-    <th>Status</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="projects_div">
 
-<% @projects.each do |project| %>
-  <tr>
-    <td><%= project.description %></td>
-    <td><%= project.end_date %></td>
-    <td><%= project.name %></td>
-    <!--<td>< %= project.status %></td>-->
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+  </br>
+  <%= form_tag(projects_name_filter_path, :remote => true, :class => "form-horizontal" ) do %>
+      <div class="control-group">
 
-<br />
+        <label class="control-label name-filter" for="inputProjectname">
+          <%= t('admin.filter_name')%>
+        </label>
 
-<%= link_to 'New Project', new_project_path %>
+        <div class="controls">
+          <div class="input-prepend">
+            <%= text_field_tag :name %>
+          </div>
+
+          <div class="input-prepend">
+            <%= button_tag( t('buttons.filter'), :class => "btn") %>
+          </div>
+        </div>
+
+      </div>
+  <% end %>
+  </br>
+  <hr>
+
+
+  </br>
+  <% @projects.each do |project| %>
+      <div class="row">
+        <div class="project-name">
+
+        </div>
+      </div>
+      <hr>
+  <% end %>
+</div>
+
+
+
+
+

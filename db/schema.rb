@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121012012332) do
+ActiveRecord::Schema.define(:version => 20121102183558) do
 
   create_table "clients", :force => true do |t|
     t.string   "name"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(:version => 20121012012332) do
     t.text     "content"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "csm_properties", :force => true do |t|
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "feedback_types", :force => true do |t|
@@ -45,21 +52,21 @@ ActiveRecord::Schema.define(:version => 20121012012332) do
   end
 
   create_table "forms", :force => true do |t|
-    t.integer  "user_id"
     t.string   "name"
     t.string   "email"
     t.text     "wise_token"
     t.text     "writely_token"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer  "actual_total_answers", :default => 0
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
+  add_index "forms", ["name", "email"], :name => "index_forms_on_name_and_email", :unique => true
+
   create_table "milestones", :force => true do |t|
-    t.integer  "project_id"
-    t.string   "name"
-    t.date     "target_date"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer "project_id"
+    t.string  "name"
+    t.date    "target_date"
   end
 
   create_table "moods", :force => true do |t|
@@ -72,16 +79,16 @@ ActiveRecord::Schema.define(:version => 20121012012332) do
   create_table "profiles", :force => true do |t|
     t.integer  "user_id"
     t.integer  "project_id"
-    t.boolean  "feedbacks_notifications", :default => false
-    t.boolean  "comments_notifications",  :default => false
+    t.boolean  "feedbacks_notifications", :default => true
+    t.boolean  "comments_notifications",  :default => true
     t.boolean  "show_gravatar",           :default => true
     t.string   "skype_usr"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   create_table "projects", :force => true do |t|
@@ -90,8 +97,9 @@ ActiveRecord::Schema.define(:version => 20121012012332) do
     t.text     "description"
     t.datetime "end_date"
     t.boolean  "finalized"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+    t.datetime "last_reminder_email_sent"
   end
 
   add_index "projects", ["client_id"], :name => "index_projects_on_client_id"
@@ -115,8 +123,9 @@ ActiveRecord::Schema.define(:version => 20121012012332) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.boolean  "disable",                :default => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   add_index "users", ["client_id"], :name => "index_users_on_client_id"

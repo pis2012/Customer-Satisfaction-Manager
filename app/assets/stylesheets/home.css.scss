@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* ============== [ HOME ] ============== */
 
 #home h1,h2,h3
 {
@@ -58,6 +59,10 @@
     transition: all .2s linear;
  }
 
+.homeface p {
+  display: none;
+}
+
 .homeface:hover {
     -webkit-transform: scale(1.2,1.2);
     -moz-transform: scale(1.2,1.2);
@@ -69,6 +74,10 @@
     -ms-transition: all .2s linear;
     -o-transition: all .2s linear;
     transition: all .2s linear;
+}
+
+.homeface:hover p{
+  display: block;
 }
 
 //client home page
@@ -126,7 +135,7 @@
   height: 118px;
   display: inline-block;
   vertical-align: bottom;
-  margin: 18px 15px 20px 15px;
+  margin: 40px;
 }
 
 //visitor home page
@@ -171,11 +180,21 @@
   font-style: normal;
 }
 
-//login
+/* ============== [ LOGIN ] ============== */
 
 .logincontainer
 {
   background-color: #f0f8ff;
   border-radius: 5px;
   vertical-align: bottom;
+}
+
+/* ============== [ PROFILE ] ============== */
+
+.user_image{
+  max-height: 100px;
+}
+
+.checkbox-hand{
+  cursor: pointer;
 }

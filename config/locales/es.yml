@@ -2,6 +2,7 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 "es":
+
   date:
         January: "Enero"
         February: "Febrero"
@@ -76,7 +77,20 @@
             - diciembre
 
 
-
+  client:
+          name_field: "Nombre de cliente"
+          date_create: "Fecha de Creacion"
+          users: "Usuarios Asociados"
+          proyect: "Proyectos Asociados"
+          new_client: "Nuevo Cliente"
+          edit_client: "Editar Cliente"
+          delete_client: "Eliminar Cliente"
+          show_client: "Ver Cliente"
+          clients: "Clientes"
+          cout_project: "Proyectos Asociados:  %{count}."
+          cout_users:   "Usuarios Registrados: %{count}."
+          eliminate_confirm: "¿Esta seguro que desea eliminar este cliente?"
+          client: "Cliente"
   home:
             home: "Home"
             singin: "Iniciar Sesion"
@@ -104,6 +118,7 @@
             create: "Crear"
             filter: "Filtrar"
             comment: "Comentar"
+            send: "Enviar"
 
 
   my_projects:
@@ -126,12 +141,13 @@
             mood:
                         update_mood: "Actualiza tu estado"
                         mood_updated: "Estado actualizado!"
+                        actual_mood: "Estado actual"
 
 
   user_edit:
             choose_your_profile_settings: "SELECCIONE LAS OPCIONES DE SU PERFIL"
             personal_data: "Información Personal"
-            full_Name: "Nombre completo"
+            full_Name: "Nombre Completo"
             email: "Email"
             load_openid: "Tomar OpenID de sesión de Gmail"
             skype_user: "Usuario skype"
@@ -144,9 +160,11 @@
             change_password: "Cambiar Contraseña"
             current_password: "Contraseña actual"
             new_password: "Nueva contraseña"
-            confirm_password: "Confirmar nueva contraseña"
+            confirm_password: "Confirmar contraseña"
+            gravatar: "Utilizar la imagen Gravatar"
 
   user:
+            user: "Usuario"
             continue: "Continuar"
             password:  "Contraseña"
             sing_in_with:  "Ingresar con"
@@ -170,7 +188,7 @@
             sign_in:  "Ingresar"
             remember_me:  "Recuerdamé"
             forgot_password:  "¿Olvido su contraseña?"
-            resend_confirmation_instructions:  "Instrucciones para reenviar confirmación"
+            resend_confirmation_instructions:  "Reenviar instrucciones de confirmación"
             account_locked:  "Su cuenta a sido bloqueada debido a la cantidad excesiva de intentos de hacer log in."
             unlock_account_link:  "Haz click en el link debajo para desbloquear tu cuenta:"
             unlock_account: "Desbloquear mi cuenta"
@@ -200,25 +218,72 @@
                 errors:
                         template:
                                   header:
-                                          one: "Se genero un error al intentar guardar el %{model}"
-                                          other: "Se generaron %{count} errores al intentar guardar el %{model}"
+                                          one: "Se genero un error al intentar guardar el %{model}."
+                                          other: "Se generaron %{count} errores al intentar guardar el %{model}."
                         models:
+                                client:
+                                        attributes:
+                                                    name:
+                                                          blank: "El nombre no puede ser vacio."
+                                                          too_short: "El contenido debe contener al menos 40 caracteres."
                                 feedback:
                                           attributes:
                                                       subject:
-                                                                blank:    "El asunto no puede ser vacio"
+                                                                blank:    "El asunto no puede ser vacio."
                                                       project:
-                                                                blank:    "El Feedback debe tener asociado un proyecto"
+                                                                blank:    "El Feedback debe tener asociado un proyecto."
                                                       user:
-                                                                blank:    "El Feedback debe tener asociado el usuario creador"
+                                                                blank:    "El Feedback debe tener asociado el usuario creador."
 
                                                       content:
-                                                                blank:    "El contenido no puede ser vacio"
+                                                                blank:    "El contenido no puede ser vacio."
+                                                                too_short: "El contenido debe tener al menos 100 caracteres"
                                 comment:
                                           attributes:
                                                       content:
-                                                                blank: "El contenido no puede ser vacio"
-                                                                too_short: "El contenido debe contener al menos 40 caracteres"
+                                                                blank: "El contenido no puede ser vacio."
+                                                                too_short: "El contenido debe contener al menos 40 caracteres."
+                                client:
+                                          attributes:
+                                                      name:
+                                                            blank: "El nombre no puede ser vacio."
+                                                            taken: "Ya existe un cliente con ese nombre."
+                                user:
+                                          attributes:
+                                                      username:
+                                                           blank: "Nombre de Usuario no puede ser vacio."
+                                                           taken: "Nombre de Usuario en uso."
+                                                      full_name:
+                                                           blank: "Nombre Completo no puede ser vacio."
+                                                      email:
+                                                           blank: "Email no puede ser vacio."
+                                                           format: "Email mal formado."
+                                                           taken: "Email en uso."
+                                                           already_confirmed: "Email ya confirmado."
+                                                           invalid: "Email con formato invalido."
+                                                      password:
+                                                           blank: "Contraseña no puede ser vacio."
+                                                           confirmation: "Confirmar contraseña no coincide."
+                                                           too_short: "La contraseña debe tener un largo minimo de 6 caracteres."
+                                                           too_long: "La contraseña debe tener un largo maximo de 20 caracteres."
+                                                      password_confirmation:
+                                                           blank: "Confirmar contraseña no puede ser vacio."
+                                                      openidemail:
+                                                           taken: "OpenID en uso."
+                                                      confirmation_token:
+                                                           invalid: "Token de confirmacion invalido"
+                                form:
+                                          attributes:
+                                                      name:
+                                                        blank: "Nombre del formulario no puede ser vacio."
+                                                      email:
+                                                        blank: "Email no puede ser vacio."
+
+                                milestone:
+                                          attributes:
+                                                      name:
+                                                       blank: "Nombre del hito no puede ser vacio."
+
 
 
   Comments:
@@ -246,7 +311,7 @@
             create: "Crear"
             create_by: "Creado por"
             date_on: "el"
-            Remaining_time_for_editing: "Tiempor Restante para poder editar: "
+            Remaining_time_for_editing: "Tiempo restante para poder editar: "
             minutes: "minutos"
             seconds: "segundos"
             and: "y"
@@ -254,19 +319,40 @@
 
   form:
             add_form: "Agregar Formulario"
+            last_total_answers: "Total de respuestas última vez: "
             total_answers: "Total de respuestas: "
             clients: "Clientes encontrados en el fomulario: "
             users: "Usuarios que respondieron: "
             missing_users: "Faltan responder: "
-            select: "Seleccione una"
+            select: "Seleccione uno"
             full_data: "Mostrar datos completos"
-            name: "Nombre del formulario: "
+            name: "Nombre del formulario"
             google_email: "Nombre de usuario Google"
             password: "Contraseña"
             name_filter: "Nombre contiene: "
-
+            delete_form: "Eliminar formulario"
+            authentication_error: "Error de autenticación."
+            form: "Formulario"
+            duplicated: "El formulario ya existe."
+            not_exists: "El formulario no existe."
+            not_exists_anymore?: "No se ha encontrado el formulario en el drive de la cuenta google."
+            eliminate_confirm: "¿Está seguro que desea eliminar este formulario?"
 
   admin:
+            tabs:
+                          forms: "Formularios"
+                          show_form: "Ver formulario"
+                          reports: "Reportes"
+                          new_user: "Nuevo Usuario de Cliente"
+                          show_user: "Ver Usuario"
+                          edit_user: "Editar Usuario"
+                          delete_user: "Eliminar Usuario"
+                          clients: "Clientes"
+                          show_client: "Ver Cliente"
+                          new_client: "Nuevo Cliente"
+                          edit_client: "Editar Cliente"
+                          new_project: "Nuevo proyecto"
+
             customer_satisfaction_manager: "MANAGER DE  SATISFACCIÓN DEL CLIENTE"
             customers:  "Clientes"
             summary:    "Resumen"
@@ -276,12 +362,23 @@
             clients:   "Clientes"
             forms: "Formularios"
             evolution_of_general_mood:  "Evolución del estado de ánimo general"
-            Status_of_Projects: "Estado del proyecto"
-
-            tabs:
-              forms: "Formularios"
-              show_form: "Mostrar formulario"
-              reports: "Reportes"
+            Status_of_Projects: "Estado de los proyectos"
+            add_clients: "Nuevo Cliente"
+            mooveit_employee:   "Empleado Moove-IT"
+            mooveit_admin:   "Empleado Moove-IT(Admin)"
+            filter_name: "Nombre contiene: "
+            comment_created: "Comentario hecho el "
+            comment_created_on: " en "
+            user_name: "Nombre de Usuario"
+            user_email: "Email: "
+            user_unconfirmed_email: "Email No Confirmado: "
+            user_openid:  "OpenID: "
+            activated: "activado"
+            deactivated: "desactivado"
+            user: "Usuario"
+            enable: "habilitado"
+            disable: "deshabilitado"
+            sure: "¿Está seguro?"
 
 
   milestone:
@@ -290,8 +387,13 @@
             new_milestone:  "Nuevo Hito"
             missing: "Faltan"
             day_and: "dias y"
+            one_day_and: "dia y"
             hours_to_end: "horas para terminar"
+            one_hour_to_end: "hora para terminar"
             Next_milestone: "Proximo hito"
+            end_project: "Final de proyecto"
+            the: " de "
+            eliminate_confirm: "¿Está seguro que desea eliminar este hito?"
 
   proyect:
             list_projects:  "Lista de Proyectos"
@@ -305,10 +407,62 @@
             status:  "Estado"
             editing_project: "Editando Proyecto"
             filter:  "Filtrar"
-
-
+            at: " a las "
+            hours: " horas "
+            finalized: "Proyecto finalizado"
 
   mood:
             mood_of_our_customers:   "ESTADO DE ÁNIMO DE NUESTROS CLIENTES"
             mood_state_changed:      "El estado de ánimo ha cambiado!!!"
             changes_in_mood:         "Cambios en el estado de ánimo"
+
+
+  activity:
+              authored_by: "Realizado por"
+              date_on: "el"
+
+  devise:
+      failure:
+        user:
+            invalid: "Login incorrecto."
+            email_not_allowed: "Email no permitido."
+            unauthenticated: "Usuario no autenticado."
+
+  email:
+      notification:
+        feedback:
+            title: "Nuevo Feedback"
+            greeting: "Hola"
+            new: "Un nuevo articulo ha sido agregado al proyecto"
+            notify: "Como gerente del proyecto recibes notificaciones ante cualquier cambio."
+            unsubscribe1: "Para no recibir estos emails, visita la pagina "
+            unsubscribe2: " y elije tu configuracion de notificaciones."
+            salutation: "Ten un  buen dia,"
+            signature: "El equipo Moove-iT"
+            visitproject: "Para ver el proyecto visita: "
+        comment:
+            title: "Nuevo Comentario"
+            greeting: "Hola"
+            new: "Un nuevo comentario ha sido agregado a un articulo del proyecto "
+            notify: "Como gerente del proyecto recibes notificaciones ante cualquier cambio. "
+            unsubscribe1: "Para no recibir estos emails, visita la pagina "
+            unsubscribe2: " y elije tu configuracion de notificaciones."
+            salutation: "Ten un  buen dia,"
+            signature: "El equipo Moove-iT"
+            visitproject: "Para ver el proyecto visita: "
+        reminder:
+            title: "Recordatorio"
+            greeting: "Hola"
+            intro1: "Ha pasado mucho tiempo desde que nos has dicho como te sientes con respecto al proyecto "
+            intro2: "Nosotros en Moove-iT estamos muy interesados en lo que piensas de nuestros servicios."
+            salutation: "Ten un  buen dia,"
+            signature: "El equipo Moove-iT"
+            faceclick: "Con solo hacer click en una de las caras puedes decirnos como te sientes actualmente con el proyecto "
+            request: ""
+            face1: "Enojado"
+            face2: "Decepcionado"
+            face3: "Indiferente"
+            face4: "Satisfecho"
+            face5: "Feliz"
+
+

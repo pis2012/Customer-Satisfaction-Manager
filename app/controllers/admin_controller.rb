@@ -5,8 +5,12 @@ class AdminController < ApplicationController
   layout 'admin'
 
   def index
+    @users =  User.all
+    @activities = Activity.recent_activity Date.today - 1.day, 12
 
-
+    respond_to do |format|
+      format.html { }
+    end
   end
 
   def show_reports

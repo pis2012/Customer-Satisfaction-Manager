@@ -4,16 +4,19 @@
       <tr id="row_comment_<%= comment.id %>">
 
         <td class="avatar">
-          <% if current_user.profile.avatar.file? && !current_user.profile.show_gravatar %>
-              <%= image_tag current_user.profile.avatar.url(:medium), :class => "user_image" %>
+          <% if comment.user.profile.show_gravatar %>
+              <%= gravatar_image_tag( comment.user.profile.user.email.gsub('spam', 'mdeering'), :alt => comment.user.profile.user.full_name, :class => "user_image img-polaroid")  %>
           <% else %>
-              <%= gravatar_image_tag(current_user.profile.user.email.gsub('spam', 'mdeering'), :alt => current_user.profile.user.full_name, :class => "user_image") %>
+              <% if comment.user.profile.avatar.file?  %>
+                  <%= image_tag comment.user.profile.avatar.url(:medium), :class => "user_image img-polaroid" %>
+              <% else %>
+                  <%= image_tag "default_user_pic.png", :class => "user_image"  %>
+              <% end %>
           <% end %>
         </td>
 
-
         <td class="comment_info">
-          <textarea readonly class="comment_content" rows="3"><%= comment.content %></textarea>
+          <pre class="comment_content"><%= comment.content %></pre>
           <h6 class="comment_author"><%= t('feedback.create_by')+" " + comment.user.full_name + " "+t('feedback.date_on')+"   " + t("date."+"#{comment.created_at.strftime("%A")}")+ comment.created_at.strftime(" %d ")+ t("date."+"#{comment.created_at.strftime("%B")}") +comment.created_at.strftime(" %Y")+comment.created_at.strftime(" ,  %H:%M") %></h6>
         </td>
 
@@ -23,10 +26,14 @@
   <tr id="row_comment_new">
 
     <td class="avatar">
-      <% if current_user.profile.avatar.file? && !current_user.profile.show_gravatar %>
-          <%= image_tag current_user.profile.avatar.url(:medium), :class => "user_image" %>
+      <% if current_user.profile.show_gravatar %>
+          <%= gravatar_image_tag( current_user.profile.user.email.gsub('spam', 'mdeering'), :alt => current_user.profile.user.full_name, :class => "user_image img-polaroid")  %>
       <% else %>
-          <%= gravatar_image_tag(current_user.profile.user.email.gsub('spam', 'mdeering'), :alt => current_user.profile.user.full_name, :class => "user_image") %>
+          <% if current_user.profile.avatar.file?  %>
+              <%= image_tag current_user.profile.avatar.url(:medium), :class => "user_image img-polaroid" %>
+          <% else %>
+              <%= image_tag "default_user_pic.png", :class => "user_image"  %>
+          <% end %>
       <% end %>
     </td>
 

@@ -1,25 +1,23 @@
-<h1>Listing clients</h1>
+<div class="clients_index">
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Date Created</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <div class="clients_filter form-inline">
+    <h5 class="client_filter_element"><%= t('form.name_filter') %></h5>
+    &nbsp;
+    <%= text_field_tag "clients_name_filter" %>
+    &nbsp;
+    <%= button_tag(t('buttons.filter'), :class => "btn") %>
+  </div>
+  <hr class="hr_clients_table">
+  <table class="clients_table">
+    <% @clients.each do |client| %>
+        <tr>
+          <td class="client_info">
+            <h4 class="client_name"><a href="#show-client-<%= client.id.to_s %>" class="show-client-link" data-url="<%= clients_show_path(client.id) %>"><%= client.name %></a></h4>
+            <h6 class="client_projects_count"><%= t('client.cout_project', :count => client.projects.count.to_s) %></h6>
+            <h6 class="client_users_count"><%= t('client.cout_users', :count => client.users.count.to_s) %></h6>
+          </td>
+        </tr>
+    <% end %>
+  </table>
 
-<% @clients.each do |client| %>
-  <tr>
-    <td><%= client.name %></td>
-    <td><%= client.created_at %></td>
-    <td><%= link_to 'Show', client %></td>
-    <td><%= link_to 'Edit', edit_client_path(client) %></td>
-    <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-
+</div>

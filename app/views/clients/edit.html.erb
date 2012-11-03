@@ -1,6 +1,25 @@
-<h1>Editing client</h1>
+<!-- page header -->
+<div class="page_header">
+  <h1><%= t('admin.tabs.edit_client') %></h1>
 
-<%= render 'form' %>
+  <div class="add_element">
+    <% if @client.projects.count == 0 %>
+        <button class="btn btn-link delete-btn">
+          <i class="icon-minus icon-white"></i>
+          <%= link_to t('client.delete_client'), clients_delete_path(@client.id), :method => :delete, :remote => true,
+                      :confirm => t('client.eliminate_confirm') %>
+        </button>
+    <% end %>
+  </div>
 
-<%= link_to 'Show', @client %> |
-<%= link_to 'Back', clients_path %>
+</div>
+<!--// page header
+
+<!-- page contents -->
+<div class="page_content" id="edit_client_data">
+  <%= render 'form' %>
+</div>
+<!--// page contents -->
+
+
+

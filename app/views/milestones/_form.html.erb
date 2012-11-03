@@ -1,12 +1,11 @@
 <%= form_for(@milestone, :remote => true) do |f| %>
 
     <% if @milestone.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@milestone.errors.count, "error") %> prohibited this milestone from being saved:</h2>
-
+        <div class="alert alert-error">
+          <h4><%= t('activerecord.errors.template.header.one',:model=> t('milestone.milestone')) %></h4>
           <ul>
             <% @milestone.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
+                <li><strong><%= msg %></strong></li>
             <% end %>
           </ul>
         </div>
@@ -28,7 +27,7 @@
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
     <%= f.submit t('buttons.create'), :class => "btn" %> &nbsp <%= t('buttons.or') %>
-    <button class="btn btn-link cancel-milestone-link" type="button" data-url="<%= project_data_path(@milestone.project) %>">
+    <button class="btn btn-link data-link" type="button" data-url="<%= project_data_path(@milestone.project) %>">
     <%= t('buttons.cancel') %>
     </button>
 <% end %>

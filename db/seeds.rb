@@ -27,14 +27,18 @@ ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'moods'}")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'profiles'}")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'feedbacks'}")
 
+CsmProperty.create(name: "MinutesBetweenReminderEmails", value: "1440")
+CsmProperty.create(name: "DaysWithoutActivityForAProject" , value: "30")
+CsmProperty.create(name: "DaysBetweenReminderEmailForAProject", value: "30")
+
 rol_admin = Role.create(name:'Admin')
 rol_client = Role.create(name:'Client')
 rol_mooveit = Role.create(name:'Mooveit')
 
-type_skype = FeedbackType.create(name:'Skype',image_url:'/assets/feedbacks/generic.png')
-type_email = FeedbackType.create(name:'Email',image_url:'/assets/feedbacks/generic.png')
-type_reconocimiento = FeedbackType.create(name:'Recognition',image_url:'/assets/feedbacks/generic.png')
-type_comentario = FeedbackType.create(name:'Comment',image_url:'/assets/feedbacks/generic.png')
+type_skype = FeedbackType.create(name:'Skype',image_url:'/assets/feedbacks/skype.png')
+type_email = FeedbackType.create(name:'Email',image_url:'/assets/feedbacks/email.png')
+type_recognition = FeedbackType.create(name:'Recognition',image_url:'/assets/feedbacks/recognition.png')
+type_comment = FeedbackType.create(name:'Comment',image_url:'/assets/feedbacks/comment.png')
 
 client1 = Client.create(name:'MicroHard')
 client2 = Client.create(name:'Sony')
@@ -43,8 +47,8 @@ end_date = DateTime.new(2013,1,1)
 
 p1 = Project.create(client: client2,
                     name: "Panaderia El 10",
-                    description: "Software para administracion de una panaderia",
-                    end_date: end_date,
+                    description: "Panaderia El 10 software helps commercial bakers and other food manufacturers simplify their business. It is a single system for managing inventory, manufacturing, product development, customer service, accounting, sales management and forecasting. Panaderia El 10 is a proven solution to help bakers. It provides a simple and practical way to manage your production, clients and accounts. Panaderia El 10 (football reference) effectively stores information that you require on a daily basis, in a program that any Bakery can work with.",
+                    end_date: '2015-04-01 00:00:00',
                     finalized: false)
 
 date1 = DateTime.new(2012,1,1)
@@ -55,31 +59,31 @@ date5 = DateTime.new(2012,8,12)
 
 mood1 = Mood.new
 mood1.project = p1
-mood1.status = 7
+mood1.status = 4
 mood1.created_at = date1
 mood1.save
 
 mood2 = Mood.new
 mood2.project = p1
-mood2.status = 3
+mood2.status = 2
 mood2.created_at = date2
 mood2.save
 
 mood3 = Mood.new
 mood3.project = p1
-mood3.status = 7
+mood3.status = 4
 mood3.created_at = date3
 mood3.save
 
 mood4 = Mood.new
 mood4.project = p1
-mood4.status = 5
+mood4.status = 3
 mood4.created_at = date4
 mood4.save
 
 mood5 = Mood.new
 mood5.project = p1
-mood5.status = 9
+mood5.status = 5
 mood5.created_at = date5
 mood5.save
 
@@ -91,7 +95,7 @@ p2 = Project.create(client: client2,
                     finalized:false)
 
 Mood.create(project: p2,
-            status: 5)
+            status: 3)
 
 mood1 = Mood.new
 mood1.project = p2
@@ -101,7 +105,7 @@ mood1.save
 
 mood1 = Mood.new
 mood1.project = p2
-mood1.status = 9
+mood1.status = 5
 mood1.created_at = date2
 mood1.save
 
@@ -116,13 +120,13 @@ Mood.create(project: p3,
 
 mood1 = Mood.new
 mood1.project = p3
-mood1.status = 7
+mood1.status = 4
 mood1.created_at = date2
 mood1.save
 
 mood1 = Mood.new
 mood1.project = p3
-mood1.status = 9
+mood1.status = 5
 mood1.created_at = date3
 mood1.save
 
@@ -133,7 +137,7 @@ p4 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p4,
-            status: 10)
+            status: 5)
 
 p5 = Project.create(client: client1,
                     name:'Proyecto5',
@@ -142,7 +146,7 @@ p5 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p5,
-            status: 10)
+            status: 5)
 
 p6 = Project.create(client: client1,
                     name:'Proyecto6',
@@ -151,7 +155,7 @@ p6 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p6,
-            status: 10)
+            status: 5)
 
 p7 = Project.create(client: client1,
                     name:'Proyecto7',
@@ -160,7 +164,7 @@ p7 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p7,
-            status: 10)
+            status: 5)
 
 p8 = Project.create(client: client1,
                     name:'Proyecto8',
@@ -169,7 +173,7 @@ p8 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p8,
-            status: 10)
+            status: 5)
 
 p9 = Project.create(client: client1,
                     name:'Proyecto9',
@@ -178,7 +182,7 @@ p9 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p9,
-            status: 10)
+            status: 5)
 
 p10 = Project.create(client: client1,
                     name:'Proyecto10',
@@ -187,7 +191,7 @@ p10 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p10,
-            status: 10)
+            status: 5)
 
 p11 = Project.create(client: client1,
                     name:'Proyecto11',
@@ -196,7 +200,7 @@ p11 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p11,
-            status: 10)
+            status: 5)
 
 p12 = Project.create(client: client1,
                     name:'Proyecto12',
@@ -205,7 +209,7 @@ p12 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p12,
-            status: 7)
+            status: 4)
 
 p13 = Project.create(client: client1,
                     name:'Proyecto13',
@@ -214,7 +218,7 @@ p13 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p13,
-            status: 10)
+            status: 5)
 
 p14 = Project.create(client: client1,
                     name:'Proyecto14',
@@ -223,7 +227,7 @@ p14 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p14,
-            status: 5)
+            status: 3)
 
 p15 = Project.create(client: client1,
                     name:'Proyecto15',
@@ -232,7 +236,7 @@ p15 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p15,
-            status: 10)
+            status: 5)
 
 p16 = Project.create(client: client1,
                     name:'Proyecto16',
@@ -241,7 +245,7 @@ p16 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p16,
-            status: 10)
+            status: 5)
 
 p17 = Project.create(client: client1,
                     name:'Proyecto17',
@@ -250,7 +254,7 @@ p17 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p17,
-            status: 5)
+            status: 3)
 
 p18 = Project.create(client: client1,
                     name:'Proyecto18',
@@ -268,7 +272,7 @@ p19 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p19,
-            status: 10)
+            status: 5)
 
 p20 = Project.create(client: client1,
                     name:'Proyecto20',
@@ -277,7 +281,7 @@ p20 = Project.create(client: client1,
                     finalized:false)
 
 Mood.create(project: p20,
-            status: 10)
+            status: 5)
 
 p21 = Project.create(client: client1,
                      name:'Proyecto21',
@@ -286,7 +290,7 @@ p21 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p21,
-            status: 10)
+            status: 5)
 
 p22 = Project.create(client: client1,
                      name:'Proyecto22',
@@ -295,7 +299,7 @@ p22 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p22,
-            status: 10)
+            status: 5)
 
 p23 = Project.create(client: client1,
                      name:'Proyecto23',
@@ -304,7 +308,7 @@ p23 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p23,
-            status: 10)
+            status: 5)
 
 p24 = Project.create(client: client1,
                      name:'Proyecto24',
@@ -313,7 +317,7 @@ p24 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p24,
-            status: 10)
+            status: 5)
 
 p25 = Project.create(client: client1,
                      name:'Proyecto25',
@@ -322,7 +326,7 @@ p25 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p25,
-            status: 10)
+            status: 5)
 
 p26 = Project.create(client: client1,
                      name:'Proyecto26',
@@ -331,7 +335,7 @@ p26 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p26,
-            status: 10)
+            status: 5)
 
 p27 = Project.create(client: client1,
                      name:'Proyecto27',
@@ -340,7 +344,7 @@ p27 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p27,
-            status: 10)
+            status: 5)
 
 p28 = Project.create(client: client1,
                      name:'Proyecto28',
@@ -349,7 +353,7 @@ p28 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p28,
-            status: 10)
+            status: 5)
 
 p29 = Project.create(client: client1,
                      name:'Proyecto29',
@@ -358,7 +362,7 @@ p29 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p29,
-            status: 10)
+            status: 5)
 
 p30 = Project.create(client: client1,
                      name:'Proyecto30',
@@ -367,7 +371,7 @@ p30 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p30,
-            status: 10)
+            status: 5)
 
 p31 = Project.create(client: client1,
                      name:'Proyecto31',
@@ -376,7 +380,7 @@ p31 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p31,
-            status: 10)
+            status: 5)
 
 p32 = Project.create(client: client1,
                      name:'Proyecto32',
@@ -385,7 +389,7 @@ p32 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p32,
-            status: 10)
+            status: 5)
 
 p33 = Project.create(client: client1,
                      name:'Proyecto33',
@@ -394,7 +398,7 @@ p33 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p33,
-            status: 10)
+            status: 5)
 
 p34 = Project.create(client: client1,
                      name:'Proyecto34',
@@ -403,7 +407,7 @@ p34 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p34,
-            status: 10)
+            status: 5)
 
 p35 = Project.create(client: client1,
                      name:'Proyecto35',
@@ -412,7 +416,7 @@ p35 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p35,
-            status: 10)
+            status: 5)
 
 p36 = Project.create(client: client1,
                      name:'Proyecto36',
@@ -421,7 +425,7 @@ p36 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p36,
-            status: 10)
+            status: 5)
 
 p37 = Project.create(client: client1,
                      name:'Proyecto37',
@@ -430,7 +434,7 @@ p37 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p37,
-            status: 10)
+            status: 5)
 
 p38 = Project.create(client: client1,
                      name:'Proyecto38',
@@ -439,7 +443,7 @@ p38 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p38,
-            status: 10)
+            status: 5)
 
 p39 = Project.create(client: client1,
                      name:'Proyecto39',
@@ -448,7 +452,7 @@ p39 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p39,
-            status: 10)
+            status: 5)
 
 p40 = Project.create(client: client1,
                      name:'Proyecto40',
@@ -457,7 +461,7 @@ p40 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p40,
-            status: 10)
+            status: 5)
 
 p41 = Project.create(client: client1,
                      name:'Proyecto41',
@@ -466,7 +470,7 @@ p41 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p41,
-            status: 10)
+            status: 5)
 
 p42 = Project.create(client: client1,
                      name:'Proyecto42',
@@ -475,7 +479,7 @@ p42 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p42,
-            status: 10)
+            status: 5)
 
 p43 = Project.create(client: client1,
                      name:'Proyecto43',
@@ -484,7 +488,7 @@ p43 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p43,
-            status: 10)
+            status: 5)
 
 p44 = Project.create(client: client1,
                      name:'Proyecto44',
@@ -493,7 +497,7 @@ p44 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p44,
-            status: 10)
+            status: 5)
 
 p45 = Project.create(client: client1,
                      name:'Proyecto45',
@@ -502,39 +506,40 @@ p45 = Project.create(client: client1,
                      finalized:false)
 
 Mood.create(project: p45,
-            status: 10)
+            status: 5)
 
 
-admin_usr = User.create(role: rol_admin, client: client1,
+admin_usr = User.new(role: rol_admin, client: client1,
                         username: 'admin',password:'admin',password_confirmation:'admin',
                         full_name:'Martin Cabrera', email:'cabrera@1234.com')
 admin_usr.skip_confirmation!
-admin_usr.save
+admin_usr.save :validate => false
 
 profile1 = Profile.create(user:admin_usr, project:p1,skype_usr:'martin.skype')
 
-client_usr = User.create(role: rol_client, client: client1,
+client_usr = User.new(role: rol_client, client: client1,
                          username: 'client_usr',password:'client',password_confirmation:'client',
                          full_name:'Bill Gates', email:'gates@1234.com')
 client_usr.skip_confirmation!
-client_usr.save
+client_usr.save :validate => false
 
 profile = Profile.create(user:client_usr, project:p4,skype_usr:'gates.skype')
 
 
 
-client_usr = User.create(role: rol_client, client: client2,
+client_usr = User.new(role: rol_client, client: client2,
                          username: 'sony',password:'sony',password_confirmation:'sony',
                          full_name:'Sony',email:'sony@1234.com')
 client_usr.skip_confirmation!
-client_usr.save
+client_usr.save :validate => false
 
 profile2 = Profile.create(user:client_usr, project:p1,skype_usr:'sony.skype')
 
-Feedback.create(project: p1, user: client_usr, feedback_type: type_skype, subject: "Email de requerimientos - interfaz", content: "<img align=\"none\" alt=\"\" src=\"http:\/\/1.bp.blogspot.com/-1uQRYMklACU/ToQ6aL-5uUI/AAAAAAAAAgQ/9_u0922cL14/s1600/cute-puppy-dog-wallpapers.jpg\"> Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id. Quo mundi lobortis reformidans eu, legimus senserit definiebas an eos. Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per. In usu latine equidem dolores. Quo no falli viris intellegam, ut fugit veritus placerat per. Ius id vidit volumus mandamus, vide veritus democritum te nec, ei eos debet libris consulatu. No mei ferri graeco dicunt, ad cum veri accommodare. Sed at malis omnesque delicata, usu et iusto zzril meliore. Dicunt maiorum eloquentiam cum cu, sit summo dolor essent te. Ne quodsi nusquam legendos has, ea dicit voluptua eloquentiam pro, ad sit quas qualisque. Eos vocibus deserunt quaestio ei. Blandit incorrupte quaerendum in quo, nibh impedit id vis, vel no nullam semper audiam. Ei populo graeci consulatu mei, has ea stet modus phaedrum. Inani oblique ne has, duo et veritus detraxit. Tota ludus oratio ea mel, offendit persequeris ei vim. Eos dicat oratio partem ut, id cum ignota senserit intellegat. Sit inani ubique graecis ad, quando graecis liberavisse et cum, dicit option eruditi at duo. Homero salutatus suscipiantur eum id, tamquam voluptaria expetendis ad sed, nobis feugiat similique usu ex.")
-Feedback.create(project: p1, user: client_usr, feedback_type: type_email, subject: "Conversacion Skype respecto a Integracion Servidores", content: "Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id. Quo mundi lobortis reformidans eu, legimus senserit definiebas an eos. Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per. In usu latine equidem dolores. Quo no falli viris intellegam, ut fugit veritus placerat per. Ius id vidit volumus mandamus, vide veritus democritum te nec, ei eos debet libris consulatu. No mei ferri graeco dicunt, ad cum veri accommodare. Sed at malis omnesque delicata, usu et iusto zzril meliore. Dicunt maiorum eloquentiam cum cu, sit summo dolor essent te. Ne quodsi nusquam legendos has, ea dicit voluptua eloquentiam pro, ad sit quas qualisque. Eos vocibus deserunt quaestio ei. Blandit incorrupte quaerendum in quo, nibh impedit id vis, vel no nullam semper audiam. Ei populo graeci consulatu mei, has ea stet modus phaedrum. Inani oblique ne has, duo et veritus detraxit. Tota ludus oratio ea mel, offendit persequeris ei vim. Eos dicat oratio partem ut, id cum ignota senserit intellegat. Sit inani ubique graecis ad, quando graecis liberavisse et cum, dicit option eruditi at duo. Homero salutatus suscipiantur eum id, tamquam voluptaria expetendis ad sed, nobis feugiat similique usu ex.")
-Feedback.create(project: p1, user: client_usr, feedback_type: type_email, subject: "Situacion de Formularios", content: " Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id. Quo mundi lobortis reformidans eu, legimus senserit definiebas an eos. Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per. In usu latine equidem dolores. Quo no falli viris intellegam, ut fugit veritus placerat per. Ius id vidit volumus mandamus, vide veritus democritum te nec, ei eos debet libris consulatu. No mei ferri graeco dicunt, ad cum veri accommodare. Sed at malis omnesque delicata, usu et iusto zzril meliore. Dicunt maiorum eloquentiam cum cu, sit summo dolor essent te. Ne quodsi nusquam legendos has, ea dicit voluptua eloquentiam pro, ad sit quas qualisque. Eos vocibus deserunt quaestio ei. Blandit incorrupte quaerendum in quo, nibh impedit id vis, vel no nullam semper audiam. Ei populo graeci consulatu mei, has ea stet modus phaedrum. Inani oblique ne has, duo et veritus detraxit. Tota ludus oratio ea mel, offendit persequeris ei vim. Eos dicat oratio partem ut, id cum ignota senserit intellegat. Sit inani ubique graecis ad, quando graecis liberavisse et cum, dicit option eruditi at duo. Homero salutatus suscipiantur eum id, tamquam voluptaria expetendis ad sed, nobis feugiat similique usu ex.")
-
+Feedback.create(project: p1, user: client_usr, feedback_type: type_skype, subject: "Email de requerimientos - interfaz", content: "<img align=\"none\" alt=\"\" src=\"http:\/\/1.bp.blogspot.com/-1uQRYMklACU/ToQ6aL-5uUI/AAAAAAAAAgQ/9_u0922cL14/s1600/cute-puppy-dog-wallpapers.jpg\"> Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id. Quo mundi lobortis reformidans eu, legimus senserit definiebas an eos. Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per. In usu latine equidem dolores. Quo no falli viris intellegam, ut fugit veritus placerat per. Ius id vidit volumus mandamus, vide veritus democritum te nec, ei eos debet libris consulatu. No mei ferri graeco dicunt, ad cum veri accommodare. Sed at malis omnesque delicata, usu et iusto zzril meliore. Dicunt maiorum eloquentiam cum cu, sit summo dolor essent te. Ne quodsi nusquam legendos has, ea dicit voluptua eloquentiam pro, ad sit quas qualisque. Eos vocibus deserunt quaestio ei. Blandit incorrupte quaerendum in quo, nibh impedit id vis, vel no nullam semper audiam. Ei populo graeci consulatu mei, has ea stet modus phaedrum. Inani oblique ne has, duo et veritus detraxit. Tota ludus oratio ea mel, offendit persequeris ei vim. Eos dicat oratio partem ut, id cum ignota senserit intellegat. Sit inani ubique graecis ad, quando graecis liberavisse et cum, dicit option eruditi at duo. Homero salutatus suscipiantur eum id, tamquam voluptaria expetendis ad sed, nobis feugiat similique usu ex.", :client_visibility => true, :mooveit_visibility => true)
+Feedback.create(project: p1, user: client_usr, feedback_type: type_email, subject: "Conversacion Skype respecto a Integracion Servidores", content: "Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id. Quo mundi lobortis reformidans eu, legimus senserit definiebas an eos. Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per. In usu latine equidem dolores. Quo no falli viris intellegam, ut fugit veritus placerat per. Ius id vidit volumus mandamus, vide veritus democritum te nec, ei eos debet libris consulatu. No mei ferri graeco dicunt, ad cum veri accommodare. Sed at malis omnesque delicata, usu et iusto zzril meliore. Dicunt maiorum eloquentiam cum cu, sit summo dolor essent te. Ne quodsi nusquam legendos has, ea dicit voluptua eloquentiam pro, ad sit quas qualisque. Eos vocibus deserunt quaestio ei. Blandit incorrupte quaerendum in quo, nibh impedit id vis, vel no nullam semper audiam. Ei populo graeci consulatu mei, has ea stet modus phaedrum. Inani oblique ne has, duo et veritus detraxit. Tota ludus oratio ea mel, offendit persequeris ei vim. Eos dicat oratio partem ut, id cum ignota senserit intellegat. Sit inani ubique graecis ad, quando graecis liberavisse et cum, dicit option eruditi at duo. Homero salutatus suscipiantur eum id, tamquam voluptaria expetendis ad sed, nobis feugiat similique usu ex.", :client_visibility => false, :mooveit_visibility => true)
+Feedback.create(project: p1, user: client_usr, feedback_type: type_email, subject: "Situacion de Formularios", content: " Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id. Quo mundi lobortis reformidans eu, legimus senserit definiebas an eos. Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per. In usu latine equidem dolores. Quo no falli viris intellegam, ut fugit veritus placerat per. Ius id vidit volumus mandamus, vide veritus democritum te nec, ei eos debet libris consulatu. No mei ferri graeco dicunt, ad cum veri accommodare. Sed at malis omnesque delicata, usu et iusto zzril meliore. Dicunt maiorum eloquentiam cum cu, sit summo dolor essent te. Ne quodsi nusquam legendos has, ea dicit voluptua eloquentiam pro, ad sit quas qualisque. Eos vocibus deserunt quaestio ei. Blandit incorrupte quaerendum in quo, nibh impedit id vis, vel no nullam semper audiam. Ei populo graeci consulatu mei, has ea stet modus phaedrum. Inani oblique ne has, duo et veritus detraxit. Tota ludus oratio ea mel, offendit persequeris ei vim. Eos dicat oratio partem ut, id cum ignota senserit intellegat. Sit inani ubique graecis ad, quando graecis liberavisse et cum, dicit option eruditi at duo. Homero salutatus suscipiantur eum id, tamquam voluptaria expetendis ad sed, nobis feugiat similique usu ex.", :client_visibility => true, :mooveit_visibility => false)
+Feedback.create(project: p1, user: client_usr, feedback_type: type_recognition, subject: "Reconocimiento por la tarea", content: "Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id. Quo mundi lobortis reformidans eu, legimus senserit definiebas an eos. Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per. In usu latine equidem dolores. Quo no falli viris intellegam, ut fugit veritus placerat per. Ius id vidit volumus mandamus, vide veritus democritum te nec, ei eos debet libris consulatu. ", :client_visibility => true, :mooveit_visibility => true)
+Feedback.create(project: p1, user: client_usr, feedback_type: type_comment, subject: "Comentario sobre curbrimiento", content: "Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id. Quo mundi lobortis reformidans eu, legimus senserit definiebas an eos. Eu sit tincidunt incorrupte definitionem, vis mutat affert percipit cu, eirmod consectetuer signiferumque eu per. In usu latine equidem dolores. Quo no falli viris intellegam, ut fugit veritus placerat per. Ius id vidit volumus mandamus, vide veritus democritum te nec, ei eos debet libris consulatu. ", :client_visibility => true, :mooveit_visibility => true)
 
 Milestone.create(:target_date => '2011-01-01 00:00:00', :project => p1, :name => "Prueba1")
 Milestone.create(:target_date => '2012-02-01 00:00:00', :project => p1, :name => "Prueba2")
@@ -553,7 +558,5 @@ Milestone.create(:target_date => '2012-06-12 00:00:00', :project => p3, :name =>
 Milestone.create(:target_date => '2013-08-06 00:00:00', :project => p3, :name => "Proyecto 3, milestone 3")
 Milestone.create(:target_date => '2014-08-09 00:00:00', :project => p3, :name => "Proyecto 3, milestone 4")
 
-
-#Form.create(user:admin_usr, name:"Customer Satisfaction Survey - July 2012", email:"germanruizravi@gmail.com", password:"")
 
 

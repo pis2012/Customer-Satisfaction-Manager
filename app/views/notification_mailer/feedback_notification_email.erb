@@ -1,0 +1,23 @@
+<% content_for :title do   %>
+    <%= t('email.notification.feedback.title') %>
+<% end %>
+<%= t('email.notification.feedback.greeting') %> <%= "#{@user.full_name}" %>
+<br/>
+<%= t('email.notification.feedback.new') %>
+<%= link_to "#{@project.name}", change_profile_project_url(@project) %>
+<br/>
+<p><%= t('email.notification.feedback.notify') %>
+    <br/>
+  <br/>
+  <%= t('email.notification.feedback.unsubscribe1') %><%= link_to "My Account", edit_profile_url %><%= t('email.notification.feedback.unsubscribe2') %>
+</p>
+<br/>
+<br/>
+<p>
+  <%= t('email.notification.feedback.salutation') %>
+    <br/>
+  <%= t('email.notification.feedback.signature') %>
+</p>
+<br/>
+<br/>
+

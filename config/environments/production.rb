@@ -66,4 +66,24 @@ CSM::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
+
+
+  config.action_mailer.smtp_settings = {
+      :enable_starttls_auto => true,
+      :address              => "smtp.gmail.com",
+      :port                 => 587,
+      :domain               => 'gmail.com',
+      :user_name            => 'pis2012g1@gmail.com',
+      :password             => 'pis2012g1',
+      :authentication       => 'plain'
+  }
+
+  config.action_mailer.raise_delivery_errors = true
+
 end

@@ -21,7 +21,7 @@
       <div class="feedback_type_field control-group">
         <%= f.label :feedback_subject, t('feedback.feedback_type'), :class => "feedback_type_label control-label" %>
         <div class="feedback_type_select_control controls">
-          <%= f.select :feedback_type_id, FeedbackType.all.map { |fe| [fe.name, fe.id] }, {}, {:class => "feedback_type_select"} %>
+          <%= f.select :feedback_type_id, @feedback_types.map { |fe| [fe.name, fe.id] }, {}, {:class => "feedback_type_select"} %>
         </div>
       </div>
 
@@ -40,9 +40,21 @@
     </div>
 
     <div class="feedback_visibility_field form-inline">
+
+      <!-- when a client creates a feedback, he cannot choose it's visibility. The default scope it's admins and clients -->
+      <% if current_user.admin? %>
       <%= f.label :visibility, t('feedback.feedback_visibility'), :class => "feedback_visibility_label" %> &nbsp&nbsp
-      <%= f.check_box :mooveit_visibility, :type => "checkbox" %><%= t('feedback.Moove_IT_employee') %> &nbsp&nbsp
-      <%= f.check_box :client_visibility, :type => "checkbox" %><%= t('admin.clients') %>
+      <label class="checkbox-hand">
+        <%= f.check_box :mooveit_visibility, :type => "checkbox" %><%= t('feedback.Moove_IT_employee') %>
+      </label>
+      &nbsp;&nbsp;
+      <label class="checkbox-hand">
+        <%= f.check_box :client_visibility, :type => "checkbox" %><%= t('admin.clients') %>
+      </label>
+      <% else %>
+          <input id="feedback_client_visibility" type="hidden" value="1" name="feedback[client_visibility]">
+      <% end %>
+
     </div>
     <br>
     <br>

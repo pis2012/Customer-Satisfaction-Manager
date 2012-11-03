@@ -1,4 +1,5 @@
 class Mood < ActiveRecord::Base
+  default_scope :order => 'created_at desc'
 
   belongs_to :project
 
@@ -8,11 +9,10 @@ class Mood < ActiveRecord::Base
 
   validates :status, :presence  => true
   validates :status, :numericality => {:greater_than_or_equal_to => 1}
-  validates :status, :numericality => {:less_than_or_equal_to => 10}
+  validates :status, :numericality => {:less_than_or_equal_to => 5}
 
   def get_mood_img
-    mood_lvl = self.status % 2 == 0 ? self.status-1 : self.status
-    mood_lvl.to_s + ".png"
+    self.status.to_s + ".png"
   end
 
   def self.get_graph
@@ -49,8 +49,12 @@ class Mood < ActiveRecord::Base
 
     Gchart.bar(:size => '560x300', :bg => {:color => '76A4FB,1,ffffff,0', :type => 'gradient', :angle => 90},
                :bar_width_and_spacing => '30,15', :bar_colors => 'FF0000',
-               :data => data, :axis_with_labels => ['x','y'], :axis_labels => [axis,[1,2,3,4,5,6,7,8,9,10]])
+               :data => data, :axis_with_labels => ['x','y'], :axis_labels => [axis,[1,2,3,4,5]])
   end
 
+
+  def self.get_mood_in_last_days(days)
+    Mood.where("created_at >= :start_date",{start_date: Time.now.advance(days: -days)})
+  end
 
 end

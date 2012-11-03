@@ -10,18 +10,18 @@
         <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
 
           <% if current_user.client? %>
-              <% Project.where(:client_id => @view[:project].client_id).order(:name).each do |proj| %>
-                  <% if proj.id != @view[:project].id %>
+              <% Project.where(:client_id => @view[:project].client_id).order(:name).each do |project| %>
+                  <% if project.id != @view[:project].id %>
                       <li>
-                        <%= link_to proj.name, {:controller => "projects", :action => "change_profile_project", :id => proj.id} %>
+                        <%= link_to project.name, change_profile_project_path(project) %>
                       </li>
                   <% end %>
               <% end %>
           <% else %>
-              <% Project.all.each do |proj| %>
-                  <% if proj.id != @view[:project].id %>
+              <% Project.all.each do |project| %>
+                  <% if project.id != @view[:project].id %>
                       <li>
-                        <%= link_to proj.name, {:controller => "projects", :action => "change_profile_project", :id => proj.id} %>
+                        <%= link_to project.name, change_profile_project_path(project) %>
                       </li>
                   <% end %>
               <% end %>
@@ -37,71 +37,11 @@
 <div class="container">
   <div class="row-fluid">
     <div class="span3">
+
+      <%= render "moods/form" %>
       <br>
-
-      <div class="current-mood">
-        <div class="face-mood-state">
-
-          <div id="msj-face-changed-container">
-            <div id="msj-face-changed" class="label label-info">
-              <%= t('my_projects.mood.mood_updated')%>
-            </div>
-          </div>
-
-          </br>
-
-          <div id="myTabContentMoods" class="tab-content">
-            <!-- page moods -->
-            <div class="tab-pane fade in active" id="change-mood1">
-                <!-- page contents -->
-                <div class="page_content" id="change-mood1-content">
-
-                  <%= render template: 'projects/change_mood' %>
-
-                </div>
-            </div>
-
-            <div class="tab-pane fade" id="change-mood3">
-              <!-- page contents -->
-              <div class="page_content" id="change-mood3-content">
-              </div>
-            </div>
-            <div class="tab-pane fade" id="change-mood5">
-              <!-- page contents -->
-              <div class="page_content" id="change-mood5-content">
-              </div>
-            </div>
-            <div class="tab-pane fade" id="change-mood7">
-              <!-- page contents -->
-              <div class="page_content" id="change-mood7-content">
-              </div>
-            </div>
-            <div class="tab-pane fade" id="change-mood9">
-              <!-- page contents -->
-              <div class="page_content" id="change-mood9-content">
-              </div>
-            </div>
-          </div>
-
-          <% if current_user.client? %>
-
-          <ul id="face-list">
-            <% mood = @view[:project].moods.order(:created_at).last.status %>
-            <li <% if mood == 1 %> class="active" <% end %>><a href="#change-mood1" class="change-mood1-link" data-url="<%= change_mood_path('1') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="1" src="/assets/faces/small/1.png" class="face-mood img-rounded" id="miniMood1"/></a></li>
-            <li <% if mood == 3 %> class="active" <% end %>><a href="#change-mood3" class="change-mood3-link" data-url="<%= change_mood_path('3') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="3" src="/assets/faces/small/3.png" class="face-mood img-rounded" id="miniMood3"/></a></li>
-            <li <% if mood == 5 %> class="active" <% end %>><a href="#change-mood5" class="change-mood5-link" data-url="<%= change_mood_path('5') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="5" src="/assets/faces/small/5.png" class="face-mood img-rounded" id="miniMood5"/></a></li>
-            <li <% if mood == 7 %> class="active" <% end %>><a href="#change-mood7" class="change-mood7-link" data-url="<%= change_mood_path('7') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="7" src="/assets/faces/small/7.png" class="face-mood img-rounded" id="miniMood7"/></a></li>
-            <li <% if mood == 9 %> class="active" <% end %>><a href="#change-mood9" class="change-mood9-link" data-url="<%= change_mood_path('9') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="9" src="/assets/faces/small/9.png" class="face-mood img-rounded" id="miniMood9"/></a></li>
-          </ul>
-
-          <% end %>
-
-        </div>
-
-        <p></p>
-        <br>
-      </div>
-
+      <!-- main tab. There are two combos, one for each subject. -->
+      <!-- when one of the hidden tabs is shown the one which is not hidden remains active. -->
       <div id="global_nav">
         <ul id="myTab">
           <li class="feedbacks active">
@@ -140,14 +80,15 @@
 
       <br/>
 
-      <div class="milestone-box">
-        <%= @view[:mile1] %>
-        <hr/>
-        <p> <%= @view[:mile2] %> </p>
+      <!-- this is the milestone advert which shows the next milestone since the actual date -->
+      <div class="milestone-box" id="milestone-box-content">
+        <%= render template: "milestones/milestone_box" %>
       </div>
 
     </div>
     <div class="span9">
+      <!-- here we put all the containers for possible pages -->
+
       <div id="page">
         <div id="myTabContent" class="tab-content">
 
@@ -158,12 +99,12 @@
             <div class="page_header">
               <h1><%= t('my_projects.tabs.feedbacks') %></h1>
 
-
-              <% unless current_user.mooveit? %>
+              <!-- mooveit users can not create milestones. neither can clients and admins when de project is finalized -->
+              <% unless current_user.mooveit? || @project.finalized %>
               <div class="add_element">
-                <a href="#new-feedback" class="btn btn-link new-feedback-link" data-url="<%= new_feedback_path(@project) %>">
+                <button class="btn btn-link new-feedback-link" data-url="<%= new_feedback_path(@project) %>">
                   <i class="icon-plus icon-white"> </i> <%= t('my_projects.tabs.new_feedback')%>
-                </a>
+                </button>
               </div>
               <% end %>
 
@@ -174,7 +115,8 @@
             <!-- page contents -->
             <div class="page_content" id="feedbacks-content">
 
-              <%= form_tag(feedbacks_date_filter_path, :remote => true) do %>
+              <!-- filter form belongs to my_projects/index so it is not reloaded no every feedbacks table update -->
+              <%= form_tag(feedbacks_date_filter_path, :method => "get", :remote => true) do %>
                   <%= hidden_field_tag(:project_id,@project.id) %>
                   <div class="feedbacks_filter">
                     <h5 class="feedbacks_filter_element"><%= t('my_projects.feedbacks_tab.show_events_since')%></h5>
@@ -190,7 +132,9 @@
               <% end %>
               <hr class="hr_feedbacks_table">
 
+              <!-- the first page that can be seen is the feedbacks table so we render it -->
               <div class="feedbacks_table_wrapper">
+              <% @feedbacks = Feedback.project_feedbacks @project.id %>
               <%= render template: "feedbacks/index" %>
               </div>
             </div>
@@ -206,17 +150,14 @@
             <div class="page_header">
               <h1><%= t('my_projects.tabs.data') %></h1>
 
-
+              <!-- only admins can create milestones -->
               <% if current_user.admin? %>
-              <div class="add_element">
-                <a href="#new-milestone" class="btn btn-link new-milestone-link" data-url="<%= new_milestone_path(@project) %>">
-                  <i class="icon-plus icon-white"> </i> <%= t('my_projects.tabs.new_milestone')%>
-                </a>
-              </div>
-                <% end %>
-                
-
-              
+                  <div class="add_element">
+                    <button href="#new-milestone" class="btn btn-link new-milestone-link" data-url="<%= new_milestone_path(@project) %>">
+                        <i class="icon-plus icon-white"> </i> <%= t('my_projects.tabs.new_milestone')%>
+                    </button>
+                    </div>
+              <% end %>
 
             </div>
             <!--// page header -->
@@ -250,17 +191,9 @@
 
           <!-- page show feedback -->
           <div class="tab-pane fade" id="show-feedback">
-            <!-- page header -->
-            <div class="page_header">
-              <h1><%= t('my_projects.tabs.show_feedback') %></h1>
-            </div>
-            <!--// page header -->
 
-            <!-- page contents -->
-            <div class="page_content" id="show-feedback-content">
 
-            </div>
-            <!--// page contents -->
+
 
           </div>
           <!--// page show feedback -->

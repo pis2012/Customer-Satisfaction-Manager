@@ -1,0 +1,102 @@
+<div class="page_header">
+  <h1><%= t('admin.tabs.show_user') %></h1>
+  <div class="add_element">
+    <button class="btn btn-link edit-user-link" data-url="<%= edit_user_path @user %>">
+      <i class="icon-pencil icon-white"> </i> <%= t('admin.tabs.edit_user') %>
+    </button>
+  </div>
+</div>
+
+
+<div class="page_content" id="show-user-content">
+
+
+  <div id="row">
+    <div class="users-avatar">
+      <% @profile = Profile.find_by_user_id(@user) %>
+      <%= render template: 'profiles/avatar', :locals => {:profile => @user.profile} %>
+    </div>
+    <div class="user-name">
+
+      <p class="show-user-name">
+        <%= @user.full_name %>
+      </p>
+
+      <h6 class="user-role">
+        <% if @user.client? %>
+            <%= t('admin.client') %> <%= @user.client.name %>
+        <% elsif @user.mooveit? %>
+            <%= t('admin.mooveit_employee') %>
+        <% else %>
+            <%= t('admin.mooveit_admin') %>
+        <% end %>
+      </h6>
+
+    </div>
+  </div>
+
+  <p>
+    <b><%= t('admin.user_name') %>:</b>
+    <%= @user.username %>
+  </p>
+
+  <hr>
+
+  <p>
+    <b><%= t('admin.user_email') %></b>
+    <%= @user.email %>
+  </p>
+
+  <p>
+    <b><%= t('admin.user_openid') %></b>
+    <%= @user.openidemail %>
+  </p>
+
+  <p>
+    <b><%= t('user_edit.skype_user') %>: </b>
+    <%= @user.profile.skype_usr %>
+  </p>
+
+  <hr>
+
+  <p>
+    <b><%= t('user_edit.notifications') %></b>
+  </p>
+
+  <p>
+    &nbsp;&nbsp;&nbsp;<b> - <%= t('user_edit.feedbacks') %>: </b>
+    <% if @user.profile.feedbacks_notifications? %>
+        <%= t('admin.activated') %>
+    <% else %>
+        <%= t('admin.deactivated') %>
+    <% end %>
+  </p>
+
+  <p>
+    &nbsp;&nbsp;&nbsp;<b> - <%= t('user_edit.comments') %>: </b>
+    <% if @user.profile.comments_notifications? %>
+        <%= t('admin.activated') %>
+    <% else %>
+        <%= t('admin.deactivated') %>
+    <% end %>
+  </p>
+
+  <hr>
+
+  <p>
+    <b><%= t('user_edit.default_project') %>: </b>
+    <%= @user.profile.project.name %>
+  </p>
+
+  <hr>
+
+  <p>
+    <% if @user.disable? %>
+        <b><%= t('admin.user') + ' ' + t('admin.disable') %> </b>
+    <% else %>
+        <b><%= t('admin.user') + ' ' + t('admin.enable') %> </b>
+    <% end %>
+  </p>
+
+
+</div>

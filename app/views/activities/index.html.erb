@@ -1,0 +1,42 @@
+<!-- page header -->
+<div class="summary_page_header">
+  <h1 class="title"><%= t ('admin.summary') %></h1>
+  <ul class="nav nav-tabs summary_page_tab_nav">
+    <li class="active"><a href="#summary_tab1" data-toggle="tab">Recent Activity</a></li>
+    <li><a href="#summary_tab2" data-toggle="tab">Site Searcher</a></li>
+  </ul>
+</div>
+<!--// page header -->
+
+<!-- page contents -->
+<div class="page_content" id="summary-content">
+  <div class="tab-content">
+
+    <div class="tab-pane active" id="summary_tab1">
+
+      <%= render 'activities/activities' %>
+
+    </div>
+
+    <div class="tab-pane" id="summary_tab2">
+      <%= form_tag(activities_filter_path, :method => "get", :remote => true) do %>
+          <div class="activities_filter form-inline">
+            <h5 class="activities_filter_element">Enter your search query here: </h5>
+            &nbsp;
+            <%= text_field_tag("activities_filter_text") %>
+            &nbsp;
+            <%= button_tag(t('buttons.find'), :class => "btn activities_filter_element") %>
+          </div>
+      <% end %>
+      <hr class="hr_activities_table">
+
+      <div id="activities_search_result">
+
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<!--// page contents -->

@@ -1,0 +1,117 @@
+<div class="page_header">
+  <h1><%= t('admin.tabs.new_user') %></h1>
+</div>
+
+<div class="page_content" id="new-user-content">
+
+<%= form_for(@user, :remote => true, :html => {:class => "form-horizontal"} ) do |f| %>
+
+      <% if @user.errors.any?  %>
+        <div class="alert alert-error">
+            <% @user.errors.messages.each do |msg| %>
+                <strong><%= msg[1][0] %></strong></br>
+            <% end %>
+        </div>
+      <% end %>
+
+      <div class="control-group">
+
+        <label class="control-label" ><%= t('user_edit.full_Name')%>(*):</label>
+
+        <div class="controls">
+          <div class="input-prepend">
+            <%= f.text_field :full_name %>
+          </div>
+        </div>
+
+        </br>
+
+        <label class="control-label" ><%= t('admin.client')%>(*):</label>
+
+        <div class="controls">
+          <div class="input-prepend">
+            <%= f.select(:client_id, Client.all.map {|client| [client.name, client.id]}, {:include_blank => false} , :prompt => true ) %>
+          </div>
+        </div>
+
+        </br>
+
+        <hr>
+
+        <label class="control-label" ><%= t('admin.user_name')%>(*):</label>
+
+        <div class="controls">
+          <div class="input-prepend">
+            <%= f.text_field :username %>
+          </div>
+        </div>
+
+        </br>
+
+
+        <label class="control-label" ><%= t('user.password')%>(*):</label>
+
+        <div class="controls">
+          <div class="input-prepend">
+            <%= f.password_field :password %>
+          </div>
+        </div>
+
+        </br>
+
+        <label class="control-label" ><%= t('user_edit.confirm_password')%>(*):</label>
+
+        <div class="controls">
+          <div class="input-prepend">
+            <%= f.password_field :password_confirmation %>
+          </div>
+        </div>
+
+        </br>
+
+        <hr>
+
+        <label class="control-label" ><%= t('admin.user_email')%>(*):</label>
+
+        <div class="controls">
+            <div class="input-prepend">
+              <%= f.text_field :email %>
+            </div>
+        </div>
+
+        </br>
+
+        <label class="control-label" ><%= t('admin.user_openid')%></label>
+
+        <div class="controls">
+            <div class="input-prepend">
+                <%= f.text_field :openidemail %>
+            </div>
+        </div>
+
+        </br>
+
+        <label class="control-label" ><%= t('user_edit.skype_user')%></label>
+
+        <div class="controls">
+          <div class="input-prepend">
+            <%=text_field_tag :skype_usr %>
+          </div>
+        </div>
+
+        </br>
+        </br>
+
+        <div class="actions">
+          <%= f.submit t('buttons.create'), :class => "btn" %> &nbsp <%= t('buttons.or') %>
+            <button class="btn btn-link users-link" type="button" data-url="<%= users_path %>">
+                <%= t('buttons.cancel') %>
+            </button>
+        </div>
+
+</div>
+
+<% end %>
+
+</div>
+

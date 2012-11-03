@@ -1,0 +1,67 @@
+<div class="users_div">
+
+  <br>
+  <%= form_tag(users_name_filter_path, :remote => true, :class => "form-horizontal") do %>
+      <div class="control-group">
+
+        <label class="control-label name-filter" for="inputUsername">
+          <%= t('admin.filter_name') %>
+        </label>
+
+        <div class="controls">
+          <div class="input-prepend">
+            <%= text_field_tag :name %>
+          </div>
+
+          <div class="input-prepend">
+            <%= button_tag(t('buttons.filter'), :class => "btn") %>
+          </div>
+        </div>
+
+      </div>
+  <% end %>
+  <br>
+  <hr>
+  <br>
+  <% @users.each do |user| %>
+      <div id="row">
+
+        <div class="users-avatar">
+          <% @profile = Profile.find_by_user_id(user) %>
+          <%= render template: 'profiles/avatar', :locals => {:profile => @profile} %>
+        </div>
+
+        <div class="user-name">
+
+          <a href="#show-user" class="show-user-link" data-url="<%= user_path user %>">
+            <%= user.full_name %>
+          </a>
+
+          <h6 class="user-role">
+            <% if user.client? %>
+                <%= t('admin.client') %> <%= user.client.name %>
+            <% elsif user.mooveit? %>
+                <%= t('admin.mooveit_employee') %>
+            <% else %>
+                <%= t('admin.mooveit_admin') %>
+            <% end %>
+          </h6>
+
+          <% @comment = Comment.find_all_by_user_id(user.id).last %>
+          <% if !@comment.nil? %>
+              <% @feedback = Feedback.find @comment.feedback_id %>
+              <p class="user-comment">
+                <%= @comment.content.truncate 200 %>
+              </p>
+
+              <p class="user-comment-date">
+                <%= t('admin.comment_created') %><%= @comment.created_at.strftime("%A %d %B %Y") %><%= t('admin.comment_created_on') %><%= @feedback.subject %>
+              </p>
+          <% end %>
+
+        </div>
+
+      </div>
+      <hr>
+  <% end %>
+</div>

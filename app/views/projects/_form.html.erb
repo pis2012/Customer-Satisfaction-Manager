@@ -1,36 +1,55 @@
 <%= form_for(@project) do |f| %>
-  <% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-      <ul>
-      <% @project.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <% if @project.errors.any? %>
+        <div class="alert alert-error">
+          <% if @project.errors.count > 1 %>
+              <h4><%= t('activerecord.errors.template.header.other', :model=> @project.class.name, :count=> @project.errors.count) %></h4>
+          <% else %>
+              <h4><%= t('activerecord.errors.template.header.one',:model=> @project.class.name) %></h4>
+          <% end %>
+          <% @project.errors.full_messages.each do |msg| %>
+              <strong><%= msg %></strong>
+          <% end %>
+        </div>
+    <% end %>
+
+    <br/>
+
+
+    <div class="project-name">
+      <%= f.text_field :name,  :placeholder => I18n.t('proyect.name') %>
     </div>
-  <% end %>
-  <div class="field">
+    <br/>
+
+    <div class="project-description">
+      <%= f.text_field :description, :placeholder => I18n.t('proyect.description') %>
+    </div>
+    <br/>
+
+    <div class="project-client">
       <%= f.label :client %><br />
       <%= f.select(:client_id,Client.all.map {|client| [client.name, client.id]},:prompt => true) %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
+    </div>
+    <br/>
+
+    <label class="control-label checkbox-hand" >
+      <%= t('proyect.finalized')%>&nbsp;<%= f.check_box(:finalized) %>
+    </label>
+
+
+    <div class="project-date">
     <%= f.label :end_date %><br />
-    <%= f.datetime_select :end_date %>
+    <%= f.date_select :end_date %>
   </div>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <!--<div class="field">
-    < %= f.label :status %><br />
-    < %= f.text_field :status %>
-  </div>-->
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+      <!--<div class="field">
+        < %= f.label :status %><br />
+        < %= f.text_field :status %>
+      </div>-->
+    <div class="actions">
+        <%= f.submit  I18n.t('buttons.create'), :class => "btn" %> &nbsp <%= I18n.t('buttons.or') %>
+        <button class="btn btn-link projects-link" type="button" data-url="<%= admin_projects_path %>">
+          <%= I18n.t('buttons.cancel')%>
+        </button>
+    </div>
 <% end %>
