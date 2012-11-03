@@ -1,7 +1,7 @@
 <div class="milestones_list">
   <h4><%= t('my_projects.data_tab.milestones') %></h4>
 
-  <% @milestones.each do |milestone| %>
+  <% @view[:project].milestones.each do |milestone| %>
       <% if milestone.target_date.to_datetime > Time.now.to_datetime %>
           <dl>
             <dt><%= get_milestone_date milestone.target_date %></dt>
