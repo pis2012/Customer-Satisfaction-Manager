@@ -5,13 +5,17 @@ class ClientControllerSpec
 
     before :all do
       User.delete_all
-
+      Role.delete_all
+      Client.delete_all
       @valid_attributes =
           {
-              :usr => User.create(role: Role.create(name:'Admin'), client: Client.create(name:'MicroHard'),
+              :usr => User.new(role: Role.create(name:'Admin'), client: Client.create(name:'MicroHard'),
                                   username: 'admin4',password:'admin',password_confirmation:'admin',
                                   full_name:'Martin Cabrera', email:'ca5brera@1234.com')
           }
+
+      @valid_attributes[:usr].skip_confirmation!
+      @valid_attributes[:usr].save :validate => false
     end
 
 
@@ -31,16 +35,16 @@ class ClientControllerSpec
       user = @valid_attributes[:usr]
       sign_in user
 
-      post :create, client: {name:name}
-      sign_out user
+      post :create, client: {name:name} , format: "js"
+
       path = clients_path(assigns[:client]).gsub(".", "/")
-      response.should redirect_to(path)
+      assert_response :success
 
       findByName = Client.find_all_by_name(name)
 
       findByName.size.should eq(1)
       findByName[0].name.should eq(name)
-
+      sign_out user
     end
 
     it "def create duplicate" do
@@ -48,11 +52,11 @@ class ClientControllerSpec
 
       user = @valid_attributes[:usr]
       sign_in user
-      post :create, client: {name:name}
+      post :create, client: {name:name}     , format: "js"
       path = clients_path(assigns[:client]).gsub(".", "/")
-      response.should redirect_to(path)
+      assert_response :success
 
-      post :create, client: {name:name}
+      post :create, client: {name:name}   , format: "js"
       assert_response :success
       sign_out user
     end
@@ -61,7 +65,7 @@ class ClientControllerSpec
       client1=Client.create(name: "Client")
       user = @valid_attributes[:usr]
       sign_in user
-      get :show, id: client1.id
+      get :show, client_id: client1.id, format: "json"
       sign_out user
       assert_response :success
 
@@ -79,9 +83,9 @@ class ClientControllerSpec
 
       user = @valid_attributes[:usr]
       sign_in user
-      delete :destroy, id: client1.to_param
+      delete :destroy, client_id: client1.to_param, format: "js"
 
-      response.should redirect_to(clients_path)
+      assert_response :success
 
       Client.find_all_by_name(name).size.should eq(0)
       sign_out user
@@ -91,10 +95,10 @@ class ClientControllerSpec
       client1=Client.create(name: "Client 1")
       user = @valid_attributes[:usr]
       sign_in user
-      put :update, id: client1.id, client: {name:'Client 2'}
+      put :update, id: client1.id, client: {name:'Client 2'}      , format: "js"
       sign_out user
       path = clients_path(assigns[:client]).gsub(".", "/")
-      response.should redirect_to(path)
+      assert_response :success
     end
   end
 end

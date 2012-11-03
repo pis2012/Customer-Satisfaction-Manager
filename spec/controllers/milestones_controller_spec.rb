@@ -4,10 +4,13 @@ describe MilestonesController, :type => :controller do
 
   before :all do
     User.delete_all
+    Project.delete_all
+    Role.delete_all
+    Client.delete_all
     @valid_attributes =
         {
 
-            :usr => User.create(role: Role.create(name:'Admin'), client: Client.create(name:'MicroHard'),
+            :usr => User.new(role: Role.create(name:'Admin'), client: Client.create(name:'MicroHard'),
                                 username: 'admin4',password:'admin',password_confirmation:'admin',
                                 full_name:'Martin Cabrera', email:'ca5brera@1234.com')  ,
             :project => Project.create({name:'Proyecto',
@@ -16,20 +19,15 @@ describe MilestonesController, :type => :controller do
                                         finalized:false}),
             :milestonedata => {:name => "Mile", :project_id => Project.find_by_name("Proyecto").id, :target_date => Time.now  }
         }
-  end
 
-  it "def index" do
-    user = @valid_attributes[:usr]
-    sign_in user
-    get :index, format: "json"
-    assert_response :success
-    sign_out user
+    @valid_attributes[:usr].skip_confirmation!
+    @valid_attributes[:usr].save :validate => false
   end
 
   it "def new" do
     user = @valid_attributes[:usr]
     sign_in user
-    get :new
+    get :new, project_id:  @valid_attributes[:project].id, format:   'js'
 
     assert_response :success
 
@@ -39,7 +37,7 @@ describe MilestonesController, :type => :controller do
   it "def create" do
     user = @valid_attributes[:usr]
     sign_in user
-    post :create, project_id: @valid_attributes[:project].id, milestone:  @valid_attributes[:milestonedata], format: 'json'
+    post :create, project_id: @valid_attributes[:project].id, milestone:  @valid_attributes[:milestonedata], format: 'js'
 
     assert_response :success
 
@@ -51,9 +49,9 @@ describe MilestonesController, :type => :controller do
     user = @valid_attributes[:usr]
     sign_in user
 
-    mile = Milestone.create(@valid_attributes[:milestonedata]);
+    mile = Milestone.create(@valid_attributes[:milestonedata])
 
-    post :destroy, id: mile.id, format: 'json'
+    post :destroy, id: mile.id, format: 'js'
 
     assert_response :success
 

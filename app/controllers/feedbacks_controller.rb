@@ -3,17 +3,6 @@ class FeedbacksController < ApplicationController
   before_filter :authenticate_user!
 
   layout false
-  # GET /feedbacks
-  # GET /feedbacks.json
-  def index
-    @feedbacks = Feedback.all
-    respond_to do |format|
-      if request.xhr?
-        format.html # index.html.erb
-      end
-      format.json { render json: @feedbacks }
-    end
-  end
 
   def project_feedbacks
     @feedbacks = Feedback.project_feedbacks params[:project_id]

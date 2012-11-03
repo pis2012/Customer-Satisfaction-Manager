@@ -26,7 +26,7 @@ class Activity
     moods = Array.new
     Project.all.each do |project|
       mood = project.moods.first
-      if mood.created_at >= date
+      if mood and mood.created_at >= date
         moods.push mood
       end
     end

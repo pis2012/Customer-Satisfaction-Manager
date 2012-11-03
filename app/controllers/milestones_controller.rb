@@ -4,16 +4,6 @@ class MilestonesController < ApplicationController
 
   layout false
 
-  def index
-    @milestones = Milestone.all
-    respond_to do |format|
-      if request.xhr?
-        format.html # index.html.erb
-      end
-      format.json { render json: @milestones }
-    end
-  end
-
   def project_milestones
     @milestones = Milestone.find_all_by_project_id(params[:project_id])
 
@@ -32,6 +22,7 @@ class MilestonesController < ApplicationController
       if request.xhr?
         format.html { }
       end
+      format.js { }
     end
   end
 
@@ -57,6 +48,8 @@ class MilestonesController < ApplicationController
     respond_to do |format|
       if request.xhr?
         @view = {:project => @milestone.project, :graph => @milestone.project.get_mood_graph}
+        format.js { render action: "create"}
+      else
         format.js { render action: "create"}
       end
     end

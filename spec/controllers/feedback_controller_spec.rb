@@ -7,12 +7,14 @@ class FeedbacksControllerSpec
     before :all do
       FeedbackType.delete_all
       User.delete_all
+      Role.delete_all
+      Project.delete_all
       @valid_attributes =
       {
           :contenido => "hola soy un fefsdfsd fsdfafasdgasdgasfgs asadfgasgasd a sdfasdfasdf fsad fasdf asdf asdfsadf aedback asdfsdfd",
           :subject => "mira no soy nil",
           :type_skype => FeedbackType.create(name:'Skype21',image_url:'/assets/feedbacks/generic.png'),
-          :usr => User.create(role: Role.create(name:'Admin'), client: Client.create(name:'MicroHard'),
+          :usr => User.new(role: Role.create(name:'Admin'), client: Client.create(name:'MicroHard'),
                               username: 'admin4',password:'admin',password_confirmation:'admin',
                               full_name:'Martin Cabrera', email:'ca5brera@1234.com'),
           :project => Project.create({name:'Proyecto',
@@ -20,21 +22,15 @@ class FeedbacksControllerSpec
                                       end_date:'2013-01-01 00:00:00',
                                       finalized:false})
       }
+
+      @valid_attributes[:usr].skip_confirmation!
+      @valid_attributes[:usr].save :validate => false
     end
 
     after :all do
       FeedbackType.destroy(@valid_attributes[:type_skype])
       User.destroy(@valid_attributes[:usr])
       Project.destroy(@valid_attributes[:project])
-    end
-
-    it "def index" do
-      user = @valid_attributes[:usr]
-      sign_in user
-      get :index, format: "json"
-      assert_response :success
-      assert_not_nil assigns(:feedbacks)
-      sign_out user
     end
 
     it "def create" do
@@ -89,20 +85,6 @@ class FeedbacksControllerSpec
 
       assert_response :success
 
-      sign_out user
-    end
-
-    it "def destroy" do
-      user = @valid_attributes[:usr]
-      sign_in user
-      feedback = Feedback.create(:project=>@valid_attributes[:project], :user=> @valid_attributes[:usr], :feedback_type=> @valid_attributes[:type_skype],
-                                 :project_id=> @valid_attributes[:project].id,:user_id=> @valid_attributes[:usr].id,
-                                 :subject=> "subject", :content=> @valid_attributes[:contenido],:created_at=> Time.now,
-                                 :updated_at=> Time.now, :client_visibility=> false, :mooveit_visibility => false,:feedback_type_id=> @valid_attributes[:type_skype].id)
-
-      delete :destroy, id: feedback.id
-
-      response.should redirect_to(feedbacks_url)
       sign_out user
     end
 
