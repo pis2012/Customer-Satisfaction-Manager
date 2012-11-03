@@ -7,12 +7,16 @@
 
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <div id="alert alert-error">
+      <% if @user.errors.count > 1 %>
+          <h4><%= t('activerecord.errors.template.header.other', :model => t('user.user'), :count => @user.errors.count) %></h4>
+      <% else %>
+          <h4><%= t('activerecord.errors.template.header.one', :model => t('user.user')) %></h4>
+      <% end %>
 
       <ul>
       <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <li><strong><%= msg %></strong></li>
       <% end %>
       </ul>
     </div>

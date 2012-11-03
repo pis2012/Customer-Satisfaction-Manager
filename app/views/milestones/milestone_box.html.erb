@@ -1,0 +1,10 @@
+<% miles_data = get_milestones_data %>
+<% if miles_data[0] == nil %>
+    <%= t('project.finalized') %>
+<% else %>
+    <%= miles_data[0] %>
+    <% if miles_data[1] != nil  %>
+        <hr/>
+        <p> <%= miles_data[1] %> </p>
+    <% end %>
+<% end %>

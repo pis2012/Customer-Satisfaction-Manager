@@ -559,6 +559,4 @@ Milestone.create(:target_date => '2013-08-06 00:00:00', :project => p3, :name =>
 Milestone.create(:target_date => '2014-08-09 00:00:00', :project => p3, :name => "Proyecto 3, milestone 4")
 
 
-#Form.create(user:admin_usr, name:"Customer Satisfaction Survey - July 2012", email:"germanruizravi@gmail.com", password:"")
-
 

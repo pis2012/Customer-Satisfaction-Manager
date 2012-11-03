@@ -46,6 +46,7 @@
             cout_project: "Project Partners:  %{count}."
             cout_users:   "Registered Users: %{count}."
             eliminate_confirm: "Are you sure you want to delete this client?"
+            client: "Client"
 
   home:
             home: "Home"
@@ -119,7 +120,7 @@
               confirm_password: "Confirm password"
               save_changes: "Save Changes"
   user:
-
+            user: "User"
             continue: "Continue"
             password:  "password"
             status_of_proyects:  "Status of Projects"
@@ -231,6 +232,11 @@
                                                       email:
                                                         blank: "Email can not be empty."
 
+                                milestone:
+                                          attributes:
+                                                      name:
+                                                        blank: "Milestone name can not be empty."
+
   Comments:
               Comment: "Comment"
   feedback:
@@ -333,6 +339,7 @@
             Next_milestone: "Next milestone"
             end_project: "End of project"
             the: " of "
+            eliminate_confirm: "Are you sure you want to delete this milestone?"
 
   proyect:
             list_projects:  "List of Projects"
