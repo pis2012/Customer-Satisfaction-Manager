@@ -73,6 +73,7 @@ gem 'capistrano'
 
 gem 'passenger'
 
+gem 'whenever', :require => false
 
 # To use debugger
 # gem 'debugger'

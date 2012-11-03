@@ -8,7 +8,7 @@ class Project < ActiveRecord::Base
   has_many :feedbacks
 
   attr_accessible :client, :milestones, :moods, :feedbacks,
-                  :description, :end_date, :id, :name, :finalized
+                  :description, :end_date, :id, :name, :finalized, :last_reminder_email_sent
 
   validates :name, :description, :end_date, :presence  => true
   validates_inclusion_of :finalized, :in => [true, false]
@@ -93,5 +93,10 @@ class Project < ActiveRecord::Base
 
   def get_random_user
     self.client.users.sample
+  end
+
+  def self.get_projects_with_no_activity(days)
+    lastMoods = Mood.get_mood_in_last_days(days)
+    projects = Project.where("finalized = 0 and id not in (:projects)",{projects: lastMoods.group_by {|i| i.project_id}.keys})
   end
 end

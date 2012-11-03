@@ -211,6 +211,8 @@
                                                           blank:  "Email can not be empty."
                                                           format: "Email malformed"
                                                           taken: "Email already taken."
+                                                          already_confirmed: "Email already confirmed."
+                                                          invalid: "Email with invalid format."
                                                       password:
                                                           blank: "Password can not be empty."
                                                           confirmation: "Confirm Password does not match."

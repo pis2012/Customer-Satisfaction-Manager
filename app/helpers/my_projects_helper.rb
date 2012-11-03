@@ -1,15 +1,24 @@
 module MyProjectsHelper
 
   def self.send_reminder_email
-    days = 30
 
-    lastMoods = Mood.get_mood_in_last_days(days)
-    projects = Project.where("finalized = 0 and id not in (:projects)",{projects: lastMoods.group_by {|i| i.project_id}.keys})
+    daysWithNoActivity = Integer(CsmProperty.get_property("DaysWithoutActivityForAProject","30"))
+    daysSinceLastEmail = Integer(CsmProperty.get_property("DaysBetweenReminderEmailForAProject","30"))
+
+    limitEmailDate = Time.now.advance(days: -daysSinceLastEmail)
+    projects = Project.get_projects_with_no_activity(daysWithNoActivity)
     emails = []
     projects.each do |project|
-      user = project.get_random_user
-      NotificationMailer.reminder_email(project,user).deliver if (user)
-      emails.append user.email if (user)
+      if (project.last_reminder_email_sent.nil? or project.last_reminder_email_sent < limitEmailDate)
+        user = project.get_random_user
+        if (user)
+          NotificationMailer.reminder_email(project,user).deliver
+          project.last_reminder_email_sent = Time.now
+          project.save
+          emails.append user.email
+        end
+
+      end
     end
 
     emails

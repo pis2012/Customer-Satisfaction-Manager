@@ -11,7 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121012012332) do
+ActiveRecord::Schema.define(:version => 20121102183558) do
+
+  create_table "ckeditor_assets", :force => true do |t|
+    t.string   "data_file_name",                                 :null => false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    :limit => 30
+    t.string   "type",              :limit => 25
+    t.string   "guid",              :limit => 10
+    t.integer  "locale",            :limit => 1,  :default => 0
+    t.integer  "user_id"
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+  end
+
+  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "fk_assetable"
+  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_assetable_type"
+  add_index "ckeditor_assets", ["user_id"], :name => "fk_user"
 
   create_table "clients", :force => true do |t|
     t.string   "name"
@@ -25,6 +43,13 @@ ActiveRecord::Schema.define(:version => 20121012012332) do
     t.text     "content"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "csm_properties", :force => true do |t|
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "feedback_types", :force => true do |t|
@@ -45,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20121012012332) do
   end
 
   create_table "forms", :force => true do |t|
+    t.integer  "user_id"
     t.string   "name"
     t.string   "email"
     t.text     "wise_token"
@@ -92,8 +118,9 @@ ActiveRecord::Schema.define(:version => 20121012012332) do
     t.text     "description"
     t.datetime "end_date"
     t.boolean  "finalized"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+    t.datetime "last_reminder_email_sent"
   end
 
   add_index "projects", ["client_id"], :name => "index_projects_on_client_id"
