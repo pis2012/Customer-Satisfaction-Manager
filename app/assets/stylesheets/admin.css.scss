@@ -13,7 +13,7 @@
 }
 
 #global_nav a {
-  background: image-url("iconos-cliente.png") no-repeat scroll 8px 4px transparent;
+  background: image-url("admin-icons.png") no-repeat scroll 8px 4px transparent;
   display: block;
   font-size: 13px;
   line-height: 35px;
@@ -39,47 +39,47 @@
 }
 
 #global_nav li.summary.active a {
-  background-position: 8px -38px;
+  background-position: 8px -39px;
 }
 
 #global_nav li.reports a {
-  background-position: 8px -80px;
+  background-position: 8px -76px;
 }
 
 #global_nav li.reports.active a {
-  background-position: 8px -122px;
+  background-position: 8px -118px;
 }
 
 #global_nav li.projects a {
-  background-position: 8px -80px;
+  background-position: 8px -159px;
 }
 
 #global_nav li.projects.active a {
-  background-position: 8px -122px;
+  background-position: 8px -200px;
 }
 
 #global_nav li.users a {
-  background-position: 8px -80px;
+  background-position: 8px -242px;
 }
 
 #global_nav li.users.active a {
-  background-position: 8px -122px;
+  background-position: 8px -283px;
 }
 
 #global_nav li.clients a {
-  background-position: 8px -80px;
+  background-position: 8px -364px;
 }
 
 #global_nav li.clients.active a {
-  background-position: 8px -122px;
+  background-position: 8px -323px;
 }
 
 #global_nav li.forms a {
-  background-position: 8px -80px;
+  background-position: 8px -410px;
 }
 
 #global_nav li.forms.active a {
-  background-position: 8px -122px;
+  background-position: 8px -452px;
 }
 
 /* ============== [ PAGE ] ============== */
