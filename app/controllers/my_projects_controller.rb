@@ -4,7 +4,7 @@ class MyProjectsController < ApplicationController
   layout 'my_projects'
 
   def index
-    @project = Project.find(current_user.profile.project.id)
+    @project = current_user.profile.project
     @lastmood = @project.moods.first.get_mood_img
     @view = {:project => @project, :lastmood => @lastmood}
 
