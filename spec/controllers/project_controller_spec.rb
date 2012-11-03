@@ -4,13 +4,30 @@ class ProjectControllerSpec
 
   describe ProjectsController, :type => :controller do
 
+    before :all do
+      User.delete_all
+
+      @valid_attributes =
+          {
+              :usr => User.create(role: Role.create(name:'Admin'), client: Client.create(name:'MicroHard'),
+                                  username: 'admin4',password:'admin',password_confirmation:'admin',
+                                  full_name:'Martin Cabrera', email:'ca5brera@1234.com')
+          }
+    end
+
     it "def index" do
+      user = @valid_attributes[:usr]
+      sign_in user
         get :index
         assert_response :success
         assert_not_nil assigns(:projects)
+
+      sign_out user
     end
 
     it "def create" do
+      user = @valid_attributes[:usr]
+      sign_in user
       post :create, project: {name:'Proyecto',
                                 description:'Descripcion de proyecto',
                                 end_date:'2013-01-01 00:00:00',
@@ -19,9 +36,12 @@ class ProjectControllerSpec
       @var1 = projects_path(assigns[:project])
       @var2 = @var1.gsub(".", "/")
       response.should redirect_to(@var2)
+      sign_out user
     end
 
     it "def show" do
+      user = @valid_attributes[:usr]
+      sign_in user
       @project1=Project.create(name: "Projecto test",
                                description: "projecto test",
                                end_date:'2013-01-01 00:00:00',
@@ -30,10 +50,13 @@ class ProjectControllerSpec
       get :show, id: @project1.to_param
 
       assert_response :success
+      sign_out user
     end
 
 
     it "def destroy" do
+      user = @valid_attributes[:usr]
+      sign_in user
       project1=Project.create(name: "Projecto test2",
                                description: "projecto test",
                                end_date:'2013-01-01 00:00:00',
@@ -42,9 +65,12 @@ class ProjectControllerSpec
       delete :destroy, id: project1.to_param
 
       response.should redirect_to(projects_path)
+      sign_out user
     end
 
     it "def update" do
+      user = @valid_attributes[:usr]
+      sign_in user
       project1=Project.create(name: "Projecto test2",
                               description: "projecto test",
                               end_date:'2013-01-01 00:00:00',
@@ -56,6 +82,7 @@ class ProjectControllerSpec
       @var1 = projects_path(assigns[:project])
       @var2 = @var1.gsub(".", "/")
       response.should redirect_to(@var2)
+      sign_out user
     end
 
     it "show_project_complete" do
@@ -74,7 +101,6 @@ class ProjectControllerSpec
       mood3.created_at = Time.now
       mood3.save
 
-      #Se deberá testear que un usurario debe contener un rol.
       rol_simple = Role.create(name:'simple')
 
       user = User.create(role: rol_simple, client: client1,
@@ -141,8 +167,8 @@ class ProjectControllerSpec
                                 end_date:'2013-01-01 00:00:00',
                                 finalized:false)
 
-      #Se deberá testear que un usurario debe contener un rol.
-      rol_simple = Role.create(name:'simple')
+
+      rol_simple = Role.create(name:'Client')
 
       user = User.create(role: rol_simple, client: client1,
                          username: 'user1',password:'user1',password_confirmation:'user1',
@@ -171,16 +197,13 @@ class ProjectControllerSpec
       #Se deberá testear que un usurario debe contener un rol.
       rol_simple = Role.create(name:'simple')
 
-      user = User.create(role: rol_simple, client: client1,
-                         username: 'user1',password:'user1',password_confirmation:'user1',
-                         full_name:'Martin Cabrera', email:'cabrera2@1234.com')
+      user = @valid_attributes[:usr]
 
       profile1 = Profile.create(user: user, project:project2, skype_usr:'martin.skype')
 
       user.profile=profile1
 
       sign_in user
-      post :change_profile_project, id: project2.id
       post :change_mood, new_status: 10
       sign_out user
     end

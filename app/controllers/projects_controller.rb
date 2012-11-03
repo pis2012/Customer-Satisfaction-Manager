@@ -1,4 +1,7 @@
   class ProjectsController < ApplicationController
+
+  before_filter :authenticate_user!
+
   # GET /projects
   # GET /projects.json
   def index
@@ -87,48 +90,10 @@
     end
   end
 
-  def show_project_complete
-
-    if !params['default'].nil?
-      @profile = Profile.find_by_user_id(current_user)
-      @p = Project.find(params['project_id'])
-      if !@p.nil?
-        @profile.project_id = @p.id
-        @profile.save
-      end
-    end
-
-    @project = current_user.profile.project
-
-    @lastmood = @project.moods.order(:created_at).last.get_mood_img
-    @view = {:project => @project, :mile1 => nil, :mile2 => nil, :lastmood => @lastmood}
-
-    if !@view[:project].finalized
-      current_date = Time.now.to_date
-      miles = @project.milestones.order(:target_date).select {|mile| mile.target_date > current_date}
-      td = miles.first.target_date
-      sec = (td.to_time - current_date.to_time).to_i
-      min = (sec/60).to_i
-      hours = (min/60).to_i
-      days = (hours/24).to_i
-      @view[:mile1] = "Missing #{days} days and #{hours%24} hours to end #{miles.first.name}."
-      if (miles.count > 1)
-        td = miles.second.target_date
-        @view[:mile2] = "Next milestone: #{td.strftime("%B")} #{td.strftime("%e")}"
-      end
-    end
-
-    @feedbacks = @project.feedbacks
-
-    respond_to do |format|
-      format.html { render :layout => 'my_projects' }# show_project_complete.html.erb
-      format.json { render json: @project }
-    end
-  end
-
   def show_project_data
     @project = current_user.profile.project
     @view = {:project => @project, :graph => nil}
+    @milestones = @project.milestones
 
     data = Array.new
     axis = Array.new
@@ -149,10 +114,15 @@
   end
 
   def change_profile_project
-    proj = Project.find(params[:id])
-    current_user.profile.update_attributes(:project => proj)
 
-    redirect_to my_projects_url
+
+    project = Project.find(params[:id])
+    if !current_user.client? || (current_user.client? && project.client_id == current_user.client_id)
+      current_user.profile.update_attributes(:project => project)
+      redirect_to my_projects_url
+    else
+      not_found
+    end
 
   end
 

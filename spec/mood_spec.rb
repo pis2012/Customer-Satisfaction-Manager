@@ -20,5 +20,9 @@ class MoodSpec
     it "get_mood_img invalid" do
       pending "Crear test con datos invalidos"
     end
+
+    it "get_graph" do
+      Mood.get_graph
+    end
   end
 end

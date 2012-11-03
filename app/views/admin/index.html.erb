@@ -1,5 +1,6 @@
 <br>
 <br>
+
 <div class="container" xmlns="http://www.w3.org/1999/html">
     <div class="row-fluid">
         <div class="span3">
@@ -7,23 +8,34 @@
             <div id="global_nav">
               <ul id="myTab" >
                 <li class="summary active">
-                  <a href="#summary" data-toggle="tab">Summary</a>
+                  <a href="#summary" data-toggle="tab"><%= I18n.t('admin.summary')  %></a>
                 </li>
                 <li> </li>
                 <li class="reports">
-                  <a href="#reports" data-toggle="tab">Reports</a>
+                  <a href="#reports" class="reports-link" data-url="<%= admin_reports_path %>"><%= I18n.t('admin.tabs.reports') %></a>
                 </li>
                 <li class="projects">
-                  <a href="#projects" data-toggle="tab">Projects</a>
+                  <a href="#projects" data-toggle="tab"><%= I18n.t('admin.projects')  %></a>
                 </li>
                 <li class="users">
-                  <a href="#users" data-toggle="tab">Users</a>
+                  <a href="#users" data-toggle="tab"><%= I18n.t('admin.users')  %></a>
                 </li>
                 <li class="clients">
-                  <a href="#clients" data-toggle="tab">Clients</a>
+                  <a href="#clients" class="clients-link" data-toggle="tab"  data-url="<%= admin_clients_path %>" ><%= I18n.t('admin.clients')  %></a>
                 </li>
                 <li class="forms">
-                  <a href="#forms" data-toggle="tab">Forms</a>
+                  <a href="#forms" class="forms-link" data-url="<%= admin_forms_path %>"><%= I18n.t('admin.tabs.forms')  %></a>
+                  <ul>
+                    <li class="forms" hidden="true">
+                      <a href="#forms"> <%= I18n.t('admin.tabs.forms')%></a>
+                    </li>
+                    <li class="add_form" hidden="true">
+                      <a href="#add_form"> <% t('form.add_form') %></a>
+                    </li>
+                    <li class="show_form" hidden="true">
+                      <a href="#show_form"> <% t('admin.tabs.show_form') %></a>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </div>
@@ -31,11 +43,12 @@
          <div class="span9">
             <div id="page">
               <div id="myTabContent" class="tab-content">
+
                 <div class="tab-pane fade active in" id="summary">
                   <!-- page header -->
                   <div class="page_header_wrapper">
                       <div class="page_header">
-                        <h1>Summary</h1>
+                        <h1><%= I18n.t ('admin.summary') %></h1>
                       </div>
                   </div>
                   <!--// page header -->
@@ -46,35 +59,24 @@
                     <!--// page contents -->
                   </div>
                 </div>
+
                 <div class="tab-pane fade" id="reports">
                   <!-- page header -->
                   <div class="page_header_wrapper">
                     <div class="page_header">
-                      <h1>Reports</h1>
+                      <h1><%= I18n.t ('admin.reports')  %></h1>
                     </div>
                   </div>
-                  <div class="page_content">
-                    <h4>Evolution of the general mood</h4>
-                    <br/>
-                    <div class="bar-graph">
-                      <%= image_tag @graph[:bar] %>
-                    </div>
-                    <br/>
-                    <hr/>
+                  <div class="page_content" id="reports_data">
 
-                    <h4>Status of Projects</h4>
-                    <br/>
-                    <div class="pie-graph">
-                      <%= image_tag @graph[:pie] %>
-                    </div>
-                    <br/>
                   </div>
                 </div>
+
                 <div class="tab-pane fade" id="projects">
                   <!-- page header -->
                   <div class="page_header_wrapper">
                     <div class="page_header">
-                      <h1>Projects</h1>
+                      <h1><%= I18n.t ('admin.projects')  %></h1>
                     </div>
                   </div>
                   <!--// page header -->
@@ -85,11 +87,12 @@
                     <!--// page contents -->
                   </div>
                 </div>
+
                 <div class="tab-pane fade" id="users">
                   <!-- page header -->
                   <div class="page_header_wrapper">
                     <div class="page_header">
-                      <h1>Users</h1>
+                      <h1><%= I18n.t ('admin.users')  %></h1>
                     </div>
                   </div>
                   <!--// page header -->
@@ -100,36 +103,80 @@
                     <!--// page contents -->
                   </div>
                 </div>
+
                 <div class="tab-pane fade" id="clients">
                   <!-- page header -->
                   <div class="page_header_wrapper">
                     <div class="page_header">
-                      <h1>Clients</h1>
+                      <h1><%= I18n.t ('admin.clients')  %></h1>
                     </div>
                   </div>
                   <!--// page header -->
                   <!-- page contents -->
-                  <div class="page_content">
+                  <div class="page_content" id="client_data">
                     <!-- main column -->
                     <!--// main column -->
                     <!--// page contents -->
                   </div>
                 </div>
+
                 <div class="tab-pane fade" id="forms">
                   <!-- page header -->
                   <div class="page_header_wrapper">
                     <div class="page_header">
-                      <h1>Forms</h1>
+                      <h1><%= I18n.t ('admin.forms')  %></h1>
+
+                      <div class="add_element">
+
+                        <button class="btn btn-link add-form-link" data-url="<%= new_form_path %>">
+                          <i class="icon-plus icon-white"> </i> <%= t('form.add_form')%>
+                        </button>
+
+                      </div>
+
                     </div>
                   </div>
                   <!--// page header -->
                   <!-- page contents -->
-                  <div class="page_content">
+                  <div class="page_content" id="forms_data">
                     <!-- main column -->
                     <!--// main column -->
                     <!--// page contents -->
                   </div>
                 </div>
+
+                <!-- page add form -->
+                <div class="tab-pane fade" id="add_form">
+                  <!-- page header -->
+                  <div class="page_header">
+                    <h1><%= t('form.add_form') %></h1>
+                  </div>
+                  <!--// page header -->
+
+                  <!-- page contents -->
+                  <div class="page_content" id="add_form_data">
+
+                  </div>
+                  <!--// page contents -->
+
+                </div>
+
+                <!-- page show form -->
+                <div class="tab-pane fade" id="show_form">
+                  <!-- page header -->
+                  <div class="page_header">
+                    <h1><%= t('admin.tabs.show_form') %></h1>
+                  </div>
+                  <!--// page header -->
+
+                  <!-- page contents -->
+                  <div class="page_content" id="show_form_data">
+
+                  </div>
+                  <!--// page contents -->
+
+                </div>
+
               </div>
             </div>
          </div>
@@ -219,7 +266,7 @@
 
       <table class="table table-bordered" >
         <thead>
-        <tr style="background-color: #6495ed;">
+        <tr >
           <th>
             </br>
           </th>

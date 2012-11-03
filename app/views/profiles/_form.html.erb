@@ -1,5 +1,5 @@
 <div class="container" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-  <h2>CHOOSE YOUR PROFILE SETTINGS</h2>
+  <h2><%= t('user_edit.choose_your_profile_settings')  %></h2>
   <div class="row-fluid">
     <div class="span4">
     </div>
@@ -27,10 +27,10 @@
 
             <div class="control-group">
 
-              <label for="inputUsername">Personal data:</label>
+              <label for="inputUsername"><%= t('user_edit.personal_data')  %></label>
               <%= fields_for @profile.user do |fa| %>
                   <div class="controls">
-                    Full Name:
+                    <%= t('user_edit.full_Name')  %>
                     </br>
                     <div class="input-prepend">
                       <%= fa.text_field :full_name %>
@@ -40,7 +40,7 @@
                   </br>
 
                   <div class="controls">
-                    Email:
+                    <%= t('user_edit.email')  %>
                     </br>
                     <div class="input-prepend">
                       <%= fa.text_field :email%>
@@ -58,7 +58,7 @@
                   </div>
 
                   <div class="controls">
-                      <%= link_to "Load OpenID from Gmail's session".html_safe, user_omniauth_authorize_path(:google) %>
+                      <%= link_to t('user_edit.load_openid').html_safe, user_omniauth_authorize_path(:google) %>
                   </div>
 
             <% end %>
@@ -66,7 +66,7 @@
               </br>
 
               <div class="controls">
-                Skype User:
+                <%= t('user_edit.skype_user')  %>
                 </br>
                 <div class="input-prepend">
                   <%= f.text_field :skype_usr %>
@@ -79,9 +79,9 @@
 
             <div class="control-group">
 
-                <label for="inputUsername">Notifications:</label>
+                <label for="inputUsername"><%= t('user_edit.notifications')  %></label>
                 <div class="controls">
-                    Feedbacks &nbsp;
+                  <%= t('user_edit.feedbacks')  %> &nbsp;
                   <div class="input-prepend">
                       <label class="checkbox">
                         <%= f.check_box :feedbacks_notifications %>
@@ -89,7 +89,7 @@
                     </div>
                 </div>
                 <div class="controls">
-                    Comments &nbsp;
+                  <%= t('user_edit.comments')  %> &nbsp;
                   <div class="input-prepend">
                       <label class="checkbox">
                         <%= f.check_box :comments_notifications %>
@@ -103,20 +103,39 @@
 
             <div class="control-group">
 
-              <label for="inputUsername">My picture:</label>
-              <div class="controls">
-                <% if @profile.avatar.file? %>
-                    <%= image_tag @profile.avatar.url(:medium) %>
-                <% else %>
-                    <%= gravatar_image_tag( @profile.user.email.gsub('spam', 'mdeering'), :alt => @profile.user.full_name, :gravatar => { :size => 100 })  %>
-                <% end %>
-              </div>
+              <label for="inputUsername"><%= t('user_edit.my_picture')  %></label>
+                <% if @profile.avatar.file? && !@profile.show_gravatar %>
+                    <div class="controls">
+                        <%= image_tag @profile.avatar.url(:medium) %>
+                    </div>
+                    </br>
 
+
+                <% else %>
+                    <div class="controls">
+                        <%= gravatar_image_tag( @profile.user.email.gsub('spam', 'mdeering'), :alt => @profile.user.full_name, :gravatar => { :size => 100 })  %>
+                    </div>
+                    </br>
+                <% end %>
+
+              <% if !@profile.show_gravatar %>
+                  <div class="controls">
+                    <%=f.file_field :avatar, :accept => "image/jpeg,image/png,image/gif" %>
+                  </div>
+              <% end %>
               </br>
 
-              <div class="controls">
-                <%=f.file_field :avatar, :accept => "image/jpeg,image/png,image/gif" %>
-              </div>
+              <% if @profile.avatar.file? %>
+                  <div class="controls">
+                    Use gravatar image &nbsp;
+                    <div class="input-prepend">
+                      <label class="checkbox">
+                        <%= f.check_box :show_gravatar %>
+                      </label>
+                    </div>
+                  </div>
+              <% end %>
+
 
             </div>
 
@@ -124,13 +143,21 @@
 
             <div class="control-group">
 
-              <label for="inputUsername">My proyect:</label>
+              <label for="inputUsername"><%= t('user_edit.my_projects')  %></label>
 
               <div class="controls">
-                Default Proyect:
+                <%= t('user_edit.default_project')  %>
                 </br>
                 <div class="input-prepend">
+                <% if current_user.client? %>
+
                   <%= f.select(:project_id, Project.where(:client_id => @profile.user.client_id ).map {|project| [project.name, project.id]},:prompt => true) %>
+
+                <% else %>
+
+                  <%= f.select(:project_id, Project.all.map {|project| [project.name, project.id]},:prompt => true) %>
+
+                <% end %>
                 </div>
               </div>
 
@@ -138,16 +165,16 @@
 
             <hr> </hr>
 
-            <% if @profile.user.role.name != "Mooveit" %>
+            <% if !@profile.user.mooveit? %>
 
                 <div class="control-group">
 
-                  <label for="inputUsername">Change Password:</label>
+                  <label for="inputUsername"><%= t('user_edit.change_password')  %></label>
 
                   <%= fields_for @profile.user do |fa| %>
 
                       <div class="controls">
-                        Current Password:
+                        <%= t('user_edit.current_password')  %>
                         </br>
                         <div class="input-prepend">
                           <%= fa.password_field :current_password %>
@@ -157,7 +184,8 @@
                       </br>
 
                       <div class="controls">
-                        New Password:
+                        <%= t('user_edit.new_password')  %>
+
                         </br>
                         <div class="input-prepend">
                           <%= fa.password_field :password %>
@@ -167,7 +195,7 @@
                       </br>
 
                       <div class="controls">
-                        Confirm New Password:
+                        <%= t('user_edit.confirm_password')  %>
                         </br>
                         <div class="input-prepend">
                           <%= fa.password_field :password_confirmation %>
@@ -179,8 +207,8 @@
                 <hr> </hr>
             <% end %>
 
-            <%=  f.submit "Save Changes" %> or
-            <%=  link_to "Cancel", "/" %>
+            <%=  f.submit t('buttons.save_changes'),:class => "btn" %> <%= t('buttons.or') %>
+            <%=  link_to t('buttons.cancel'), "/" %>
 
             <%= f.hidden_field :user_id %>
         <% end %>

@@ -18,13 +18,10 @@ function activate(me) {
     $(me).addClass('active');
 }
 
-$('#datepicker').datepicker();
-
-function updatePanel(path, id_replace, tab) {
+function updatePanel(path, el_replace, tab) {
     $.get(path, function (response) {
-        $('#' + id_replace).html(response);
+        $(el_replace).html(response);
         $('#myTab  a[href=#' + tab + ']').tab('show');
-
         //document.title = response.pageTitle;
         //window.history.replaceState({"html":response,"pageTitle":response.pageTitle,"id_replace":id_replace,"tab":tab});
     }, 'html');
@@ -49,63 +46,92 @@ window.onpopstate = function (e) {
     }
 };
 
-$('.feedbacks-link').live('click', function () {
-    updatePanel($(this).data('url'), 'feedbacks-table', 'feedbacks');
-    return false;
-});
-
-$('.data-link').live('click', function () {
-    updatePanel($(this).data('url'), 'data-content', 'project-data');
-    return false;
-});
-
 $('#face-list').ready(function(){
     $('#msj-face-changed').fadeOut(0);
     $('#face-list li').click(function () {
-        $('#msj-face-changed').fadeIn(300).fadeOut(1000);
+        if (!$(this).hasClass("active")) {
+            $('#msj-face-changed').fadeIn(300).fadeOut(1000);
+        }
     });
 
     $('.estilotextarea').wysihtml5();
 })
 
 $('.change-mood1-link').live('click', function () {
-    updatePanelMood($(this).data('url'), 'change-mood1-content', 'change-mood1');
+    if (!$(this).parent().hasClass("active")) {
+        updatePanelMood($(this).data('url'), 'change-mood1-content', 'change-mood1');
+    }
     return false;
 });
 
 $('.change-mood3-link').live('click', function () {
-    updatePanelMood($(this).data('url'), 'change-mood3-content', 'change-mood3');
+    if (!$(this).parent().hasClass("active")) {
+        updatePanelMood($(this).data('url'), 'change-mood3-content', 'change-mood3');
+    }
     return false;
 });
 
 $('.change-mood5-link').live('click', function () {
-    updatePanelMood($(this).data('url'), 'change-mood5-content', 'change-mood5');
+    if (!$(this).parent().hasClass("active")) {
+        updatePanelMood($(this).data('url'), 'change-mood5-content', 'change-mood5');
+    }
     return false;
 });
 
 $('.change-mood7-link').live('click', function () {
-    updatePanelMood($(this).data('url'), 'change-mood7-content', 'change-mood7');
+    if (!$(this).parent().hasClass("active")) {
+        updatePanelMood($(this).data('url'), 'change-mood7-content', 'change-mood7');
+    }
     return false;
 });
 
 $('.change-mood9-link').live('click', function () {
-    updatePanelMood($(this).data('url'), 'change-mood9-content', 'change-mood9');
+    if (!$(this).parent().hasClass("active")) {
+        updatePanelMood($(this).data('url'), 'change-mood9-content', 'change-mood9')
+    }
     return false;
 });
 
-$('.new-feedback-link').live('click', function () {
-    updatePanel($(this).data('url'), 'new-feedback-content', 'new-feedback');
-    $('.new-feedback').removeClass('active');
-    $('.feedbacks').addClass('active');
+$(document).on('click','.feedbacks-link', function () {
+    updatePanel($(this).data('url'), '.feedbacks_table_wrapper', 'feedbacks');
+    $('#edit-feedback-content').empty();
+    $('#new-feedback-content').empty();
     return false;
+});
+
+
+
+$('.data-link').live('click', function () {
+    updatePanel($(this).data('url'), '#data-content', 'project-data');
+    return false;
+});
+
+$(document).on('click','.new-feedback-link', function () {
+    updatePanel($(this).data('url'), '#new-feedback-content', 'new-feedback');
+    return false;
+});
+
+$(document).on('show','#myTab a[href=#new-feedback]', function (e) {
+    html_panel.panelInstance('feedback_content');
+});
+
+$(document).on('show','#myTab a[href=#edit-feedback]', function (e) {
+    html_panel.panelInstance('feedback_content');
+
 });
 
 $('.new-milestone-link').live('click', function () {
-    updatePanel($(this).data('url'), 'new-milestone-content', 'new-milestone');
+    updatePanel($(this).data('url'), '#new-milestone-content', 'new-milestone');
     return false;
 });
 
 $(".show-feedback-link").live('click', function () {
-    updatePanel($(this).data('url'), 'show-feedback-content', 'show-feedback');
+    updatePanel($(this).data('url'), '#show-feedback-content', 'show-feedback');
     return false;
 });
+
+$(document).on('click','.edit-feedback-link', function () {
+    updatePanel($(this).data('url'), '#edit-feedback-content', 'edit-feedback');
+    return false;
+});
+

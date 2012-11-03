@@ -48,9 +48,10 @@ ActiveRecord::Schema.define(:version => 20121012012332) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "email"
-    t.string   "password"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "wise_token"
+    t.text     "writely_token"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "milestones", :force => true do |t|
@@ -73,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20121012012332) do
     t.integer  "project_id"
     t.boolean  "feedbacks_notifications", :default => false
     t.boolean  "comments_notifications",  :default => false
+    t.boolean  "show_gravatar",           :default => true
     t.string   "skype_usr"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"

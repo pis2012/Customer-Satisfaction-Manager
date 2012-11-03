@@ -5,7 +5,8 @@ class CreateForms < ActiveRecord::Migration
 
       t.string :name
       t.string :email
-      t.string :password
+      t.text :wise_token, :default => ""
+      t.text :writely_token, :default =>""
 
       t.timestamps
     end

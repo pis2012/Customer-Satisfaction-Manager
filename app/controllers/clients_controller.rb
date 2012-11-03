@@ -1,8 +1,16 @@
 class ClientsController < ApplicationController
 
+  before_filter :authenticate_user!
+
   # GET /clients
   def index
     @clients = Client.all
+    respond_to do |format|
+      if request.xhr?
+        format.html { render :layout => false } # index.html.erb
+      end
+      format.json { render json:  @clients }
+    end
   end
 
   # GET /clients/1

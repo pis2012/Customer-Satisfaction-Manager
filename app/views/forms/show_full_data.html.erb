@@ -1,0 +1,11 @@
+<% i = @graphs.count() %>
+<% @graphs.each do |graph| %>
+    <div class="forms-graphs">
+        <%= graph[:title] %>
+        <br/>
+        <%= image_tag graph[:graph] %>
+        <% i-=1; if i>0 %>
+            <hr/>
+        <% end %>
+    </div>
+<% end %>

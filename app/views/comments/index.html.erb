@@ -1,23 +1,39 @@
-<h1>Listing comments</h1>
+<table class="comments_table">
 
-<table>
-  <tr>
-    <th>Content</th>
-    <th></th>
-    <th></th>
-    <th></th>
+  <% @feedback.comments.each do |comment| %>
+      <tr id="row_comment_<%= comment.id %>">
+
+        <td class="avatar">
+          <% if current_user.profile.avatar.file? && !current_user.profile.show_gravatar %>
+              <%= image_tag current_user.profile.avatar.url(:medium), :class => "user_image" %>
+          <% else %>
+              <%= gravatar_image_tag(current_user.profile.user.email.gsub('spam', 'mdeering'), :alt => current_user.profile.user.full_name, :class => "user_image") %>
+          <% end %>
+        </td>
+
+
+        <td class="comment_info">
+          <textarea readonly class="comment_content" rows="3"><%= comment.content %></textarea>
+          <h6 class="comment_author"><%= t('feedback.create_by')+" " + comment.user.full_name + " "+t('feedback.date_on')+"   " + t("date."+"#{comment.created_at.strftime("%A")}")+ comment.created_at.strftime(" %d ")+ t("date."+"#{comment.created_at.strftime("%B")}") +comment.created_at.strftime(" %Y")+comment.created_at.strftime(" ,  %H:%M") %></h6>
+        </td>
+
+      </tr>
+  <% end %>
+
+  <tr id="row_comment_new">
+
+    <td class="avatar">
+      <% if current_user.profile.avatar.file? && !current_user.profile.show_gravatar %>
+          <%= image_tag current_user.profile.avatar.url(:medium), :class => "user_image" %>
+      <% else %>
+          <%= gravatar_image_tag(current_user.profile.user.email.gsub('spam', 'mdeering'), :alt => current_user.profile.user.full_name, :class => "user_image") %>
+      <% end %>
+    </td>
+
+    <td class="comment_info">
+      <%= render partial: "comments/form" %>
+    </td>
+
   </tr>
 
-<% @comments.each do |comment| %>
-  <tr>
-    <td><%= comment.content %></td>
-    <td><%= link_to 'Show', comment %></td>
-    <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-    <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Comment', new_comment_path %>

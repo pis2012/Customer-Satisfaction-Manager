@@ -1,8 +1,110 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
+"en":
+  date:
+              January: "January"
+              February: "February"
+              March: "March"
+              April: "April"
+              May: "May"
+              June: "June"
+              July: "July"
+              August: "August"
+              September: "September"
+              October: "October"
+              November: "November"
+              December: "December"
+              Monday: "Monday"
+              Tuesday: "Tuesday"
+              Wednesday: "Wednesday"
+              Thursday: "Thursday"
+              Friday: "Friday"
+              Saturday: "Saturday"
+              Sunday: "Sunday"
+
+              formats:
+                    default: ! '%Y-%m-%d'
+                    long: ! '%B %d, %Y'
+                    short: ! '%b %d'
+              order:
+                  - :year
+                  - :month
+                  - :day
+              use_short_month: true
+
+  home:
+            home: "Home"
+            singin: "Sing In"
+            admin: "Admin"
+            My_Projects: "My Projects"
+            Sign_out: "Sign out"
+            Customers: "Customers"
+            language: "Language"
+            Spanish: "Español"
+            English: "English"
+
+  buttons:
+            accept:    "Accept"
+            cancel:   "Cancel"
+            previous:  "Previous"
+            next:   "Next"
+            back:   "Back"
+            edit:    "Edit"
+            back:   "Back"
+            show:     "Show"
+            delete:    "Delete"
+            are_you_sure:  "Are you sure?"
+            save_changes:   "Save Changes"
+            or: "or"
+            create: "Create"
+            filter: "Filter"
+            comment: "Comment"
+
+  my_projects:
+            tabs:
+                        feedbacks: "Feedbacks"
+                        new_feedback: "New Feedback"
+                        show_feedback: "Show Feedback"
+                        edit_feedback: "Edit Feedback"
+                        data: "Data"
+                        new_milestone: "New Milestone"
+
+            feedbacks_tab:
+                        show_events_since: "Show events since:"
+
+            data_tab:
+                        project_description: "Project Description"
+                        mood_updates: "Mood Updates"
+                        milestones: "Milestones"
+
+            mood:
+                        update_mood: "Update your mood"
+                        mood_updated: "Mood updated!"
+
+
+  user_edit:
+              choose_your_profile_settings: "CHOOSE YOUR PROFILE SETTINGS"
+              personal_data: "Personal Data"
+              full_Name: "Full name"
+              email: "Email"
+              load_openid: "Load OpenID from Gmail's session"
+              skype_user: "Skype user"
+              notifications: "Notifications"
+              feedbacks: "Feedbacks"
+              comments: "Comments"
+              my_picture: "My Picture"
+              my_projects: "My Projects"
+              default_project: "Default project"
+              change_password: "Change Password"
+              current_password: "Current password"
+              new_Password: "New password"
+              confirm_password: "Confirm new password"
+              save_changes: "Save Changes"
   user:
+
+            continue: "Continue"
+            password:  "password"
             status_of_proyects:  "Status of Projects"
             recent_activity:  "Recent Activity"
             name:  "Name:"
@@ -46,11 +148,41 @@ en:
             did_not_recieve_unlock_instructions:  "Didn't receive unlock instructions?"
             sing_in_with:  "Sign in with"
 
+  errors:
+      # The default format to use in full error messages.
+      format: "%{message}"
+
+
+  activerecord:
+                errors:
+                        template:
+                                  header:
+                                          one: "It generated an error when trying to save the %{model}"
+                                          other: "Were generated %{count} errors when trying to save the %{model}"
+                        models:
+                                feedback:
+                                          attributes:
+                                                      subject:
+                                                                blank:    "The subject can not be empty"
+                                                      project:
+                                                                blank:    "The Feedback must have an associated project"
+                                                      user:
+                                                                blank:    "The Feedback must have associated the user creator"
+
+                                                      content:
+                                                                blank:    "Content can not be empty"
+                                comment:
+                                          attributes:
+                                                      content:
+                                                                blank: "El content can not be empty"
+                                                                too_short: "The content must be at least 40 characters"
+
+  Comments:
+              Comment: "Comment"
   feedback:
             feedbacks:  "Feedback"
-            feedbacks:   "Feedbacks"
             new_feedback: "New Feedback"
-            show_feedback:   "Show Feedback"
+            show_feedbackshow_feedback:   "Show Feedback"
             editing_feedback:   "Editing feedback"
             cannot_save_feedback:  "Cannot save Project:"
             moove_it_employee: "Moove-IT employee"
@@ -59,10 +191,34 @@ en:
             last_comment_made_by: "Last comment made by"
             no_comments: "No comments"
             list_comments:  "List of Comments"
+            feedback_type: "Type"
+            feedback_subject: "Subject"
+            feedback_content: "Content"
+            feedback_visibility: "Feedback visibility"
+            Moove_IT_employee: "Moove-IT Employee"
+            create: "Create"
+            create_by: "Create by"
+            date_on: "on"
+            Remaining_time_for_editing: "Remaining time for editing: "
+            minutes: "minutes"
+            seconds: "seconds"
+            and: "and"
+            prohibited_this_feedback_from_being_saved: "prohibited this feedback from being saved"
   form:
             add_form:  "Add form"
+            total_answers: "Total answers: "
+            clients: "Clients found in the form: "
+            users: "Users who responded: "
+            missing_users: "Still missing: "
+            select: "Select one"
+            full_data: "Show full data"
+            name: "Form name: "
+            google_email: "Google user name"
+            password: "Password"
+            name_filter: "Name contains: "
 
-  general:
+
+  admin:
             customer_satisfaction_manager:    "CUSTOMER SATISFACTION MANAGER"
             customers:    "Customers"
             summary:   "Summary"
@@ -72,24 +228,22 @@ en:
             clients:  "Clients"
             forms:  "Forms"
             evolution_of_general_mood: "Evolution of the general mood"
-            accept:    "Accept"
-            cancel:   "Cancel"
-            previous:  "Previous"
-            next:   "Next"
-            back:   "Back"
-            edit:    "Edit"
-            back:   "Back"
-            show:     "Show"
-            delete:    "Delete"
-            are_you_sure:  "Are you sure?"
-            save_changes:   "Save Changes"
+            Status_of_Projects: "Status of Projects"
 
+            tabs:
+              forms: "Forms"
+              show_form: "Show form"
+              reports: "Reports"
 
   milestone:
-            data:  "Data"
             milestone:  "Milestone"
             milestones:   "Milestones"
             new_milestone:  "New Milestone"
+            missing: "Missing"
+            day_and: "day and"
+            hours_to_end: "hours to end"
+            Next_milestone: "Next milestone"
+
 
   proyect:
             list_projects:  "List of Projects"
