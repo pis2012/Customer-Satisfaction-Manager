@@ -28,8 +28,9 @@ module MyProjectsHelper
   end
 
   def self.send_reminder_email
-    daysWithNoActivity = 2
-    daysSinceLastEmail = 2
+
+    daysWithNoActivity = Integer(CsmProperty.get_property("DaysWithoutActivityForAProject","30"))
+    daysSinceLastEmail = Integer(CsmProperty.get_property("DaysBetweenReminderEmailForAProject","30"))
 
     limitEmailDate = Time.now.advance(days: -daysSinceLastEmail)
     projects = Project.get_projects_with_no_activity(daysWithNoActivity)

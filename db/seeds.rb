@@ -28,6 +28,8 @@ ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'profiles'}")
 ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{'feedbacks'}")
 
 CsmProperty.create(name: "MinutesBetweenReminderEmails", value: "1440")
+CsmProperty.create(name: "DaysWithoutActivityForAProject" , value: "30")
+CsmProperty.create(name: "DaysBetweenReminderEmailForAProject", value: "30")
 
 rol_admin = Role.create(name:'Admin')
 rol_client = Role.create(name:'Client')
