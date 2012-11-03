@@ -120,6 +120,7 @@
               new_Password: "New password"
               confirm_password: "Confirm password"
               save_changes: "Save Changes"
+              gravatar: "Use Gravatar image"
   user:
             user: "User"
             continue: "Continue"

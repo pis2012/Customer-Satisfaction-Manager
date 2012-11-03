@@ -124,23 +124,20 @@
             </div>
           </div>
 
-          </br>
+          <br/>
       <%end%>
 
-      <hr>
-
-      <label class="control-label "><%= t('admin.user') + ' ' +t('admin.disable')  %></label>
+      <hr/>
 
       <div class="controls">
-        &nbsp;
         <div class="input-prepend">
           <label class="checkbox label-check ">
-            <%= f.check_box :disable %>
+            <%= t('admin.user') + ' ' +t('admin.disable')  %>&nbsp;<%= f.check_box :disable %>
           </label>
         </div>
       </div>
 
-      </br>
+      <br/>
 
       <div class="actions">
         <%= f.submit t('buttons.save_changes'), :class => "btn" %> &nbsp <%= t('buttons.or') %>
