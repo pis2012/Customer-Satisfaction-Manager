@@ -13,24 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20121102183558) do
 
-  create_table "ckeditor_assets", :force => true do |t|
-    t.string   "data_file_name",                                 :null => false
-    t.string   "data_content_type"
-    t.integer  "data_file_size"
-    t.integer  "assetable_id"
-    t.string   "assetable_type",    :limit => 30
-    t.string   "type",              :limit => 25
-    t.string   "guid",              :limit => 10
-    t.integer  "locale",            :limit => 1,  :default => 0
-    t.integer  "user_id"
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
-  end
-
-  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "fk_assetable"
-  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_assetable_type"
-  add_index "ckeditor_assets", ["user_id"], :name => "fk_user"
-
   create_table "clients", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -70,7 +52,6 @@ ActiveRecord::Schema.define(:version => 20121102183558) do
   end
 
   create_table "forms", :force => true do |t|
-    t.integer  "user_id"
     t.string   "name"
     t.string   "email"
     t.text     "wise_token"
@@ -83,11 +64,9 @@ ActiveRecord::Schema.define(:version => 20121102183558) do
   add_index "forms", ["name", "email"], :name => "index_forms_on_name_and_email", :unique => true
 
   create_table "milestones", :force => true do |t|
-    t.integer  "project_id"
-    t.string   "name"
-    t.date     "target_date"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer "project_id"
+    t.string  "name"
+    t.date    "target_date"
   end
 
   create_table "moods", :force => true do |t|

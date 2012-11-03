@@ -5,14 +5,16 @@ require "./app/models/csm_property.rb"
 set :output, "/tmp/csm_cron.log"
 
 def getTime
+  config   = Rails.configuration.database_configuration
+
   CsmProperty.establish_connection(
       adapter: "mysql2",
       encoding: "utf8",
       reconnect: "false",
       database: "CSM_development",
       pool: "5",
-      username: "csmdevuser",
-      password: 'password',
+      username: config[Rails.env]["username"],
+      password: config[Rails.env]["password"],
       socket: "/var/run/mysqld/mysqld.sock"
   )
   property = CsmProperty.find_by_name("MinutesBetweenReminderEmails")
@@ -21,7 +23,7 @@ def getTime
 end
 
 every getTime().minutes do
-   runner "MyProjectsHelper.send_reminder_email"
+  runner "MyProjectsHelper.send_reminder_email"
 end
 
 every 5.minutes do
