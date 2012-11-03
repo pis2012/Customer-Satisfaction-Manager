@@ -256,6 +256,7 @@
                                                            format: "Email mal formado."
                                                            taken: "Email en uso."
                                                            already_confirmed: "Email ya confirmado."
+                                                           invalid: "Email con formato invalido."
                                                       password:
                                                            blank: "Contraseña no puede ser vacio."
                                                            confirmation: "Confirmar contraseña no coincide."

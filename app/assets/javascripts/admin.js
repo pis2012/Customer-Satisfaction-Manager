@@ -130,6 +130,11 @@ $('.show-user-link').live('click', function () {
     return false;
 });
 
+$('.show-user').live('click', function () {
+    updatePanel($(this).attr('data-url'), 'show-user', 'show-user');
+    return false;
+});
+
 $('.users-link').live('click', function () {
     updatePanel($(this).attr('data-url'), 'users-content', 'users');
     return false;

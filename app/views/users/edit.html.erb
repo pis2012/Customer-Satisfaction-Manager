@@ -143,8 +143,10 @@
       </br>
 
       <div class="actions">
-        <%= f.submit t('buttons.save_changes') %>   <%= t('buttons.or') %>
-        <%=  link_to t('buttons.cancel'), :back %>
+        <%= f.submit t('buttons.save_changes'), :class => "btn" %> &nbsp <%= t('buttons.or') %>
+        <button class="btn btn-link show-user" type="button"  data-url="<%= user_path @user %>" >
+          <%= t('buttons.cancel') %>
+        </button>
       </div>
 
 
