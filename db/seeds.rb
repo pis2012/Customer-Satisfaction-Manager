@@ -507,7 +507,7 @@ Mood.create(project: p45,
             status: 5)
 
 
-admin_usr = User.create(role: rol_admin, client: client1,
+admin_usr = User.new(role: rol_admin, client: client1,
                         username: 'admin',password:'admin',password_confirmation:'admin',
                         full_name:'Martin Cabrera', email:'cabrera@1234.com')
 admin_usr.skip_confirmation!
@@ -515,7 +515,7 @@ admin_usr.save :validate => false
 
 profile1 = Profile.create(user:admin_usr, project:p1,skype_usr:'martin.skype')
 
-client_usr = User.create(role: rol_client, client: client1,
+client_usr = User.new(role: rol_client, client: client1,
                          username: 'client_usr',password:'client',password_confirmation:'client',
                          full_name:'Bill Gates', email:'gates@1234.com')
 client_usr.skip_confirmation!
@@ -525,7 +525,7 @@ profile = Profile.create(user:client_usr, project:p4,skype_usr:'gates.skype')
 
 
 
-client_usr = User.create(role: rol_client, client: client2,
+client_usr = User.new(role: rol_client, client: client2,
                          username: 'sony',password:'sony',password_confirmation:'sony',
                          full_name:'Sony',email:'sony@1234.com')
 client_usr.skip_confirmation!
