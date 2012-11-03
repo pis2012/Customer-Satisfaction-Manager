@@ -12,7 +12,7 @@
 
 /* ============== [ MOOD SELECTOR ] ============== */
 
-.current-mood p{
+.current-mood{
   margin-right: 15px;
   text-align:  center;
 }
@@ -27,18 +27,14 @@
   margin:auto;
 }
 
-.face-mood-state {
-  text-align:  center;
-}
-
-#face-list {
+#moodsTab {
   list-style: none outside none;
   margin-left: 0;
   margin-right: 5%;
   margin-left: -3%;
 }
 
-#face-list li {
+#moodsTab li {
   display: inline;
   padding: 0;
   margin-left: -3px;
@@ -46,7 +42,7 @@
   font-size: 44px;
 }
 
-#face-list li.active {
+#moodsTab li.active {
   background-color: #2175bc;
   -moz-border-radius: 35px;
   border-radius: 35px;
@@ -55,27 +51,29 @@
   line-height: 60px;
 }
 
-#face-list li a:active {
+#moodsTab li a:active {
   background-color: #2175bc;
   -moz-border-radius: 35px;
   border-radius: 35px;
   font-size: 44px;
 }
 
-#face-list li a:hover {
+#moodsTab li a:hover {
+  margin: 0 1%;
   background-color: #2586d7;
   -moz-border-radius: 35px;
   border-radius: 35px;
   font-size: 44px;
 }
 
-#face-list img {
+#moodsTab img {
   width: 16%;
   height: 16%;
   padding: 3px;
 }
 
-#face-list li img:hover {
+#moodsTab li img:hover {
+
   width: 18%;
   height: 18%;
   -webkit-transition: all .3s linear;
@@ -384,9 +382,3 @@
 
 
 }
-
-
-//FIN VER FEEDBACK
-
-
-
