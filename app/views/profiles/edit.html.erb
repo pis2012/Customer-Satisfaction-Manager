@@ -66,11 +66,11 @@
 
             <% end %>
 
-            </br>
+            <br/>
 
             <div class="controls">
               <%= t('user_edit.skype_user')  %>
-              </br>
+              <br/>
               <div class="input-prepend">
                 <%= f.text_field :skype_usr %>
               </div>
@@ -78,30 +78,28 @@
 
           </div>
 
-          <hr> </hr>
+          <hr/>
 
           <div class="control-group">
 
             <label for="inputUsername"><%= t('user_edit.notifications')  %></label>
             <div class="controls">
-              <%= t('user_edit.feedbacks')  %> &nbsp;
               <div class="input-prepend">
                 <label class="checkbox">
-                  <%= f.check_box :feedbacks_notifications %>
+                  <%= t('user_edit.feedbacks')  %>&nbsp;<%= f.check_box :feedbacks_notifications %>
                 </label>
               </div>
             </div>
             <div class="controls">
-              <%= t('user_edit.comments')  %> &nbsp;
               <div class="input-prepend">
                 <label class="checkbox">
-                  <%= f.check_box :comments_notifications %>
+                  <%= t('user_edit.comments')  %>&nbsp;<%= f.check_box :comments_notifications %>
                 </label>
               </div>
             </div>
           </div>
 
-          <hr> </hr>
+          <hr/>
 
 
           <div class="control-group">
@@ -114,13 +112,12 @@
                   <%=f.file_field :avatar, :accept => "image/jpeg,image/png,image/gif" %>
             </div>
 
-            </br>
+            <br/>
 
             <div class="controls">
-                Use gravatar image &nbsp;
                 <div class="input-prepend">
                     <label class="checkbox">
-                      <%= f.check_box :show_gravatar %>
+                      <%= t('user_edit.gravatar')  %>&nbsp;<%= f.check_box :show_gravatar %>
                     </label>
                 </div>
             </div>

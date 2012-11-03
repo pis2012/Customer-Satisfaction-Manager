@@ -13,7 +13,7 @@
         </div>
     <% end %>
 
-        <br/>
+    <br/>
 
 
     <div class="project-name">
@@ -32,10 +32,12 @@
     </div>
     <br/>
 
-    <label class="control-label" ><%= t('proyect.finalized')%>:</label>
-    <%= f.check_box(:finalized) %>
+    <label class="control-label checkbox-hand" >
+      <%= t('proyect.finalized')%>&nbsp;<%= f.check_box(:finalized) %>
+    </label>
 
-  <div class="project-date">
+
+    <div class="project-date">
     <%= f.label :end_date %><br />
     <%= f.date_select :end_date %>
   </div>
