@@ -108,10 +108,7 @@
   end
 
   def show_project_data
-    @project = current_user.profile.project
-    @view = {:project => @project, :graph => nil}
-    @milestones = @project.milestones
-    @view[:graph] = @project.get_mood_graph
+    @view = {:project => current_user.profile.project, :graph => current_user.profile.project.get_mood_graph}
 
     respond_to do |format|
       format.html { render :layout => false } # show_project_data.html.erb

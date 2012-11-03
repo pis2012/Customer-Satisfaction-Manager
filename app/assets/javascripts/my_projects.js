@@ -124,7 +124,7 @@ $(document).on('click','.new-milestone-link', function () {
     return false;
 });
 
-$(".show-feedback-link").live('click', function () {
+$(document).on('click','.show-feedback-link', function () {
     updatePanel($(this).data('url'), '#show-feedback', 'show-feedback');
     return false;
 });

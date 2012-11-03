@@ -53,7 +53,7 @@ CSM::Application.routes.draw do
     resources :users
     resources :projects
 
-    resources :forms
+    resources :forms, :only => [:index,:show,:new,:create,:destroy]
     match "/forms/show_data/:id" => "forms#show_data", :as => :forms_show_data
     match "/forms/show_full_data/:id" => "forms#show_full_data", :as => :forms_show_full_data
   end
@@ -86,11 +86,6 @@ CSM::Application.routes.draw do
 
   # MAILS ROUTES
   match "/my_projects/:project_id/change_mood/:new_status"  => "projects#change_any_project_mood",  :as => :change_any_project_mood
-
-  #resources :forms, :only => [:index, :new, :create]
-  #match "/forms/show_data/:form_id" => "forms#show_data", :as => :forms_show_data
-  #match "/forms/show_full_data/:form_id" => "forms#show_full_data", :as => :forms_show_full_data
-  #match "/forms/show/:form_id" => "forms#show", :as => :forms_show
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

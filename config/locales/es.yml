@@ -90,6 +90,7 @@
           cout_project: "Proyectos Asociados:  %{count}."
           cout_users:   "Usuarios Registrados: %{count}."
           eliminate_confirm: "¿Esta seguro que desea eliminar este cliente?"
+          client: "Cliente"
   home:
             home: "Home"
             singin: "Iniciar Sesion"
@@ -161,6 +162,7 @@
             confirm_password: "Confirmar contraseña"
 
   user:
+            user: "Usuario"
             continue: "Continuar"
             password:  "Contraseña"
             sing_in_with:  "Ingresar con"
@@ -274,6 +276,11 @@
                                                       email:
                                                         blank: "Email no puede ser vacio."
 
+                                milestone:
+                                          attributes:
+                                                      name:
+                                                       blank: "Nombre del hito no puede ser vacio."
+
 
 
   Comments:
@@ -383,6 +390,7 @@
             Next_milestone: "Proximo hito"
             end_project: "Final de proyecto"
             the: " de "
+            eliminate_confirm: "¿Esta seguro que desea eliminar este hito?"
 
   proyect:
             list_projects:  "Lista de Proyectos"

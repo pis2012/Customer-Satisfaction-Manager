@@ -53,8 +53,8 @@ class Project < ActiveRecord::Base
     difference = (difference - seconds) / 60
     minutes    =  difference % 60
     difference = (difference - minutes) / 60
-    hours      =  (difference + 4) % 24
-    difference = (difference + 4 - hours)   / 24
+    hours      = difference % 24
+    difference = (difference - hours)   / 24
     days       =  difference
 
     [days,hours]
@@ -64,13 +64,18 @@ class Project < ActiveRecord::Base
     res = [nil,nil]
     if !self.finalized
       current_date = Time.now.to_datetime
-      miles = self.milestones.select {|mile| mile.target_date.to_datetime > current_date}
+      miles = self.milestones.select {|mile| mile.target_date.to_datetime > current_date && mile.target_date.to_datetime < self.end_date.to_datetime}
       miles.sort_by! {|m| m[:target_date]}
       if miles.count > 0
         td = miles.first.target_date.to_datetime
         distance = self.distance_between(current_date,td)
-        days = distance[0]
-        hours = distance[1]
+        # Adjustments with the local time offset
+        offset = -(current_date.offset * 24).round
+        days =  distance[0]
+        if distance[1] + offset > 23
+          days += 1
+        end
+        hours = (distance[1] + offset) % 24
 
         res[0] = [days,hours,miles.first.name]
         if miles.count > 1
