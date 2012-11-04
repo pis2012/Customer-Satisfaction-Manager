@@ -73,6 +73,9 @@ CSM::Application.routes.draw do
   #match "/admin/projects" => "admin#index", :as => :admin_projects
   match "/admin/forms" => "forms#index", :as => :admin_forms
 
+  match "/home" => "home#language_change", :as => :home_language_change
+
+
 
   resources :projects, :only => [:index, :new, :create,:update , :edit,:destroy,:show] #:constraints => lambda { |request| request.env['warden'].user.admin? }
   match "/admin/projects" => "projects#index" , :as => :admin_projects
