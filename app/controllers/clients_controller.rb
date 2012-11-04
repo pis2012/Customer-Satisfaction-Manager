@@ -91,4 +91,15 @@ class ClientsController < ApplicationController
     end
   end
 
+  def name_filter
+    name = params[:nameC]
+    u = Client.arel_table
+    @clients = Client.where(u[:name].matches("%#{name}%"))
+
+    respond_to do |format|
+      format.js { render :action => "index" }
+    end
+  end
+
+
 end

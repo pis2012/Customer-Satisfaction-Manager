@@ -63,7 +63,7 @@ CSM::Application.routes.draw do
   match "/admin/client/:client_id" => "clients#show", :as => :clients_show
   match "/admin/client/edit/:client_id" => "clients#edit", :as => :clients_edit
   match "/admin/client/delete/:client_id" => "clients#destroy", :as => :clients_delete
-
+  match "/clients/name_filter" => "clients#name_filter", :as => :clients_name_filter
 
 
   #match "/my_projects/change_mood" , to: "projects#change_mood"
