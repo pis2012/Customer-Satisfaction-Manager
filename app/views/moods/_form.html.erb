@@ -6,7 +6,7 @@
   </div>
   <br>
   <br>
-  <% mood = @view[:project].moods.first.status %>
+  <% mood = @view[:project].mood.status %>
   <div id="moodsTabContent" class="tab-content">
     <% (1..5).each do |m| %>
         <div class="tab-pane fade
@@ -28,5 +28,4 @@
         <% end %>
       </ul>
   <% end %>
-
 </div>

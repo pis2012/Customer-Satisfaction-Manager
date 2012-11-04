@@ -5,8 +5,8 @@ class AdminController < ApplicationController
   layout 'admin'
 
   def index
-    @users =  User.all
-    @activities = Activity.recent_activity Date.today - 1.day, 12
+    @recent = true
+    @activities = Activity.recent_activity Date.today - 1.day, 20
 
     respond_to do |format|
       format.html { }
@@ -26,7 +26,14 @@ class AdminController < ApplicationController
     end
   end
 
+  def emails_config
 
+    respond_to do |format|
+      if request.xhr?
+        format.html { render :layout => false } # emails_config.html.erb
+      end
+    end
+  end
 
 
 end

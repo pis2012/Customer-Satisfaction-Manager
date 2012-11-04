@@ -16,7 +16,7 @@
 
       <!-- reports tabs -->
       <li class="reports">
-        <a href="#reports" class="reports-link" data-url="<%= admin_reports_path %>"><%= I18n.t('admin.tabs.reports') %></a>
+        <a href="#reports" class="reports-link" data-url="<%= admin_reports_path %>"><%= t('admin.tabs.reports') %></a>
       </li>
 
       <!-- projects tabs -->
@@ -24,16 +24,19 @@
         <a href="#projects" class="projects-link" data-url="<%= admin_projects_path %>"><%= t('admin.projects') %></a>
         <ul>
           <li class="projects" hidden="true">
-            <a href="#projects" class="projects-link" data-url="<%= admin_projects_path %>"><% t('admin.projects') %></a>
+            <a href="#projects" class="projects-link" data-url="<%= admin_projects_path %>">
+              <% t('admin.projects') %></a>
           </li>
           <li class="new-project" hidden="true">
-            <a href="#new-project"><% t('admin.projects') %></a>
+            <a href="#new-project">
+              <% t('admin.projects') %></a>
           </li>
           <li class="edit-project" hidden="true">
             <a href="#edit-project"><%= t('admin.projects') %></a>
           </li>
           <li class="show-project" hidden="true">
-            <a href="#show-project"><% t('admin.projects') %></a>
+            <a href="#show-project">
+              <% t('admin.projects') %></a>
           </li>
         </ul>
       </li>
@@ -43,16 +46,20 @@
         <a href="#users" class="users-link" data-url="<%= users_path %>"><%= t('admin.users') %></a>
         <ul>
           <li class="users" hidden="true">
-            <a href="#users" class="users-link" data-url="<%= users_path %>"><% t('admin.users') %></a>
+            <a href="#users" class="users-link" data-url="<%= users_path %>">
+              <% t('admin.users') %></a>
           </li>
           <li class="new-user" hidden="true">
-            <a href="#new-user"><% t('admin.tabs.new_user') %></a>
+            <a href="#new-user">
+              <% t('admin.tabs.new_user') %></a>
           </li>
           <li class="edit-user" hidden="true">
-            <a href="#edit-user"><% t('admin.tabs.edit_user') %></a>
+            <a href="#edit-user">
+              <% t('admin.tabs.edit_user') %></a>
           </li>
           <li class="show-user" hidden="true">
-            <a href="#show-user"><% t('admin.tabs.show_user') %></a>
+            <a href="#show-user">
+              <% t('admin.tabs.show_user') %></a>
           </li>
         </ul>
       </li>
@@ -65,10 +72,12 @@
             <a href="#clients" class="clients-link" data-url="<%= admin_clients_path %>"><%= t('admin.tabs.clients') %></a>
           </li>
           <li class="show-client" hidden="true">
-            <a href="#show-client"><% t('admin.tabs.show_client') %></a>
+            <a href="#show-client">
+              <% t('admin.tabs.show_client') %></a>
           </li>
           <li class="new-client" hidden="true">
-            <a href="#new-client"><% t('admin.tabs.new_client') %></a>
+            <a href="#new-client">
+              <% t('admin.tabs.new_client') %></a>
           </li>
           <li class="edit-client" hidden="true">
             <a href="#edit-client"><%= t('admin.tabs.edit_client') %></a>
@@ -78,10 +87,10 @@
 
       <!-- forms tabs -->
       <li class="forms">
-        <a href="#forms" class="forms-link" data-url="<%= forms_path %>"><%= I18n.t('admin.tabs.forms') %></a>
+        <a href="#forms" class="forms-link" data-url="<%= forms_path %>"><%= t('admin.tabs.forms') %></a>
         <ul>
           <li class="forms" hidden="true">
-            <a href="#forms" data-toggle="tab" class="forms-link" data-url="<%= forms_path %>"><%= I18n.t('admin.tabs.forms') %></a>
+            <a href="#forms" data-toggle="tab" class="forms-link" data-url="<%= forms_path %>"><%= t('admin.tabs.forms') %></a>
           </li>
           <li class="new-form" hidden="true">
             <a href="#new-form">
@@ -92,6 +101,11 @@
               <% t('admin.tabs.show_form') %></a>
           </li>
         </ul>
+      </li>
+
+      <!-- emails tabs -->
+      <li class="emails">
+        <a href="#emails" class="emails-link" data-url="<%= emails_config_path %>"><%= t('admin.tabs.emails') %></a>
       </li>
 
     </ul>
@@ -111,29 +125,25 @@
 
       <div class="tab-pane fade" id="reports">
         <!-- page header -->
-        <div class="page_header_wrapper">
-          <div class="page_header">
-            <h1><%= I18n.t ('admin.reports') %></h1>
-          </div>
+        <div class="page_header">
+          <h1><%= I18n.t ('admin.reports') %></h1>
         </div>
+
         <div class="page_content" id="reports_data">
 
         </div>
       </div>
-
       <div class="tab-pane fade" id="projects">
         <!-- page header -->
-        <div class="page_header_wrapper">
-          <div class="page_header">
-            <h1><%= t('admin.projects') %></h1>
+        <div class="page_header">
+          <h1><%= t('admin.projects') %></h1>
 
-            <div class="add_element">
-              <button class="btn btn-link new-user-link" data-url="<%= new_project_path %>">
-                <i class="icon-plus icon-white"> </i> <%= t('admin.tabs.new_project') %>
-              </button>
-            </div>
-
+          <div class="add_element">
+            <button class="btn btn-link new-user-link" data-url="<%= new_project_path %>">
+              <i class="icon-plus icon-white"> </i> <%= t('admin.tabs.new_project') %>
+            </button>
           </div>
+
         </div>
         <!--// page header -->
         <!-- page contents -->
@@ -144,17 +154,15 @@
 
       <div class="tab-pane fade" id="users">
         <!-- page header -->
-        <div class="page_header_wrapper">
-          <div class="page_header">
-            <h1><%= t('admin.users') %></h1>
+        <div class="page_header">
+          <h1><%= t('admin.users') %></h1>
 
-            <div class="add_element">
-              <button class="btn btn-link new-user-link" data-url="<%= new_user_path %>">
-                <i class="icon-plus icon-white"> </i> <%= t('admin.tabs.new_user') %>
-              </button>
-            </div>
-
+          <div class="add_element">
+            <button class="btn btn-link new-user-link" data-url="<%= new_user_path %>">
+              <i class="icon-plus icon-white"> </i> <%= t('admin.tabs.new_user') %>
+            </button>
           </div>
+
         </div>
         <!--// page header -->
         <!-- page contents -->
@@ -166,16 +174,16 @@
 
       <div class="tab-pane fade" id="clients">
         <!-- page header -->
-          <div class="page_header">
-            <h1><%= t('admin.tabs.clients') %></h1>
+        <div class="page_header">
+          <h1><%= t('admin.tabs.clients') %></h1>
 
-            <div class="add_element">
-              <button class="btn btn-link new-client-link" data-url="<%= new_client_path %>">
-                <i class="icon-plus icon-white"> </i> <%= t('client.new_client') %>
-              </button>
-            </div>
-
+          <div class="add_element">
+            <button class="btn btn-link new-client-link" data-url="<%= new_client_path %>">
+              <i class="icon-plus icon-white"> </i> <%= t('client.new_client') %>
+            </button>
           </div>
+
+        </div>
         <!--// page header -->
 
         <!-- page contents -->
@@ -198,18 +206,18 @@
 
       <div class="tab-pane fade" id="forms">
         <!-- page header -->
-          <div class="page_header">
-            <h1><%= I18n.t ('admin.forms') %></h1>
+        <div class="page_header">
+          <h1><%= I18n.t ('admin.forms') %></h1>
 
-            <div class="loading-gif">
-              <%= image_tag("ajax-loader.gif") %>
-            </div>
-            <div class="add_element">
-              <button class="btn btn-link new-form-link" data-url="<%= new_form_path %>">
-                <i class="icon-plus icon-white"> </i> <%= t('form.add_form') %>
-              </button>
-            </div>
+          <div class="loading-gif">
+            <%= image_tag("ajax-loader.gif") %>
           </div>
+          <div class="add_element">
+            <button class="btn btn-link new-form-link" data-url="<%= new_form_path %>">
+              <i class="icon-plus icon-white"> </i> <%= t('form.add_form') %>
+            </button>
+          </div>
+        </div>
         <!--// page header -->
         <!-- page contents -->
         <div class="page_content" id="forms-content">
@@ -260,7 +268,10 @@
       </div>
       <!--// page show user -->
 
-
+      <!-- page emails -->
+      <div class="tab-pane fade" id="emails">
+      </div>
+      <!--// page emails -->
     </div>
   </div>
 </div>

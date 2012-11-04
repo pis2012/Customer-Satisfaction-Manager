@@ -129,13 +129,12 @@
   def change_mood
     @project = current_user.profile.project
     mood = @project.moods.create(:status => params[:new_status], :project => @project)
+    @project.mood = mood
+    @project.save
 
-    @lastmood = mood.get_mood_img
-
-    @view = {:project => @project, :lastmood =>  @lastmood}
+    @view = {:project => @project}
     respond_to do |format|
-      format.html { render :layout => false }
-      format.json { render json: @project }
+      format.html { render :template => "moods/_form", :layout => false }
     end
   end
 

@@ -82,6 +82,14 @@
   background-position: 8px -452px;
 }
 
+#global_nav li.emails a {
+  background-position: 8px -410px;
+}
+
+#global_nav li.emails.active a {
+  background-position: 8px -452px;
+}
+
 /* ============== [ PAGE ] ============== */
 
 #page

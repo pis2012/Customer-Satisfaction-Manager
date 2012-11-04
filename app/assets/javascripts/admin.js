@@ -140,6 +140,13 @@ $('.users-link').live('click', function () {
     return false;
 });
 
+//************** EMAILS TAB **************** //
+
+$('.emails-link').live('click', function () {
+    updatePanel($(this).attr('data-url'), 'emails', 'emails');
+    return false;
+});
+
 
 $(document).on({
     ajaxStart: function() {

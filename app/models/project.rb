@@ -5,9 +5,10 @@ class Project < ActiveRecord::Base
   has_many :profiles
   has_many :milestones
   has_many :moods
+  belongs_to :mood
   has_many :feedbacks
 
-  attr_accessible :client, :milestones, :moods, :feedbacks,
+  attr_accessible :client, :milestones, :moods, :mood, :feedbacks,
                   :description, :end_date, :id, :name, :finalized, :last_reminder_email_sent
 
   validates :name, :description, :end_date, :presence  => true

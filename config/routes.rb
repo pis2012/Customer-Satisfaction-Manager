@@ -53,9 +53,13 @@ CSM::Application.routes.draw do
     resources :users
     resources :projects
 
+    # FORMS ROUTES
     resources :forms, :only => [:index,:show,:new,:create,:destroy]
     match "/forms/show_data/:id" => "forms#show_data", :as => :forms_show_data
     match "/forms/show_full_data/:id" => "forms#show_full_data", :as => :forms_show_full_data
+
+    # EMAILS ROUTES
+    match "/emails" => "admin#emails_config", :as => :emails_config
   end
 
   resources :clients, :only => [:new, :create, :update], :path => "/admin/clients"

@@ -3,35 +3,35 @@
 
 "en":
   date:
-              January: "January"
-              February: "February"
-              March: "March"
-              April: "April"
-              May: "May"
-              June: "June"
-              July: "July"
-              August: "August"
-              September: "September"
-              October: "October"
-              November: "November"
-              December: "December"
-              Monday: "Monday"
-              Tuesday: "Tuesday"
-              Wednesday: "Wednesday"
-              Thursday: "Thursday"
-              Friday: "Friday"
-              Saturday: "Saturday"
-              Sunday: "Sunday"
+            January: "January"
+            February: "February"
+            March: "March"
+            April: "April"
+            May: "May"
+            June: "June"
+            July: "July"
+            August: "August"
+            September: "September"
+            October: "October"
+            November: "November"
+            December: "December"
+            Monday: "Monday"
+            Tuesday: "Tuesday"
+            Wednesday: "Wednesday"
+            Thursday: "Thursday"
+            Friday: "Friday"
+            Saturday: "Saturday"
+            Sunday: "Sunday"
 
-              formats:
-                    default: ! '%Y-%m-%d'
-                    long: ! '%B %d, %Y'
-                    short: ! '%b %d'
-              order:
-                  - :year
-                  - :month
-                  - :day
-              use_short_month: true
+            formats:
+                  default: ! '%Y-%m-%d'
+                  long: ! '%B %d, %Y'
+                  short: ! '%b %d'
+            order:
+                - :year
+                - :month
+                - :day
+            use_short_month: true
 
   client:
             name_field: "Name of client"
@@ -103,24 +103,24 @@
 
 
   user_edit:
-              choose_your_profile_settings: "CHOOSE YOUR PROFILE SETTINGS"
-              personal_data: "Personal Data"
-              full_Name: "Full Name"
-              email: "Email"
-              load_openid: "Load OpenID from Gmail's session"
-              skype_user: "Skype user"
-              notifications: "Notifications"
-              feedbacks: "Feedbacks"
-              comments: "Comments"
-              my_picture: "My Picture"
-              my_projects: "My Projects"
-              default_project: "Default project"
-              change_password: "Change Password"
-              current_password: "Current password"
-              new_Password: "New password"
-              confirm_password: "Confirm password"
-              save_changes: "Save Changes"
-              gravatar: "Use Gravatar image"
+            choose_your_profile_settings: "CHOOSE YOUR PROFILE SETTINGS"
+            personal_data: "Personal Data"
+            full_Name: "Full Name"
+            email: "Email"
+            load_openid: "Load OpenID from Gmail's session"
+            skype_user: "Skype user"
+            notifications: "Notifications"
+            feedbacks: "Feedbacks"
+            comments: "Comments"
+            my_picture: "My Picture"
+            my_projects: "My Projects"
+            default_project: "Default project"
+            change_password: "Change Password"
+            current_password: "Current password"
+            new_Password: "New password"
+            confirm_password: "Confirm password"
+            save_changes: "Save Changes"
+            gravatar: "Use Gravatar image"
   user:
             user: "User"
             continue: "Continue"
@@ -302,6 +302,7 @@
                           new_client: "New Client"
                           edit_client: "Edit Client"
                           new_project: "New project"
+                          emails: "Emails"
 
             customer_satisfaction_manager:    "CUSTOMER SATISFACTION MANAGER"
             customers:    "Customers"

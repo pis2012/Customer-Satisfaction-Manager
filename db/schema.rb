@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20121102183558) do
 
   create_table "projects", :force => true do |t|
     t.integer  "client_id"
+    t.integer  "mood_id"
     t.string   "name"
     t.text     "description"
     t.datetime "end_date"
