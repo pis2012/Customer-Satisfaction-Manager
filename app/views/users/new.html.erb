@@ -30,7 +30,7 @@
 
         <div class="controls">
           <div class="input-prepend">
-            <%= f.select(:client_id, Client.all.map {|client| [client.name, client.id]}, {:include_blank => false} , :prompt => true ) %>
+            <%= f.select(:client_id, Client.all.reject{|client| client.projects.empty?}.map {|client| [client.name, client.id]} , {:include_blank => false} , :prompt => true ) %>
           </div>
         </div>
 

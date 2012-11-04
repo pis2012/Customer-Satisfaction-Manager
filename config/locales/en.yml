@@ -97,6 +97,7 @@
             mood:
                         update_mood: "Update your mood"
                         mood_updated: "Mood updated!"
+                        actual_mood: "Actual mood"
 
 
 

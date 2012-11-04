@@ -37,71 +37,9 @@
 <div class="container">
   <div class="row-fluid">
     <div class="span3">
+
+      <%= render "moods/form" %>
       <br>
-
-      <div class="current-mood">
-        <div class="face-mood-state">
-
-          <div id="msj-face-changed-container">
-            <div id="msj-face-changed" class="label label-info">
-              <%= t('my_projects.mood.mood_updated')%>
-            </div>
-          </div>
-
-          <br/>
-
-          <div id="myTabContentMoods" class="tab-content">
-            <!-- page faces -->
-            <div class="tab-pane fade in active" id="change-mood1">
-                <!-- page contents -->
-                <div class="page_content" id="change-mood1-content">
-
-                  <%= render template: 'projects/change_mood' %>
-
-                </div>
-            </div>
-
-            <div class="tab-pane fade" id="change-mood2">
-              <!-- page contents -->
-              <div class="page_content" id="change-mood2-content">
-              </div>
-            </div>
-            <div class="tab-pane fade" id="change-mood3">
-              <!-- page contents -->
-              <div class="page_content" id="change-mood3-content">
-              </div>
-            </div>
-            <div class="tab-pane fade" id="change-mood4">
-              <!-- page contents -->
-              <div class="page_content" id="change-mood4-content">
-              </div>
-            </div>
-            <div class="tab-pane fade" id="change-mood5">
-              <!-- page contents -->
-              <div class="page_content" id="change-mood5-content">
-              </div>
-            </div>
-          </div>
-
-          <% if current_user.client? %>
-
-          <ul id="face-list">
-            <% mood = @view[:project].moods.first.status %>
-            <li <% if mood == 1 %> class="active" <% end %>><a href="#change-mood1" class="change-mood1-link" data-url="<%= change_mood_path('1') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="1" src="/assets/moods/small/1.png" class="face-mood img-rounded" id="miniMood1"/></a></li>
-            <li <% if mood == 2 %> class="active" <% end %>><a href="#change-mood2" class="change-mood2-link" data-url="<%= change_mood_path('2') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="2" src="/assets/moods/small/2.png" class="face-mood img-rounded" id="miniMood2"/></a></li>
-            <li <% if mood == 3 %> class="active" <% end %>><a href="#change-mood3" class="change-mood3-link" data-url="<%= change_mood_path('3') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="3" src="/assets/moods/small/3.png" class="face-mood img-rounded" id="miniMood3"/></a></li>
-            <li <% if mood == 4 %> class="active" <% end %>><a href="#change-mood4" class="change-mood4-link" data-url="<%= change_mood_path('4') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="4" src="/assets/moods/small/4.png" class="face-mood img-rounded" id="miniMood4"/></a></li>
-            <li <% if mood == 5 %> class="active" <% end %>><a href="#change-mood5" class="change-mood5-link" data-url="<%= change_mood_path('5') %>" rel="tooltip" title="<%= t('my_projects.mood.update_mood') %>"><img alt="5" src="/assets/moods/small/5.png" class="face-mood img-rounded" id="miniMood5"/></a></li>
-          </ul>
-
-          <% end %>
-
-        </div>
-
-        <p></p>
-        <br>
-      </div>
-
       <!-- main tab. There are two combos, one for each subject. -->
       <!-- when one of the hidden tabs is shown the one which is not hidden remains active. -->
       <div id="global_nav">

@@ -141,6 +141,7 @@
             mood:
                         update_mood: "Actualiza tu estado"
                         mood_updated: "Estado actualizado!"
+                        actual_mood: "Estado actual"
 
 
   user_edit:
