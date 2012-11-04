@@ -44,7 +44,6 @@ $('#moodsTab').ready(function(){
         }
     });
 
-    $('.estilotextarea').wysihtml5();
 });
 
 $('.change-mood-link').live('click', function () {
@@ -76,11 +75,15 @@ $(document).on('click','.new-feedback-link', function () {
 });
 
 $(document).on('show','#myTab a[href=#new-feedback]', function (e) {
-    html_panel.panelInstance('feedback_content');
+    if (!($.browser.msie && parseInt($.browser.version, 10) === 8)) {
+        html_panel.panelInstance('feedback_content');
+    }
 });
 
 $(document).on('show','#myTab a[href=#edit-feedback]', function (e) {
-    html_panel.panelInstance('feedback_content');
+    if (!($.browser.msie && parseInt($.browser.version, 10) === 8)) {
+        html_panel.panelInstance('feedback_content');
+    }
 
 });
 

@@ -18,14 +18,15 @@
   </div>
   <br>
   <% if current_user.client? %>
-
-      <ul id="moodsTab" class="form-inline">
+      <ul id="moodsTab">
         <% (1..5).each do |m| %>
-            <li class="moods_tab_element <%= "active" if mood == m %>"><a href="#mood<%= "#{m}" %>" class="change-mood-link" data-mood="<%= "#{m}" %>" rel="tooltip"
-                 title="<%= mood == m ? t('my_projects.mood.actual_mood') : t('my_projects.mood.update_mood') %>"><%= image_tag "moods/small/" + "#{m}" + ".png", class: "small_mood_img img-rounded" %></a></li>
+            <li class="moods_tab_element<%= " active" if mood == m %>"><a href="#mood<%= "#{m}" %>"
+                                                                          class="change-mood-link"
+                                                                          data-mood="<%= "#{m}" %>" rel="tooltip"
+                 title="<%= t('my_projects.mood.update_mood') %>">
+              <%= image_tag "moods/small/" + "#{m}" + ".png", class: "small_mood_img img-rounded" %></a></li>
         <% end %>
       </ul>
-
   <% end %>
 
 </div>

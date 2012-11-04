@@ -13,7 +13,7 @@
 /* ============== [ MOOD SELECTOR ] ============== */
 
 .current-mood{
-  margin-right: 15px;
+  margin-right: 5%;
   text-align:  center;
 }
 
@@ -29,56 +29,48 @@
 
 #moodsTab {
   list-style: none outside none;
-  margin-left: 0;
-  margin-right: 5%;
-  margin-left: -3%;
+  width: 100%;
+  margin: 0;
+  white-space: nowrap;
 }
 
-#moodsTab li {
+#moodsTab .moods_tab_element{
   display: inline;
-  padding: 0;
-  margin-left: -3px;
   line-height: 70px;
   font-size: 44px;
 }
 
-#moodsTab li.active {
+#moodsTab .moods_tab_element.active {
   background-color: #2175bc;
-  -moz-border-radius: 35px;
-  border-radius: 35px;
-
+  -moz-border-radius: 50%;
+  border-radius: 50%;
   font-size: 44px;
-  line-height: 60px;
+
 }
 
-#moodsTab li a:active {
-  background-color: #2175bc;
-  -moz-border-radius: 35px;
-  border-radius: 35px;
-  font-size: 44px;
-}
-
-#moodsTab li a:hover {
-  margin: 0 1%;
+#moodsTab .moods_tab_element:hover {
   background-color: #2586d7;
-  -moz-border-radius: 35px;
-  border-radius: 35px;
-  font-size: 44px;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  margin: 0 1%;
 }
 
-#moodsTab img {
+
+#moodsTab .small_mood_img {
   width: 16%;
   height: 16%;
-  padding: 3px;
+  padding: 0 1%;
 }
 
-#moodsTab li img:hover {
-
+#moodsTab .small_mood_img:hover {
   width: 18%;
   height: 18%;
   -webkit-transition: all .3s linear;
   -moz-transition: all .3s linear;
+}
 
+#moodsTab .tooltip-inner{
+  line-height: 30px;
 }
 
 /* ============== [ MILESTONE NOTIFIER ] ============== */
