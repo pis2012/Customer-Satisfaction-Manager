@@ -48,10 +48,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     @user.skip_confirmation!
-
     @user.role = Role.find_by_name Role::CLIENT_ROLE
+
+
     respond_to do |format|
       if @user.save
+        @user.create_profile
         #format.html { redirect_to @user, notice: 'User was successfully created.' }
         #format.json { render json: @user, status: :created, location: @user }
         @users = User.all

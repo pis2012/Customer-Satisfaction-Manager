@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
 
   devise :database_authenticatable, :registerable, :recoverable, :omniauthable, :rememberable, :confirmable, :validatable
-  after_create :create_profile
+  #after_create :create_profile
 
   belongs_to :role
   belongs_to :client

@@ -4,13 +4,6 @@
     </h1>
 
     <div class="add_element">
-
-      <script>
-          $(document).ready(function() {
-             // $('#pepe').hide();
-          });
-      </script>
-
       <%= form_tag(user_path, :method => "post", :remote => true, :id => "delete_form") do %>
           <input name="_method" type="hidden" value="delete">
           <button class="btn btn-link delete-btn" type="submit" >
@@ -116,7 +109,7 @@
 
 
       <%= fields_for @user.profile do |fa| %>
-          <label class="control-label"><%= t('user_edit.skype_user')  %></label>
+          <label class="control-label"><%= t('user_edit.skype_user')  %>:</label>
 
           <div class="controls">
             <div class="input-prepend">

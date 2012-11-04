@@ -67,7 +67,7 @@ CSM::Application.routes.draw do
   match "/admin/client/:client_id" => "clients#show", :as => :clients_show
   match "/admin/client/edit/:client_id" => "clients#edit", :as => :clients_edit
   match "/admin/client/delete/:client_id" => "clients#destroy", :as => :clients_delete
-
+  match "/clients/name_filter" => "clients#name_filter", :as => :clients_name_filter
 
 
   #match "/my_projects/change_mood" , to: "projects#change_mood"
@@ -76,6 +76,9 @@ CSM::Application.routes.draw do
   match "/admin/reports" => "admin#show_reports", :as => :admin_reports
   #match "/admin/projects" => "admin#index", :as => :admin_projects
   match "/admin/forms" => "forms#index", :as => :admin_forms
+
+  match "/home" => "home#language_change", :as => :home_language_change
+
 
 
   resources :projects, :only => [:index, :new, :create,:update , :edit,:destroy,:show] #:constraints => lambda { |request| request.env['warden'].user.admin? }

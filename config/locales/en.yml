@@ -343,6 +343,9 @@
             end_project: "End of project"
             the: " of "
             eliminate_confirm: "Are you sure you want to delete this milestone?"
+            one_hour_to_end: "hour to end"
+            name: "Name"
+            target_date: "Target date"
 
   proyect:
             list_projects:  "List of Projects"
