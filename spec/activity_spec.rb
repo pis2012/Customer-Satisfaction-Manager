@@ -6,7 +6,10 @@ class ActivitySpec
       User.delete_all
       Project.delete_all
       FeedbackType.delete_all
+      Feedback.delete_all
       Role.delete_all
+      Comment.delete_all
+      Mood.delete_all
       @valid_attributes =
           {
               :adusr => User.new(role: Role.create(name:'Admin'),  username: 'usr',password:'pass',password_confirmation:'pass',

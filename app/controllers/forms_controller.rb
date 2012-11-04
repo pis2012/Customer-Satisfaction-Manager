@@ -89,6 +89,7 @@ class FormsController < ApplicationController
         @form.errors[:base] << "not_exists_anymore?"
         format.html { render :layout => false } # show_project_data.html.erb
       end
+      format.html { render :layout => false } # show_project_data.html.erb
     end
   end
 
@@ -128,6 +129,7 @@ class FormsController < ApplicationController
         @forms = Form.all
         format.js { render action: "index" }
       end
+      format.js { render action: "index" }
     end
   end
 

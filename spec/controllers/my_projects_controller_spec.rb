@@ -21,7 +21,7 @@ describe MyProjectsController, :type => :controller do
                                                       description:'proyecto de verificadores',
                                                       end_date:'2013-01-01 00:00:00',
                                                       finalized:false)
-        @valid_attributes[:usr].skip_confirmation!
+    @valid_attributes[:usr].skip_confirmation!
     @valid_attributes[:profile] = Profile.create(user: @valid_attributes[:usr], project:@valid_attributes[:project2], skype_usr:'martin.skype')
     @valid_attributes[:usr].profile = @valid_attributes[:profile]
     @valid_attributes[:usr].save :validate => false
@@ -38,5 +38,6 @@ describe MyProjectsController, :type => :controller do
     assert_not_nil assigns(:project)
     sign_out user
   end
+
 
 end
