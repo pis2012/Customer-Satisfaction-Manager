@@ -393,6 +393,8 @@
             end_project: "Final de proyecto"
             the: " de "
             eliminate_confirm: "¿Está seguro que desea eliminar este hito?"
+            name: "Nombre"
+            target_date: "Fecha tope"
 
   proyect:
             list_projects:  "Lista de Proyectos"
