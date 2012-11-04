@@ -17,6 +17,24 @@
 <div id="global-wrapper">
   <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
+      <div class="nav pull-left">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="icon-flag icon-white"></i>
+            <%= I18n.t('home.language')  %>
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu inverse">
+            <li>
+              <%= link_to t('home.Spanish') ,home_language_change_path(:leng=> "ES")  %>
+            </li>
+            <li>
+              <%= link_to t('home.English') ,home_language_change_path(:leng => "EN") %>
+            </li>
+          </ul>
+        </li>
+      </div>
+
       <div class="container">
         <a class="brand" href="#">CSM</a>
         <div class="nav-collapse collapse">
