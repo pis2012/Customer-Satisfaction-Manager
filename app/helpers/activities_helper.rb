@@ -50,42 +50,42 @@ module ActivitiesHelper
     case object.class.name
     when 'Feedback'
       if @recent
-        "New feedback #{object.subject} on #{object.project.name}"
+        "#{t('activity.new_feedback')} #{object.subject} #{t('activity.on')} #{object.project.name}"
       else
-        "Feedback: #{object.subject} on #{object.project.name}"
+        "#{t('activity.feedback')}: #{object.subject} #{t('activity.on')} #{object.project.name}"
       end
     when 'Mood'
-      "Mood update on project #{object.project.name}!"
+      "#{t('activity.mood_update')} #{object.project.name}!"
     when 'Comment'
       if @recent
-        "New comment on feedback #{object.feedback.subject}"
+        "#{t('activity.new_comment')} #{object.feedback.subject}"
       else
-        "Comment on feedback #{object.feedback.subject}"
+        "#{t('activity.comment')} #{object.feedback.subject}"
       end
     when 'Project'
       if @recent
-        "New project #{object.name} for #{object.client.name}"
+        "#{t('activity.new_project')} #{object.name} #{t('activity.for')} #{object.client.name}"
       else
-        "Project #{object.name}, #{object.client.name}"
+        "#{t('activity.project')} #{object.name}, #{object.client.name}"
       end
     when 'User'
-      if @recent
-        "New user #{object.full_name}"
+      if object.admin?
+        user_role = t('activity.admin')
+      elsif object.client?
+        user_role = object.client.name
       else
-        if object.admin?
-          user_role = "Administrator"
-        elsif object.client?
-          user_role = object.client.name
-        else
-          user_role = "Moove-IT Employee"
-        end
-        "User #{object.full_name}, #{user_role}"
+        user_role = t('activity.employee')
+      end
+      if @recent
+        "#{t('activity.new_user')} #{object.full_name}, #{user_role}"
+      else
+        "#{t('activity.user')} #{object.full_name}, #{user_role}"
       end
     when 'Client'
       if @recent
-        "New client #{object.name}"
+        "#{t('activity.new_client')} #{object.name}"
       else
-        "Client #{object.name}"
+        "#{t('activity.client')} #{object.name}"
       end
     else
       ""

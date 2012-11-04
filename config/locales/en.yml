@@ -365,8 +365,27 @@
             changes_in_mood:     "Changes in mood"
 
   activity:
+            recent_activity: "Recent Activity"
+            site_searcher: "Site Searcher"
+            enter_query: "Enter your search query here:"
             authored_by: "Authored by"
             date_on: "on"
+            new_feedback: "New feedback"
+            on: "on"
+            feedback: "Feedback"
+            mood_update: "Mood update on project"
+            new_comment: "New comment on feedback"
+            comment: "Comment on feedback"
+            new_project: "New project"
+            for: "for"
+            project: "Project"
+            new_user: "New user"
+            admin: "Administrator"
+            employee: "Moove-IT Employee"
+            user: "User"
+            new_client: "New client"
+            client: "Client"
+
 
   devise:
         failure:

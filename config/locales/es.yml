@@ -418,8 +418,26 @@
 
 
   activity:
+              recent_activity: "Actividad Reciente"
+              site_searcher: "Buscador del Sitio"
+              enter_query: "Ingrese texto a buscar aquí:"
               authored_by: "Realizado por"
               date_on: "el"
+              new_feedback: "Nuevo feedback"
+              on: "en"
+              feedback: "Feedback"
+              mood_update: "Estado actualizado en proyecto"
+              new_comment: "Nuevo comentario en feedback"
+              comment: "Comentario en feedback"
+              new_project: "Nuevo proyecto"
+              for: "para"
+              project: "Proyecto"
+              new_user: "Nuevo Usuario"
+              admin: "Administrador"
+              employee: "Empleado de Moove-IT"
+              user: "Usuario"
+              new_client: "Nuevo cliente"
+              client: "Cliente"
 
   devise:
       failure:
