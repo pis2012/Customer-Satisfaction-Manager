@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CSM</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "my_projects" %>
+  <%= stylesheet_link_tag    "datepicker" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "my_projects" %>
+  <%= javascript_include_tag "bootstrap-datepicker" %>
+  <%= javascript_include_tag "jquery.jCounter-0.1.1" %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div id="global-wrapper">
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="nav pull-left">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="icon-flag icon-white"></i>
+            <%= I18n.t('home.language')  %>
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu inverse">
+            <li>
+              <%= link_to t('home.Spanish') ,home_language_change_path(:leng=> "ES")  %>
+            </li>
+            <li>
+              <%= link_to t('home.English') ,home_language_change_path(:leng => "EN") %>
+            </li>
+          </ul>
+        </li>
+      </div>
+
+      <div class="container">
+        <a class="brand" href="#">CSM</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li>
+              <a href="/"><i class="icon-home icon-white"></i> <%= I18n.t ('home.home')  %></a>
+            </li>
+                <% if current_user.admin? %>
+                    <li>
+                      <%= link_to '<i class="icon-wrench icon-white"></i> '.html_safe + I18n.t('home.admin'), admin_path %>
+                    </li>
+                <% else %>
+                    <li>
+                      <%= link_to '<i class="icon-wrench icon-white"></i> '.html_safe + I18n.t('home.My_Projects'), my_projects_path %>
+                    </li>
+                <% end %>
+          </ul>
+        </div><!-- /.nav -->
+        <div class="nav pull-right">
+              <ul class="nav">
+                <li>
+                  <%= link_to current_user.full_name, edit_profile_path %>
+                </li>
+                <li>
+                  <%= link_to '<i class="icon-off icon-white"></i> '.html_safe + I18n.t('home.Sign_out'), destroy_user_session_path, :method => :delete %>
+                </li>
+              </ul>
+        </div>
+      </div><!-- /.container -->
+    </div><!-- /.navbar-inner -->
+  </div><!-- /.navbar -->
+
+
+  <div id="header">
+    <div class="container">
+
+      <a  href="/">
+        <div id="logo"></div>
+      </a>
+
+    </div>
+  </div>
+
+  <div id="content">
+    <%= yield %>
+  </div>
+
+</div>
+
+</body>
+</html>

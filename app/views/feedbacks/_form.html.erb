@@ -1,57 +1,65 @@
-<%= form_for(@feedback) do |f| %>
+<%= form_for(@feedback, :remote => true) do |f| %>
 
     <% if @feedback.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
-
+        <div class="alert alert-error">
+          <% if @feedback.errors.count > 1 %>
+            <h4><%= t('activerecord.errors.template.header.other', :model=> @feedback.class.name, :count=> @feedback.errors.count) %></h4>
+          <% else %>
+            <h4><%= t('activerecord.errors.template.header.one',:model=> @feedback.class.name) %></h4>
+          <% end %>
           <ul>
             <% @feedback.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
+                <li><strong><%= msg %></strong></li>
             <% end %>
           </ul>
         </div>
     <% end %>
 
-      <input class="TextField" id="feedback_project_id" name="project_id" size="30" type="hidden" value="<%= @feedback.project_id %>"/>
+    <input id="feedback_project_id" name="project_id" size="30" type="hidden" value="<%= @feedback.project_id %>"/>
 
-      <div class="margin4">
-        <%= f.label :Tipo_de_feedback, :class => "Etiqueta" %>
-        <%= f.select(:feedback_type_id, FeedbackType.all.map { |fe| [fe.name, fe.id] }, :prompt => true) %>
+    <div class="form-horizontal">
+      <div class="feedback_type_field control-group">
+        <%= f.label :feedback_subject, t('feedback.feedback_type'), :class => "feedback_type_label control-label" %>
+        <div class="feedback_type_select_control controls">
+          <%= f.select :feedback_type_id, @feedback_types.map { |fe| [fe.name, fe.id] }, {}, {:class => "feedback_type_select"} %>
+        </div>
       </div>
 
-      <div class="margin4">
-        <%= f.label :subject, :class => "Etiqueta" %>
-        <%= f.text_field :subject, :class => "SubjectText" %>
+      <div class="feedback_subject_field control-group">
+        <%= f.label :subject, t('feedback.feedback_subject'), :class => "feedback_subject_label control-label" %>
+        <div class="feedback_subject_text_control controls">
+          <%= f.text_field :subject, :class => "feedback_subject_text ", :placeholder => "Type something…" %>
+        </div>
       </div>
 
+    </div>
 
-      <div class="margin3">
-        <%= f.label :content, :class => "Etiqueta" %>
-        <%= f.text_area :content, :class => "estilotextarea" %>
+    <div class="feedback_content_field">
+      <%= f.label :content, t('feedback.feedback_content'), :class => "feedback_content_label" %>
+      <%= f.text_area :content, :class => "feedback_content_text" %>
+    </div>
 
-      </div>
-      <div class="" style="border-bottom: solid;border-bottom-width: 0.5px;">
+    <div class="feedback_visibility_field form-inline">
 
-      </div>
+      <!-- when a client creates a feedback, he cannot choose it's visibility. The default scope it's admins and clients -->
+      <% if current_user.admin? %>
+      <%= f.label :visibility, t('feedback.feedback_visibility'), :class => "feedback_visibility_label" %> &nbsp&nbsp
+      <label class="checkbox-hand">
+        <%= f.check_box :mooveit_visibility, :type => "checkbox" %><%= t('feedback.Moove_IT_employee') %>
+      </label>
+      &nbsp;&nbsp;
+      <label class="checkbox-hand">
+        <%= f.check_box :client_visibility, :type => "checkbox" %><%= t('admin.clients') %>
+      </label>
+      <% else %>
+          <input id="feedback_client_visibility" type="hidden" value="1" name="feedback[client_visibility]">
+      <% end %>
 
-
-      <div class="margin3">
-        <%= f.label :visibility, :class => "Etiqueta" %>
-        <%= f.check_box :mooveit_visibility %> Empleado Moove-IT   <%= f.check_box :client_visibility %> Cliente
-      </div>
-
-      <div class="margin3">
-        <h7 style="float: left;margin-right: 5%;"> ¿Cómo crees que este feedback afecta al estado de ánimo del proyecto?</h7>
-        -1<input type="radio" name="animo" value="-1" style="margin-right: 3%;margin-left: 2px;"/>
-        0<input type="radio" name="animo" value="0" style="margin-right: 3%;margin-left: 2px;"/>
-        1<input type="radio" name="animo" value="1" style="margin-right: 3%;margin-left: 2px;"/>
-
-      </div>
-
-      <div class="margin4" style="margin-left: 10px;">
-        <%= f.submit :Crear %> or
-        <button class="btn btn-link" type="button" onclick="updatePanel('<%=  project_feedbacks_path(:project_id => @feedback.project_id) %>','feedbacks-content','feedbacks')" >
-          Cancelar
-        </button>
-      </div>
+    </div>
+    <br>
+    <br>
+    <%= f.submit t('buttons.create'), :class => "btn" %> &nbsp <%= t('buttons.or') %>
+    <button class="btn btn-link feedbacks-link" type="button" data-url="<%= project_feedbacks_path(:project_id => @feedback.project_id) %>">
+      <%= t('buttons.cancel') %>
+    </button>
 <% end %>

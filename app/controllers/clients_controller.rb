@@ -1,32 +1,68 @@
 class ClientsController < ApplicationController
 
+  before_filter :authenticate_user!
+
   # GET /clients
   def index
     @clients = Client.all
+
+    respond_to do |format|
+      if request.xhr?
+        format.html { render :layout => false }
+      end
+      format.json { render json: @clients }
+    end
   end
 
   # GET /clients/1
   def show
-    @client = Client.find(params[:id])
+    @client = Client.find(params[:client_id])
+
+    respond_to do |format|
+      if request.xhr?
+        format.html { render :layout => false }
+      end
+      format.json { render json: @client }
+    end
   end
 
   # GET /clients/new
   def new
     @client = Client.new
+
+    respond_to do |format|
+      if request.xhr?
+        format.html { render :layout => false } # new.html.erb
+      end
+      format.json { render json: @client }
+    end
+
   end
 
   # GET /clients/1/edit
   def edit
-    @client = Client.find(params[:id])
+    @client = Client.find(params[:client_id])
+
+    respond_to do |format|
+      if request.xhr?
+        format.html { render :layout => false } # edi.html.erb
+      end
+      format.json { render json: @client }
+    end
+
   end
 
   # POST /clients
   def create
     @client = Client.new(params[:client])
-    if @client.save
-      redirect_to @client, notice: 'Client was successfully created.'
-    else
-      render action: "new"
+
+    respond_to do |format|
+      if @client.save
+        @clients = Client.all
+        format.js { render :action => "index" }
+      else
+        format.js {}
+      end
     end
   end
 
@@ -36,22 +72,34 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.update_attributes(params[:client])
-        format.html { redirect_to @client, notice: 'Client was successfully updated.' }
+        @clients = Client.all
+        format.js { render :action => "index" }
       else
-        format.html { render action: "edit" }
+        format.js {}
       end
     end
   end
 
   # DELETE /clients/1
   def destroy
-    @client = Client.find(params[:id])
+    @client = Client.find(params[:client_id])
     @client.destroy
 
-    redirect_to clients_url
+    respond_to do |format|
+      @clients = Client.all
+      format.js { render :action => "index" }
+    end
   end
 
+  def name_filter
+    name = params[:nameC]
+    u = Client.arel_table
+    @clients = Client.where(u[:name].matches("%#{name}%"))
 
+    respond_to do |format|
+      format.js { render :action => "index" }
+    end
+  end
 
 
 end

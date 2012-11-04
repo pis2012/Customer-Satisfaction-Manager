@@ -1,0 +1,246 @@
+<div id="breadcrumbs-wrapper" xmlns="http://www.w3.org/1999/html">
+  <div class="container">
+    <ul class="nav nav-pills">
+      <li class="dropdown">
+        <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">
+          <b class="caret"></b>
+          <i class="icon-book"> </i>
+          <%= @view[:project].name %>
+        </a>
+        <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
+
+          <% if current_user.client? %>
+              <% Project.where(:client_id => @view[:project].client_id).order(:name).each do |project| %>
+                  <% if project.id != @view[:project].id %>
+                      <li>
+                        <%= link_to project.name, change_profile_project_path(project) %>
+                      </li>
+                  <% end %>
+              <% end %>
+          <% else %>
+              <% Project.all.each do |project| %>
+                  <% if project.id != @view[:project].id %>
+                      <li>
+                        <%= link_to project.name, change_profile_project_path(project) %>
+                      </li>
+                  <% end %>
+              <% end %>
+          <% end %>
+        </ul>
+      </li>
+    </ul>
+    <!-- /tabs -->
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row-fluid">
+    <div class="span3">
+
+      <%= render "moods/form" %>
+      <br>
+      <!-- main tab. There are two combos, one for each subject. -->
+      <!-- when one of the hidden tabs is shown the one which is not hidden remains active. -->
+      <div id="global_nav">
+        <ul id="myTab">
+          <li class="feedbacks active">
+            <a href="#feedbacks" class="feedbacks-link" data-url="<%= project_feedbacks_path(@project) %>"> <%= t('my_projects.tabs.feedbacks')%></a>
+            <ul>
+              <li class="feedbacks" hidden="true">
+                <a href="#feedbacks" class="feedbacks-link" data-url="<%= project_feedbacks_path(@project) %>"> <%= t ('my_projects.tabs.feedbacks')%></a>
+              </li>
+              <li class="new-feedback" hidden="true">
+                <a href="#new-feedback"> <% t('my_projects.tabs.new_feedback') %></a>
+              </li>
+              <li class="show-feedback" hidden="true">
+                <a href="#show-feedback"> <% t('my_projects.tabs.show_feedback') %></a>
+              </li>
+              <li class="edit-feedback" hidden="true">
+                <a href="#edit-feedback"> <%= t('my_projects.tabs.edit_feedback') %></a>
+              </li>
+            </ul>
+          </li>
+          <li class="data">
+            <a href="#project-data" class="data-link" data-url="<%= project_data_path(@project) %>"> <%= t('my_projects.tabs.data') %></a>
+            <ul>
+              <li class="data" hidden="true">
+                <a href="#project-data"><%= t('my_projects.tabs.data') %></a>
+              </li>
+              <li class="new-milestone" hidden="true">
+                <a href="#new-milestone"><%= t('my_projects.tabs.new_milestone') %> </a>
+              </li>
+            </ul>
+
+          </li>
+
+
+        </ul>
+      </div>
+
+      <br/>
+
+      <!-- this is the milestone advert which shows the next milestone since the actual date -->
+      <div class="milestone-box" id="milestone-box-content">
+        <%= render template: "milestones/milestone_box" %>
+      </div>
+
+    </div>
+    <div class="span9">
+      <!-- here we put all the containers for possible pages -->
+
+      <div id="page">
+        <div id="myTabContent" class="tab-content">
+
+          <!-- page feedbacks -->
+          <div class="tab-pane fade in active" id="feedbacks">
+
+            <!-- page header -->
+            <div class="page_header">
+              <h1><%= t('my_projects.tabs.feedbacks') %></h1>
+
+              <!-- mooveit users can not create milestones. neither can clients and admins when de project is finalized -->
+              <% unless current_user.mooveit? || @project.finalized %>
+              <div class="add_element">
+                <button class="btn btn-link new-feedback-link" data-url="<%= new_feedback_path(@project) %>">
+                  <i class="icon-plus icon-white"> </i> <%= t('my_projects.tabs.new_feedback')%>
+                </button>
+              </div>
+              <% end %>
+
+            </div>
+            <!--// page header -->
+
+
+            <!-- page contents -->
+            <div class="page_content" id="feedbacks-content">
+
+              <!-- filter form belongs to my_projects/index so it is not reloaded no every feedbacks table update -->
+              <%= form_tag(feedbacks_date_filter_path, :method => "get", :remote => true) do %>
+                  <%= hidden_field_tag(:project_id,@project.id) %>
+                  <div class="feedbacks_filter">
+                    <h5 class="feedbacks_filter_element"><%= t('my_projects.feedbacks_tab.show_events_since')%></h5>
+
+                    <div class="input-append date feedbacks_filter_element" id="datepicker" data-date="<%= Time.now.strftime("%d/%m/%Y") %>" data-date-format="dd/mm/yyyy">
+                      <%= text_field_tag(:date,Time.now.strftime("%d/%m/%Y"),:class => "span2", :size => 16) %>
+                      <span class="add-on"><i class="icon-calendar"></i></span>
+                    </div>
+
+                    &nbsp;
+                    <%= button_tag( t('buttons.filter'), :class => "btn") %>
+                  </div>
+              <% end %>
+              <hr class="hr_feedbacks_table">
+
+              <!-- the first page that can be seen is the feedbacks table so we render it -->
+              <div class="feedbacks_table_wrapper">
+              <% @feedbacks = Feedback.project_feedbacks @project.id %>
+              <%= render template: "feedbacks/index" %>
+              </div>
+            </div>
+            <!--// page contents -->
+
+          </div>
+          <!--// page feedbacks -->
+
+          <!-- page data -->
+          <div class="tab-pane fade" id="project-data">
+
+            <!-- page header -->
+            <div class="page_header">
+              <h1><%= t('my_projects.tabs.data') %></h1>
+
+              <!-- only admins can create milestones -->
+              <% if current_user.admin? %>
+                  <div class="add_element">
+                    <button href="#new-milestone" class="btn btn-link new-milestone-link" data-url="<%= new_milestone_path(@project) %>">
+                        <i class="icon-plus icon-white"> </i> <%= t('my_projects.tabs.new_milestone')%>
+                    </button>
+                    </div>
+              <% end %>
+
+            </div>
+            <!--// page header -->
+
+            <!-- page contents -->
+            <div class="page_content" id="data-content">
+
+            </div>
+            <!--// page contents -->
+
+          </div>
+          <!--// page data -->
+
+
+          <!-- page new feedback -->
+          <div class="tab-pane fade" id="new-feedback">
+            <!-- page header -->
+            <div class="page_header">
+              <h1><%= t('my_projects.tabs.new_feedback') %></h1>
+            </div>
+            <!--// page header -->
+
+            <!-- page contents -->
+            <div class="page_content" id="new-feedback-content">
+
+            </div>
+            <!--// page contents -->
+
+          </div>
+          <!--// page new feedback -->
+
+          <!-- page show feedback -->
+          <div class="tab-pane fade" id="show-feedback">
+
+
+
+
+          </div>
+          <!--// page show feedback -->
+
+          <!-- page edit feedback -->
+          <div class="tab-pane fade" id="edit-feedback">
+            <!-- page header -->
+            <div class="page_header">
+              <h1><%= t('my_projects.tabs.edit_feedback') %></h1>
+            </div>
+            <!--// page header -->
+
+            <!-- page contents -->
+            <div class="page_content" id="edit-feedback-content">
+
+            </div>
+            <!--// page contents -->
+
+          </div>
+          <!--// page edit feedback -->
+
+          <!-- page new milestone -->
+          <div class="tab-pane fade" id="new-milestone">
+            <!-- page header -->
+            <div class="page_header">
+              <h1><%= t('my_projects.tabs.new_milestone') %></h1>
+            </div>
+            <!--// page header -->
+
+            <!-- page contents -->
+            <div class="page_content" id="new-milestone-content">
+
+            </div>
+            <!--// page contents -->
+
+          </div>
+          <!--// page new feedback -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>

@@ -1,40 +1,11 @@
 class ProfilesController < ApplicationController
-  # GET /profiles
-  # GET /profiles.json
-  def index
-    @profiles = Profile.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @profiles }
-    end
-  end
+  before_filter :authenticate_user!
 
-  # GET /profiles/1
-  # GET /profiles/1.json
-  def show
-    @profile = Profile.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @profile }
-    end
-  end
-
-  # GET /profiles/new
-  # GET /profiles/new.json
-  def new
-    @profile = Profile.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @profile }
-    end
-  end
 
   # GET /profiles/1/edit
   def edit
-    @profile = Profile.find(params[:id])
+    @profile = Profile.find(current_user.profile.id)
   end
 
   # POST /profiles
@@ -59,17 +30,33 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     @user = User.find(params[:profile][:user_id])
 
-    password_changed = !params[:user][:password].nil? && !params[:user][:password].empty?
+    password_changed = !params[:user][:current_password].nil? && !params[:user][:current_password].empty?
+
+    password = params[:user][:password]
+    confirmation_password = params[:user][:password_confirmation]
 
     successfully_updated = if password_changed
-       @user.update_with_password(params[:user])
+
+      if (password.nil? || password.blank?) && (confirmation_password.nil? || confirmation_password.blank?)
+
+        if password.nil? || password.blank?
+          @user.errors.add(:password, I18n.t('activerecord.errors.models.user.attributes.password.blank'))
+        end
+
+        if confirmation_password.nil? || confirmation_password.blank?
+          @user.errors.add(:confirmation_password, I18n.t('activerecord.errors.models.user.attributes.password_confirmation.blank'))
+        end
+
+      else
+        @user.update_with_password(params[:user])
+      end
     else
        params[:user].delete(:current_password)
        @user.update_without_password(params[:user])
     end
 
     respond_to do |format|
-      if @profile.update_attributes(params[:profile]) && successfully_updated #&& @user.update_attributes(params[:user])
+      if @profile.update_attributes(params[:profile]) && successfully_updated && @user.errors.empty? #&& @user.update_attributes(params[:user])
         format.html { redirect_to '/' }
       else
         format.html { render action: "edit" }
@@ -77,21 +64,6 @@ class ProfilesController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
-
-
-
-
   end
 
-  # DELETE /profiles/1
-  # DELETE /profiles/1.json
-  def destroy
-    @profile = Profile.find(params[:id])
-    @profile.destroy
-
-    respond_to do |format|
-      format.html { redirect_to profiles_url }
-      format.json { head :no_content }
-    end
-  end
 end

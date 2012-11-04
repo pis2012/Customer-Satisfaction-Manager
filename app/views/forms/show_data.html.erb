@@ -1,0 +1,11 @@
+<%= t('form.total_answers') + @data[:tot_answ].to_s %>
+<br/>
+<% if @data[:users] != "" %>
+    <%= t('form.users') + @data[:users] %>
+    <br/>
+<% end %>
+
+<% if @data[:missing_users] != "" %>
+    <%= t('form.missing_users') + @data[:missing_users]%>
+<% end %>
+

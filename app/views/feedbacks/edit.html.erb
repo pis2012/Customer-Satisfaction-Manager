@@ -1,6 +1,27 @@
-<h1>Editing feedback</h1>
+<% if current_user.client? %>
+<div id="edit_feedback">
+  <div class="margin4 alert jCounterDefault countdown2">
+    <%= t("feedback.Remaining_time_for_editing") %>
+    <span class="minutes">00</span>
+    <%= t("feedback.minutes") + " " + t("feedback.and") %>
+    <span class="seconds">00</span>
+    <%= t("feedback.seconds") %>
+  </div>
+  <%= render 'form' %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @feedback %> |
-<%= link_to 'Back', feedbacks_path %>
+<script>
+    $(".countdown2").jCounter({
+        format: "mm:ss",
+        twoDigits: 'on',
+        customDuration: <%= @feedback.remaining_time %>,
+        fallback: function() {
+            window.location.reload()
+        }
+    });
+</script>
+</div>
+<% elsif current_user.admin? %>
+    <div id="edit_feedback">
+    <%= render 'form' %>
+    </div>
+<% end %>

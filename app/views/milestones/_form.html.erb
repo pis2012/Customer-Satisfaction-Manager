@@ -1,0 +1,33 @@
+<%= form_for(@milestone, :remote => true) do |f| %>
+
+    <% if @milestone.errors.any? %>
+        <div class="alert alert-error">
+          <h4><%= t('activerecord.errors.template.header.one',:model=> t('milestone.milestone')) %></h4>
+          <ul>
+            <% @milestone.errors.full_messages.each do |msg| %>
+                <li><strong><%= msg %></strong></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <input id="milestone_project_id" name="project_id" size="30" type="hidden" value="<%= @milestone.project_id %>"/>
+
+    <div class="milestone_name_field">
+      <%= f.label :name, t("milestone.name"), :class => "milestone_Label" %>
+      <%= f.text_field :name, :id => "milestone_nameText" %>
+    </div>
+
+
+    <div class="milestone_target_date_field">
+      <%= f.label :target_date, t("milestone.target_date"), :class => "milestone_Label" %>
+      <%= f.date_select :target_date, :id => "milestone_target_dateText" %>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <%= f.submit t('buttons.create'), :class => "btn" %> &nbsp <%= t('buttons.or') %>
+    <button class="btn btn-link data-link" type="button" data-url="<%= project_data_path(@milestone.project) %>">
+    <%= t('buttons.cancel') %>
+    </button>
+<% end %>

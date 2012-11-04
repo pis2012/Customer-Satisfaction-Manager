@@ -1,0 +1,51 @@
+<!-- page header -->
+<div class="page_header_wrapper">
+  <div class="page_header">
+    <h1><%= t('admin.tabs.show_form') %></h1>
+    <div class="loading-gif">
+      <%= image_tag("ajax-loader.gif") %>
+    </div>
+    <div class="add_element">
+      <button class="btn btn-link delete-btn">
+        <i class="icon-minus icon-white"></i>
+        <%= link_to t('form.delete_form'), @form, :method => :delete, :remote => true, :confirm => t('form.eliminate_confirm') %>
+      </button>
+    </div>
+  </div>
+</div>
+<!--// page header -->
+
+<!-- page contents -->
+<div class="page_content" id="show-form-content">
+
+  <% if @form.errors.any? %>
+      <div class="alert alert-error">
+        <% @form.errors.full_messages.each do |msg| %>
+            <% if msg == "not_exists_anymore?" %>
+                <strong><%= t("form.not_exists_anymore?") %></strong>
+            <br/>
+            <% end %>
+        <% end %>
+      </div>
+  <% end %>
+
+
+  <div class="show-form-name"><%= @form_data[:name] %>
+  </div>
+  <br/>
+  <br/>
+  <%= t('form.clients') %>
+  &nbsp;
+  <%= select_tag "form_client", options_for_select(@form_data[:clients].map {|c| [c,c]}), :prompt => t('form.select'), "data-url" => forms_show_data_path(@form) %>
+
+  <div id="form_client_data" > </div>
+
+  <br/>
+  <%= button_tag t('form.full_data'), :class => "btn", :id => "btn_full_data", "data-url" => forms_show_full_data_path(@form) %>
+  <br/>
+  <br/>
+
+  <div id="form_client_full_data"> </div>
+
+</div>
+<!--// page contents -->

@@ -1,21 +1,33 @@
-<%= form_for(@client) do |f| %>
-  <% if @client.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
+<%= form_for(@client, :remote => true) do |f| %>
 
-      <ul>
-      <% @client.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <% if @client.errors.any? %>
+        <div class="alert alert-error">
+          <% if @client.errors.count > 1 %>
+              <h4><%= t('activerecord.errors.template.header.other', :model => t('client.client'), :count => @client.errors.count) %></h4>
+          <% else %>
+              <h4><%= t('activerecord.errors.template.header.one', :model => t('client.client')) %></h4>
+          <% end %>
+
+          <ul>
+            <% @client.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <br>
+
+    <div class="client_name_field">
+      <%= f.text_field :name, :placeholder => t('client.name_field') %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <br>
+
+    <%= f.submit t('buttons.create'), :class => "btn" %> &nbsp <%= t('buttons.or') %>
+    <button class="btn btn-link clients-link" type="button" data-url="<%= admin_clients_path %>">
+      <%= t('buttons.cancel')%>
+    </button>
+
 <% end %>
+

@@ -3,6 +3,7 @@
 <head>
   <title>CSM</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "home", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,22 +12,41 @@
 
 <div id="global-wrapper">
     <div class="navbar navbar-inverse navbar-fixed-top">
+
         <div class="navbar-inner">
+          <div class="nav pull-left">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="icon-flag icon-white"></i>
+                <%= I18n.t('home.language')  %>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu inverse">
+                <li>
+                   <%= link_to t('home.Spanish') ,home_language_change_path(:leng=> "ES")  %>
+                </li>
+                <li>
+                  <%= link_to t('home.English') ,home_language_change_path(:leng => "EN") %>
+                </li>
+              </ul>
+            </li>
+            </div>
+
             <div class="container">
                 <a class="brand" href="#">CSM</a>
                 <div class="nav-collapse collapse">
                     <ul class="nav">
                         <li>
-                            <a href="/"><i class="icon-home icon-white"></i> Home</a>
+                            <a href="/"><i class="icon-home icon-white"></i> <%= I18n.t ('home.home')  %></a>
                         </li>
                       <% if user_signed_in? %>
-                          <% if current_user.role_id == 1 %>
+                          <% if current_user.admin? %>
                             <li>
-                                <%= link_to '<i class="icon-wrench icon-white"></i> Admin'.html_safe, admin_path %>
+                                <%= link_to '<i class="icon-wrench icon-white"></i> '.html_safe + I18n.t('home.admin'), admin_path %>
                             </li>
                           <% else %>
                             <li>
-                                <%= link_to '<i class="icon-wrench icon-white"></i> My Projects'.html_safe, my_projects_path %>
+                                <%= link_to '<i class="icon-wrench icon-white"></i> '.html_safe + I18n.t('home.My_Projects'), my_projects_path %>
                             </li>
                           <% end %>
                       <% end %>
@@ -36,25 +56,25 @@
                     <% if user_signed_in? %>
                         <ul class="nav">
                             <li>
-                              <%= link_to current_user.full_name, edit_profile_path(Profile.find_by_user_id(current_user )) %>
+                              <%= link_to current_user.full_name, edit_profile_path %>
                             </li>
                             <li>
-                              <%= link_to '<i class="icon-off icon-white"></i> Sign out'.html_safe, destroy_user_session_path, :method => :delete %>
+                              <%= link_to '<i class="icon-off icon-white"></i> '.html_safe + I18n.t('home.Sign_out'), destroy_user_session_path, :method => :delete %>
                             </li>
                         </ul>
                     <% else %>
                       <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                           <i class="icon-user icon-white"></i>
-                          Sign in
+                          <%= I18n.t ('home.singin')  %>
                           <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu inverse">
                           <li>
-                            <%= link_to 'Customers'.html_safe, new_user_session_path %>
+                            <%= link_to I18n.t('home.Customers').html_safe, new_user_session_path %>
                           </li>
                           <li>
-                            <%= link_to 'Moove-it'.html_safe, user_omniauth_authorize_path(:google) %>
+                            <%= link_to 'Moove-it'.html_safe, user_omniauth_authorize_path(:google_apps) %>
                           </li>
                         </ul>
                       </li>

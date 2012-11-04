@@ -10,6 +10,9 @@ group :development do
 end
 
 gem 'devise'
+gem 'devise-encryptable'
+
+gem 'google_drive'
 
 gem 'foreigner'
 
@@ -39,6 +42,8 @@ gem 'gravatar_image_tag'
 
 gem "paperclip", "~> 3.0"
 
+gem 'validates_email_format_of'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -53,6 +58,9 @@ end
 
 gem 'jquery-rails'
 
+gem 'rails-ckeditor'
+gem 'cleditor-rails'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -63,7 +71,11 @@ gem 'jquery-rails'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
+
+gem 'passenger'
+
+gem 'whenever', :require => false
 
 # To use debugger
 # gem 'debugger'

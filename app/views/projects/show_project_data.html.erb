@@ -1,0 +1,29 @@
+<div id="show_project_data">
+  <h4><%= t('my_projects.data_tab.project_description') %></h4>
+
+  <p><%= @view[:project].description %></p>
+
+  <hr>
+
+  <!-- only admins and moove-it employees can see a graph with mood updates -->
+  <% if current_user.admin? || current_user.mooveit? %>
+      <h4><%= t('my_projects.data_tab.mood_updates') %></h4>
+      <br/>
+
+      <div class="mood-graph">
+        <%= image_tag @view[:graph] %>
+      </div>
+      <br/>
+      <hr>
+  <% end %>
+
+  <!-- list of milestones related to the project -->
+  <%= render template: "milestones/index" %>
+
+  <hr>
+
+  <h4><%= t('my_projects.data_tab.project_end') %></h4>
+
+  <p class="text-error"> <%= get_end_date_project %> </p>
+
+</div>

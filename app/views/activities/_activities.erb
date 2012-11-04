@@ -1,0 +1,26 @@
+<table class="activities_table">
+  <% @activities.each do |activity| %>
+      <tr id="row_activity">
+
+        <td class="avatar">
+          <%= link_to activity_link activity do %>
+            <%= activity_image_tag activity %>
+          <% end %>
+        </td>
+
+        <td class="activity_info">
+          <h4 class="activity_action">
+            <%= link_to activity_link activity do %>
+                <% action = activity_action activity %>
+                <%= truncate(strip_tags(action), :length => 80) %>
+            <% end %>
+          </h4>
+          <h6 class="activity_date"><%= activity_date activity %></h6>
+          <% content = activity_content activity %>
+          <% if content.length > 0 %>
+              <pre class="activity_content"><%= truncate(strip_tags(content), :length => 180) %></pre>
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+</table>

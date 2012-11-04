@@ -1,0 +1,5 @@
+$('#data-content').html("<%= escape_javascript( render template: "projects/show_project_data", formats: [:html], handlers: [:erb] ) %>");
+$('#myTab  a[href=#project-data]').tab('show');
+//update milestone-box
+$('#milestone-box-content').html("<%= escape_javascript (render template: "milestones/milestone_box", formats: [:html], handlers: [:erb] ) %>");
+

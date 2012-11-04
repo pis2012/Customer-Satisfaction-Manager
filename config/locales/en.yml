@@ -1,5 +1,435 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
-  hello: "Hello world"
+"en":
+  date:
+            January: "January"
+            February: "February"
+            March: "March"
+            April: "April"
+            May: "May"
+            June: "June"
+            July: "July"
+            August: "August"
+            September: "September"
+            October: "October"
+            November: "November"
+            December: "December"
+            Monday: "Monday"
+            Tuesday: "Tuesday"
+            Wednesday: "Wednesday"
+            Thursday: "Thursday"
+            Friday: "Friday"
+            Saturday: "Saturday"
+            Sunday: "Sunday"
+
+            formats:
+                  default: ! '%Y-%m-%d'
+                  long: ! '%B %d, %Y'
+                  short: ! '%b %d'
+            order:
+                - :year
+                - :month
+                - :day
+            use_short_month: true
+
+  client:
+            name_field: "Name of client"
+            date_create: "Create Date"
+            users: "Associate Users"
+            proyect: "Associate Projects"
+            new_client: "New Client"
+            edit_client: "Edit Client"
+            delete_client: "Delete Client"
+            show_client: "Show Client"
+            clients: "Clients"
+            cout_project: "Project Partners:  %{count}."
+            cout_users:   "Registered Users: %{count}."
+            eliminate_confirm: "Are you sure you want to delete this client?"
+            client: "Client"
+
+  home:
+            home: "Home"
+            singin: "Sing In"
+            admin: "Admin"
+            My_Projects: "My Projects"
+            Sign_out: "Sign out"
+            Customers: "Customers"
+            language: "Language"
+            Spanish: "Español"
+            English: "English"
+
+  buttons:
+            accept:    "Accept"
+            cancel:   "Cancel"
+            previous:  "Previous"
+            next:   "Next"
+            back:   "Back"
+            edit:    "Edit"
+            back:   "Back"
+            show:     "Show"
+            delete:    "Delete"
+            are_you_sure:  "Are you sure?"
+            save_changes:   "Save Changes"
+            or: "or"
+            create: "Create"
+            filter: "Filter"
+            comment: "Comment"
+            send: "Send"
+
+  my_projects:
+            tabs:
+                        feedbacks: "Feedbacks"
+                        new_feedback: "New Feedback"
+                        show_feedback: "Show Feedback"
+                        edit_feedback: "Edit Feedback"
+                        data: "Data"
+                        new_milestone: "New Milestone"
+
+            feedbacks_tab:
+                        show_events_since: "Show events since:"
+
+            data_tab:
+                        project_description: "Project Description"
+                        mood_updates: "Mood Updates"
+                        milestones: "Milestones"
+
+            mood:
+                        update_mood: "Update your mood"
+                        mood_updated: "Mood updated!"
+                        actual_mood: "Actual mood"
+
+
+
+
+  user_edit:
+            choose_your_profile_settings: "CHOOSE YOUR PROFILE SETTINGS"
+            personal_data: "Personal Data"
+            full_Name: "Full Name"
+            email: "Email"
+            load_openid: "Load OpenID from Gmail's session"
+            skype_user: "Skype user"
+            notifications: "Notifications"
+            feedbacks: "Feedbacks"
+            comments: "Comments"
+            my_picture: "My Picture"
+            my_projects: "My Projects"
+            default_project: "Default project"
+            change_password: "Change Password"
+            current_password: "Current password"
+            new_Password: "New password"
+            confirm_password: "Confirm password"
+            save_changes: "Save Changes"
+            gravatar: "Use Gravatar image"
+  user:
+            user: "User"
+            continue: "Continue"
+            password:  "password"
+            status_of_proyects:  "Status of Projects"
+            recent_activity:  "Recent Activity"
+            name:  "Name:"
+            date_created:   "Date Created:"
+            username:  "Username"
+            fullname:  "Full Name:"
+            skype_user:  "Skype User:"
+            my_picture:  "My picture:"
+            my_project:  "My Project"
+            default_proyect:  "Default Project:"
+            hello:  "Hello"
+            welcome:  "Welcome"
+            cannot_save_client:  "Cannot save client"
+            new_client:  "New Client"
+            new_comment:  "New Comment"
+            new_password:  "New Password"
+            sign_up:  "Sign up"
+            sign_in:  "Sign in"
+            remember_me:  "Remember me"
+            forgot_password:  "Forgot your password? "
+            resend_confirmation_instructions:  "Resend confirmation instructions"
+            account_locked:  "Your account has been locked due to an excessive amount of unsuccessful sign in attempts."
+            unlock_account_link:  "Click the link below to unlock your account:"
+            unlock_account:  "Unlock my account"
+            confirm_account_link:   "You can confirm your account email through the link below:"
+            confirm_account:  "Confirm my account"
+            change_password_link:  "Someone has requested a link to change your password, and you can do this through the link below."
+            change_password:  "Change Password:"
+            current_password:  "Current Password:"
+            new_password:  "New Password:"
+            confirm_new_password: "Confirm New Password:"
+            change_my_password:  "Change my password"
+            change_your_password:  "Change your password"
+            ignore_email:  "If you didn't request this, please ignore this email."
+            change_password_warning:  "Your password won't change until you access the link above and create a new one."
+            confirm_password:  "Confirm new password"
+            profile_settings:  "Profile settings"
+            new_profile:  "New profile"
+            resend_unlock_instructions:  "Resend unlock instructions"
+            did_not_recieve_confirmation_instructions:  "Didn't receive confirmation instructions?"
+            did_not_recieve_unlock_instructions:  "Didn't receive unlock instructions?"
+            sing_in_with:  "Sign in with"
+
+  errors:
+      # The default format to use in full error messages.
+      format: "%{message}"
+
+
+  activerecord:
+                errors:
+                        template:
+                                  header:
+                                          one: "It generated an error when trying to save the %{model}."
+                                          other: "Were generated %{count} errors when trying to save the %{model}."
+                        models:
+                                feedback:
+                                          attributes:
+                                                      subject:
+                                                                blank:    "The subject can not be empty."
+                                                      project:
+                                                                blank:    "The Feedback must have an associated project."
+                                                      user:
+                                                                blank:    "The Feedback must have associated the user creator."
+
+                                                      content:
+                                                                blank:    "Content can not be empty."
+                                                                too_short: "The Content must be at least 100 characteres."
+                                comment:
+                                          attributes:
+                                                      content:
+                                                                blank: "The content can not be empty."
+                                                                too_short: "The content must be at least 40 characters."
+                                client:
+                                          attributes:
+                                                      name:
+                                                            blank: "Name can not be empty."
+                                                            taken: "Name already taken."
+                                user:
+                                          attributes:
+                                                      username:
+                                                          blank:  "Username can not be empty."
+                                                          taken:  "Username taken."
+                                                      full_name:
+                                                          blank:  "Full Name can not be empty."
+                                                      email:
+                                                          blank:  "Email can not be empty."
+                                                          format: "Email malformed"
+                                                          taken: "Email already taken."
+                                                          already_confirmed: "Email already confirmed."
+                                                          invalid: "Email with invalid format."
+                                                      password:
+                                                          blank: "Password can not be empty."
+                                                          confirmation: "Confirm Password does not match."
+                                                          too_short: "The password must be at least 6 characters long."
+                                                          too_long: "The password must have a maximum length of 20 characters."
+                                                      password_confirmation:
+                                                          blank: "Password confirmation can not be empty."
+                                                      openidemail:
+                                                          taken: "OpenID already taken."
+
+                                                      confirmation_token:
+                                                          invalid: "Invalid confirmation token"
+                                form:
+                                          attributes:
+                                                      name:
+                                                        blank: "Form name can not be empty."
+                                                      email:
+                                                        blank: "Email can not be empty."
+
+                                milestone:
+                                          attributes:
+                                                      name:
+                                                        blank: "Milestone name can not be empty."
+
+  Comments:
+              Comment: "Comment"
+  feedback:
+            feedbacks:  "Feedback"
+            new_feedback: "New Feedback"
+            show_feedbackshow_feedback:   "Show Feedback"
+            editing_feedback:   "Editing feedback"
+            cannot_save_feedback:  "Cannot save Project:"
+            moove_it_employee: "Moove-IT employee"
+            feedback_affects_proyect:   "How much you think the mood of the project is affected by this feedback? "
+            uploaded_by:  "Uploaded by"
+            last_comment_made_by: "Last comment made by"
+            no_comments: "No comments"
+            list_comments:  "List of Comments"
+            feedback_type: "Type"
+            feedback_subject: "Subject"
+            feedback_content: "Content"
+            feedback_visibility: "Feedback visibility"
+            Moove_IT_employee: "Moove-IT Employee"
+            create: "Create"
+            create_by: "Create by"
+            date_on: "on"
+            Remaining_time_for_editing: "Remaining time for editing: "
+            minutes: "minutes"
+            seconds: "seconds"
+            and: "and"
+            prohibited_this_feedback_from_being_saved: "prohibited this feedback from being saved"
+  form:
+            add_form:  "Add form"
+            last_total_answers: "Total answers last time: "
+            total_answers: "Total answers: "
+            clients: "Clients found in the form: "
+            users: "Users who responded: "
+            missing_users: "Still missing: "
+            select: "Select one"
+            full_data: "Show full data"
+            name: "Form name"
+            google_email: "Google user name"
+            password: "Password"
+            name_filter: "Name contains: "
+            delete_form: "Delete form"
+            authentication_error: "Authentication failed."
+            duplicated: "Form already exists."
+            form: "Form"
+            not_exists: "The form does not exist."
+            not_exists_anymore?: "No form found in the drive of the google account."
+            eliminate_confirm: "Are you sure you want to delete this form?"
+
+
+  admin:
+            tabs:
+                          forms: "Forms"
+                          show_form: "Show form"
+                          reports: "Reports"
+                          new_user: "New User's Client"
+                          show_user: "View User"
+                          edit_user: "Edit User"
+                          delete_user: "Delete User"
+                          clients: "Clients"
+                          show_client: "Show Client"
+                          new_client: "New Client"
+                          edit_client: "Edit Client"
+                          new_project: "New project"
+                          emails: "Emails"
+
+            customer_satisfaction_manager:    "CUSTOMER SATISFACTION MANAGER"
+            customers:    "Customers"
+            summary:   "Summary"
+            reports:    "Reports "
+            projects:    "Projects"
+            users:   "Users"
+            clients:  "Clients"
+            forms:  "Forms"
+            evolution_of_general_mood: "Evolution of the general mood"
+            Status_of_Projects: "Status of Projects"
+            add_clients: "Add Client"
+            mooveit_employee:   "Employe Moove-IT"
+            mooveit_admin:   "Employe Moove-IT(Admin)"
+            filter_name: "Name contains: "
+            comment_created: "Comment made on "
+            comment_created_on: " on "
+            user_name: "Username: "
+            user_email: "Email: "
+            user_unconfirmed_email: "Unconfirmed Email: "
+            user_openid:  "OpenID: "
+            activated: "activated"
+            deactivated: "deactivated"
+            user: "User"
+            enable: "enable"
+            disable: "disable"
+            sure: "Are you sure?"
+
+  milestone:
+            milestone:  "Milestone"
+            milestones:   "Milestones"
+            new_milestone:  "New Milestone"
+            missing: "Missing"
+            day_and: "days and"
+            one_day_and: "day and"
+            hours_to_end: "hours to end"
+            Next_milestone: "Next milestone"
+            end_project: "End of project"
+            the: " of "
+            eliminate_confirm: "Are you sure you want to delete this milestone?"
+            one_hour_to_end: "hour to end"
+            name: "Name"
+            target_date: "Target date"
+
+  proyect:
+            list_projects:  "List of Projects"
+            new_proyect:     "New Project"
+            cannot_save_project: "Cannot save Project"
+            description:    "Description"
+            end_date:     "End date"
+            name:     "Name"
+            status:    "Status"
+            editing_project: "Editing project"
+            filter:       "Filter"
+            at: " at "
+            hours: " hours "
+            finalized: "Project finished"
+
+
+  mood:
+            mood_of_our_customers:     "MOOD OF OUR CUSTOMERS"
+            mood_state_changed:      "Mood state changed!!! "
+            changes_in_mood:     "Changes in mood"
+
+  activity:
+            recent_activity: "Recent Activity"
+            site_searcher: "Site Searcher"
+            enter_query: "Enter your search query here:"
+            authored_by: "Authored by"
+            date_on: "on"
+            new_feedback: "New feedback"
+            on: "on"
+            feedback: "Feedback"
+            mood_update: "Mood update on project"
+            new_comment: "New comment on feedback"
+            comment: "Comment on feedback"
+            new_project: "New project"
+            for: "for"
+            project: "Project"
+            new_user: "New user"
+            admin: "Administrator"
+            employee: "Moove-IT Employee"
+            user: "User"
+            new_client: "New client"
+            client: "Client"
+
+
+  devise:
+        failure:
+          user:
+              invalid: "Login failed."
+              email_not_allowed: "Email not allowed."
+              unauthenticated: "User unauthenticated."
+
+  email:
+      notification:
+        feedback:
+            title: "New Feedback"
+            greeting: "Hi"
+            new: "A new feedback has been added to project"
+            notify: "Since you manage this project, we automatically notify you whenever new postings are made."
+            unsubscribe1: "To unsubscribe: Visit "
+            unsubscribe2: " page and choose your notification settings."
+            salutation: "Have a great day,"
+            signature: "The Moove-iT Team"
+            visitproject: "To see the project details please visit "
+        comment:
+            title: "New Comment"
+            greeting: "Hi"
+            new: "A new comment has been added to a feedback in project "
+            notify: "Since you manage this project, we automatically notify you whenever new postings are made. "
+            unsubscribe1: "To unsubscribe: Visit "
+            unsubscribe2: " page and choose your notification settings."
+            salutation: "Have a great day,"
+            signature: "The Moove-iT Team"
+            visitproject: "To see the project details please visit "
+        reminder:
+            title: "Reminder"
+            greeting: "Hi"
+            intro1: "There has been a long time since you told us about how you feel about project "
+            intro2: "We at Moove-iT are very interested on what you think of our services."
+            salutation: "Have a great day,"
+            signature: "The Moove-iT Team"
+            faceclick: "Just click on one of the faces to tell us how you feel about our performance in project"
+            request: "Please provide us with your feedback at your earliest convenience."
+            face1: "Angry"
+            face2: "Disappointed"
+            face3: "Indifferent"
+            face4: "Pleased"
+            face5: "Happy"

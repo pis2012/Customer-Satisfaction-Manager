@@ -13,11 +13,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require_tree .
+//= require bootstrap
+//= require nicEdit
 
+$(document).ready(function () {
 
-$(document).ready(function(){
     $('#datepicker').datepicker();
+    var o = {
+        buttonList: ['save','bold','italic','underline','left','center','right','justify','ol','ul','fontSize','fontFamily','indent','outdent','image','link','unlink','forecolor','bgcolor', 'xhtml']
+    };
+    html_panel = new nicEditor(o);
+
 });
 
-$('#datepicker').live(datepicker());
+

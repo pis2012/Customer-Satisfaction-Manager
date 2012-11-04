@@ -1,0 +1,10 @@
+/**
+ * Created with Geany.
+ * User: bdi-usr
+ * Date: 27/10/12
+ * Time: 07:26 AM
+ */
+$('#edit_feedback').html('<%= escape_javascript render("form") %>');
+if (!($.browser.msie && parseInt($.browser.version, 10) === 8)) {
+    html_panel.panelInstance('feedback_content');
+}

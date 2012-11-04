@@ -1,12 +1,57 @@
-<h2>Resend confirmation instructions</h2>
+<br/>
+<div class="container">
+  <div class="row-fluid">
+    <div class="span2">
+      <!--Sidebar content-->
+    </div>
+    <div class="span10">
+      <div class="container">
+        <div class="row-fluid">
+          <div class="span5">
 
-<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+          </div>
+          <div class="span5 " >
+            <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :class => "form-horizontal", :method => :post }) do |f| %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+                <% if resource.errors.messages.any?  %>
+                    <div class="alert alert-error">
+                      <% resource.errors.messages.each do |msg| %>
+                          <strong><%= msg[1][0] %></strong></br>
+                      <% end %>
 
-  <div><%= f.submit "Resend confirmation instructions" %></div>
-<% end %>
+                    </div>
+                <% end %>
 
-<%= render "links" %>
+            <div class="tabbable logincontainer">
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab1" data-toggle="tab"><%=  I18n.t('user.resend_confirmation_instructions')%></a></li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active" id="tab1">
+                      <div class="control-group">
+                        <label class="control-label" for="inputUsername"><%=  I18n.t('user_edit.email')%></label>
+                        <div class="controls">
+                          <div class="input-prepend">
+                                                    <span class="add-on">
+                                                        <i class="icon-user"></i>
+                                                    </span>
+                            <%= f.email_field :email, :placeholder =>  I18n.t('user_edit.email')  %>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="control-group">
+                        <div class="controls">
+                          <%= f.submit I18n.t('buttons.send'), :class => "btn btn-primary" %>
+                        </div>
+                      </div>
+
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

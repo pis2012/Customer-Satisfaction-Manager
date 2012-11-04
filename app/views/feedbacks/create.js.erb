@@ -1,0 +1,4 @@
+$('#new-feedback-content').html('<%= escape_javascript render("form") %>');
+if (!($.browser.msie && parseInt($.browser.version, 10) === 8)) {
+    html_panel.panelInstance('feedback_content');
+}

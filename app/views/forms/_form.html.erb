@@ -1,0 +1,45 @@
+<%= form_for(@form, :remote => true) do |f| %>
+
+    <% if @form.errors.any? %>
+        <div class="alert alert-error">
+          <% if @form.errors.count > 1 %>
+              <h4><%= t('activerecord.errors.template.header.other', :model=> t("form.form"), :count=> @form.errors.count) %></h4>
+          <% else %>
+              <h4><%= t('activerecord.errors.template.header.one',:model=> t("form.form")) %></h4>
+          <% end %>
+          <% @form.errors.full_messages.each do |msg| %>
+              <% if msg == "authentication" %>
+                  <strong><%= t("form.authentication_error") %></strong>
+              <% elsif msg == "duplicated" %>
+                  <strong><%= t("form.duplicated") %></strong>
+              <% elsif msg == "not_exists" %>
+                  <strong><%= t("form.not_exists") %></strong>
+              <% else %>
+                  <strong><%= msg %></strong>
+              <% end %>
+              <br/>
+          <% end %>
+        </div>
+    <% end %>
+
+    <br/>
+    <div class="form-email">
+      <%= f.text_field :email,  :placeholder => t('form.google_email') %>
+    </div>
+    <br/>
+    <div class="form-password">
+      <%= f.password_field :password, :placeholder => t('form.password') %>
+    </div>
+    <br/>
+    <div class="form-name">
+      <%= f.text_field :name,  :placeholder => t('form.name') %>
+    </div>
+    <br/>
+
+    <%= f.submit  t('buttons.create'), :class => "btn" %> &nbsp <%= t('buttons.or') %>
+    <button class="btn btn-link forms-link" type="button" data-url="<%= admin_forms_path %>">
+        <%= t('buttons.cancel')%>
+    </button>
+
+
+<% end %>

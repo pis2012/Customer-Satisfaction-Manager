@@ -1,0 +1,34 @@
+<div class="milestones_list">
+  <h4><%= t('my_projects.data_tab.milestones') %></h4>
+
+  <% @view[:project].milestones.each do |milestone| %>
+      <% if milestone.target_date.to_datetime > Time.now.to_datetime %>
+          <dl>
+            <dt><%= get_milestone_date milestone.target_date %></dt>
+            <dd>
+              <%= milestone.name %>
+              <!-- only admins can delete milestones -->
+              <% if current_user.admin? %>
+                  <%= link_to '', milestone, method: :delete, confirm: t('milestone.eliminate_confirm'), class: 'icon-remove-circle', :remote => true %>
+              <% end %>
+            </dd>
+          </dl>
+      <% else %>
+          <dl>
+            <dt class="muted"><%= get_milestone_date milestone.target_date %></dt>
+            <dd class="muted"><%= milestone.name %>
+              <!-- only admins can delete milestones -->
+              <% if current_user.admin? %>
+                  <%= link_to '', milestone, method: :delete, confirm: t('milestone.eliminate_confirm'), class: 'icon-remove-circle', :remote => true %>
+              <% end %>
+            </dd>
+          </dl>
+      <% end %>
+  <% end %>
+</div>
+
+
+
+
+
+

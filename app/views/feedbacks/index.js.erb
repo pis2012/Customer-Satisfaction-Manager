@@ -1,0 +1,4 @@
+$('.feedbacks_table').html("<%= escape_javascript(render template: "feedbacks/index.html.erb") %>");
+$('#edit-feedback-content').empty();
+$('#new-feedback-content').empty();
+$('#myTab  a[href=#feedbacks]').tab('show');

@@ -1,242 +1,284 @@
 <br>
 <br>
-<div class="container" xmlns="http://www.w3.org/1999/html">
-    <div class="row-fluid">
-        <div class="span3">
-            <br>
-            <div id="global_nav">
-              <ul id="myTab" >
-                <li class="summary active">
-                  <a href="#summary" data-toggle="tab">Summary</a>
-                </li>
-                <li> </li>
-                <li class="reports">
-                  <a href="#reports" data-toggle="tab">Reports</a>
-                </li>
-                <li class="projects">
-                  <a href="#projects" data-toggle="tab">Projects</a>
-                </li>
-                <li class="users">
-                  <a href="#users" data-toggle="tab">Users</a>
-                </li>
-                <li class="clients">
-                  <a href="#clients" data-toggle="tab">Clients</a>
-                </li>
-                <li class="forms">
-                  <a href="#forms" data-toggle="tab">Forms</a>
-                </li>
-              </ul>
-            </div>
-         </div>
-         <div class="span9">
-            <div id="page">
-              <div id="myTabContent" class="tab-content">
-                <div class="tab-pane fade active in" id="summary">
-                  <!-- page header -->
-                  <div class="page_header_wrapper">
-                      <div class="page_header">
-                        <h1>Summary</h1>
-                      </div>
-                  </div>
-                  <!--// page header -->
-                  <!-- page contents -->
-                  <div class="page_content">
-                    <!-- main column -->
-                    <!--// main column -->
-                    <!--// page contents -->
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="reports">
-                  <!-- page header -->
-                  <div class="page_header_wrapper">
-                    <div class="page_header">
-                      <h1>Reports</h1>
-                    </div>
-                  </div>
-                  <div class="page_content">
-                    <h4>Evolution of the general mood</h4>
-                    <br/>
-                    <div class="bar-graph">
-                      <%= image_tag @graph[:bar] %>
-                    </div>
-                    <br/>
-                    <hr/>
 
-                    <h4>Status of Projects</h4>
-                    <br/>
-                    <div class="pie-graph">
-                      <%= image_tag @graph[:pie] %>
-                    </div>
-                    <br/>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="projects">
-                  <!-- page header -->
-                  <div class="page_header_wrapper">
-                    <div class="page_header">
-                      <h1>Projects</h1>
-                    </div>
-                  </div>
-                  <!--// page header -->
-                  <!-- page contents -->
-                  <div class="page_content">
-                    <!-- main column -->
-                    <!--// main column -->
-                    <!--// page contents -->
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="users">
-                  <!-- page header -->
-                  <div class="page_header_wrapper">
-                    <div class="page_header">
-                      <h1>Users</h1>
-                    </div>
-                  </div>
-                  <!--// page header -->
-                  <!-- page contents -->
-                  <div class="page_content">
-                    <!-- main column -->
-                    <!--// main column -->
-                    <!--// page contents -->
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="clients">
-                  <!-- page header -->
-                  <div class="page_header_wrapper">
-                    <div class="page_header">
-                      <h1>Clients</h1>
-                    </div>
-                  </div>
-                  <!--// page header -->
-                  <!-- page contents -->
-                  <div class="page_content">
-                    <!-- main column -->
-                    <!--// main column -->
-                    <!--// page contents -->
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="forms">
-                  <!-- page header -->
-                  <div class="page_header_wrapper">
-                    <div class="page_header">
-                      <h1>Forms</h1>
-                    </div>
-                  </div>
-                  <!--// page header -->
-                  <!-- page contents -->
-                  <div class="page_content">
-                    <!-- main column -->
-                    <!--// main column -->
-                    <!--// page contents -->
-                  </div>
-                </div>
-              </div>
-            </div>
-         </div>
+<div class="container" xmlns="http://www.w3.org/1999/html">
+<div class="row-fluid">
+<div class="span3">
+  <br>
+
+  <div id="global_nav">
+    <ul id="myTab">
+
+      <!-- summary tabs -->
+      <li class="summary active">
+        <a href="#summary" class="summary-link" data-url="<%= summary_path %>"><%= t('admin.summary') %></a>
+      </li>
+
+      <!-- reports tabs -->
+      <li class="reports">
+        <a href="#reports" class="reports-link" data-url="<%= admin_reports_path %>"><%= t('admin.tabs.reports') %></a>
+      </li>
+
+      <!-- projects tabs -->
+      <li class="projects">
+        <a href="#projects" class="projects-link" data-url="<%= admin_projects_path %>"><%= t('admin.projects') %></a>
+        <ul>
+          <li class="projects" hidden="true">
+            <a href="#projects" class="projects-link" data-url="<%= admin_projects_path %>">
+              <% t('admin.projects') %></a>
+          </li>
+          <li class="new-project" hidden="true">
+            <a href="#new-project">
+              <% t('admin.projects') %></a>
+          </li>
+          <li class="edit-project" hidden="true">
+            <a href="#edit-project"><%= t('admin.projects') %></a>
+          </li>
+          <li class="show-project" hidden="true">
+            <a href="#show-project">
+              <% t('admin.projects') %></a>
+          </li>
+        </ul>
+      </li>
+
+      <!-- users tabs -->
+      <li class="users">
+        <a href="#users" class="users-link" data-url="<%= users_path %>"><%= t('admin.users') %></a>
+        <ul>
+          <li class="users" hidden="true">
+            <a href="#users" class="users-link" data-url="<%= users_path %>">
+              <% t('admin.users') %></a>
+          </li>
+          <li class="new-user" hidden="true">
+            <a href="#new-user">
+              <% t('admin.tabs.new_user') %></a>
+          </li>
+          <li class="edit-user" hidden="true">
+            <a href="#edit-user">
+              <% t('admin.tabs.edit_user') %></a>
+          </li>
+          <li class="show-user" hidden="true">
+            <a href="#show-user">
+              <% t('admin.tabs.show_user') %></a>
+          </li>
+        </ul>
+      </li>
+
+      <!-- clients tabs -->
+      <li class="clients">
+        <a href="#clients" class="clients-link" data-url="<%= admin_clients_path %>"><%= t('admin.tabs.clients') %></a>
+        <ul>
+          <li class="clients" hidden="true">
+            <a href="#clients" class="clients-link" data-url="<%= admin_clients_path %>"><%= t('admin.tabs.clients') %></a>
+          </li>
+          <li class="show-client" hidden="true">
+            <a href="#show-client">
+              <% t('admin.tabs.show_client') %></a>
+          </li>
+          <li class="new-client" hidden="true">
+            <a href="#new-client">
+              <% t('admin.tabs.new_client') %></a>
+          </li>
+          <li class="edit-client" hidden="true">
+            <a href="#edit-client"><%= t('admin.tabs.edit_client') %></a>
+          </li>
+        </ul>
+      </li>
+
+      <!-- forms tabs -->
+      <li class="forms">
+        <a href="#forms" class="forms-link" data-url="<%= forms_path %>"><%= t('admin.tabs.forms') %></a>
+        <ul>
+          <li class="forms" hidden="true">
+            <a href="#forms" data-toggle="tab" class="forms-link" data-url="<%= forms_path %>"><%= t('admin.tabs.forms') %></a>
+          </li>
+          <li class="new-form" hidden="true">
+            <a href="#new-form">
+              <% t('form.add_form') %></a>
+          </li>
+          <li class="show-form" hidden="true">
+            <a href="#show-form">
+              <% t('admin.tabs.show_form') %></a>
+          </li>
+        </ul>
+      </li>
+
+      <!-- emails tabs -->
+      <li class="emails">
+        <a href="#emails" class="emails-link" data-url="<%= emails_config_path %>"><%= t('admin.tabs.emails') %></a>
+      </li>
+
+    </ul>
+  </div>
+</div>
+<div class="span9">
+  <div id="page">
+    <div id="myTabContent" class="tab-content">
+
+      <!-- page summary -->
+      <div class="tab-pane fade active in" id="summary">
+
+        <%= render template: "activities/index" %>
+
+      </div>
+      <!--// page summary -->
+
+      <div class="tab-pane fade" id="reports">
+        <!-- page header -->
+        <div class="page_header">
+          <h1><%= I18n.t ('admin.reports') %></h1>
+        </div>
+
+        <div class="page_content" id="reports_data">
+
+        </div>
+      </div>
+      <div class="tab-pane fade" id="projects">
+        <!-- page header -->
+        <div class="page_header">
+          <h1><%= t('admin.projects') %></h1>
+
+          <div class="add_element">
+            <button class="btn btn-link new-user-link" data-url="<%= new_project_path %>">
+              <i class="icon-plus icon-white"> </i> <%= t('admin.tabs.new_project') %>
+            </button>
+          </div>
+
+        </div>
+        <!--// page header -->
+        <!-- page contents -->
+        <div class="page_content" id="projects-content">
+
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="users">
+        <!-- page header -->
+        <div class="page_header">
+          <h1><%= t('admin.users') %></h1>
+
+          <div class="add_element">
+            <button class="btn btn-link new-user-link" data-url="<%= new_user_path %>">
+              <i class="icon-plus icon-white"> </i> <%= t('admin.tabs.new_user') %>
+            </button>
+          </div>
+
+        </div>
+        <!--// page header -->
+        <!-- page contents -->
+        <div class="page_content" id="users-content">
+
+
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="clients">
+        <!-- page header -->
+        <div class="page_header">
+          <h1><%= t('admin.tabs.clients') %></h1>
+
+          <div class="add_element">
+            <button class="btn btn-link new-client-link" data-url="<%= new_client_path %>">
+              <i class="icon-plus icon-white"> </i> <%= t('client.new_client') %>
+            </button>
+          </div>
+
+        </div>
+        <!--// page header -->
+
+        <!-- page contents -->
+        <div class="page_content" id="clients-content">
+
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="new-client">
+
+      </div>
+
+      <div class="tab-pane fade" id="edit-client">
+
+      </div>
+
+      <div class="tab-pane fade" id="show-client">
+
+      </div>
+
+      <div class="tab-pane fade" id="forms">
+        <!-- page header -->
+        <div class="page_header">
+          <h1><%= I18n.t ('admin.forms') %></h1>
+
+          <div class="loading-gif">
+            <%= image_tag("ajax-loader.gif") %>
+          </div>
+          <div class="add_element">
+            <button class="btn btn-link new-form-link" data-url="<%= new_form_path %>">
+              <i class="icon-plus icon-white"> </i> <%= t('form.add_form') %>
+            </button>
+          </div>
+        </div>
+        <!--// page header -->
+        <!-- page contents -->
+        <div class="page_content" id="forms-content">
+          <!-- main column -->
+          <!--// main column -->
+          <!--// page contents -->
+
+        </div>
+      </div>
+
+      <!-- page add form -->
+      <div class="tab-pane fade" id="new-form">
+      </div>
+
+      <!-- page show form -->
+      <div class="tab-pane fade" id="show-form">
+      </div>
+
+
+      <!-- page new project -->
+      <div class="tab-pane fade" id="new-project">
+      </div>
+      <!--// page new project -->
+
+      <!-- page edit project -->
+      <div class="tab-pane fade" id="edit-project">
+      </div>
+      <!--// page edit project -->
+
+      <!-- page show project -->
+      <div class="tab-pane fade" id="show-project">
+      </div>
+      <!--// page show project -->
+
+
+      <!-- page new user -->
+      <div class="tab-pane fade" id="new-user">
+      </div>
+      <!--// page new user -->
+
+      <!-- page edit user -->
+      <div class="tab-pane fade" id="edit-user">
+      </div>
+      <!--// page edit user -->
+
+      <!-- page show user -->
+      <div class="tab-pane fade" id="show-user">
+      </div>
+      <!--// page show user -->
+
+      <!-- page emails -->
+      <div class="tab-pane fade" id="emails">
+      </div>
+      <!--// page emails -->
     </div>
+  </div>
+</div>
+</div>
 </div>
 <br>
 <br>
-<br>
-
-
-
-
-
-
-
-
-    <%#
-    <div class="tabbable tabs-left">
-    <ul id="myTab" class="nav nav-tabs">
-      <li class="home active">
-        <a href="#home" data-toggle="tab">Home</a>
-      </li>
-      <li class="profile">
-        <a href="#profile" data-toggle="tab">Profile</a>
-      </li>
-    </ul>
-    <div id="myTabContent" class="tab-content">
-      <div class="tab-pane fade active in" id="home">
-        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-      </div>
-      <div class="tab-pane fade" id="profile">
-        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
-      </div>
-    </div>
-    </div>
-
-    <div class="tabbable tabs-left">
-      <ul class="nav nav-tabs">
-        <li class="active">
-          <a href="#lA" data-toggle="tab">Section 1</a>
-        </li>
-        <li class="">
-          <a href="#lB" data-toggle="tab">Section 2</a>
-        </li>
-        <li class="">
-          <a href="#lC" data-toggle="tab">Section 3</a>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane active" id="lA">
-          <p>I'm in Section A.</p>
-        </div>
-        <div class="tab-pane" id="lB">
-          <p>Howdy, I'm in Section B.</p>
-        </div>
-        <div class="tab-pane" id="lC">
-          <p>What up girl, this is Section C.</p>
-        </div>
-      </div>
-    </div>
-
-
-
-      <ul class="nav nav-pills nav-stacked">
-        <li>
-          <a href="#"><i class="icon-table"></i> Summary</a>
-        </li>
-        <li>
-          <a href="/projects"><i class="icon-briefcase"></i> Projects</a>
-        </li>
-        <li>
-          <a href="/users"><i class="icon-user"></i> Users</a>
-        </li>
-        <li>
-          <a href="/clients"><i class="icon-user-md"></i> Customers</a>
-        </li>
-        <li>
-          <a href="#"><i class="icon-file"></i> Forms</a>
-        </li>
-      </ul>
-    </div>
-
-
-
-
-
-
-      <table class="table table-bordered" >
-        <thead>
-        <tr style="background-color: #6495ed;">
-          <th>
-            </br>
-          </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <th><h4>Recent Activity</h4></th>
-        </tr>
-        </tbody>
-      </table>
-
-
-
-
-
-    %>
 
 
 
