@@ -27,12 +27,23 @@ class AdminController < ApplicationController
   end
 
   def emails_config
-
+    @view = {:properties => CsmProperty.all, :property_updated => false}
     respond_to do |format|
       if request.xhr?
         format.html { render :layout => false } # emails_config.html.erb
       end
     end
+  end
+
+  def property_update
+    @property = CsmProperty.find(params[:csm_property_id])
+    @property.value =  params[:value]
+    @property.save
+    @view = {:properties => CsmProperty.all, :property_updated => true}
+    respond_to do |format|
+        format.js { } # emails_config.html.erb
+    end
+
   end
 
 

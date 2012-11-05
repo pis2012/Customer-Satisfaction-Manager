@@ -3,6 +3,9 @@ class HomeController < ApplicationController
   def index
   end
 
+  def csm_information
+  end
+
 
   def language_change
 

@@ -1,5 +1,8 @@
 CSM::Application.routes.draw do
 
+  ########### HOME ROUTES ###########
+  match "/home/csm_information" => "home#csm_information", :as => :csm_information
+
   ########### MY_PROJECT ROUTES ###########
   match "/my_projects" => "my_projects#index", :as => :my_projects
 
@@ -60,6 +63,7 @@ CSM::Application.routes.draw do
 
     # EMAILS ROUTES
     match "/emails" => "admin#emails_config", :as => :emails_config
+    match "/csm_property/edit/:id" => "admin#property_update", :as => :property_update
   end
 
   resources :clients, :only => [:new, :create, :update], :path => "/admin/clients"

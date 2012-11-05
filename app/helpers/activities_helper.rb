@@ -25,7 +25,7 @@ module ActivitiesHelper
     when 'User'
       user_image_tag object
     when 'Client'
-      image_tag 'default_user_pic.png', :class => 'activity_image'
+      image_tag 'client.png', :class => 'activity_image'
     else
       ""
     end

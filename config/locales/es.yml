@@ -118,6 +118,8 @@
             filter: "Filtrar"
             comment: "Comentar"
             send: "Enviar"
+            change: "Cambiar"
+            find: "Buscar"
 
 
   my_projects:
@@ -379,7 +381,7 @@
             enable: "habilitado"
             disable: "deshabilitado"
             sure: "¿Está seguro?"
-
+            changes_saved: "Cambios salvados!"
 
   milestone:
             milestone:  "Hito"
