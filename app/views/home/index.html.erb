@@ -156,6 +156,70 @@
   <% end %>
 </div>
 
-<div id="footer">
-  <div class="container"></div>
+<div id="footer1">
+
+  <div class="container1">
+
+    <% if not user_signed_in?  %>
+        <div class="happinessPanel"><div class="happinessText">happiness</div></div>
+        <br />
+        <br />
+        <br />
+
+        <div class="happinessDescription">
+          <p>
+            Liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id.
+          </p>
+          <p>
+            Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum
+            liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id.
+            Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum
+            liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id.
+            Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum
+            liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id.
+          </p>
+        </div>
+
+        <div class="homecenter">
+          <% @projects = Project.all %>
+          <% cant1=0 %>
+          <% cant2=0 %>
+          <% cant3=0 %>
+          <% cant4=0 %>
+          <% cant5=0 %>
+          <% @projects.each do |project| %>
+              <% mood = project.moods.last! %>
+              <% case mood.status %>
+                  <% when 1
+                       cant1 = cant1 + 1  %>
+                  <% when 2
+                       cant2 = cant2 + 1  %>
+                  <% when 3
+                       cant3 = cant3 + 1  %>
+                  <% when 4
+                       cant4 = cant4 + 1  %>
+                  <% else
+                       cant5 = cant5 + 1  %>
+              <% end %>
+          <% end %>
+              <div class="happinessMoodsContainer">
+                <div>
+                  <!--<%= image_tag('moods/happiness/1.png', :class => 'img-rounded1') %>-->
+                  <div class="happinessMood"><%= image_tag('moods/happiness/1.png') %><div class="centerTextHappinessFace"><%=cant1%></div></div>
+                  <div class="happinessMood"><%= image_tag('moods/happiness/2.png') %><div class="centerTextHappinessFace"><%=cant2%></div></div>
+                  <div class="happinessMood"><%= image_tag('moods/happiness/3.png') %><div class="centerTextHappinessFace"><%=cant3%></div></div>
+                  <div class="happinessMood"><%= image_tag('moods/happiness/4.png') %><div class="centerTextHappinessFace"><%=cant4%></div></div>
+                  <div class="happinessMood"><%= image_tag('moods/happiness/5.png') %><div class="centerTextHappinessFace"><%=cant5%></div></div>
+
+                </div>
+              </div>
+
+
+        </div>
+        </br>
+        </br>
+        </br>
+
+    <% end %>
+  </div>
 </div>
