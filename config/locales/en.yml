@@ -34,6 +34,7 @@
             use_short_month: true
 
   client:
+            name: "Name"
             name_field: "Name of client"
             date_create: "Create Date"
             users: "Associate Users"

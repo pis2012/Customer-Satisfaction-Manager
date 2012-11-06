@@ -77,6 +77,7 @@
 
 
   client:
+          name: "Nombre"
           name_field: "Nombre de cliente"
           date_create: "Fecha de Creacion"
           users: "Usuarios Asociados"

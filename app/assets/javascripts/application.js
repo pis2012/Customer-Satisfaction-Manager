@@ -22,7 +22,7 @@ $(document).ready(function () {
     var o = {
         buttonList: ['save','bold','italic','underline','left','center','right','justify','ol','ul','fontSize','fontFamily','indent','outdent','image','link','unlink','forecolor','bgcolor', 'xhtml']
     };
-    html_panel = new nicEditor(o);
+    var html_panel = new nicEditor(o);
 
 });
 
