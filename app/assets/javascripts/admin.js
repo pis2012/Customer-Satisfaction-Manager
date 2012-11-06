@@ -24,7 +24,7 @@ $(document).on('click', '.reports-link', function () {
 //************** PROJECTS TAB **************** //
 
 $(document).on('click', '.projects-link', function () {
-    updatePanel($(this).data('data-url'), 'projects-content', 'projects');
+    updatePanel($(this).data('url'), 'projects', 'projects');
     return false;
 });
 
@@ -33,28 +33,8 @@ $(document).on('click', '.new-project-link', function () {
     return false;
 });
 
-$('.new-project-link').live('click', function () {
-    updatePanel($(this).attr('data-url'), 'new-project', 'new-project');
-    return false;
-});
-
-$('.edit-project-link').live('click', function () {
-    updatePanel($(this).attr('data-url'), 'edit-project', 'edit-project');
-    return false;
-});
-
-$('.show-project-link').live('click', function () {
-    updatePanel($(this).attr('data-url'), 'show-project', 'show-project');
-    return false;
-});
-
-$('.show-project').live('click', function () {
-    updatePanel($(this).attr('data-url'), 'show-project', 'show-project');
-    return false;
-});
-
-$('.projects-link').live('click', function () {
-    updatePanel($(this).attr('data-url'), 'projects-content', 'projects');
+$(document).on('click', '.edit-project-link', function () {
+    updatePanel($(this).data('url'), 'edit-project', 'edit-project');
     return false;
 });
 

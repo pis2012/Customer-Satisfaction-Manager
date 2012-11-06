@@ -150,7 +150,7 @@
               <h1><%= t('my_projects.tabs.data') %></h1>
 
               <!-- only admins can create milestones -->
-              <% if current_user.admin? %>
+              <% if current_user.admin? && !@project.finalized %>
                   <div class="add_element">
                     <button href="#new-milestone" class="btn btn-link new-milestone-link" data-url="<%= new_milestone_path(@project) %>">
                         <i class="icon-plus icon-white"> </i> <%= t('my_projects.tabs.new_milestone')%>

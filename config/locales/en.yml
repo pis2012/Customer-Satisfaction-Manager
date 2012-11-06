@@ -96,14 +96,58 @@
                         project_description: "Project Description"
                         mood_updates: "Mood Updates"
                         milestones: "Milestones"
+                        project_end: "End of project"
 
             mood:
                         update_mood: "Update your mood"
                         mood_updated: "Mood updated!"
                         actual_mood: "Actual mood"
 
+  admin:
+              tabs:
+                          summary: "Summary"
+                          reports: "Reports"
+                          projects: "Projects"
+                          new_project: "New Project"
+                          edit_project: "Edit Project"
+                          delete_project: "Delete Project"
+                          new_user: "New User's Client"
+                          show_user: "View User"
+                          edit_user: "Edit User"
+                          delete_user: "Delete User"
+                          clients: "Clients"
+                          show_client: "Show Client"
+                          new_client: "New Client"
+                          edit_client: "Edit Client"
+                          forms: "Forms"
+                          show_form: "Show form"
+                          emails: "Emails"
 
-
+              customer_satisfaction_manager:    "CUSTOMER SATISFACTION MANAGER"
+              customers:    "Customers"
+              reports:    "Reports "
+              users:   "Users"
+              clients:  "Clients"
+              forms:  "Forms"
+              evolution_of_general_mood: "Evolution of the general mood"
+              Status_of_Projects: "Status of Projects"
+              add_clients: "Add Client"
+              mooveit_employee:   "Employe Moove-IT"
+              mooveit_admin:   "Employe Moove-IT(Admin)"
+              filter_name: "Name contains: "
+              comment_created: "Comment made on "
+              comment_created_on: " on "
+              user_name: "Username"
+              user_email: "Email: "
+              user_unconfirmed_email: "Unconfirmed Email: "
+              user_openid:  "OpenID: "
+              activated: "activated"
+              deactivated: "deactivated"
+              user: "User"
+              enable: "enable"
+              disable: "disable"
+              sure: "Are you sure?"
+              changes_saved: "Changes saved!"
 
   user_edit:
             choose_your_profile_settings: "CHOOSE YOUR PROFILE SETTINGS"
@@ -182,6 +226,8 @@
                                   header:
                                           one: "It generated an error when trying to save the %{model}."
                                           other: "Were generated %{count} errors when trying to save the %{model}."
+                                          one_changes: "It generated an error when trying to save changes."
+                                          other_changes: "Were generated %{count} errors when trying to save changes."
                         models:
                                 feedback:
                                           attributes:
@@ -290,52 +336,6 @@
             not_exists_anymore?: "No form found in the drive of the google account."
             eliminate_confirm: "Are you sure you want to delete this form?"
 
-
-  admin:
-            tabs:
-                          forms: "Forms"
-                          show_form: "Show form"
-                          reports: "Reports"
-                          new_user: "New User's Client"
-                          show_user: "View User"
-                          edit_user: "Edit User"
-                          delete_user: "Delete User"
-                          clients: "Clients"
-                          show_client: "Show Client"
-                          new_client: "New Client"
-                          edit_client: "Edit Client"
-                          new_project: "New project"
-                          emails: "Emails"
-                          edit_project: "Edit Project"
-
-            customer_satisfaction_manager:    "CUSTOMER SATISFACTION MANAGER"
-            customers:    "Customers"
-            summary:   "Summary"
-            reports:    "Reports "
-            projects:    "Projects"
-            users:   "Users"
-            clients:  "Clients"
-            forms:  "Forms"
-            evolution_of_general_mood: "Evolution of the general mood"
-            Status_of_Projects: "Status of Projects"
-            add_clients: "Add Client"
-            mooveit_employee:   "Employe Moove-IT"
-            mooveit_admin:   "Employe Moove-IT(Admin)"
-            filter_name: "Name contains: "
-            comment_created: "Comment made on "
-            comment_created_on: " on "
-            user_name: "Username"
-            user_email: "Email: "
-            user_unconfirmed_email: "Unconfirmed Email: "
-            user_openid:  "OpenID: "
-            activated: "activated"
-            deactivated: "deactivated"
-            user: "User"
-            enable: "enable"
-            disable: "disable"
-            sure: "Are you sure?"
-            changes_saved: "Changes saved!"
-
   milestone:
             milestone:  "Milestone"
             milestones:   "Milestones"
@@ -352,9 +352,11 @@
             name: "Name"
             target_date: "Target date"
 
-  proyect:
+  project:
             list_projects:  "List of Projects"
-            new_proyect:     "New Project"
+            client: "Client"
+            enter_text: "Enter text"
+            eliminate_confirm: "Are you sure you want to delete this project?"
             cannot_save_project: "Cannot save Project"
             description:    "Description"
             end_date:     "End date"
@@ -364,11 +366,10 @@
             filter:       "Filter"
             at: " at "
             hours: " hours "
-            finalized: "Project finished"
+            finalized: "Project finalized"
             last_feedback_made_by: "Last feedback made by"
             no_feedbacks: "No feedbacks"
             edit: "Edit"
-
 
   mood:
             mood_of_our_customers:     "MOOD OF OUR CUSTOMERS"

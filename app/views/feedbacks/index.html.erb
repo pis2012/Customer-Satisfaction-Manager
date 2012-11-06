@@ -23,25 +23,20 @@
           <% if current_user.client? && (feedback.editable? current_user.id) %>
               <h4 class="feedback_subject">
                 <a href="#edit-feedback<%= feedback.id.to_s %>" class="edit-feedback-link"
-                   data-url="<%= edit_feedback_path(feedback) %>"><%= truncate(strip_tags(feedback.subject), :length => 45) %>
+                   data-url="<%= edit_feedback_path(feedback) %>"><%= truncate(strip_tags(feedback.subject), :length => 80) %>
                 </a>
               </h4>
           <% else %>
               <h4 class="feedback_subject">
                 <a href="#show-feedback<%= feedback.id.to_s %>" class="show-feedback-link"
-                   data-url="<%= feedback_path(feedback) %>"><%= truncate(strip_tags(feedback.subject), :length => 45) %>
+                   data-url="<%= feedback_path(feedback) %>"><%= truncate(strip_tags(feedback.subject), :length => 80) %>
                 </a>
               </h4>
           <% end %>
 
           <h6 class="feedback_date"><%= get_feedback_date feedback %></h6>
           <pre class="feedback_content"><%= truncate(strip_tags(feedback.content), :length => 180) %></pre>
-          <% @last_comment = feedback.comments.order('created_at').first %>
-          <% if @last_comment != nil %>
-              <h6 class="feedback_last_comment"><%= get_feedback_last_comment_date %></h6>
-          <% else %>
-              <h6 class="feedback_last_comment"><%= t('feedback.no_comments') %></h6>
-          <% end %>
+          <h6 class="feedback_last_comment"><%= get_feedback_last_comment_date feedback %></h6>
         </td>
       </tr>
       <% end %>

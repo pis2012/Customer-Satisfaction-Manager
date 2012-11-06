@@ -1,72 +1,60 @@
-<%= form_for(@view[:project], :remote => true ) do |f|%>
+<%= form_for(@project, :remote => true) do |f| %>
 
-    <div class="page_header">
-      <h1>
-          <% if @view[:edit] %>
-            <%= t('admin.tabs.edit_project') %>
-          <% else %>
-              <%= t('admin.tabs.new_project') %>
-          <% end %>
-      </h1>
-
-    </div>
-
-
-    <% if @view[:project].errors.any? %>
+    <% if @project.errors.any? %>
         <div class="alert alert-error">
-          <% if @view[:project].errors.count > 1 %>
-              <h4><%= t('activerecord.errors.template.header.other', :model=> @view[:project].class.name, :count=> @view[:project].errors.count) %></h4>
+          <% if @project.errors.count > 1 %>
+              <h4><%= t('activerecord.errors.template.header.other_changes', :count => @project.errors.count) %></h4>
           <% else %>
-              <h4><%= t('activerecord.errors.template.header.one',:model=> @view[:project].class.name) %></h4>
+              <h4><%= t('activerecord.errors.template.header.one_changes') %></h4>
           <% end %>
-          <% @view[:project].errors.full_messages.each do |msg| %>
-              <strong><%= msg %></strong>
-          <% end %>
+          <ul>
+            <% @project.errors.full_messages.each do |msg| %>
+                <li><strong><%= msg %></strong></li>
+            <% end %>
+          </ul>
         </div>
     <% end %>
 
-    <br/>
-
-
-    <div class="project-name">
-      <%= f.text_field :name,  :placeholder => I18n.t('proyect.name') %>
+    <div class="project_name_field">
+      <%= f.label :name, t('project.name'), :class =>"project_name_label" %>
+      <%= f.text_field :name, :placeholder => t('project.name') %>
     </div>
-    <br/>
 
-    <div class="project-description">
-      <%= f.text_field :description, :placeholder => I18n.t('proyect.description') %>
+    <div class="project_client_field">
+      <%= f.label :client, t('project.client'), :class =>"project_client_label" %>
+      <%= f.select :client_id, @clients.map { |client| [client.name, client.id] },  {:class => "project_client_select"},
+                   :prompt => true %>
     </div>
-    <br/>
 
-    <div class="project-client">
-      <%= f.label :client %><br />
-      <%= f.select(:client_id,Client.all.map {|client| [client.name, client.id]},:prompt => true) %>
+
+    <div class="project-description_field">
+      <%= f.label :description, t('project.description'), :class => "project_description_label" %>
+      <%= f.text_area :description, :class => "project_description_text" %>
     </div>
-    <br/>
 
-    <% if @view[:edit] %>
-        <label class="control-label checkbox-hand" >
-          <%= t('proyect.finalized')%>&nbsp;<%= f.check_box(:finalized) %>
-        </label>
+    <div class="project_end_date_field">
+      <%= f.label :end_date %>
+      <%= f.date_select :end_date %>
+    </div>
+
+    <!-- if the project is been edited then we show the finalized field -->
+    <% unless @project.new_record? %>
+        <div class="project_finalized_field">
+          <label class="control-label checkbox-hand">
+            <%= t('project.finalized') %>&nbsp;<%= f.check_box(:finalized) %>
+          </label>
+        </div>
     <% end %>
 
+    <% if @project.new_record? %>
+        <%= f.submit t('buttons.create'), :class => "btn" %>
 
-    <div class="project-date">
-        <%= f.label :end_date %><br />
-        <%= f.date_select :end_date %>
-  </div>
-
-
-    <div class="actions">
-      <% if @view[:edit] %>
-        <%= f.submit  I18n.t('buttons.update'), :class => "btn" %>
-      <% else %>
-          <%= f.submit  I18n.t('buttons.create'), :class => "btn" %>
-      <% end %>
-
-        &nbsp <%= I18n.t('buttons.or') %>
-        <button class="btn btn-link projects-link" type="button" data-url="<%= admin_projects_path %>">
-          <%= I18n.t('buttons.cancel')%>
-        </button>
-    </div>
+    <% else %>
+        <%= f.submit t('buttons.save_changes'), :class => "btn" %>
+    <% end %>
+    &nbsp
+    <%= t('buttons.or') %>
+    <button class="btn btn-link projects-link" type="button" data-url="<%= projects_path %>">
+      <%= t('buttons.cancel') %>
+    </button>
 <% end %>

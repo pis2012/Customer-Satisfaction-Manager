@@ -1,73 +1,58 @@
-
-<div class="projects_div">
-
-  </br>
-  <%= form_tag(projects_name_filter_path, :remote => true, :class => "form-horizontal" ) do %>
-      <div class="control-group">
-
-        <label class="control-label name-filter" for="inputProjectname">
-          <%= t('admin.filter_name')%>
-        </label>
-
-        <div class="controls">
-          <div class="input-prepend">
-            <%= text_field_tag :name %>
-          </div>
-
-          <div class="input-prepend">
-            <%= button_tag( t('buttons.filter'), :class => "btn") %>
-          </div>
-        </div>
-
-      </div>
-  <% end %>
-  </br>
-  <hr>
-
-
-  </br>
-  <% @projects.each do |project| %>
-      <div id="row">
-
-        <% mood = project.mood %>
-        <div class="project-mood">
-          <%= link_to image_tag('moods/normal/' + mood.get_mood_img, :class => 'img-rounded'), change_profile_project_path(project), :class => "my-project-link" %>
-        </div>
-
-        <div class="project-name">
-
-          <%= link_to project.name, change_profile_project_path(project), :class => "my-project-link" %>
-          /
-
-          <a href="#edit-project" class="btn btn-link edit-project-link" data-url="<%=edit_project_path  project %>">
-            <%= t('admin.tabs.edit_project')%>
-          </a>
-
-          <h6 class="project-client">
-                <%= t('admin.client') %>: <%= project.client.name %>
-          </h6>
-
-          <% @description = project.description %>
-          <% if !@description.nil? %>
-              <pre><%= @description.truncate 200 %></pre>
-              <p class="project-feedback-date">
-              <% @last_feedback = project.feedbacks.order('created_at').first %>
-              <% if @last_feedback != nil %>
-                  <h6><%= t('proyect.last_feedback_made_by') + " " + @last_feedback.user.full_name + ", " + t("date." + "#{@last_feedback.created_at.strftime("%A")}") + @last_feedback.created_at.strftime(" %d ") + t("date." + "#{@last_feedback.created_at.strftime("%B")}") + @last_feedback.created_at.strftime(" %Y") %></h6>
-              <% else %>
-                  <h6><%= t('proyect.no_feedbacks') %></h6>
-              <% end %>
-              </p>
-          <% end %>
-
-        </div>
-
-      </div>
-      <hr>
-  <% end %>
+<!-- page header -->
+<div class="page_header">
+  <h1><%= t('admin.tabs.projects') %></h1>
+  <div class="add_element">
+    <button class="btn btn-link new-project-link" data-url="<%= new_project_path %>">
+      <i class="icon-plus icon-white"> </i> <%= t('admin.tabs.new_project') %>
+    </button>
+  </div>
 </div>
+<!--// page header -->
 
+<!-- page contents -->
+<div class="page_content" id="projects-content">
 
+  <%= form_tag(projects_text_filter_path, :method => "get", :remote => true) do %>
+      <div class="projects_filter form-inline">
+        <h5 class="projects_filter_element"><%= t('project.enter_text') %></h5>
+        &nbsp;
+        <%= text_field_tag "projects_filter_text", @last_filter_text %>
+        &nbsp;
+        <%= button_tag(t('buttons.find'), :class => "btn") %>
+      </div>
+  <% end %>
+  <hr class="hr_projects_table">
 
+  <div id="projects_search_result">
+    <table class="projects_table">
+      <% @projects.each do |project| %>
+          <tr id="row_project_<%= project.id %>">
+
+            <td class="avatar">
+              <%= link_to change_profile_project_path(project) do %>
+                  <%= image_tag 'moods/normal/' + project.mood.get_mood_img, :alt => "project_mood",
+                                :class => 'mood_image' %>
+              <% end %>
+            </td>
+
+            <td class="project_info">
+              <h4 class="project_name">
+                <%= link_to change_profile_project_path(project) do %>
+                    <%= truncate(strip_tags(project.name), :length => 80) %>
+                <% end %>
+                <button class="btn btn-link edit-project-link" data-url="<%= edit_project_path(project) %>">
+                  <i class="icon-pencil icon-white"></i> <%= t('admin.tabs.edit_project') %>
+                </button>
+              </h4>
+
+              <h6 class="project_client"><%= "#{t('project.client')}: #{project.client.name}" %></h6>
+              <pre class="project_description"><%= truncate(strip_tags(project.description), :length => 180) %></pre>
+              <h6 class="project_last_feedback"><%= get_project_last_feedback_date project %></h6>
+            </td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
 
 

@@ -201,11 +201,6 @@
   margin-bottom: 0;
 }
 
-.project_datepicker_element {
-  display: inline;
-  width: 100px;
-}
-
 /* ================== [ FORMS TAB ] =============== */
 
 .show-form-link{
@@ -292,62 +287,52 @@
 
 /* =============== [ PROJECTS TAB ]===================== */
 
-.show-project-link{
-  font-family: Arial;
-  font-size: 20px;
-  font-weight: bold;
-  font-style: normal;
-  text-decoration: underline;
-  color: rgb(51, 51, 51);
-  text-align: left;
+.projects_filter_element{
+  display: inline;
 }
 
-.my-project-link{
-  font-family: Arial;
-  font-size: 20px;
-  font-weight: bold;
-  font-style: normal;
-  text-decoration: underline;
-  color: rgb(51, 51, 51);
-  text-align: left;
+.hr_projects_table{
+  margin-bottom: 0;
 }
 
-.show-project-name{
-  font-family: Arial;
-  font-size: 20px;
-  font-weight: bold;
-  font-style: normal;
-  text-decoration: underline;
-  color: rgb(51, 51, 51);
-  text-align: left;
+
+.projects_table {
+  width: 100%;
+
+  tr > td {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-bottom: 1px solid #EEEEEE;
+  }
+
+  .avatar {
+    width: 12%;
+  }
 }
 
-.project-mood
-{
-  display: inline-block;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  vertical-align: top;
+.projects_table .avatar .mood_image {
+  width: 100%;
 }
 
-.project-client
-{
-  font-weight: normal;
-  margin: 0px;
-}
+.projects_table .project_info {
+  padding-left: 2%;
 
-.project-feedback-date
-{
-  font-size: 11px;
-  margin: 0px;
-  font-weight: bold;
-}
+  .project_name {
+    text-decoration: underline;
+    color: inherit;
+    font-weight: bold;
+  }
 
-.project-name
-{
-  vertical-align: top;
-  display: inline-block;
-  width: 80%;
+  .edit-project-link{
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .project_client {
+    font-weight: normal;
+    margin-top: 0;
+  }
+
 }
 
 /* ================== [ USERS TAB ] =============== */

@@ -3,9 +3,10 @@
     <% if @feedback.errors.any? %>
         <div class="alert alert-error">
           <% if @feedback.errors.count > 1 %>
-            <h4><%= t('activerecord.errors.template.header.other', :model=> @feedback.class.name, :count=> @feedback.errors.count) %></h4>
+              <h4><%= t('activerecord.errors.template.header.other', :model => @feedback.class.name,
+                        :count => @feedback.errors.count) %></h4>
           <% else %>
-            <h4><%= t('activerecord.errors.template.header.one',:model=> @feedback.class.name) %></h4>
+              <h4><%= t('activerecord.errors.template.header.one', :model => @feedback.class.name) %></h4>
           <% end %>
           <ul>
             <% @feedback.errors.full_messages.each do |msg| %>
@@ -43,14 +44,15 @@
 
       <!-- when a client creates a feedback, he cannot choose it's visibility. The default scope it's admins and clients -->
       <% if current_user.admin? %>
-      <%= f.label :visibility, t('feedback.feedback_visibility'), :class => "feedback_visibility_label" %> &nbsp&nbsp
-      <label class="checkbox-hand">
-        <%= f.check_box :mooveit_visibility, :type => "checkbox" %><%= t('feedback.Moove_IT_employee') %>
-      </label>
-      &nbsp;&nbsp;
-      <label class="checkbox-hand">
-        <%= f.check_box :client_visibility, :type => "checkbox" %><%= t('admin.clients') %>
-      </label>
+          <%= f.label :visibility, t('feedback.feedback_visibility'), :class => "feedback_visibility_label" %>
+          &nbsp&nbsp
+          <label class="checkbox-hand">
+            <%= f.check_box :mooveit_visibility, :type => "checkbox" %><%= t('feedback.Moove_IT_employee') %>
+          </label>
+          &nbsp;&nbsp;
+          <label class="checkbox-hand">
+            <%= f.check_box :client_visibility, :type => "checkbox" %><%= t('admin.clients') %>
+          </label>
       <% else %>
           <input id="feedback_client_visibility" type="hidden" value="1" name="feedback[client_visibility]">
       <% end %>
