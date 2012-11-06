@@ -412,7 +412,7 @@
             eliminate_confirm: "¿Está seguro que desea eliminar este proyecto?"
             cannot_save_project:  "No se pudo salvar el Proyecto"
             description:   "Descripción"
-            end_date:  "Fecha de fin"
+            end_date:  "Fin de proyecto"
             name:  "Nombre"
             status:  "Estado"
             editing_project: "Editando Proyecto"

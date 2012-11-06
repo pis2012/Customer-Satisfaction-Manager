@@ -53,7 +53,8 @@
   # POST /projects.json
   def create
     @project = Project.new(params[:project])
-    @project.finalized = true
+    @project.finalized = false
+    @project.end_date = params[:end_date]
     respond_to do |format|
       if @project.save
         mood = @project.moods.create(:status => 5, :project => @project)
@@ -72,7 +73,7 @@
   # PUT /projects/1.json
   def update
     @project = Project.find(params[:id])
-
+    @project.end_date = params[:end_date]
     respond_to do |format|
       if @project.update_attributes(params[:project])
         @projects = Project.all

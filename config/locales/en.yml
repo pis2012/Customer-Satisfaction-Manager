@@ -360,7 +360,7 @@
             eliminate_confirm: "Are you sure you want to delete this project?"
             cannot_save_project: "Cannot save Project"
             description:    "Description"
-            end_date:     "End date"
+            end_date:     "End of project"
             name:     "Name"
             status:    "Status"
             editing_project: "Editing project"

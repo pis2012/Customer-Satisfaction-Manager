@@ -335,7 +335,23 @@
 
 }
 
+#new_project, #edit_project{
 
+  .project_description_field{
+    margin-bottom: 2%;
+  }
+
+  .project_description_text{
+    width: 100%;
+    resize: vertical;
+  }
+
+}
+
+.destroy_project_link{
+    margin-top: 1%;
+    float: right;
+}
 
 /* ================== [ USERS TAB ] =============== */
 

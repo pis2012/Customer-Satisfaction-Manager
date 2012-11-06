@@ -7,7 +7,7 @@
           <i class="icon-book"> </i>
           <%= @view[:project].name %>
         </a>
-        <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
+        <ul id="menu3" class="dropdown-menu" role="menu">
 
           <% if current_user.client? %>
               <% Project.where(:client_id => @view[:project].client_id).order(:name).each do |project| %>
@@ -121,7 +121,7 @@
                     <h5 class="feedbacks_filter_element"><%= t('my_projects.feedbacks_tab.show_events_since')%></h5>
 
                     <div class="input-append date feedbacks_filter_element" id="datepicker" data-date="<%= Time.now.strftime("%d/%m/%Y") %>" data-date-format="dd/mm/yyyy">
-                      <%= text_field_tag(:date,Time.now.strftime("%d/%m/%Y"),:class => "span2", :size => 16) %>
+                      <%= text_field_tag(:date,Time.now.strftime("%d/%m/%Y"), :class => "span2", :size => 16) %>
                       <span class="add-on"><i class="icon-calendar"></i></span>
                     </div>
 
@@ -152,7 +152,7 @@
               <!-- only admins can create milestones -->
               <% if current_user.admin? && !@project.finalized %>
                   <div class="add_element">
-                    <button href="#new-milestone" class="btn btn-link new-milestone-link" data-url="<%= new_milestone_path(@project) %>">
+                    <button class="btn btn-link new-milestone-link" data-url="<%= new_milestone_path(@project) %>">
                         <i class="icon-plus icon-white"> </i> <%= t('my_projects.tabs.new_milestone')%>
                     </button>
                     </div>

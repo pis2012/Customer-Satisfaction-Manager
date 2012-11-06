@@ -2,21 +2,21 @@
 <div class="page_header">
   <h1><%= t('admin.tabs.edit_project') %></h1>
 
-  <div class="add_element">
-    <button class="btn btn-link delete-btn">
+  <div class="destroy_project_link">
       <i class="icon-minus icon-white"></i>
       <%= link_to t('admin.tabs.delete_project'), @project, method: :delete, remote: true,
                   confirm: t('project.eliminate_confirm') %>
-    </button>
   </div>
 
 </div>
 <!--// page header -->
 
 <!-- page contents -->
-<div class="page_content" id="edit-project-content">
+<div id="edit_project">
+    <div class="page_content" id="edit-project-content">
 
-  <%= render 'form' %>
+        <%= render 'form' %>
 
+    </div>
 </div>
 <!--// page contents -->

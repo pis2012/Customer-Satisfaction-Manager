@@ -17,4 +17,8 @@ module ProjectsHelper
     end
   end
 
+  def get_project_end_date
+    @project.new_record? ? (Time.now + 1.year).strftime("%d/%m/%Y") : @project.end_date.strftime("%d/%m/%Y")
+  end
+
 end
