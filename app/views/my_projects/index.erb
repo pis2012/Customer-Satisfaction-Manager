@@ -120,7 +120,8 @@
                   <div class="feedbacks_filter">
                     <h5 class="feedbacks_filter_element"><%= t('my_projects.feedbacks_tab.show_events_since')%></h5>
 
-                    <div class="input-append date feedbacks_filter_element" id="datepicker" data-date="<%= Time.now.strftime("%d/%m/%Y") %>" data-date-format="dd/mm/yyyy">
+                    <div class="input-append date feedbacks_filter_element" id="datepicker"
+                         data-date="<%= Time.now.strftime("%d/%m/%Y") %>" data-date-format="dd/mm/yyyy">
                       <%= text_field_tag(:date,Time.now.strftime("%d/%m/%Y"), :class => "span2", :size => 16) %>
                       <span class="add-on"><i class="icon-calendar"></i></span>
                     </div>

@@ -41,7 +41,8 @@
       <div class="project_end_date_field">
         <%= f.label :end_date, "#{t('project.end_date')}:", :class => "control-label" %>
         <div class="controls">
-          <div class="input-append date" id="end_project_datepicker" data-date="<%= get_project_end_date %>" data-date-format="dd/mm/yyyy">
+          <div class="input-append date" id="end_project_datepicker" data-date="<%= get_project_end_date %>"
+               data-date-format="dd/mm/yyyy">
             <%= text_field_tag :end_date, get_project_end_date, :class => "span7", :size => 16 %>
             <span class="add-on"><i class="icon-calendar"></i></span>
           </div>
