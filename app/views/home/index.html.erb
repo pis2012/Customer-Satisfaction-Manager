@@ -160,157 +160,80 @@
 
 <% if !user_signed_in? %>
 
-<div id="footer">
+    <div id="footer">
 
-        <div class="happinessDescription" >
-          <div class="container">
+        <div id="header" >
+            <div class="container">
+                <div class="row-fluid">
+                    <div class="span2">
+                    </div>
 
-            <div class="row-fluid">
-              <div class="span2">
-              </div>
+                    <div class="span8">
+                        <div class="happinessText">happiness</div>
+                    </div>
 
-              <div class="span8">
-                <div class="happinessText" >happiness</div>
-              </div>
-
-              <div class="span2">
-              </div>
-            </div>
+                    <div class="span2">
+                    </div>
+                </div>
             </div>
         </div>
 
-        <br />
-        <br />
-        <br />
+        <br/>
+        <br/>
+        <br/>
 
-
-  <div class="container">
-
-    <div class="row-fluid">
-
-      <div class="span2">
-      </div>
-
-      <div class="span8">
-
-        <div class="row-fluid">
-          <div class="happinessMood">
-            <p>
-              Liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id.
-            </p>
-
-            <p>
-              Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum
-              liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id.
-              Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum
-              liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id.
-              Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum
-              liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id.
-            </p>
-          </div>
-
-          <% cant1 = Project.joins(:mood).where( 'moods.status' => 1 ).count()%>
-          <% cant2 = Project.joins(:mood).where( 'moods.status' => 2 ).count()%>
-          <% cant3 = Project.joins(:mood).where( 'moods.status' => 3 ).count()%>
-          <% cant4 = Project.joins(:mood).where( 'moods.status' => 4 ).count()%>
-          <% cant5 = Project.joins(:mood).where( 'moods.status' => 5 ).count()%>
-
-          <div>
-              <div class="homecenter">
-
-                <div class="vhomefacewrapper">
-                  <div>
-                    <div style="position: relative;">
-                        <%= image_tag('moods/happiness/1.png') %>
-                            <div  style="position: absolute; left: 30px; bottom: 60px;">
-                                <p style="font-size: 80px;">
-                                  <%=cant1%>
-                                </p>
-                            </div>
-                    </div>
-                  </div>
+        <div class="container">
+            <div class="row-fluid">
+                <div class="span2">
                 </div>
 
+                <div class="span8">
+                    <div class="row-fluid">
+                        <div class="happinessMood">
+                            <p>
+                                Liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id.
+                            </p>
+                            <p>
+                                Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum
+                                liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id.
+                                Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum
+                                liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id.
+                                Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum
+                                liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id.
+                            </p>
+                        </div>
 
-                <div class="vhomefacewrapper">
-                  <div>
-                    <div style="position: relative;">
-                      <%= image_tag('moods/happiness/2.png') %>
-                      <div  style="position: absolute; left: 30px; bottom: 60px;">
-                        <p style="font-size: 80px;">
-                          <%=cant2%>
-                        </p>
-                      </div>
+                        <div class="homecenter">
+                            <% (1..5).each do |i| %>
+                                <% cant = Project.joins(:mood).where( 'moods.status' => i ).count()%>
+                                <div class="vhomefacewrapper">
+                                    <div>
+                                        <div class="moodWrapper">
+                                            <%= image_tag('moods/happiness/'+i.to_s+'.png') %>
+                                            <% if cant > 9 %>
+                                              <div class="moodcantbig">
+                                                <%= cant %>
+                                              </div>
+                                            <% else %>
+                                                <div class="moodcantsmall">
+                                                        <%= cant %>
+                                                </div>
+                                            <% end %>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% end %>
+                        </div>
+
                     </div>
-                  </div>
                 </div>
 
-
-
-                <div class="vhomefacewrapper">
-                  <div>
-                    <div style="position: relative;">
-                      <%= image_tag('moods/happiness/3.png') %>
-                      <div  style="position: absolute; left: 30px; bottom: 60px;">
-                        <p style="font-size: 80px;">
-                          <%=cant3%>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                <div class="span2">
                 </div>
-
-
-
-                <div class="vhomefacewrapper">
-                  <div>
-                    <div style="position: relative;">
-                      <%= image_tag('moods/happiness/4.png') %>
-                      <div  style="position: absolute; left: 30px; bottom: 60px;">
-                        <p style="font-size: 80px;">
-                          <%=cant4%>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
-
-                <div class="vhomefacewrapper">
-                  <div>
-                    <div style="position: relative;">
-                      <%= image_tag('moods/happiness/5.png') %>
-                      <div  style="position: absolute; left: 30px; bottom: 60px;">
-                        <p style="font-size: 80px;">
-                          <%=cant5%>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-          </div>
-
-
-
-              </div>
-
             </div>
-
-
-      <div class="span2">
-      </div>
+        </div>
 
     </div>
-
-
-
-
-  </div>
-
-  </div>
 
 <% end %>
 

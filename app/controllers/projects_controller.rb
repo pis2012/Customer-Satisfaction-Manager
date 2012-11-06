@@ -46,15 +46,22 @@
   def new
     @project = Project.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @project }
-    end
+    #Flag indicates this is a new project
+    @edit = false;
+    @view = {:project => @project, :edit => @edit}
+
+    #respond_to do |format|
+    #  format.html # new.html.erb
+    #  format.json { render json: @view }
+    #end
   end
 
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
+    #Flag indicates this is a existing project for edit
+    @edit = true;
+    @view = {:project => @project, :edit => @edit}
   end
 
   # POST /projects
@@ -62,12 +69,23 @@
   def create
     @project = Project.new(params[:project])
 
-    #@project.client_id =  "1"
+    #The project is not finalized at the create
+    @project.finalized = false
+
+    #@mood = @project.moods.build(:status => '5')
+    #@mood = Mood.build(:status => '5', :project => @project)
+
+    #respond_to do |format|
+    #if @project.save
+    #@project.save
+
+        #@last_project = Project.all.last;
+        #@project.update_attribute('id',@last_project.id)
+        #@project.update_attribute(:id => @last_project.id)
+        #@mood = @project.moods.create(:status => '5', :project => @project)
 
     respond_to do |format|
       if @project.save
-        #format.html { redirect_to @project, notice: 'Project was successfully created.' }
-        #format.json { render json: @project, status: :created, location: @project }
         @projects = Project.all
         format.json { render action: "index" }
       else
@@ -84,8 +102,10 @@
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
-        format.json { head :no_content }
+        #format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        #format.json { head :no_content }
+        @projects = Project.all
+        format.js { render action: "index" }
       else
         format.html { render action: "edit" }
         format.json { render json: @project.errors, status: :unprocessable_entity }
