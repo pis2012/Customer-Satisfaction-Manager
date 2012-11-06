@@ -9,7 +9,9 @@ class ApplicationController < ActionController::Base
     if params[:locale].blank?
       I18n.locale = extract_locale_from_accept_language_header
     else
-      I18n.locale = params[:locale]
+      if params[:locale] == "es" or params[:locale] == "en"
+        I18n.locale = params[:locale]
+      end
     end
   end
 
