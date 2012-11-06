@@ -85,17 +85,6 @@ CSM::Application.routes.draw do
   match "/home" => "home#language_change", :as => :home_language_change
 
 
-
-  #resources :projects, :only => [:index, :new, :create,:update , :edit,:destroy,:show] #:constraints => lambda { |request| request.env['warden'].user.admin? }
-  #match "/admin/projects" => "projects#index" , :as => :admin_projects
-
-  #match "/projects/name_filter" => "projects#name_filter", :as => :projects_filter
-  #match "/admin/projects/new" => "projects#new-project", :as => :new_project
-  #match "/admin/projects/:project_id" => "projects#show", :as => :projects_show
-  #match "/admin/projects/edit/:project_id" => "projects#edit", :as => :projects_edit
-  #match "/admin/projects/delete/:project_id" => "projects#destroy", :as => :projects_delete
-
-
   # MAILS ROUTES
   match "/my_projects/:project_id/change_mood/:new_status"  => "projects#change_any_project_mood",  :as => :change_any_project_mood
 
