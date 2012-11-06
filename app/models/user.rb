@@ -108,9 +108,9 @@ class User < ActiveRecord::Base
 
   def possible_feedback_types
     if self.role.name == Role::CLIENT_ROLE
-      return FeedbackType.find(3,4)
+      FeedbackType.find(3,4)
     else
-      return FeedbackType.all
+      FeedbackType.all
     end
   end
 

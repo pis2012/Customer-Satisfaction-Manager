@@ -41,7 +41,6 @@ class FormsController < ApplicationController
       if @form.init_validate session
         exists = true
       end
-      rescue
       end
     end
     respond_to do |format|

@@ -5,7 +5,7 @@
   <!-- an administrator can always edit a feedback -->
   <% if current_user.admin? && !@project.finalized %>
       <div class="add_element">
-        <button href="#edit-feedback" class="btn btn-link edit-feedback-link" data-url="<%= edit_feedback_path(@feedback) %>">
+        <button class="btn btn-link edit-feedback-link" data-url="<%= edit_feedback_path(@feedback) %>">
           <i class="icon-pencil icon-white"> </i> <%= t('my_projects.tabs.edit_feedback') %>
         </button>
       </div>

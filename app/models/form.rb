@@ -12,7 +12,7 @@ class Form < ActiveRecord::Base
   end
 
   # Validates, initializes the form and return true if is valid
-  def init_validate session
+  def init_validate(session)
     auth_tokens = session.auth_tokens()
     self.wise_token = auth_tokens[:wise]
     self.writely_token = auth_tokens[:writely]
@@ -22,7 +22,7 @@ class Form < ActiveRecord::Base
     self.is_valid? ws
   end
 
-  def is_valid? ws
+  def is_valid?(ws)
     valid = false
     if ws[1,1].include? "Marca temporal"
       # Get the column number of the users email
@@ -41,13 +41,13 @@ class Form < ActiveRecord::Base
   end
 
   # Returns the total answers in the form
-  def update_total_answers ws
+  def update_total_answers(ws)
     self.actual_total_answers = ws.num_rows-1
   end
 
 
   # Returns the clients that answered the form
-  def get_clients session
+  def get_clients(session)
     # First worksheet
     ws = session.spreadsheet_by_title(self.name).worksheets[0]
     #update total answers
@@ -175,7 +175,7 @@ class Form < ActiveRecord::Base
           axis_answers = possible_answers[:third]
           data = Array.new(7)
         end
-        if (data != nil)
+        if data != nil
           data.map! {0}
           count = 0
           for row in 2..ws.num_rows do

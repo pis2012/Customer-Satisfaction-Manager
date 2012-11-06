@@ -20,7 +20,7 @@ class Feedback < ActiveRecord::Base
   end
 
   #check if the feedback can be edited by the current user
-  def editable? current_user_id
+  def editable?(current_user_id)
     # calculate how old is the feedback
     created_at = self.created_at.to_time
     diff_seconds = (Time.now - created_at).round
@@ -47,8 +47,16 @@ class Feedback < ActiveRecord::Base
     end
   end
 
-  def self.project_feedbacks project_id
+  def self.project_feedbacks(project_id)
     Feedback.find_all_by_project_id(project_id).sort! { |b, a| a.last_modification <=> b.last_modification }
+  end
+
+  def self.date_filter_feedbacks(project_id,date)
+    Feedback.where('project_id = ? AND created_at >= ?', project_id, date).sort! { |b, a| a.last_modification <=> b.last_modification }
+  end
+
+  def last_comment
+    self.comments.last
   end
 
 end

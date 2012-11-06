@@ -2,19 +2,40 @@ class Project < ActiveRecord::Base
   default_scope :order => 'name'
 
   belongs_to :client
+  accepts_nested_attributes_for :client
   has_many :profiles
-  has_many :milestones
-  has_many :moods
+  has_many :milestones, :dependent => :delete_all
+  has_many :moods, :dependent => :delete_all
   belongs_to :mood
   has_many :feedbacks
 
-  attr_accessible :client, :milestones, :moods, :mood, :feedbacks,
-                  :description, :end_date, :id, :name, :finalized, :last_reminder_email_sent
+  before_destroy :ensure_not_ref_by_any_profile
+  before_destroy :ensure_not_ref_by_any_feedback
+
+  attr_accessible :client, :milestones, :moods, :mood, :feedbacks, :profiles,
+                  :description, :end_date, :id, :name, :finalized, :last_reminder_email_sent, :client_id
 
   validates :name, :description, :end_date, :presence  => true
   validates_inclusion_of :finalized, :in => [true, false]
 
-  #validates :finalized, :inclusion => {:in => [true, false]}
+  def ensure_not_ref_by_any_profile
+    if profiles.count.zero?
+      true
+    else
+      errors[:base] << "Profiles present"
+      false
+    end
+  end
+
+  def ensure_not_ref_by_any_feedback
+    if feedbacks.count.zero?
+      true
+    else
+      errors[:base] << "Feedbacks present"
+      false
+    end
+  end
+
 
   def self.get_graph
     data = [0,0,0,0,0]
@@ -63,7 +84,7 @@ class Project < ActiveRecord::Base
 
   def get_next_milestones
     res = [nil,nil]
-    if !self.finalized
+    unless self.finalized
       current_date = Time.now.to_datetime
       miles = self.milestones.select {|mile| mile.target_date.to_datetime > current_date && mile.target_date.to_datetime < self.end_date.to_datetime}
       miles.sort_by! {|m| m[:target_date]}
@@ -98,6 +119,15 @@ class Project < ActiveRecord::Base
 
   def self.get_projects_with_no_activity(days)
     lastMoods = Mood.get_mood_in_last_days(days)
-    projects = Project.where("finalized = 0 and id not in (:projects)",{projects: lastMoods.group_by {|i| i.project_id}.keys})
+    Project.where("finalized = 0 and id not in (:projects)",{projects: lastMoods.group_by {|i| i.project_id}.keys})
   end
+
+  def self.text_filter_projects(filter_text)
+    Project.where("name LIKE '%' :tag '%' or description LIKE '%' :tag '%'", {:tag => filter_text})
+  end
+
+  def last_feedback
+    self.feedbacks.first
+  end
+
 end

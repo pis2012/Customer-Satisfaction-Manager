@@ -4,8 +4,8 @@ class Client < ActiveRecord::Base
   has_many :projects
   has_many :users
 
-  before_destroy :ensure_not_referenced_by_any_project
-  before_destroy :ensure_not_referenced_by_any_user
+  before_destroy :ensure_not_ref_by_any_project
+  before_destroy :ensure_not_ref_by_any_user
 
   attr_accessible :projects, :users,
                   :id, :name
@@ -13,21 +13,21 @@ class Client < ActiveRecord::Base
   validates :name, :presence => true
   validates :name, :uniqueness => true
 
-  def ensure_not_referenced_by_any_project
+  def ensure_not_ref_by_any_project
     if projects.count.zero?
-      return true
+      true
     else
       errors[:base] << "Projects present"
-      return false
+      false
     end
   end
 
-  def ensure_not_referenced_by_any_user
+  def ensure_not_ref_by_any_user
     if users.count.zero?
-      return true
+      true
     else
       errors[:base] << "Users present"
-      return false
+      false
     end
   end
 

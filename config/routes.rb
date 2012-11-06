@@ -3,12 +3,11 @@ CSM::Application.routes.draw do
   ########### HOME ROUTES ###########
   match "/home/csm_information" => "home#csm_information", :as => :csm_information
 
-  ########### MY_PROJECT ROUTES ###########
+  ########### MY_PROJECTS ROUTES ###########
   match "/my_projects" => "my_projects#index", :as => :my_projects
 
   # FEEDBACKS ROUTES
   resources :feedbacks, :only => [:show, :new, :create, :edit, :update, :destroy]
-  match "/feedbacks/date_filter" => "feedbacks#date_filter", :as => :feedbacks_date_filter
 
   # COMMENTS ROUTES
   resources :comments, :only => [:create, :destroy]
@@ -27,14 +26,15 @@ CSM::Application.routes.draw do
     match "/:project_id/data/"          => "projects#show_project_data",      :as => :project_data
 
     # FEEDBACKS ROUTES
-    match ":project_id/feedbacks"       => "feedbacks#project_feedbacks",     :as => :project_feedbacks
-    match ":project_id/feedbacks/new/"  => "feedbacks#new",                   :as => :new_feedback
+    match ":project_id/feedbacks"             => "feedbacks#project_feedbacks",     :as => :project_feedbacks
+    match ":project_id/feedbacks/new/"        => "feedbacks#new",                   :as => :new_feedback
+    match ":project_id/feedbacks/date_filter" => "feedbacks#date_filter",           :as => :feedbacks_date_filter
 
     # MILESTONES ROUTES
     match ":project_id/milestones"      => "milestones#project_milestones",   :as => :project_milestones
     match ":project_id/milestones/new/" => "milestones#new",                  :as => :new_milestone
   end
-  #----------- MY_PROJECT ROUTES -----------#
+  #----------- MY_PROJECTS ROUTES -----------#
 
   ############ PROFILE ROUTES ############
   match "profile" => "profiles#edit", :as => :edit_profile
@@ -44,17 +44,18 @@ CSM::Application.routes.draw do
   ############ ADMIN ROUTES ############
   match "/users/name_filter" => "users#name_filter", :as => :users_name_filter
 
-
-
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :passwords => "passwords"}
   scope "/admin" do
     #SUMMARY ROUTES
     match "/summary" => "activities#index", :as => :summary
     match "/summary/site_activities_filter" => "activities#activities_filter", :as => :activities_filter
 
+    # PROJECT ROUTES
+    match "/projects/text_filter" => "projects#text_filter", :as => :projects_text_filter
+    resources :projects, :only => [:index, :new, :create, :update, :edit, :destroy]
+
     # USERS ROUTES
     resources :users
-    resources :projects
 
     # FORMS ROUTES
     resources :forms, :only => [:index,:show,:new,:create,:destroy]
@@ -83,17 +84,6 @@ CSM::Application.routes.draw do
 
   match "/home" => "home#language_change", :as => :home_language_change
   resource :home
-
-
-
-  resources :projects, :only => [:index, :new, :create,:update , :edit,:destroy,:show] #:constraints => lambda { |request| request.env['warden'].user.admin? }
-  match "/admin/projects" => "projects#index" , :as => :admin_projects
-
-  match "/projects/name_filter" => "projects#name_filter", :as => :projects_name_filter
-  match "/admin/projects/new" => "projects#new-project", :as => :new_project
-  match "/admin/projects/:project_id" => "projects#show", :as => :projects_show
-  match "/admin/projects/edit/:project_id" => "projects#edit", :as => :projects_edit
-  match "/admin/projects/delete/:project_id" => "projects#destroy", :as => :projects_delete
 
 
   # MAILS ROUTES

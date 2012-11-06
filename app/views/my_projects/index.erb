@@ -5,13 +5,13 @@
         <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">
           <b class="caret"></b>
           <i class="icon-book"> </i>
-          <%= @view[:project].name %>
+          <%= @project.name %>
         </a>
-        <ul id="menu3" class="dropdown-menu" role="menu" aria-labelledby="drop5">
+        <ul id="menu3" class="dropdown-menu" role="menu">
 
           <% if current_user.client? %>
-              <% Project.where(:client_id => @view[:project].client_id).order(:name).each do |project| %>
-                  <% if project.id != @view[:project].id %>
+              <% Project.where(:client_id => @project.client_id).order(:name).each do |project| %>
+                  <% if project.id != @project.id %>
                       <li>
                         <%= link_to project.name, change_profile_project_path(project) %>
                       </li>
@@ -19,7 +19,7 @@
               <% end %>
           <% else %>
               <% Project.all.each do |project| %>
-                  <% if project.id != @view[:project].id %>
+                  <% if project.id != @project.id %>
                       <li>
                         <%= link_to project.name, change_profile_project_path(project) %>
                       </li>
@@ -45,10 +45,14 @@
       <div id="global_nav">
         <ul id="myTab">
           <li class="feedbacks active">
-            <a href="#feedbacks" class="feedbacks-link" data-url="<%= project_feedbacks_path(@project) %>"> <%= t('my_projects.tabs.feedbacks')%></a>
+            <a href="#feedbacks" class="feedbacks-link" data-url="<%= project_feedbacks_path(@project) %>">
+              <%= t('my_projects.tabs.feedbacks')%>
+            </a>
             <ul>
               <li class="feedbacks" hidden="true">
-                <a href="#feedbacks" class="feedbacks-link" data-url="<%= project_feedbacks_path(@project) %>"> <%= t ('my_projects.tabs.feedbacks')%></a>
+                <a href="#feedbacks" class="feedbacks-link" data-url="<%= project_feedbacks_path(@project) %>">
+                  <%= t ('my_projects.tabs.feedbacks')%>
+                </a>
               </li>
               <li class="new-feedback" hidden="true">
                 <a href="#new-feedback"> <% t('my_projects.tabs.new_feedback') %></a>
@@ -62,7 +66,9 @@
             </ul>
           </li>
           <li class="data">
-            <a href="#project-data" class="data-link" data-url="<%= project_data_path(@project) %>"> <%= t('my_projects.tabs.data') %></a>
+            <a href="#project-data" class="data-link" data-url="<%= project_data_path(@project) %>">
+              <%= t('my_projects.tabs.data') %>
+            </a>
             <ul>
               <li class="data" hidden="true">
                 <a href="#project-data"><%= t('my_projects.tabs.data') %></a>
@@ -116,13 +122,13 @@
             <div class="page_content" id="feedbacks-content">
 
               <!-- filter form belongs to my_projects/index so it is not reloaded no every feedbacks table update -->
-              <%= form_tag(feedbacks_date_filter_path, :method => "get", :remote => true) do %>
-                  <%= hidden_field_tag(:project_id,@project.id) %>
+              <%= form_tag(feedbacks_date_filter_path(@project), :method => "get", :remote => true) do %>
                   <div class="feedbacks_filter">
                     <h5 class="feedbacks_filter_element"><%= t('my_projects.feedbacks_tab.show_events_since')%></h5>
 
-                    <div class="input-append date feedbacks_filter_element" id="datepicker" data-date="<%= Time.now.strftime("%d/%m/%Y") %>" data-date-format="dd/mm/yyyy">
-                      <%= text_field_tag(:date,Time.now.strftime("%d/%m/%Y"),:class => "span2", :size => 16) %>
+                    <div class="input-append date feedbacks_filter_element" id="datepicker"
+                         data-date="<%= Time.now.strftime("%d/%m/%Y") %>" data-date-format="dd/mm/yyyy">
+                      <%= text_field_tag(:date,Time.now.strftime("%d/%m/%Y"), :class => "span2", :size => 16) %>
                       <span class="add-on"><i class="icon-calendar"></i></span>
                     </div>
 
@@ -151,9 +157,9 @@
               <h1><%= t('my_projects.tabs.data') %></h1>
 
               <!-- only admins can create milestones -->
-              <% if current_user.admin? %>
+              <% if current_user.admin? && !@project.finalized %>
                   <div class="add_element">
-                    <button href="#new-milestone" class="btn btn-link new-milestone-link" data-url="<%= new_milestone_path(@project) %>">
+                    <button class="btn btn-link new-milestone-link" data-url="<%= new_milestone_path(@project) %>">
                         <i class="icon-plus icon-white"> </i> <%= t('my_projects.tabs.new_milestone')%>
                     </button>
                     </div>

@@ -14,22 +14,15 @@
 <!-- page contents -->
 <div class="page_content" id="show_client_data">
 
-  <h3>
-    <p><b><%= t('client.name') + " :" %>  </b><%= @client.name %></p>
-  </h3>
+  <h3><%="#{t('client.name')}: #{@client.name}" %></h3>
 
-  <h6>
-    <p>
-      <b><%= t('client.date_create') + " :" %></b>
-      <%= t("date." + "#{@client.created_at.strftime("%A")}") + @client.created_at.strftime(" %d ") + t("date." + "#{@client.created_at.strftime("%B")}") + @client.created_at.strftime(" %Y") + @client.created_at.strftime((" ,  %H:%M")) %>
-    </p>
-  </h6>
+  <h6><%= "#{t('client.date_create')}: " + get_client_date %></h6>
 
   <br>
   <br>
 
   <% if @client.users.count > 0 %>
-      <b><h5><%= t('client.users') + " : " %> </h5></b>
+      <h5><%= t('client.users') + " : " %> </h5>
       <table class="table table-striped">
 
         <thead>
@@ -49,7 +42,7 @@
         <% end %>
       </table>
   <% else %>
-      <b><h5><%= t('client.users') + " : No tiene usuarios asociado" %> </h5></b>
+      <h5><%= t('client.users') + " : No tiene usuarios asociado" %> </h5>
   <% end %>
 
   <br>
