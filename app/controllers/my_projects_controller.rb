@@ -5,7 +5,6 @@ class MyProjectsController < ApplicationController
 
   def index
     @project = current_user.profile.project
-    @view = {:project => @project}
 
     respond_to do |format|
       format.html { }

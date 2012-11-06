@@ -5,13 +5,13 @@
         <a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">
           <b class="caret"></b>
           <i class="icon-book"> </i>
-          <%= @view[:project].name %>
+          <%= @project.name %>
         </a>
         <ul id="menu3" class="dropdown-menu" role="menu">
 
           <% if current_user.client? %>
-              <% Project.where(:client_id => @view[:project].client_id).order(:name).each do |project| %>
-                  <% if project.id != @view[:project].id %>
+              <% Project.where(:client_id => @project.client_id).order(:name).each do |project| %>
+                  <% if project.id != @project.id %>
                       <li>
                         <%= link_to project.name, change_profile_project_path(project) %>
                       </li>
@@ -19,7 +19,7 @@
               <% end %>
           <% else %>
               <% Project.all.each do |project| %>
-                  <% if project.id != @view[:project].id %>
+                  <% if project.id != @project.id %>
                       <li>
                         <%= link_to project.name, change_profile_project_path(project) %>
                       </li>
@@ -45,10 +45,14 @@
       <div id="global_nav">
         <ul id="myTab">
           <li class="feedbacks active">
-            <a href="#feedbacks" class="feedbacks-link" data-url="<%= project_feedbacks_path(@project) %>"> <%= t('my_projects.tabs.feedbacks')%></a>
+            <a href="#feedbacks" class="feedbacks-link" data-url="<%= project_feedbacks_path(@project) %>">
+              <%= t('my_projects.tabs.feedbacks')%>
+            </a>
             <ul>
               <li class="feedbacks" hidden="true">
-                <a href="#feedbacks" class="feedbacks-link" data-url="<%= project_feedbacks_path(@project) %>"> <%= t ('my_projects.tabs.feedbacks')%></a>
+                <a href="#feedbacks" class="feedbacks-link" data-url="<%= project_feedbacks_path(@project) %>">
+                  <%= t ('my_projects.tabs.feedbacks')%>
+                </a>
               </li>
               <li class="new-feedback" hidden="true">
                 <a href="#new-feedback"> <% t('my_projects.tabs.new_feedback') %></a>
@@ -62,7 +66,9 @@
             </ul>
           </li>
           <li class="data">
-            <a href="#project-data" class="data-link" data-url="<%= project_data_path(@project) %>"> <%= t('my_projects.tabs.data') %></a>
+            <a href="#project-data" class="data-link" data-url="<%= project_data_path(@project) %>">
+              <%= t('my_projects.tabs.data') %>
+            </a>
             <ul>
               <li class="data" hidden="true">
                 <a href="#project-data"><%= t('my_projects.tabs.data') %></a>
