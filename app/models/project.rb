@@ -119,7 +119,7 @@ class Project < ActiveRecord::Base
 
   def self.get_projects_with_no_activity(days)
     lastMoods = Mood.get_mood_in_last_days(days)
-    projects = Project.where("finalized = 0 and id not in (:projects)",{projects: lastMoods.group_by {|i| i.project_id}.keys})
+    Project.where("finalized = 0 and id not in (:projects)",{projects: lastMoods.group_by {|i| i.project_id}.keys})
   end
 
   def self.text_filter_projects(filter_text)
