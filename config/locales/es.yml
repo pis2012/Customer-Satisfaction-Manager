@@ -120,6 +120,7 @@
             send: "Enviar"
             change: "Cambiar"
             find: "Buscar"
+            update: "Actualizar"
 
 
   my_projects:
@@ -354,6 +355,7 @@
                           edit_client: "Editar Cliente"
                           new_project: "Nuevo proyecto"
                           emails: "Emails"
+                          edit_project: "Edit Project"
 
             customer_satisfaction_manager: "MANAGER DE  SATISFACCIÓN DEL CLIENTE"
             customers:  "Clientes"
@@ -414,6 +416,9 @@
             at: " a las "
             hours: " horas "
             finalized: "Proyecto finalizado"
+            last_feedback_made_by: "Último feedback hecho por"
+            no_feedbacks: "No hay feedbacks"
+            edit: "Editar"
 
   mood:
             mood_of_our_customers:   "ESTADO DE ÁNIMO DE NUESTROS CLIENTES"
