@@ -1,8 +1,3 @@
-$('a[data-toggle="tab"]').on('shown', function (e) {
-    e.target // activated tab
-    e.relatedTarget // previous tab
-})
-
 $("#load-more").bind("ajax:complete", function (et, e) {
     $("#products-list").html(e.responseText); // insert content
 });

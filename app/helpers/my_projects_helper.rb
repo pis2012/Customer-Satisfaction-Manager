@@ -8,9 +8,9 @@ module MyProjectsHelper
     projects = Project.get_projects_with_no_activity(daysWithNoActivity)
     emails = []
     projects.each do |project|
-      if (project.last_reminder_email_sent.nil? or project.last_reminder_email_sent < limitEmailDate)
+      if project.last_reminder_email_sent.nil? or project.last_reminder_email_sent < limitEmailDate
         user = project.get_random_user
-        if (user)
+        if user
           NotificationMailer.reminder_email(project,user).deliver
           project.last_reminder_email_sent = Time.now
           project.save

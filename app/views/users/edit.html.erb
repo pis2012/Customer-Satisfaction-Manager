@@ -24,13 +24,13 @@
     <% if @user.errors.any?  %>
         <div class="alert alert-error">
           <% @user.errors.messages.each do |msg| %>
-              <strong><%= msg[1][0] %></strong></br>
+              <strong><%= msg[1][0] %></strong><br>
           <% end %>
 
         </div>
     <% end %>
 
-    </br>
+    <br>
 
     <div class="control-group">
 
@@ -42,7 +42,7 @@
         </div>
       </div>
 
-      </br>
+      <br>
 
 
       <% if @user.client? %>
@@ -55,7 +55,7 @@
             </div>
           </div>
 
-          </br>
+          <br>
 
           <label class="control-label" ><%= t('admin.user_name')%>:</label>
 
@@ -65,7 +65,7 @@
             </div>
           </div>
 
-          </br>
+          <br>
       <% else %>
 
           <label class="control-label "><%= t('home.admin')  %></label>
@@ -79,7 +79,7 @@
             </div>
           </div>
 
-          </br>
+          <br>
 
       <% end %>
 
@@ -93,7 +93,7 @@
         </div>
       </div>
 
-      </br>
+      <br>
 
       <% if !f.object.unconfirmed_email.nil? && !f.object.unconfirmed_email.blank? %>
           <label class="control-label"><%= t('admin.user_unconfirmed_email')  %></label>
@@ -104,7 +104,7 @@
           </div>
 
 
-          </br>
+          <br>
       <% end %>
 
 

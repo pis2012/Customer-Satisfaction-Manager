@@ -21,7 +21,7 @@ class Mood < ActiveRecord::Base
 
     initial_date = Time.now - 1.year + 1.month
     date = initial_date
-    for i in 0..11
+    (0..11).each do |i|
       axis[i] = date.strftime("%b")
       date = date + 1.month
     end

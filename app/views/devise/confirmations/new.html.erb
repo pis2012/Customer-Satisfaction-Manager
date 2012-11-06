@@ -16,7 +16,7 @@
                 <% if resource.errors.messages.any?  %>
                     <div class="alert alert-error">
                       <% resource.errors.messages.each do |msg| %>
-                          <strong><%= msg[1][0] %></strong></br>
+                          <strong><%= msg[1][0] %></strong><br>
                       <% end %>
 
                     </div>
