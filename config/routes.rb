@@ -8,7 +8,6 @@ CSM::Application.routes.draw do
 
   # FEEDBACKS ROUTES
   resources :feedbacks, :only => [:show, :new, :create, :edit, :update, :destroy]
-  match "/feedbacks/date_filter" => "feedbacks#date_filter", :as => :feedbacks_date_filter
 
   # COMMENTS ROUTES
   resources :comments, :only => [:create, :destroy]
@@ -27,8 +26,9 @@ CSM::Application.routes.draw do
     match "/:project_id/data/"          => "projects#show_project_data",      :as => :project_data
 
     # FEEDBACKS ROUTES
-    match ":project_id/feedbacks"       => "feedbacks#project_feedbacks",     :as => :project_feedbacks
-    match ":project_id/feedbacks/new/"  => "feedbacks#new",                   :as => :new_feedback
+    match ":project_id/feedbacks"             => "feedbacks#project_feedbacks",     :as => :project_feedbacks
+    match ":project_id/feedbacks/new/"        => "feedbacks#new",                   :as => :new_feedback
+    match ":project_id/feedbacks/date_filter" => "feedbacks#date_filter",           :as => :feedbacks_date_filter
 
     # MILESTONES ROUTES
     match ":project_id/milestones"      => "milestones#project_milestones",   :as => :project_milestones

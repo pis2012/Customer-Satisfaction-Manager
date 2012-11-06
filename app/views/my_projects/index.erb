@@ -116,8 +116,7 @@
             <div class="page_content" id="feedbacks-content">
 
               <!-- filter form belongs to my_projects/index so it is not reloaded no every feedbacks table update -->
-              <%= form_tag(feedbacks_date_filter_path, :method => "get", :remote => true) do %>
-                  <%= hidden_field_tag(:project_id,@project.id) %>
+              <%= form_tag(feedbacks_date_filter_path(@project), :method => "get", :remote => true) do %>
                   <div class="feedbacks_filter">
                     <h5 class="feedbacks_filter_element"><%= t('my_projects.feedbacks_tab.show_events_since')%></h5>
 

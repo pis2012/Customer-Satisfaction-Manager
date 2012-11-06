@@ -152,7 +152,9 @@
     project = Project.find(params[:project_id])
     if !current_user.client? || (current_user.client? && project.client_id == current_user.client_id)
       current_user.profile.update_attributes(:project => project)
-      project.moods.create(:status => params[:new_status], :project => @project)
+      mood = project.moods.create(:status => params[:new_status], :project => @project)
+      project.mood = mood
+      project.save
       redirect_to my_projects_url
     else
       not_found
