@@ -82,6 +82,7 @@ CSM::Application.routes.draw do
   match "/admin/forms" => "forms#index", :as => :admin_forms
 
   match "/home" => "home#language_change", :as => :home_language_change
+  resource :home
 
 
 
