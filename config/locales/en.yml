@@ -322,7 +322,7 @@
             filter_name: "Name contains: "
             comment_created: "Comment made on "
             comment_created_on: " on "
-            user_name: "Username: "
+            user_name: "Username"
             user_email: "Email: "
             user_unconfirmed_email: "Unconfirmed Email: "
             user_openid:  "OpenID: "
