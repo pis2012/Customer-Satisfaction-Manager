@@ -205,25 +205,30 @@
   margin-top: 5px;
 }
 
-.happinessPanel{
+.moodWrapper{
+  position: relative;
 }
 
-.happinessDescription{
-  background-color: #4B494A;
+.moodcantsmall{
+  position: absolute;
+  left: 36px;
+  bottom: 66px;
+  font-weight: bold;
+  font-size: 60px;
+  color: white;
 }
 
-
+.moodcantbig{
+  position: absolute;
+  left: 21px;
+  bottom: 66px;
+  font-weight: bold;
+  font-size: 60px;
+  color: white;
+}
 
 .happinessMood{
   margin-left: 50px;
   margin-right: 40px;
 }
 
-.centerTextHappinessFace{
-
-}
-
-
-.happinessMoodsContainer{
-
-}
