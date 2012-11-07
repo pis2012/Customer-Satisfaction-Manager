@@ -14,14 +14,15 @@
 
   <%= form_tag(projects_text_filter_path, :method => "get", :remote => true) do %>
       <div class="projects_filter form-inline">
-        <h5 class="projects_filter_element"><%= t('project.enter_text') %></h5>
+        <h5 class="filter_element"><%= t('project.enter_text') %></h5>
         &nbsp;
         <%= text_field_tag "projects_filter_text", @last_filter_text %>
         &nbsp;
         <%= button_tag(t('buttons.find'), :class => "btn") %>
       </div>
   <% end %>
-  <hr class="hr_projects_table">
+
+  <hr class="hr_filter">
 
   <div id="projects_search_result">
     <table class="projects_table">

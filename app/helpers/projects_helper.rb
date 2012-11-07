@@ -1,8 +1,10 @@
 module ProjectsHelper
 
-  def get_end_date_project
-    td = @view[:project].end_date
-    t("date."+"#{td.strftime("%B")}") + " #{td.strftime("%e")}" + ", #{td.strftime("%Y")}"
+  def get_project_end_date(project)
+    td = project.end_date
+
+    "#{t("date.#{project.end_date.strftime("%A")}")} #{project.end_date.strftime(" %d ")}" +
+    "#{t("date.#{project.end_date.strftime("%B")}")}, #{project.end_date.strftime(" %Y")}"
   end
 
   def get_project_last_feedback_date(project)
@@ -15,10 +17,6 @@ module ProjectsHelper
     else
       t('project.no_feedbacks')
     end
-  end
-
-  def get_project_end_date
-    @project.new_record? ? (Time.now + 1.year).strftime("%d/%m/%Y") : @project.end_date.strftime("%d/%m/%Y")
   end
 
 end

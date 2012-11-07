@@ -50,7 +50,7 @@ $(document).on('click', '.edit-project-link', function () {
 //************** CLIENTS TAB **************** //
 
 $(document).on('click', '.clients-link', function () {
-    updatePanel($(this).data('url'), 'clients-content', 'clients');
+    updatePanel($(this).data('url'), 'clients', 'clients');
     return false;
 });
 

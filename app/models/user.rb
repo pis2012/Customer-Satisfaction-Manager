@@ -154,4 +154,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.text_filter_users(filter_text)
+    User.where("full_name LIKE '%' :tag '%'", {:tag => filter_text})
+  end
+
 end

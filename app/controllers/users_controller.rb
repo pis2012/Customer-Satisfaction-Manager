@@ -111,9 +111,8 @@ class UsersController < ApplicationController
   end
 
   def name_filter
-    name = params[:name]
-    u = User.arel_table
-    @users = User.where(u[:full_name].matches("%#{name}%"))
+    @last_filter_text = params[:users_filter_text]
+    @users = User.text_filter_users @last_filter_text
 
     respond_to do |format|
       format.js { render action: "index" }

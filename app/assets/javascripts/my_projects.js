@@ -33,7 +33,7 @@ $('#moodsTab').ready(function(){
 $('.change-mood-link').live('click', function () {
     if (!$(this).parent().hasClass("active")) {
         var mood = $(this).data('mood');
-        $.get("my_projects/change_mood/" + mood, function (_) {
+        $.get($(this).data('url'), function (_) {
             $('#moodsTab  a[href=#mood' + mood + ']').tab('show');
         }, 'html');
     }

@@ -131,6 +131,15 @@
   font-weight: normal;
   margin: 0;
 }
+/* =============== [ FILTERS TAB ]===================== */
+
+.filter_element{
+  display: inline;
+}
+
+.hr_filter{
+  margin-bottom: 0;
+}
 
 /* =============== [ SUMMARY TAB ]===================== */
 
@@ -193,14 +202,6 @@
 
 }
 
-.activities_filter_element{
-  display: inline;
-}
-
-.hr_activities_table{
-  margin-bottom: 0;
-}
-
 /* ================== [ FORMS TAB ] =============== */
 
 .show-form-link{
@@ -238,14 +239,6 @@
 
 /* ================== [ CLIENTS TAB ] =============== */
 
-.client_filter_element{
-  display:inline;
-}
-
-.hr_clients_table{
-  margin-bottom: 0%;
-}
-
 .clients_table {
   width: 100%;
 
@@ -271,6 +264,35 @@
 
 }
 
+.client_table {
+  width: 100%;
+
+  tr > td {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-bottom: 1px solid #EEEEEE;
+  }
+
+  .avatar {
+    width: 8%;
+  }
+
+  .client_info{
+    padding-left: 2%;
+  }
+
+  .client_image {
+    max-height: 100px;
+  }
+
+  .client_data {
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+}
+
 /* =============== [ REPORTS TAB ]===================== */
 
 .bar-graph{
@@ -286,15 +308,6 @@
 }
 
 /* =============== [ PROJECTS TAB ]===================== */
-
-.projects_filter_element{
-  display: inline;
-}
-
-.hr_projects_table{
-  margin-bottom: 0;
-}
-
 
 .projects_table {
   width: 100%;

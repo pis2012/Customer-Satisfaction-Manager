@@ -102,7 +102,8 @@
   end
 
   def show_project_data
-    @view = {:project => current_user.profile.project, :graph => current_user.profile.project.get_mood_graph}
+    project = Project.find(params[:project_id])
+    @view = {:project => project, :graph => project.get_mood_graph}
 
     respond_to do |format|
       format.html { render :layout => false } # show_project_data.html.erb
@@ -121,7 +122,7 @@
   end
 
   def change_mood
-    @project = current_user.profile.project
+    @project = Project.find(params[:project_id])
     mood = @project.moods.create(:status => params[:new_status], :project => @project)
     @project.mood = mood
     @project.save

@@ -22,7 +22,9 @@
         <% (1..5).each do |m| %>
             <li class="moods_tab_element<%= " active" if mood == m %>"><a href="#mood<%= "#{m}" %>"
                                                                           class="change-mood-link"
-                                                                          data-mood="<%= "#{m}" %>" rel="tooltip"
+                                                                          data-mood="<%= "#{m}" %>"
+                                                                          rel="tooltip"
+                                                                          data-url="<%= change_mood_path(@project,m) %>"
                  title="<%= t('my_projects.mood.update_mood') %>">
               <%= image_tag "moods/small/" + "#{m}" + ".png", class: "small_mood_img img-rounded" %></a></li>
         <% end %>
