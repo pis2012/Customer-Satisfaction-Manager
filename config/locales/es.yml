@@ -458,6 +458,7 @@
             invalid: "Login incorrecto."
             email_not_allowed: "Email no permitido."
             unauthenticated: "Usuario no autenticado."
+            disable: "Usuario deshabilitado."
 
   email:
       notification:

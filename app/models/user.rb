@@ -43,15 +43,17 @@ class User < ActiveRecord::Base
 
   def self.find_for_open_id_google_apps(access_token, signed_in_resource=nil)
     data = access_token['info']
-
-    if user = User.find_by_openidemail(data['email'])
+    user = User.find_by_openidemail(data['email'])
+    if !user.nil?
         return user
-      else
+    else
         role = Role.find_by_name Role::MOOVEIT_ROLE
         client = Client.find_by_name 'Sony'
-        user = User.create(:email => data['email'],:openidemail => data['email'],:full_name => data['name'],:username => data['first_name'],:role_id => role.id,:client_id => client.id)
+        user = User.new(:email => data['email'],:openidemail => data['email'],:full_name => data['name'],:username => data['first_name'],:role_id => role.id,:client_id => client.id)
         user.skip_confirmation!
-        user.save :validate => false
+        if user.save :validate => false
+          user.create_profile
+        end
         return user
     end
   end
