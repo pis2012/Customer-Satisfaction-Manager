@@ -1,9 +1,9 @@
 CSM::Application.routes.draw do
 
-  ########### HOME ROUTES ###########
+  # ============== [ HOME ROUTES ] ================= #
   match "/home/csm_information" => "home#csm_information",  :as => :csm_information
 
-  ########### MY_PROJECTS ROUTES ###########
+  # ============== [ MY_PROJECTS ROUTES ] ========== #
   match "/my_projects"          => "my_projects#index",     :as => :my_projects
 
   # FEEDBACKS ROUTES
@@ -34,22 +34,24 @@ CSM::Application.routes.draw do
     match ":project_id/milestones"      => "milestones#project_milestones",     :as => :project_milestones
     match ":project_id/milestones/new/" => "milestones#new",                    :as => :new_milestone
   end
-  #----------- MY_PROJECTS ROUTES -----------#
 
-  ############ PROFILE ROUTES ############
+  # ============== [ PROFILE ROUTES ] ============== #
+
   match "profile" => "profiles#edit", :as => :edit_profile
   resources :profiles, :only  => [:update]
-  #----------- PROFILE ROUTES -----------#
 
-  ############ ADMIN ROUTES ############
+
+  # ============== [ ADMIN ROUTES ] ================ #
   match "/admin" => "admin#index", :as => :admin
-
 
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :passwords => "passwords"}
   scope "/admin" do
-    #SUMMARY ROUTES
+    # SUMMARY ROUTES
     match "/summary" => "activities#index", :as => :summary
     match "/summary/site_activities_filter" => "activities#activities_filter", :as => :activities_filter
+
+    # REPORTS ROUTES
+    match "/admin/reports"        => "admin#show_reports",    :as => :admin_reports
 
     # PROJECT ROUTES
     match "/projects/text_filter" => "projects#text_filter",  :as => :projects_text_filter
@@ -65,21 +67,19 @@ CSM::Application.routes.draw do
 
     # FORMS ROUTES
     resources :forms, :only => [:index,:show,:new,:create,:destroy]
-    match "/forms/show_data/:id" => "forms#show_data", :as => :forms_show_data
+    match "/forms/show_data/:id"  => "forms#show_data",       :as => :forms_show_data
     match "/forms/show_full_data/:id" => "forms#show_full_data", :as => :forms_show_full_data
 
     # EMAILS ROUTES
     match "/emails" => "admin#emails_config", :as => :emails_config
     match "/csm_property/edit/:id" => "admin#property_update", :as => :property_update
   end
-  match "/admin/reports" => "admin#show_reports", :as => :admin_reports
-  match "/admin/forms" => "forms#index", :as => :admin_forms
 
   match "/home" => "home#language_change", :as => :home_language_change
   resource :home
 
 
-  # MAILS ROUTES
+  # ============== [ EMAIL ROUTES ] ================ #
   match "/my_projects/:project_id/change_mood/:new_status"  => "projects#change_any_project_mood",  :as => :change_any_project_mood
 
   # The priority is based upon order of creation:
