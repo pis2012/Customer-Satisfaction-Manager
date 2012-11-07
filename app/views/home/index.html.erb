@@ -1,12 +1,6 @@
 <div id="home">
   <% if user_signed_in? %>
       <% if current_user.client? %>
-
-          <!--<p>
-           View all faces.
-           Those belonging to the user's client projects look bigger logged and can be click
-          </p>-->
-
           <div class="container">
             <div class="row-fluid">
               <div class="span1">
@@ -14,8 +8,6 @@
               <div class="span10">
                 <div class="homecenter">
                   <h2><%= t('mood.mood_of_our_customers') %></h2>
-                  <% count = 0 %>
-
                   <% @projects = Project.all.shuffle %>
                   <% @projects.each do |project| %>
                       <% mood = project.mood %>
@@ -38,15 +30,6 @@
                           </div>
                       <% end %>
 
-
-                      <% if count == 4 %>
-                          <% count = 0 %>
-                      <% else %>
-                          <% count += 1 %>
-                      <% end %>
-
-                      <!-- < %= project.name  %> -->
-                      <!--< %= mood.id  %>-->
                   <% end %>
                 </div>
                 <br>
@@ -72,7 +55,6 @@
                   <% @projects.each do |project| %>
                       <% mood = project.mood %>
 
-
                       <div class="ahomefacewrapper">
                         <%= link_to change_profile_project_path(project) do %>
                             <div class="homeface">
@@ -82,8 +64,6 @@
                         <% end %>
                       </div>
 
-                      <!-- < %= project.name  %> -->
-                      <!--< %= mood.id  %>-->
                   <% end %>
                 </div>
                 <br>
@@ -109,21 +89,23 @@
           </div>
           <div class="span8">
             <div class="row-fluid">
-            <div class="vhomecenter">
-              <div class="vheaderimage">
-                <%= image_tag "moods/big/5.png" %>
+              <div class="vhomecenter">
+                <div class="vheaderimage">
+                  <%= image_tag "moods/big/5.png" %>
+                </div>
+                <div class="vheader">
+                  <h2><%= t('admin.customer_satisfaction_manager') %></h2>
+                  <br>
+
+                  <p>
+                    The Customer Satisfaction Manager is responsible for all activities relating to the Customer
+                    Life Cycle, customer segmentation, and customer affinity programs...
+                  </p>
+
+                  <p><%= link_to "Continue reading...", csm_information_path, :class => "continue-reading" %>
+                  </p>
+                </div>
               </div>
-              <div class="vheader">
-                <h2><%= t('admin.customer_satisfaction_manager') %></h2>
-                <br>
-                <p>
-                  The Customer Satisfaction Manager is responsible for all activities relating to the Customer
-                  Life Cycle, customer segmentation, and customer affinity programs...
-                </p>
-                <p><%= link_to "Continue reading...", csm_information_path, :class => "continue-reading" %>
-                </p>
-              </div>
-            </div>
             </div>
             <div class="homecenter">
               <hr/>
@@ -156,85 +138,93 @@
   <% end %>
 </div>
 
+<% unless user_signed_in? %>
 
+    <div id="happiness_header">
+      <div class="container">
+        <div class="row-fluid">
+          <div class="span2">
+          </div>
 
-<% if !user_signed_in? %>
+          <div class="span8">
+            <div class="happiness_text">happiness</div>
+          </div>
 
-    <div id="footer">
-
-        <div id="header" >
-            <div class="container">
-                <div class="row-fluid">
-                    <div class="span2">
-                    </div>
-
-                    <div class="span8">
-                        <div class="happinessText">happiness</div>
-                    </div>
-
-                    <div class="span2">
-                    </div>
-                </div>
-            </div>
+          <div class="span2">
+          </div>
         </div>
-
-        <br/>
-        <br/>
-        <br/>
-
-        <div class="container">
-            <div class="row-fluid">
-                <div class="span2">
-                </div>
-
-                <div class="span8">
-                    <div class="row-fluid">
-                        <div class="happinessMood">
-                            <p>
-                                Liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id.
-                            </p>
-                            <p>
-                                Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum
-                                liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id.
-                                Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum
-                                liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id.
-                                Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum
-                                liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id.
-                            </p>
-                        </div>
-
-                        <div class="homecenter">
-                            <% (1..5).each do |i| %>
-                                <% cant = Project.joins(:mood).where( 'moods.status' => i ).count()%>
-                                <div class="vhomefacewrapper">
-                                    <div>
-                                        <div class="moodWrapper">
-                                            <%= image_tag('moods/happiness/'+i.to_s+'.png') %>
-                                            <% if cant > 9 %>
-                                              <div class="moodcantbig">
-                                                <%= cant %>
-                                              </div>
-                                            <% else %>
-                                                <div class="moodcantsmall">
-                                                        <%= cant %>
-                                                </div>
-                                            <% end %>
-                                        </div>
-                                    </div>
-                                </div>
-                            <% end %>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="span2">
-                </div>
-            </div>
-        </div>
-
+      </div>
     </div>
 
+    <br/>
+
+    <div class="container">
+      <div class="row-fluid">
+        <div class="span2">
+        </div>
+
+        <div class="span8">
+          <div class="row-fluid">
+            <div class="happinessMood">
+              <p>
+                We strive to get to know each and every one of our customers,
+                what they need, and how best to make them happy.
+              </p>
+
+              <p>
+                We strive to serve the success of our customers by offering them the best possible
+                solutions, designed to give them a competitive edge in their markets.
+              </p>
+
+              <p>
+                We believe that our
+                strong industry experience and operational excellence, our broad portfolio of
+                innovative and speciality products, our global footprint, and - last but not
+                least - our passionate and highly professional team, give us the ideal foundations for
+                long-term success and sustainable, profitable growth.
+              </p>
+
+              <p>
+                We believe in great, helpful and friendly support to make our customers happy.
+              </p>
+
+              <p>
+                We believe we can be successful only if we make our customers successful.
+              </p>
+            </div>
+
+            <div class="homecenter">
+              <% (1..5).each do |i| %>
+                  <% cant = Project.joins(:mood).where('moods.status' => i).count() %>
+                  <div class="vhomefacewrapper">
+                    <div>
+                      <div class="moodWrapper">
+                        <%= image_tag('moods/happiness/'+i.to_s+'.png') %>
+                        <% if cant > 9 %>
+                            <div class="moodcantbig">
+                              <%= cant %>
+                            </div>
+                        <% else %>
+                            <div class="moodcantsmall">
+                              <%= cant %>
+                            </div>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="span2">
+        </div>
+      </div>
+    </div>
 <% end %>
 
+<br/>
 
+<div id="footer">
+</div>

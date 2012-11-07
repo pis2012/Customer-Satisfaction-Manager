@@ -201,10 +201,14 @@
 
 /* ============== [ HAPPINESS ] ============== */
 
-.happinessText {
+#happiness_header{
+  background-color: #F5F5F5;
+}
+
+.happiness_text {
   font-size: 18px;
   vertical-align: middle;
-  color: #FFFFFF;
+  color: rgb(77,73,72);
   margin-left: 50px;
   margin-top: 5px;
 }
@@ -215,20 +219,22 @@
 
 .moodcantsmall{
   position: absolute;
-  left: 36px;
+  left: 38px;
   bottom: 66px;
   font-weight: bold;
   font-size: 60px;
   color: white;
+  text-shadow: 0px 0px 12px #000000;
 }
 
 .moodcantbig{
   position: absolute;
-  left: 21px;
+  left: 18px;
   bottom: 66px;
   font-weight: bold;
   font-size: 60px;
   color: white;
+  text-shadow: 0px 0px 12px #000000;
 }
 
 .happinessMood{

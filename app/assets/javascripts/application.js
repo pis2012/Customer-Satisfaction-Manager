@@ -15,17 +15,27 @@
 //= require twitter/bootstrap
 //= require bootstrap
 //= require nicEdit
+//= require bootstrap-datepicker
+
+var html_panel = null;
 
 $(document).ready(function () {
 
     $('#datepicker').datepicker();
+
     var o = {
         buttonList: ['save','bold','italic','underline','left','center','right','justify','ol','ul','fontSize','fontFamily','indent','outdent','image','link','unlink','forecolor','bgcolor', 'xhtml']
     };
 
     html_panel = new nicEditor(o);
+
 });
 
-var html_panel;
+
+
+
+
+
+
 
 
