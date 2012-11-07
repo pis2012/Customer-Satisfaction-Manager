@@ -32,7 +32,7 @@
           <td class="client_info">
             <h4 class="client_name">
               <a href="#show-client-<%= client.id.to_s %>" class="show-client-link"
-                 data-url="<%= clients_show_path(client.id) %>"><%= client.name %>
+                 data-url="<%= client_path(client) %>"><%= client.name %>
               </a>
             </h4>
             <h6 class="client_projects_count">

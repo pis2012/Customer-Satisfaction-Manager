@@ -131,6 +131,12 @@
   font-weight: normal;
   margin: 0;
 }
+
+.destroy_link{
+  margin-top: 1%;
+  float: right;
+}
+
 /* =============== [ FILTERS TAB ]===================== */
 
 .filter_element{
@@ -359,11 +365,6 @@
     resize: vertical;
   }
 
-}
-
-.destroy_project_link{
-    margin-top: 1%;
-    float: right;
 }
 
 /* ================== [ USERS TAB ] =============== */

@@ -3,7 +3,7 @@
   <h1><%= t('admin.tabs.show_client') %></h1>
 
   <div class="add_element">
-    <button class="btn btn-link edit-client-link" data-url="<%= clients_edit_path(@client.id) %>">
+    <button class="btn btn-link edit-client-link" data-url="<%= edit_client_path(@client) %>">
       <i class="icon-edit icon-white"> </i> <%= t('client.edit_client') %>
     </button>
   </div>

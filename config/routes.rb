@@ -1,29 +1,29 @@
 CSM::Application.routes.draw do
 
   ########### HOME ROUTES ###########
-  match "/home/csm_information" => "home#csm_information", :as => :csm_information
+  match "/home/csm_information" => "home#csm_information",  :as => :csm_information
 
   ########### MY_PROJECTS ROUTES ###########
-  match "/my_projects" => "my_projects#index", :as => :my_projects
+  match "/my_projects"          => "my_projects#index",     :as => :my_projects
 
   # FEEDBACKS ROUTES
-  resources :feedbacks, :only => [:show, :new, :create, :edit, :update, :destroy]
+  resources :feedbacks, :only   => [:show, :new, :create, :edit, :update, :destroy]
 
   # COMMENTS ROUTES
-  resources :comments, :only => [:create, :destroy]
+  resources :comments, :only    => [:create, :destroy]
 
   # MILESTONES ROUTES
-  resources :milestones, :only => [:destroy, :create]
+  resources :milestones, :only  => [:destroy, :create]
 
   scope "/my_projects" do
     # CHANGE PROFILE PROJECT
-    match "/:project_id"                => "projects#change_profile_project",   :as => :change_profile_project
+    match "/:project_id" => "projects#change_profile_project",                  :as => :change_profile_project
 
     # CHANGE MOOD
-    match "/:project_id/change_mood/:new_status"    => "projects#change_mood",  :as => :change_mood
+    match "/:project_id/change_mood/:new_status" => "projects#change_mood",     :as => :change_mood
 
     # SHOW PROJECT DATA
-    match "/:project_id/data/"          => "projects#show_project_data",        :as => :project_data
+    match "/:project_id/data/"                => "projects#show_project_data",  :as => :project_data
 
     # FEEDBACKS ROUTES
     match ":project_id/feedbacks"             => "feedbacks#project_feedbacks", :as => :project_feedbacks
@@ -42,7 +42,8 @@ CSM::Application.routes.draw do
   #----------- PROFILE ROUTES -----------#
 
   ############ ADMIN ROUTES ############
-  match "/users/name_filter" => "users#name_filter", :as => :users_name_filter
+  match "/admin" => "admin#index", :as => :admin
+
 
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks", :passwords => "passwords"}
   scope "/admin" do
@@ -51,11 +52,16 @@ CSM::Application.routes.draw do
     match "/summary/site_activities_filter" => "activities#activities_filter", :as => :activities_filter
 
     # PROJECT ROUTES
-    match "/projects/text_filter" => "projects#text_filter", :as => :projects_text_filter
+    match "/projects/text_filter" => "projects#text_filter",  :as => :projects_text_filter
     resources :projects, :only => [:index, :new, :create, :update, :edit, :destroy]
 
     # USERS ROUTES
+    match "/users/name_filter"    => "users#name_filter",     :as => :users_name_filter
     resources :users
+
+    # CLIENTS ROUTES
+    match "/projects/name_filter" => "clients#name_filter",   :as => :clients_name_filter
+    resources :clients
 
     # FORMS ROUTES
     resources :forms, :only => [:index,:show,:new,:create,:destroy]
@@ -66,20 +72,7 @@ CSM::Application.routes.draw do
     match "/emails" => "admin#emails_config", :as => :emails_config
     match "/csm_property/edit/:id" => "admin#property_update", :as => :property_update
   end
-
-  resources :clients, :only => [:new, :create, :update], :path => "/admin/clients"
-  match "/admin/clients" => "clients#index", :as => :admin_clients
-  match "/admin/client/:client_id" => "clients#show", :as => :clients_show
-  match "/admin/client/edit/:client_id" => "clients#edit", :as => :clients_edit
-  match "/admin/client/delete/:client_id" => "clients#destroy", :as => :clients_delete
-  match "/clients/name_filter" => "clients#name_filter", :as => :clients_name_filter
-
-
-  #match "/my_projects/change_mood" , to: "projects#change_mood"
-
-  match "/admin" => "admin#index", :as => :admin
   match "/admin/reports" => "admin#show_reports", :as => :admin_reports
-  #match "/admin/projects" => "admin#index", :as => :admin_projects
   match "/admin/forms" => "forms#index", :as => :admin_forms
 
   match "/home" => "home#language_change", :as => :home_language_change

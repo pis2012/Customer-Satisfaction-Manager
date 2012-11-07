@@ -2,9 +2,9 @@
 <div class="page_header">
   <h1><%= t('admin.tabs.edit_project') %></h1>
 
-  <div class="destroy_project_link">
+  <div class="destroy_link">
       <i class="icon-minus icon-white"></i>
-      <%= link_to t('admin.tabs.delete_project'), @project, method: :delete, remote: true,
+      <%= link_to t('admin.tabs.delete_project'), @project, :method => :delete, :remote => true,
                   confirm: t('project.eliminate_confirm') %>
   </div>
 
