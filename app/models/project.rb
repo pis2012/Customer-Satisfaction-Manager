@@ -22,7 +22,7 @@ class Project < ActiveRecord::Base
     if profiles.count.zero?
       true
     else
-      errors[:base] << "Profiles present"
+      errors[:base] << I18n.t("project.Profiles_present")
       false
     end
   end
@@ -31,7 +31,7 @@ class Project < ActiveRecord::Base
     if feedbacks.count.zero?
       true
     else
-      errors[:base] << "Feedbacks present"
+      errors[:base] << I18n.t("project.Feedbacks_present")
       false
     end
   end
