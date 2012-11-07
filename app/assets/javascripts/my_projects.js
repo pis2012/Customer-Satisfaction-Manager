@@ -6,13 +6,6 @@ $("#load-more").bind("ajax:loading", function (et, e) {
     $(this).html("Loading..."); // swap link text
 });
 
-function activate(me) {
-    $('.active').each(function () {
-        $(this).removeClass('active');
-    });
-    $(me).addClass('active');
-}
-
 function updatePanel(path, el_replace, tab) {
     $.get(path, function (response) {
         $(el_replace).html(response);

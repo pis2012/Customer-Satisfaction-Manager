@@ -253,8 +253,6 @@
 
   .client_name {
     text-decoration: underline;
-    color: inherit;
-    font-weight: bold;
   }
 
   .client_projects_count, .client_users_count {
@@ -275,6 +273,10 @@
 
   .avatar {
     width: 8%;
+  }
+
+  .client_name{
+    text-decoration: underline;
   }
 
   .client_info{
@@ -332,8 +334,6 @@
 
   .project_name {
     text-decoration: underline;
-    color: inherit;
-    font-weight: bold;
   }
 
   .edit-project-link{

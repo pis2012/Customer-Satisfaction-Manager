@@ -24,11 +24,11 @@ $(document).on('click', '.reports-link', function () {
 //************** PROJECTS TAB **************** //
 
 $(document).on('show','#myTab a[href=#edit-project]', function (e) {
-    $('#end_project_datepicker').datepicker();
+    $('#datepicker').datepicker();
 });
 
 $(document).on('show','#myTab a[href=#new-project]', function (e) {
-    $('#end_project_datepicker').datepicker();
+    $('#datepicker').datepicker();
 });
 
 $(document).on('click', '.projects-link', function () {
@@ -38,7 +38,6 @@ $(document).on('click', '.projects-link', function () {
 
 $(document).on('click', '.new-project-link', function () {
     updatePanel($(this).data('url'), 'new-project', 'new-project');
-    $('#end_project_datepicker').datepicker();
     return false;
 });
 

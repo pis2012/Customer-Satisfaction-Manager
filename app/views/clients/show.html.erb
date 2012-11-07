@@ -20,7 +20,7 @@
       <%= image_tag "client.png", :alt => "client_image", :class => "client_image" %>
     </td>
       <td class="client_info">
-        <h4><%= "#{t('client.client')} #{@client.name}" %></h4>
+        <h4 class="client_name"><%= "#{t('client.client')} #{@client.name}" %></h4>
         <h6 class="client_data"><%= "#{t('client.created_date')}: " + get_client_date %></h6>
         <h6 class="client_data"><%= t('client.projects_count', :count => @client.projects.count.to_s) %></h6>
         <h6 class="client_data"><%= t('client.users_count', :count => @client.users.count.to_s) %></h6>
@@ -28,9 +28,6 @@
       </td>
     </tr>
   </table>
-
-
-
   <br>
   <br>
   <h4><%= "#{t('client.associated_users')}: " %></h4>
