@@ -351,8 +351,7 @@
                                                        blank: "Nombre del proyecto no puede ser vacio."
                                                       description:
                                                        blank: "La Descripción del proyecto no puede ser vacio."
-                                                      profile:
-                                                       precence: "No se puede borrar proyecto asociado a un Profile"
+
 
 
 

@@ -300,6 +300,12 @@
                                           attributes:
                                                       name:
                                                         blank: "Milestone name can not be empty."
+                                project:
+                                          attributes:
+                                                      name:
+                                                       blank: "Project Name can not be empty."
+                                                      description:
+                                                       blank: "The description of the project can not be empty."
 
   Comments:
               Comment: "Comment"
