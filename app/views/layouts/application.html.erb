@@ -40,7 +40,7 @@
         <div class="nav-collapse collapse">
           <ul class="nav">
             <li>
-              <a href="/"><i class="icon-home icon-white"></i> <%= I18n.t ('home.home') %></a>
+              <%= link_to '<i class="icon-home icon-white"></i> '.html_safe + I18n.t('home.home'), home_path %>
             </li>
             <% if user_signed_in? %>
                 <% if current_user.admin? %>

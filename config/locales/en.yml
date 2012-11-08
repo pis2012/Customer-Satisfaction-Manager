@@ -300,6 +300,12 @@
                                           attributes:
                                                       name:
                                                         blank: "Milestone name can not be empty."
+                                project:
+                                          attributes:
+                                                      name:
+                                                       blank: "Project Name can not be empty."
+                                                      description:
+                                                       blank: "The description of the project can not be empty."
 
   Comments:
               Comment: "Comment"
@@ -383,6 +389,8 @@
             last_feedback_made_by: "Last feedback made by"
             no_feedbacks: "No feedbacks"
             edit: "Edit"
+            Profiles_present: "Can not delete the project, has associated profiles."
+            Feedbacks_present: "Can not delete the project, has associated feedbacks."
 
   mood:
             mood_of_our_customers:     "MOOD OF OUR CUSTOMERS"

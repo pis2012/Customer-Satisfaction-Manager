@@ -345,6 +345,13 @@
                                           attributes:
                                                       name:
                                                        blank: "Nombre del hito no puede ser vacio."
+                                project:
+                                          attributes:
+                                                      name:
+                                                       blank: "Nombre del proyecto no puede ser vacio."
+                                                      description:
+                                                       blank: "La Descripción del proyecto no puede ser vacio."
+
 
 
 
@@ -434,6 +441,8 @@
             last_feedback_made_by: "Último feedback hecho por"
             no_feedbacks: "No hay feedbacks"
             edit: "Editar"
+            Profiles_present: "No se puede borrar el Proyecto, tiene perfiles asociados."
+            Feedbacks_present: "No se puede borrar el Proyecto, tiene feedbacks asociados."
 
   mood:
             mood_of_our_customers:   "ESTADO DE ÁNIMO DE NUESTROS CLIENTES"
