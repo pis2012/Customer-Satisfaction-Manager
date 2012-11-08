@@ -14,20 +14,14 @@ class Client < ActiveRecord::Base
   validates :name, :uniqueness => true
 
   def ensure_not_ref_by_any_project
-    if projects.count.zero?
-      true
-    else
-      errors[:base] << "Projects present"
-      false
+    unless projects.count.zero?
+      errors.add(:base, "Projects present")
     end
   end
 
   def ensure_not_ref_by_any_user
-    if users.count.zero?
-      true
-    else
-      errors[:base] << "Users present"
-      false
+    unless users.count.zero?
+      errors.add(:base, "Users present")
     end
   end
 

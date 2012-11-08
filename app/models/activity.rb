@@ -3,22 +3,19 @@ class Activity
   # this class is used as a wrapper for showing recent activity in the site and performing site queries
 
   # returns no more than limit activities, with date_time after date
-  def self.recent_activity(date, limit)
+  def self.recent_activity
+
+    date = 1.day.ago
+    limit = 20
 
     feedbacks = Feedback.where('created_at >= ?', date)
-    # we make an array with the latest mood updates for each project
-    moods = Array.new
-    Project.all.each do |project|
-      mood = project.mood
-      if mood.created_at >= date
-        moods.push mood
-      end
-    end
+    # we take the latest mood updates for each project
+    moods = Project.joins(:mood).where('moods.created_at >= ?', date).collect { |p| p.mood }
 
-    comments = Comment.where('created_at >= ?', date)
-    projects = Project.where('created_at >= ?', date)
-    users = User.where('created_at >= ?', date)
-    clients = Client.where('created_at >= ?', date)
+    comments = Comment.where('created_at >= ?', date).limit(limit)
+    projects = Project.where('created_at >= ?', date).limit(limit)
+    users = User.where('created_at >= ?', date).limit(limit)
+    clients = Client.where('created_at >= ?', date).limit(limit)
 
     recent_activities = feedbacks + moods + comments + projects + users + clients
 
@@ -30,9 +27,7 @@ class Activity
   def self.activity_filter(filter_text)
 
     # if there is no text we return
-    unless filter_text.length > 0
-      return Array.new
-    end
+    return [] if filter_text.blank?
 
     # we query for text partially containing filter_text
     feedbacks = Feedback.where(["subject LIKE '%' :tag '%' or content LIKE '%' :tag '%'", {:tag => filter_text}]).limit(10)

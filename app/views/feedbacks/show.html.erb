@@ -3,7 +3,7 @@
   <h1><%= t('my_projects.tabs.show_feedback') %></h1>
 
   <!-- an administrator can always edit a feedback -->
-  <% if current_user.admin? && !@project.finalized %>
+  <% if current_user.admin? && !@feedback.project.finalized %>
       <div class="add_element">
         <button class="btn btn-link edit-feedback-link" data-url="<%= edit_feedback_path(@feedback) %>">
           <i class="icon-pencil icon-white"> </i> <%= t('my_projects.tabs.edit_feedback') %>
@@ -19,7 +19,7 @@
 
     <h4 class="feedback_subject"><%= strip_tags(@feedback.subject) %></h4>
 
-    <h6 class="feedback_date"><%= t('feedback.create_by')+ " " + @feedback.user.full_name + " "+t('feedback.date_on')+"   "+t("date."+"#{@feedback.created_at.strftime("%A")}")+ @feedback.created_at.strftime(" %d ")+ t("date."+"#{@feedback.created_at.strftime("%B")}") +@feedback.created_at.strftime(" %Y") + @feedback.created_at.strftime(" ,  %H:%M") %></h6>
+    <h6 class="feedback_date"><%= get_feedback_date @feedback %></h6>
 
     <pre class="feedback_content"><%= @feedback.content.html_safe %></pre>
     <hr class="feedback_division">

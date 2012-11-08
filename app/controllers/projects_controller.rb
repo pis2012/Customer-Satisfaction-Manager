@@ -60,7 +60,7 @@
         mood = @project.moods.create(:status => 5, :project => @project)
         @project.mood = mood
         @project.save
-        @projects = Project.all
+        get_index_projects
         format.js { render action: "index" }
       else
         @clients = Client.all
@@ -76,7 +76,7 @@
     @project.end_date = params[:end_date]
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        @projects = Project.all
+        get_index_projects
         format.js { render action: "index" }
       else
         @clients = Client.all
@@ -92,7 +92,7 @@
 
     respond_to do |format|
       if @project.destroy
-        @projects = Project.all
+        get_index_projects
         format.js { render action: "index" }
       else
         @clients = Client.all
@@ -145,5 +145,11 @@
       not_found
     end
   end
+
+  private
+
+    def get_index_projects
+      @projects = Project.all
+    end
 
 end

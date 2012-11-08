@@ -25,8 +25,7 @@ class FeedbacksController < ApplicationController
   end
 
   def date_filter
-    date = Time.parse(params[:date])
-    @feedbacks = Feedback.date_filter_feedbacks(params[:project_id],date)
+    @feedbacks = Feedback.date_filter_feedbacks(params[:project_id], Time.parse(params[:date]))
 
     respond_to do |format|
       format.js { render action: "index" }
@@ -37,8 +36,6 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks/1.json
   def show
     @feedback = Feedback.find(params[:id])
-    @project = @feedback.project
-    @comments = @feedback.comments
     @comment = Comment.new
 
     respond_to do |format|

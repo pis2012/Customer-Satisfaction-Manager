@@ -46,10 +46,10 @@ module ActivitiesHelper
     end
   end
 
-  def activity_action(object)
+  def activity_action(object,recent)
     case object.class.name
     when 'Feedback'
-      if @recent
+      if recent
         "#{t('activity.new_feedback')} #{object.subject} #{t('activity.on')} #{object.project.name}"
       else
         "#{t('activity.feedback')}: #{object.subject} #{t('activity.on')} #{object.project.name}"
@@ -57,13 +57,13 @@ module ActivitiesHelper
     when 'Mood'
       "#{t('activity.mood_update')} #{object.project.name}!"
     when 'Comment'
-      if @recent
+      if recent
         "#{t('activity.new_comment')} #{object.feedback.subject}"
       else
         "#{t('activity.comment')} #{object.feedback.subject}"
       end
     when 'Project'
-      if @recent
+      if recent
         "#{t('activity.new_project')} #{object.name} #{t('activity.for')} #{object.client.name}"
       else
         "#{t('activity.project')} #{object.name}, #{object.client.name}"
@@ -76,13 +76,13 @@ module ActivitiesHelper
       else
         user_role = t('activity.employee')
       end
-      if @recent
+      if recent
         "#{t('activity.new_user')} #{object.full_name}, #{user_role}"
       else
         "#{t('activity.user')} #{object.full_name}, #{user_role}"
       end
     when 'Client'
-      if @recent
+      if recent
         "#{t('activity.new_client')} #{object.name}"
       else
         "#{t('activity.client')} #{object.name}"

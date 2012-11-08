@@ -202,6 +202,7 @@
 /* ============== [ HAPPINESS ] ============== */
 
 #happiness_header{
+  height: 50px;
   background-color: #F5F5F5;
 }
 
@@ -210,7 +211,7 @@
   vertical-align: middle;
   color: rgb(77,73,72);
   margin-left: 50px;
-  margin-top: 5px;
+  margin-top: 15px;
 }
 
 .moodWrapper{
@@ -241,4 +242,97 @@
   margin-left: 50px;
   margin-right: 40px;
 }
+
+
+/* ============== [ CSM INFORMATION ] ============== */
+
+
+.biggest_face_table{
+  width: 100%;
+}
+
+.biggest_face{
+   width: 25%;
+}
+
+.biggest_face_img{
+  width: 100%;
+}
+
+.biggest_face_text{
+  padding-left: 6%;
+}
+
+.medium_face_table{
+  width: 100%;
+}
+
+.medium_face{
+  width: 20%;
+}
+
+.medium_face_img{
+  width: 100%;
+}
+
+.medium_face_text{
+  padding-right: 6%;
+}
+
+
+.smaller_faces_table{
+  width: 100%;
+}
+
+.smaller_faces{
+  width: 40%;
+}
+
+.smaller_faces_img{
+  width: 100%;
+}
+
+.smaller_faces_text{
+  padding-left: 6%;
+}
+
+.feedbacks_header{
+  height: 50px;
+  background-color: #F5F5F5;
+}
+
+.feedbacks_text{
+  font-size: 18px;
+  vertical-align: middle;
+  color: rgb(77,73,72);
+  margin-top: 15px;
+}
+
+.feedbacks_info_table{
+  width: 100%;
+
+  th{
+    padding-right: 4%;
+  }
+
+  th{
+    padding-left: 4%;
+  }
+
+  td{
+    padding-right: 4%;
+    padding-left: 4%;
+  }
+
+}
+
+.feedback_name{
+  font-size: 16px;
+  font-weight: lighter;
+  color: #1372A2
+}
+
+.feedback_img{
+}
+
 
