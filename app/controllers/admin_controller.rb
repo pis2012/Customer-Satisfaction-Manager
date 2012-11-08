@@ -14,15 +14,12 @@ class AdminController < ApplicationController
   end
 
   def show_reports
-    @graph = {:bar => nil, :pie => nil}
-    @graph[:bar] = Mood.get_graph()
-    @graph[:pie] = Project.get_graph()
+    @graph = {:bar => Mood.get_graph(), :pie => Project.get_graph()}
 
     respond_to do |format|
       if request.xhr?
         format.html { render :layout => false } # reports.html.erb
       end
-      format.json { render json: @data }
     end
   end
 
