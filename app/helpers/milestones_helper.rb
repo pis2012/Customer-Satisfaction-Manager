@@ -6,8 +6,8 @@ module MilestonesHelper
 
   def get_milestones_data
     res = [nil,nil]
-    unless @view[:project].finalized
-      next_milestones = @view[:project].get_next_milestones
+    unless @project.finalized
+      next_milestones = @project.get_next_milestones
       if next_milestones[0] != nil
         if next_milestones[1] == nil
           td = next_milestones[0]

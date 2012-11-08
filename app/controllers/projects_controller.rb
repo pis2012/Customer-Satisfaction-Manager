@@ -102,8 +102,8 @@
   end
 
   def show_project_data
-    project = Project.find(params[:project_id])
-    @view = {:project => project, :graph => project.get_mood_graph}
+    @project = Project.find(params[:project_id])
+    @graph = @project.get_mood_graph
 
     respond_to do |format|
       format.html { render :layout => false } # show_project_data.html.erb
