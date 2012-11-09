@@ -5,7 +5,7 @@
   </div>
   <div class="span6">
     <div>
-      </br>
+      <br>
 
       <%= form_for(@profile, :html => {:id => "userpic_form",:class => "form-horizontal", :method => :put, :multipart => true}) do |f| %>
 
@@ -13,13 +13,13 @@
               <div class="alert alert-error">
                 <% if @profile.errors.any? %>
                     <% @profile.errors.messages.each do |msg| %>
-                        <strong><%= msg[1][0] %></strong></br>
+                        <strong><%= msg[1][0] %></strong><br>
                     <% end %>
                 <% end %>
 
                 <% if !@user.nil? &&  @user.errors.any? %>
                     <% @user.errors.messages.each do |msg| %>
-                        <strong><%= msg[1][0] %></strong></br>
+                        <strong><%= msg[1][0] %></strong><br>
                     <% end %>
                 <% end %>
               </div>
@@ -32,27 +32,27 @@
             <%= fields_for @profile.user do |fa| %>
                 <div class="controls">
                   <%= t('user_edit.full_Name')  %>
-                  </br>
+                  <br>
                   <div class="input-prepend">
                     <%= fa.text_field :full_name %>
                   </div>
                 </div>
 
-                </br>
+                <br>
 
                 <div class="controls">
                   <%= t('user_edit.email')  %>
-                  </br>
+                  <br>
                   <div class="input-prepend">
                     <%= fa.text_field :email%>
                   </div>
                 </div>
 
-                </br>
+                <br>
 
                 <div class="controls">
                   OpenID:
-                  </br>
+                  <br>
                   <div class="input-prepend">
                     <%= fa.text_field :openidemail,:readonly => true, :id => "openidField" %>
                   </div>
@@ -78,7 +78,7 @@
 
           </div>
 
-          <hr/>
+          <hr>
 
           <div class="control-group">
 
@@ -99,7 +99,7 @@
             </div>
           </div>
 
-          <hr/>
+          <hr>
 
 
           <div class="control-group">
@@ -125,7 +125,7 @@
 
           </div>
 
-          <hr> </hr>
+          <hr>
 
           <div class="control-group">
 
@@ -133,7 +133,7 @@
 
             <div class="controls">
               <%= t('user_edit.default_project')  %>
-              </br>
+              <br>
               <div class="input-prepend">
                 <%= f.select(:project_id, Project.where(:client_id => @profile.user.client_id ).map {|project| [project.name, project.id]},:prompt => true) %>
               </div>
@@ -141,7 +141,7 @@
 
           </div>
 
-          <hr> </hr>
+          <hr>
 
           <% if !@profile.user.mooveit? %>
 
@@ -153,28 +153,28 @@
 
                     <div class="controls">
                       <%= t('user_edit.current_password')  %>
-                      </br>
+                      <br>
                       <div class="input-prepend">
                         <%= fa.password_field :current_password %>
                       </div>
                     </div>
 
-                    </br>
+                    <br>
 
                     <div class="controls">
                       <%= t('user_edit.new_password')  %>
 
-                      </br>
+                      <br>
                       <div class="input-prepend">
                         <%= fa.password_field :password %>
                       </div>
                     </div>
 
-                    </br>
+                    <br>
 
                     <div class="controls">
                       <%= t('user_edit.confirm_password')  %>
-                      </br>
+                      <br>
                       <div class="input-prepend">
                         <%= fa.password_field :password_confirmation %>
                       </div>
@@ -182,7 +182,7 @@
                 <% end %>
               </div>
 
-              <hr> </hr>
+              <hr>
           <% end %>
 
           <%=  f.submit t('buttons.save_changes'),:class => "btn" %> <%= t('buttons.or') %>

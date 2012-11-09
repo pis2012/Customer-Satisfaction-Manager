@@ -1,7 +1,7 @@
 <div id="show_project_data">
   <h4><%= t('my_projects.data_tab.project_description') %></h4>
 
-  <p><%= @view[:project].description %></p>
+  <p><%= @project.description %></p>
 
   <hr>
 
@@ -11,7 +11,7 @@
       <br/>
 
       <div class="mood-graph">
-        <%= image_tag @view[:graph] %>
+        <%= image_tag @graph %>
       </div>
       <br/>
       <hr>
@@ -24,6 +24,6 @@
 
   <h4><%= t('my_projects.data_tab.project_end') %></h4>
 
-  <p class="text-error"> <%= get_end_date_project %> </p>
+  <p class="text-error"> <%= get_project_end_date @project %> </p>
 
 </div>

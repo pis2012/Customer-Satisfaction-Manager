@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include MyProjectsHelper
 
   def mail_mood_face_link(mood, attachments, url)
     html = content_tag :td, :style => "width: 100px; text-align: center;" do

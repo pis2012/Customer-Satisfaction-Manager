@@ -11,7 +11,6 @@ class FormsController < ApplicationController
       if request.xhr?
         format.html { render :layout => false } # index.html.erb
       end
-      format.js { render js: @form_data }
     end
   end
 
@@ -22,71 +21,40 @@ class FormsController < ApplicationController
       if request.xhr?
         format.html { render :layout => false } # new.html.erb
       end
-      format.js { render js: @form }
     end
   end
 
   def create
-    auth_err = false
-    exists = false
-    begin
-      session = GoogleDrive.login(params["form"]["email"],params["form"]["password"])
-    rescue
-      @form = Form.new
-      auth_err = true
-    else
-      params["form"].delete("password")
-      @form = Form.new(params["form"])
-      begin
-      if @form.init_validate session
-        exists = true
-      end
-      rescue
-      end
-    end
+    @form = Form.new
+    exists = @form.init(params)
+
     respond_to do |format|
-      duplicated = false
-      saved = false
       if exists
         begin
-          saved = @form.save
+          @form.save
+          @forms = Form.all
+          format.js { render action: "index" }
         rescue
-          duplicated = true
-        end
-      end
-      if saved
-        @forms = Form.all
-        format.js { render action: "index" }
-      else
-        if auth_err
-          @form.errors[:base] << "authentication"
-        elsif !exists
-          @form.errors[:base] << "not_exists"
-        elsif duplicated
           @form.errors[:base] << "duplicated"
         end
-        format.js { render action: "new" }
       end
+      format.js { render action: "new" }
     end
   end
 
   def show
     @form = Form.find(params[:id])
     session[:session] = @form.get_session
-    still_exists = true
     # If fails then the form does not exist anymore?
     begin
       clients = @form.get_clients session[:session]
     rescue
+      @form.errors[:base] << "not_exists_anymore?"
       clients = []
-      still_exists = false
     end
     @form_data = {:name => @form.name, :clients => clients}
     respond_to do |format|
-      if request.xhr? && still_exists
-        format.html { render :layout => false } # show_project_data.html.erb
-      elsif !still_exists
-        @form.errors[:base] << "not_exists_anymore?"
+      if request.xhr?
         format.html { render :layout => false } # show_project_data.html.erb
       end
     end
@@ -95,27 +63,25 @@ class FormsController < ApplicationController
 
   def show_data
     @form = Form.find(params[:id])
-    session[:session] = @form.get_session if session[:session] == nil
+    session[:session] ||= @form.get_session
     @data = @form.get_data(params[:client_name], session[:session])
 
     respond_to do |format|
       if request.xhr?
         format.html { render :layout => false } # show_data.html.erb
       end
-      format.js { render js: @data }
     end
   end
 
   def show_full_data
     @form = Form.find(params[:id])
-    session[:session] = @form.get_session if session[:session] == nil
+    session[:session] ||= @form.get_session
     @graphs = @form.get_full_data(params[:client_name], session[:session])
 
     respond_to do |format|
       if request.xhr?
         format.html { render :layout => false } # show_full_data.html.erb
       end
-      format.js { render js: @data }
     end
   end
 

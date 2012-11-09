@@ -1,27 +1,15 @@
 <div class="users_div">
 
-  <br>
-  <%= form_tag(users_name_filter_path, :remote => true, :class => "form-horizontal") do %>
-      <div class="control-group">
-
-        <label class="control-label name-filter" for="inputUsername">
-          <%= t('admin.filter_name') %>
-        </label>
-
-        <div class="controls">
-          <div class="input-prepend">
-            <%= text_field_tag :name %>
-          </div>
-
-          <div class="input-prepend">
-            <%= button_tag(t('buttons.filter'), :class => "btn") %>
-          </div>
-        </div>
-
+  <%= form_tag(users_name_filter_path, :method => "get", :remote => true) do %>
+      <div class="users_filter form-inline">
+        <h5 class="filter_element"><%= t('admin.filter_name') %></h5>
+        &nbsp;
+        <%= text_field_tag "users_filter_text", @last_filter_text %>
+        &nbsp;
+        <%= button_tag(t('buttons.filter'), :class => "btn") %>
       </div>
   <% end %>
-  <br>
-  <hr>
+  <hr class="hr_filter">
   <br>
   <% @users.each do |user| %>
       <div id="row">

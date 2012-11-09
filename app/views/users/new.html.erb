@@ -9,7 +9,7 @@
       <% if @user.errors.any?  %>
         <div class="alert alert-error">
             <% @user.errors.messages.each do |msg| %>
-                <strong><%= msg[1][0] %></strong></br>
+                <strong><%= msg[1][0] %></strong><br>
             <% end %>
         </div>
       <% end %>
@@ -24,7 +24,7 @@
           </div>
         </div>
 
-        </br>
+        <br>
 
         <label class="control-label" ><%= t('admin.client')%>(*):</label>
 
@@ -34,7 +34,7 @@
           </div>
         </div>
 
-        </br>
+        <br>
 
         <hr>
 
@@ -46,7 +46,7 @@
           </div>
         </div>
 
-        </br>
+        <br>
 
 
         <label class="control-label" ><%= t('user.password')%>(*):</label>
@@ -57,7 +57,7 @@
           </div>
         </div>
 
-        </br>
+        <br>
 
         <label class="control-label" ><%= t('user_edit.confirm_password')%>(*):</label>
 
@@ -67,7 +67,7 @@
           </div>
         </div>
 
-        </br>
+        <br>
 
         <hr>
 
@@ -79,7 +79,7 @@
             </div>
         </div>
 
-        </br>
+        <br>
 
         <label class="control-label" ><%= t('admin.user_openid')%></label>
 
@@ -89,7 +89,7 @@
             </div>
         </div>
 
-        </br>
+        <br>
 
         <label class="control-label" ><%= t('user_edit.skype_user')%>:</label>
 
@@ -99,8 +99,8 @@
           </div>
         </div>
 
-        </br>
-        </br>
+        <br>
+        <br>
 
         <div class="actions">
           <%= f.submit t('buttons.create'), :class => "btn" %> &nbsp <%= t('buttons.or') %>

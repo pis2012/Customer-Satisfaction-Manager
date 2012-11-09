@@ -1,53 +1,37 @@
   class ProjectsController < ApplicationController
-
   before_filter :authenticate_user!
-
-  # THIS CONTROLLER HAS TO BE CLEANED FROM UNUSED METHODS AND SCAFFOLDING
-
   layout false
 
   # GET /projects
   def index
     @projects = Project.all
-    @clients = Client.all
     respond_to do |format|
       if request.xhr?
-        format.html #{ render :layout => false } # index.html.erb
+        format.html { } # index.html.erb
       end
-      format.json { render json:  @projects }
+      format.json { render json: @projects }
     end
   end
 
-  # GET /projects/1
-  # GET /projects/1.json
-  def show
-    @project = Project.find(params[:id])
-
-    if !params['default'].nil?
-       @profile = Profile.find_by_user_id(current_user)
-       @profile.project_id = @project.id
-       @profile.save
-    end
-
+  # GET /projects/filter
+  def text_filter
+    @projects = Project.text_filter_projects params[:projects_filter_text]
+    @last_filter_text = params[:projects_filter_text]
     respond_to do |format|
-      if request.xhr?
-        format.html # show.html.erb
-      end
-      format.json { render json: @project }
+      format.js { render action: "index" }
     end
-    #respond_to do |format|
-    #  format.html # show.html.erb
-    #  format.json { render json: @project }
-    #end
   end
 
   # GET /projects/new
   # GET /projects/new.json
   def new
     @project = Project.new
+    @clients = Client.all
 
     respond_to do |format|
-      format.html # new.html.erb
+      if request.xhr?
+        format.html { } # new.html.erb
+      end
       format.json { render json: @project }
     end
   end
@@ -55,24 +39,32 @@
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
+    @clients = Client.all
+
+    respond_to do |format|
+      if request.xhr?
+        format.html { } # new.html.erb
+      end
+      format.json { render json: @project }
+    end
   end
 
   # POST /projects
   # POST /projects.json
   def create
     @project = Project.new(params[:project])
-
-    #@project.client_id =  "1"
-
+    @project.finalized = false
+    @project.end_date = params[:end_date]
     respond_to do |format|
       if @project.save
-        #format.html { redirect_to @project, notice: 'Project was successfully created.' }
-        #format.json { render json: @project, status: :created, location: @project }
-        @projects = Project.all
-        format.json { render action: "index" }
+        mood = @project.moods.create(:status => 5, :project => @project)
+        @project.mood = mood
+        @project.save
+        get_index_projects
+        format.js { render action: "index" }
       else
-        format.html { render action: "new" }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
+        @clients = Client.all
+        format.js {}
       end
     end
   end
@@ -81,14 +73,14 @@
   # PUT /projects/1.json
   def update
     @project = Project.find(params[:id])
-
+    @project.end_date = params[:end_date]
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
-        format.json { head :no_content }
+        get_index_projects
+        format.js { render action: "index" }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
+        @clients = Client.all
+        format.js {}
       end
     end
   end
@@ -97,18 +89,21 @@
   # DELETE /projects/1.json
   def destroy
     @project = Project.find(params[:id])
-    @project.destroy
 
     respond_to do |format|
-      #format.html { redirect_to projects_url }
-      #format.json { head :no_content }
-      @projects = Project.all
-      format.js { render action: "index" }
+      if @project.destroy
+        get_index_projects
+        format.js { render action: "index" }
+      else
+        @clients = Client.all
+        format.js { render action: "update" }
+      end
     end
   end
 
   def show_project_data
-    @view = {:project => current_user.profile.project, :graph => current_user.profile.project.get_mood_graph}
+    @project = Project.find(params[:project_id])
+    @graph = @project.get_mood_graph
 
     respond_to do |format|
       format.html { render :layout => false } # show_project_data.html.erb
@@ -127,7 +122,7 @@
   end
 
   def change_mood
-    @project = current_user.profile.project
+    @project = Project.find(params[:project_id])
     mood = @project.moods.create(:status => params[:new_status], :project => @project)
     @project.mood = mood
     @project.save
@@ -138,25 +133,23 @@
     end
   end
 
-  def name_filter
-    name = params[:name]
-    p = Project.arel_table
-    @projects = Project.where(p[:name].matches("%#{name}%"))
-
-    respond_to do |format|
-      format.js { render action: "index" }
-    end
-  end
-
   def change_any_project_mood
     project = Project.find(params[:project_id])
     if !current_user.client? || (current_user.client? && project.client_id == current_user.client_id)
       current_user.profile.update_attributes(:project => project)
-      project.moods.create(:status => params[:new_status], :project => @project)
+      mood = project.moods.create(:status => params[:new_status], :project => @project)
+      project.mood = mood
+      project.save
       redirect_to my_projects_url
     else
       not_found
     end
   end
+
+  private
+
+    def get_index_projects
+      @projects = Project.all
+    end
 
 end

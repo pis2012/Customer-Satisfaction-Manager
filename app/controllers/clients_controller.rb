@@ -4,7 +4,7 @@ class ClientsController < ApplicationController
 
   # GET /clients
   def index
-    @clients = Client.all
+    get_index_clients
 
     respond_to do |format|
       if request.xhr?
@@ -16,7 +16,7 @@ class ClientsController < ApplicationController
 
   # GET /clients/1
   def show
-    @client = Client.find(params[:client_id])
+    @client = Client.find(params[:id])
 
     respond_to do |format|
       if request.xhr?
@@ -41,7 +41,7 @@ class ClientsController < ApplicationController
 
   # GET /clients/1/edit
   def edit
-    @client = Client.find(params[:client_id])
+    @client = Client.find(params[:id])
 
     respond_to do |format|
       if request.xhr?
@@ -58,7 +58,7 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.save
-        @clients = Client.all
+        get_index_clients
         format.js { render :action => "index" }
       else
         format.js {}
@@ -72,7 +72,7 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.update_attributes(params[:client])
-        @clients = Client.all
+        get_index_clients
         format.js { render :action => "index" }
       else
         format.js {}
@@ -82,24 +82,31 @@ class ClientsController < ApplicationController
 
   # DELETE /clients/1
   def destroy
-    @client = Client.find(params[:client_id])
+    @client = Client.find(params[:id])
     @client.destroy
 
     respond_to do |format|
-      @clients = Client.all
+      get_index_clients
       format.js { render :action => "index" }
     end
   end
 
   def name_filter
-    name = params[:nameC]
-    u = Client.arel_table
-    @clients = Client.where(u[:name].matches("%#{name}%"))
+    @last_clients_filter_text = params[:clients_filter_text]
+    @clients = Client.text_filter_clients @last_clients_filter_text
 
     respond_to do |format|
       format.js { render :action => "index" }
     end
   end
+
+  private
+
+  def get_index_clients
+    @clients = Client.all
+  end
+
+
 
 
 end

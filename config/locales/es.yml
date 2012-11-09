@@ -77,19 +77,31 @@
 
 
   client:
+          name: "Nombre"
           name_field: "Nombre de cliente"
-          date_create: "Fecha de Creacion"
-          users: "Usuarios Asociados"
-          proyect: "Proyectos Asociados"
+          created_date: "Fecha de Creación"
+          associated_users: "Usuarios Asociados"
+          associated_projects: "Proyectos Asociados"
           new_client: "Nuevo Cliente"
           edit_client: "Editar Cliente"
           delete_client: "Eliminar Cliente"
           show_client: "Ver Cliente"
           clients: "Clientes"
-          cout_project: "Proyectos Asociados:  %{count}."
-          cout_users:   "Usuarios Registrados: %{count}."
+          projects_count: "Proyectos Asociados:  %{count}."
+          users_count:   "Usuarios Registrados: %{count}."
           eliminate_confirm: "¿Esta seguro que desea eliminar este cliente?"
           client: "Cliente"
+          no_users: "Este cliente no tiene usuarios asociados"
+          no_projects: "Este cliente no tiene proyectos asociados"
+          mood_average: "Ánimo Promedio:  %{count}"
+          user_full_name: "Nombre completo"
+          user_skype: "Usuario skype"
+          user_email: "Email"
+          user_uploads: "Número de uploads"
+          project_name: "Nombre de proyecto"
+          project_mood: "Ánimo"
+          project_end_date: "Fin de proyecto"
+          project_feedbacks: "Número de feedbacks"
   home:
             home: "Home"
             singin: "Iniciar Sesion"
@@ -118,6 +130,9 @@
             filter: "Filtrar"
             comment: "Comentar"
             send: "Enviar"
+            change: "Cambiar"
+            find: "Buscar"
+            update: "Actualizar"
 
 
   my_projects:
@@ -136,12 +151,58 @@
                         project_description: "Descripción de Proyecto"
                         mood_updates: "Actualizaciones de Estado"
                         milestones: "Hitos"
+                        project_end: "Fin de proyecto"
 
             mood:
                         update_mood: "Actualiza tu estado"
                         mood_updated: "Estado actualizado!"
                         actual_mood: "Estado actual"
 
+  admin:
+              tabs:
+                          summary: "Resumen"
+                          reports: "Reportes"
+                          projects: "Proyectos"
+                          new_project: "Nuevo proyecto"
+                          edit_project: "Editar Proyecto"
+                          delete_project: "Eliminar Proyecto"
+                          new_user: "Nuevo Usuario de Cliente"
+                          show_user: "Ver Usuario"
+                          edit_user: "Editar Usuario"
+                          delete_user: "Eliminar Usuario"
+                          clients: "Clientes"
+                          show_client: "Ver Cliente"
+                          new_client: "Nuevo Cliente"
+                          edit_client: "Editar Cliente"
+                          forms: "Formularios"
+                          show_form: "Ver formulario"
+                          emails: "Emails"
+
+              customer_satisfaction_manager: "MANAGER DE  SATISFACCIÓN DEL CLIENTE"
+              customers:  "Clientes"
+              reports:    "Reportes"
+              users:   "Usuarios"
+              clients:   "Clientes"
+              forms: "Formularios"
+              evolution_of_general_mood:  "Evolución del estado de ánimo general"
+              Status_of_Projects: "Estado de los proyectos"
+              add_clients: "Nuevo Cliente"
+              mooveit_employee:   "Empleado Moove-IT"
+              mooveit_admin:   "Empleado Moove-IT(Admin)"
+              filter_name: "Nombre contiene: "
+              comment_created: "Comentario hecho el "
+              comment_created_on: " en "
+              user_name: "Nombre de Usuario"
+              user_email: "Email: "
+              user_unconfirmed_email: "Email No Confirmado: "
+              user_openid:  "OpenID: "
+              activated: "activado"
+              deactivated: "desactivado"
+              user: "Usuario"
+              enable: "habilitado"
+              disable: "deshabilitado"
+              sure: "¿Está seguro?"
+              changes_saved: "Cambios salvados!"
 
   user_edit:
             choose_your_profile_settings: "SELECCIONE LAS OPCIONES DE SU PERFIL"
@@ -219,6 +280,8 @@
                                   header:
                                           one: "Se genero un error al intentar guardar el %{model}."
                                           other: "Se generaron %{count} errores al intentar guardar el %{model}."
+                                          one_changes: "Se genero un error al intentar guardar los cambios."
+                                          other_changes: "Se generaron %{count} errores al intentar guardar los cambios."
                         models:
                                 client:
                                         attributes:
@@ -282,6 +345,13 @@
                                           attributes:
                                                       name:
                                                        blank: "Nombre del hito no puede ser vacio."
+                                project:
+                                          attributes:
+                                                      name:
+                                                       blank: "Nombre del proyecto no puede ser vacio."
+                                                      description:
+                                                       blank: "La Descripción del proyecto no puede ser vacio."
+
 
 
 
@@ -337,50 +407,6 @@
             not_exists_anymore?: "No se ha encontrado el formulario en el drive de la cuenta google."
             eliminate_confirm: "¿Está seguro que desea eliminar este formulario?"
 
-  admin:
-            tabs:
-                          forms: "Formularios"
-                          show_form: "Ver formulario"
-                          reports: "Reportes"
-                          new_user: "Nuevo Usuario de Cliente"
-                          show_user: "Ver Usuario"
-                          edit_user: "Editar Usuario"
-                          delete_user: "Eliminar Usuario"
-                          clients: "Clientes"
-                          show_client: "Ver Cliente"
-                          new_client: "Nuevo Cliente"
-                          edit_client: "Editar Cliente"
-                          new_project: "Nuevo proyecto"
-                          emails: "Emails"
-
-            customer_satisfaction_manager: "MANAGER DE  SATISFACCIÓN DEL CLIENTE"
-            customers:  "Clientes"
-            summary:    "Resumen"
-            reports:    "Reportes"
-            projects:   "Proyectos"
-            users:   "Usuarios"
-            clients:   "Clientes"
-            forms: "Formularios"
-            evolution_of_general_mood:  "Evolución del estado de ánimo general"
-            Status_of_Projects: "Estado de los proyectos"
-            add_clients: "Nuevo Cliente"
-            mooveit_employee:   "Empleado Moove-IT"
-            mooveit_admin:   "Empleado Moove-IT(Admin)"
-            filter_name: "Nombre contiene: "
-            comment_created: "Comentario hecho el "
-            comment_created_on: " en "
-            user_name: "Nombre de Usuario"
-            user_email: "Email: "
-            user_unconfirmed_email: "Email No Confirmado: "
-            user_openid:  "OpenID: "
-            activated: "activado"
-            deactivated: "desactivado"
-            user: "Usuario"
-            enable: "habilitado"
-            disable: "deshabilitado"
-            sure: "¿Está seguro?"
-
-
   milestone:
             milestone:  "Hito"
             milestones:   "Hitos"
@@ -397,14 +423,14 @@
             name: "Nombre"
             target_date: "Fecha tope"
 
-  proyect:
+  project:
             list_projects:  "Lista de Proyectos"
-            show_events_since: "Mostrar eventos desde:"
-            changes_in_mood:         "Cambios en el estado de ánimo"
-            new_proyect:    "Nuevo Proyecto"
+            client: "Cliente"
+            enter_text: "Ingrese texto"
+            eliminate_confirm: "¿Está seguro que desea eliminar este proyecto?"
             cannot_save_project:  "No se pudo salvar el Proyecto"
             description:   "Descripción"
-            end_date:  "Fecha de fin"
+            end_date:  "Fin de proyecto"
             name:  "Nombre"
             status:  "Estado"
             editing_project: "Editando Proyecto"
@@ -412,6 +438,11 @@
             at: " a las "
             hours: " horas "
             finalized: "Proyecto finalizado"
+            last_feedback_made_by: "Último feedback hecho por"
+            no_feedbacks: "No hay feedbacks"
+            edit: "Editar"
+            Profiles_present: "No se puede borrar el Proyecto, tiene perfiles asociados."
+            Feedbacks_present: "No se puede borrar el Proyecto, tiene feedbacks asociados."
 
   mood:
             mood_of_our_customers:   "ESTADO DE ÁNIMO DE NUESTROS CLIENTES"
@@ -447,6 +478,7 @@
             invalid: "Login incorrecto."
             email_not_allowed: "Email no permitido."
             unauthenticated: "Usuario no autenticado."
+            disable: "Usuario deshabilitado."
 
   email:
       notification:

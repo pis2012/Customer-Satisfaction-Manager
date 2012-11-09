@@ -3,7 +3,7 @@
   <h1><%= t('admin.tabs.show_client') %></h1>
 
   <div class="add_element">
-    <button class="btn btn-link edit-client-link" data-url="<%= clients_edit_path(@client.id) %>">
+    <button class="btn btn-link edit-client-link" data-url="<%= edit_client_path(@client) %>">
       <i class="icon-edit icon-white"> </i> <%= t('client.edit_client') %>
     </button>
   </div>
@@ -14,69 +14,77 @@
 <!-- page contents -->
 <div class="page_content" id="show_client_data">
 
-  <h3>
-    <p><b><%= t('client.name') + " :" %>  </b><%= @client.name %></p>
-  </h3>
-
-  <h6>
-    <p>
-      <b><%= t('client.date_create') + " :" %></b>
-      <%= t("date." + "#{@client.created_at.strftime("%A")}") + @client.created_at.strftime(" %d ") + t("date." + "#{@client.created_at.strftime("%B")}") + @client.created_at.strftime(" %Y") + @client.created_at.strftime((" ,  %H:%M")) %>
-    </p>
-  </h6>
-
+  <table class="client_table">
+    <tr>
+    <td class="avatar">
+      <%= image_tag "client.png", :alt => "client_image", :class => "client_image" %>
+    </td>
+      <td class="client_info">
+        <h4 class="client_name"><%= "#{t('client.client')} #{@client.name}" %></h4>
+        <h6 class="client_data"><%= "#{t('client.created_date')}: " + get_client_date %></h6>
+        <h6 class="client_data"><%= t('client.projects_count', :count => @client.projects.count.to_s) %></h6>
+        <h6 class="client_data"><%= t('client.users_count', :count => @client.users.count.to_s) %></h6>
+        <h6 class="client_data"><%= "#{t('client.mood_average', :count => @client.mood_average.to_s)}/5." %></h6>
+      </td>
+    </tr>
+  </table>
   <br>
   <br>
-
+  <h4><%= "#{t('client.associated_users')}: " %></h4>
   <% if @client.users.count > 0 %>
-      <b><h5><%= t('client.users') + " : " %> </h5></b>
+
       <table class="table table-striped">
 
         <thead>
         <tr>
-          <th><h4>Full Name</h4></th>
-          <th><h4>User</h4></th>
-          <th><h4>Email</h4></th>
+          <th><%= t('client.user_full_name') %></th>
+          <th><%= t('client.user_email') %></th>
+          <th><%= t('client.user_skype') %></th>
+          <th><%= t('client.user_uploads') %></th>
         </tr>
         </thead>
 
         <% @client.users.each do |user| %>
             <tr>
-              <td><h5><%= user.full_name %></h5></td>
-              <td><h5><%= user.username %></h5></td>
-              <td><h5><%= user.email %></h5></td>
+              <td><%= user.full_name %></td>
+              <td><%= user.email %></td>
+              <td><%= user.profile.skype_usr %></td>
+              <td><%= "feedbacks: #{user.feedbacks.count}, comments: #{user.comments.count}" %></td>
             </tr>
         <% end %>
       </table>
   <% else %>
-      <b><h5><%= t('client.users') + " : No tiene usuarios asociado" %> </h5></b>
+      <h5><%= t('client.no_users') %></h5>
   <% end %>
 
   <br>
-  <br>
-
+  <h4><%= "#{t('client.associated_projects')}: " %></h4>
   <% if @client.projects.count > 0 %>
-      <b><h5><%= t('client.proyect') + " : " %> </h5></b>
+
       <table class="table table-striped">
 
         <thead>
         <tr>
-          <th><h4>Nombre</h4></th>
-          <th><h4>Fecha De Fin</h4></th>
+          <th><%= t('client.project_name') %></th>
+          <th><%= t('client.project_mood') %></th>
+          <th><%= t('client.project_feedbacks') %></th>
+          <th><%= t('client.project_end_date') %></th>
         </tr>
         </thead>
 
         <% @client.projects.each do |project| %>
             <tr>
-              <td><h5><%= project.name %></h5></td>
+              <td><%= project.name %>
+              <td><%= project.mood.status %></td>
+              <td><%= "#{project.feedbacks.count}" %></td>
+              <td><%=  get_project_end_date project  %></td>
               <td>
-                <h5><%= t("date." + "#{project.end_date.strftime("%A")}") + project.end_date.strftime(" %d ") + t("date." + "#{project.end_date.strftime("%B")}") + project.end_date.strftime(" %Y") %></h5>
               </td>
             </tr>
         <% end %>
       </table>
   <% else %>
-      <b><h5><%= t('client.proyect') + " : No tiene proyectos asociados" %></h5></b>
+      <h5><%= t('client.no_projects') %></h5>
   <% end %>
 </div>
 <!-- page contents -->

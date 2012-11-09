@@ -9,7 +9,7 @@
   <hr/>
   <div id="forms_list">
     <% @forms.each do |form| %>
-        <div class="form_item" value="<%= form[:name] %>">
+        <div class="form_item" id="<%= form[:name] %>">
           <h4>
             <a href="#show-form" class="show-form-link" data-url="<%= form_path form %>"><%= form[:name] %></a>
           </h4>
