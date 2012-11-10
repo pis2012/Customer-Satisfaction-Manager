@@ -16,8 +16,8 @@
 
     <%= f.text_area :content, :rows => 3, :class => "new_comment_text" %>
 
-    <input id="comment_feedback_id" name="feedback_id" size="30" type="hidden" value="<%= @feedback.id %>"/>
-
+    <input id="comment_feedback_id" name="comment[feedback_id]" type="hidden" value="<%= @feedback.id %>"/>
+    <input id="comment_user_id" name="comment[user_id]" type="hidden" value="<%= current_user.id %>"/>
     <div class="actions">
       <%= f.submit t('buttons.comment'), :class => "btn" %>
       <a href="#feedbacks" class="btn btn-link feedbacks-link" type="button" data-url="<%= project_feedbacks_path(@feedback.project) %>"><%= t('buttons.back') %></a>

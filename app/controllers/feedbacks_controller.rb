@@ -46,8 +46,6 @@ class FeedbacksController < ApplicationController
     end
   end
 
-  # GET /feedbacks/new
-  # GET /feedbacks/new.json
   def new
     @feedback = Feedback.new(:project_id => params[:project_id])
     @feedback_types = current_user.possible_feedback_types
@@ -59,7 +57,6 @@ class FeedbacksController < ApplicationController
     end
   end
 
-  # GET /feedbacks/1/edit
   def edit
     @feedback_types = current_user.possible_feedback_types
     @feedback = Feedback.find(params[:id])
@@ -70,8 +67,6 @@ class FeedbacksController < ApplicationController
   def create
     @feedback = Feedback.new(params[:feedback])
 
-    @feedback.project_id = params[:project_id]
-    @feedback.user_id = current_user.id
 
     respond_to do |format|
       if @feedback.save
@@ -79,7 +74,7 @@ class FeedbacksController < ApplicationController
         Thread.new(@feedback) { |feedback|
           User.send_feedback_notification(feedback)
         }
-        @feedbacks = Feedback.find_all_by_project_id(params[:project_id])
+        @feedbacks = Feedback.project_feedbacks @feedback.project_id
         format.js { render action: "index" }
       else
         @feedback_types = current_user.possible_feedback_types
