@@ -18,15 +18,17 @@ class Form < ActiveRecord::Base
       self.email = params["form"]["email"]
       ws = validates? session
       if ws != nil
-        get_clients(session,ws) # Update total answers and clients
+        get_clients ws # Update total answers and clients
         return true
       end
     end
     false
   end
 
-  def get_session
-    GoogleDrive.restore_session({:wise => self.wise_token.to_s, :writely => self.writely_token.to_s})
+  def get_session_worksheet
+    session = GoogleDrive.restore_session({:wise => self.wise_token.to_s, :writely => self.writely_token.to_s})
+    # First worksheet
+    session.spreadsheet_by_title(self.name).worksheets[0]
   end
 
   # Validates, initializes the form and return the worksheet if is valid, otherwise nil
@@ -101,10 +103,7 @@ class Form < ActiveRecord::Base
   end
 
   # Returns the clients that answered the form
-  def get_clients (session,ws)
-    # First worksheet
-    ws = session.spreadsheet_by_title(self.name).worksheets[0] if ws == nil
-
+  def get_clients (ws)
     clients = []
     email_user_column = get_email_column ws
     # checks that the email column still exists, the form can be
@@ -159,9 +158,9 @@ class Form < ActiveRecord::Base
 
   # Returns the data of the client, such as total answers, users that answered and did not
   # If client_name is "" then it returns the data of all clients in the form
-  def get_data (client_name, session)
+  def get_data (client_name, ws)
     # First worksheet
-    ws = session.spreadsheet_by_title(self.name).worksheets[0]
+    ws ||= self.get_session_worksheet
 
     # Get the full names of the users with client name == client_name, or
     # if the client_name is "" then get the full names of all users from the form's clients
@@ -213,9 +212,9 @@ class Form < ActiveRecord::Base
   # Returns all the graphics with all the data (answers) of the form
   # that the client with client_name answered
   # If client_name is "" then it returns the data of all clients in the form
-  def get_full_data (client_name, session)
+  def get_full_data (client_name, ws)
     # First worksheet
-    ws = session.spreadsheet_by_title(self.name).worksheets[0]
+    ws ||= self.get_session_worksheet
     graphs = Array.new()
 
     # Get the emails of the users with client name == client_name, or
