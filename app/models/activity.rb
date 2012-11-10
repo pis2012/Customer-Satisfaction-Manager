@@ -8,14 +8,14 @@ class Activity
     date = 1.day.ago
     limit = 20
 
-    feedbacks = Feedback.where('created_at >= ?', date)
+    feedbacks = Feedback.latest_recent_feedbacks(date,limit)
     # we take the latest mood updates for each project
     moods = Project.joins(:mood).where('moods.created_at >= ?', date).collect { |p| p.mood }
 
-    comments = Comment.where('created_at >= ?', date).limit(limit)
-    projects = Project.where('created_at >= ?', date).limit(limit)
-    users = User.where('created_at >= ?', date).limit(limit)
-    clients = Client.where('created_at >= ?', date).limit(limit)
+    comments = Comment.latest_recent_comments(date,limit)
+    projects = Project.latest_recent_projects(date,limit)
+    users = User.latest_recent_users(date,limit)
+    clients = Client.latest_recent_clients(date,limit)
 
     recent_activities = feedbacks + moods + comments + projects + users + clients
 
@@ -30,11 +30,11 @@ class Activity
     return [] if filter_text.blank?
 
     # we query for text partially containing filter_text
-    feedbacks = Feedback.where(["subject LIKE '%' :tag '%' or content LIKE '%' :tag '%'", {:tag => filter_text}]).limit(10)
-    comments = Comment.where(["content LIKE '%' :tag '%'", {:tag => filter_text}]).limit(10)
-    projects = Project.where(["name LIKE '%' :tag '%' or description LIKE '%' :tag '%'", {:tag => filter_text}]).limit(10)
-    users = User.where(["full_name LIKE '%' :tag '%'", {:tag => filter_text}]).limit(10)
-    clients = Client.where(["name LIKE '%' :tag '%'", {:tag => filter_text}]).limit(10)
+    feedbacks = Feedback.latest_related_feedbacks(filter_text,10)
+    comments = Comment.latest_related_comments(filter_text,10)
+    projects = Project.latest_related_projects(filter_text,10)
+    users = User.latest_related_users(filter_text,10)
+    clients = Client.latest_related_clients(filter_text,10)
 
     feedbacks + comments + projects + users + clients
   end

@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   default_scope :order => 'full_name'
+  scope :related_users, lambda { |text| where("full_name LIKE '%' :tag '%'", {:tag => text}) }
+  scope :latest_related_users, lambda { |text,limit| related_users(text).limit(limit) }
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :trackable, :encryptable,
   #:lockable, :timeoutable, :openid_authenticatable,
@@ -153,8 +156,13 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.text_filter_users(filter_text)
-    User.where("full_name LIKE '%' :tag '%'", {:tag => filter_text})
+  # This cannot be turned into scope. It's an opened issue in rails repository
+  def self.recent_users(date)
+    User.unscoped.where('created_at >= ?', date).order('created_at desc')
+  end
+
+  def self.latest_recent_users(date,limit)
+    User.unscoped.where('created_at >= ?', date).order('created_at desc').limit(limit)
   end
 
 end

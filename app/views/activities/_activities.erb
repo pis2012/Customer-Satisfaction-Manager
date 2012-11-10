@@ -11,7 +11,7 @@
         <td class="activity_info">
           <h4 class="activity_action">
             <%= link_to activity_link activity do %>
-                <% action = activity_action activity, @recent %>
+                <% action = activity_action activity, :recent %>
                 <%= truncate(strip_tags(action), :length => 80) %>
             <% end %>
           </h4>

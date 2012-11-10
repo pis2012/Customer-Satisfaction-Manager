@@ -1,5 +1,8 @@
 class Project < ActiveRecord::Base
   default_scope :order => 'name'
+  scope :related_projects, lambda { |text| where("name LIKE '%' :tag '%' or description LIKE '%' :tag '%'", {:tag => text}) }
+  scope :latest_related_projects, lambda { |text,limit| related_projects(text).limit(limit) }
+
 
   belongs_to :client
   accepts_nested_attributes_for :client
@@ -122,12 +125,17 @@ class Project < ActiveRecord::Base
     Project.where("finalized = 0 and id not in (:projects)",{projects: lastMoods.group_by {|i| i.project_id}.keys})
   end
 
-  def self.text_filter_projects(filter_text)
-    Project.where("name LIKE '%' :tag '%' or description LIKE '%' :tag '%'", {:tag => filter_text})
-  end
-
   def last_feedback
     self.feedbacks.first
+  end
+
+  # This cannot be turned into scope. It's an opened issue in rails repository
+  def self.recent_projects(date)
+    Project.unscoped.where('created_at >= ?', date).order('created_at desc')
+  end
+
+  def self.latest_recent_projects(date,limit)
+    Project.unscoped.where('created_at >= ?', date).order('created_at desc').limit(limit)
   end
 
 end

@@ -5,7 +5,6 @@ class AdminController < ApplicationController
   layout 'admin'
 
   def index
-    @recent = true
     @activities = Activity.recent_activity
 
     respond_to do |format|
