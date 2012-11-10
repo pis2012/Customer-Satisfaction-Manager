@@ -347,6 +347,11 @@
             seconds: "seconds"
             and: "and"
             prohibited_this_feedback_from_being_saved: "prohibited this feedback from being saved"
+            Type_something: "Type something.."
+            Recognition: "Recognition"
+            Comment: "Comment"
+            Skype: "Skype"
+            Email: "Email"
   form:
             add_form:  "Add form"
             last_total_answers: "Total answers last time: "

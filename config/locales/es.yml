@@ -399,6 +399,11 @@
             seconds: "segundos"
             and: "y"
             prohibited_this_feedback_from_being_saved: "no se puede guardar feedback"
+            Type_something: "Escribe algo.."
+            Recognition: "Reconocimiento"
+            Comment: "Comentario"
+            Skype: "Skype"
+            Email: "Email"
 
   form:
             add_form: "Agregar Formulario"
