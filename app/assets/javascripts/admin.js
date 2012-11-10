@@ -71,7 +71,7 @@ $(document).on('click', '.edit-client-link', function () {
 
 
 $(document).on('click', '.forms-link', function () {
-    updatePanel($(this).data('url'), 'forms-content', 'forms');
+    updatePanel($(this).data('url'), 'forms', 'forms');
     return false;
 });
 
@@ -85,8 +85,8 @@ function updatePanelForm(path, client, id_replace, tab)
     $.get(path, {client_name:client}, function (response) {
         $('#myTab  a[href=#forms]').tab('show');
         $('#forms').empty();
-        $('#' + id_replace).html(response);
         $('#myTab  a[href=#' + tab + ']').tab('show');
+        $('#' + id_replace).html(response);
         $('#form_client').val(client);
     }, 'html');
 }
