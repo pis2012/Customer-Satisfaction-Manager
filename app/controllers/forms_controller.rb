@@ -44,11 +44,11 @@ class FormsController < ApplicationController
 
   def show
     @form = Form.find(params[:id])
-    session[:session] = @form.get_session
+    session[:worksheet] = @form.get_session_worksheet
     # If fails then the form does not exist anymore?
     begin
-      clients = @form.get_clients(session[:session],nil)
-      @data = @form.get_data(params[:client_name],session[:session])
+      clients = @form.get_clients(session[:worksheet])
+      @data = @form.get_data(params[:client_name],session[:worksheet])
     rescue
       @form.errors[:base] << "not_exists_anymore?"
       clients = []
@@ -64,8 +64,7 @@ class FormsController < ApplicationController
 
   def show_data
     @form = Form.find(params[:id])
-    session[:session] ||= @form.get_session
-    @data = @form.get_data(params[:client_name], session[:session])
+    @data = @form.get_data(params[:client_name], session[:worksheet])
 
     respond_to do |format|
       if request.xhr?
@@ -76,8 +75,7 @@ class FormsController < ApplicationController
 
   def show_full_data
     @form = Form.find(params[:id])
-    session[:session] ||= @form.get_session
-    @graphs = @form.get_full_data(params[:client_name], session[:session])
+    @graphs = @form.get_full_data(params[:client_name], session[:worksheet])
 
     respond_to do |format|
       if request.xhr?
