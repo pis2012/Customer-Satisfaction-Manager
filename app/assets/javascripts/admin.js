@@ -58,7 +58,9 @@ $(document).on('click', '.new-client-link', function () {
     return false;
 });
 
-$(document).on('click', '.show-client-link', function () {
+$(document).on('click', '.show-client-link', function (e) {
+    e.preventDefault();
+    $('#myTab  a[href=#clients]').tab('show');
     updatePanel($(this).data('url'), 'show-client', 'show-client');
     return false;
 });
@@ -141,34 +143,31 @@ $(document).on('click', '#form_filter_btn', function() {
 
 //************** USERS TAB **************** //
 
-$('.new-user-link').live('click', function () {
+$(document).on('click', '.new-user-link', function () {
     updatePanel($(this).attr('data-url'), 'new-user', 'new-user');
     return false;
 });
 
-$('.edit-user-link').live('click', function () {
+$(document).on('click', '.edit-user-link', function () {
     updatePanel($(this).attr('data-url'), 'edit-user', 'edit-user');
     return false;
 });
 
-$('.show-user-link').live('click', function () {
+$(document).on('click', '.show-user-link', function (e) {
+    e.preventDefault();
+    $('#myTab  a[href=#users]').tab('show');
     updatePanel($(this).attr('data-url'), 'show-user', 'show-user');
     return false;
 });
 
-$('.show-user').live('click', function () {
-    updatePanel($(this).attr('data-url'), 'show-user', 'show-user');
-    return false;
-});
-
-$('.users-link').live('click', function () {
-    updatePanel($(this).attr('data-url'), 'users-content', 'users');
+$(document).on('click', '.users-link', function () {
+    updatePanel($(this).attr('data-url'), 'users', 'users');
     return false;
 });
 
 //************** EMAILS TAB **************** //
 
-$('.emails-link').live('click', function () {
+$(document).on('click', '.emails-link', function () {
     updatePanel($(this).attr('data-url'), 'emails', 'emails');
     return false;
 });

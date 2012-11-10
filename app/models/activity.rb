@@ -10,7 +10,7 @@ class Activity
 
     feedbacks = Feedback.latest_recent_feedbacks(date,limit)
     # we take the latest mood updates for each project
-    moods = Project.joins(:mood).where('moods.created_at >= ?', date).collect { |p| p.mood }
+    moods = Project.unscoped.joins(:mood).where('moods.created_at >= ?', date).order('moods.created_at desc').limit(limit).collect { |p| p.mood }
 
     comments = Comment.latest_recent_comments(date,limit)
     projects = Project.latest_recent_projects(date,limit)

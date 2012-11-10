@@ -11,7 +11,7 @@
 <div class="page_content" id="show-user-content">
 
 
-  <div id="row">
+  <div class="row_user">
     <div class="users-avatar">
       <% @profile = Profile.find_by_user_id(@user) %>
       <%= render template: 'profiles/avatar', :locals => {:profile => @user.profile} %>
