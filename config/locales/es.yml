@@ -116,7 +116,7 @@
             Text2: "El cliente mediante una interfaz intuitiva y amigable puede indicar rápidamente su estado de animo. Cada Cambio en el estado de animo va a quedar almacenado para que pueda ser analizado."
             Text3: "Al cliente se le da la libertad de elegir entre 5 estados de animo diferentes."
             Text4: "Los Feedback son utilizados para registrar las diferentes interacciones que se dan a lo largo de un proyecto."
-            Text5: "Cada Feedback generado en un determinado proyecto puede ser comentado por los diferentes usuarios del sistema."
+            Text5: "Se puede generar un feedback del tipo comentario para indicar o hacer una mención especial referente al proyecto"
             Text6: "El cliente puede crear un Feedback de tipo Reconocimiento, para sobresaltar acciones positiva sobre el proyecto."
             Text7: "Los Feedbacks pueden registrar distintas conversaciones realizadas entre el cliente y los desarolladores."
             Text8: "Se puede registrar mediante los Feedback el intercambio de los mail mas relevantes a lo largo del proyecto."
