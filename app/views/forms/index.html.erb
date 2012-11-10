@@ -15,6 +15,8 @@
           </h4>
           <%= t('form.last_total_answers') + form[:actual_total_answers].to_s %>
           <br/>
+          <%= t('form.last_clients') + form.get_actual_clients %>
+          <br/>
           <br/>
         </div>
     <% end %>

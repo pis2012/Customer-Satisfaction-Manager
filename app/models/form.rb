@@ -1,9 +1,10 @@
 class Form < ActiveRecord::Base
 
+  has_and_belongs_to_many :clients
   # :name := Name of the form(spreadsheet) in the google drive account
   # :email := Email corresponding to the google drive account
   # :password := Password corresponding to the google drive account
-  attr_accessible :name, :email, :wise_token, :actual_total_answers, :writely_token
+  attr_accessible :name, :email, :wise_token, :writely_token, :actual_total_answers
 
   validates :email, :name, :presence => true
 
@@ -15,7 +16,11 @@ class Form < ActiveRecord::Base
     else
       self.name = params["form"]["name"]
       self.email = params["form"]["email"]
-      return validates? session
+      ws = validates? session
+      if ws != nil
+        get_clients(session,ws) # Update total answers and clients
+        return true
+      end
     end
     false
   end
@@ -24,7 +29,7 @@ class Form < ActiveRecord::Base
     GoogleDrive.restore_session({:wise => self.wise_token.to_s, :writely => self.writely_token.to_s})
   end
 
-  # Validates, initializes the form and return true if is valid
+  # Validates, initializes the form and return the worksheet if is valid, otherwise nil
   def validates? (session)
     auth_tokens = session.auth_tokens()
     self.wise_token = auth_tokens[:wise]
@@ -34,9 +39,8 @@ class Form < ActiveRecord::Base
       ws = session.spreadsheet_by_title(self.name).worksheets[0]
     rescue
       self.errors[:base] << "not_exists"
-      return false
+      return nil
     end
-    update_total_answers ws
     is_valid? ws
   end
 
@@ -45,18 +49,18 @@ class Form < ActiveRecord::Base
   # checks if the form has a email column and that the first
   # column has timestamps
   def is_valid? (ws)
-    valid = false
     if ws[1,1].include? "Marca temporal"
       if (get_email_column ws) != 1
-        valid = true
+        return ws
       end
     end
-    valid
+    nil
   end
 
   private :is_valid?
 
   # Get the column number of the users email
+  # The form MUST have a question "Please write your email"
   def get_email_column (ws)
     email_user_column = 1
     (2..ws.num_cols).each do |col|
@@ -77,13 +81,29 @@ class Form < ActiveRecord::Base
 
   private :update_total_answers
 
-  # Returns the clients that answered the form
-  def get_clients (session)
-    # First worksheet
-    ws = session.spreadsheet_by_title(self.name).worksheets[0]
+  # Updates the clients linked to the form (answered the form)
+  def update_clients (clients_names)
+    clients_names.each do |client_name|
+      client = Client.find_by_name(client_name)
+      self.clients << client unless self.clients.exists? client
+    end
+  end
 
-    #update total answers
-    update_total_answers ws
+  private :update_clients
+
+  def get_actual_clients
+    clients = []
+    self.clients.each do |client|
+      clients += [client.name]
+    end
+    clients.sort!
+    join_names(clients)
+  end
+
+  # Returns the clients that answered the form
+  def get_clients (session,ws)
+    # First worksheet
+    ws = session.spreadsheet_by_title(self.name).worksheets[0] if ws == nil
 
     clients = []
     email_user_column = get_email_column ws
@@ -100,17 +120,52 @@ class Form < ActiveRecord::Base
         end
       end
     end
+
+    # update total answers
+    update_total_answers ws
+    # update clients linked
+    update_clients clients
+
     clients.sort!
   end
 
+  # Join of the names into a single string with ,
+  def join_names (names)
+    names_res = ""
+    names.each do |name|
+      names_res += names_res != "" ? ", #{name}" : name
+    end
+    names_res
+  end
+
+  private :join_names
+
+  def get_users_full_names(client_name)
+    users_full_names = []
+    if client_name == ""
+      # Get the full names of all the users from the form's clients
+      self.clients.each do |client|
+        users_full_names += client.users.map {|uc| uc.full_name}
+      end
+    else
+      # Get the full names of the users with client name == client_name,
+      users_client = User.find_all_by_client_id(Client.find_by_name(client_name).id)
+      users_full_names = users_client.map {|uc| uc.full_name}
+    end
+    users_full_names
+  end
+
+  private :get_users_full_names
+
   # Returns the data of the client, such as total answers, users that answered and did not
+  # If client_name is "" then it returns the data of all clients in the form
   def get_data (client_name, session)
     # First worksheet
     ws = session.spreadsheet_by_title(self.name).worksheets[0]
 
-    # Get the full names of the users with client name == client_name
-    users_client = User.find_all_by_client_id(Client.find_by_name(client_name).id)
-    users_full_names = users_client.map {|uc| uc.full_name}
+    # Get the full names of the users with client name == client_name, or
+    # if the client_name is "" then get the full names of all users from the form's clients
+    users_full_names = get_users_full_names client_name
     data = {:tot_answ => 0, :users => [], :missing_users => users_full_names}
 
     email_user_column = get_email_column ws
@@ -121,7 +176,7 @@ class Form < ActiveRecord::Base
         # If the user not exists in the system then it isn't valid, can't be returned
         if user != nil
           # Only the rows that correspond to the client with client_name
-          if client_name == user.client.name
+          if client_name == "" || client_name == user.client.name
             data[:tot_answ] += 1
             user_name = user.full_name
             # Is added only if not is already
@@ -133,40 +188,45 @@ class Form < ActiveRecord::Base
       end
 
       data[:users].sort!
+      data[:users] = join_names(data[:users])
       data[:missing_users].sort!
-
-      # Join of the names into a single string, for users and missing_users
-      users = ""
-      data[:users].each do |user|
-        users += users != "" ? ", #{user}" : user
-      end
-      data[:users] = users
-
-      missing_users = ""
-      data[:missing_users].each do |mu|
-        missing_users += missing_users != "" ? ", #{mu}" : mu
-      end
-      data[:missing_users] = missing_users
+      data[:missing_users] = join_names(data[:missing_users])
     end
     data
   end
 
-  # Returns all the graphics with all the data (answers) of the form\
+  def get_users_emails(client_name)
+    users_emails = []
+    if client_name == ""
+      self.clients.each do |client|
+        users_emails += client.users.map {|uc| uc.email}
+      end
+    else
+      users_client = User.find_all_by_client_id(Client.find_by_name(client_name).id)
+      users_emails = users_client.map {|uc| uc.email}
+    end
+    users_emails
+  end
+
+  private :get_users_emails
+
+  # Returns all the graphics with all the data (answers) of the form
   # that the client with client_name answered
+  # If client_name is "" then it returns the data of all clients in the form
   def get_full_data (client_name, session)
     # First worksheet
     ws = session.spreadsheet_by_title(self.name).worksheets[0]
     graphs = Array.new()
 
-    # Get the emails of the users with client name == client_name
-    users_client = User.find_all_by_client_id(Client.find_by_name(client_name).id)
-    users_emails = users_client.map {|uc| uc.email}
+    # Get the emails of the users with client name == client_name, or
+    # if the client_name is "" then get the emails of all users from the form's clients
+    users_emails = get_users_emails client_name
 
     email_user_column = get_email_column ws
     if email_user_column > 1
 
-      # Three possible answers to the questions in the form ..
-      possible_answers = {:first => ['Bad', 'Fair', 'Good', 'Very Good', 'Excellent'], :sec => %w(1 2 3 4 5), :third => ["Email","Landline","Cell","Ticket Management", "Skype or Chat", "Hangout", "Other"]}
+      # Three possible answers to the questions in the form ...
+      possible_answers = {:first => ["Bad", "Fair", "Good", "Very Good", "Excellent"], :sec => %w(1 2 3 4 5), :third => ["Email","Landline","Cell","Ticket Management", "Skype or Chat", "Hangout", "Other"]}
 
       (2..ws.num_cols).each do |col|
         # The question is in the first row
@@ -189,30 +249,45 @@ class Form < ActiveRecord::Base
         # Only if the answers if one of the three possibles
         if data != nil
           data.map! {0}
+          # For counting the answers without repeating
+          count_answers = 0
           # For counting the total answers by the users from the client
           # to every question
           count = 0
           (2..ws.num_rows).each do |row|
             user_email = ws[row,email_user_column]
-            # The answer is by an user from the client
+            # The answer is by an user from the client/s
             if users_emails.include? user_email
+              count_answers += 1
               pos = 0
-              found = false
-              axis_answers.each do |answ|
-                if ws[row,col].include? answ
-                  data[pos] += 1
-                  count += 1
-                  found = true
+              # answers type 3
+              if axis_answers.first == "Email"
+                found = false
+                axis_answers.each do |answ|
+                  # With this type it can have more than one answer
+                  if ws[row,col].include? answ
+                    data[pos] += 1
+                    count += 1
+                    found = true
+                  end
+                  pos += 1
                 end
-                pos = pos + 1
-              end
-              # Case Other in answers type 3
-              if axis_answers.first == "Email" && !found
-                data[6] += 1
+                # Case Other in answers type 3
+                data[6] += 1 unless found
+              else
+                axis_answers.each do |answ|
+                  # Exact answer
+                  if ws[row,col] == answ
+                    data[pos] += 1
+                    count += 1
+                    break # Only one answer for this type
+                  end
+                  pos += 1
+                end
               end
             end
           end
-          graph = get_graph(data, count, axis_answers)
+          graph = get_graph(data, count_answers, count, axis_answers)
           # Only if graph was generated
           graphs += [{:title => question, :graph => graph}] if graph != nil
         end
@@ -222,7 +297,7 @@ class Form < ActiveRecord::Base
     graphs.sort_by {|g| g[:title][/\d+/].to_i}
   end
 
-  def get_graph (data, count, axis_answers)
+  def get_graph (data, count_answers, count, axis_answers)
     graph = nil
 
     # If some answer was found then max > 0
@@ -237,8 +312,8 @@ class Form < ActiveRecord::Base
       percent = Array.new(data.count)
       pos = -1
       percent.map! do
-        pos = pos + 1
-        percent[pos] = (100.0 * data[pos] / count).round
+        pos += 1
+        percent[pos] = ((count * 100.0 / count_answers) * data[pos] / count).round
       end
 
       # This is made because how Gchart works

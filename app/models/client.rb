@@ -3,6 +3,7 @@ class Client < ActiveRecord::Base
 
   has_many :projects
   has_many :users
+  has_and_belongs_to_many :forms
 
   before_destroy :ensure_not_ref_by_any_project
   before_destroy :ensure_not_ref_by_any_user

@@ -90,14 +90,11 @@ $(document).on('change', '#form_client', function() {
     $('#form_client_full_data').empty();
     $('#btn_full_data').css("visibility","hidden");
     $('#form_client_data').empty();
-    if (val != "")
-    {
-        var val = $(this).val();
-        $.get($(this).data('url'), {client_name:val}, function(response) {
-            $('#form_client_data').html(response);
-            $('#btn_full_data').css("visibility","visible");
-        }, 'html');
-    }
+    var val = $(this).val();
+    $.get($(this).data('url'), {client_name:val}, function(response) {
+        $('#form_client_data').html(response);
+        $('#btn_full_data').css("visibility","visible");
+    }, 'html');
     return false;
 });
 

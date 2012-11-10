@@ -67,7 +67,8 @@ CSM::Application.routes.draw do
 
     # FORMS ROUTES
     resources :forms, :only => [:index,:show,:new,:create,:destroy]
-    match "/forms/show_data/:id"  => "forms#show_data",       :as => :forms_show_data
+    match "/forms/show_data/:id"      => "forms#show_data",      :as => :forms_show_data
+    match "/forms/show_data_all/:id"  => "forms#show_data_all",  :as => :forms_show_data_all
     match "/forms/show_full_data/:id" => "forms#show_full_data", :as => :forms_show_full_data
 
     # EMAILS ROUTES
