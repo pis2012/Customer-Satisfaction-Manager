@@ -50,8 +50,7 @@ class User < ActiveRecord::Base
         return user
     else
         role = Role.find_by_name Role::MOOVEIT_ROLE
-        client = Client.find_by_name 'Sony'
-        user = User.new(:email => data['email'],:openidemail => data['email'],:full_name => data['name'],:username => data['first_name'],:role_id => role.id,:client_id => client.id)
+        user = User.new(:email => data['email'],:openidemail => data['email'],:full_name => data['name'],:username => data['first_name'],:role_id => role.id)
         user.skip_confirmation!
         if user.save :validate => false
           user.create_profile

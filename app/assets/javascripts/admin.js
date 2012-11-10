@@ -17,7 +17,7 @@ $(document).on('click', '.summary-link', function () {
 //************** REPORTS TAB **************** //
 
 $(document).on('click', '.reports-link', function () {
-    updatePanel($(this).data('url'), 'reports_data', 'reports');
+    updatePanel($(this).data('url'), 'reports', 'reports');
     return false;
 });
 
