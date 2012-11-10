@@ -48,7 +48,7 @@ class FormsController < ApplicationController
     # If fails then the form does not exist anymore?
     begin
       clients = @form.get_clients(session[:session],nil)
-      @data = @form.get_data("",session[:session]) # For option "all"
+      @data = @form.get_data(params[:client_name],session[:session])
     rescue
       @form.errors[:base] << "not_exists_anymore?"
       clients = []

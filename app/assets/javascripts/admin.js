@@ -80,8 +80,24 @@ $(document).on('click', '.new-form-link', function () {
     return false;
 });
 
+function updatePanelForm(path, client, id_replace, tab)
+{
+    $.get(path, {client_name:client}, function (response) {
+        $('#myTab  a[href=#forms]').tab('show');
+        $('#forms').empty();
+        $('#' + id_replace).html(response);
+        $('#myTab  a[href=#' + tab + ']').tab('show');
+        $('#form_client').val(client);
+    }, 'html');
+}
+
 $(document).on('click', '.show-form-link', function () {
-    updatePanel($(this).data('url'), 'show-form', 'show-form');
+    updatePanelForm($(this).data('url'), "", 'show-form', 'show-form');
+    return false;
+});
+
+$(document).on('click', '.show-form-link-alt', function () {
+    updatePanelForm($(this).data('url'), $(this).data('client'), 'show-form', 'show-form');
     return false;
 });
 

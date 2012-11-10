@@ -1,7 +1,9 @@
 <!-- page header -->
 <div class="page_header">
   <h1><%= t('admin.tabs.show_client') %></h1>
-
+  <div class="loading-gif">
+    <%= image_tag("ajax-loader.gif") %>
+  </div>
   <div class="add_element">
     <button class="btn btn-link edit-client-link" data-url="<%= edit_client_path(@client) %>">
       <i class="icon-edit icon-white"> </i> <%= t('client.edit_client') %>
@@ -80,6 +82,31 @@
               <td><%=  get_project_end_date project  %></td>
               <td>
               </td>
+            </tr>
+        <% end %>
+      </table>
+  <% else %>
+      <h5><%= t('client.no_projects') %></h5>
+  <% end %>
+
+  <br>
+  <h4><%= "#{t('client.associated_forms')}: " %></h4>
+  <% if @client.forms.count > 0 %>
+
+      <table class="table table-striped">
+
+        <thead>
+        <tr>
+          <th><%= t('client.form_name') %></th>
+          <th><%= t('client.form_answers') %></th>
+        </tr>
+        </thead>
+
+        <% @client.forms.each do |form| %>
+            <tr>
+              <td><a href="#show-form" class="show-form-link-alt" data-url="<%= form_path form %>" data-client="<%= @client.name %>"><%= form[:name] %></a></td>
+              <td><%= form.actual_total_answers %></td>
+              <td>
             </tr>
         <% end %>
       </table>
