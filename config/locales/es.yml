@@ -115,6 +115,21 @@
             language: "Idioma"
             Spanish: "Español"
             English: "English"
+            Text1: "El Manejador de Satisfacción Del Cliente es responsable por todas las actividades relacionadas al ciclo de vida del cliente, la segmentación de clientes y la afinidad de los mismos."
+            Text2: "El cliente mediante una interfaz intuitiva y amigable puede indicar rápidamente su estado de animo. Cada Cambio en el estado de animo va a quedar almacenado para que pueda ser analizado."
+            Text3: "Al cliente se le da la libertad de elegir entre 5 estados de animo diferentes."
+            Text4: "Los Feedback son utilizados para registrar las diferentes interacciones que se dan a lo largo de un proyecto."
+            Text5: "Se puede generar un feedback del tipo comentario para indicar o hacer una mención especial referente al proyecto"
+            Text6: "El cliente puede crear un Feedback de tipo Reconocimiento, para sobresaltar acciones positiva sobre el proyecto."
+            Text7: "Los Feedbacks pueden registrar distintas conversaciones realizadas entre el cliente y los desarolladores."
+            Text8: "Se puede registrar mediante los Feedback el intercambio de los mail mas relevantes a lo largo del proyecto."
+            Titulo1: "Comentarios"
+            Titulo2: "Reconocimientos"
+            Titulo3: "Conversaciones Skype"
+            Titulo4: "Emails Feedbacks"
+            Continue_reading: "Continuar Leyendo.."
+
+
 
   buttons:
             accept: "Aceptar"
@@ -388,6 +403,11 @@
             seconds: "segundos"
             and: "y"
             prohibited_this_feedback_from_being_saved: "no se puede guardar feedback"
+            Type_something: "Escribe algo.."
+            Recognition: "Reconocimiento"
+            Comment: "Comentario"
+            Skype: "Skype"
+            Email: "Email"
 
   form:
             add_form: "Agregar Formulario"
