@@ -134,8 +134,13 @@
             HText3: "Creemos que nuestra fuerte experiencia en la industria y excelencia operativa, nuestro amplio portafolio de productos innovadores y de especialidad, nuestra presencia global, y - por último, pero no menos importante - nuestro equipo apasionado y altamente profesional, nos dan las bases ideales para el éxito a largo plazo y sostenibles , el crecimiento rentable."
             HText4: "Creemos en un gran apoyo, servicial y amable para hacer felices a nuestros clientes."
             HText5: "Creemos que podemos tener éxito si hacemos nuestros clientes tengan éxito."
-            Footer_description: "© 2012, Todos los derechos reservados"
-
+            csm: "Manager de Satistacción del Cliente"
+            pis_team: "G1 - GRUPO PIS © 2012, Todos los derechos reservados"
+            company: "Empresa"
+            who_we_are: "Quiénes somos"
+            what_we_believe: "Lo que creemos"
+            what_we_do: "Lo que hacemos"
+            csm_information: "Información"
 
 
   buttons:
