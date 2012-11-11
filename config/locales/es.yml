@@ -96,6 +96,7 @@
           client: "Cliente"
           no_users: "Este cliente no tiene usuarios asociados"
           no_projects: "Este cliente no tiene proyectos asociados"
+          no_forms: "Este cliente no tiene formularios asociados"
           mood_average: "Ánimo Promedio:  %{count}"
           user_full_name: "Nombre completo"
           user_skype: "Usuario skype"

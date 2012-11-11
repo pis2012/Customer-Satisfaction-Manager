@@ -53,6 +53,7 @@
             client: "Client"
             no_users: "This client does not have associated users"
             no_projects: "This client does not have associated projects"
+            no_forms: "This client does not have associated forms"
             mood_average: "Mood Average:  %{count}"
             user_full_name: "Full name"
             user_skype: "Skype user"
