@@ -21,7 +21,7 @@
   text-align: right;
 }
 
-#home p a.continue-reading
+#home .continue-reading
 {
   color:#456E99;
   display:block;
@@ -48,15 +48,17 @@
 }
 
 .homeface{
-    width: 100%;
-    text-decoration: none;
-    padding: 1px 3px;
-    display: inline-block;
-    -webkit-transition: all .2s linear;
-    -moz-transition: all .2s linear;
-    -ms-transition: all .2s linear;
-    -o-transition: all .4s linear;
-    transition: all .2s linear;
+  width: 100%;
+  transform: scale(1.0,1.0);
+  -ms-transform: scale(1.0,1.0);
+  -webkit-transform: scale(1.0,1.0);
+
+  transition: all .2s linear;
+  -ms-transition: all .2s linear;
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  -o-transition: all .2s linear;
+
  }
 
 .homeface p {
@@ -64,16 +66,17 @@
 }
 
 .homeface:hover {
-    -webkit-transform: scale(1.2,1.2);
-    -moz-transform: scale(1.2,1.2);
-    -ms-transform: scale(1.2,1.2);
-    -o-transform: scale(1.2,1.2);
-    transform: scale(1.2,1.2);
-    -webkit-transition: all .2s linear;
-    -moz-transition: all .2s linear;
-    -ms-transition: all .2s linear;
-    -o-transition: all .2s linear;
-    transition: all .2s linear;
+  transform: scale(1.2,1.2);
+  -ms-transform: scale(1.2,1.2);
+  -webkit-transform: scale(1.2,1.2);
+  -o-transform: scale(1.2,1.2);
+  -moz-transform: scale(1.2,1.2);
+
+  transition: all .2s linear;
+  -ms-transition: all .2s linear;
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  -o-transition: all .2s linear;
 }
 
 .homeface:hover p{
@@ -105,12 +108,8 @@
   position:relative;
   width: 160px;
   margin-bottom: 0px;
-
-  -webkit-transition: all .2s linear;
-  -moz-transition: all .2s linear;
-  -ms-transition: all .2s linear;
-  -o-transition: all .4s linear;
-  transition: all .2s linear;
+  -webkit-transition: -webkit-transform .2s ease-in;
+  -moz-transform: -moz-transform .2s ease-in;
 }
 
 .chomefacebig:hover
@@ -125,6 +124,7 @@
   -ms-transition: all .2s linear;
   -o-transition: all .2s linear;
   transition: all .2s linear;
+
 }
 
 
@@ -144,15 +144,15 @@
   display: inline-block;
   vertical-align: middle;
   text-align: left;
-  width: 60%;
+  width: 67%;
 }
 
 .vheaderimage
 {
   display: inline-block;
   vertical-align: middle;
-  width: 190px;
-  margin-right: 30px;
+  width: 25%;
+  margin-right: 5%;
 }
 
 .vhomeleft
@@ -196,5 +196,160 @@
 }
 
 .checkbox-hand{
-  cursor: pointer;
+  cursor:pointer;
+}
+
+/* ============== [ HAPPINESS ] ============== */
+
+#happiness_header{
+  height: 50px;
+  background-color: #F5F5F5;
+}
+
+.happiness_text {
+  font-size: 18px;
+  vertical-align: middle;
+  color: rgb(77,73,72);
+  margin-left: 50px;
+  margin-top: 15px;
+}
+
+.moodWrapper{
+  position: relative;
+}
+
+.moodcantsmall{
+  position: absolute;
+  left: 38px;
+  bottom: 66px;
+  font-weight: bold;
+  font-size: 60px;
+  color: white;
+  text-shadow: 0px 0px 12px #000000;
+}
+
+.moodcantbig{
+  position: absolute;
+  left: 18px;
+  bottom: 66px;
+  font-weight: bold;
+  font-size: 60px;
+  color: white;
+  text-shadow: 0px 0px 12px #000000;
+}
+
+.happinessMood{
+  margin-left: 50px;
+  margin-right: 40px;
+}
+
+
+/* ============== [ CSM INFORMATION ] ============== */
+
+
+.biggest_face_table{
+  width: 100%;
+}
+
+.biggest_face{
+   width: 25%;
+}
+
+.biggest_face_img{
+  width: 100%;
+}
+
+.biggest_face_text{
+  padding-left: 6%;
+}
+
+.medium_face_table{
+  width: 100%;
+}
+
+.medium_face{
+  width: 20%;
+}
+
+.medium_face_img{
+  width: 100%;
+}
+
+.medium_face_text{
+  padding-right: 6%;
+}
+
+
+.smaller_faces_table{
+  width: 100%;
+}
+
+.smaller_faces{
+  width: 40%;
+}
+
+.smaller_faces_img{
+  width: 100%;
+}
+
+.smaller_faces_text{
+  padding-left: 6%;
+}
+
+.feedbacks_header{
+  height: 50px;
+  background-color: #F5F5F5;
+}
+
+.feedbacks_text{
+  font-size: 18px;
+  vertical-align: middle;
+  color: rgb(77,73,72);
+  margin-top: 15px;
+}
+
+.feedbacks_info_table{
+  width: 100%;
+
+  th{
+    padding-right: 4%;
+  }
+
+  th{
+    padding-left: 4%;
+  }
+
+  td{
+    padding-right: 4%;
+    padding-left: 4%;
+  }
+
+}
+
+.feedback_name{
+  font-size: 16px;
+  font-weight: lighter;
+  color: #1372A2
+}
+
+.feedback_img{
+}
+
+
+/* ============== [ FOOTER ] ============== */
+
+.footer{
+  text-align: right;
+  color: #FFFFFF;
+  padding: 1%;
+  background: url("header_bg.png") repeat-x scroll left top transparent;
+}
+
+.footer a{
+  color: #FFFFFF !important;
+}
+
+.logoMini {
+  width: 50%;
+  height: 50%;
 }

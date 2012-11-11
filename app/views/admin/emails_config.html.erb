@@ -1,0 +1,46 @@
+<!-- page header -->
+<div class="page_header">
+  <h1><%= t('admin.tabs.emails') %></h1>
+</div>
+<!--// page header -->
+
+<!-- page contents -->
+<div class="page_content" id="emails-content">
+<% if @view[:property_updated] %>
+    <% if @property.errors.any? %>
+        <div class="alert alert-error">
+          <h4><%= t('activerecord.errors.template.header.one', :model => @property.class.name) %></h4>
+        </div>
+    <% else %>
+        <div class="alert alert-error" id="changes_saved">
+          <h4><%= t('admin.changes_saved') %></h4>
+        </div>
+    <% end %>
+<% end %>
+
+
+
+<% @view[:properties].each do |property| %>
+    <%= form_tag(property_update_path(property.id), :remote => true) do %>
+        <table class="properties_table">
+
+          <tr id="row_property_<%= property.id %>">
+
+            <td class="property_name_field">
+              <h5 class="csm_property_name"><%= property.name %></h5>
+            </td>
+
+            <td class="property_value_field">
+              <%= hidden_field_tag(:csm_property_id, property.id) %>
+              <%= text_field_tag :value, property.value, :class => "property_value_text " %>
+            </td>
+            <td>
+              <%= button_tag(t('buttons.change'), :class => "btn") %>
+            </td>
+
+          </tr>
+
+        </table>
+    <% end %>
+<% end %>
+</div>

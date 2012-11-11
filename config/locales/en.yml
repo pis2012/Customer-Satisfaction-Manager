@@ -3,50 +3,66 @@
 
 "en":
   date:
-              January: "January"
-              February: "February"
-              March: "March"
-              April: "April"
-              May: "May"
-              June: "June"
-              July: "July"
-              August: "August"
-              September: "September"
-              October: "October"
-              November: "November"
-              December: "December"
-              Monday: "Monday"
-              Tuesday: "Tuesday"
-              Wednesday: "Wednesday"
-              Thursday: "Thursday"
-              Friday: "Friday"
-              Saturday: "Saturday"
-              Sunday: "Sunday"
+            January: "January"
+            February: "February"
+            March: "March"
+            April: "April"
+            May: "May"
+            June: "June"
+            July: "July"
+            August: "August"
+            September: "September"
+            October: "October"
+            November: "November"
+            December: "December"
+            Monday: "Monday"
+            Tuesday: "Tuesday"
+            Wednesday: "Wednesday"
+            Thursday: "Thursday"
+            Friday: "Friday"
+            Saturday: "Saturday"
+            Sunday: "Sunday"
 
-              formats:
-                    default: ! '%Y-%m-%d'
-                    long: ! '%B %d, %Y'
-                    short: ! '%b %d'
-              order:
-                  - :year
-                  - :month
-                  - :day
-              use_short_month: true
+            formats:
+                  default: ! '%Y-%m-%d'
+                  long: ! '%B %d, %Y'
+                  short: ! '%b %d'
+            order:
+                - :year
+                - :month
+                - :day
+            use_short_month: true
 
   client:
+            name: "Name"
             name_field: "Name of client"
-            date_create: "Create Date"
-            users: "Associate Users"
-            proyect: "Associate Projects"
+            created_date: "Created Date"
+            associated_users: "Associated Users"
+            associated_projects: "Associated Projects"
+            associated_forms: "Associated Forms"
+            form_name: "Form name"
+            form_answers: "Total answers"
             new_client: "New Client"
             edit_client: "Edit Client"
             delete_client: "Delete Client"
             show_client: "Show Client"
             clients: "Clients"
-            cout_project: "Project Partners:  %{count}."
-            cout_users:   "Registered Users: %{count}."
+            projects_count: "Project Partners:  %{count}."
+            users_count:   "Registered Users: %{count}."
             eliminate_confirm: "Are you sure you want to delete this client?"
             client: "Client"
+            no_users: "This client does not have associated users"
+            no_projects: "This client does not have associated projects"
+            mood_average: "Mood Average:  %{count}"
+            user_full_name: "Full name"
+            user_skype: "Skype user"
+            user_email: "Email"
+            user_uploads: "Number of uploads"
+            project_name: "Project name"
+            project_mood: "Mood"
+            project_end_date: "End date"
+            project_feedbacks: "Number of feedbacks"
+
 
   home:
             home: "Home"
@@ -58,6 +74,26 @@
             language: "Language"
             Spanish: "Español"
             English: "English"
+            Text1: "The Customer Satifaction Manager is responsible for all activities related to customer life cycle, customer segmentation and the affinity of these."
+            Text2: "The client with an intuitive and friendly interface can indicate his mood quickly. Each change in mood will be stored in order to be analyzed."
+            Text3: "The customer is given the freedom to choose between 5 different moods."
+            Text4: "The feedback are used to record the different interactions that occur along a project."
+            Text5: "You can generate a type comments feedback to make a special mention regarding the project"
+            Text6: "The customer can create a type Feedback Recognition, to startle positive actions on the project."
+            Text7: "Feedbacks can record different conversations made between the customer and the developers."
+            Text8: "You can register via the Feedback most relevant mail exchange throughout the project."
+            Titulo1: "Comments"
+            Titulo2: "Recognitions"
+            Titulo3: "Skype conversations"
+            Titulo4: "Emails Feedbacks"
+            Continue_reading: "Continue reading.."
+            happiness: "Happiness"
+            HText1: "We strive to get to know each and every one of our customers, what they need, and how best to make them happy."
+            HText2: "We strive to serve the success of our customers by offering them the best possible solutions, designed to give them a competitive edge in their markets."
+            HText3: "We believe that our strong industry experience and operational excellence, our broad portfolio of innovative and speciality products, our global footprint, and - last but not least - our passionate and highly professional team, give us the ideal foundations for long-term success and sustainable, profitable growth."
+            HText4: "We believe in great, helpful and friendly support to make our customers happy."
+            HText5: "We believe we can be successful only if we make our customers successful."
+            Footer_description: "© 2012, All Rights Reserved"
 
   buttons:
             accept:    "Accept"
@@ -76,6 +112,9 @@
             filter: "Filter"
             comment: "Comment"
             send: "Send"
+            change: "Change"
+            find: "Find"
+            update: "Update"
 
   my_projects:
             tabs:
@@ -93,34 +132,78 @@
                         project_description: "Project Description"
                         mood_updates: "Mood Updates"
                         milestones: "Milestones"
+                        project_end: "End of project"
 
             mood:
                         update_mood: "Update your mood"
                         mood_updated: "Mood updated!"
                         actual_mood: "Actual mood"
 
+  admin:
+              tabs:
+                          summary: "Summary"
+                          reports: "Reports"
+                          projects: "Projects"
+                          new_project: "New Project"
+                          edit_project: "Edit Project"
+                          delete_project: "Delete Project"
+                          new_user: "New User's Client"
+                          show_user: "View User"
+                          edit_user: "Edit User"
+                          delete_user: "Delete User"
+                          clients: "Clients"
+                          show_client: "Show Client"
+                          new_client: "New Client"
+                          edit_client: "Edit Client"
+                          forms: "Forms"
+                          show_form: "Show form"
+                          emails: "Emails"
 
-
+              customer_satisfaction_manager:    "CUSTOMER SATISFACTION MANAGER"
+              customers:    "Customers"
+              reports:    "Reports "
+              users:   "Users"
+              clients:  "Clients"
+              forms:  "Forms"
+              evolution_of_general_mood: "Evolution of the general mood"
+              Status_of_Projects: "Status of Projects"
+              add_clients: "Add Client"
+              mooveit_employee:   "Moove-IT Employee"
+              mooveit_admin:   "Moove-IT Employee(Admin)"
+              filter_name: "Name contains: "
+              comment_created: "Comment made on "
+              comment_created_on: " on "
+              user_name: "Username"
+              user_email: "Email: "
+              user_unconfirmed_email: "Unconfirmed Email: "
+              user_openid:  "OpenID: "
+              activated: "activated"
+              deactivated: "deactivated"
+              user: "User"
+              enable: "enable"
+              disable: "disable"
+              sure: "Are you sure?"
+              changes_saved: "Changes saved!"
 
   user_edit:
-              choose_your_profile_settings: "CHOOSE YOUR PROFILE SETTINGS"
-              personal_data: "Personal Data"
-              full_Name: "Full Name"
-              email: "Email"
-              load_openid: "Load OpenID from Gmail's session"
-              skype_user: "Skype user"
-              notifications: "Notifications"
-              feedbacks: "Feedbacks"
-              comments: "Comments"
-              my_picture: "My Picture"
-              my_projects: "My Projects"
-              default_project: "Default project"
-              change_password: "Change Password"
-              current_password: "Current password"
-              new_Password: "New password"
-              confirm_password: "Confirm password"
-              save_changes: "Save Changes"
-              gravatar: "Use Gravatar image"
+            choose_your_profile_settings: "CHOOSE YOUR PROFILE SETTINGS"
+            personal_data: "Personal Data"
+            full_Name: "Full Name"
+            email: "Email"
+            load_openid: "Load OpenID from Gmail's session"
+            skype_user: "Skype user"
+            notifications: "Notifications"
+            feedbacks: "Feedbacks"
+            comments: "Comments"
+            my_picture: "My Picture"
+            my_projects: "My Projects"
+            default_project: "Default project"
+            change_password: "Change Password"
+            current_password: "Current password"
+            new_Password: "New password"
+            confirm_password: "Confirm password"
+            save_changes: "Save Changes"
+            gravatar: "Use Gravatar image"
   user:
             user: "User"
             continue: "Continue"
@@ -179,6 +262,8 @@
                                   header:
                                           one: "It generated an error when trying to save the %{model}."
                                           other: "Were generated %{count} errors when trying to save the %{model}."
+                                          one_changes: "It generated an error when trying to save changes."
+                                          other_changes: "Were generated %{count} errors when trying to save changes."
                         models:
                                 feedback:
                                           attributes:
@@ -238,6 +323,12 @@
                                           attributes:
                                                       name:
                                                         blank: "Milestone name can not be empty."
+                                project:
+                                          attributes:
+                                                      name:
+                                                       blank: "Project Name can not be empty."
+                                                      description:
+                                                       blank: "The description of the project can not be empty."
 
   Comments:
               Comment: "Comment"
@@ -266,15 +357,22 @@
             seconds: "seconds"
             and: "and"
             prohibited_this_feedback_from_being_saved: "prohibited this feedback from being saved"
+            Type_something: "Type something.."
+            Recognition: "Recognition"
+            Comment: "Comment"
+            Skype: "Skype"
+            Email: "Email"
   form:
             add_form:  "Add form"
             last_total_answers: "Total answers last time: "
+            last_clients: "Clients found last time: "
             total_answers: "Total answers: "
             clients: "Clients found in the form: "
             users: "Users who responded: "
             missing_users: "Still missing: "
             select: "Select one"
-            full_data: "Show full data"
+            all: "All"
+            full_data: "Show answers"
             name: "Form name"
             google_email: "Google user name"
             password: "Password"
@@ -286,49 +384,6 @@
             not_exists: "The form does not exist."
             not_exists_anymore?: "No form found in the drive of the google account."
             eliminate_confirm: "Are you sure you want to delete this form?"
-
-
-  admin:
-            tabs:
-                          forms: "Forms"
-                          show_form: "Show form"
-                          reports: "Reports"
-                          new_user: "New User's Client"
-                          show_user: "View User"
-                          edit_user: "Edit User"
-                          delete_user: "Delete User"
-                          clients: "Clients"
-                          show_client: "Show Client"
-                          new_client: "New Client"
-                          edit_client: "Edit Client"
-                          new_project: "New project"
-
-            customer_satisfaction_manager:    "CUSTOMER SATISFACTION MANAGER"
-            customers:    "Customers"
-            summary:   "Summary"
-            reports:    "Reports "
-            projects:    "Projects"
-            users:   "Users"
-            clients:  "Clients"
-            forms:  "Forms"
-            evolution_of_general_mood: "Evolution of the general mood"
-            Status_of_Projects: "Status of Projects"
-            add_clients: "Add Client"
-            mooveit_employee:   "Employe Moove-IT"
-            mooveit_admin:   "Employe Moove-IT(Admin)"
-            filter_name: "Name contains: "
-            comment_created: "Comment made on "
-            comment_created_on: " on "
-            user_name: "Username: "
-            user_email: "Email: "
-            user_unconfirmed_email: "Unconfirmed Email: "
-            user_openid:  "OpenID: "
-            activated: "activated"
-            deactivated: "deactivated"
-            user: "User"
-            enable: "enable"
-            disable: "disable"
-            sure: "Are you sure?"
 
   milestone:
             milestone:  "Milestone"
@@ -342,21 +397,30 @@
             end_project: "End of project"
             the: " of "
             eliminate_confirm: "Are you sure you want to delete this milestone?"
+            one_hour_to_end: "hour to end"
+            name: "Name"
+            target_date: "Target date"
 
-  proyect:
+  project:
             list_projects:  "List of Projects"
-            new_proyect:     "New Project"
+            client: "Client"
+            enter_text: "Enter text"
+            eliminate_confirm: "Are you sure you want to delete this project?"
             cannot_save_project: "Cannot save Project"
             description:    "Description"
-            end_date:     "End date"
+            end_date:     "End of project"
             name:     "Name"
             status:    "Status"
             editing_project: "Editing project"
             filter:       "Filter"
             at: " at "
             hours: " hours "
-            finalized: "Project finished"
-
+            finalized: "Project finalized"
+            last_feedback_made_by: "Last feedback made by"
+            no_feedbacks: "No feedbacks"
+            edit: "Edit"
+            Profiles_present: "Can not delete the project, has associated profiles."
+            Feedbacks_present: "Can not delete the project, has associated feedbacks."
 
   mood:
             mood_of_our_customers:     "MOOD OF OUR CUSTOMERS"
@@ -364,8 +428,27 @@
             changes_in_mood:     "Changes in mood"
 
   activity:
+            recent_activity: "Recent Activity"
+            site_searcher: "Site Searcher"
+            enter_query: "Enter your search query here:"
             authored_by: "Authored by"
             date_on: "on"
+            new_feedback: "New feedback"
+            on: "on"
+            feedback: "Feedback"
+            mood_update: "Mood update on project"
+            new_comment: "New comment on feedback"
+            comment: "Comment on feedback"
+            new_project: "New project"
+            for: "for"
+            project: "Project"
+            new_user: "New user"
+            admin: "Administrator"
+            employee: "Moove-IT Employee"
+            user: "User"
+            new_client: "New client"
+            client: "Client"
+
 
   devise:
         failure:
@@ -373,6 +456,7 @@
               invalid: "Login failed."
               email_not_allowed: "Email not allowed."
               unauthenticated: "User unauthenticated."
+              disable: "User disabled."
 
   email:
       notification:

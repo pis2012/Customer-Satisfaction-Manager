@@ -1,16 +1,25 @@
-<div id="reports">
-  <h4> <%= I18n.t ('admin.evolution_of_general_mood') %> </h4>
-  <br/>
-  <div class="bar-graph">
-    <%= image_tag @graph[:bar] %>
-  </div>
-  <br/>
-  <hr/>
+<!-- page header -->
+<div class="page_header">
+  <h1><%= t('admin.reports') %></h1>
+</div>
 
-  <h4><%= I18n.t ('admin.Status_of_Projects') %></h4>
-  <br/>
-  <div class="pie-graph">
-    <%= image_tag @graph[:pie] %>
+<div class="page_content" id="reports_data">
+  <div id="reports">
+    <h4> <%= I18n.t ('admin.evolution_of_general_mood') %> </h4>
+    <br/>
+
+    <div class="bar-graph">
+      <%= image_tag @graph[:bar] %>
+    </div>
+    <br/>
+    <hr/>
+
+    <h4><%= I18n.t ('admin.Status_of_Projects') %></h4>
+    <br/>
+
+    <div class="pie-graph">
+      <%= image_tag @graph[:pie] %>
+    </div>
+    <br/>
   </div>
-  <br/>
 </div>

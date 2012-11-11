@@ -30,7 +30,7 @@ class MilestonesHelperSpec
       milestone.project_id = @valid_attributes[:project].id
       milestone.save
 
-      assign(:view, @valid_attributes[:view])
+      assign(:project, @valid_attributes[:project])
 
       helper.get_milestones_data
     end

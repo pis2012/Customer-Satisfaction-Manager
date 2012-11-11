@@ -1,19 +1,21 @@
 class User < ActiveRecord::Base
   default_scope :order => 'full_name'
+  scope :related_users, lambda { |text| where("full_name LIKE '%' :tag '%'", {:tag => text}) }
+  scope :latest_related_users, lambda { |text,limit| related_users(text).limit(limit) }
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :trackable, :encryptable,
   #:lockable, :timeoutable, :openid_authenticatable,
 
 
   devise :database_authenticatable, :registerable, :recoverable, :omniauthable, :rememberable, :confirmable, :validatable
-  after_create :create_profile
+  #after_create :create_profile
 
   belongs_to :role
   belongs_to :client
   has_one :profile
   has_many :feedbacks
   has_many :comments
-  has_many :forms
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role,      :client,       :profile,   :feedbacks, :comments,    :unconfirmed_email,
@@ -43,15 +45,16 @@ class User < ActiveRecord::Base
 
   def self.find_for_open_id_google_apps(access_token, signed_in_resource=nil)
     data = access_token['info']
-
-    if user = User.find_by_openidemail(data['email'])
+    user = User.find_by_openidemail(data['email'])
+    if !user.nil?
         return user
-      else
+    else
         role = Role.find_by_name Role::MOOVEIT_ROLE
-        client = Client.find_by_name 'Sony'
-        user = User.create(:email => data['email'],:openidemail => data['email'],:full_name => data['name'],:username => data['first_name'],:role_id => role.id,:client_id => client.id)
+        user = User.new(:email => data['email'],:openidemail => data['email'],:full_name => data['name'],:username => data['first_name'],:role_id => role.id)
         user.skip_confirmation!
-        user.save :validate => false
+        if user.save :validate => false
+          user.create_profile
+        end
         return user
     end
   end
@@ -108,9 +111,9 @@ class User < ActiveRecord::Base
 
   def possible_feedback_types
     if self.role.name == Role::CLIENT_ROLE
-      return FeedbackType.find(3,4)
+      FeedbackType.find(3,4)
     else
-      return FeedbackType.all
+      FeedbackType.all
     end
   end
 
@@ -150,6 +153,15 @@ class User < ActiveRecord::Base
         NotificationMailer.comment_notification_email(comment,interestedUser).deliver
       end
     end
+  end
+
+  # This cannot be turned into scope. It's an opened issue in rails repository
+  def self.recent_users(date)
+    User.unscoped.where('created_at >= ?', date).order('created_at desc')
+  end
+
+  def self.latest_recent_users(date,limit)
+    User.unscoped.where('created_at >= ?', date).order('created_at desc').limit(limit)
   end
 
 end

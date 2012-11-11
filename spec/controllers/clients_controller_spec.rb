@@ -65,7 +65,7 @@ class ClientControllerSpec
       client1=Client.create(name: "Client")
       user = @valid_attributes[:usr]
       sign_in user
-      get :show, client_id: client1.id, format: "json"
+      get :show, id: client1.id, format: "json"
       sign_out user
       assert_response :success
 
@@ -83,7 +83,7 @@ class ClientControllerSpec
 
       user = @valid_attributes[:usr]
       sign_in user
-      delete :destroy, client_id: client1.to_param, format: "js"
+      delete :destroy, id: client1.id, format: "js"
 
       assert_response :success
 

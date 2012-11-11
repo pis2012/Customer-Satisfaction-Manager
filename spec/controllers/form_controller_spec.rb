@@ -39,7 +39,7 @@ describe FormsController, :type => :controller do
     user = @valid_attributes[:usr]
     sign_in user
 
-    get :index, format:'js'
+    xhr :get, :index, format:'html'
 
     assert_response :success
     sign_out user
@@ -49,7 +49,7 @@ describe FormsController, :type => :controller do
     user = @valid_attributes[:usr]
     sign_in user
 
-    get :new, format:'js'
+    xhr :get, :new, format:'html'
 
     assert_response :success
     sign_out user
@@ -83,7 +83,7 @@ describe FormsController, :type => :controller do
 
     post :create, format:'js', form: @valid_attributes[:form]
     form = assigns(:form)
-    get :show_data, format:'js', id: form.id, client_name: 'MicroHard'
+    xhr :get, :show_data, format:'html', id: form.id, client_name: 'MicroHard'
 
     assert_response :success
     sign_out user
@@ -95,7 +95,7 @@ describe FormsController, :type => :controller do
 
     post :create, format:'js', form: @valid_attributes[:form]
     form = assigns(:form)
-    get :show_full_data, format:'js', id: form.id, client_name: 'MicroHard'
+    xhr :get, :show_full_data, format:'html', id: form.id, client_name: 'MicroHard'
 
     assert_response :success
     sign_out user

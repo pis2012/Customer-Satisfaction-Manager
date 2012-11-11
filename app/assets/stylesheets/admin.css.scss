@@ -39,7 +39,7 @@
 }
 
 #global_nav li.summary.active a {
-  background-position: 8px -39px;
+  background-position: 8px -37px;
 }
 
 #global_nav li.reports a {
@@ -67,19 +67,27 @@
 }
 
 #global_nav li.clients a {
-  background-position: 8px -364px;
-}
-
-#global_nav li.clients.active a {
   background-position: 8px -323px;
 }
 
+#global_nav li.clients.active a {
+  background-position: 8px -364px;
+}
+
 #global_nav li.forms a {
-  background-position: 8px -410px;
+  background-position: 8px -407px;
 }
 
 #global_nav li.forms.active a {
-  background-position: 8px -452px;
+  background-position: 8px -448px;
+}
+
+#global_nav li.emails a {
+  background-position: 8px -490px;
+}
+
+#global_nav li.emails.active a {
+  background-position: 8px -531px;
 }
 
 /* ============== [ PAGE ] ============== */
@@ -122,6 +130,21 @@
   font-size: 16px;
   font-weight: normal;
   margin: 0;
+}
+
+.destroy_link{
+  margin-top: 1%;
+  float: right;
+}
+
+/* =============== [ FILTERS TAB ]===================== */
+
+.filter_element{
+  display: inline;
+}
+
+.hr_filter{
+  margin-bottom: 0;
 }
 
 /* =============== [ SUMMARY TAB ]===================== */
@@ -185,19 +208,6 @@
 
 }
 
-.activities_filter_element{
-  display: inline;
-}
-
-.hr_activities_table{
-  margin-bottom: 0;
-}
-
-.project_datepicker_element {
-  display: inline;
-  width: 100px;
-}
-
 /* ================== [ FORMS TAB ] =============== */
 
 .show-form-link{
@@ -220,10 +230,6 @@
   text-align: left;
 }
 
-#btn_full_data{
-  visibility:hidden;
-}
-
 .form_filter_subject{
   display:inline;
 }
@@ -234,14 +240,6 @@
 }
 
 /* ================== [ CLIENTS TAB ] =============== */
-
-.client_filter_element{
-  display:inline;
-}
-
-.hr_clients_table{
-  margin-bottom: 0%;
-}
 
 .clients_table {
   width: 100%;
@@ -257,13 +255,44 @@
 
   .client_name {
     text-decoration: underline;
-    color: inherit;
-    font-weight: bold;
   }
 
   .client_projects_count, .client_users_count {
     font-weight: normal;
     margin-top: 0;
+  }
+
+}
+
+.client_table {
+  width: 100%;
+
+  tr > td {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-bottom: 1px solid #EEEEEE;
+  }
+
+  .avatar {
+    width: 8%;
+  }
+
+  .client_name{
+    text-decoration: underline;
+  }
+
+  .client_info{
+    padding-left: 2%;
+  }
+
+  .client_image {
+    max-height: 100px;
+  }
+
+  .client_data {
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
 }
@@ -284,34 +313,57 @@
 
 /* =============== [ PROJECTS TAB ]===================== */
 
-.show-project-link{
-  font-family: Arial;
-  font-size: 20px;
-  font-weight: bold;
-  font-style: normal;
-  text-decoration: underline;
-  color: rgb(51, 51, 51);
-  text-align: left;
+.projects_table {
+  width: 100%;
+
+  tr > td {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-bottom: 1px solid #EEEEEE;
+  }
+
+  .avatar {
+    width: 12%;
+  }
 }
 
-.show-project-name{
-  font-family: Arial;
-  font-size: 20px;
-  font-weight: bold;
-  font-style: normal;
-  text-decoration: underline;
-  color: rgb(51, 51, 51);
-  text-align: left;
+.projects_table .avatar .mood_image {
+  width: 100%;
+}
+
+.projects_table .project_info {
+  padding-left: 2%;
+
+  .project_name {
+    text-decoration: underline;
+  }
+
+  .edit-project-link{
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .project_client {
+    font-weight: normal;
+    margin-top: 0;
+  }
+
+}
+
+#new_project, #edit_project{
+
+  .project_description_field{
+    margin-bottom: 2%;
+  }
+
+  .project_description_text{
+    width: 100%;
+    resize: vertical;
+  }
+
 }
 
 /* ================== [ USERS TAB ] =============== */
-
-.name-filter
-{
-  font-size: 16px;
-  font-weight: bold;
-  text-align: left;
-}
 
 .user-name
 {
@@ -330,8 +382,6 @@
 
 .show-user-link
 {
-  font-size: 26px;
-  font-weight: bold;
   text-decoration: underline;
 }
 
@@ -378,4 +428,29 @@
 
 .user_image{
   max-height: 100px;
+}
+
+/* ================== [ EMAILS TAB ] =============== */
+
+.properties_table{
+
+  width: 100%;
+
+  tr > td {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-bottom: 1px solid #EEEEEE;
+  }
+
+  .property_name_field{
+    width: 40%;
+  }
+  .csm_property_name{
+    margin-left: 10%;
+  }
+
+  .property_value_text{
+    margin: 0;
+  }
+
 }

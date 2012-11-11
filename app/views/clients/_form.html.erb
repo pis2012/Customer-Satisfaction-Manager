@@ -24,8 +24,10 @@
 
     <br>
 
-    <%= f.submit t('buttons.create'), :class => "btn" %> &nbsp <%= t('buttons.or') %>
-    <%= link_to t('buttons.cancel'), :back %>
+    <%= f.submit t('buttons.create'), :class => "btn" %>
+    <button class="btn btn-link clients-link" type="button" data-url="<%= clients_path %>">
+      <%= t('buttons.cancel')%>
+    </button>
 
 <% end %>
 

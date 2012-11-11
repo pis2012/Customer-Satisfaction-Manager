@@ -1,23 +1,49 @@
-<div class="clients_index">
+<!-- page header -->
+<div class="page_header">
+  <h1><%= t('admin.tabs.clients') %></h1>
 
-  <div class="clients_filter form-inline">
-    <h5 class="client_filter_element"><%= t('form.name_filter') %></h5>
-    &nbsp;
-    <%= text_field_tag "clients_name_filter" %>
-    &nbsp;
-    <%= button_tag(t('buttons.filter'), :class => "btn") %>
+  <div class="add_element">
+    <button class="btn btn-link new-client-link" data-url="<%= new_client_path %>">
+      <i class="icon-plus icon-white"></i> <%= t('client.new_client') %>
+    </button>
   </div>
-  <hr class="hr_clients_table">
+
+</div>
+<!--// page header -->
+
+<!-- page contents -->
+<div class="page_content" id="clients-content">
+
+  <%= form_tag(clients_name_filter_path, :method => "get", :remote => true) do %>
+      <div class="clients_filter form-inline">
+        <h5 class="filter_element"><%= t('admin.filter_name') %></h5>
+        &nbsp;
+        <%= text_field_tag "clients_filter_text", @last_clients_filter_text %>
+        &nbsp;
+        <%= button_tag(t('buttons.filter'), :class => "btn") %>
+      </div>
+  <% end %>
+
+  <hr class="hr_filter">
+
   <table class="clients_table">
     <% @clients.each do |client| %>
-        <tr>
+        <tr id="row_client_<%= client.id %>">
           <td class="client_info">
-            <h4 class="client_name"><a href="#show-client-<%= client.id.to_s %>" class="show-client-link" data-url="<%= clients_show_path(client.id) %>"><%= client.name %></a></h4>
-            <h6 class="client_projects_count"><%= t('client.cout_project', :count => client.projects.count.to_s) %></h6>
-            <h6 class="client_users_count"><%= t('client.cout_users', :count => client.users.count.to_s) %></h6>
+            <h4 class="client_name">
+              <a href="#show-client-<%= client.id.to_s %>" class="show-client-link"
+                 data-url="<%= client_path(client) %>"><%= client.name %>
+              </a>
+            </h4>
+            <h6 class="client_projects_count">
+              <%= t('client.projects_count', :count => client.projects.count.to_s) %>
+            </h6>
+            <h6 class="client_users_count">
+              <%= t('client.users_count', :count => client.users.count.to_s) %>
+            </h6>
           </td>
         </tr>
     <% end %>
   </table>
-
 </div>
+<!--// page contents -->

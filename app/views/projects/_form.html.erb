@@ -1,55 +1,75 @@
-<%= form_for(@project) do |f| %>
+<%= form_for(@project, :remote => true, :html => {:class => "form-horizontal"}) do |f| %>
 
     <% if @project.errors.any? %>
         <div class="alert alert-error">
           <% if @project.errors.count > 1 %>
-              <h4><%= t('activerecord.errors.template.header.other', :model=> @project.class.name, :count=> @project.errors.count) %></h4>
+              <h4><%= t('activerecord.errors.template.header.other_changes', :count => @project.errors.count) %></h4>
           <% else %>
-              <h4><%= t('activerecord.errors.template.header.one',:model=> @project.class.name) %></h4>
+              <h4><%= t('activerecord.errors.template.header.one_changes') %></h4>
           <% end %>
-          <% @project.errors.full_messages.each do |msg| %>
-              <strong><%= msg %></strong>
-          <% end %>
+          <ul>
+            <% @project.errors.full_messages.each do |msg| %>
+                <li><strong><%= msg %></strong></li>
+            <% end %>
+          </ul>
         </div>
     <% end %>
-
-    <br/>
-
-
-    <div class="project-name">
-      <%= f.text_field :name,  :placeholder => I18n.t('proyect.name') %>
+    <div class="control-group">
+      <div class="project_name_field">
+        <%= f.label :name, "#{t('project.name')}: ", :class => "project_name_label control-label" %>
+        <div class="controls">
+          <%= f.text_field :name, :placeholder => t('project.name') %>
+        </div>
+      </div>
     </div>
-    <br/>
-
-    <div class="project-description">
-      <%= f.text_field :description, :placeholder => I18n.t('proyect.description') %>
+    <div class="control-group">
+      <div class="project_client_field">
+        <%= f.label :client, "#{t('project.client')}: ", :class => "project_client_label control-label" %>
+        <div class="controls">
+          <%= f.select :client_id, @clients.map { |client| [client.name, client.id] },
+                       {:class => "project_client_select"},:prompt => true %>
+        </div>
+      </div>
     </div>
-    <br/>
-
-    <div class="project-client">
-      <%= f.label :client %><br />
-      <%= f.select(:client_id,Client.all.map {|client| [client.name, client.id]},:prompt => true) %>
+    <hr>
+    <div class="project_description_field">
+      <%= f.label :description, t('project.description'), :class => "project_description_label" %>
+      <%= f.text_area :description, :rows => 10, :class => "project_description_text" %>
     </div>
-    <br/>
-
-    <label class="control-label checkbox-hand" >
-      <%= t('proyect.finalized')%>&nbsp;<%= f.check_box(:finalized) %>
-    </label>
-
-
-    <div class="project-date">
-    <%= f.label :end_date %><br />
-    <%= f.date_select :end_date %>
-  </div>
-
-      <!--<div class="field">
-        < %= f.label :status %><br />
-        < %= f.text_field :status %>
-      </div>-->
-    <div class="actions">
-        <%= f.submit  I18n.t('buttons.create'), :class => "btn" %> &nbsp <%= I18n.t('buttons.or') %>
-        <button class="btn btn-link projects-link" type="button" data-url="<%= admin_projects_path %>">
-          <%= I18n.t('buttons.cancel')%>
-        </button>
+    <hr>
+    <div class="control-group">
+      <div class="project_end_date_field">
+        <%= f.label :end_date, "#{t('project.end_date')}:", :class => "control-label" %>
+        <div class="controls">
+          <div class="input-append date" id="datepicker" data-date="<%= get_project_short_end_date %>"
+               data-date-format="dd/mm/yyyy">
+            <%= text_field_tag :end_date, get_project_short_end_date, :class => "span7", :size => 16 %>
+            <span class="add-on"><i class="icon-calendar"></i></span>
+          </div>
+          <!--%= f.date_select :end_date %>  -->
+        </div>
+      </div>
     </div>
+    <!-- if the project is been edited then we show the finalized field -->
+    <% unless @project.new_record? %>
+        <div class="control-group">
+          <div class="project_finalized_field">
+            <div class="controls">
+            <label class="checkbox">
+              <%= f.check_box :finalized, :type => "checkbox" %> <%= t('project.finalized') %>
+            </label>
+            </div>
+          </div>
+        </div>
+    <% end %>
+    <br>
+    <% if @project.new_record? %>
+        <%= f.submit t('buttons.create'), :class => "btn" %>
+
+    <% else %>
+        <%= f.submit t('buttons.save_changes'), :class => "btn" %>
+    <% end %>
+    <button class="btn btn-link projects-link" type="button" data-url="<%= projects_path %>">
+      <%= t('buttons.cancel') %>
+    </button>
 <% end %>

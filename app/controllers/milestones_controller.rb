@@ -32,7 +32,8 @@ class MilestonesController < ApplicationController
 
     respond_to do |format|
       if @milestone.save
-        @view = {:project => @milestone.project, :graph => @milestone.project.get_mood_graph}
+        @project = @milestone.project
+        @graph = @project.get_mood_graph
         format.js
       else
         format.js { render action: 'new' }
@@ -42,12 +43,13 @@ class MilestonesController < ApplicationController
 
 
   def destroy
-    @milestone = Milestone.find(params[:id])
-    @milestone.destroy
+    milestone = Milestone.find(params[:id])
+    milestone.destroy
 
     respond_to do |format|
       if request.xhr?
-        @view = {:project => @milestone.project, :graph => @milestone.project.get_mood_graph}
+        @project = milestone.project
+        @graph = @project.get_mood_graph
         format.js { render action: "create"}
       else
         format.js { render action: "create"}

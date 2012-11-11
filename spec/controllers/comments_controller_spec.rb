@@ -34,7 +34,7 @@ describe CommentsController, :type => :controller do
     p1 = @valid_attributes[:project]
     feedback = Feedback.create(project: p1, user: user, feedback_type: type_skype, subject: "Email", content: "Ipasdasdasd asdasdasdasda sdas das das as asd asd as das d asd ads as das das das da dsdasdbas asd asdasdsada s as dasd asd asdas das d asd asdas dasd asdasdas dasu")
 
-    post :create, feedback_id: feedback.id, comment: {content: content, created_at: created_at}, format: 'js'
+    post :create, comment: {content: content, feedback_id: feedback.id, created_at: created_at}, format: 'js'
 
     assert_response :success
 

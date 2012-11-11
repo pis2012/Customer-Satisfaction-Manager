@@ -1,26 +1,42 @@
-<div class="forms_div">
-  <div class="forms_filter form-inline">
-    <h5 class="form_filter_subject"><%= t('form.name_filter') %></h5>
-    &nbsp;
-    <%= text_field_tag "form_name_filter" %>
-    &nbsp;
-    <%= button_tag( t('buttons.filter'), :id => "form_filter_btn", :class => "btn") %>
+<!-- page header -->
+<div class="page_header">
+  <h1><%= I18n.t ('admin.forms') %></h1>
+
+  <div class="loading-gif">
+    <%= image_tag("ajax-loader.gif") %>
   </div>
-  <hr/>
-  <div id="forms_list">
-    <% @forms.each do |form| %>
-        <div class="form_item" value="<%= form[:name] %>">
-          <h4>
-            <a href="#show-form" class="show-form-link" data-url="<%= form_path form %>"><%= form[:name] %></a>
-          </h4>
-          <%= t('form.last_total_answers') + form[:actual_total_answers].to_s %>
-          <br/>
-          <br/>
-        </div>
-    <% end %>
+  <div class="add_element">
+    <button class="btn btn-link new-form-link" data-url="<%= new_form_path %>">
+      <i class="icon-plus icon-white"> </i> <%= t('form.add_form') %>
+    </button>
   </div>
 </div>
-
-
-
+<!--// page header -->
+<!-- page contents -->
+<div class="page_content" id="forms-content">
+    <div class="forms_div">
+      <div class="forms_filter form-inline">
+        <h5 class="form_filter_subject"><%= t('form.name_filter') %></h5>
+        &nbsp;
+        <%= text_field_tag "form_name_filter" %>
+        &nbsp;
+        <%= button_tag( t('buttons.filter'), :id => "form_filter_btn", :class => "btn") %>
+      </div>
+      <hr/>
+      <div id="forms_list">
+        <% @forms.each do |form| %>
+            <div class="form_item" id="<%= form[:name] %>">
+              <h4>
+                <a href="#show-form" class="show-form-link" data-url="<%= form_path form %>"><%= form[:name] %></a>
+              </h4>
+              <%= t('form.last_total_answers') + form[:actual_total_answers].to_s %>
+              <br/>
+              <%= t('form.last_clients') + form.get_actual_clients %>
+              <br/>
+              <br/>
+            </div>
+        <% end %>
+      </div>
+    </div>
+</div>
 

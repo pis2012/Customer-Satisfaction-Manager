@@ -26,10 +26,6 @@ class ActivitySpec
       @valid_attributes[:adusr].save :validate => false
     end
 
-    it "initialize" do
-       act = Activity.new("action", "author", Time.now, "image_path")
-    end
-
     it "recent_activity" do
       content = 'Comment1'
       created_at = Time.now
@@ -42,7 +38,7 @@ class ActivitySpec
                                     :content => "Ipasdasdasd asdasdasdasda sda asd asdasdsada s as dasd asd asdas das d asd asdas dasd asdasdas dasu",
                                     :created_at => Time.now, :updated_at => Time.now)
 
-      Activity.recent_activity(Time.now - 30.days,10)
+      Activity.recent_activity
     end
 
     it "activity_filter" do

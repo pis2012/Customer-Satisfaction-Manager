@@ -37,7 +37,7 @@ class FeedbacksControllerSpec
       user = @valid_attributes[:usr]
       sign_in user
       post :create, project_id: @valid_attributes[:project].id,feedback: {project_id: @valid_attributes[:project].id, feedback_type_id: @valid_attributes[:type_skype].id,
-                               content: @valid_attributes[:contenido], subject: @valid_attributes[:subject] } , format: 'js'
+                               content: @valid_attributes[:contenido], subject: @valid_attributes[:subject], user: user } , format: 'js'
 
       assert_response :success
 
@@ -81,10 +81,10 @@ class FeedbacksControllerSpec
     it "def new" do
       user = @valid_attributes[:usr]
       sign_in user
-      get :new
+
+      get :new, format: "json", project_id:  @valid_attributes[:project].id
 
       assert_response :success
-
       sign_out user
     end
 

@@ -1,24 +1,32 @@
 class FeedbacksController < ApplicationController
-
   before_filter :authenticate_user!
-
   layout false
+
+  # GET /feedbacks
+  # GET /feedbacks.json
+  def index
+    @feedbacks = Feedback.all
+    respond_to do |format|
+      if request.xhr?
+        format.html # index.html.erb
+      end
+      format.json { render json: @feedbacks }
+    end
+  end
 
   def project_feedbacks
     @feedbacks = Feedback.project_feedbacks params[:project_id]
 
     respond_to do |format|
       if request.xhr?
-      format.html { render action: 'index' }
-        end
+        format.html { render action: 'index' }
+      end
     end
   end
-  Project.where('start_date <= ?', Time.now)
 
   def date_filter
-    date = Time.parse(params[:date])
-    @feedbacks = Feedback.where('created_at >= ?', date).where(project_id:params[:project_id])
-    @project = Project.find(params[:project_id])
+    @feedbacks = Feedback.date_filter_feedbacks(params[:project_id], Time.parse(params[:date]))
+
     respond_to do |format|
       format.js { render action: "index" }
     end
@@ -28,30 +36,27 @@ class FeedbacksController < ApplicationController
   # GET /feedbacks/1.json
   def show
     @feedback = Feedback.find(params[:id])
-    @project = @feedback.project
-    @comments = @feedback.comments
     @comment = Comment.new
 
     respond_to do |format|
       if request.xhr?
-      format.html # show.html.erb
+        format.html # show.html.erb
       end
       format.json { render json: @feedback }
     end
   end
 
-  # GET /feedbacks/new
-  # GET /feedbacks/new.json
   def new
     @feedback = Feedback.new(:project_id => params[:project_id])
     @feedback_types = current_user.possible_feedback_types
     respond_to do |format|
-      format.html { }
-      format.json { render json: @feedback }
+      if request.xhr?
+        format.html {}
+      end
+      format.json { render json: @feedbarek }
     end
   end
 
-  # GET /feedbacks/1/edit
   def edit
     @feedback_types = current_user.possible_feedback_types
     @feedback = Feedback.find(params[:id])
@@ -62,20 +67,18 @@ class FeedbacksController < ApplicationController
   def create
     @feedback = Feedback.new(params[:feedback])
 
-    @feedback.project_id = params[:project_id]
-    @feedback.user_id = current_user.id
 
     respond_to do |format|
       if @feedback.save
-       # User.send_feedback_notification(@feedback)
+        # User.send_feedback_notification(@feedback)
         Thread.new(@feedback) { |feedback|
-         User.send_feedback_notification(feedback)
+          User.send_feedback_notification(feedback)
         }
-        @feedbacks = Feedback.find_all_by_project_id(params[:project_id])
+        @feedbacks = Feedback.project_feedbacks @feedback.project_id
         format.js { render action: "index" }
       else
         @feedback_types = current_user.possible_feedback_types
-        format.js { }
+        format.js {}
       end
     end
   end
@@ -91,7 +94,7 @@ class FeedbacksController < ApplicationController
         format.js { render action: "index" }
       else
         @feedback_types = current_user.possible_feedback_types
-        format.js { }
+        format.js {}
       end
     end
   end

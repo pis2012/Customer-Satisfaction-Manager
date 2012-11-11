@@ -48,10 +48,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     @user.skip_confirmation!
-
     @user.role = Role.find_by_name Role::CLIENT_ROLE
+
+
     respond_to do |format|
       if @user.save
+        @user.create_profile
         #format.html { redirect_to @user, notice: 'User was successfully created.' }
         #format.json { render json: @user, status: :created, location: @user }
         @users = User.all
@@ -109,9 +111,8 @@ class UsersController < ApplicationController
   end
 
   def name_filter
-    name = params[:name]
-    u = User.arel_table
-    @users = User.where(u[:full_name].matches("%#{name}%"))
+    @last_filter_text = params[:users_filter_text]
+    @users = User.related_users @last_filter_text
 
     respond_to do |format|
       format.js { render action: "index" }

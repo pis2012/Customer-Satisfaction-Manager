@@ -1,12 +1,6 @@
 <div id="home">
   <% if user_signed_in? %>
       <% if current_user.client? %>
-
-          <!--<p>
-           View all faces.
-           Those belonging to the user's client projects look bigger logged and can be click
-          </p>-->
-
           <div class="container">
             <div class="row-fluid">
               <div class="span1">
@@ -14,11 +8,9 @@
               <div class="span10">
                 <div class="homecenter">
                   <h2><%= t('mood.mood_of_our_customers') %></h2>
-                  <% count = 0 %>
-
                   <% @projects = Project.all.shuffle %>
                   <% @projects.each do |project| %>
-                      <% mood = project.moods.first %>
+                      <% mood = project.mood %>
 
                       <% if project.client_id == current_user.client_id %>
                           <div class="chomefacewrapperbig">
@@ -38,20 +30,11 @@
                           </div>
                       <% end %>
 
-
-                      <% if count == 4 %>
-                          <% count = 0 %>
-                      <% else %>
-                          <% count += 1 %>
-                      <% end %>
-
-                      <!-- < %= project.name  %> -->
-                      <!--< %= mood.id  %>-->
                   <% end %>
                 </div>
-                </br>
-                </br>
-                </br>
+                <br>
+                <br>
+                <br>
               </div>
               <div class="span1">
               </div>
@@ -70,25 +53,22 @@
                   <h2><%= t('mood.mood_of_our_customers') %></h2>
                   <% @projects = Project.all.shuffle %>
                   <% @projects.each do |project| %>
-                      <% mood = project.moods.first %>
-
+                      <% mood = project.mood %>
 
                       <div class="ahomefacewrapper">
                         <%= link_to change_profile_project_path(project) do %>
                             <div class="homeface">
-                              <%= image_tag('moods/normal/' + mood.get_mood_img, :class => 'img-rounded', :rel => 'tooltip', :title => project.name) %>
+                              <%= image_tag('moods/normal/' + mood.get_mood_img, :class => 'img-rounded') %>
                               <p class="homeprojectnamev"><%= project.name %></p>
                             </div>
                         <% end %>
                       </div>
 
-                      <!-- < %= project.name  %> -->
-                      <!--< %= mood.id  %>-->
                   <% end %>
                 </div>
-                </br>
-                </br>
-                </br>
+                <br>
+                <br>
+                <br>
               </div>
               <div class="span1">
               </div>
@@ -108,24 +88,24 @@
           <div class="span2">
           </div>
           <div class="span8">
-            <div class="vhomecenter">
-              <div class="vheaderimage">
-                <%= image_tag "moods/big/5.png" %>
-              </div>
-              <div class="vheader">
-                <h2><%= t('admin.customer_satisfaction_manager') %></h2>
-                </br>
-                <p>
-                  Lorem ipsum ad his scripta blandit partiendo, eum fastidii accumsan euripidis in, eum
-                  liber hendrerit an. Qui ut wisi vocibus suscipiantur, quo dicit ridens inciderint id.
-                </p>
+            <div class="row-fluid">
+              <div class="vhomecenter">
+                <div class="vheaderimage">
+                  <%= image_tag "moods/big/5.png" %>
+                </div>
+                <div class="vheader">
+                  <h2><%= t('admin.customer_satisfaction_manager') %></h2>
+                  <br>
 
-                <p>
-                  <a href="/" class="continue-reading">Continue reading...</a>
-                </p>
+                  <p>
+                    <%= t('home.Text1') %>...
+                  </p>
+
+                  <p><%= link_to t('home.Continue_reading'), csm_information_path, :class => "continue-reading" %>
+                  </p>
+                </div>
               </div>
             </div>
-
             <div class="homecenter">
               <hr/>
               <div class="vhomeleft">
@@ -134,7 +114,7 @@
 
               <% @projects = Project.all.shuffle %>
               <% @projects.each do |project| %>
-                  <% mood = project.moods.first %>
+                  <% mood = project.mood %>
 
                   <div class="vhomefacewrapper">
                     <div class="homeface">
@@ -157,6 +137,78 @@
   <% end %>
 </div>
 
+<% unless user_signed_in? %>
+
+    <div id="happiness_header">
+      <div class="container">
+        <div class="row-fluid">
+          <div class="span2">
+          </div>
+
+          <div class="span8">
+            <div class="happiness_text"><%= t('home.happiness') %></div>
+          </div>
+
+          <div class="span2">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br/>
+
+    <div class="container">
+      <div class="row-fluid">
+        <div class="span2">
+        </div>
+
+        <div class="span8">
+          <div class="row-fluid">
+            <div class="happinessMood">
+              <p><%= t('home.HText1') %></p>
+
+              <p><%= t('home.HText2') %></p>
+
+              <p><%= t('home.HText3') %></p>
+
+              <p><%= t('home.HText4') %></p>
+
+              <p><%= t('home.HText5') %></p>
+            </div>
+
+            <div class="homecenter">
+              <% (1..5).each do |i| %>
+                  <% cant = Project.joins(:mood).where('moods.status' => i).count() %>
+                  <div class="vhomefacewrapper">
+                    <div>
+                      <div class="moodWrapper">
+                        <%= image_tag('moods/happiness/'+i.to_s+'.png') %>
+                        <% if cant > 9 %>
+                            <div class="moodcantbig">
+                              <%= cant %>
+                            </div>
+                        <% else %>
+                            <div class="moodcantsmall">
+                              <%= cant %>
+                            </div>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="span2">
+        </div>
+      </div>
+    </div>
+<% end %>
+
+<br/>
+
 <div id="footer">
-  <div class="container"></div>
+  <%= render template: "home/footer" %>
 </div>

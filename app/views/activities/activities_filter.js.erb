@@ -1,1 +1,1 @@
-$('#activities_search_result').html("<%= escape_javascript( render "activities/activities" ) %>");
+$('#activities_search_result').html("<%= escape_javascript( render "activities/activities", :locals => { :recent => false } ) %>");

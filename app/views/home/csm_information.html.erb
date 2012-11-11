@@ -1,0 +1,150 @@
+<br>
+<br>
+<br>
+<br>
+<div class="csm_info">
+  <div class="container">
+    <div class="row-fluid">
+      <div class="span2">
+      </div>
+      <div class="span8">
+
+        <div class="row-fluid">
+
+          <table class="biggest_face_table">
+            <tr>
+              <td class="biggest_face">
+                <%= image_tag "csm_info/biggest_face.png", :class => "biggest_face_img" %>
+              </td>
+              <td class="biggest_face_text">
+                <p> <%= t('home.Text1') %> </p>
+              </td>
+            </tr>
+          </table>
+
+        </div>
+
+        <div class="row-fluid">
+
+          <table class="medium_face_table">
+            <tr>
+              <td class="medium_face_text">
+                <p><%= t('home.Text2') %> </p>
+              </td>
+              <td class="medium_face">
+                <%= image_tag "csm_info/medium_face.png", :class => "medium_face_img" %>
+              </td>
+            </tr>
+          </table>
+
+        </div>
+
+
+        <div class="row-fluid">
+
+          <table class="smaller_faces_table">
+            <tr>
+              <td class="smaller_faces">
+                <%= image_tag "csm_info/smaller_faces.png", :class => "smaller_faces_img" %>
+              </td>
+              <td class="smaller_faces_text">
+                <p><%= t('home.Text3') %>
+                </p>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+      <div class="span2">
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="feedbacks_header">
+    <div class="container">
+      <div class="row-fluid">
+        <div class="span2">
+        </div>
+
+        <div class="span8">
+          <div class="feedbacks_text">Feedbacks</div>
+        </div>
+
+        <div class="span2">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <div class="container">
+    <div class="row-fluid">
+      <div class="span2">
+      </div>
+      <div class="span8">
+        <p><%= t('home.Text4') %></p>
+          <table class="feedbacks_info_table">
+            <thead>
+            <tr>
+              <th class="feedback_img">
+                <%= image_tag "feedbacks/comment.png", :class => "feedback_img" %>
+              </th>
+              <th class="feedback_img">
+                <%= image_tag "feedbacks/recognition.png", :class => "feedback_img" %>
+              </th>
+              <th class="feedback_img">
+                <%= image_tag "feedbacks/skype.png", :class => "feedback_img" %>
+              </th>
+              <th class="feedback_img">
+                <%= image_tag "feedbacks/email.png", :class => "feedback_img" %>
+              </th>
+            </tr>
+            </thead>
+            <tr>
+              <td class="feedback_name">
+                <h4 class="feedback_name"><%= t('home.Titulo1') %></h4>
+              </td>
+              <td class="feedback_name">
+                <h4 class="feedback_name"><%= t('home.Titulo2') %></h4>
+              </td>
+              <td class="feedback_name">
+                <h4 class="feedback_name"><%= t('home.Titulo3') %></h4>
+              </td>
+              <td class="feedback_name">
+                <h4 class="feedback_name"><%= t('home.Titulo4') %></h4>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="feedback_text">
+                <p><%= t('home.Text5') %></p>
+              </td>
+              <td class="feedback_text">
+                <p><%= t('home.Text6') %></p>
+              </td>
+              <td class="feedback_text">
+                <p><%= t('home.Text7') %></p>
+              </td>
+              <td class="feedback_text">
+                <p><%= t('home.Text8') %></p>
+              </td>
+            </tr>
+
+          </table>
+      </div>
+  </div>
+  </div>
+</div>
+
+<br>
+<br>
+
+<div id="footer">
+  <%= render template: "home/footer" %>
+</div>

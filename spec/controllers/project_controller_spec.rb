@@ -49,21 +49,6 @@ class ProjectControllerSpec
     end
 
 
-    it "def show" do
-      user = @valid_attributes[:usr]
-      sign_in user
-      @project1=Project.create(name: "Projecto test",
-                               description: "projecto test",
-                               end_date:'2013-01-01 00:00:00',
-                               finalized: false)
-
-      get :show, id: @project1.to_param, format: 'json', default: 'default'
-
-      assert_response :success
-      sign_out user
-    end
-
-
     it "def destroy" do
       user = @valid_attributes[:usr]
       sign_in user
@@ -86,12 +71,12 @@ class ProjectControllerSpec
                               end_date:'2013-01-01 00:00:00',
                               finalized: false)
 
-      put :update, id: project1.id, project: {name:'Proyecto 235',
-                                                     description:'Descripcion de proyecto 435'}
+      put :update, id: project1.id,
+          project: {name:'Proyecto 235',description:'Descripcion de proyecto 435'},
+          format: "js"
 
-      @var1 = projects_path(assigns[:project])
-      @var2 = @var1.gsub(".", "/")
-      response.should redirect_to(@var2)
+
+      assert_response :success
       sign_out user
     end
 
@@ -110,7 +95,7 @@ class ProjectControllerSpec
       user = @valid_attributes[:usr]
       sign_in user
 
-      get :show_project_data, format: 'json', project_id: 1
+      get :show_project_data, format: 'json', project_id: @valid_attributes[:project1].id
 
       assert_response :success
       sign_out user
@@ -119,7 +104,7 @@ class ProjectControllerSpec
     it "change_mood" do
       user = @valid_attributes[:usr]
       sign_in user
-      post :change_mood, new_status: 5
+      post :change_mood, new_status: 5, project_id: @valid_attributes[:project1].id
       sign_out user
     end
 
@@ -137,10 +122,10 @@ class ProjectControllerSpec
       sign_out user
     end
 
-    it "name_filter" do
+    it "text_filter" do
       user = @valid_attributes[:usr]
       sign_in user
-      post :name_filter, name: "name", format: "js"
+      get :text_filter, projects_filter_text: "name", format: "js"
       assert_response :success
       sign_out user
     end

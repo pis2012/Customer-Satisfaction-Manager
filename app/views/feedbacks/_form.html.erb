@@ -3,9 +3,10 @@
     <% if @feedback.errors.any? %>
         <div class="alert alert-error">
           <% if @feedback.errors.count > 1 %>
-            <h4><%= t('activerecord.errors.template.header.other', :model=> @feedback.class.name, :count=> @feedback.errors.count) %></h4>
+              <h4><%= t('activerecord.errors.template.header.other', :model => @feedback.class.name,
+                        :count => @feedback.errors.count) %></h4>
           <% else %>
-            <h4><%= t('activerecord.errors.template.header.one',:model=> @feedback.class.name) %></h4>
+              <h4><%= t('activerecord.errors.template.header.one', :model => @feedback.class.name) %></h4>
           <% end %>
           <ul>
             <% @feedback.errors.full_messages.each do |msg| %>
@@ -15,20 +16,21 @@
         </div>
     <% end %>
 
-    <input id="feedback_project_id" name="project_id" size="30" type="hidden" value="<%= @feedback.project_id %>"/>
+    <input id="feedback_project_id" name="feedback[project_id]" type="hidden" value="<%= params[:project_id] %>"/>
+    <input id="feedback_user_id" name="feedback[user_id]" type="hidden" value="<%= current_user.id %>"/>
 
     <div class="form-horizontal">
       <div class="feedback_type_field control-group">
         <%= f.label :feedback_subject, t('feedback.feedback_type'), :class => "feedback_type_label control-label" %>
         <div class="feedback_type_select_control controls">
-          <%= f.select :feedback_type_id, @feedback_types.map { |fe| [fe.name, fe.id] }, {}, {:class => "feedback_type_select"} %>
+          <%= f.select :feedback_type_id, @feedback_types.map { |fe| [I18n.t("feedback."+fe.name), fe.id] }, {}, {:class => "feedback_type_select"} %>
         </div>
       </div>
 
       <div class="feedback_subject_field control-group">
         <%= f.label :subject, t('feedback.feedback_subject'), :class => "feedback_subject_label control-label" %>
         <div class="feedback_subject_text_control controls">
-          <%= f.text_field :subject, :class => "feedback_subject_text ", :placeholder => "Type something…" %>
+          <%= f.text_field :subject, :class => "feedback_subject_text ", :placeholder => t("feedback.Type_something") %>
         </div>
       </div>
 
@@ -43,14 +45,15 @@
 
       <!-- when a client creates a feedback, he cannot choose it's visibility. The default scope it's admins and clients -->
       <% if current_user.admin? %>
-      <%= f.label :visibility, t('feedback.feedback_visibility'), :class => "feedback_visibility_label" %> &nbsp&nbsp
-      <label class="checkbox-hand">
-        <%= f.check_box :mooveit_visibility, :type => "checkbox" %><%= t('feedback.Moove_IT_employee') %>
-      </label>
-      &nbsp;&nbsp;
-      <label class="checkbox-hand">
-        <%= f.check_box :client_visibility, :type => "checkbox" %><%= t('admin.clients') %>
-      </label>
+          <%= f.label :visibility, t('feedback.feedback_visibility'), :class => "feedback_visibility_label" %>
+          &nbsp&nbsp
+          <label class="checkbox-hand">
+            <%= f.check_box :mooveit_visibility, :type => "checkbox" %><%= t('feedback.Moove_IT_employee') %>
+          </label>
+          &nbsp;&nbsp;
+          <label class="checkbox-hand">
+            <%= f.check_box :client_visibility, :type => "checkbox" %><%= t('admin.clients') %>
+          </label>
       <% else %>
           <input id="feedback_client_visibility" type="hidden" value="1" name="feedback[client_visibility]">
       <% end %>
@@ -58,7 +61,7 @@
     </div>
     <br>
     <br>
-    <%= f.submit t('buttons.create'), :class => "btn" %> &nbsp <%= t('buttons.or') %>
+    <%= f.submit t('buttons.create'), :class => "btn" %>
     <button class="btn btn-link feedbacks-link" type="button" data-url="<%= project_feedbacks_path(:project_id => @feedback.project_id) %>">
       <%= t('buttons.cancel') %>
     </button>
