@@ -1,5 +1,9 @@
 class Feedback < ActiveRecord::Base
   default_scope :order => 'created_at desc'
+  scope :related_feedbacks, lambda { |text| where("subject LIKE '%' :tag '%' or content LIKE '%' :tag '%'", {:tag => text}) }
+  scope :latest_related_feedbacks, lambda { |text,limit| related_feedbacks(text).limit(limit) }
+  scope :recent_feedbacks, lambda { |date| Feedback.where('created_at >= ?', date) }
+  scope :latest_recent_feedbacks, lambda { |date,limit| recent_feedbacks(date).limit(limit) }
 
   TEN_MINUTES = 600
 
@@ -13,7 +17,7 @@ class Feedback < ActiveRecord::Base
                   :subject, :content, :created_at, :updated_at, :client_visibility, :mooveit_visibility, :feedback_type_id
 
   validates :feedback_type, :user, :project, :subject, :content, :presence => true
-  validates_length_of :content, :minimum => 100
+
 
   def self.reset_pk_sequence
     ActiveRecord::Base.connection.reset_pk_sequence!("Feedback")

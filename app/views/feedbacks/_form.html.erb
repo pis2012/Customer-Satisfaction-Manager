@@ -16,20 +16,21 @@
         </div>
     <% end %>
 
-    <input id="feedback_project_id" name="project_id" size="30" type="hidden" value="<%= @feedback.project_id %>"/>
+    <input id="feedback_project_id" name="feedback[project_id]" type="hidden" value="<%= params[:project_id] %>"/>
+    <input id="feedback_user_id" name="feedback[user_id]" type="hidden" value="<%= current_user.id %>"/>
 
     <div class="form-horizontal">
       <div class="feedback_type_field control-group">
         <%= f.label :feedback_subject, t('feedback.feedback_type'), :class => "feedback_type_label control-label" %>
         <div class="feedback_type_select_control controls">
-          <%= f.select :feedback_type_id, @feedback_types.map { |fe| [fe.name, fe.id] }, {}, {:class => "feedback_type_select"} %>
+          <%= f.select :feedback_type_id, @feedback_types.map { |fe| [I18n.t("feedback."+fe.name), fe.id] }, {}, {:class => "feedback_type_select"} %>
         </div>
       </div>
 
       <div class="feedback_subject_field control-group">
         <%= f.label :subject, t('feedback.feedback_subject'), :class => "feedback_subject_label control-label" %>
         <div class="feedback_subject_text_control controls">
-          <%= f.text_field :subject, :class => "feedback_subject_text ", :placeholder => "Type something…" %>
+          <%= f.text_field :subject, :class => "feedback_subject_text ", :placeholder => t("feedback.Type_something") %>
         </div>
       </div>
 
@@ -60,7 +61,7 @@
     </div>
     <br>
     <br>
-    <%= f.submit t('buttons.create'), :class => "btn" %> &nbsp <%= t('buttons.or') %>
+    <%= f.submit t('buttons.create'), :class => "btn" %>
     <button class="btn btn-link feedbacks-link" type="button" data-url="<%= project_feedbacks_path(:project_id => @feedback.project_id) %>">
       <%= t('buttons.cancel') %>
     </button>

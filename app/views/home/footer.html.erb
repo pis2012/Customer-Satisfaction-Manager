@@ -1,0 +1,74 @@
+<div id="footer">
+  <% if user_signed_in? %>
+
+      <div id="footer_global">
+        <div class="container">
+          <div class="row-fluid">
+            <div class="span1">
+            </div>
+            <div class="span10">
+              <ul class="outer_footer_list">
+                <li class="ofl_li"><a href="http://www.moove-it.com">Moove-IT ·</a></li>
+                <li class="ofl_li"><a href="/">&nbsp;<%= t('home.csm') %> ·</a></li>
+                <li class="ofl_li"><a href="http://www.fing.edu.uy/inco/cursos/pis">&nbsp;<%= t('home.pis_team') %></a></li>
+              </ul>
+            </div>
+            <div class="span1">
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <% else %>
+      <div id="footer_local">
+        <div class="container">
+          <div class="row-fluid">
+            <div class="span2">
+            </div>
+            <div class="span8">
+              <ul class="outer_footer_list">
+                <li class="ofl_li">
+                  <div class="footer_title"><%= t('home.company') %></div>
+                  <ul class="inner_footer_list">
+                    <li><a href="http://www.moove-it.com"><%= t('home.who_we_are') %></a></li>
+                    <li><a href="http://www.moove-it.com/about"><%= t('home.what_we_believe') %></a></li>
+                    <li><a href="http://www.moove-it.com/services/product_development"><%= t('home.what_we_do') %></a></li>
+                  </ul>
+                </li>
+
+                <li class="ofl_li">
+                  <div class="footer_title"><%=  t('home.csm') %></div>
+                  <ul class="inner_footer_list">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="<%= csm_information_path %>"><%= t('home.csm_information') %></a></li>
+                    <li><a href="<%= new_user_session_path %>">Login</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="span2">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="footer_global">
+        <div class="container">
+          <div class="row-fluid">
+            <div class="span2">
+            </div>
+            <div class="span8">
+              <ul class="outer_footer_list">
+                <li class="ofl_li"><a href="http://www.moove-it.com">Moove-IT ·</a></li>
+                <li class="ofl_li"><a href="/">&nbsp;<%= t('home.csm') %> ·</a></li>
+                <li class="ofl_li"><a href="http://www.fing.edu.uy/inco/cursos/pis">&nbsp;<%= t('home.pis_team') %></a></li>
+              </ul>
+            </div>
+            <div class="span2">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      </div>
+
+  <% end %>

@@ -93,7 +93,7 @@ class ClientsController < ApplicationController
 
   def name_filter
     @last_clients_filter_text = params[:clients_filter_text]
-    @clients = Client.text_filter_clients @last_clients_filter_text
+    @clients = Client.related_clients @last_clients_filter_text
 
     respond_to do |format|
       format.js { render :action => "index" }

@@ -554,7 +554,7 @@ p45.mood = Mood.create(project: p45,
             status: 5)
 p45.save
 
-admin_usr = User.new(role: rol_admin, client: client1,
+admin_usr = User.new(role: rol_admin,
                         username: 'admin',password:'admin',password_confirmation:'admin',
                         full_name:'Martin Cabrera', email:'cabrera@1234.com')
 admin_usr.skip_confirmation!

@@ -15,8 +15,8 @@
 
   # GET /projects/filter
   def text_filter
-    @projects = Project.text_filter_projects params[:projects_filter_text]
     @last_filter_text = params[:projects_filter_text]
+    @projects = Project.related_projects @last_filter_text
     respond_to do |format|
       format.js { render action: "index" }
     end

@@ -7,9 +7,6 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(params[:comment])
 
-    @comment.user_id = current_user.id
-    @comment.feedback = Feedback.find(params[:feedback_id])
-
     respond_to do |format|
       if @comment.save
         # User.send_comment_notification(@comment)
@@ -17,11 +14,11 @@ class CommentsController < ApplicationController
           User.send_comment_notification(comment)
         }
 
-        @feedback = @comment.feedback
+        @feedback = Feedback.find(@comment.feedback_id)
         @comment = Comment.new
         format.js { render action: "index" }
       else
-        @feedback = @comment.feedback
+        @feedback = Feedback.find(@comment.feedback_id)
         format.js { render action: "index" }
       end
     end

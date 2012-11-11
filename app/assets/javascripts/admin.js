@@ -17,7 +17,7 @@ $(document).on('click', '.summary-link', function () {
 //************** REPORTS TAB **************** //
 
 $(document).on('click', '.reports-link', function () {
-    updatePanel($(this).data('url'), 'reports_data', 'reports');
+    updatePanel($(this).data('url'), 'reports', 'reports');
     return false;
 });
 
@@ -58,7 +58,9 @@ $(document).on('click', '.new-client-link', function () {
     return false;
 });
 
-$(document).on('click', '.show-client-link', function () {
+$(document).on('click', '.show-client-link', function (e) {
+    e.preventDefault();
+    $('#myTab  a[href=#clients]').tab('show');
     updatePanel($(this).data('url'), 'show-client', 'show-client');
     return false;
 });
@@ -71,7 +73,7 @@ $(document).on('click', '.edit-client-link', function () {
 
 
 $(document).on('click', '.forms-link', function () {
-    updatePanel($(this).data('url'), 'forms-content', 'forms');
+    updatePanel($(this).data('url'), 'forms', 'forms');
     return false;
 });
 
@@ -80,8 +82,24 @@ $(document).on('click', '.new-form-link', function () {
     return false;
 });
 
+function updatePanelForm(path, client, id_replace, tab)
+{
+    $.get(path, {client_name:client}, function (response) {
+        $('#myTab  a[href=#forms]').tab('show');
+        $('#forms').empty();
+        $('#myTab  a[href=#' + tab + ']').tab('show');
+        $('#' + id_replace).html(response);
+        $('#form_client').val(client);
+    }, 'html');
+}
+
 $(document).on('click', '.show-form-link', function () {
-    updatePanel($(this).data('url'), 'show-form', 'show-form');
+    updatePanelForm($(this).data('url'), "", 'show-form', 'show-form');
+    return false;
+});
+
+$(document).on('click', '.show-form-link-alt', function () {
+    updatePanelForm($(this).data('url'), $(this).data('client'), 'show-form', 'show-form');
     return false;
 });
 
@@ -90,14 +108,11 @@ $(document).on('change', '#form_client', function() {
     $('#form_client_full_data').empty();
     $('#btn_full_data').css("visibility","hidden");
     $('#form_client_data').empty();
-    if (val != "")
-    {
-        var val = $(this).val();
-        $.get($(this).data('url'), {client_name:val}, function(response) {
-            $('#form_client_data').html(response);
-            $('#btn_full_data').css("visibility","visible");
-        }, 'html');
-    }
+    var val = $(this).val();
+    $.get($(this).data('url'), {client_name:val}, function(response) {
+        $('#form_client_data').html(response);
+        $('#btn_full_data').css("visibility","visible");
+    }, 'html');
     return false;
 });
 
@@ -128,34 +143,31 @@ $(document).on('click', '#form_filter_btn', function() {
 
 //************** USERS TAB **************** //
 
-$('.new-user-link').live('click', function () {
+$(document).on('click', '.new-user-link', function () {
     updatePanel($(this).attr('data-url'), 'new-user', 'new-user');
     return false;
 });
 
-$('.edit-user-link').live('click', function () {
+$(document).on('click', '.edit-user-link', function () {
     updatePanel($(this).attr('data-url'), 'edit-user', 'edit-user');
     return false;
 });
 
-$('.show-user-link').live('click', function () {
+$(document).on('click', '.show-user-link', function (e) {
+    e.preventDefault();
+    $('#myTab  a[href=#users]').tab('show');
     updatePanel($(this).attr('data-url'), 'show-user', 'show-user');
     return false;
 });
 
-$('.show-user').live('click', function () {
-    updatePanel($(this).attr('data-url'), 'show-user', 'show-user');
-    return false;
-});
-
-$('.users-link').live('click', function () {
-    updatePanel($(this).attr('data-url'), 'users-content', 'users');
+$(document).on('click', '.users-link', function () {
+    updatePanel($(this).attr('data-url'), 'users', 'users');
     return false;
 });
 
 //************** EMAILS TAB **************** //
 
-$('.emails-link').live('click', function () {
+$(document).on('click', '.emails-link', function () {
     updatePanel($(this).attr('data-url'), 'emails', 'emails');
     return false;
 });

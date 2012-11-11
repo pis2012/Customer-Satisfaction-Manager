@@ -1,8 +1,51 @@
 module ActivitiesHelper
 
+  def activity_avatar(object)
+    case object.class.name
+      when 'Feedback', 'Comment', 'Mood', 'Project'
+        link_to activity_link object do
+          activity_image_tag object
+        end
+      when 'User'
+        link_to "", :href => "#show-user" + object.id.to_s, :class => "show-user-link", :data => { :url => user_path(object) } do
+          activity_image_tag object
+        end
+      when 'Client'
+        link_to "", :href => "#show-client" + object.id.to_s, :class => "show-client-link", :data => { :url => client_path(object) } do
+          activity_image_tag object
+        end
+      else
+        ""
+    end
+  end
+
+  def activity_action(object, recent)
+    case object.class.name
+      when 'Feedback', 'Comment', 'Mood', 'Project'
+        link_to activity_link object do
+          truncate(strip_tags(activity_action_name(object, recent)), :length => 80)
+        end
+      when 'User'
+        link_to "", :href => "#show-user" + object.id.to_s, :class => "show-user-link", :data => { :url => user_path(object) } do
+          truncate(strip_tags(activity_action_name(object, recent)), :length => 80)
+        end
+      when 'Client'
+        link_to "", :href => "#show-client" + object.id.to_s, :class => "show-client-link", :data => { :url => client_path(object) } do
+          truncate(strip_tags(activity_action_name(object, recent)), :length => 80)
+        end
+      else
+        ""
+    end
+  end
+
+
+
+
+
   def user_image_tag(user)
     if user.profile.show_gravatar
-      gravatar_image_tag user.profile.user.email.gsub('spam', 'mdeering'), :alt => user.full_name, :class => 'activity_image'
+      gravatar_image_tag user.profile.user.email.gsub('spam', 'mdeering'), :alt => user.full_name,
+                         :class => 'activity_image'
     else
       if user.profile.avatar.file?
         image_tag user.profile.avatar.url(:medium), :alt => user.full_name, :class => 'activity_image'
@@ -46,7 +89,7 @@ module ActivitiesHelper
     end
   end
 
-  def activity_action(object,recent)
+  def activity_action_name(object,recent)
     case object.class.name
     when 'Feedback'
       if recent

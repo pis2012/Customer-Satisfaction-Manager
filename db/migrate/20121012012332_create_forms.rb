@@ -1,6 +1,7 @@
 class CreateForms < ActiveRecord::Migration
   def change
     create_table :forms do |t|
+      t.references :client
 
       t.string :name
       t.string :email

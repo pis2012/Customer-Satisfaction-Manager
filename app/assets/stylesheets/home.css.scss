@@ -336,3 +336,55 @@
 }
 
 
+/* ============== [ FOOTER ] ============== */
+
+#footer{
+  background: none repeat scroll 0 0 #F5F5F5;
+}
+
+#footer a{
+  color: #1155CC;
+}
+
+#footer .inner_footer_list a{
+  color: #666666;
+}
+#footer .footer_title{
+  color: #1155CC;
+}
+
+
+#footer_local{
+  background: none repeat scroll 0 0 #F9F9F9;
+  padding: 3% 10%;
+}
+
+#footer_local .ofl_li{
+  padding-left: 5%;
+}
+
+#footer_global{
+  border-top: 1px solid #EBEBEB;
+  font-size: 11px;
+  line-height: 1.8;
+  padding-left: 5%;
+  padding-top: 1%;
+}
+
+.outer_footer_list{
+  list-style-type: none;
+}
+
+.outer_footer_list .ofl_li{
+  display: inline;
+  list-style-type: none;
+  float: left;
+
+}
+
+.inner_footer_list{
+  width: 100%;
+  margin-left: 10%;
+  list-style-type: none;
+}
+
