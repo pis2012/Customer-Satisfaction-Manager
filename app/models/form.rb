@@ -113,7 +113,7 @@ class Form < ActiveRecord::Base
       (2..ws.num_rows).each do |row|
         user_email = ws[row, email_user_column]
         user = User.find_by_email(user_email)
-        if user != nil
+        if user != nil && user.client != nil # Admin case?
           client_name = user.client.name
           clients += [client_name] unless clients.include? client_name
         end
@@ -148,7 +148,7 @@ class Form < ActiveRecord::Base
       end
     else
       # Get the full names of the users with client name == client_name,
-      users_client = User.find_all_by_client_id(Client.find_by_name(client_name).id)
+      users_client = self.clients.find_by_name(client_name).users
       users_full_names = users_client.map {|uc| uc.full_name}
     end
     users_full_names
@@ -173,7 +173,7 @@ class Form < ActiveRecord::Base
         # Find the user with email corresponding to the cell [row,email_user_column] in the form
         user = User.find_by_email(ws[row, email_user_column])
         # If the user not exists in the system then it isn't valid, can't be returned
-        if user != nil
+        if user != nil && user.client != nil
           # Only the rows that correspond to the client with client_name
           if client_name == "" || client_name == user.client.name
             data[:tot_answ] += 1
@@ -201,7 +201,7 @@ class Form < ActiveRecord::Base
         users_emails += client.users.map {|uc| uc.email}
       end
     else
-      users_client = User.find_all_by_client_id(Client.find_by_name(client_name).id)
+      users_client = self.clients.find_by_name(client_name).users
       users_emails = users_client.map {|uc| uc.email}
     end
     users_emails

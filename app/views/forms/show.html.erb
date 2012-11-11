@@ -38,16 +38,17 @@
   &nbsp;
   <%= select_tag "form_client", options_for_select(@form_data[:clients].map {|c| [c,c]}), :prompt => t('form.all'), "data-url" => forms_show_data_path(@form) %>
 
-  <div id="form_client_data" >
-    <%= render template: "forms/show_data" %>
-  </div>
+  <% if @data != nil %>
+      <div id="form_client_data" >
+        <%= render template: "forms/show_data" %>
+      </div>
 
-  <br/>
-  <%= button_tag t('form.full_data'), :class => "btn", :id => "btn_full_data", "data-url" => forms_show_full_data_path(@form) %>
-  <br/>
-  <br/>
+      <br/>
+      <%= button_tag t('form.full_data'), :class => "btn", :id => "btn_full_data", "data-url" => forms_show_full_data_path(@form) %>
+      <br/>
+      <br/>
 
-  <div id="form_client_full_data"> </div>
-
+      <div id="form_client_full_data"> </div>
+  <% end %>
 </div>
 <!--// page contents -->

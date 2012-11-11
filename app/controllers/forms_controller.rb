@@ -44,9 +44,9 @@ class FormsController < ApplicationController
 
   def show
     @form = Form.find(params[:id])
-    session[:worksheet] = @form.get_session_worksheet
-    # If fails then the form does not exist anymore?
     begin
+      # If fails then the form does not exist anymore?
+      session[:worksheet] = @form.get_session_worksheet
       clients = @form.get_clients(session[:worksheet])
       @data = @form.get_data(params[:client_name],session[:worksheet])
     rescue
